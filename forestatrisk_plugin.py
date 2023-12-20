@@ -21,16 +21,30 @@
  *                                                                         *
  ***************************************************************************/
 """
+import os
+import sys
+
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
+
+# Import the forestatrisk package
+try:
+    import forestatrisk as far
+except ImportError:
+    plugin_dir = os.path.dirname(os.path.realpath(__file__))
+    far_dir = os.path.join(plugin_dir, "forestatrisk")
+    sys.path.append(far_dir)
+    import forestatrisk as far
+
+import ee
+import pandas as pd
+from pywdpa import get_token
 
 # Initialize Qt resources from file resources.py
 from .resources import *
 # Import the code for the dialog
 from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
-import os.path
-
 
 class ForestatriskPlugin:
     """QGIS Plugin Implementation."""
@@ -48,11 +62,11 @@ class ForestatriskPlugin:
         # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
         # initialize locale
-        locale = QSettings().value('locale/userLocale')[0:2]
+        locale = QSettings().value("locale/userLocale")[0:2]
         locale_path = os.path.join(
             self.plugin_dir,
-            'i18n',
-            'ForestatriskPlugin_{}.qm'.format(locale))
+            "i18n",
+            f"ForestatriskPlugin_{locale}.qm")
 
         if os.path.exists(locale_path):
             self.translator = QTranslator()
@@ -61,7 +75,7 @@ class ForestatriskPlugin:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&Forestatrisk Plugin')
+        self.menu = self.tr("&Forestatrisk Plugin")
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
@@ -80,7 +94,7 @@ class ForestatriskPlugin:
         :rtype: QString
         """
         # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
-        return QCoreApplication.translate('ForestatriskPlugin', message)
+        return QCoreApplication.translate("ForestatriskPlugin", message)
 
     def add_action(
             self,
@@ -96,7 +110,7 @@ class ForestatriskPlugin:
         """Add a toolbar icon to the toolbar.
 
         :param icon_path: Path to the icon for this action. Can be a resource
-            path (e.g. ':/plugins/foo/bar.png') or a normal file system path.
+            path (e.g. ":/plugins/foo/bar.png") or a normal file system path.
         :type icon_path: str
 
         :param text: Text that should be shown in menu items for this action.
@@ -159,26 +173,98 @@ class ForestatriskPlugin:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/forestatrisk_plugin/icon.png'
+        icon_path = ":/plugins/forestatrisk_plugin/icon.png"
         self.add_action(
             icon_path,
-            text=self.tr(u'Map the deforestation risk'),
+            text=self.tr("Mapping deforestation risk"),
             callback=self.run,
             parent=self.iface.mainWindow())
 
         # will be set False in run()
         self.first_start = True
 
-
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
             self.iface.removePluginMenu(
-                self.tr(u'&Forestatrisk Plugin'),
+                self.tr("&Forestatrisk Plugin"),
                 action)
             self.iface.removeToolBarIcon(action)
 
-    # Define any new function here between unload() and run()
+    # ======================================================
+    # Additional functions here between unload() and run()
+    # ======================================================
+
+    def run_forestatrisk(self):
+        """Run forestatrisk."""
+
+        # Values of the variables for tests
+        ISO3 = "MTQ"
+        PROJ = "EPSG:5490"
+        WORKING_DIRECTORY = "/home/ghislain/Bureau/tests"
+        DATA_RAW_DIR = "data_raw"
+        OUTPUT_DIR = "data"
+        FCC_SOURCE = "jrc"
+        PERC = 50
+        GDRIVE_REMOTE_RCLONE = "gdrive_gv"
+        GDRIVE_FOLDER = "GEE/GEE-forestatrisk-notebooks"
+
+        # Print far doc and version
+        print(far.__doc__)
+        print(f"version: {far.__version__}")
+
+        # Initialize Earth Engine
+        ee.Initialize()
+
+        # Set WDPA API key
+        with open(os.path.join(WORKING_DIRECTORY, ".env")) as f:
+            [name_key, value_key] = f.read().split("=")
+            os.environ["WDPA_KEY"] = value_key.replace("\"", "")
+
+        # Set working directory
+        os.chdir(WORKING_DIRECTORY)
+
+        # Compute gee forest data
+        far.data.country_forest_run(
+            iso3=ISO3,
+            proj="EPSG:4326",
+            output_dir=DATA_RAW_DIR,
+            keep_dir=True,
+            fcc_source=FCC_SOURCE,
+            perc=PERC,
+            gdrive_remote_rclone=GDRIVE_REMOTE_RCLONE,
+            gdrive_folder=GDRIVE_FOLDER)
+
+        # Download data
+        far.data.country_download(
+            iso3=ISO3,
+            gdrive_remote_rclone=GDRIVE_REMOTE_RCLONE,
+            gdrive_folder=GDRIVE_FOLDER,
+            output_dir=DATA_RAW_DIR)
+
+        # Compute explanatory variables
+        far.data.country_compute(
+            iso3=ISO3,
+            temp_dir=DATA_RAW_DIR,
+            output_dir=OUTPUT_DIR,
+            proj=PROJ,
+            data_country=True,
+            data_forest=True,
+            keep_temp_dir=True)
+
+        # Plot
+        ifile = os.path.join()
+        fig_fcc123 = far.plot.fcc123(
+            input_fcc_raster="data/forest/fcc123.tif",
+            maxpixels=1e8,
+            output_file=ofile,
+            borders="data/ctry_PROJ.shp",
+            linewidth=0.3,
+            figsize=(6, 5), dpi=500)
+
+    # ======================================================
+    # End of additional functions
+    # ======================================================
 
     def run(self):
         """Run method that performs all the real work"""
@@ -197,6 +283,7 @@ class ForestatriskPlugin:
         if result:
             # Do something useful here - delete the line containing pass and
             # substitute with your code.
-            pass
+            self.run_forestatrisk()
+            # pass
 
 # End of file
