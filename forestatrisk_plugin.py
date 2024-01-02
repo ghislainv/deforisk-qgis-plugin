@@ -38,6 +38,7 @@ except ImportError:
     import forestatrisk as far
 
 import ee
+from matplotlib import pyplot as plt
 import pandas as pd
 from pywdpa import get_token
 
@@ -198,16 +199,22 @@ class ForestatriskPlugin:
     def run_forestatrisk(self):
         """Run forestatrisk."""
 
-        # Values of the variables for tests
+        # QGis plugin arguments
         ISO3 = "MTQ"
         PROJ = "EPSG:5490"
-        WORKING_DIRECTORY = "/home/ghislain/Bureau/tests"
-        DATA_RAW_DIR = "data_raw"
-        OUTPUT_DIR = "data"
+        WORK_DIR = "/home/ghislain/Bureau/tests"
         FCC_SOURCE = "jrc"
         PERC = 50
         GDRIVE_REMOTE_RCLONE = "gdrive_gv"
         GDRIVE_FOLDER = "GEE/GEE-forestatrisk-notebooks"
+
+        # Output directories
+        DATA_RAW_DIR = "data_raw"
+        DATA_DIR = "data"
+        OUTPUT_DIR = "outputs"
+        far.make_dir(DATA_RAW_DIR)
+        far.make_dir(DATA_DIR)
+        far.make_dir(OUTPUT_DIR)
 
         # Print far doc and version
         print(far.__doc__)
@@ -217,12 +224,12 @@ class ForestatriskPlugin:
         ee.Initialize()
 
         # Set WDPA API key
-        with open(os.path.join(WORKING_DIRECTORY, ".env")) as f:
+        with open(os.path.join(WORK_DIR, ".env")) as f:
             [name_key, value_key] = f.read().split("=")
             os.environ["WDPA_KEY"] = value_key.replace("\"", "")
 
         # Set working directory
-        os.chdir(WORKING_DIRECTORY)
+        os.chdir(WORK_DIR)
 
         # Compute gee forest data
         far.data.country_forest_run(
@@ -246,21 +253,24 @@ class ForestatriskPlugin:
         far.data.country_compute(
             iso3=ISO3,
             temp_dir=DATA_RAW_DIR,
-            output_dir=OUTPUT_DIR,
+            output_dir=DATA_DIR,
             proj=PROJ,
             data_country=True,
             data_forest=True,
             keep_temp_dir=True)
 
         # Plot
-        ifile = os.path.join()
+        ifile = os.path.join(DATA_DIR, "forest/fcc123.tif")
+        ofile = os.path.join(OUTPUT_DIR, "fcc123.png")
+        bfile = os.path.join(DATA_DIR, "ctry_PROJ.shp")
         fig_fcc123 = far.plot.fcc123(
-            input_fcc_raster="data/forest/fcc123.tif",
+            input_fcc_raster=ifile,
             maxpixels=1e8,
             output_file=ofile,
-            borders="data/ctry_PROJ.shp",
+            borders=bfile,
             linewidth=0.3,
             figsize=(6, 5), dpi=500)
+        plt.close(fig_fcc123)
 
     # ======================================================
     # End of additional functions
