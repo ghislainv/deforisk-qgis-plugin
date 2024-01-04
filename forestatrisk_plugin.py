@@ -39,13 +39,12 @@ except ImportError:
 
 import ee
 from matplotlib import pyplot as plt
-import pandas as pd
-from pywdpa import get_token
 
 # Initialize Qt resources from file resources.py
 from .resources import *
 # Import the code for the dialog
 from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
+
 
 class ForestatriskPlugin:
     """QGIS Plugin Implementation."""
@@ -196,13 +195,16 @@ class ForestatriskPlugin:
     # Additional functions here between unload() and run()
     # ======================================================
 
-    def run_forestatrisk(self):
-        """Run forestatrisk."""
+    def far_get_variables(self,
+                          workdir,
+                          isocode,
+                          proj):
+        """Get forestatrisk variables."""
 
         # QGis plugin arguments
-        ISO3 = "MTQ"
-        PROJ = "EPSG:5490"
-        WORK_DIR = "/home/ghislain/Bureau/tests"
+        WORK_DIR = workdir
+        ISOCODE = isocode
+        PROJ = proj
         FCC_SOURCE = "jrc"
         PERC = 50
         GDRIVE_REMOTE_RCLONE = "gdrive_gv"
@@ -233,7 +235,7 @@ class ForestatriskPlugin:
 
         # Compute gee forest data
         far.data.country_forest_run(
-            iso3=ISO3,
+            iso3=ISOCODE,
             proj="EPSG:4326",
             output_dir=DATA_RAW_DIR,
             keep_dir=True,
@@ -244,14 +246,14 @@ class ForestatriskPlugin:
 
         # Download data
         far.data.country_download(
-            iso3=ISO3,
+            iso3=ISOCODE,
             gdrive_remote_rclone=GDRIVE_REMOTE_RCLONE,
             gdrive_folder=GDRIVE_FOLDER,
             output_dir=DATA_RAW_DIR)
 
         # Compute explanatory variables
         far.data.country_compute(
-            iso3=ISO3,
+            iso3=ISOCODE,
             temp_dir=DATA_RAW_DIR,
             output_dir=DATA_DIR,
             proj=PROJ,
@@ -279,8 +281,10 @@ class ForestatriskPlugin:
     def run(self):
         """Run method that performs all the real work"""
 
-        # Create the dialog with elements (after translation) and keep reference
-        # Only create GUI ONCE in callback, so that it will only load when the plugin is started
+        # Create the dialog with elements (after translation)
+        # and keep reference.
+        # Only create GUI ONCE in callback, so that it will only
+        # load when the plugin is started
         if self.first_start is True:
             self.first_start = False
             self.dlg = ForestatriskPluginDialog()
@@ -291,9 +295,13 @@ class ForestatriskPlugin:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            self.run_forestatrisk()
-            # pass
+            # Catch variable values from ui
+            wd = self.dlg.workdir.text()
+            iso = self.dlg.isocode.text()
+            proj = self.dlg.proj.text()
+            # Execute far_get_variables()
+            self.far_get_variables(workdir=wd,
+                                   isocode=iso,
+                                   proj=proj)
 
 # End of file
