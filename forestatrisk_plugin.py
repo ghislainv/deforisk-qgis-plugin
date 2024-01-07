@@ -21,29 +21,20 @@
  *                                                                         *
  ***************************************************************************/
 """
+
 import os
-import sys
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
-# Import the forestatrisk package
-try:
-    import forestatrisk as far
-except ImportError:
-    plugin_dir = os.path.dirname(os.path.realpath(__file__))
-    far_dir = os.path.join(plugin_dir, "forestatrisk")
-    sys.path.append(far_dir)
-    import forestatrisk as far
-
-import ee
-from matplotlib import pyplot as plt
-
 # Initialize Qt resources from file resources.py
 from .resources import *
 # Import the code for the dialog
 from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
+
+# Local forestatrisk functions
+from .far_functions import far_get_variables, far_sample_obs
 
 
 class ForestatriskPlugin:
@@ -59,9 +50,9 @@ class ForestatriskPlugin:
         """
         # Save reference to the QGIS interface
         self.iface = iface
-        # initialize plugin directory
+        # Initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
-        # initialize locale
+        # Initialize locale
         locale = QSettings().value("locale/userLocale")[0:2]
         locale_path = os.path.join(
             self.plugin_dir,
@@ -76,10 +67,12 @@ class ForestatriskPlugin:
         # Declare instance attributes
         self.actions = []
         self.menu = self.tr("&Forestatrisk Plugin")
+        self.args = None  # GV: arguments for far functions.
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
         self.first_start = None
+        self.dlg = None
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -176,7 +169,8 @@ class ForestatriskPlugin:
         icon_path = ":/plugins/forestatrisk_plugin/icon.png"
         self.add_action(
             icon_path,
-            text=self.tr("Mapping deforestation risk"),
+            text=self.tr("Modelling and forecasting deforestation"
+                         "in the tropics"),
             callback=self.run,
             parent=self.iface.mainWindow())
 
@@ -191,92 +185,46 @@ class ForestatriskPlugin:
                 action)
             self.iface.removeToolBarIcon(action)
 
-    # ======================================================
-    # Additional functions here between unload() and run()
-    # ======================================================
+    def catch_arguments(self):
+        """Catch arguments from ui"""
+        # Get variables
+        wd = self.dlg.workdir.text()
+        iso = self.dlg.isocode.text()
+        proj = self.dlg.proj.text()
+        # Sampling observations
+        nsamp = self.dlg.nsamp.text()
+        adapt = self.dlg.adapt.isChecked()
+        seed = self.dlg.seed.text()
+        csize = self.dlg.csize.text()
+        # Default values
+        wd = "/home/ghislain/Bureau/tests" if wd == "" else wd
+        iso = "MTQ" if iso == "" else iso
+        proj = "EPSG:5490" if proj == "" else proj
+        nsamp = 10000 if nsamp == "" else nsamp
+        seed = 1234 if seed == "" else seed
+        csize = 10 if csize == "" else csize
+        # Dictionary of arguments for far functions
+        self.args = {"workdir": wd, "isocode": iso, "proj": proj,
+             "nsamp": nsamp, "adapt": adapt, "seed": seed,
+             "csize": csize}
 
-    def far_get_variables(self,
-                          workdir,
-                          isocode,
-                          proj):
-        """Get forestatrisk variables."""
+    def get_variables(self):
+        """Get variables"""
+        self.catch_arguments()
+        far_get_variables(iface=self.iface,
+                          workdir=self.args["workdir"],
+                          isocode=self.args["isocode"],
+                          proj=self.args["proj"])
 
-        # QGis plugin arguments
-        WORK_DIR = workdir
-        ISOCODE = isocode
-        PROJ = proj
-        FCC_SOURCE = "jrc"
-        PERC = 50
-        GDRIVE_REMOTE_RCLONE = "gdrive_gv"
-        GDRIVE_FOLDER = "GEE/GEE-forestatrisk-notebooks"
-
-        # Output directories
-        DATA_RAW_DIR = "data_raw"
-        DATA_DIR = "data"
-        OUTPUT_DIR = "outputs"
-        far.make_dir(DATA_RAW_DIR)
-        far.make_dir(DATA_DIR)
-        far.make_dir(OUTPUT_DIR)
-
-        # Print far doc and version
-        print(far.__doc__)
-        print(f"version: {far.__version__}")
-
-        # Initialize Earth Engine
-        ee.Initialize()
-
-        # Set WDPA API key
-        with open(os.path.join(WORK_DIR, ".env")) as f:
-            [name_key, value_key] = f.read().split("=")
-            os.environ["WDPA_KEY"] = value_key.replace("\"", "")
-
-        # Set working directory
-        os.chdir(WORK_DIR)
-
-        # Compute gee forest data
-        far.data.country_forest_run(
-            iso3=ISOCODE,
-            proj="EPSG:4326",
-            output_dir=DATA_RAW_DIR,
-            keep_dir=True,
-            fcc_source=FCC_SOURCE,
-            perc=PERC,
-            gdrive_remote_rclone=GDRIVE_REMOTE_RCLONE,
-            gdrive_folder=GDRIVE_FOLDER)
-
-        # Download data
-        far.data.country_download(
-            iso3=ISOCODE,
-            gdrive_remote_rclone=GDRIVE_REMOTE_RCLONE,
-            gdrive_folder=GDRIVE_FOLDER,
-            output_dir=DATA_RAW_DIR)
-
-        # Compute explanatory variables
-        far.data.country_compute(
-            iso3=ISOCODE,
-            temp_dir=DATA_RAW_DIR,
-            output_dir=DATA_DIR,
-            proj=PROJ,
-            data_country=True,
-            data_forest=True,
-            keep_temp_dir=True)
-
-        # Plot
-        ifile = os.path.join(DATA_DIR, "forest/fcc123.tif")
-        ofile = os.path.join(OUTPUT_DIR, "fcc123.png")
-        bfile = os.path.join(DATA_DIR, "ctry_PROJ.shp")
-        fig_fcc123 = far.plot.fcc123(
-            input_fcc_raster=ifile,
-            maxpixels=1e8,
-            output_file=ofile,
-            borders=bfile,
-            linewidth=0.3,
-            figsize=(6, 5), dpi=500)
-        plt.close(fig_fcc123)
-
-    # ======================================================
-    # End of additional functions
-    # ======================================================
+    def sample_obs(self):
+        """Sample observations"""
+        self.catch_arguments()
+        far_sample_obs(iface=self.iface,
+                       workdir=self.args["workdir"],
+                       nsamp=self.args["nsamp"],
+                       adapt=self.args["adapt"],
+                       seed=self.args["seed"],
+                       csize=self.args["csize"])
 
     def run(self):
         """Run method that performs all the real work"""
@@ -289,19 +237,14 @@ class ForestatriskPlugin:
             self.first_start = False
             self.dlg = ForestatriskPluginDialog()
 
+        # Call to functions if buttons ares clicked
+        self.dlg.run_var.clicked.connect(self.get_variables)
+        self.dlg.run_samp.clicked.connect(self.sample_obs)
+
         # show the dialog
         self.dlg.show()
-        # Run the dialog event loop
         result = self.dlg.exec_()
-        # See if OK was pressed
         if result:
-            # Catch variable values from ui
-            wd = self.dlg.workdir.text()
-            iso = self.dlg.isocode.text()
-            proj = self.dlg.proj.text()
-            # Execute far_get_variables()
-            self.far_get_variables(workdir=wd,
-                                   isocode=iso,
-                                   proj=proj)
+            pass
 
 # End of file
