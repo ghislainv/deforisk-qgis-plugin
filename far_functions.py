@@ -113,7 +113,7 @@ def far_get_variables(iface,
     msg = f"Raster files can be found in {workdir}"
     iface.messageBar().pushMessage(
         "Success", msg,
-        level=Qgis.Success, duration=3)
+        level=Qgis.Success)
 
     # Add fcc layer to QGis (to be done)
 
@@ -193,6 +193,6 @@ def far_sample_obs(iface,
         msg = f"Sampled observations can be found in {workdir}"
         iface.messageBar().pushMessage(
             "Success", msg,
-            level=Qgis.Success, duration=3)
+            level=Qgis.Success)
 
 # End of file
