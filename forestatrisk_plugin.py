@@ -221,6 +221,7 @@ class ForestatriskPlugin:
         self.catch_arguments()
         far_sample_obs(iface=self.iface,
                        workdir=self.args["workdir"],
+                       proj=self.args["proj"],
                        nsamp=self.args["nsamp"],
                        adapt=self.args["adapt"],
                        seed=self.args["seed"],

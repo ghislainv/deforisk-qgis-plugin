@@ -14,8 +14,9 @@ Get variables
 
 import os
 import sys
+import shutil
 
-from qgis.core import Qgis
+from qgis.core import Qgis, QgsProject, QgsVectorLayer, QgsRasterLayer
 
 # Import the forestatrisk package
 try:
@@ -68,54 +69,76 @@ def far_get_variables(iface,
     # Set working directory
     os.chdir(workdir)
 
-    # Compute gee forest data
-    far.data.country_forest_run(
-        iso3=isocode,
-        proj="EPSG:4326",
-        output_dir=data_raw_dir,
-        keep_dir=True,
-        fcc_source=fcc_source,
-        perc=perc,
-        gdrive_remote_rclone=gdrive_remote_rclone,
-        gdrive_folder=gdrive_folder)
+    # Copy qml files (layer style)
+    src_dir = os.path.join(os.path.dirname(__file__), "qgis_layer_style")
+    dst_dir = os.path.join(workdir, "qgis_layer_style")
+    if os.path.exists(dst_dir):
+        shutil.rmtree(dst_dir)
+    shutil.copytree(src_dir, dst_dir)
 
-    # Download data
-    far.data.country_download(
-        iso3=isocode,
-        gdrive_remote_rclone=gdrive_remote_rclone,
-        gdrive_folder=gdrive_folder,
-        output_dir=data_raw_dir)
+    # Create Qgis project
+    far_project = QgsProject.instance()
 
-    # Compute explanatory variables
-    far.data.country_compute(
-        iso3=isocode,
-        temp_dir=data_raw_dir,
-        output_dir=data_dir,
-        proj=proj,
-        data_country=True,
-        data_forest=True,
-        keep_temp_dir=True)
+    # Check raster existence
+    fcc123_file = os.path.join(data_dir, "forest", "fcc123.tif")
+    if not os.path.isfile(fcc123_file):
+        # Compute gee forest data
+        far.data.country_forest_run(
+            iso3=isocode,
+            proj="EPSG:4326",
+            output_dir=data_raw_dir,
+            keep_dir=True,
+            fcc_source=fcc_source,
+            perc=perc,
+            gdrive_remote_rclone=gdrive_remote_rclone,
+            gdrive_folder=gdrive_folder)
 
-    # Plot
-    ifile = os.path.join(data_dir, "forest/fcc123.tif")
-    ofile = os.path.join(output_dir, "fcc123.png")
-    bfile = os.path.join(data_dir, "ctry_PROJ.shp")
-    fig_fcc123 = far.plot.fcc123(
-        input_fcc_raster=ifile,
-        maxpixels=1e8,
-        output_file=ofile,
-        borders=bfile,
-        linewidth=0.3,
-        figsize=(6, 5), dpi=500)
-    plt.close(fig_fcc123)
+        # Download data
+        far.data.country_download(
+            iso3=isocode,
+            gdrive_remote_rclone=gdrive_remote_rclone,
+            gdrive_folder=gdrive_folder,
+            output_dir=data_raw_dir)
 
-    # Message
-    msg = f"Raster files can be found in {workdir}"
-    iface.messageBar().pushMessage(
-        "Success", msg,
-        level=Qgis.Success)
+        # Compute explanatory variables
+        far.data.country_compute(
+            iso3=isocode,
+            temp_dir=data_raw_dir,
+            output_dir=data_dir,
+            proj=proj,
+            data_country=True,
+            data_forest=True,
+            keep_temp_dir=True)
 
-    # Add fcc layer to QGis (to be done)
+        # Message
+        msg = f"Raster files can be found in {workdir}"
+        iface.messageBar().pushMessage(
+            "Success", msg,
+            level=Qgis.Success)
+
+        # Plot
+        fcc123_file = os.path.join(data_dir, "forest", "fcc123.tif")
+        png_file = os.path.join(output_dir, "fcc123.png")
+        border_file = os.path.join(data_dir, "ctry_PROJ.shp")
+        fig_fcc123 = far.plot.fcc123(
+            input_fcc_raster=fcc123_file,
+            maxpixels=1e8,
+            output_file=png_file,
+            borders=border_file,
+            linewidth=0.3,
+            figsize=(6, 5), dpi=500)
+        plt.close(fig_fcc123)
+
+    # Add border layer to QGis project
+    border_file = os.path.join(data_dir, "ctry_PROJ.shp")
+    border_layer = QgsVectorLayer(border_file, "border", "ogr")
+    border_layer.loadNamedStyle(os.path.join("qgis_layer_style", "border.qml"))
+    far_project.addMapLayer(border_layer)
+
+    # Add fcc123 layer to QGis project
+    fcc123_layer = QgsRasterLayer(fcc123_file, "fcc123")
+    fcc123_layer.loadNamedStyle(os.path.join("qgis_layer_style", "fcc123.qml"))
+    far_project.addMapLayer(fcc123_layer)
 
 
 # ========================================
@@ -123,6 +146,7 @@ def far_get_variables(iface,
 # ========================================
 def far_sample_obs(iface,
                    workdir,
+                   proj,
                    nsamp,
                    adapt,
                    seed,
@@ -194,5 +218,20 @@ def far_sample_obs(iface,
         iface.messageBar().pushMessage(
             "Success", msg,
             level=Qgis.Success)
+
+        # Add layer of sampled observations to QGis project
+        samp_file = os.path.join(workdir, "outputs", "sample.txt")
+        encoding = "UTF-8"
+        delimiter = ","
+        decimal = "."
+        x = "X"
+        y = "Y"
+        uri = (f"file://{samp_file}?encoding={encoding}"
+               f"&delimiter={delimiter}&decimalPoint={decimal}"
+               f"&crs={proj}&xField={x}&yField={y}")
+        samp_layer = QgsVectorLayer(uri, "sampled_obs", "delimitedtext")
+        samp_layer.loadNamedStyle(os.path.join("qgis_layer_style",
+                                               "sample.qml"))
+        QgsProject.instance().addMapLayer(samp_layer)
 
 # End of file
