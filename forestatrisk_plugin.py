@@ -191,22 +191,37 @@ class ForestatriskPlugin:
         wd = self.dlg.workdir.text()
         iso = self.dlg.isocode.text()
         proj = self.dlg.proj.text()
+        fcc_source = self.dlg.fcc_source.text()
+        perc = self.dlg.perc.text()
+        remote_rclone = self.dlg.remote_rclone.text()
+        gdrive_folder = self.dlg.gdrive_folder.text()
+        wdpa_key = self.dlg.wdpa_key.text()
         # Sampling observations
         nsamp = self.dlg.nsamp.text()
         adapt = self.dlg.adapt.isChecked()
         seed = self.dlg.seed.text()
         csize = self.dlg.csize.text()
-        # Default values
+        # Default values (to be modified for final version of the plugin)
         wd = "/home/ghislain/Bureau/tests" if wd == "" else wd
         iso = "MTQ" if iso == "" else iso
         proj = "EPSG:5490" if proj == "" else proj
+        fcc_source = "jrc" if fcc_source == "" else fcc_source
+        perc = "50" if perc == "" else perc
+        remote_rclone = "gdrive_gv" if remote_rclone == "" else remote_rclone
+        if gdrive_folder == "":
+            gdrive_folder = "GEE/GEE-far-qgis-plugin"
+        # No default value for wdpa_key, this is handled in far_get_variables
         nsamp = 10000 if nsamp == "" else nsamp
         seed = 1234 if seed == "" else seed
         csize = 10 if csize == "" else csize
         # Dictionary of arguments for far functions
-        self.args = {"workdir": wd, "isocode": iso, "proj": proj,
-             "nsamp": nsamp, "adapt": adapt, "seed": seed,
-             "csize": csize}
+        self.args = {
+            "workdir": wd, "isocode": iso, "proj": proj,
+            "fcc_source": fcc_source, "perc": perc,
+            "remote_rclone": remote_rclone, "gdrive_folder": gdrive_folder,
+            "wdpa_key": wdpa_key,
+            "nsamp": nsamp, "adapt": adapt, "seed": seed,
+            "csize": csize}
 
     def get_variables(self):
         """Get variables"""
@@ -214,7 +229,12 @@ class ForestatriskPlugin:
         far_get_variables(iface=self.iface,
                           workdir=self.args["workdir"],
                           isocode=self.args["isocode"],
-                          proj=self.args["proj"])
+                          proj=self.args["proj"],
+                          fcc_source=self.args["fcc_source"],
+                          perc=self.args["perc"],
+                          remote_rclone=self.args["remote_rclone"],
+                          gdrive_folder=self.args["gdrive_folder"],
+                          wdpa_key="wdpa_key")
 
     def sample_obs(self):
         """Sample observations"""

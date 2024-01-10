@@ -43,10 +43,11 @@ def far_get_variables(iface,
                       workdir,
                       isocode,
                       proj,
-                      fcc_source="jrc",
-                      perc=50,
-                      gdrive_remote_rclone="gdrive_gv",
-                      gdrive_folder="GEE/GEE-far-qgis-plugin"):
+                      fcc_source,
+                      perc,
+                      remote_rclone,
+                      gdrive_folder,
+                      wdpa_key):
     """Get forestatrisk variables."""
 
     # Set working directory
@@ -67,10 +68,20 @@ def far_get_variables(iface,
     # Initialize Earth Engine
     ee.Initialize()
 
-    # Set WDPA API key
-    with open(os.path.join(workdir, ".env"), encoding="utf-8") as f:
-        [_, value_key] = f.read().split("=")
-        os.environ["WDPA_KEY"] = value_key.replace("\"", "")
+    # Get WDPA API key
+    env_file = os.path.join(workdir, ".env")
+    if wdpa_key == "":
+        if os.path.isfile(env_file):
+            with open(env_file, encoding="utf-8") as f:
+                lines = f.readlines
+                for line in lines:
+                    [key, value_key] = line.split("=")
+                    if key == "WDPA_KEY":
+                        os.environ[key] = value_key.replace("\"", "")
+        else:
+            msg = ("No WDPA API key provided "
+                   "(plugin or WDPA_KEY in workdir/.env)")
+            raise ValueError(msg)
 
     # Copy qml files (layer style)
     src_dir = os.path.join(os.path.dirname(__file__), "qgis_layer_style")
@@ -93,13 +104,13 @@ def far_get_variables(iface,
             keep_dir=True,
             fcc_source=fcc_source,
             perc=perc,
-            gdrive_remote_rclone=gdrive_remote_rclone,
+            gdrive_remote_rclone=remote_rclone,
             gdrive_folder=gdrive_folder)
 
         # Download data
         far.data.country_download(
             iso3=isocode,
-            gdrive_remote_rclone=gdrive_remote_rclone,
+            gdrive_remote_rclone=remote_rclone,
             gdrive_folder=gdrive_folder,
             output_dir=data_raw_dir)
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>729</width>
-    <height>570</height>
+    <width>541</width>
+    <height>597</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>10</x>
      <y>9</y>
-     <width>711</width>
-     <height>551</height>
+     <width>521</width>
+     <height>581</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -34,45 +34,44 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>471</width>
-       <height>171</height>
+       <width>491</width>
+       <height>331</height>
       </rect>
      </property>
      <property name="title">
       <string>Download and compute variables</string>
      </property>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QPushButton" name="run_var">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>290</y>
+        <width>71</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>30</y>
-        <width>451</width>
-        <height>89</height>
+        <width>471</width>
+        <height>244</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_var">
-       <item row="1" column="0" colspan="2">
-        <widget class="QLabel" name="label_isocode">
-         <property name="text">
-          <string>Country/state ISO code</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0" colspan="3">
         <widget class="QLabel" name="label_workdir">
          <property name="text">
           <string>Working directory</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QLabel" name="label_proj">
-         <property name="text">
-          <string>Projection EPSG code</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" colspan="2">
+       <item row="0" column="3" colspan="4">
         <widget class="QLineEdit" name="workdir">
          <property name="text">
           <string/>
@@ -82,42 +81,113 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="2">
+       <item row="1" column="0" colspan="6">
+        <widget class="QLabel" name="label_isocode">
+         <property name="text">
+          <string>Country/state ISO code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="6">
         <widget class="QLineEdit" name="isocode">
          <property name="placeholderText">
           <string>MTQ</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="2">
+       <item row="2" column="0" colspan="4">
+        <widget class="QLabel" name="label_proj">
+         <property name="text">
+          <string>Projection EPSG code</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4" colspan="3">
         <widget class="QLineEdit" name="proj">
          <property name="placeholderText">
           <string>EPSG:5490</string>
          </property>
         </widget>
        </item>
+       <item row="3" column="0" colspan="3">
+        <widget class="QLabel" name="label_fcc_source">
+         <property name="text">
+          <string>Forest data source</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3" colspan="4">
+        <widget class="QLineEdit" name="fcc_source">
+         <property name="placeholderText">
+          <string>jrc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="5">
+        <widget class="QLabel" name="label_perc">
+         <property name="text">
+          <string>Tree cover percentage</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5" colspan="2">
+        <widget class="QLineEdit" name="perc">
+         <property name="placeholderText">
+          <string>50</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="5">
+        <widget class="QLabel" name="label_remote_rclone">
+         <property name="text">
+          <string>GDrive Rclone remote</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="5" colspan="2">
+        <widget class="QLineEdit" name="remote_rclone">
+         <property name="placeholderText">
+          <string>my_gdrive</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QLabel" name="label_gdrive_folder">
+         <property name="text">
+          <string>GDrive folder</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2" colspan="5">
+        <widget class="QLineEdit" name="gdrive_folder">
+         <property name="placeholderText">
+          <string>GEE-far-qgis-plugin</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_wdpa_key">
+         <property name="text">
+          <string>WDPA API key</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1" colspan="6">
+        <widget class="QLineEdit" name="wdpa_key">
+         <property name="placeholderText">
+          <string>ca4703ffba6b9a26b2db73f78e56e088</string>
+         </property>
+        </widget>
+       </item>
       </layout>
-     </widget>
-     <widget class="QPushButton" name="run_var">
-      <property name="geometry">
-       <rect>
-        <x>389</x>
-        <y>130</y>
-        <width>71</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Run</string>
-      </property>
      </widget>
     </widget>
     <widget class="QGroupBox" name="groupBox_samp">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>200</y>
-       <width>471</width>
+       <y>370</y>
+       <width>491</width>
        <height>171</height>
       </rect>
      </property>
@@ -127,7 +197,7 @@
      <widget class="QPushButton" name="run_samp">
       <property name="geometry">
        <rect>
-        <x>389</x>
+        <x>410</x>
         <y>130</y>
         <width>71</width>
         <height>25</height>
@@ -137,16 +207,16 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>451</width>
+        <x>11</x>
+        <y>31</y>
+        <width>471</width>
         <height>89</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_samp">
+      <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
         <widget class="QLabel" name="label_nsamp">
          <property name="text">
