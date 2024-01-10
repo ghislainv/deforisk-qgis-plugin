@@ -32,6 +32,9 @@ import matplotlib.pyplot as plt
 import ee
 from patsy import dmatrices
 
+# Local import
+from .utilities import add_layer
+
 
 # ========================================
 # far_get_variables()
@@ -45,6 +48,9 @@ def far_get_variables(iface,
                       gdrive_remote_rclone="gdrive_gv",
                       gdrive_folder="GEE/GEE-far-qgis-plugin"):
     """Get forestatrisk variables."""
+
+    # Set working directory
+    os.chdir(workdir)
 
     # Output directories
     data_raw_dir = "data_raw"
@@ -66,9 +72,6 @@ def far_get_variables(iface,
         [_, value_key] = f.read().split("=")
         os.environ["WDPA_KEY"] = value_key.replace("\"", "")
 
-    # Set working directory
-    os.chdir(workdir)
-
     # Copy qml files (layer style)
     src_dir = os.path.join(os.path.dirname(__file__), "qgis_layer_style")
     dst_dir = os.path.join(workdir, "qgis_layer_style")
@@ -76,7 +79,7 @@ def far_get_variables(iface,
         shutil.rmtree(dst_dir)
     shutil.copytree(src_dir, dst_dir)
 
-    # Create Qgis project
+    # Qgis project
     far_project = QgsProject.instance()
 
     # Check raster existence
@@ -116,29 +119,29 @@ def far_get_variables(iface,
             "Success", msg,
             level=Qgis.Success)
 
-        # Plot
-        fcc123_file = os.path.join(data_dir, "forest", "fcc123.tif")
-        png_file = os.path.join(output_dir, "fcc123.png")
-        border_file = os.path.join(data_dir, "ctry_PROJ.shp")
-        fig_fcc123 = far.plot.fcc123(
-            input_fcc_raster=fcc123_file,
-            maxpixels=1e8,
-            output_file=png_file,
-            borders=border_file,
-            linewidth=0.3,
-            figsize=(6, 5), dpi=500)
-        plt.close(fig_fcc123)
+    # Plot
+    fcc123_file = os.path.join(data_dir, "forest", "fcc123.tif")
+    png_file = os.path.join(output_dir, "fcc123.png")
+    border_file = os.path.join(data_dir, "ctry_PROJ.shp")
+    fig_fcc123 = far.plot.fcc123(
+        input_fcc_raster=fcc123_file,
+        maxpixels=1e8,
+        output_file=png_file,
+        borders=border_file,
+        linewidth=0.3,
+        figsize=(6, 5), dpi=500)
+    plt.close(fig_fcc123)
 
     # Add border layer to QGis project
     border_file = os.path.join(data_dir, "ctry_PROJ.shp")
     border_layer = QgsVectorLayer(border_file, "border", "ogr")
     border_layer.loadNamedStyle(os.path.join("qgis_layer_style", "border.qml"))
-    far_project.addMapLayer(border_layer)
+    add_layer(far_project, border_layer)
 
     # Add fcc123 layer to QGis project
     fcc123_layer = QgsRasterLayer(fcc123_file, "fcc123")
     fcc123_layer.loadNamedStyle(os.path.join("qgis_layer_style", "fcc123.qml"))
-    far_project.addMapLayer(fcc123_layer)
+    add_layer(far_project, fcc123_layer)
 
 
 # ========================================
@@ -155,6 +158,9 @@ def far_sample_obs(iface,
 
     # Set working directory
     os.chdir(workdir)
+
+    # Qgis project
+    far_project = QgsProject.instance()
 
     # Check for files
     fcc23_file = os.path.join(workdir, "data", "fcc23.tif")
@@ -232,6 +238,6 @@ def far_sample_obs(iface,
         samp_layer = QgsVectorLayer(uri, "sampled_obs", "delimitedtext")
         samp_layer.loadNamedStyle(os.path.join("qgis_layer_style",
                                                "sample.qml"))
-        QgsProject.instance().addMapLayer(samp_layer)
+        add_layer(far_project, samp_layer)
 
 # End of file
