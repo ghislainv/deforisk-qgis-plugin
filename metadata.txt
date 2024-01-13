@@ -5,7 +5,7 @@
 [general]
 name=Forestatrisk Plugin
 qgisMinimumVersion=3.0
-description=Deforestation risk mapping.
+description=Modelling and forecasting deforestation in the tropics.
 version=0.1
 author=Ghislain Vieilledent (Cirad)
 email=ghislain.vieilledent@cirad.fr

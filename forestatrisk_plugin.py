@@ -170,7 +170,7 @@ class ForestatriskPlugin:
         icon_path = ":/plugins/forestatrisk_plugin/icon.png"
         self.add_action(
             icon_path,
-            text=self.tr("Modelling and forecasting deforestation"
+            text=self.tr("Modelling and forecasting deforestation "
                          "in the tropics"),
             callback=self.run,
             parent=self.iface.mainWindow())
