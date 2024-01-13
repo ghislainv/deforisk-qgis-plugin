@@ -266,9 +266,8 @@ class ForestatriskPlugin:
         if self.first_start is True:
             self.first_start = False
             self.dlg = ForestatriskPluginDialog()
-
-        # Set path
-        self.set_path()
+            # Set path
+            self.set_path()
 
         # Call to functions if buttons ares clicked
         self.dlg.run_var.clicked.connect(self.get_variables)

@@ -54,7 +54,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -77,7 +77,7 @@
           <string/>
          </property>
          <property name="placeholderText">
-          <string>C:\Users\&lt;name&gt;\Documents\forestatrisk\MTQ</string>
+          <string>C:\Users\&lt;name&gt;\Documents\forestatrisk</string>
          </property>
         </widget>
        </item>
@@ -207,7 +207,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>11</x>
