@@ -189,7 +189,7 @@ class ForestatriskPlugin:
     def set_path(self):
         """Add folder with windows executables to PATH."""
         is_win = platform.system() == "Windows"
-        is_64bit = "PROGRAMFILES(X86)" in list(os.environ.keys)
+        is_64bit = "PROGRAMFILES(X86)" in list(os.environ.keys())
         if is_win and is_64bit:
             os.environ["PATH"] += os.pathsep + os.path.join(self.plugin_dir,
                                                             "winexe")
