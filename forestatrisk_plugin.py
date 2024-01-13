@@ -23,6 +23,7 @@
 """
 
 import os
+import platform
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
@@ -185,10 +186,18 @@ class ForestatriskPlugin:
                 action)
             self.iface.removeToolBarIcon(action)
 
+    def set_path(self):
+        """Add folder with windows executables to PATH."""
+        is_win = platform.system() == "Windows"
+        is_64bit = "PROGRAMFILES(X86)" in list(os.environ.keys)
+        if is_win and is_64bit:
+            os.environ["PATH"] += os.pathsep + os.path.join(self.plugin_dir,
+                                                            "winexe")
+
     def catch_arguments(self):
         """Catch arguments from ui"""
         # Get variables
-        wd = self.dlg.workdir.text()
+        workdir = self.dlg.workdir.text()
         iso = self.dlg.isocode.text()
         proj = self.dlg.proj.text()
         fcc_source = self.dlg.fcc_source.text()
@@ -202,7 +211,7 @@ class ForestatriskPlugin:
         seed = self.dlg.seed.text()
         csize = self.dlg.csize.text()
         # Default values (to be modified for final version of the plugin)
-        wd = "/home/ghislain/Bureau/tests" if wd == "" else wd
+        workdir = "/home/ghislain/Bureau/tests" if workdir == "" else workdir
         iso = "MTQ" if iso == "" else iso
         proj = "EPSG:5490" if proj == "" else proj
         fcc_source = "jrc" if fcc_source == "" else fcc_source
@@ -216,7 +225,7 @@ class ForestatriskPlugin:
         csize = 10 if csize == "" else csize
         # Dictionary of arguments for far functions
         self.args = {
-            "workdir": wd, "isocode": iso, "proj": proj,
+            "workdir": workdir, "isocode": iso, "proj": proj,
             "fcc_source": fcc_source, "perc": perc,
             "remote_rclone": remote_rclone, "gdrive_folder": gdrive_folder,
             "wdpa_key": wdpa_key,
@@ -257,6 +266,9 @@ class ForestatriskPlugin:
         if self.first_start is True:
             self.first_start = False
             self.dlg = ForestatriskPluginDialog()
+
+        # Set path
+        self.set_path()
 
         # Call to functions if buttons ares clicked
         self.dlg.run_var.clicked.connect(self.get_variables)
