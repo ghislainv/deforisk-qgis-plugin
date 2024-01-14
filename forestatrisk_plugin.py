@@ -211,8 +211,16 @@ class ForestatriskPlugin:
         seed = self.dlg.seed.text()
         csize = self.dlg.csize.text()
         # Default values (to be modified for final version of the plugin)
-        workdir = "/home/ghislain/Bureau/tests" if workdir == "" else workdir
         iso = "MTQ" if iso == "" else iso
+        if workdir == "":
+            if platform.system() == "Windows":
+                workdir = os.path.join(os.environ["HOMEDRIVE"],
+                                       os.environ["HOMEPATH"],
+                                       "far-qgis", iso)
+            else:
+                workdir = os.path.join(os.environ["HOME"],
+                                       "far-qgis", iso)
+        os.makedirs(workdir, exist_ok=True)
         proj = "EPSG:5490" if proj == "" else proj
         fcc_source = "jrc" if fcc_source == "" else fcc_source
         perc = "50" if perc == "" else perc
