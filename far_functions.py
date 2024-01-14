@@ -50,7 +50,8 @@ def far_get_variables(iface,
                       wdpa_key):
     """Get forestatrisk variables."""
 
-    # Set working directory
+    # Create and set working directory
+    far.make_dir(workdir)
     os.chdir(workdir)
 
     # Output directories

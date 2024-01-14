@@ -220,7 +220,6 @@ class ForestatriskPlugin:
             else:
                 workdir = os.path.join(os.environ["HOME"],
                                        "far-qgis", iso)
-        os.makedirs(workdir, exist_ok=True)
         proj = "EPSG:5490" if proj == "" else proj
         fcc_source = "jrc" if fcc_source == "" else fcc_source
         perc = "50" if perc == "" else perc
