@@ -67,7 +67,11 @@ def far_get_variables(iface,
     print(f"version: {far.__version__}")
 
     # Initialize Earth Engine
-    ee.Initialize()
+    service_account = "far-qgis@forestatrisk.iam.gserviceaccount.com"
+    file_dir = os.path.dirname(os.path.realpath(__file__))
+    json_key = os.path.join(file_dir, ".forestatrisk-92966706269f.json")
+    credentials = ee.ServiceAccountCredentials(service_account, json_key)
+    ee.Initialize(credentials)
 
     # Get WDPA API key
     env_file = os.path.join(workdir, ".env")
