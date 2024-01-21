@@ -23,6 +23,7 @@
 """
 
 import os
+import subprocess
 import platform
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
@@ -186,13 +187,30 @@ class ForestatriskPlugin:
                 action)
             self.iface.removeToolBarIcon(action)
 
-    def set_path(self):
+    def set_exe_path(self):
         """Add folder with windows executables to PATH."""
         is_win = platform.system() == "Windows"
         is_64bit = "PROGRAMFILES(X86)" in list(os.environ.keys())
         if is_win and is_64bit:
             os.environ["PATH"] += os.pathsep + os.path.join(self.plugin_dir,
                                                             "winexe")
+            # Rclone info
+            cmd = ["rclone", "--version"]
+            result = subprocess.run(cmd, capture_output=True, check=True)
+            result = result.stdout.splitlines()
+            print(result[0].decode())
+
+            # osmconvert info
+            cmd = ["osmconvert", "--help"]
+            result = subprocess.run(cmd, capture_output=True, check=True)
+            result = result.stdout.splitlines()
+            print(result[1].decode())
+
+            # osmfilter info
+            cmd = ["osmfilter", "--help"]
+            result = subprocess.run(cmd, capture_output=True, check=True)
+            result = result.stdout.splitlines()
+            print(result[1].decode())
 
     def catch_arguments(self):
         """Catch arguments from ui"""
@@ -210,7 +228,7 @@ class ForestatriskPlugin:
         adapt = self.dlg.adapt.isChecked()
         seed = self.dlg.seed.text()
         csize = self.dlg.csize.text()
-        # Default values (to be modified for final version of the plugin)
+        # Default values
         iso = "MTQ" if iso == "" else iso
         if workdir == "":
             if platform.system() == "Windows":
@@ -273,8 +291,8 @@ class ForestatriskPlugin:
         if self.first_start is True:
             self.first_start = False
             self.dlg = ForestatriskPluginDialog()
-            # Set path
-            self.set_path()
+            # Set executable path
+            self.set_exe_path()
 
         # Call to functions if buttons ares clicked
         self.dlg.run_var.clicked.connect(self.get_variables)
