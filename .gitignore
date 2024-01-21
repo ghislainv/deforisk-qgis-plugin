@@ -1,9 +1,6 @@
 # Installation folder for forestatrisk
 forestatrisk
 
-# json key
-.forestatrisk-92966706269f.json
-
 # .db
 *.db
 

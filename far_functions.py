@@ -68,8 +68,7 @@ def far_get_variables(iface,
 
     # Initialize Earth Engine
     service_account = "far-qgis@forestatrisk.iam.gserviceaccount.com"
-    file_dir = os.path.dirname(os.path.realpath(__file__))
-    json_key = os.path.join(file_dir, ".forestatrisk-92966706269f.json")
+    json_key = os.path.join(workdir, ".forestatrisk-gee.json")
     credentials = ee.ServiceAccountCredentials(service_account, json_key)
     ee.Initialize(credentials)
 
