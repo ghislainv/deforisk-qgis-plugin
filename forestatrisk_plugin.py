@@ -26,6 +26,7 @@ import os
 import subprocess
 import platform
 
+from qgis.core import Qgis
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
@@ -244,10 +245,28 @@ class ForestatriskPlugin:
         remote_rclone = "gdrive_gv" if remote_rclone == "" else remote_rclone
         if gdrive_folder == "":
             gdrive_folder = "GEE/GEE-far-qgis-plugin"
-        # No default value for wdpa_key, this is handled in far_get_variables
         nsamp = 10000 if nsamp == "" else nsamp
         seed = 1234 if seed == "" else seed
         csize = 10 if csize == "" else csize
+        # WDPA key
+        if wdpa_key == "":
+            env_file = os.path.join(workdir, ".env")
+            if os.path.isfile(env_file):
+                with open(env_file, encoding="utf-8") as file:
+                    lines = file.readlines()
+                    for line in lines:
+                        [key, value_key] = line.split("=")
+                        if key == "WDPA_KEY":
+                            os.environ[key] = value_key.replace("\"", "")
+            else:
+                msg = ("No WDPA API key provided "
+                       "(either as plugin argument or "
+                       "WDPA_KEY in workdir/.env)")
+                self.iface.messageBar().pushMessage(
+                    "Error", msg,
+                    level=Qgis.Critical)
+        else:
+            os.environ["WDPA_KEY"] = wdpa_key
         # Dictionary of arguments for far functions
         self.args = {
             "workdir": workdir, "isocode": iso, "proj": proj,
@@ -267,8 +286,7 @@ class ForestatriskPlugin:
                           fcc_source=self.args["fcc_source"],
                           perc=self.args["perc"],
                           remote_rclone=self.args["remote_rclone"],
-                          gdrive_folder=self.args["gdrive_folder"],
-                          wdpa_key="wdpa_key")
+                          gdrive_folder=self.args["gdrive_folder"])
 
     def sample_obs(self):
         """Sample observations"""

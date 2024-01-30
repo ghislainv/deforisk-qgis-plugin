@@ -46,8 +46,7 @@ def far_get_variables(iface,
                       fcc_source,
                       perc,
                       remote_rclone,
-                      gdrive_folder,
-                      wdpa_key):
+                      gdrive_folder):
     """Get forestatrisk variables."""
 
     # Create and set working directory
@@ -71,21 +70,6 @@ def far_get_variables(iface,
     json_key = os.path.join(workdir, ".forestatrisk-gee.json")
     credentials = ee.ServiceAccountCredentials(service_account, json_key)
     ee.Initialize(credentials)
-
-    # Get WDPA API key
-    env_file = os.path.join(workdir, ".env")
-    if wdpa_key == "":
-        if os.path.isfile(env_file):
-            with open(env_file, encoding="utf-8") as f:
-                lines = f.readlines
-                for line in lines:
-                    [key, value_key] = line.split("=")
-                    if key == "WDPA_KEY":
-                        os.environ[key] = value_key.replace("\"", "")
-        else:
-            msg = ("No WDPA API key provided "
-                   "(plugin or WDPA_KEY in workdir/.env)")
-            raise ValueError(msg)
 
     # Copy qml files (layer style)
     src_dir = os.path.join(os.path.dirname(__file__), "qgis_layer_style")
