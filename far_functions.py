@@ -66,10 +66,10 @@ def far_get_variables(iface,
     print(f"version: {far.__version__}")
 
     # Initialize Earth Engine
-    service_account = "far-qgis@forestatrisk.iam.gserviceaccount.com"
-    json_key = os.path.join(workdir, ".forestatrisk-gee.json")
-    credentials = ee.ServiceAccountCredentials(service_account, json_key)
-    ee.Initialize(credentials)
+    #service_account = "far-qgis@forestatrisk.iam.gserviceaccount.com"
+    #json_key = os.path.join(workdir, ".forestatrisk-gee.json")
+    #credentials = ee.ServiceAccountCredentials(service_account, json_key)
+    ee.Initialize(project="forestatrisk")
 
     # Copy qml files (layer style)
     src_dir = os.path.join(os.path.dirname(__file__), "qgis_layer_style")
@@ -84,8 +84,8 @@ def far_get_variables(iface,
     # Check raster existence
     fcc123_file = os.path.join(data_dir, "forest", "fcc123.tif")
     if not os.path.isfile(fcc123_file):
-        # Compute gee forest data
-        far.data.country_forest_run(
+        # Run gee for forest data
+        far.data.run_gee_forest(
             iso3=isocode,
             proj="EPSG:4326",
             output_dir=data_raw_dir,
@@ -153,7 +153,7 @@ def far_sample_obs(iface,
                    adapt,
                    seed,
                    csize):
-    """Sample observations"""
+    """Sample observations."""
 
     # Set working directory
     os.chdir(workdir)
