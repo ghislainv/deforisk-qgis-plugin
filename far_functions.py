@@ -178,7 +178,8 @@ def far_sample_obs(iface,
                              var_dir="data",
                              input_forest_raster="fcc23.tif",
                              output_file="outputs/sample.txt",
-                             blk_rows=0)
+                             blk_rows=0,
+                             verbose=False)
 
         # Remove NA from data-set (otherwise scale() and
         # model_binomial_iCAR doesn't work)
@@ -231,7 +232,7 @@ def far_sample_obs(iface,
         decimal = "."
         x = "X"
         y = "Y"
-        uri = (f"file://{samp_file}?encoding={encoding}"
+        uri = (f"file:///{samp_file}?encoding={encoding}"
                f"&delimiter={delimiter}&decimalPoint={decimal}"
                f"&crs={proj}&xField={x}&yField={y}")
         samp_layer = QgsVectorLayer(uri, "sampled_obs", "delimitedtext")
