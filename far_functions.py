@@ -173,6 +173,7 @@ def far_sample_obs(iface,
         # Set number of trials to one for far.model_binomial_iCAR()
         dataset["trial"] = 1
         # Print the first five rows
+        print("\nDataset of observations:")
         print(dataset.head(5))
 
         # Sample size
