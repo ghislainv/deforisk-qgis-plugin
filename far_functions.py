@@ -173,7 +173,8 @@ def far_sample_obs(iface,
         # Set number of trials to one for far.model_binomial_iCAR()
         dataset["trial"] = 1
         # Print the first five rows
-        print("\nDataset of observations:")
+        print("\n"
+              "Dataset of observations:")
         print(dataset.head(5))
 
         # Sample size
@@ -185,7 +186,8 @@ def far_sample_obs(iface,
             file.write("Var, n\n")
             file.write(f"ndefor, {ndefor}\n")
             file.write(f"nfor, {nfor}\n")
-        print(f"Sample size: ndefor = {ndefor}, nfor = {nfor}")
+        print("\n"
+              f"Sample size: ndefor = {ndefor}, nfor = {nfor}")
 
         # Correlation formula
         formula_corr = "fcc23 ~ dist_road + dist_town + dist_river + \
