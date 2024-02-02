@@ -25,11 +25,21 @@
 import os
 import subprocess
 import platform
+import sys
 
 from qgis.core import Qgis
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
+
+# Import the forestatrisk package
+try:
+    import forestatrisk as far
+except ImportError:
+    plugin_dir = os.path.dirname(os.path.realpath(__file__))
+    far_dir = os.path.join(plugin_dir, "forestatrisk")
+    sys.path.append(far_dir)
+    import forestatrisk as far
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -188,30 +198,36 @@ class ForestatriskPlugin:
                 action)
             self.iface.removeToolBarIcon(action)
 
+    def print_dependency_version(self):
+        """Print package versions."""
+        # Rclone info
+        cmd = ["rclone", "--version"]
+        result = subprocess.run(cmd, capture_output=True, check=True)
+        result = result.stdout.splitlines()
+        print(result[0].decode())
+        # osmconvert info
+        cmd = ["osmconvert", "--help"]
+        result = subprocess.run(cmd, capture_output=True, check=True)
+        result = result.stdout.splitlines()
+        print(result[1].decode())
+        # osmfilter info
+        cmd = ["osmfilter", "--help"]
+        result = subprocess.run(cmd, capture_output=True, check=True)
+        result = result.stdout.splitlines()
+        print(result[1].decode())
+        # forestatrisk
+        print(f"forestatrisk v{far.__version__}")
+
     def set_exe_path(self):
         """Add folder with windows executables to PATH."""
         is_win = platform.system() == "Windows"
         is_64bit = "PROGRAMFILES(X86)" in list(os.environ.keys())
         if is_win and is_64bit:
-            os.environ["PATH"] += os.pathsep + os.path.join(self.plugin_dir,
-                                                            "winexe")
-            # Rclone info
-            cmd = ["rclone", "--version"]
-            result = subprocess.run(cmd, capture_output=True, check=True)
-            result = result.stdout.splitlines()
-            print(result[0].decode())
-
-            # osmconvert info
-            cmd = ["osmconvert", "--help"]
-            result = subprocess.run(cmd, capture_output=True, check=True)
-            result = result.stdout.splitlines()
-            print(result[1].decode())
-
-            # osmfilter info
-            cmd = ["osmfilter", "--help"]
-            result = subprocess.run(cmd, capture_output=True, check=True)
-            result = result.stdout.splitlines()
-            print(result[1].decode())
+            os.environ["PATH"] += os.pathsep + os.path.join(
+                self.plugin_dir,
+                "winexe"
+            )
+        self.print_dependency_version()
 
     def catch_arguments(self):
         """Catch arguments from ui"""

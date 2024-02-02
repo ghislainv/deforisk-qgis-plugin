@@ -13,24 +13,14 @@ Get variables
 """
 
 import os
-import sys
 import shutil
 
 from qgis.core import Qgis, QgsProject, QgsVectorLayer, QgsRasterLayer
 
-# Import the forestatrisk package
-try:
-    import forestatrisk as far
-except ImportError:
-    plugin_dir = os.path.dirname(os.path.realpath(__file__))
-    far_dir = os.path.join(plugin_dir, "forestatrisk")
-    sys.path.append(far_dir)
-    import forestatrisk as far
-
-# Then import far dependencies
 import matplotlib.pyplot as plt
 import ee
 from patsy import dmatrices
+import forestatrisk as far
 
 # Local import
 from .utilities import add_layer
@@ -60,10 +50,6 @@ def far_get_variables(iface,
     far.make_dir(data_raw_dir)
     far.make_dir(data_dir)
     far.make_dir(output_dir)
-
-    # Print far doc and version
-    print(far.__doc__)
-    print(f"version: {far.__version__}")
 
     # Initialize Earth Engine
     #service_account = "far-qgis@forestatrisk.iam.gserviceaccount.com"
