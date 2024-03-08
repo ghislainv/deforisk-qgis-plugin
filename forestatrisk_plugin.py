@@ -27,7 +27,13 @@ import subprocess
 import platform
 import sys
 
-from qgis.core import Qgis
+from qgis.core import (
+    Qgis,
+    QgsTaskManager,
+    QgsTask,
+    QgsApplication,
+    QgsMessageLog,
+)
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
@@ -47,7 +53,7 @@ from .resources import *
 from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
 
 # Local forestatrisk functions
-from .far_functions import far_get_variables, far_sample_obs
+from .far_functions import far_get_variables, far_sample_obs, far_model_icar
 
 
 class ForestatriskPlugin:
@@ -230,7 +236,7 @@ class ForestatriskPlugin:
         self.print_dependency_version()
 
     def catch_arguments(self):
-        """Catch arguments from ui"""
+        """Catch arguments from UI."""
         # Get variables
         workdir = self.dlg.workdir.text()
         iso = self.dlg.isocode.text()
@@ -245,6 +251,12 @@ class ForestatriskPlugin:
         adapt = self.dlg.adapt.isChecked()
         seed = self.dlg.seed.text()
         csize = self.dlg.csize.text()
+        # Model iCAR
+        variables = self.dlg.variables.text()
+        beta_start = self.dlg.beta_start.text()
+        prior_vrho = self.dlg.prior_vrho.text()
+        mcmc = self.dlg.mcmc.text()
+        varselection = self.dlg.varselection.isChecked()
         # Default values
         iso = "MTQ" if iso == "" else iso
         if workdir == "":
@@ -283,6 +295,14 @@ class ForestatriskPlugin:
                     level=Qgis.Critical)
         else:
             os.environ["WDPA_KEY"] = wdpa_key
+        # Model iCAR
+        var = ("dist_edge, dist_defor, "
+               "dist_road, dist_town, dist_river, "
+               "pa, altitude, slope")
+        variables = var if variables == "" else variables
+        beta_start = -99 if beta_start == "" else float(beta_start)
+        prior_vrho = -1 if prior_vrho == "" else int(prior_vrho)
+        mcmc = 5000 if mcmc == "" else int((mcmc // 1000) * 1000)
         # Dictionary of arguments for far functions
         self.args = {
             "workdir": workdir, "isocode": iso, "proj": proj,
@@ -290,10 +310,12 @@ class ForestatriskPlugin:
             "remote_rclone": remote_rclone, "gdrive_folder": gdrive_folder,
             "wdpa_key": wdpa_key,
             "nsamp": nsamp, "adapt": adapt, "seed": seed,
-            "csize": csize}
+            "csize": csize, "variables": variables,
+            "beta_start": beta_start, "prior_vrho": prior_vrho,
+            "mcmc": mcmc, "varselection": varselection}
 
     def get_variables(self):
-        """Get variables"""
+        """Get variables."""
         self.catch_arguments()
         far_get_variables(iface=self.iface,
                           workdir=self.args["workdir"],
@@ -305,7 +327,7 @@ class ForestatriskPlugin:
                           gdrive_folder=self.args["gdrive_folder"])
 
     def sample_obs(self):
-        """Sample observations"""
+        """Sample observations."""
         self.catch_arguments()
         far_sample_obs(iface=self.iface,
                        workdir=self.args["workdir"],
@@ -315,8 +337,20 @@ class ForestatriskPlugin:
                        seed=self.args["seed"],
                        csize=self.args["csize"])
 
+    def model_icar(self):
+        """Estimate iCAR model parameters."""
+        self.catch_arguments()
+        far_model_icar(iface=self.iface,
+                       workdir=self.args["workdir"],
+                       csize=self.args["csize"],
+                       variables=self.args["variables"],
+                       beta_start=self.args["beta_start"],
+                       prior_vrho=self.args["prior_vrho"],
+                       mcmc=self.args["mcmc"],
+                       varselection=self.args["varselection"])
+
     def run(self):
-        """Run method that performs all the real work"""
+        """Run method that performs all the real work."""
 
         # Create the dialog with elements (after translation)
         # and keep reference.
@@ -331,6 +365,7 @@ class ForestatriskPlugin:
         # Call to functions if buttons ares clicked
         self.dlg.run_var.clicked.connect(self.get_variables)
         self.dlg.run_samp.clicked.connect(self.sample_obs)
+        self.dlg.run_icar.clicked.connect(self.model_icar)
 
         # show the dialog
         self.dlg.show()

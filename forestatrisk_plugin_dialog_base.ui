@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -239,6 +239,9 @@
          <property name="text">
           <string>Adapt sampling</string>
          </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
          <property name="tristate">
           <bool>false</bool>
          </property>
@@ -286,6 +289,125 @@
     <attribute name="title">
      <string>Models FAR</string>
     </attribute>
+    <widget class="QGroupBox" name="groupBox_mod_icar">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>491</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>iCAR model</string>
+     </property>
+     <widget class="QPushButton" name="run_icar">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>190</y>
+        <width>71</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>32</y>
+        <width>471</width>
+        <height>149</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_variables">
+         <property name="text">
+          <string>List of variables</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="variables">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>dist_edge, altitude, slope, pa</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_betastart">
+         <property name="text">
+          <string>Starting values for beta</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="beta_start">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>-99</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_vrho">
+         <property name="text">
+          <string>Prior Vrho</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="prior_vrho">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>-1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_mcmc">
+         <property name="text">
+          <string>MCMC</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="mcmc">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>5000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QCheckBox" name="varselection">
+         <property name="text">
+          <string>Variable selection</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_model_mw">
     <attribute name="title">

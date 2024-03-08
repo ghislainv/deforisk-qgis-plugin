@@ -17,9 +17,12 @@ import shutil
 
 from qgis.core import Qgis, QgsProject, QgsVectorLayer, QgsRasterLayer
 
-import matplotlib.pyplot as plt
 import ee
+import numpy as np
+import matplotlib.pyplot as plt
 from patsy import dmatrices
+import pandas as pd
+import pickle
 import forestatrisk as far
 
 # Local import
@@ -228,5 +231,155 @@ def far_sample_obs(iface,
         samp_layer.loadNamedStyle(os.path.join("qgis_layer_style",
                                                "sample.qml"))
         add_layer(far_project, samp_layer)
+
+
+# ========================================
+# far_model_icar
+# ========================================
+def far_model_icar(iface,
+                   workdir,
+                   csize,
+                   variables,
+                   beta_start,
+                   prior_vrho,
+                   mcmc,
+                   varselection):
+    """Estimate iCAR model parameters."""
+
+    # -------------------
+    # Get the dataset
+    # -------------------
+
+    # Set working directory
+    os.chdir(workdir)
+
+    # Dataset
+    dataset_file = os.path.join(workdir, "outputs", "sample.txt")
+    if not os.path.isfile(dataset_file):
+        msg = ("No data file in the outputs folder "
+               "of the working directory. "
+               "Sample observations first.")
+        iface.messageBar().pushMessage(
+            "Error", msg,
+            level=Qgis.Critical)
+    else:
+        dataset = pd.read_csv(dataset_file)
+        dataset = dataset.dropna(axis=0)
+        dataset["trial"] = 1
+
+    # -------------------
+    # Model preparation
+    # -------------------
+
+    # Neighborhood for spatial-autocorrelation
+    ifile = os.path.join("data", "fcc23.tif")
+    nneigh, adj = far.cellneigh(raster=ifile, csize=csize, rank=1)
+
+    # List of variables
+    var = variables.replace(" ", "")
+    var = var.split(",")
+    # Order variable and place pa first
+    if "pa" in var:
+        var.remove("pa")
+        var = ["pa"] + var
+    # Categorical variables and scaled continuous variables
+    var = ["C(pa)" if v == "pa" else f"scale({v})" for v in var]
+    # Transform into numpy array
+    # (to select with var_keep afterwards)
+    variables = np.array(var)
+
+    # -------------------
+    # Variable selection
+    # -------------------
+
+    if varselection:
+        # Run model while there is non-significant variables
+        var_remove = True
+        while np.any(var_remove):
+            # Formula
+            right_part = " + ".join(variables) + " + cell"
+            left_part = "I(1-fcc23) + trial ~ "
+            formula = left_part + right_part
+            # Model
+            mod_icar = far.model_binomial_iCAR(
+                # Observations
+                suitability_formula=formula,
+                data=dataset,
+                # Spatial structure
+                n_neighbors=nneigh, neighbors=adj,
+                # Priors
+                priorVrho=prior_vrho,
+                # Chains
+                burnin=1000, mcmc=1000, thin=1,
+                # Starting values
+                beta_start=beta_start)
+            # Ecological and statistical significance
+            effects = mod_icar.betas[1:]
+            positive_effects = effects >= 0
+            var_remove = positive_effects
+            var_keep = np.logical_not(var_remove)
+            variables = variables[var_keep]
+
+    # -------------------
+    # Final model
+    # -------------------
+
+    # Formula
+    right_part = " + ".join(variables) + " + cell"
+    left_part = "I(1-fcc23) + trial ~ "
+    formula = left_part + right_part
+
+    # Initial values for beta_start
+    beta_start = mod_icar.betas if varselection else beta_start
+
+    # Re-run the model with longer MCMC and estimated initial values
+    mod_icar = far.model_binomial_iCAR(
+        # Observations
+        suitability_formula=formula, data=dataset,
+        # Spatial structure
+        n_neighbors=nneigh, neighbors=adj,
+        # Priors
+        priorVrho=prior_vrho,
+        # Chains
+        burnin=mcmc, mcmc=mcmc, thin=int(mcmc / 1000),
+        # Starting values
+        beta_start=beta_start)
+
+    # -------------------
+    # Model summary
+    # -------------------
+
+    # Summary
+    print(mod_icar)
+
+    # Write summary in file
+    ofile = os.path.join("outputs", "summary_icar.txt")
+    with open(ofile, "w", encoding="utf-8") as file:
+        file.write(str(mod_icar))
+
+    # Traces
+    figs = mod_icar.plot(
+        output_file=os.path.join("outputs", "mcmc.pdf"),
+        plots_per_page=3,
+        figsize=(10, 6),
+        dpi=80
+    )
+    for i in figs:
+        plt.close(i)
+
+    # -------------------
+    # Model backup
+    # -------------------
+
+    # Save model's main specifications with pickle
+    mod_icar_pickle = {
+        "formula": mod_icar.suitability_formula,
+        "rho": mod_icar.rho,
+        "betas": mod_icar.betas,
+        "Vrho": mod_icar.Vrho,
+        "deviance": mod_icar.deviance}
+    ofile = os.path.join("outputs", "mod_icar.pickle")
+    with open(ofile, "wb") as file:
+        pickle.dump(mod_icar_pickle, file)
 
 # End of file

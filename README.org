@@ -1,0 +1,35 @@
+#+title: forestatrisk QGis plugin
+#+author: Ghislain Vieilledent
+
+#+options: title:t author:nil date:nil ^:{}
+
+* Functionalities
+
+The plugin can be used to map the deforestation risk for a country or
+area of interest. Four models can be used to derive the map: iCAR,
+GLM, RandomForest, and Moving Window models. All models are calibrated
+using past deforestation observations for a given period of time
+between 2000 and 2022. Forest cover change maps can be provided by the
+user or derived from two global tree cover or forest change products:
+[[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
+
+* Installation
+
+- Download the [[https://github.com/ghislainv/forestatrisk-qgis-plugin/archive/refs/heads/main.zip][zip file]] from GitHub.
+- In QGis, go to ~Extensions/Install extensions/Install from ZIP~.
+- Select the zip file that was downloaded.
+
+* Basic usage
+
+** Plugin interface
+
+[[file:images/interface_plugin.png]]
+
+** 
+
+* Contributing
+
+The ~forestatrisk~ QGis plugin is Open Source and released under the
+GNU GPL version 3 license. Anybody who is interested can contribute to
+the package development following our Community guidelines. Every
+contributor must agree to follow the project's Code of conduct.
