@@ -17,7 +17,7 @@ user or derived from two global tree cover or forest change products:
 
 - Download the [[https://github.com/ghislainv/forestatrisk-qgis-plugin/archive/refs/heads/main.zip][zip file]] from GitHub.
 - In QGis, go to ~Extensions/Install extensions/Install from ZIP~.
-- Select the zip file that was downloaded.
+- Select the zip file that has been downloaded.
 
 * Basic usage
 
@@ -25,7 +25,15 @@ user or derived from two global tree cover or forest change products:
 
 [[file:images/interface_plugin.png]]
 
-** 
+The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model MV~.
+
+** Download and compute variables
+
+** Sample observations
+
+** Models FAR
+
+** Model MV
 
 * Contributing
 
