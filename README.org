@@ -1,7 +1,18 @@
 #+title: forestatrisk QGIS plugin 📦🐍🌎
 #+author: Ghislain Vieilledent
 
-#+options: title:t author:nil date:nil ^:{}
+#+options: title:t author:nil date:nil ^:{} toc:nil num:nil
+
+#+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
+#+link: GPLv3_link https://www.gnu.org/licenses/gpl-3.0.html
+
+#+macro: website https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg
+#+link: website_link https://ecology.ghislainv.fr/forestatrisk-qgis-plugin
+
+#+macro: pypkg https://img.shields.io/badge/python-forestatrisk-306998?logo=python&logoColor=ffd43b&color=306998.svg
+#+link: pypkg_link https://ecology.ghislainv.fr/forestatrisk
+
+[[GPLv3_link][{{{GPLv3}}}]] [[website_link][{{{website}}}]] [[pypkg_link][{{{pypkg}}}]]
 
 * Functionalities
 
