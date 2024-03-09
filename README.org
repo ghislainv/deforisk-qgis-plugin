@@ -3,16 +3,19 @@
 
 #+options: title:t author:nil date:nil ^:{} toc:nil num:nil
 
-#+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
 #+link: GPLv3_link https://www.gnu.org/licenses/gpl-3.0.html
-
-#+macro: website https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg
 #+link: website_link https://ecology.ghislainv.fr/forestatrisk-qgis-plugin
-
-#+macro: pypkg https://img.shields.io/badge/python-forestatrisk-306998?logo=python&logoColor=ffd43b&color=306998.svg
 #+link: pypkg_link https://ecology.ghislainv.fr/forestatrisk
 
-[[GPLv3_link][{{{GPLv3}}}]] [[website_link][{{{website}}}]] [[pypkg_link][{{{pypkg}}}]]
+# #+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
+# #+macro: website https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg
+# #+macro: pypkg https://img.shields.io/badge/python-forestatrisk-306998?logo=python&logoColor=ffd43b&color=306998.svg
+# This works for org but not for GitHub
+# [[GPLv3_link][{{{GPLv3}}}]] [[website_link][{{{website}}}]] [[pypkg_link][{{{pypkg}}}]]
+
+[[GPLv3_link][https://img.shields.io/badge/licence-GPLv3-8f10cb.svg]]
+[[website_link][https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg]]
+[[pypkg_link][https://img.shields.io/badge/python-forestatrisk-306998?logo=python&logoColor=ffd43b&color=306998.svg]]
 
 * Functionalities
 
@@ -101,4 +104,4 @@ The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model
 
 * Contributing
 
-The ~forestatrisk~ QGIS plugin is Open Source and released under the GNU GPL version 3 license. Anybody who is interested can contribute to the package development following our Community guidelines. Every contributor must agree to follow the project's Code of conduct.
+The ~forestatrisk~ QGIS plugin is Open Source and released under the [[https://www.gnu.org/licenses/gpl-3.0.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our Community guidelines. Every contributor must agree to follow the project's Code of conduct.

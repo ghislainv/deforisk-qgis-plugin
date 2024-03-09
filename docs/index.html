@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2024-03-09 Sat 18:45 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>forestatrisk QGIS plugin 📦🐍🌎</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<header>
+<h1 class="title">forestatrisk QGIS plugin 📦🐍🌎</h1>
+</header><p>
+<a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://img.shields.io/badge/licence-GPLv3-8f10cb.svg" alt="licence-GPLv3-8f10cb.svg" class="org-svg"></a>
+<a href="https://ecology.ghislainv.fr/forestatrisk-qgis-plugin"><img src="https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg" alt="web-FAR_QGIS_plugin-blue.svg" class="org-svg"></a>
+<a href="https://ecology.ghislainv.fr/forestatrisk"><img src="https://img.shields.io/badge/python-forestatrisk-306998?logo=python&amp;logoColor=ffd43b&amp;color=306998.svg" alt="python-forestatrisk-306998?logo=python&amp;logoColor=ffd43b&amp;color=306998.svg" class="org-svg"></a>
+</p>
+
+<div id="outline-container-org630819c" class="outline-2">
+<h2 id="org630819c">Functionalities</h2>
+<div class="outline-text-2" id="text-org630819c">
+<p>
+The plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: <a href="https://earthenginepartners.appspot.com/science-2013-global-forest">Global Forest Change</a> and <a href="https://forobs.jrc.ec.europa.eu/TMF">Tropical Moist Forests</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org27fd865" class="outline-2">
+<h2 id="org27fd865">Installation</h2>
+<div class="outline-text-2" id="text-org27fd865">
+</div>
+<div id="outline-container-org4c4c4fd" class="outline-3">
+<h3 id="org4c4c4fd">System dependencies</h3>
+<div class="outline-text-3" id="text-org4c4c4fd">
+<p>
+<a href="https://www.qgis.org/en/site/">QGIS</a> and <a href="https://gdal.org/index.html">GDAL</a> must be installed on your system. The <code>forestatrisk</code> Python package must also be installed on your system before using the QGIS plugin.
+</p>
+</div>
+
+<div id="outline-container-orgd27587a" class="outline-4">
+<h4 id="orgd27587a">Windows</h4>
+<div class="outline-text-4" id="text-orgd27587a">
+</div>
+<ul class="org-ul">
+<li><a id="org8dcd8fa"></a>Install QGIS and GDAL on Windows<br>
+<div class="outline-text-5" id="text-org8dcd8fa">
+<p>
+To install QGIS and GDAL on Windows, use the <a href="https://trac.osgeo.org/osgeo4w/">OSGeo4W</a> network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select <i>Express Install</i> and install both QGIS and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install <i>OSGeo4W Shell</i> to execute command lines.
+</p>
+</div>
+</li>
+
+<li><a id="org976aec3"></a>Install the <code>forestatrisk</code> Python package on Windows<br>
+<div class="outline-text-5" id="text-org976aec3">
+<p>
+To install the <code>forestatrisk</code> Python package, open OSGeo4W Shell, upgrade <code>pip</code> and <code>setuptools</code>, and install <code>forestatrisk</code> with <code>pip</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">python3.exe -m pip install --upgrade pip setuptools
+python3.exe -m pip install forestatrisk
+</pre>
+</div>
+
+<p>
+Note: In case of problems, you can check the version of Python used by OSGeo4W using <i>OSGeo Shell</i> and that the package wheels for <code>forestatrisk</code> are available on <a href="https://pypi.org/project/forestatrisk/#files">PyPI</a> for your Windows and Python versions. Currently, PyPI provides wheels for Python 3.9 to 3.11 for Windows, Linux, and macOS 64-bit systems.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">python3.exe --version
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-orga7aedfb" class="outline-4">
+<h4 id="orga7aedfb">Unix-like systems (Linux and macOS)</h4>
+<div class="outline-text-4" id="text-orga7aedfb">
+</div>
+<ul class="org-ul">
+<li><a id="org2442768"></a>Install QGIS and GDAL on Unix-like systems<br>
+<div class="outline-text-5" id="text-org2442768">
+<p>
+Install QGIS and GDAL on your system, for example using <code>apt-get</code> for Debian/Ubuntu Linux distributions.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">sudo apt-get update
+sudo apt-get install qgis gdal-bin libgdal-dev
+</pre>
+</div>
+
+<p>
+After installing GDAL, you can test the installation by running <code>gdalinfo --version</code> in the command prompt or terminal, which should display the installed GDAL version.
+</p>
+</div>
+</li>
+
+<li><a id="org2fa05d0"></a>Install the <code>forestatrisk</code> Python package on Unix-like systems<br>
+<div class="outline-text-5" id="text-org2fa05d0">
+<p>
+On recent systems, you cannot use pip to install Python packages system-wide. As a consequence, we need to create a virtual environment and install the <code>forestatrisk</code> package in it. Make sure to also install the appropriate GDAL bindings using <code>gdal==$(gdal-config --version)</code>. Once the package and its dependencies have been installed, you can deactivate the virtual environment.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">python3 -m venv /path/to/venv
+<span class="org-builtin">source</span>  /path/to/venv/bin/activate
+python3 -m pip install forestatrisk <span class="org-variable-name">gdal</span>==$(gdal-config --version)
+deactivate
+</pre>
+</div>
+
+<p>
+Then, in the <code>setup.py</code> <a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts">Python file</a>, add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to <code>sys.path</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> sys
+sys.path.append(<span class="org-string">"/path/to/venv/lib/python3.11/site-packages/"</span>)
+</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf046221" class="outline-3">
+<h3 id="orgf046221">Installing the <code>forestatrisk</code> plugin in QGIS</h3>
+<div class="outline-text-3" id="text-orgf046221">
+<ul class="org-ul">
+<li>Download the <code>forestatrisk</code> <a href="https://github.com/ghislainv/forestatrisk-qgis-plugin/archive/refs/heads/main.zip">zip file</a> from GitHub.</li>
+<li>Open QGIS.</li>
+<li>In QGIS menu bar, go to <code>Extensions/Install extensions/Install from ZIP</code>.</li>
+<li>Select the zip file that has been downloaded.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e436ae" class="outline-2">
+<h2 id="org0e436ae">Basic usage</h2>
+<div class="outline-text-2" id="text-org0e436ae">
+</div>
+<div id="outline-container-org6b81c10" class="outline-3">
+<h3 id="org6b81c10">Plugin interface</h3>
+<div class="outline-text-3" id="text-org6b81c10">
+
+<figure id="org4543821">
+<img src="images/interface_plugin.png" alt="interface_plugin.png">
+
+</figure>
+
+<p>
+The plugin interface shows three tabs: <code>Get variables</code>, <code>Models FAR</code>, and <code>Model MV</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga84155a" class="outline-3">
+<h3 id="orga84155a">Download and compute variables</h3>
+</div>
+
+<div id="outline-container-orgb5a21db" class="outline-3">
+<h3 id="orgb5a21db">Sample observations</h3>
+</div>
+
+<div id="outline-container-orgec8ad91" class="outline-3">
+<h3 id="orgec8ad91">Models FAR</h3>
+</div>
+
+<div id="outline-container-orgf0f6c63" class="outline-3">
+<h3 id="orgf0f6c63">Model MV</h3>
+</div>
+</div>
+
+<div id="outline-container-orgb179399" class="outline-2">
+<h2 id="orgb179399">Contributing</h2>
+<div class="outline-text-2" id="text-orgb179399">
+<p>
+The <code>forestatrisk</code> QGIS plugin is Open Source and released under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL version 3 license</a>. Anybody who is interested can contribute to the package development following our Community guidelines. Every contributor must agree to follow the project&rsquo;s Code of conduct.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
