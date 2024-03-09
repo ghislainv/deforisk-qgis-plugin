@@ -39,13 +39,7 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
 # Import the forestatrisk package
-try:
-    import forestatrisk as far
-except ImportError:
-    plugin_dir = os.path.dirname(os.path.realpath(__file__))
-    far_dir = os.path.join(plugin_dir, "forestatrisk")
-    sys.path.append(far_dir)
-    import forestatrisk as far
+import forestatrisk as far
 
 # Initialize Qt resources from file resources.py
 from .resources import *
