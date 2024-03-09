@@ -1,17 +1,11 @@
-#+title: forestatrisk QGIS plugin
+#+title: forestatrisk QGIS plugin 📦🐍🌎
 #+author: Ghislain Vieilledent
 
 #+options: title:t author:nil date:nil ^:{}
 
 * Functionalities
 
-The plugin can be used to map the deforestation risk for a country or
-area of interest. Four models can be used to derive the risk maps: iCAR,
-GLM, RandomForest, and Moving Window models. All models are calibrated
-using past deforestation observations for a given period of time
-between 2000 and 2022. Forest cover change maps are provided by the
-user or derived from two global tree/forest cover change products:
-[[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
+The plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: [[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
 
 * Installation
 
@@ -44,23 +38,18 @@ python3.exe --version
 
 **** Install QGIS and GDAL on Unix-like systems
 
-Install QGIS and GDAL on your system, for example using ~apt-get~ for
-Debian/Ubuntu Linux distributions.
+Install QGIS and GDAL on your system, for example using ~apt-get~ for Debian/Ubuntu Linux distributions.
 
 #+begin_src shell
 sudo apt-get update
 sudo apt-get install qgis gdal-bin libgdal-dev
 #+end_src
 
-After installing GDAL, you can test the installation by running
-~gdalinfo --version~ in the command prompt or terminal, which should
-display the installed GDAL version.
+After installing GDAL, you can test the installation by running ~gdalinfo --version~ in the command prompt or terminal, which should display the installed GDAL version.
 
 **** Install the ~forestatrisk~ Python package on Unix-like systems
 
-On recent systems, you cannot use pip to install Python packages
-system-wide. As a consequence, we need to create a virtual
-environment and install the ~forestatrisk~ package in it. Make sure to also install the appropriate GDAL bindings using ~gdal==$(gdal-config --version)~. Once the package and its dependencies have been installed, you can deactivate the virtual environment.
+On recent systems, you cannot use pip to install Python packages system-wide. As a consequence, we need to create a virtual environment and install the ~forestatrisk~ package in it. Make sure to also install the appropriate GDAL bindings using ~gdal==$(gdal-config --version)~. Once the package and its dependencies have been installed, you can deactivate the virtual environment.
 
 #+begin_src shell
 python3 -m venv /path/to/venv
@@ -69,9 +58,7 @@ python3 -m pip install forestatrisk gdal==$(gdal-config --version)
 deactivate
 #+end_src
 
-Then, in the [[https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts][~setup.py~ Python file]], add the following two lines,
-adapting the path to your specific case (check the Python
-version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to ~sys.path~.
+Then, in the ~setup.py~ [[https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts][Python file]], add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to ~sys.path~.
 
 #+begin_src python :results output :exports both
 import sys
@@ -103,7 +90,4 @@ The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model
 
 * Contributing
 
-The ~forestatrisk~ QGIS plugin is Open Source and released under the
-GNU GPL version 3 license. Anybody who is interested can contribute to
-the package development following our Community guidelines. Every
-contributor must agree to follow the project's Code of conduct.
+The ~forestatrisk~ QGIS plugin is Open Source and released under the GNU GPL version 3 license. Anybody who is interested can contribute to the package development following our Community guidelines. Every contributor must agree to follow the project's Code of conduct.
