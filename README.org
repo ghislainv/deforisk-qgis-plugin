@@ -4,7 +4,7 @@
 #+options: title:t author:nil date:nil ^:{} toc:nil num:nil
 
 #+link: GPLv3_link https://www.gnu.org/licenses/gpl-3.0.html
-#+link: website_link https://ecology.ghislainv.fr/forestatrisk-qgis-plugin/%s
+#+link: website_link https://ecology.ghislainv.fr/forestatrisk-qgis-plugin
 #+link: pypkg_link https://ecology.ghislainv.fr/forestatrisk
 
 # #+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
@@ -90,7 +90,7 @@ sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 
 ** Plugin interface
 
-[[website_link:images/interface_plugin.png]]
+[[file:https:/ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_plugin.png]]
 
 The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model MV~.
 
