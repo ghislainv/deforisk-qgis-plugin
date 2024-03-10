@@ -1,1 +1,1 @@
-/home/ghislain/Code/forestatrisk-qgis-plugin/README.org
+../README.org

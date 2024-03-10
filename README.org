@@ -105,3 +105,5 @@ The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model
 * Contributing
 
 The ~forestatrisk~ QGIS plugin is Open Source and released under the [[file:license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[file:contributing.html][Community guidelines]]. Every contributor must agree to follow the project's [[file:code_of_conduct.html][Code of conduct]].
+
+# End
