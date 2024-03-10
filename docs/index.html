@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2024-03-09 Sat 18:45 -->
+<!-- 2024-03-10 Sun 12:21 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>forestatrisk QGIS plugin 📦🐍🌎</title>
@@ -201,42 +201,42 @@
 <a href="https://ecology.ghislainv.fr/forestatrisk"><img src="https://img.shields.io/badge/python-forestatrisk-306998?logo=python&amp;logoColor=ffd43b&amp;color=306998.svg" alt="python-forestatrisk-306998?logo=python&amp;logoColor=ffd43b&amp;color=306998.svg" class="org-svg"></a>
 </p>
 
-<div id="outline-container-org630819c" class="outline-2">
-<h2 id="org630819c">Functionalities</h2>
-<div class="outline-text-2" id="text-org630819c">
+<div id="outline-container-orgd0fb376" class="outline-2">
+<h2 id="orgd0fb376">Functionalities</h2>
+<div class="outline-text-2" id="text-orgd0fb376">
 <p>
 The plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: <a href="https://earthenginepartners.appspot.com/science-2013-global-forest">Global Forest Change</a> and <a href="https://forobs.jrc.ec.europa.eu/TMF">Tropical Moist Forests</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org27fd865" class="outline-2">
-<h2 id="org27fd865">Installation</h2>
-<div class="outline-text-2" id="text-org27fd865">
+<div id="outline-container-orge019cf9" class="outline-2">
+<h2 id="orge019cf9">Installation</h2>
+<div class="outline-text-2" id="text-orge019cf9">
 </div>
-<div id="outline-container-org4c4c4fd" class="outline-3">
-<h3 id="org4c4c4fd">System dependencies</h3>
-<div class="outline-text-3" id="text-org4c4c4fd">
+<div id="outline-container-org66158b9" class="outline-3">
+<h3 id="org66158b9">System dependencies</h3>
+<div class="outline-text-3" id="text-org66158b9">
 <p>
 <a href="https://www.qgis.org/en/site/">QGIS</a> and <a href="https://gdal.org/index.html">GDAL</a> must be installed on your system. The <code>forestatrisk</code> Python package must also be installed on your system before using the QGIS plugin.
 </p>
 </div>
 
-<div id="outline-container-orgd27587a" class="outline-4">
-<h4 id="orgd27587a">Windows</h4>
-<div class="outline-text-4" id="text-orgd27587a">
+<div id="outline-container-org944937e" class="outline-4">
+<h4 id="org944937e">Windows</h4>
+<div class="outline-text-4" id="text-org944937e">
 </div>
 <ul class="org-ul">
-<li><a id="org8dcd8fa"></a>Install QGIS and GDAL on Windows<br>
-<div class="outline-text-5" id="text-org8dcd8fa">
+<li><a id="org375777f"></a>Install QGIS and GDAL on Windows<br>
+<div class="outline-text-5" id="text-org375777f">
 <p>
 To install QGIS and GDAL on Windows, use the <a href="https://trac.osgeo.org/osgeo4w/">OSGeo4W</a> network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select <i>Express Install</i> and install both QGIS and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install <i>OSGeo4W Shell</i> to execute command lines.
 </p>
 </div>
 </li>
 
-<li><a id="org976aec3"></a>Install the <code>forestatrisk</code> Python package on Windows<br>
-<div class="outline-text-5" id="text-org976aec3">
+<li><a id="org4f3bd92"></a>Install the <code>forestatrisk</code> Python package on Windows<br>
+<div class="outline-text-5" id="text-org4f3bd92">
 <p>
 To install the <code>forestatrisk</code> Python package, open OSGeo4W Shell, upgrade <code>pip</code> and <code>setuptools</code>, and install <code>forestatrisk</code> with <code>pip</code>.
 </p>
@@ -260,13 +260,13 @@ Note: In case of problems, you can check the version of Python used by OSGeo4W u
 </ul>
 </div>
 
-<div id="outline-container-orga7aedfb" class="outline-4">
-<h4 id="orga7aedfb">Unix-like systems (Linux and macOS)</h4>
-<div class="outline-text-4" id="text-orga7aedfb">
+<div id="outline-container-org74a85bc" class="outline-4">
+<h4 id="org74a85bc">Unix-like systems (Linux and macOS)</h4>
+<div class="outline-text-4" id="text-org74a85bc">
 </div>
 <ul class="org-ul">
-<li><a id="org2442768"></a>Install QGIS and GDAL on Unix-like systems<br>
-<div class="outline-text-5" id="text-org2442768">
+<li><a id="org8616cc5"></a>Install QGIS and GDAL on Unix-like systems<br>
+<div class="outline-text-5" id="text-org8616cc5">
 <p>
 Install QGIS and GDAL on your system, for example using <code>apt-get</code> for Debian/Ubuntu Linux distributions.
 </p>
@@ -283,8 +283,8 @@ After installing GDAL, you can test the installation by running <code>gdalinfo -
 </div>
 </li>
 
-<li><a id="org2fa05d0"></a>Install the <code>forestatrisk</code> Python package on Unix-like systems<br>
-<div class="outline-text-5" id="text-org2fa05d0">
+<li><a id="org5e1181c"></a>Install the <code>forestatrisk</code> Python package on Unix-like systems<br>
+<div class="outline-text-5" id="text-org5e1181c">
 <p>
 On recent systems, you cannot use pip to install Python packages system-wide. As a consequence, we need to create a virtual environment and install the <code>forestatrisk</code> package in it. Make sure to also install the appropriate GDAL bindings using <code>gdal==$(gdal-config --version)</code>. Once the package and its dependencies have been installed, you can deactivate the virtual environment.
 </p>
@@ -312,9 +312,9 @@ sys.path.append(<span class="org-string">"/path/to/venv/lib/python3.11/site-pack
 </div>
 </div>
 
-<div id="outline-container-orgf046221" class="outline-3">
-<h3 id="orgf046221">Installing the <code>forestatrisk</code> plugin in QGIS</h3>
-<div class="outline-text-3" id="text-orgf046221">
+<div id="outline-container-orgc1c832e" class="outline-3">
+<h3 id="orgc1c832e">Installing the <code>forestatrisk</code> plugin in QGIS</h3>
+<div class="outline-text-3" id="text-orgc1c832e">
 <ul class="org-ul">
 <li>Download the <code>forestatrisk</code> <a href="https://github.com/ghislainv/forestatrisk-qgis-plugin/archive/refs/heads/main.zip">zip file</a> from GitHub.</li>
 <li>Open QGIS.</li>
@@ -325,16 +325,16 @@ sys.path.append(<span class="org-string">"/path/to/venv/lib/python3.11/site-pack
 </div>
 </div>
 
-<div id="outline-container-org0e436ae" class="outline-2">
-<h2 id="org0e436ae">Basic usage</h2>
-<div class="outline-text-2" id="text-org0e436ae">
+<div id="outline-container-orge68f181" class="outline-2">
+<h2 id="orge68f181">Basic usage</h2>
+<div class="outline-text-2" id="text-orge68f181">
 </div>
-<div id="outline-container-org6b81c10" class="outline-3">
-<h3 id="org6b81c10">Plugin interface</h3>
-<div class="outline-text-3" id="text-org6b81c10">
+<div id="outline-container-org734976f" class="outline-3">
+<h3 id="org734976f">Plugin interface</h3>
+<div class="outline-text-3" id="text-org734976f">
 
-<figure id="org4543821">
-<img src="images/interface_plugin.png" alt="interface_plugin.png">
+<figure id="org208fd12">
+<img src="website_link:interface_plugin.png" alt="website_link:interface_plugin.png">
 
 </figure>
 
@@ -344,28 +344,28 @@ The plugin interface shows three tabs: <code>Get variables</code>, <code>Models 
 </div>
 </div>
 
-<div id="outline-container-orga84155a" class="outline-3">
-<h3 id="orga84155a">Download and compute variables</h3>
+<div id="outline-container-orgd5f9956" class="outline-3">
+<h3 id="orgd5f9956">Download and compute variables</h3>
 </div>
 
-<div id="outline-container-orgb5a21db" class="outline-3">
-<h3 id="orgb5a21db">Sample observations</h3>
+<div id="outline-container-org047e0b6" class="outline-3">
+<h3 id="org047e0b6">Sample observations</h3>
 </div>
 
-<div id="outline-container-orgec8ad91" class="outline-3">
-<h3 id="orgec8ad91">Models FAR</h3>
+<div id="outline-container-org5c10051" class="outline-3">
+<h3 id="org5c10051">Models FAR</h3>
 </div>
 
-<div id="outline-container-orgf0f6c63" class="outline-3">
-<h3 id="orgf0f6c63">Model MV</h3>
+<div id="outline-container-org9fbb510" class="outline-3">
+<h3 id="org9fbb510">Model MV</h3>
 </div>
 </div>
 
-<div id="outline-container-orgb179399" class="outline-2">
-<h2 id="orgb179399">Contributing</h2>
-<div class="outline-text-2" id="text-orgb179399">
+<div id="outline-container-orgca170c6" class="outline-2">
+<h2 id="orgca170c6">Contributing</h2>
+<div class="outline-text-2" id="text-orgca170c6">
 <p>
-The <code>forestatrisk</code> QGIS plugin is Open Source and released under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPL version 3 license</a>. Anybody who is interested can contribute to the package development following our Community guidelines. Every contributor must agree to follow the project&rsquo;s Code of conduct.
+The <code>forestatrisk</code> QGIS plugin is Open Source and released under the <a href="license.html">GNU GPL version 3 license</a>. Anybody who is interested can contribute to the package development following our <a href="contributing.html">Community guidelines</a>. Every contributor must agree to follow the project&rsquo;s <a href="code_of_conduct.html">Code of conduct</a>.
 </p>
 </div>
 </div>

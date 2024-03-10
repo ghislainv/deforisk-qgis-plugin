@@ -90,7 +90,7 @@ sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 
 ** Plugin interface
 
-[[file:images/interface_plugin.png]]
+[[file:website_link:interface_plugin.png]]
 
 The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model MV~.
 
@@ -104,4 +104,4 @@ The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model
 
 * Contributing
 
-The ~forestatrisk~ QGIS plugin is Open Source and released under the [[https://www.gnu.org/licenses/gpl-3.0.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our Community guidelines. Every contributor must agree to follow the project's Code of conduct.
+The ~forestatrisk~ QGIS plugin is Open Source and released under the [[file:license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[file:contributing.html][Community guidelines]]. Every contributor must agree to follow the project's [[file:code_of_conduct.html][Code of conduct]].
