@@ -94,7 +94,7 @@ sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 
 ** Plugin interface
 
-[[file:https://ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_plugin.png]]
+[[https://ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_plugin.png]]
 
 The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model MV~. The ~Get variables~ tab includes two boxes: ~Download and compute variables~ and ~Sample observations~. The items of each tab or box are detailed below. They usually correspond to function parameters from the ~forestatrisk~ Python package. 
 
@@ -131,7 +131,7 @@ Pushing the ~Run~ button in this box will sample the observations. Note that you
 
 ** Models FAR
 
-[[file:https:/ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_models_far.png]]
+[[https://ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_models_far.png]]
 
 This tab is for collecting the information needed to spatially model deforestation using three statistical models available in the ~forestatrisk~ (FAR) Python package: iCAR, GLM, and Random Forest models.
 
@@ -145,7 +145,7 @@ Pushing the ~Run~ button in this tab will fit the statistical model to the defor
 
 ** Model MV
 
-[[file:https:/ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_model_mv.png]]
+[[https://ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_model_mv.png]]
 
 * Contributing
 
