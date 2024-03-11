@@ -116,7 +116,8 @@ Pushing the ~Run~ button in this box will download the data and compute the vari
 - ~working_directory/iso_code~: Unique folder created for the study area.
 - ~working_directory/iso_code/data_raw~: Downloaded raw data for the study area.
 - ~working_directory/iso_code/data~: Processed data that will be used for modelling.
-- ~working_directory/iso_code/output~: Outputs (figures and tables). 
+- ~working_directory/iso_code/outputs~: Outputs (figures and tables).
+- ~working_directory/iso_code/qgis_layer_style~: Layer styles for QGIS. 
   
 ** Sample observations
 

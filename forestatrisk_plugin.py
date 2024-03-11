@@ -25,7 +25,6 @@
 import os
 import subprocess
 import platform
-import sys
 
 from qgis.core import (
     Qgis,
@@ -47,7 +46,11 @@ from .resources import *
 from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
 
 # Local forestatrisk functions
-from .far_functions import far_get_variables, far_sample_obs, far_model_icar
+from .far_functions import (
+    far_get_variables,
+    far_sample_obs,
+    far_models
+)
 
 
 class ForestatriskPlugin:
@@ -263,13 +266,13 @@ class ForestatriskPlugin:
                                        "far-qgis", iso)
         proj = "EPSG:5490" if proj == "" else proj
         fcc_source = "jrc" if fcc_source == "" else fcc_source
-        perc = "50" if perc == "" else perc
+        perc = "50" if perc == "" else int(perc)
         remote_rclone = "gdrive_gv" if remote_rclone == "" else remote_rclone
         if gdrive_folder == "":
             gdrive_folder = "GEE/GEE-far-qgis-plugin"
-        nsamp = 10000 if nsamp == "" else nsamp
-        seed = 1234 if seed == "" else seed
-        csize = 10 if csize == "" else csize
+        nsamp = 10000 if nsamp == "" else int(nsamp)
+        seed = 1234 if seed == "" else int(seed)
+        csize = 10 if csize == "" else int(csize)
         # WDPA key
         if wdpa_key == "":
             env_file = os.path.join(workdir, ".env")
@@ -296,7 +299,7 @@ class ForestatriskPlugin:
         variables = var if variables == "" else variables
         beta_start = -99 if beta_start == "" else float(beta_start)
         prior_vrho = -1 if prior_vrho == "" else int(prior_vrho)
-        mcmc = 5000 if mcmc == "" else int((mcmc // 1000) * 1000)
+        mcmc = 5000 if mcmc == "" else int((int(mcmc) // 1000) * 1000)
         # Dictionary of arguments for far functions
         self.args = {
             "workdir": workdir, "isocode": iso, "proj": proj,
@@ -331,17 +334,17 @@ class ForestatriskPlugin:
                        seed=self.args["seed"],
                        csize=self.args["csize"])
 
-    def model_icar(self):
-        """Estimate iCAR model parameters."""
+    def models(self):
+        """Estimate forestatrisk model parameters."""
         self.catch_arguments()
-        far_model_icar(iface=self.iface,
-                       workdir=self.args["workdir"],
-                       csize=self.args["csize"],
-                       variables=self.args["variables"],
-                       beta_start=self.args["beta_start"],
-                       prior_vrho=self.args["prior_vrho"],
-                       mcmc=self.args["mcmc"],
-                       varselection=self.args["varselection"])
+        far_models(iface=self.iface,
+                   workdir=self.args["workdir"],
+                   csize=self.args["csize"],
+                   variables=self.args["variables"],
+                   beta_start=self.args["beta_start"],
+                   prior_vrho=self.args["prior_vrho"],
+                   mcmc=self.args["mcmc"],
+                   varselection=self.args["varselection"])
 
     def run(self):
         """Run method that performs all the real work."""
@@ -359,7 +362,7 @@ class ForestatriskPlugin:
         # Call to functions if buttons ares clicked
         self.dlg.run_var.clicked.connect(self.get_variables)
         self.dlg.run_samp.clicked.connect(self.sample_obs)
-        self.dlg.run_icar.clicked.connect(self.model_icar)
+        self.dlg.run_icar.clicked.connect(self.models)
 
         # show the dialog
         self.dlg.show()
