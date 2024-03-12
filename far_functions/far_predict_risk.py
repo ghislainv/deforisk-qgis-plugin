@@ -16,20 +16,20 @@ import os
 import pickle
 from shutil import copy2
 
-from qgis.core import Qgis
+from qgis.core import Qgis, QgsProject, QgsVectorLayer, QgsRasterLayer
 
-import numpy as np
 import matplotlib.pyplot as plt
 from patsy import dmatrices
 import pandas as pd
 import joblib
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
 import forestatrisk as far
+
+# Local import
+from ..utilities import add_layer
 
 
 # icar_model class for predictions
-class icar_model():
+class icarModel():
     """Small mod_icar class."""
 
     def __init__(
@@ -55,14 +55,15 @@ class icar_model():
         )
         return summary
 
+
 # far_predict_risk
 def far_predict_risk(iface,
                      workdir,
-                     csize,
+                     csize=10,
                      csize_interpolate=1,
-                     icar_model=True,
-                     glm_model=False,
-                     rf_model=False):
+                     model_icar=True,
+                     model_glm=False,
+                     model_rf=False):
     """Predicting the deforestation risk."""
 
     # -------------------------------------
@@ -72,15 +73,18 @@ def far_predict_risk(iface,
     # Set working directory
     os.chdir(workdir)
 
+    # Qgis project
+    far_project = QgsProject.instance()
+
     # Rename and copy files
-    os.rename(os.path.join("data", "dist_edge.tif"),
-              os.path.join("data", "dist_edge.tif.bak"))
-    os.rename(os.path.join("data", "dist_defor.tif"),
-              os.path.join("data", "dist_defor.tif.bak"))
-    copy2(os.path.join("data", "forecast", "dist_edge_forecast.tif"),
-          os.path.join("data", "dist_edge.tif"))
-    copy2(os.path.join("data", "forecast", "dist_defor_forecast.tif"),
-          os.path.join("data", "dist_defor.tif"))
+    vfiles = ["edge", "defor"]
+    for v in vfiles:
+        ifile = os.path.join("data", f"dist_{v}.tif.bak")
+        if not os.path.isfile(ifile):
+            os.rename(os.path.join("data", f"dist_{v}.tif"),
+                      ifile)
+            copy2(os.path.join("data", "forecast", f"dist_{v}_forecast.tif"),
+                  os.path.join("data", f"dist_{v}.tif"))
 
     # ------------------------------------
     # Get base formula
@@ -88,10 +92,19 @@ def far_predict_risk(iface,
 
     # Get iCAR model and formula
     ifile = os.path.join("outputs", "mod_icar.pickle")
+    if not os.path.isfile(ifile):
+        msg = ("No iCAR model "
+               "in the working directory. "
+               "Run upper box \"iCAR "
+               "model\" first.")
+        iface.messageBar().pushMessage(
+            "Error", msg,
+            level=Qgis.Critical)
+
     with open(ifile, "rb") as file:
         mod_icar_pickle = pickle.load(file)
-    formula_icar = mod_icar_pickle["formula"]
 
+    formula_icar = mod_icar_pickle["formula"]
     # Get model info from patsy
     dataset_file = os.path.join(workdir, "outputs", "sample.txt")
     dataset = pd.read_csv(dataset_file)
@@ -103,10 +116,10 @@ def far_predict_risk(iface,
     # iCAR model
     # ------------------------------------
 
-    if icar_model:
+    if model_icar:
 
         # Create icar_model object for predictions
-        mod_icar = icar_model(
+        mod_icar = icarModel(
             formula=formula_icar,
             _y_design_info=y.design_info,
             _x_design_info=x.design_info,
@@ -134,14 +147,13 @@ def far_predict_risk(iface,
                 "forest",
                 "forest_t3.tif"),
             output_file=os.path.join("outputs", "prob_icar.tif"),
-            blk_rows=10  # Reduced number of lines to avoid memory problems
-        )
+            blk_rows=10)
 
     # ------------------------------------
     # GLM model
     # ------------------------------------
 
-    if glm_model:
+    if model_glm:
         # Get glm model
         ifile = os.path.join("outputs", "mod_glm.pickle")
         with open(ifile, "rb") as file:
@@ -157,14 +169,13 @@ def far_predict_risk(iface,
                 "forest_t3.tif"
             ),
             output_file=os.path.join("outputs", "prob_glm.tif"),
-            blk_rows=10  # Reduced number of lines to avoid memory problems
-        )
+            blk_rows=10)
 
     # ------------------------------------
     # RF model
     # ------------------------------------
 
-    if rf_model:
+    if model_rf:
         # Get rf model
         ifile = os.path.join("outputs", "mod_rf.joblib")
         with open(ifile, "rb") as file:
@@ -180,16 +191,62 @@ def far_predict_risk(iface,
                 "forest_t3.tif"
             ),
             output_file=os.path.join("outputs", "prob_rf.tif"),
-            blk_rows=10  # Reduced number of lines to avoid memory problems
-        )
+            blk_rows=10)
 
     # -----------------
     # Reinitialize data
     # -----------------
 
-    os.remove("data/dist_edge.tif")
-    os.remove("data/dist_defor.tif")
-    os.rename("data/dist_edge.tif.bak", "data/dist_edge.tif")
-    os.rename("data/dist_defor.tif.bak", "data/dist_defor.tif")
+    vfiles = ["edge", "defor"]
+    for v in vfiles:
+        ifile = os.path.join("data", f"dist_{v}.tif.bak")
+        if os.path.isfile(ifile):
+            os.remove(os.path.join("data", f"dist_{v}.tif"))
+            os.rename(ifile, os.path.join("data", f"dist_{v}.tif"))
+
+    # -------------------
+    # Message and rasters
+    # -------------------
+
+    # Message
+    msg = f"Prediction raster files can be found in {workdir}"
+    iface.messageBar().pushMessage(
+        "Success", msg,
+        level=Qgis.Success)
+
+    # Plot
+    mod = ["icar", "glm", "rf"]
+    cond = [model_icar, model_glm, model_rf]
+    for (i, m) in enumerate(mod):
+        if cond[i]:
+            prob_file = os.path.join("outputs", f"prob_{m}.tif")
+            png_file = os.path.join("outputs", f"prob_{m}.png")
+            border_file = os.path.join("data", "ctry_PROJ.shp")
+            fig_prob = far.plot.prob(
+                input_prob_raster=prob_file,
+                maxpixels=1e8,
+                output_file=png_file,
+                borders=border_file,
+                linewidth=0.3,
+                figsize=(6, 5), dpi=500)
+            plt.close(fig_prob)
+
+    # Qgis project
+    far_project = QgsProject.instance()
+
+    # Add border layer to QGis project
+    border_file = os.path.join("data", "ctry_PROJ.shp")
+    border_layer = QgsVectorLayer(border_file, "border", "ogr")
+    border_layer.loadNamedStyle(os.path.join("qgis_layer_style", "border.qml"))
+    add_layer(far_project, border_layer)
+
+    # Add prob layers to QGis project
+    for (i, m) in enumerate(mod):
+        if cond[i]:
+            prob_file = os.path.join("outputs", f"prob_{m}.tif")
+            prob_layer = QgsRasterLayer(prob_file, f"prob_{m}")
+            prob_layer.loadNamedStyle(os.path.join("qgis_layer_style",
+                                                   "prob.qml"))
+            add_layer(far_project, prob_layer)
 
 # End of file

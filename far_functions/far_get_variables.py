@@ -55,14 +55,12 @@ def far_get_variables(iface,
     ee.Initialize(project="forestatrisk")
 
     # Copy qml files (layer style)
-    src_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "qgis_layer_style")
+    src_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)),
+                           "qgis_layer_style")
     dst_dir = os.path.join(workdir, "qgis_layer_style")
     if os.path.exists(dst_dir):
         shutil.rmtree(dst_dir)
     shutil.copytree(src_dir, dst_dir)
-
-    # Qgis project
-    far_project = QgsProject.instance()
 
     # Check raster existence
     fcc123_file = os.path.join(data_dir, "forest", "fcc123.tif")
@@ -96,7 +94,7 @@ def far_get_variables(iface,
             keep_temp_dir=True)
 
         # Message
-        msg = f"Raster files can be found in {workdir}"
+        msg = f"Variable raster files can be found in {workdir}"
         iface.messageBar().pushMessage(
             "Success", msg,
             level=Qgis.Success)
@@ -113,6 +111,9 @@ def far_get_variables(iface,
         linewidth=0.3,
         figsize=(6, 5), dpi=500)
     plt.close(fig_fcc123)
+
+    # Qgis project
+    far_project = QgsProject.instance()
 
     # Add border layer to QGis project
     border_file = os.path.join(data_dir, "ctry_PROJ.shp")

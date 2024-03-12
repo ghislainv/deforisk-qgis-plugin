@@ -289,7 +289,7 @@
     <attribute name="title">
      <string>Models FAR</string>
     </attribute>
-    <widget class="QGroupBox" name="groupBox_mod_icar">
+    <widget class="QGroupBox" name="groupBox_models">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -299,9 +299,9 @@
       </rect>
      </property>
      <property name="title">
-      <string>iCAR model</string>
+      <string>Fit models to data</string>
      </property>
-     <widget class="QPushButton" name="run_icar">
+     <widget class="QPushButton" name="run_models">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -399,6 +399,100 @@
          </property>
          <property name="checked">
           <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_predict">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>260</y>
+       <width>491</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Predict the deforestation risk</string>
+     </property>
+     <widget class="QPushButton" name="run_predict">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>100</y>
+        <width>71</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>471</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="label_csize_interp">
+         <property name="text">
+          <string>Spatial cell size interpolation (km)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="csize_interp">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="model_icar">
+         <property name="text">
+          <string>iCAR model</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="model_glm">
+         <property name="text">
+          <string>GLM</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QCheckBox" name="model_rf">
+         <property name="text">
+          <string>RF model</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
          </property>
          <property name="tristate">
           <bool>false</bool>

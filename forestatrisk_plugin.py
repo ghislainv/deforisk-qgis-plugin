@@ -49,7 +49,8 @@ from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
 from .far_functions import (
     far_get_variables,
     far_sample_obs,
-    far_models
+    far_models,
+    far_predict_risk
 )
 
 
@@ -243,17 +244,22 @@ class ForestatriskPlugin:
         remote_rclone = self.dlg.remote_rclone.text()
         gdrive_folder = self.dlg.gdrive_folder.text()
         wdpa_key = self.dlg.wdpa_key.text()
-        # Sampling observations
+        # Sample observations
         nsamp = self.dlg.nsamp.text()
         adapt = self.dlg.adapt.isChecked()
         seed = self.dlg.seed.text()
         csize = self.dlg.csize.text()
-        # Model iCAR
+        # Fit models
         variables = self.dlg.variables.text()
         beta_start = self.dlg.beta_start.text()
         prior_vrho = self.dlg.prior_vrho.text()
         mcmc = self.dlg.mcmc.text()
         varselection = self.dlg.varselection.isChecked()
+        # Predict risk
+        csize_interp = self.dlg.csize_interp.text()
+        model_icar = self.dlg.model_icar.isChecked()
+        model_glm = self.dlg.model_glm.isChecked()
+        model_rf = self.dlg.model_rf.isChecked()
         # Default values
         iso = "MTQ" if iso == "" else iso
         if workdir == "":
@@ -272,7 +278,7 @@ class ForestatriskPlugin:
             gdrive_folder = "GEE/GEE-far-qgis-plugin"
         nsamp = 10000 if nsamp == "" else int(nsamp)
         seed = 1234 if seed == "" else int(seed)
-        csize = 10 if csize == "" else int(csize)
+        csize = 10 if csize == "" else float(csize)
         # WDPA key
         if wdpa_key == "":
             env_file = os.path.join(workdir, ".env")
@@ -292,7 +298,7 @@ class ForestatriskPlugin:
                     level=Qgis.Critical)
         else:
             os.environ["WDPA_KEY"] = wdpa_key
-        # Model iCAR
+        # Fit models
         var = ("dist_edge, dist_defor, "
                "dist_road, dist_town, dist_river, "
                "pa, altitude, slope")
@@ -300,6 +306,8 @@ class ForestatriskPlugin:
         beta_start = -99 if beta_start == "" else float(beta_start)
         prior_vrho = -1 if prior_vrho == "" else int(prior_vrho)
         mcmc = 5000 if mcmc == "" else int((int(mcmc) // 1000) * 1000)
+        # Predict risk
+        csize_interp = 1 if csize_interp == "" else float(csize_interp)
         # Dictionary of arguments for far functions
         self.args = {
             "workdir": workdir, "isocode": iso, "proj": proj,
@@ -309,7 +317,9 @@ class ForestatriskPlugin:
             "nsamp": nsamp, "adapt": adapt, "seed": seed,
             "csize": csize, "variables": variables,
             "beta_start": beta_start, "prior_vrho": prior_vrho,
-            "mcmc": mcmc, "varselection": varselection}
+            "mcmc": mcmc, "varselection": varselection,
+            "csize_interp": csize_interp, "model_icar": model_icar,
+            "model_glm": model_glm, "model_rf": model_rf}
 
     def get_variables(self):
         """Get variables."""
@@ -346,6 +356,18 @@ class ForestatriskPlugin:
                    mcmc=self.args["mcmc"],
                    varselection=self.args["varselection"])
 
+    def predict(self):
+        """Predict deforestation risk."""
+        self.catch_arguments()
+        far_predict_risk(
+            iface=self.iface,
+            workdir=self.args["workdir"],
+            csize=self.args["csize"],
+            csize_interpolate=self.args["csize_interp"],
+            model_icar=self.args["model_icar"],
+            model_glm=self.args["model_glm"],
+            model_rf=self.args["model_rf"])
+
     def run(self):
         """Run method that performs all the real work."""
 
@@ -362,7 +384,8 @@ class ForestatriskPlugin:
         # Call to functions if buttons ares clicked
         self.dlg.run_var.clicked.connect(self.get_variables)
         self.dlg.run_samp.clicked.connect(self.sample_obs)
-        self.dlg.run_icar.clicked.connect(self.models)
+        self.dlg.run_models.clicked.connect(self.models)
+        self.dlg.run_predict.clicked.connect(self.predict)
 
         # show the dialog
         self.dlg.show()

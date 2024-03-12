@@ -55,10 +55,10 @@ def far_models(iface,
         iface.messageBar().pushMessage(
             "Error", msg,
             level=Qgis.Critical)
-    else:
-        dataset = pd.read_csv(dataset_file)
-        dataset = dataset.dropna(axis=0)
-        dataset["trial"] = 1
+
+    dataset = pd.read_csv(dataset_file)
+    dataset = dataset.dropna(axis=0)
+    dataset["trial"] = 1
 
     # -------------------
     # Model preparation
@@ -195,7 +195,8 @@ def far_models(iface,
     formula_glm = formula
     y, x = dmatrices(formula_glm, data=dataset, NA_action="drop")
     Y = y[:, 0]
-    X_glm = x[:, :-1]  # We remove the last column (cells)
+    # We remove the last column (cells)
+    X_glm = x[:, :-1]
     mod_glm = LogisticRegression(solver="lbfgs")
     mod_glm = mod_glm.fit(X_glm, Y)
     pred_glm = mod_glm.predict_proba(X_glm)
@@ -207,7 +208,8 @@ def far_models(iface,
     formula_rf = formula
     y, x = dmatrices(formula_rf, data=dataset, NA_action="drop")
     Y = y[:, 0]
-    X_rf = x[:, :-1]  # We remove the last column (cells)
+    # We remove the first (intercept, 0 col) and last column (cells)
+    X_rf = x[:, 1:-1]
     mod_rf = RandomForestClassifier(n_estimators=500,
                                     n_jobs=3)
     mod_rf = mod_rf.fit(X_rf, Y)
