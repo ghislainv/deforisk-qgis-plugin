@@ -299,7 +299,7 @@ class ForestatriskPlugin:
         else:
             os.environ["WDPA_KEY"] = wdpa_key
         # Fit models
-        var = ("dist_edge, dist_defor, "
+        var = ("dist_edge, "
                "dist_road, dist_town, dist_river, "
                "pa, altitude, slope")
         variables = var if variables == "" else variables

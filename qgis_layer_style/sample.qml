@@ -1,6 +1,6 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
 <qgis version="3.28.14-Firenze" styleCategories="Symbology">
-  <renderer-v2 attr="fcc23" type="categorizedSymbol" enableorderby="0" symbollevels="0" referencescale="-1" forceraster="0">
+  <renderer-v2 attr="fcc" type="categorizedSymbol" enableorderby="0" symbollevels="0" referencescale="-1" forceraster="0">
     <categories>
       <category symbol="0" type="double" value="0" label="0" render="true"/>
       <category symbol="1" type="double" value="1" label="1" render="true"/>

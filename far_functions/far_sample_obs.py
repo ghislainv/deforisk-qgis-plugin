@@ -38,8 +38,8 @@ def far_sample_obs(iface,
     os.chdir(workdir)
 
     # Check for files
-    fcc23_file = os.path.join(workdir, "data", "fcc23.tif")
-    if not os.path.isfile(fcc23_file):
+    fcc_file = os.path.join("data", "fcc.tif")
+    if not os.path.isfile(fcc_file):
         msg = ("No forest cover change "
                "raster in the working directory. "
                "Run upper box to \"Download and "
@@ -52,8 +52,8 @@ def far_sample_obs(iface,
     dataset = far.sample(nsamp=nsamp, adapt=adapt,
                          seed=seed, csize=csize,
                          var_dir="data",
-                         input_forest_raster="fcc23.tif",
-                         output_file="outputs/sample.txt",
+                         input_forest_raster="fcc.tif",
+                         output_file=os.path.join("outputs", "sample.txt"),
                          blk_rows=0,
                          verbose=False)
 
@@ -68,8 +68,8 @@ def far_sample_obs(iface,
     print(dataset.head(5))
 
     # Sample size
-    ndefor = sum(dataset.fcc23 == 0)
-    nfor = sum(dataset.fcc23 == 1)
+    ndefor = sum(dataset.fcc == 0)
+    nfor = sum(dataset.fcc == 1)
     with open("outputs/sample_size.csv",
               "w",
               encoding="utf-8") as file:
@@ -80,21 +80,22 @@ def far_sample_obs(iface,
           f"Sample size: ndefor = {ndefor}, nfor = {nfor}")
 
     # Correlation formula
-    formula_corr = "fcc23 ~ dist_road + dist_town + dist_river + \
-    dist_defor + dist_edge + altitude + slope - 1"
+    formula_corr = (
+        "fcc ~ dist_road + dist_town + dist_river + "
+        "dist_edge + altitude + slope - 1"
+    )
 
-    # Output file
-    of = "outputs/correlation.pdf"
     # Data
     y, data = dmatrices(formula_corr, data=dataset,
                         return_type="dataframe")
     # Plots
+    ofile = os.path.join("outputs", "correlation.pdf")
     figs = far.plot.correlation(
         y=y, data=data,
         plots_per_page=3,
         figsize=(7, 8),
         dpi=80,
-        output_file=of)
+        output_file=ofile)
     for i in figs:
         plt.close(i)
 

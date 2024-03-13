@@ -65,7 +65,7 @@ def far_models(iface,
     # -------------------
 
     # Neighborhood for spatial-autocorrelation
-    ifile = os.path.join("data", "fcc23.tif")
+    ifile = os.path.join("data", "fcc.tif")
     nneigh, adj = far.cellneigh(raster=ifile, csize=csize, rank=1)
 
     # List of variables
@@ -91,7 +91,7 @@ def far_models(iface,
         while np.any(var_remove):
             # Formula
             right_part = " + ".join(variables) + " + cell"
-            left_part = "I(1-fcc23) + trial ~ "
+            left_part = "I(1-fcc) + trial ~ "
             formula = left_part + right_part
             # Model
             mod_icar = far.model_binomial_iCAR(
@@ -119,7 +119,7 @@ def far_models(iface,
 
     # Formula
     right_part = " + ".join(variables) + " + cell"
-    left_part = "I(1-fcc23) + trial ~ "
+    left_part = "I(1-fcc) + trial ~ "
     formula = left_part + right_part
 
     # Initial values for beta_start
@@ -180,7 +180,7 @@ def far_models(iface,
     # -------------------
 
     # Null model
-    formula_null = "I(1-fcc23) ~ 1"
+    formula_null = "I(1-fcc) ~ 1"
     y, x = dmatrices(formula_null, data=dataset, NA_action="drop")
     Y = y[:, 0]
     X_null = x[:, :]

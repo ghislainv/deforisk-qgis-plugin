@@ -63,8 +63,8 @@ def far_get_variables(iface,
     shutil.copytree(src_dir, dst_dir)
 
     # Check raster existence
-    fcc123_file = os.path.join(data_dir, "forest", "fcc123.tif")
-    if not os.path.isfile(fcc123_file):
+    fcc_file = os.path.join(data_dir, "fcc.tif")
+    if not os.path.isfile(fcc_file):
         # Run gee for forest data
         far.data.run_gee_forest(
             iso3=isocode,
@@ -125,5 +125,6 @@ def far_get_variables(iface,
     fcc123_layer = QgsRasterLayer(fcc123_file, "fcc123")
     fcc123_layer.loadNamedStyle(os.path.join("qgis_layer_style", "fcc123.qml"))
     add_layer(far_project, fcc123_layer)
+
 
 # End of file

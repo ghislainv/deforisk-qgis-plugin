@@ -66,25 +66,22 @@ def far_predict_risk(iface,
                      model_rf=False):
     """Predicting the deforestation risk."""
 
-    # -------------------------------------
-    # Update dist_edge and dist_defor at t3
-    # -------------------------------------
-
     # Set working directory
     os.chdir(workdir)
 
-    # Qgis project
-    far_project = QgsProject.instance()
+    # # -------------------------------------
+    # # Update dist_edge and dist_defor at t3
+    # # -------------------------------------
 
-    # Rename and copy files
-    vfiles = ["edge", "defor"]
-    for v in vfiles:
-        ifile = os.path.join("data", f"dist_{v}.tif.bak")
-        if not os.path.isfile(ifile):
-            os.rename(os.path.join("data", f"dist_{v}.tif"),
-                      ifile)
-            copy2(os.path.join("data", "forecast", f"dist_{v}_forecast.tif"),
-                  os.path.join("data", f"dist_{v}.tif"))
+    # # Rename and copy files
+    # vfiles = ["edge", "defor"]
+    # for v in vfiles:
+    #     ifile = os.path.join("data", f"dist_{v}.tif.bak")
+    #     if not os.path.isfile(ifile):
+    #         os.rename(os.path.join("data", f"dist_{v}.tif"),
+    #                   ifile)
+    #         copy2(os.path.join("data", "forecast", f"dist_{v}_forecast.tif"),
+    #               os.path.join("data", f"dist_{v}.tif"))
 
     # ------------------------------------
     # Get base formula
@@ -131,7 +128,7 @@ def far_predict_risk(iface,
         rho = mod_icar_pickle["rho"]
         far.interpolate_rho(
             rho=rho,
-            input_raster=os.path.join("data", "fcc23.tif"),
+            input_raster=os.path.join("data", "fcc.tif"),
             output_file=os.path.join("outputs", "rho.tif"),
             csize_orig=csize,
             csize_new=csize_interpolate
@@ -145,9 +142,21 @@ def far_predict_risk(iface,
             input_forest_raster=os.path.join(
                 "data",
                 "forest",
-                "forest_t3.tif"),
+                "forest_t1.tif"),
             output_file=os.path.join("outputs", "prob_icar.tif"),
             blk_rows=10)
+
+        # Compute deforestation rate per category
+        far.defrate_per_cat(
+            fcc_file=os.path.join("data", "forest", "fcc123.tif"),
+            defor_values=1,
+            riskmap_file=os.path.join("outputs", "prob_icar.tif"),
+            time_interval=10,
+            tab_file_defrate=os.path.join(
+                "outputs",
+                "defrate_cat_icar.csv"),
+            blk_rows=128,
+            verbose=False)
 
     # ------------------------------------
     # GLM model
@@ -193,16 +202,16 @@ def far_predict_risk(iface,
             output_file=os.path.join("outputs", "prob_rf.tif"),
             blk_rows=10)
 
-    # -----------------
-    # Reinitialize data
-    # -----------------
+    # # -----------------
+    # # Reinitialize data
+    # # -----------------
 
-    vfiles = ["edge", "defor"]
-    for v in vfiles:
-        ifile = os.path.join("data", f"dist_{v}.tif.bak")
-        if os.path.isfile(ifile):
-            os.remove(os.path.join("data", f"dist_{v}.tif"))
-            os.rename(ifile, os.path.join("data", f"dist_{v}.tif"))
+    # vfiles = ["edge", "defor"]
+    # for v in vfiles:
+    #     ifile = os.path.join("data", f"dist_{v}.tif.bak")
+    #     if os.path.isfile(ifile):
+    #         os.remove(os.path.join("data", f"dist_{v}.tif"))
+    #         os.rename(ifile, os.path.join("data", f"dist_{v}.tif"))
 
     # -------------------
     # Message and rasters
