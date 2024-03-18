@@ -158,6 +158,21 @@ def far_predict_risk(iface,
             blk_rows=128,
             verbose=False)
 
+        # Validation
+        val_icar = far.validation_UDef_ARP(
+            fcc_file=os.path.join("data", "forest", "fcc123.tif"),
+            period="calibration",
+            time_interval=10,
+            riskmap_file=os.path.join("outputs", "prob_icar.tif"),
+            tab_file_defor=os.path.join(
+                "outputs",
+                "defrate_cat_icar.csv"),
+            csize_coarse_grid=50,
+            tab_file_pred=os.path.join("outputs", "pred_obs_icar.csv"),
+            fig_file_pred=os.path.join("outputs", "pred_obs_icar.png"),
+            verbose=False)
+        print(val_icar)
+
     # ------------------------------------
     # GLM model
     # ------------------------------------
