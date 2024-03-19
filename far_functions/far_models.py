@@ -19,7 +19,7 @@ from qgis.core import Qgis
 
 import numpy as np
 import matplotlib.pyplot as plt
-from patsy import dmatrices
+from patsy.highlevel import dmatrices
 import pandas as pd
 import joblib
 from sklearn.linear_model import LogisticRegression

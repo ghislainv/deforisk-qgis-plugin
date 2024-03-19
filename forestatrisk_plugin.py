@@ -50,7 +50,8 @@ from .far_functions import (
     far_get_variables,
     far_sample_obs,
     far_models,
-    far_predict_risk
+    far_predict,
+    far_validate,
 )
 
 
@@ -239,6 +240,7 @@ class ForestatriskPlugin:
         workdir = self.dlg.workdir.text()
         iso = self.dlg.isocode.text()
         proj = self.dlg.proj.text()
+        years = self.dlg.years.text()
         fcc_source = self.dlg.fcc_source.text()
         perc = self.dlg.perc.text()
         remote_rclone = self.dlg.remote_rclone.text()
@@ -259,7 +261,7 @@ class ForestatriskPlugin:
         csize_interp = self.dlg.csize_interp.text()
         model_icar = self.dlg.model_icar.isChecked()
         model_glm = self.dlg.model_glm.isChecked()
-        model_rf = self.dlg.model_rf.isChecked()
+        model_rf = self.dlg.model_rf.isChecked()      
         # Default values
         iso = "MTQ" if iso == "" else iso
         if workdir == "":
@@ -271,6 +273,7 @@ class ForestatriskPlugin:
                 workdir = os.path.join(os.environ["HOME"],
                                        "far-qgis", iso)
         proj = "EPSG:5490" if proj == "" else proj
+        years = "2000, 2010, 2020" if years == "" else years
         fcc_source = "jrc" if fcc_source == "" else fcc_source
         perc = "50" if perc == "" else int(perc)
         remote_rclone = "gdrive_gv" if remote_rclone == "" else remote_rclone
@@ -311,6 +314,7 @@ class ForestatriskPlugin:
         # Dictionary of arguments for far functions
         self.args = {
             "workdir": workdir, "isocode": iso, "proj": proj,
+            "years": years,
             "fcc_source": fcc_source, "perc": perc,
             "remote_rclone": remote_rclone, "gdrive_folder": gdrive_folder,
             "wdpa_key": wdpa_key,
@@ -359,11 +363,23 @@ class ForestatriskPlugin:
     def predict(self):
         """Predict deforestation risk."""
         self.catch_arguments()
-        far_predict_risk(
+        far_predict(
             iface=self.iface,
             workdir=self.args["workdir"],
+            years=self.args["years"],
             csize=self.args["csize"],
             csize_interpolate=self.args["csize_interp"],
+            model_icar=self.args["model_icar"],
+            model_glm=self.args["model_glm"],
+            model_rf=self.args["model_rf"])
+
+    def validate(self):
+        """Model validation."""
+        self.catch_arguments()
+        far_validate(
+            iface=self.iface,
+            workdir=self.args["workdir"],
+            years=self.args["years"],
             model_icar=self.args["model_icar"],
             model_glm=self.args["model_glm"],
             model_rf=self.args["model_rf"])
@@ -386,6 +402,7 @@ class ForestatriskPlugin:
         self.dlg.run_samp.clicked.connect(self.sample_obs)
         self.dlg.run_models.clicked.connect(self.models)
         self.dlg.run_predict.clicked.connect(self.predict)
+        self.dlg.run_validation.clicked.connect(self.validate)
 
         # show the dialog
         self.dlg.show()
