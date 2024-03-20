@@ -50,7 +50,7 @@ from .far_functions import (
     far_get_variables,
     far_sample_obs,
     far_models,
-    far_predict,
+    FarPredictTask,
     far_validate,
 )
 
@@ -363,26 +363,30 @@ class ForestatriskPlugin:
     def predict(self):
         """Predict deforestation risk."""
         self.catch_arguments()
-        far_predict(
+        run_models = [self.args["model_icar"],
+                      self.args["model_glm"],
+                      self.args["model_rf"]]
+        predict_task = FarPredictTask(
+            "Predict deforestation risk",
             iface=self.iface,
             workdir=self.args["workdir"],
             years=self.args["years"],
             csize=self.args["csize"],
             csize_interpolate=self.args["csize_interp"],
-            model_icar=self.args["model_icar"],
-            model_glm=self.args["model_glm"],
-            model_rf=self.args["model_rf"])
+            run_models=run_models)
+        QgsApplication.taskManager().addTask(predict_task)
 
     def validate(self):
         """Model validation."""
         self.catch_arguments()
+        run_models = [self.args["model_icar"],
+                      self.args["model_glm"],
+                      self.args["model_rf"]]
         far_validate(
             iface=self.iface,
             workdir=self.args["workdir"],
             years=self.args["years"],
-            model_icar=self.args["model_icar"],
-            model_glm=self.args["model_glm"],
-            model_rf=self.args["model_rf"])
+            run_models=run_models)
 
     def run(self):
         """Run method that performs all the real work."""

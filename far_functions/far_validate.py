@@ -27,9 +27,7 @@ opj = os.path.join
 def far_validate(iface,
                  workdir,
                  years,
-                 model_icar=True,
-                 model_glm=False,
-                 model_rf=False):
+                 run_models):
     """Model validation."""
 
     # Set working directory
@@ -50,7 +48,6 @@ def far_validate(iface,
     dates = ["t1", "t2"]
     periods = ["calibration", "validation"]
     models = ["icar", "glm", "rf"]
-    run_models = [model_icar, model_glm, model_rf]
     for (d, period, ti) in zip(dates, periods, time_intervals):
         for (m, run_model) in zip(models, run_models):
             if run_model:
