@@ -16,6 +16,7 @@ import os
 
 from qgis.core import Qgis
 
+import pandas as pd
 import forestatrisk as far
 
 # Alias
@@ -39,6 +40,9 @@ def far_validate(iface,
     years = [int(i) for i in years]
     time_intervals = [years[1] - years[0], years[2] - years[1]]
 
+    # Synthesize results for all models and periods
+    indices_list = []
+
     # -------------------------------
     # Loop on dates/periods and model
     # -------------------------------
@@ -50,6 +54,7 @@ def far_validate(iface,
     for (d, period, ti) in zip(dates, periods, time_intervals):
         for (m, run_model) in zip(models, run_models):
             if run_model:
+                # Validation
                 far.validation_udef_arp(
                     fcc_file=opj("data", "forest", "fcc123.tif"),
                     period=period,
@@ -61,6 +66,22 @@ def far_validate(iface,
                     tab_file_pred=opj("outputs", f"pred_obs_{m}_{d}.csv"),
                     fig_file_pred=opj("outputs", f"pred_obs_{m}_{d}.png"),
                     verbose=False)
+                # Indices
+                df = pd.read_csv(opj("outputs", f"indices_{m}_{d}.csv"))
+                df["model"] = m
+                df["period"] = period
+                indices_list.append(df)
+
+    # Concat indices
+    indices = pd.concat(indices_list, axis=0)
+    indices.sort_values(by=["period", "model"])
+    indices = indices[["model", "period", "MedAE", "R2", "wRMSE",
+                       "ncell", "csize_coarse_grid",
+                       "csize_coarse_grid_ha"]]
+    indices.to_csv(
+        opj("outputs", "indices_all.csv"),
+        sep=",", header=True,
+        index=False, index_label=False)
 
     # -------------------
     # Message
