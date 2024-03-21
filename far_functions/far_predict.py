@@ -43,6 +43,12 @@ class FarPredictTask(QgsTask):
                  csize, csize_interpolate, run_models):
         super().__init__(description, QgsTask.CanCancel)
         self.exception = None
+        self.iface = iface
+        self.workdir = workdir
+        self.years = years
+        self.csize = csize
+        self.csize_interpolate = csize_interpolate
+        self.run_models = run_models
 
     def get_time_interval(self, years):
         """Get time intervals from years."""
@@ -138,13 +144,7 @@ class FarPredictTask(QgsTask):
             figsize=(6, 5), dpi=500)
         plt.close(fig_prob)
 
-    def run(self,
-            iface,
-            workdir,
-            years,
-            csize,
-            csize_interpolate,
-            run_models):
+    def run(self):
         """Compute predictions."""
 
         # Starting message
@@ -153,21 +153,21 @@ class FarPredictTask(QgsTask):
         QgsMessageLog.logMessage(msg, MESSAGE_CATEGORY, Qgis.Info)
 
         # Set working directory
-        os.chdir(workdir)
+        os.chdir(self.workdir)
 
         # Compute time intervals from years
-        time_intervals = self.get_time_interval(years)
+        time_intervals = self.get_time_interval(self.years)
 
         # Get design info
         mod_icar_pickle = self.get_icar_model(
-            iface, pickle_file=opj("outputs", "mod_icar.pickle"))
+            self.iface, pickle_file=opj("outputs", "mod_icar.pickle"))
         (y_design_info, x_design_info) = self.get_design_info(
             mod_icar_pickle, dataset_file=opj("outputs", "sample.txt"))
 
         # Get models
         mod = self.get_models(
-            run_models,
-            mod_icar_pickle, csize, csize_interpolate,
+            self.run_models,
+            mod_icar_pickle, self.csize, self.csize_interpolate,
             y_design_info, x_design_info)
 
         # Clean the data repository (if necessary)
@@ -186,7 +186,7 @@ class FarPredictTask(QgsTask):
                 self.update_dist_files(vfiles=["edge"])
 
             # Loop on models
-            for (m, run_model) in zip(models, run_models):
+            for (m, run_model) in zip(models, self.run_models):
 
                 # Check isCanceled() to handle cancellation
                 if self.isCanceled():
@@ -253,12 +253,12 @@ class FarPredictTask(QgsTask):
 
         return True
 
-    def finished(self, result, iface, workdir, run_models):
+    def finished(self, result):
         """Show messages and add layers."""
         if result:
             # Message
-            msg = f"Prediction raster files can be found in {workdir}"
-            iface.messageBar().pushMessage(
+            msg = f"Prediction raster files can be found in {self.workdir}"
+            self.iface.messageBar().pushMessage(
                 "Success", msg,
                 level=Qgis.Success)
 
@@ -275,7 +275,7 @@ class FarPredictTask(QgsTask):
             dates = ["t1", "t2"]
             models = ["icar", "glm", "rf"]
             for (i, m) in enumerate(models):
-                if run_models[i]:
+                if self.run_models[i]:
                     for d in dates:
                         prob_file = opj("outputs", f"prob_{m}_{d}.tif")
                         prob_layer = QgsRasterLayer(prob_file, f"prob_{m}_{d}")
