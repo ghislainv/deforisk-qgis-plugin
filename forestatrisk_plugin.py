@@ -26,13 +26,8 @@ import os
 import subprocess
 import platform
 
-from qgis.core import (
-    Qgis,
-    QgsTaskManager,
-    QgsTask,
-    QgsApplication,
-    QgsMessageLog,
-)
+from qgis.core import Qgis, QgsApplication
+
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
@@ -91,6 +86,10 @@ class ForestatriskPlugin:
         # Must be set in initGui() to survive plugin reloads
         self.first_start = None
         self.dlg = None
+
+        # Task manager
+        self.task = None
+        self.tm = QgsApplication.taskManager()
 
     # noinspection PyMethodMayBeStatic
     def tr(self, message):
@@ -261,7 +260,7 @@ class ForestatriskPlugin:
         csize_interp = self.dlg.csize_interp.text()
         model_icar = self.dlg.model_icar.isChecked()
         model_glm = self.dlg.model_glm.isChecked()
-        model_rf = self.dlg.model_rf.isChecked()      
+        model_rf = self.dlg.model_rf.isChecked()
         # Default values
         iso = "MTQ" if iso == "" else iso
         if workdir == "":
@@ -281,7 +280,7 @@ class ForestatriskPlugin:
             gdrive_folder = "GEE/GEE-far-qgis-plugin"
         nsamp = 10000 if nsamp == "" else int(nsamp)
         seed = 1234 if seed == "" else int(seed)
-        csize = 10 if csize == "" else float(csize)
+        csize = 1 if csize == "" else float(csize)
         # WDPA key
         if wdpa_key == "":
             env_file = os.path.join(workdir, ".env")
@@ -310,7 +309,7 @@ class ForestatriskPlugin:
         prior_vrho = -1 if prior_vrho == "" else int(prior_vrho)
         mcmc = 5000 if mcmc == "" else int((int(mcmc) // 1000) * 1000)
         # Predict risk
-        csize_interp = 1 if csize_interp == "" else float(csize_interp)
+        csize_interp = 0.1 if csize_interp == "" else float(csize_interp)
         # Dictionary of arguments for far functions
         self.args = {
             "workdir": workdir, "isocode": iso, "proj": proj,
@@ -362,19 +361,22 @@ class ForestatriskPlugin:
 
     def predict(self):
         """Predict deforestation risk."""
+        # Catch arguments
         self.catch_arguments()
         run_models = [self.args["model_icar"],
                       self.args["model_glm"],
                       self.args["model_rf"]]
-        predict_task = FarPredictTask(
-            "Predict deforestation risk",
+        # Create task
+        self.task = FarPredictTask(
+            "Predict",
             iface=self.iface,
             workdir=self.args["workdir"],
             years=self.args["years"],
             csize=self.args["csize"],
             csize_interpolate=self.args["csize_interp"],
             run_models=run_models)
-        QgsApplication.taskManager().addTask(predict_task)
+        # Add task to task manager
+        self.tm.addTask(self.task)
 
     def validate(self):
         """Model validation."""

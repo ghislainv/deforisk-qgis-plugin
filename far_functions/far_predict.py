@@ -42,13 +42,13 @@ class FarPredictTask(QgsTask):
     def __init__(self, description, iface, workdir, years,
                  csize, csize_interpolate, run_models):
         super().__init__(description, QgsTask.CanCancel)
-        self.exception = None
         self.iface = iface
         self.workdir = workdir
         self.years = years
         self.csize = csize
         self.csize_interpolate = csize_interpolate
         self.run_models = run_models
+        self.exception = None
 
     def get_time_interval(self, years):
         """Get time intervals from years."""
@@ -147,56 +147,60 @@ class FarPredictTask(QgsTask):
     def run(self):
         """Compute predictions."""
 
-        # Starting message
-        msg = 'Started task "{name}"'
-        msg = msg.format(name=self.description())
-        QgsMessageLog.logMessage(msg, MESSAGE_CATEGORY, Qgis.Info)
+        try:
+            # Starting message
+            msg = 'Started task "{name}"'
+            msg = msg.format(name=self.description())
+            QgsMessageLog.logMessage(msg, MESSAGE_CATEGORY, Qgis.Info)
 
-        # Set working directory
-        os.chdir(self.workdir)
+            # Set working directory
+            os.chdir(self.workdir)
 
-        # Compute time intervals from years
-        time_intervals = self.get_time_interval(self.years)
+            # Compute time intervals from years
+            time_intervals = self.get_time_interval(self.years)
 
-        # Get design info
-        mod_icar_pickle = self.get_icar_model(
-            self.iface, pickle_file=opj("outputs", "mod_icar.pickle"))
-        (y_design_info, x_design_info) = self.get_design_info(
-            mod_icar_pickle, dataset_file=opj("outputs", "sample.txt"))
+            # Get design info
+            mod_icar_pickle = self.get_icar_model(
+                self.iface, pickle_file=opj("outputs", "mod_icar.pickle"))
+            (y_design_info, x_design_info) = self.get_design_info(
+                mod_icar_pickle, dataset_file=opj("outputs", "sample.txt"))
 
-        # Get models
-        mod = self.get_models(
-            self.run_models,
-            mod_icar_pickle, self.csize, self.csize_interpolate,
-            y_design_info, x_design_info)
+            # Get models
+            mod = self.get_models(
+                self.run_models,
+                mod_icar_pickle, self.csize, self.csize_interpolate,
+                y_design_info, x_design_info)
 
-        # Clean the data repository (if necessary)
-        self.clean_data_repository(vfiles=["edge"])
+            # Clean the data repository (if necessary)
+            self.clean_data_repository(vfiles=["edge"])
 
-        # Indices for loops
-        dates = ["t1", "t2"]
-        periods = ["calibration", "validation"]
-        models = ["icar", "glm", "rf"]
+            # Indices for loops
+            dates = ["t1", "t2"]
+            periods = ["calibration", "validation"]
+            models = ["icar", "glm", "rf"]
+            n_dates = len(dates)
+            n_models = self.run_models.count(True)
+            progress = 0
+            self.setProgress(1)
 
-        # Loop on periods
-        for (d, period, ti) in zip(dates, periods, time_intervals):
+            # Loop on periods
+            for (d, period, ti) in zip(dates, periods, time_intervals):
 
-            # Update dist files for t2
-            if d == "t2":
-                self.update_dist_files(vfiles=["edge"])
+                # Update dist files for t2
+                if d == "t2":
+                    self.update_dist_files(vfiles=["edge"])
 
-            # Loop on models
-            for (m, run_model) in zip(models, self.run_models):
+                # Loop on models
+                for (m, run_model) in zip(models, self.run_models):
 
-                # Check isCanceled() to handle cancellation
-                if self.isCanceled():
-                    return False
+                    # Check isCanceled() to handle cancellation
+                    if self.isCanceled():
+                        return False
 
-                # Check model
-                if run_model:
+                    # Check model
+                    if run_model:
 
-                    # Compute predictions
-                    try:
+                        # Compute predictions
                         if m == "icar":
                             far.predict_raster_binomial_iCAR(
                                 mod["icar"],
@@ -222,39 +226,52 @@ class FarPredictTask(QgsTask):
                                                 f"prob_{m}_{d}.tif"),
                                 blk_rows=10)
 
-                    except Exception as exc:
-                        self.exception = exc
-                        return False
+                        # Check isCanceled() to handle cancellation
+                        if self.isCanceled():
+                            return False
 
-                    # Check isCanceled() to handle cancellation
-                    if self.isCanceled():
-                        return False
+                        # Progress
+                        progress += 1
+                        set_progress = progress / (n_dates * n_models * 2)
+                        set_progress = int(set_progress * 100)
+                        self.setProgress(set_progress)
 
-                    # Compute deforestation rate per category
-                    far.defrate_per_cat(
-                        fcc_file=opj("data", "forest", "fcc123.tif"),
-                        riskmap_file=opj("outputs", f"prob_{m}_{d}.tif"),
-                        time_interval=ti,
-                        period=period,
-                        tab_file_defrate=opj(
-                            "outputs",
-                            f"defrate_cat_{m}_{d}.csv"),
-                        verbose=False)
+                        # Compute deforestation rate per category
+                        far.defrate_per_cat(
+                            fcc_file=opj("data", "forest", "fcc123.tif"),
+                            riskmap_file=opj("outputs", f"prob_{m}_{d}.tif"),
+                            time_interval=ti,
+                            period=period,
+                            tab_file_defrate=opj(
+                                "outputs",
+                                f"defrate_cat_{m}_{d}.csv"),
+                            verbose=False)
 
-                    # Check isCanceled() to handle cancellation
-                    if self.isCanceled():
-                        return False
+                        # Check isCanceled() to handle cancellation
+                        if self.isCanceled():
+                            return False
 
-                    # Plot probability of deforestation
-                    self.plot_prob(model=m, date=d)
+                        # Plot probability of deforestation
+                        self.plot_prob(model=m, date=d)
 
-            # Clean the data repository
-            self.clean_data_repository(vfiles=["edge"])
+                        # Progress
+                        progress += 1
+                        set_progress = progress / (n_dates * n_models * 2)
+                        set_progress = int(set_progress * 100)
+                        self.setProgress(set_progress)
+
+                # Clean the data repository
+                self.clean_data_repository(vfiles=["edge"])
+
+        except Exception as exc:
+            self.exception = exc
+            return False
 
         return True
 
     def finished(self, result):
         """Show messages and add layers."""
+
         if result:
             # Message
             msg = f"Prediction raster files can be found in {self.workdir}"
@@ -264,6 +281,8 @@ class FarPredictTask(QgsTask):
 
             # Qgis project
             far_project = QgsProject.instance()
+            root = far_project.layerTreeRoot()
+            predict_group = root.addGroup("Predictions")
 
             # Add border layer to QGis project
             border_file = opj("data", "ctry_PROJ.shp")
@@ -281,7 +300,8 @@ class FarPredictTask(QgsTask):
                         prob_layer = QgsRasterLayer(prob_file, f"prob_{m}_{d}")
                         prob_layer.loadNamedStyle(opj("qgis_layer_style",
                                                       "prob.qml"))
-                        add_layer(far_project, prob_layer)
+                        far_project.addMapLayer(prob_layer, False)
+                        predict_group.addLayer(prob_layer)
         else:
             if self.exception is None:
                 msg = ('FarPredictTask "{name}" not successful but without '
