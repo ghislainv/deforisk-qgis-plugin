@@ -16,6 +16,16 @@ def add_layer(project, layer):
     for lay in project.mapLayers().values():
         if lay.name() == layer.name():
             project.removeMapLayers([lay.id()])
-    project.addMapLayer(layer)
+    project.addMapLayer(layer, False)
+    project.layerTreeRoot().addLayer(layer)
+
+
+def add_layer_to_group(project, group, layer):
+    """Add layer to group after removal if its name exists."""
+    for lay in project.mapLayers().values():
+        if lay.name() == layer.name():
+            project.removeMapLayers([lay.id()])
+    project.addMapLayer(layer, False)
+    group.addLayer(layer)
 
 # End of file

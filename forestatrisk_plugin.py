@@ -46,7 +46,7 @@ from .far_functions import (
     far_sample_obs,
     far_models,
     FarPredictTask,
-    far_validate,
+    FarValidateTask,
 )
 
 
@@ -367,28 +367,37 @@ class ForestatriskPlugin:
                       self.args["model_glm"],
                       self.args["model_rf"]]
         # Create task
-        self.task = FarPredictTask(
-            "Predict",
-            iface=self.iface,
-            workdir=self.args["workdir"],
-            years=self.args["years"],
-            csize=self.args["csize"],
-            csize_interpolate=self.args["csize_interp"],
-            run_models=run_models)
-        # Add task to task manager
-        self.tm.addTask(self.task)
+        for (m, mod) in enumerate(run_models):
+            rmod = [False] * 3
+            if mod:
+                rmod[m] = True
+                self.task = FarPredictTask(
+                    f'Predict {self.args["isocode"]} {self.args["years"]}',
+                    iface=self.iface,
+                    workdir=self.args["workdir"],
+                    years=self.args["years"],
+                    csize=self.args["csize"],
+                    csize_interpolate=self.args["csize_interp"],
+                    run_models=rmod)
+                # Add task to task manager
+                self.tm.addTask(self.task)
 
     def validate(self):
         """Model validation."""
+        # Catch arguments
         self.catch_arguments()
         run_models = [self.args["model_icar"],
                       self.args["model_glm"],
                       self.args["model_rf"]]
-        far_validate(
+        # Create task
+        self.task = FarValidateTask(
+            f'Validate {self.args["isocode"]} {self.args["years"]}',
             iface=self.iface,
             workdir=self.args["workdir"],
             years=self.args["years"],
             run_models=run_models)
+        # Add task to task manager
+        self.tm.addTask(self.task)
 
     def run(self):
         """Run method that performs all the real work."""
