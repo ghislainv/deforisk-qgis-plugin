@@ -235,14 +235,14 @@ class FarGetVariablesTask(QgsTask):
 
         else:
             if self.exception is None:
-                msg = ('FarPredictTask "{name}" not successful but without '
+                msg = ('FarGetVariablesTask "{name}" not successful but without '
                        'exception (probably the task was manually '
                        'canceled by the user)')
                 msg = msg.format(name=self.description())
                 QgsMessageLog.logMessage(
                     msg, self.MESSAGE_CATEGORY, Qgis.Warning)
             else:
-                msg = 'FarPredictTask "{name}" Exception: {exception}'
+                msg = 'FarGetVariablesTask "{name}" Exception: {exception}'
                 msg = msg.format(
                         name=self.description(),
                         exception=self.exception)
@@ -252,7 +252,7 @@ class FarGetVariablesTask(QgsTask):
 
     def cancel(self):
         """Cancelation message."""
-        msg = 'FarPredictTask "{name}" was canceled'
+        msg = 'FarGetVariablesTask "{name}" was canceled'
         msg = msg.format(name=self.description())
         QgsMessageLog.logMessage(
             msg, self.MESSAGE_CATEGORY, Qgis.Info)

@@ -43,7 +43,7 @@ from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
 # Local forestatrisk functions
 from .far_functions import (
     FarGetVariablesTask,
-    far_sample_obs,
+    FarSampleObsTask,
     far_models,
     FarPredictTask,
     FarValidateTask,
@@ -369,13 +369,18 @@ class ForestatriskPlugin:
     def sample_obs(self):
         """Sample observations."""
         self.catch_arguments()
-        far_sample_obs(iface=self.iface,
-                       workdir=self.args["workdir"],
-                       proj=self.args["proj"],
-                       nsamp=self.args["nsamp"],
-                       adapt=self.args["adapt"],
-                       seed=self.args["seed"],
-                       csize=self.args["csize"])
+        description = self.task_description("SampleObs")
+        task = FarSampleObsTask(
+            description=description,
+            iface=self.iface,
+            workdir=self.args["workdir"],
+            proj=self.args["proj"],
+            nsamp=self.args["nsamp"],
+            adapt=self.args["adapt"],
+            seed=self.args["seed"],
+            csize=self.args["csize"])
+        # Add task to task manager
+        self.tm.addTask(task)
 
     def models(self):
         """Estimate forestatrisk model parameters."""

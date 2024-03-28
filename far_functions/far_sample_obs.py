@@ -14,113 +14,207 @@ Sample observations.
 
 import os
 
-from qgis.core import Qgis, QgsProject, QgsVectorLayer
+from qgis.core import (
+    Qgis, QgsTask, QgsProject,
+    QgsVectorLayer, QgsMessageLog
+)
 
 import matplotlib.pyplot as plt
-from patsy import dmatrices
+import pandas as pd
+from patsy.highlevel import dmatrices
 import forestatrisk as far
 
 # Local import
-from ..utilities import add_layer
+from ..utilities import add_layer_to_group
+
+# Alias
+opj = os.path.join
 
 
-# far_sample_obs
-def far_sample_obs(iface,
-                   workdir,
-                   proj,
-                   nsamp,
-                   adapt,
-                   seed,
-                   csize):
+class FarSampleObsTask(QgsTask):
     """Sample observations."""
 
-    # Set working directory
-    os.chdir(workdir)
+    # Constants
+    OUT = "outputs"
+    DATA = "data"
+    DATA_RAW = "data_raw"
+    MESSAGE_CATEGORY = "FAR plugin"
+    N_STEPS = 2
 
-    # Check for files
-    fcc_file = os.path.join("data", "fcc.tif")
-    if not os.path.isfile(fcc_file):
-        msg = ("No forest cover change "
-               "raster in the working directory. "
-               "Run upper box to \"Download and "
-               "compute variables\" first.")
-        iface.messageBar().pushMessage(
-            "Error", msg,
-            level=Qgis.Critical)
+    def __init__(self, description, iface, workdir, proj,
+                 nsamp, adapt, seed, csize):
+        super().__init__(description, QgsTask.CanCancel)
+        self.iface = iface
+        self.workdir = workdir
+        self.proj = proj
+        self.nsamp = nsamp
+        self.adapt = adapt
+        self.seed = seed
+        self.csize = csize
+        self.dataset = pd.DataFrame()
+        self.exception = None
 
-    # Sample observations
-    dataset = far.sample(nsamp=nsamp, adapt=adapt,
-                         seed=seed, csize=csize,
-                         var_dir="data",
-                         input_forest_raster="fcc.tif",
-                         output_file=os.path.join("outputs", "sample.txt"),
-                         blk_rows=0,
-                         verbose=False)
+    def set_progress(self, progress, n_steps):
+        """Set progress."""
+        if progress == 0:
+            self.setProgress(1)
+        else:
+            prog_perc = progress / n_steps
+            prog_perc = int(prog_perc * 100)
+            self.setProgress(prog_perc)
 
-    # Remove NA from data-set (otherwise scale() and
-    # model_binomial_iCAR doesn't work)
-    dataset = dataset.dropna(axis=0)
-    # Set number of trials to one for far.model_binomial_iCAR()
-    dataset["trial"] = 1
-    # Print the first five rows
-    print("\n"
-          "Dataset of observations:")
-    print(dataset.head(5))
+    def run(self):
+        """Sample observations."""
 
-    # Sample size
-    ndefor = sum(dataset.fcc == 0)
-    nfor = sum(dataset.fcc == 1)
-    with open("outputs/sample_size.csv",
-              "w",
-              encoding="utf-8") as file:
-        file.write("Var, n\n")
-        file.write(f"ndefor, {ndefor}\n")
-        file.write(f"nfor, {nfor}\n")
-    print("\n"
-          f"Sample size: ndefor = {ndefor}, nfor = {nfor}")
+        try:
+            # Starting message
+            msg = 'Started task "{name}"'
+            msg = msg.format(name=self.description())
+            QgsMessageLog.logMessage(msg, self.MESSAGE_CATEGORY, Qgis.Info)
 
-    # Correlation formula
-    formula_corr = (
-        "fcc ~ dist_road + dist_town + dist_river + "
-        "dist_edge + altitude + slope - 1"
-    )
+            # Progress
+            progress = 0
+            self.set_progress(progress, self.N_STEPS)
 
-    # Data
-    y, data = dmatrices(formula_corr, data=dataset,
-                        return_type="dataframe")
-    # Plots
-    ofile = os.path.join("outputs", "correlation.pdf")
-    figs = far.plot.correlation(
-        y=y, data=data,
-        plots_per_page=3,
-        figsize=(7, 8),
-        dpi=80,
-        output_file=ofile)
-    for i in figs:
-        plt.close(i)
+            # Set working directory
+            os.chdir(self.workdir)
 
-    # Message
-    msg = f"Sampled observations can be found in {workdir}"
-    iface.messageBar().pushMessage(
-        "Success", msg,
-        level=Qgis.Success)
+            # Check for files
+            fcc_file = opj("data", "fcc.tif")
+            if not os.path.isfile(fcc_file):
+                msg = ("No forest cover change "
+                       "raster in the working directory. "
+                       "Run upper box to \"Download and "
+                       "compute variables\" first.")
+                self.exception = msg
+                return False
 
-    # Qgis project
-    far_project = QgsProject.instance()
+            # Sample observations
+            dataset = far.sample(
+                nsamp=self.nsamp, adapt=self.adapt,
+                seed=self.seed, csize=self.csize,
+                var_dir="data",
+                input_forest_raster="fcc.tif",
+                output_file=opj("outputs", "sample.txt"),
+                blk_rows=0,
+                verbose=True)
 
-    # Add layer of sampled observations to QGis project
-    samp_file = os.path.join(workdir, "outputs", "sample.txt")
-    encoding = "UTF-8"
-    delimiter = ","
-    decimal = "."
-    x = "X"
-    y = "Y"
-    uri = (f"file:///{samp_file}?encoding={encoding}"
-           f"&delimiter={delimiter}&decimalPoint={decimal}"
-           f"&crs={proj}&xField={x}&yField={y}")
-    samp_layer = QgsVectorLayer(uri, "sampled_obs", "delimitedtext")
-    samp_layer.loadNamedStyle(os.path.join("qgis_layer_style",
-                                           "sample.qml"))
-    add_layer(far_project, samp_layer)
+            # Remove NA from data-set (otherwise scale() and
+            # model_binomial_iCAR don't work)
+            dataset = dataset.dropna(axis=0)
+            # Set number of trials to one for far.model_binomial_iCAR()
+            dataset["trial"] = 1
+            self.dataset = dataset
+            # Print the first five rows
+            print("\n"
+                  "Dataset of observations (5 first lines):")
+            print(self.dataset.head(5))
+
+            # Sample size
+            ndefor = sum(self.dataset.fcc == 0)
+            nfor = sum(self.dataset.fcc == 1)
+            with open("outputs/sample_size.csv",
+                      "w",
+                      encoding="utf-8") as file:
+                file.write("Var, n\n")
+                file.write(f"ndefor, {ndefor}\n")
+                file.write(f"nfor, {nfor}\n")
+            print("\n"
+                  f"Sample size: ndefor = {ndefor}, nfor = {nfor}")
+
+            # Check isCanceled() to handle cancellation
+            if self.isCanceled():
+                return False
+
+            # Progress
+            progress += 1
+            self.set_progress(progress, self.N_STEPS)
+
+        except Exception as exc:
+            self.exception = exc
+            return False
+
+        return True
+
+    def finished(self, result):
+        """Show messages and add layers."""
+
+        if result:
+            # Correlation formula
+            formula_corr = (
+                "fcc ~ dist_road + dist_town + dist_river + "
+                "dist_edge + altitude + slope - 1"
+            )
+
+            # Data
+            y, data = dmatrices(formula_corr, data=self.dataset,
+                                return_type="dataframe")
+            # Plots
+            ofile = opj("outputs", "correlation.pdf")
+            figs = far.plot.correlation(
+                y=y, data=data,
+                plots_per_page=3,
+                figsize=(7, 8),
+                dpi=80,
+                output_file=ofile)
+            for i in figs:
+                plt.close(i)
+
+            # Qgis project and group
+            far_project = QgsProject.instance()
+            root = far_project.layerTreeRoot()
+            group_names = [i.name() for i in root.children()]
+            if "Variables" in group_names:
+                var_group = root.findGroup("Variables")
+            else:
+                var_group = root.addGroup("Variables")
+
+            # Add layer of sampled observations to QGis project
+            samp_file = opj(self.workdir, "outputs", "sample.txt")
+            encoding = "UTF-8"
+            delimiter = ","
+            decimal = "."
+            x = "X"
+            y = "Y"
+            uri = (f"file:///{samp_file}?encoding={encoding}"
+                   f"&delimiter={delimiter}&decimalPoint={decimal}"
+                   f"&crs={self.proj}&xField={x}&yField={y}")
+            samp_layer = QgsVectorLayer(uri, "sampled_obs", "delimitedtext")
+            samp_layer.loadNamedStyle(opj("qgis_layer_style",
+                                          "sample.qml"))
+            add_layer_to_group(far_project, var_group, samp_layer)
+
+            # Progress
+            self.set_progress(self.N_STEPS, self.N_STEPS)
+
+            # Message
+            msg = 'Successful task "{name}"'
+            msg = msg.format(name=self.description())
+            QgsMessageLog.logMessage(msg, self.MESSAGE_CATEGORY, Qgis.Success)
+
+        else:
+            if self.exception is None:
+                msg = ('FarSampleObsTask "{name}" not successful but without '
+                       'exception (probably the task was manually '
+                       'canceled by the user)')
+                msg = msg.format(name=self.description())
+                QgsMessageLog.logMessage(
+                    msg, self.MESSAGE_CATEGORY, Qgis.Warning)
+            else:
+                msg = 'FarSampleObsTask "{name}" Exception: {exception}'
+                msg = msg.format(
+                        name=self.description(),
+                        exception=self.exception)
+                QgsMessageLog.logMessage(
+                    msg, self.MESSAGE_CATEGORY, Qgis.Critical)
+                raise self.exception
+
+    def cancel(self):
+        """Cancelation message."""
+        msg = 'FarSampleObsTask "{name}" was canceled'
+        msg = msg.format(name=self.description())
+        QgsMessageLog.logMessage(
+            msg, self.MESSAGE_CATEGORY, Qgis.Info)
+        super().cancel()
 
 # End of file
