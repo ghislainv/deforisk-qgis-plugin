@@ -44,7 +44,7 @@ from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
 from .far_functions import (
     FarGetVariablesTask,
     FarSampleObsTask,
-    far_models,
+    FarModelsTask,
     FarPredictTask,
     FarValidateTask,
     combine_model_results,
@@ -385,14 +385,19 @@ class ForestatriskPlugin:
     def models(self):
         """Estimate forestatrisk model parameters."""
         self.catch_arguments()
-        far_models(iface=self.iface,
-                   workdir=self.args["workdir"],
-                   csize=self.args["csize"],
-                   variables=self.args["variables"],
-                   beta_start=self.args["beta_start"],
-                   prior_vrho=self.args["prior_vrho"],
-                   mcmc=self.args["mcmc"],
-                   varselection=self.args["varselection"])
+        description = self.task_description("Models")
+        task = FarModelsTask(
+            description=description,
+            iface=self.iface,
+            workdir=self.args["workdir"],
+            csize=self.args["csize"],
+            variables=self.args["variables"],
+            beta_start=self.args["beta_start"],
+            prior_vrho=self.args["prior_vrho"],
+            mcmc=self.args["mcmc"],
+            varselection=self.args["varselection"])
+        # Add task to task manager
+        self.tm.addTask(task)
 
     def predict(self):
         """Predict deforestation risk."""
