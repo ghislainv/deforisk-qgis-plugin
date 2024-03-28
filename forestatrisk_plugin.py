@@ -42,11 +42,12 @@ from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
 
 # Local forestatrisk functions
 from .far_functions import (
-    far_get_variables,
+    FarGetVariablesTask,
     far_sample_obs,
     far_models,
     FarPredictTask,
     FarValidateTask,
+    combine_model_results,
 )
 
 
@@ -88,7 +89,6 @@ class ForestatriskPlugin:
         self.dlg = None
 
         # Task manager
-        self.task = None
         self.tm = QgsApplication.taskManager()
 
     # noinspection PyMethodMayBeStatic
@@ -233,6 +233,55 @@ class ForestatriskPlugin:
             )
         self.print_dependency_version()
 
+    def task_description(self, task_name, model="", date=""):
+        """Write down task description."""
+        isocode = self.args["isocode"]
+        years = self.args["years"]
+        years = years.replace(" ", "").replace(",", "_")
+        fcc_source = self.args["fcc_source"]
+        if task_name in ["Predict", "Validate"]:
+            description = (f"{task_name}_{isocode}_"
+                           f"{years}_{fcc_source}_"
+                           f"{model}_{date}")
+        else:
+            description = (f"{task_name}_{isocode}_"
+                           f"{years}_{fcc_source}")
+        return description
+
+    def set_workdir(self, iso, years, fcc_source):
+        """Set working directory."""
+        years = years.replace(" ", "").replace(",", "_")
+        folder_name = f"{iso}_{years}_{fcc_source}"
+        if platform.system() == "Windows":
+            workdir = os.path.join(os.environ["HOMEDRIVE"],
+                                   os.environ["HOMEPATH"],
+                                   "far-qgis", folder_name)
+        else:
+            workdir = os.path.join(os.environ["HOME"],
+                                   "far-qgis", folder_name)
+        return workdir
+
+    def set_wdpa_key(self, wdpa_key, workdir):
+        """Set WDPA key."""
+        if wdpa_key == "":
+            env_file = os.path.join(workdir, ".env")
+            if os.path.isfile(env_file):
+                with open(env_file, encoding="utf-8") as file:
+                    lines = file.readlines()
+                    for line in lines:
+                        [key, value_key] = line.split("=")
+                        if key == "WDPA_KEY":
+                            os.environ[key] = value_key.replace("\"", "")
+            else:
+                msg = ("No WDPA API key provided "
+                       "(either as plugin argument or "
+                       "WDPA_KEY in workdir/.env)")
+                self.iface.messageBar().pushMessage(
+                    "Error", msg,
+                    level=Qgis.Critical)
+        else:
+            os.environ["WDPA_KEY"] = wdpa_key
+
     def catch_arguments(self):
         """Catch arguments from UI."""
         # Get variables
@@ -263,43 +312,19 @@ class ForestatriskPlugin:
         model_rf = self.dlg.model_rf.isChecked()
         # Default values
         iso = "MTQ" if iso == "" else iso
-        if workdir == "":
-            if platform.system() == "Windows":
-                workdir = os.path.join(os.environ["HOMEDRIVE"],
-                                       os.environ["HOMEPATH"],
-                                       "far-qgis", iso)
-            else:
-                workdir = os.path.join(os.environ["HOME"],
-                                       "far-qgis", iso)
         proj = "EPSG:5490" if proj == "" else proj
         years = "2000, 2010, 2020" if years == "" else years
         fcc_source = "jrc" if fcc_source == "" else fcc_source
         perc = "50" if perc == "" else int(perc)
+        if workdir == "":
+            workdir = self.set_workdir(iso, years, fcc_source)
         remote_rclone = "gdrive_gv" if remote_rclone == "" else remote_rclone
         if gdrive_folder == "":
             gdrive_folder = "GEE/GEE-far-qgis-plugin"
         nsamp = 10000 if nsamp == "" else int(nsamp)
         seed = 1234 if seed == "" else int(seed)
         csize = 1 if csize == "" else float(csize)
-        # WDPA key
-        if wdpa_key == "":
-            env_file = os.path.join(workdir, ".env")
-            if os.path.isfile(env_file):
-                with open(env_file, encoding="utf-8") as file:
-                    lines = file.readlines()
-                    for line in lines:
-                        [key, value_key] = line.split("=")
-                        if key == "WDPA_KEY":
-                            os.environ[key] = value_key.replace("\"", "")
-            else:
-                msg = ("No WDPA API key provided "
-                       "(either as plugin argument or "
-                       "WDPA_KEY in workdir/.env)")
-                self.iface.messageBar().pushMessage(
-                    "Error", msg,
-                    level=Qgis.Critical)
-        else:
-            os.environ["WDPA_KEY"] = wdpa_key
+        self.set_wdpa_key(wdpa_key, workdir)
         # Fit models
         var = ("dist_edge, "
                "dist_road, dist_town, dist_river, "
@@ -327,14 +352,19 @@ class ForestatriskPlugin:
     def get_variables(self):
         """Get variables."""
         self.catch_arguments()
-        far_get_variables(iface=self.iface,
-                          workdir=self.args["workdir"],
-                          isocode=self.args["isocode"],
-                          proj=self.args["proj"],
-                          fcc_source=self.args["fcc_source"],
-                          perc=self.args["perc"],
-                          remote_rclone=self.args["remote_rclone"],
-                          gdrive_folder=self.args["gdrive_folder"])
+        description = self.task_description("GetVariables")
+        task = FarGetVariablesTask(
+            description=description,
+            iface=self.iface,
+            workdir=self.args["workdir"],
+            isocode=self.args["isocode"],
+            proj=self.args["proj"],
+            fcc_source=self.args["fcc_source"],
+            perc=self.args["perc"],
+            remote_rclone=self.args["remote_rclone"],
+            gdrive_folder=self.args["gdrive_folder"])
+        # Add task to task manager
+        self.tm.addTask(task)
 
     def sample_obs(self):
         """Sample observations."""
@@ -366,21 +396,26 @@ class ForestatriskPlugin:
         run_models = [self.args["model_icar"],
                       self.args["model_glm"],
                       self.args["model_rf"]]
-        # Create task
-        for (m, mod) in enumerate(run_models):
-            rmod = [False] * 3
-            if mod:
-                rmod[m] = True
-                self.task = FarPredictTask(
-                    f'Predict {self.args["isocode"]} {self.args["years"]}',
-                    iface=self.iface,
-                    workdir=self.args["workdir"],
-                    years=self.args["years"],
-                    csize=self.args["csize"],
-                    csize_interpolate=self.args["csize_interp"],
-                    run_models=rmod)
-                # Add task to task manager
-                self.tm.addTask(self.task)
+        periods = ["calibration", "validation"]
+        models = ["icar", "glm", "rf"]
+        # Create tasks with loops on dates and models
+        for period in periods:
+            date = "t1" if period == "calibration" else "t2"
+            for (model, run_model) in zip(models, run_models):
+                if run_model:
+                    description = self.task_description(
+                        "Predict", model, date)
+                    task = FarPredictTask(
+                        description=description,
+                        iface=self.iface,
+                        workdir=self.args["workdir"],
+                        years=self.args["years"],
+                        csize=self.args["csize"],
+                        csize_interpolate=self.args["csize_interp"],
+                        period=period,
+                        model=model)
+                    # Add task to task manager
+                    self.tm.addTask(task)
 
     def validate(self):
         """Model validation."""
@@ -389,15 +424,28 @@ class ForestatriskPlugin:
         run_models = [self.args["model_icar"],
                       self.args["model_glm"],
                       self.args["model_rf"]]
-        # Create task
-        self.task = FarValidateTask(
-            f'Validate {self.args["isocode"]} {self.args["years"]}',
-            iface=self.iface,
+        periods = ["calibration", "validation"]
+        models = ["icar", "glm", "rf"]
+        # Create tasks with loop on periods and models
+        for period in periods:
+            date = "t1" if period == "calibration" else "t2"
+            for (model, run_model) in zip(models, run_models):
+                if run_model:
+                    description = self.task_description(
+                        "Validate", model, date)
+                    task = FarValidateTask(
+                        description=description,
+                        iface=self.iface,
+                        workdir=self.args["workdir"],
+                        years=self.args["years"],
+                        period=period,
+                        model=model)
+                    # Add task to task manager
+                    self.tm.addTask(task)
+        # Model comparison
+        combine_model_results(
             workdir=self.args["workdir"],
-            years=self.args["years"],
             run_models=run_models)
-        # Add task to task manager
-        self.tm.addTask(self.task)
 
     def run(self):
         """Run method that performs all the real work."""
