@@ -54,7 +54,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>13</x>
@@ -545,7 +545,7 @@
    </widget>
    <widget class="QWidget" name="tab_model_mw">
     <attribute name="title">
-     <string>Model MV</string>
+     <string>Model MW</string>
     </attribute>
    </widget>
   </widget>

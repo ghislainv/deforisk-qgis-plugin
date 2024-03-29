@@ -25,6 +25,7 @@
 import os
 import subprocess
 import platform
+import time
 
 from qgis.core import Qgis, QgsApplication
 
@@ -48,6 +49,7 @@ from .far_functions import (
     FarPredictTask,
     FarValidateTask,
     combine_model_results,
+    FarEmptyTask,
 )
 
 
@@ -232,6 +234,10 @@ class ForestatriskPlugin:
                 "winexe"
             )
         self.print_dependency_version()
+
+    def increment_n_completed_tasks(self):
+        """Increment the number of completed tasks."""
+        self.n_completed_tasks += 1
 
     def task_description(self, task_name, model="", date=""):
         """Write down task description."""
@@ -437,6 +443,8 @@ class ForestatriskPlugin:
         periods = ["calibration", "validation"]
         models = ["icar", "glm", "rf"]
         # Create tasks with loop on periods and models
+        description = self.task_description("Validate_all")
+        main_task = FarEmptyTask(description)
         for period in periods:
             date = "t1" if period == "calibration" else "t2"
             for (model, run_model) in zip(models, run_models):
@@ -450,12 +458,13 @@ class ForestatriskPlugin:
                         years=self.args["years"],
                         period=period,
                         model=model)
-                    # Add task to task manager
-                    self.tm.addTask(task)
-        # Model comparison
-        combine_model_results(
-            workdir=self.args["workdir"],
-            run_models=run_models)
+                    main_task.addSubTask(task)
+        # Combine model results
+        main_task.taskCompleted.connect(
+            lambda: combine_model_results(
+                self.args["workdir"], run_models))
+        # Add first task to task manager
+        self.tm.addTask(main_task)
 
     def run(self):
         """Run method that performs all the real work."""
