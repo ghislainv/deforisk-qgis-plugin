@@ -41,7 +41,7 @@ from .resources import *
 # Import the code for the dialog
 from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
 
-# Local forestatrisk functions
+# Local far functions
 from .far_functions import (
     FarGetVariablesTask,
     FarSampleObsTask,
@@ -52,6 +52,8 @@ from .far_functions import (
     FarEmptyTask,
 )
 
+# Local rmj function
+from .rmj_functions import RmjCalibrateTask
 
 class ForestatriskPlugin:
     """QGIS Plugin Implementation."""
@@ -316,6 +318,9 @@ class ForestatriskPlugin:
         model_icar = self.dlg.model_icar.isChecked()
         model_glm = self.dlg.model_glm.isChecked()
         model_rf = self.dlg.model_rf.isChecked()
+        # Rmj calibrate
+        defor_thresh = float(self.dlg.defor_thresh.text())
+        max_dist = int(self.dlg.max_dist.text())
         # Default values
         iso = "MTQ" if iso == "" else iso
         proj = "EPSG:5490" if proj == "" else proj
@@ -353,7 +358,8 @@ class ForestatriskPlugin:
             "beta_start": beta_start, "prior_vrho": prior_vrho,
             "mcmc": mcmc, "varselection": varselection,
             "csize_interp": csize_interp, "model_icar": model_icar,
-            "model_glm": model_glm, "model_rf": model_rf}
+            "model_glm": model_glm, "model_rf": model_rf,
+            "defor_thresh": defor_thresh, "max_dist": max_dist}
 
     def get_variables(self):
         """Get variables."""
@@ -466,6 +472,23 @@ class ForestatriskPlugin:
         # Add first task to task manager
         self.tm.addTask(main_task)
 
+    def rmj_calibrate(self):
+        """Risk map with moving window approach for calibration
+        period.
+        """
+        # Catch arguments
+        self.catch_arguments()
+        description = self.task_description("RmjCalibrate")
+        task = RmjCalibrateTask(
+            description=description,
+            iface=self.iface,
+            defor_thresh=self.args["defor_thresh"],
+            max_dist=self.args["max_dist"],
+            workdir=self.args["workdir"],
+            years=self.args["years"])
+        # Add task to task manager
+        self.tm.addTask(task)
+
     def run(self):
         """Run method that performs all the real work."""
 
@@ -480,11 +503,16 @@ class ForestatriskPlugin:
             self.set_exe_path()
 
         # Call to functions if buttons ares clicked
+
+        # far models
         self.dlg.run_var.clicked.connect(self.get_variables)
         self.dlg.run_samp.clicked.connect(self.sample_obs)
         self.dlg.run_models.clicked.connect(self.models)
         self.dlg.run_predict.clicked.connect(self.predict)
         self.dlg.run_validation.clicked.connect(self.validate)
+
+        # rmj moving window model
+        self.dlg.run_rmj_calibrate.clicked.connect(self.rmj_calibrate)
 
         # show the dialog
         self.dlg.show()

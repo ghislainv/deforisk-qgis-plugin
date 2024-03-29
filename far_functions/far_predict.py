@@ -159,6 +159,10 @@ class FarPredictTask(QgsTask):
             msg = msg.format(name=self.description())
             QgsMessageLog.logMessage(msg, self.MESSAGE_CATEGORY, Qgis.Info)
 
+            # Progress
+            progress = 0
+            self.set_progress(progress, self.N_STEPS)
+
             # Set working directory
             os.chdir(self.workdir)
 
@@ -176,10 +180,6 @@ class FarPredictTask(QgsTask):
             # Get model
             mod = self.get_model(mod_icar_pickle, y_design_info,
                                  x_design_info)
-
-            # Progress
-            progress = 0
-            self.set_progress(progress, self.N_STEPS)
 
             # Date
             date = "t1" if self.period == "calibration" else "t2"

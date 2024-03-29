@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -547,6 +547,90 @@
     <attribute name="title">
      <string>Model MW</string>
     </attribute>
+    <widget class="QGroupBox" name="groupBox_rmj_model">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>491</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Fit model to data</string>
+     </property>
+     <widget class="QPushButton" name="run_rmj_calibrate">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>90</y>
+        <width>71</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="defor_thresh">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>30</y>
+        <width>241</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>99.5</string>
+      </property>
+      <property name="placeholderText">
+       <string>99.5</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_defor_thresh">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>30</y>
+        <width>222</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Deforestation threshold (in %)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_max_dist">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>222</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max. distance to forest edge</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="max_dist">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>60</y>
+        <width>241</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>2500</string>
+      </property>
+      <property name="placeholderText">
+       <string>2500</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>

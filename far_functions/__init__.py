@@ -11,3 +11,5 @@ from .far_empty_task import FarEmptyTask
 
 # Use agg backend for QGis plugin
 matplotlib.use("agg")
+
+# End of file
