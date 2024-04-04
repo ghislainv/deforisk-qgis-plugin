@@ -37,7 +37,7 @@ class FarPredictTask(QgsTask):
     """Predicting the deforestation risk."""
 
     # Constants
-    OUT = "outputs"
+    OUT = opj("outputs", "far_models")
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 3
 

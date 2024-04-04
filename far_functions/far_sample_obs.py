@@ -35,7 +35,7 @@ class FarSampleObsTask(QgsTask):
     """Sample observations."""
 
     # Constants
-    OUT = "outputs"
+    OUT = opj("outputs", "far_models")
     DATA = "data"
     DATA_RAW = "data_raw"
     MESSAGE_CATEGORY = "FAR plugin"

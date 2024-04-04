@@ -90,6 +90,9 @@
        </item>
        <item row="1" column="4">
         <widget class="QLineEdit" name="isocode">
+         <property name="text">
+          <string>MTQ</string>
+         </property>
          <property name="placeholderText">
           <string>MTQ</string>
          </property>
@@ -104,6 +107,9 @@
        </item>
        <item row="2" column="4">
         <widget class="QLineEdit" name="proj">
+         <property name="text">
+          <string>EPSG:5490</string>
+         </property>
          <property name="placeholderText">
           <string>EPSG:5490</string>
          </property>
@@ -118,6 +124,9 @@
        </item>
        <item row="3" column="1" colspan="4">
         <widget class="QLineEdit" name="years">
+         <property name="text">
+          <string>2000, 2010, 2020</string>
+         </property>
          <property name="placeholderText">
           <string>2000, 2010, 2020</string>
          </property>
@@ -132,6 +141,9 @@
        </item>
        <item row="4" column="3" colspan="2">
         <widget class="QLineEdit" name="fcc_source">
+         <property name="text">
+          <string>jrc</string>
+         </property>
          <property name="placeholderText">
           <string>jrc</string>
          </property>
@@ -140,12 +152,15 @@
        <item row="5" column="0" colspan="4">
         <widget class="QLabel" name="label_perc">
          <property name="text">
-          <string>Tree cover percentage</string>
+          <string>Tree cover threshold (%)</string>
          </property>
         </widget>
        </item>
        <item row="5" column="4">
         <widget class="QLineEdit" name="perc">
+         <property name="text">
+          <string>50</string>
+         </property>
          <property name="placeholderText">
           <string>50</string>
          </property>
@@ -241,7 +256,7 @@
        <item row="0" column="1">
         <widget class="QLineEdit" name="nsamp">
          <property name="text">
-          <string/>
+          <string>10000</string>
          </property>
          <property name="placeholderText">
           <string>10000</string>
@@ -271,7 +286,7 @@
        <item row="1" column="1">
         <widget class="QLineEdit" name="seed">
          <property name="text">
-          <string/>
+          <string>1234</string>
          </property>
          <property name="placeholderText">
           <string>1234</string>
@@ -288,7 +303,7 @@
        <item row="2" column="1">
         <widget class="QLineEdit" name="csize">
          <property name="text">
-          <string/>
+          <string>10</string>
          </property>
          <property name="placeholderText">
           <string>10</string>
@@ -365,7 +380,7 @@
        <item row="1" column="1">
         <widget class="QLineEdit" name="beta_start">
          <property name="text">
-          <string/>
+          <string>-99</string>
          </property>
          <property name="placeholderText">
           <string>-99</string>
@@ -382,7 +397,7 @@
        <item row="2" column="1">
         <widget class="QLineEdit" name="prior_vrho">
          <property name="text">
-          <string/>
+          <string>-1</string>
          </property>
          <property name="placeholderText">
           <string>-1</string>
@@ -399,7 +414,7 @@
        <item row="3" column="1">
         <widget class="QLineEdit" name="mcmc">
          <property name="text">
-          <string/>
+          <string>5000</string>
          </property>
          <property name="placeholderText">
           <string>5000</string>
@@ -467,7 +482,7 @@
        <item row="0" column="2">
         <widget class="QLineEdit" name="csize_interp">
          <property name="text">
-          <string/>
+          <string>1</string>
          </property>
          <property name="placeholderText">
           <string>1</string>
@@ -553,7 +568,7 @@
        <x>10</x>
        <y>10</y>
        <width>491</width>
-       <height>131</height>
+       <height>191</height>
       </rect>
      </property>
      <property name="title">
@@ -563,7 +578,7 @@
       <property name="geometry">
        <rect>
         <x>410</x>
-        <y>90</y>
+        <y>150</y>
         <width>71</width>
         <height>25</height>
        </rect>
@@ -598,7 +613,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Deforestation threshold (in %)</string>
+       <string>Deforestation threshold (%)</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_max_dist">
@@ -611,7 +626,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Max. distance to forest edge</string>
+       <string>Max. distance to forest edge (m)</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="max_dist">
@@ -628,6 +643,35 @@
       </property>
       <property name="placeholderText">
        <string>2500</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="win_size">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>90</y>
+        <width>241</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>11</string>
+      </property>
+      <property name="placeholderText">
+       <string>11</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_win_size">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>222</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Window size (# pixels)</string>
       </property>
      </widget>
     </widget>

@@ -321,6 +321,7 @@ class ForestatriskPlugin:
         # Rmj calibrate
         defor_thresh = float(self.dlg.defor_thresh.text())
         max_dist = int(self.dlg.max_dist.text())
+        win_size = int(self.dlg.win_size.text())
         # Default values
         iso = "MTQ" if iso == "" else iso
         proj = "EPSG:5490" if proj == "" else proj
@@ -359,7 +360,8 @@ class ForestatriskPlugin:
             "mcmc": mcmc, "varselection": varselection,
             "csize_interp": csize_interp, "model_icar": model_icar,
             "model_glm": model_glm, "model_rf": model_rf,
-            "defor_thresh": defor_thresh, "max_dist": max_dist}
+            "defor_thresh": defor_thresh, "max_dist": max_dist,
+            "win_size": win_size}
 
     def get_variables(self):
         """Get variables."""
@@ -485,6 +487,7 @@ class ForestatriskPlugin:
             defor_thresh=self.args["defor_thresh"],
             max_dist=self.args["max_dist"],
             workdir=self.args["workdir"],
+            win_size=self.args["win_size"],
             years=self.args["years"])
         # Add task to task manager
         self.tm.addTask(task)

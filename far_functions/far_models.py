@@ -35,7 +35,7 @@ class FarModelsTask(QgsTask):
     """Estimate forestatrisk model parameters."""
 
     # Constants
-    OUT = "outputs"
+    OUT = opj("outputs", "far_models")
     DATA = "data"
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 6

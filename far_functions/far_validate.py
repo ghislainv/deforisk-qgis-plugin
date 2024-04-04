@@ -58,7 +58,7 @@ class FarValidateTask(QgsTask):
     """Validating the deforestation risk maps."""
 
     # Constants
-    OUT = "outputs"
+    OUT = opj("outputs", "far_models")
     DATA = "data"
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 1
