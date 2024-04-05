@@ -54,24 +54,30 @@ def combine_model_results(workdir, run_models):
         index=False, index_label=False)
 
 
-class FarValidateTask(QgsTask):
-    """Validating the deforestation risk maps."""
+class ValidateTask(QgsTask):
+    """Validating deforestation risk map."""
 
     # Constants
-    OUT = opj("outputs", "far_models")
+    OUT = opj("outputs", "validation")
     DATA = "data"
     MESSAGE_CATEGORY = "FAR plugin"
+    FAR_MODELS = ["icar", "glm", "rf"]
     N_STEPS = 1
 
-    def __init__(self, description, iface, workdir, years, period,
-                 model):
+    def __init__(self, description, iface, workdir, years, csize_val,
+                 period, model):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
         self.years = years
+        self.csize_val = csize_val
         self.period = period
         self.model = model
         self.exception = None
+        if self.model in self.FAR_MODELS:
+            self.resdir = opj("outputs", "far_models")
+        else:
+            self.resdir = opj("outputs", "rmj_moving_window")
 
     def get_time_interval(self):
         """Get time intervals from years."""
@@ -107,6 +113,7 @@ class FarValidateTask(QgsTask):
 
             # Set working directory
             os.chdir(self.workdir)
+            far.make_dir(self.OUT)
 
             # Compute time intervals from years
             time_interval = self.get_time_interval()
@@ -116,25 +123,25 @@ class FarValidateTask(QgsTask):
 
             # Validation
             far.validation_udef_arp(
-                fcc_file=opj("data", "forest", "fcc123.tif"),
+                fcc_file=opj(self.DATA, "forest", "fcc123.tif"),
                 period=self.period,
                 time_interval=time_interval,
                 riskmap_file=opj(
-                    self.OUT,
+                    self.resdir,
                     f"prob_{self.model}_{date}.tif"),
                 tab_file_defor=opj(
-                    self.OUT,
+                    self.resdir,
                     f"defrate_cat_{self.model}_{date}.csv"),
-                csize_coarse_grid=50,
+                csize_coarse_grid=self.csize_val,
                 indices_file_pred=opj(
                     self.OUT,
-                    f"indices_{self.model}_{date}.csv"),
+                    f"indices_{self.model}_{date}_{self.csize_val}.csv"),
                 tab_file_pred=opj(
                     self.OUT,
-                    f"pred_obs_{self.model}_{date}.csv"),
+                    f"pred_obs_{self.model}_{date}_{self.csize_val}.csv"),
                 fig_file_pred=opj(
                     self.OUT,
-                    f"pred_obs_{self.model}_{date}.png"),
+                    f"pred_obs_{self.model}_{date}_{self.csize_val}.png"),
                 verbose=False)
 
             # Check isCanceled() to handle cancellation
@@ -161,14 +168,14 @@ class FarValidateTask(QgsTask):
 
         else:
             if self.exception is None:
-                msg = ('FarValidateTask "{name}" not successful but without '
+                msg = ('ValidateTask "{name}" not successful but without '
                        'exception (probably the task was manually '
                        'canceled by the user)')
                 msg = msg.format(name=self.description())
                 QgsMessageLog.logMessage(
                     msg, self.MESSAGE_CATEGORY, Qgis.Warning)
             else:
-                msg = 'FarValidateTask "{name}" Exception: {exception}'
+                msg = 'ValidateTask "{name}" Exception: {exception}'
                 msg = msg.format(
                         name=self.description(),
                         exception=self.exception)
@@ -178,7 +185,7 @@ class FarValidateTask(QgsTask):
 
     def cancel(self):
         """Cancelation message."""
-        msg = 'FarValidateTask "{name}" was canceled'
+        msg = 'ValidateTask "{name}" was canceled'
         msg = msg.format(name=self.description())
         QgsMessageLog.logMessage(
             msg, self.MESSAGE_CATEGORY, Qgis.Info)

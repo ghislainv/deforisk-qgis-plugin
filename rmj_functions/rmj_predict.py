@@ -9,11 +9,10 @@
 # ================================================================
 
 """
-Predicting the deforestation risk.
+Deriving risk maps with the moving window approach.
 """
 
 import os
-import pickle
 
 from qgis.core import (
     Qgis, QgsTask, QgsProject,
@@ -21,10 +20,8 @@ from qgis.core import (
 )
 
 import matplotlib.pyplot as plt
-from patsy.highlevel import dmatrices
 import pandas as pd
-import joblib
-import forestatrisk as far
+import riskmapjnr as rmj
 
 # Local import
 from ..utilities import add_layer, add_layer_to_group
@@ -33,33 +30,25 @@ from ..utilities import add_layer, add_layer_to_group
 opj = os.path.join
 
 
-class FarPredictTask(QgsTask):
-    """Predicting the deforestation risk."""
+class RmjPredictTask(QgsTask):
+    """Deriving risk maps with the moving window approach."""
 
     # Constants
     DATA = "data"
-    OUT = opj("outputs", "far_models")
+    OUT = opj("outputs", "rmj_moving_window")
     MESSAGE_CATEGORY = "FAR plugin"
-    N_STEPS = 3
+    N_STEPS = 4
 
     def __init__(self, description, iface, workdir, years,
-                 csize, csize_interpolate, period, model):
+                 win_size, period):
         """Initialize the class."""
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
         self.years = years
-        self.csize = csize
-        self.csize_interpolate = csize_interpolate
+        self.win_size = win_size
         self.period = period
-        self.model = model
         self.exception = None
-        if self.period == "calibration":
-            self.datadir = "data"
-        elif self.period == "validation":
-            self.datadir = "data_t2"
-        else:
-            self.datadir = "data_t3"
 
     def get_time_interval(self):
         """Get time intervals from years."""
@@ -71,70 +60,29 @@ class FarPredictTask(QgsTask):
             time_interval = years[2] - years[1]
         return time_interval
 
-    def get_icar_model(self, pickle_file):
-        """Get icar model."""
-        try:
-            file = open(pickle_file, "rb")
-        except FileNotFoundError:
-            msg = ("No iCAR model "
-                   "in the working directory. "
-                   "Run upper box \"iCAR "
-                   "model\" first.")
-            self.exception = msg
-            return False
-        with file:
-            mod_icar_pickle = pickle.load(file)
-            return mod_icar_pickle
+    def get_dist_file(self):
+        """Get distance to forest edge file."""
+        if self.period == "calibration":
+            dist_file = opj(self.DATA, "dist_edge.tif")
+        else:
+            dist_file = opj(self.DATA, "validation",
+                            "dist_edge_t2.tif")
+        return dist_file
 
-    def get_design_info(self, mod_icar_pickle, dataset_file):
-        """Get design info from patsy."""
-        formula_icar = mod_icar_pickle["formula"]
-        dataset = pd.read_csv(dataset_file)
-        dataset = dataset.dropna(axis=0)
-        dataset["trial"] = 1
-        y, x = dmatrices(formula_icar, dataset, 0, "drop")
-        y_design_info = y.design_info
-        x_design_info = x.design_info
-        return (y_design_info, x_design_info)
-
-    def get_model(self, mod_icar_pickle,
-                  y_design_info, x_design_info):
-        """Get model."""
-        if self.model == "icar":
-            # Interpolate the spatial random effects
-            ofile = opj(self.OUT, "rho.tif")
-            if not os.path.isfile(ofile):
-                rho = mod_icar_pickle["rho"]
-                far.interpolate_rho(
-                    rho=rho,
-                    input_raster=opj(self.datadir, "fcc.tif"),
-                    output_file=ofile,
-                    csize_orig=self.csize,
-                    csize_new=self.csize_interpolate)
-            # Create icar_model object for predictions
-            mod = far.icarModelPred(
-                formula=mod_icar_pickle["formula"],
-                _y_design_info=y_design_info,
-                _x_design_info=x_design_info,
-                betas=mod_icar_pickle["betas"],
-                rho=mod_icar_pickle["rho"])
-        if self.model == "glm":
-            ifile = opj(self.OUT, "mod_glm.pickle")
-            with open(ifile, "rb") as file:
-                mod = pickle.load(file)
-        if self.model == "rf":
-            ifile = opj(self.OUT, "mod_rf.joblib")
-            with open(ifile, "rb") as file:
-                mod = joblib.load(file)
-        return mod
+    def get_dist_thresh(self):
+        """Get distance to forest edge threshold."""
+        ifile = opj(self.OUT, "dist_edge_threshold.csv")
+        dist_thresh_data = pd.read_csv(ifile)
+        dist_thresh = dist_thresh_data.loc[0, "dist_thresh"]
+        return dist_thresh
 
     def plot_prob(self, model, date):
         """Plot probability of deforestation."""
         prob_file = opj(self.OUT, f"prob_{model}_{date}.tif")
         png_file = opj(self.OUT, f"prob_{model}_{date}.png")
         border_file = opj(self.DATA, "ctry_PROJ.shp")
-        fig_prob = far.plot.prob(
-            input_prob_raster=prob_file,
+        fig_prob = rmj.plot.riskmap(
+            input_risk_map=prob_file,
             maxpixels=1e8,
             output_file=png_file,
             borders=border_file,
@@ -170,48 +118,25 @@ class FarPredictTask(QgsTask):
             # Compute time interval from years
             time_interval = self.get_time_interval()
 
-            # Get design info
-            mod_icar_pickle = self.get_icar_model(
-                pickle_file=opj(self.OUT, "mod_icar.pickle"))
-            if not mod_icar_pickle:
-                return False
-            (y_design_info, x_design_info) = self.get_design_info(
-                mod_icar_pickle, dataset_file=opj(self.OUT, "sample.txt"))
-
-            # Get model
-            mod = self.get_model(mod_icar_pickle, y_design_info,
-                                 x_design_info)
-
             # Date
             date = "t1" if self.period == "calibration" else "t2"
 
+            # Model
+            model = f"mw_{self.win_size}"
+
+            # Distance threshold
+            dist_thresh = self.get_dist_thresh()
+
             # Compute predictions
-            if self.model == "icar":
-                far.predict_raster_binomial_iCAR(
-                    model=mod,
-                    var_dir=self.datadir,
-                    input_cell_raster=opj(self.OUT, "rho.tif"),
-                    input_forest_raster=opj(
-                        self.DATA,
-                        "forest",
-                        f"forest_{date}.tif"),
-                    output_file=opj(
-                        self.OUT,
-                        f"prob_icar_{date}.tif"),
-                    blk_rows=10)
-            elif self.model in ["glm", "rf"]:
-                far.predict_raster(
-                    model=mod,
-                    _x_design_info=x_design_info,
-                    var_dir=self.datadir,
-                    input_forest_raster=opj(
-                        self.DATA,
-                        "forest",
-                        f"forest_{date}.tif"),
-                    output_file=opj(
-                        self.OUT,
-                        f"prob_{self.model}_{date}.tif"),
-                    blk_rows=10)
+            rmj.set_defor_cat_zero(
+                ldefrate_file=opj(self.OUT, f"ldefrate_{model}.tif"),
+                dist_file=self.get_dist_file(),
+                dist_thresh=dist_thresh,
+                ldefrate_with_zero_file=opj(
+                    self.OUT,
+                    f"prob_{model}_{date}.tif"),
+                blk_rows=128,
+                verbose=False)
 
             # Check isCanceled() to handle cancellation
             if self.isCanceled():
@@ -222,14 +147,15 @@ class FarPredictTask(QgsTask):
             self.set_progress(progress, self.N_STEPS)
 
             # Compute deforestation rate per category
-            far.defrate_per_cat(
+            rmj.defrate_per_cat(
                 fcc_file=opj(self.DATA, "forest", "fcc123.tif"),
-                riskmap_file=opj(self.OUT, f"prob_{self.model}_{date}.tif"),
+                riskmap_file=opj(self.OUT,
+                                 f"prob_{model}_{date}.tif"),
                 time_interval=time_interval,
                 period=self.period,
                 tab_file_defrate=opj(
                     self.OUT,
-                    f"defrate_cat_{self.model}_{date}.csv"),
+                    f"defrate_cat_{model}_{date}.csv"),
                 verbose=False)
 
             # Progress
@@ -248,16 +174,17 @@ class FarPredictTask(QgsTask):
         if result:
             # Plot
             date = "t1" if self.period == "calibration" else "t2"
-            self.plot_prob(model=self.model, date=date)
+            model = f"mw_{self.win_size}"
+            self.plot_prob(model=model, date=date)
 
             # Qgis project and group
             far_project = QgsProject.instance()
             root = far_project.layerTreeRoot()
             group_names = [i.name() for i in root.children()]
-            if "Predictions" in group_names:
-                predict_group = root.findGroup("Predictions")
+            if "Moving window" in group_names:
+                mw_group = root.findGroup("Moving window")
             else:
-                predict_group = root.addGroup("Predictions")
+                mw_group = root.addGroup("Moving window")
 
             # Add border layer to QGis project
             border_file = opj(self.DATA, "ctry_PROJ.shp")
@@ -266,11 +193,12 @@ class FarPredictTask(QgsTask):
             add_layer(far_project, border_layer)
 
             # Add prob layers to QGis project
-            prob_file = opj(self.OUT, f"prob_{self.model}_{date}.tif")
-            prob_layer = QgsRasterLayer(prob_file, f"prob_{self.model}_{date}")
+            prob_file = opj(self.OUT, f"prob_{model}_{date}.tif")
+            prob_layer = QgsRasterLayer(prob_file,
+                                        f"prob_{model}_{date}")
             prob_layer.loadNamedStyle(opj("qgis_layer_style",
-                                          "prob.qml"))
-            add_layer_to_group(far_project, predict_group,
+                                          "prob_mv.qml"))
+            add_layer_to_group(far_project, mw_group,
                                prob_layer)
 
             # Progress
@@ -283,14 +211,14 @@ class FarPredictTask(QgsTask):
 
         else:
             if self.exception is None:
-                msg = ('FarPredictTask "{name}" not successful but without '
+                msg = ('RmjPredictTask "{name}" not successful but without '
                        'exception (probably the task was manually '
                        'canceled by the user)')
                 msg = msg.format(name=self.description())
                 QgsMessageLog.logMessage(
                     msg, self.MESSAGE_CATEGORY, Qgis.Warning)
             else:
-                msg = 'FarPredictTask "{name}" Exception: {exception}'
+                msg = 'RmjPredictTask "{name}" Exception: {exception}'
                 msg = msg.format(
                         name=self.description(),
                         exception=self.exception)
@@ -300,7 +228,7 @@ class FarPredictTask(QgsTask):
 
     def cancel(self):
         """Cancelation message."""
-        msg = 'FarPredictTask "{name}" was canceled'
+        msg = 'RmjPredictTask "{name}" was canceled'
         msg = msg.format(name=self.description())
         QgsMessageLog.logMessage(
             msg, self.MESSAGE_CATEGORY, Qgis.Info)

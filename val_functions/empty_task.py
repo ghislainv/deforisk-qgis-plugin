@@ -17,7 +17,7 @@ from qgis.core import (
 )
 
 
-class FarEmptyTask(QgsTask):
+class EmptyTask(QgsTask):
     """Empty task.
 
     This class is used as main task with subTasks. A global

@@ -26,6 +26,7 @@ import os
 import subprocess
 import platform
 import time
+from glob import glob
 
 from qgis.core import Qgis, QgsApplication
 
@@ -45,18 +46,29 @@ from .forestatrisk_plugin_dialog import ForestatriskPluginDialog
 from .far_functions import (
     FarGetVariablesTask,
     FarSampleObsTask,
-    FarModelsTask,
+    FarCalibrateTask,
     FarPredictTask,
-    FarValidateTask,
-    combine_model_results,
-    FarEmptyTask,
 )
 
 # Local rmj function
-from .rmj_functions import RmjCalibrateTask
+from .rmj_functions import (
+    RmjCalibrateTask,
+    RmjPredictTask,
+)
+
+# Local val function
+from .val_functions import (
+    EmptyTask,
+    ValidateTask,
+    combine_model_results,
+)
+
 
 class ForestatriskPlugin:
     """QGIS Plugin Implementation."""
+
+    PERIODS = ["calibration", "validation"]
+    FAR_MODELS = ["icar", "glm", "rf"]
 
     def __init__(self, iface):
         """Constructor.
@@ -237,20 +249,20 @@ class ForestatriskPlugin:
             )
         self.print_dependency_version()
 
-    def increment_n_completed_tasks(self):
-        """Increment the number of completed tasks."""
-        self.n_completed_tasks += 1
-
-    def task_description(self, task_name, model="", date=""):
+    def task_description(self, task_name, model=None, date=None):
         """Write down task description."""
         isocode = self.args["isocode"]
         years = self.args["years"]
         years = years.replace(" ", "").replace(",", "_")
         fcc_source = self.args["fcc_source"]
-        if task_name in ["Predict", "Validate"]:
+        if (model is not None and date is not None):
             description = (f"{task_name}_{isocode}_"
                            f"{years}_{fcc_source}_"
                            f"{model}_{date}")
+        elif (model is not None and date is None):
+            description = (f"{task_name}_{isocode}_"
+                           f"{years}_{fcc_source}_"
+                           f"{model}")
         else:
             description = (f"{task_name}_{isocode}_"
                            f"{years}_{fcc_source}")
@@ -290,6 +302,45 @@ class ForestatriskPlugin:
         else:
             os.environ["WDPA_KEY"] = wdpa_key
 
+    def get_win_sizes(self):
+        """Get window sizes as list."""
+        win_sizes = self.dlg.win_size.text()
+        win_sizes = win_sizes.replace(" ", "").split(",")
+        win_sizes = [int(i) for i in win_sizes]
+        return win_sizes
+
+    def get_run_models(self):
+        """Get run_models."""
+        run_models = [self.args["model_icar"],
+                      self.args["model_glm"],
+                      self.args["model_rf"]]
+        return run_models
+
+    def get_date(self, period):
+        """Get date from period."""
+        date = "t1" if period == "calibration" else "t2"
+        return date
+
+    def get_csizes_val(self):
+        """Get coarse grid cell sizes as list."""
+        csizes_val = self.dlg.csizes_val.text()
+        csizes_val = csizes_val.replace(" ", "").split(",")
+        csizes_val = [int(i) for i in csizes_val]
+        return csizes_val
+
+    def get_models(self):
+        """Get list of models for validation."""
+        models = []
+        win_sizes = self.dlg.win_size.text()
+        win_sizes = win_sizes.replace(" ", "").split(",")
+        for win_size in win_sizes:
+            models.append("mw_" + win_size)
+        run_models = self.get_run_models()
+        for (m, run_model) in enumerate(self.FAR_MODELS):
+            if run_models[m]:
+                models.append(run_model)
+        return models
+
     def catch_arguments(self):
         """Catch arguments from UI."""
         # Get variables
@@ -321,7 +372,9 @@ class ForestatriskPlugin:
         # Rmj calibrate
         defor_thresh = float(self.dlg.defor_thresh.text())
         max_dist = int(self.dlg.max_dist.text())
-        win_size = int(self.dlg.win_size.text())
+        win_sizes = self.get_win_sizes()
+        # Validate
+        csizes_val = self.get_csizes_val()
         # Default values
         iso = "MTQ" if iso == "" else iso
         proj = "EPSG:5490" if proj == "" else proj
@@ -361,9 +414,9 @@ class ForestatriskPlugin:
             "csize_interp": csize_interp, "model_icar": model_icar,
             "model_glm": model_glm, "model_rf": model_rf,
             "defor_thresh": defor_thresh, "max_dist": max_dist,
-            "win_size": win_size}
+            "win_sizes": win_sizes, "csizes_val": csizes_val}
 
-    def get_variables(self):
+    def far_get_variables(self):
         """Get variables."""
         self.catch_arguments()
         description = self.task_description("GetVariables")
@@ -380,7 +433,7 @@ class ForestatriskPlugin:
         # Add task to task manager
         self.tm.addTask(task)
 
-    def sample_obs(self):
+    def far_sample_obs(self):
         """Sample observations."""
         self.catch_arguments()
         description = self.task_description("SampleObs")
@@ -396,11 +449,11 @@ class ForestatriskPlugin:
         # Add task to task manager
         self.tm.addTask(task)
 
-    def models(self):
+    def far_calibrate(self):
         """Estimate forestatrisk model parameters."""
         self.catch_arguments()
-        description = self.task_description("Models")
-        task = FarModelsTask(
+        description = self.task_description("FarCalibrate")
+        task = FarCalibrateTask(
             description=description,
             iface=self.iface,
             workdir=self.args["workdir"],
@@ -413,22 +466,18 @@ class ForestatriskPlugin:
         # Add task to task manager
         self.tm.addTask(task)
 
-    def predict(self):
+    def far_predict(self):
         """Predict deforestation risk."""
         # Catch arguments
         self.catch_arguments()
-        run_models = [self.args["model_icar"],
-                      self.args["model_glm"],
-                      self.args["model_rf"]]
-        periods = ["calibration", "validation"]
-        models = ["icar", "glm", "rf"]
+        run_models = self.get_run_models()
         # Create tasks with loops on dates and models
-        for period in periods:
-            date = "t1" if period == "calibration" else "t2"
-            for (model, run_model) in zip(models, run_models):
+        for period in self.PERIODS:
+            date = self.get_date(period)
+            for (model, run_model) in zip(self.FAR_MODELS, run_models):
                 if run_model:
                     description = self.task_description(
-                        "Predict", model, date)
+                        "FarPredict", model, date)
                     task = FarPredictTask(
                         description=description,
                         iface=self.iface,
@@ -441,29 +490,69 @@ class ForestatriskPlugin:
                     # Add task to task manager
                     self.tm.addTask(task)
 
+    def rmj_calibrate(self):
+        """Compute distance threshold and local deforestation rate."""
+        # Catch arguments
+        self.catch_arguments()
+        win_sizes = self.get_win_sizes()
+        for win_size in win_sizes:
+            model = f"mv_{win_size}"
+            description = self.task_description("RmjCalibrate", model)
+            task = RmjCalibrateTask(
+                description=description,
+                iface=self.iface,
+                workdir=self.args["workdir"],
+                years=self.args["years"],
+                defor_thresh=self.args["defor_thresh"],
+                max_dist=self.args["max_dist"],
+                win_size=win_size)
+            # Add task to task manager
+            self.tm.addTask(task)
+
+    def rmj_predict(self):
+        """Predict deforestation rate with moving window approach."""
+        # Catch arguments
+        self.catch_arguments()
+        win_sizes = self.get_win_sizes()
+        for period in self.PERIODS:
+            date = self.get_date(period)
+            for wsize in win_sizes:
+                model = f"mv_{wsize}"
+                description = self.task_description(
+                    "RmjPredict", model, date)
+                task = RmjPredictTask(
+                    description=description,
+                    iface=self.iface,
+                    workdir=self.args["workdir"],
+                    years=self.args["years"],
+                    win_size=wsize,
+                    period=period)
+                # Add task to task manager
+                self.tm.addTask(task)
+
     def validate(self):
         """Model validation."""
         # Catch arguments
         self.catch_arguments()
-        run_models = [self.args["model_icar"],
-                      self.args["model_glm"],
-                      self.args["model_rf"]]
-        periods = ["calibration", "validation"]
-        models = ["icar", "glm", "rf"]
-        # Create tasks with loop on periods and models
+        run_models = self.get_run_models()
+        csizes_val = self.get_csizes_val()
+        # Main empty task
         description = self.task_description("Validate_all")
-        main_task = FarEmptyTask(description)
-        for period in periods:
-            date = "t1" if period == "calibration" else "t2"
-            for (model, run_model) in zip(models, run_models):
-                if run_model:
+        main_task = EmptyTask(description)
+        models = self.get_models()
+        # Tasks with loop on csizes_val, periods, and models
+        for csize_val in csizes_val:
+            for period in self.PERIODS:
+                date = self.get_date(period)
+                for model in models:
                     description = self.task_description(
                         "Validate", model, date)
-                    task = FarValidateTask(
+                    task = ValidateTask(
                         description=description,
                         iface=self.iface,
                         workdir=self.args["workdir"],
                         years=self.args["years"],
+                        csize_val=csize_val,
                         period=period,
                         model=model)
                     main_task.addSubTask(task)
@@ -473,24 +562,6 @@ class ForestatriskPlugin:
                 self.args["workdir"], run_models))
         # Add first task to task manager
         self.tm.addTask(main_task)
-
-    def rmj_calibrate(self):
-        """Risk map with moving window approach for calibration
-        period.
-        """
-        # Catch arguments
-        self.catch_arguments()
-        description = self.task_description("RmjCalibrate")
-        task = RmjCalibrateTask(
-            description=description,
-            iface=self.iface,
-            defor_thresh=self.args["defor_thresh"],
-            max_dist=self.args["max_dist"],
-            workdir=self.args["workdir"],
-            win_size=self.args["win_size"],
-            years=self.args["years"])
-        # Add task to task manager
-        self.tm.addTask(task)
 
     def run(self):
         """Run method that performs all the real work."""
@@ -505,19 +576,24 @@ class ForestatriskPlugin:
             # Set executable path
             self.set_exe_path()
 
-        # Call to functions if buttons ares clicked
+        # Action if buttons ares clicked
 
-        # far models
-        self.dlg.run_var.clicked.connect(self.get_variables)
-        self.dlg.run_samp.clicked.connect(self.sample_obs)
-        self.dlg.run_models.clicked.connect(self.models)
-        self.dlg.run_predict.clicked.connect(self.predict)
-        self.dlg.run_validation.clicked.connect(self.validate)
+        # Data
+        self.dlg.run_far_get_variable.clicked.connect(self.far_get_variables)
+        self.dlg.run_far_sample.clicked.connect(self.far_sample_obs)
 
-        # rmj moving window model
+        # FAR with icar, glm, and rf models
+        self.dlg.run_far_calibrate.clicked.connect(self.far_calibrate)
+        self.dlg.run_far_predict.clicked.connect(self.far_predict)
+
+        # RMJ moving window model
         self.dlg.run_rmj_calibrate.clicked.connect(self.rmj_calibrate)
+        self.dlg.run_rmj_predict.clicked.connect(self.rmj_predict)
 
-        # show the dialog
+        # Model validation
+        self.dlg.run_validate.clicked.connect(self.validate)
+
+        # Show the dialog
         self.dlg.show()
         result = self.dlg.exec_()
         if result:

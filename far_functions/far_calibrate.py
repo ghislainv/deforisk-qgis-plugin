@@ -31,7 +31,7 @@ import forestatrisk as far
 opj = os.path.join
 
 
-class FarModelsTask(QgsTask):
+class FarCalibrateTask(QgsTask):
     """Estimate forestatrisk model parameters."""
 
     # Constants
