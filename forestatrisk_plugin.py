@@ -34,7 +34,7 @@ from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
-# Import the forestatrisk package
+import pandas as pd
 import forestatrisk as far
 
 # Initialize Qt resources from file resources.py
@@ -59,14 +59,14 @@ from .rmj_functions import (
 # Local val function
 from .val_functions import (
     EmptyTask,
-    ValidateTask,
-    combine_model_results,
+    ValidateTask
 )
 
 
 class ForestatriskPlugin:
     """QGIS Plugin Implementation."""
 
+    OUT = "outputs"
     PERIODS = ["calibration", "validation"]
     FAR_MODELS = ["icar", "glm", "rf"]
 
@@ -309,12 +309,46 @@ class ForestatriskPlugin:
         win_sizes = [int(i) for i in win_sizes]
         return win_sizes
 
-    def get_run_models(self):
-        """Get run_models."""
-        run_models = [self.args["model_icar"],
-                      self.args["model_glm"],
-                      self.args["model_rf"]]
-        return run_models
+    def get_pred_far_models(self):
+        """Get list of far models for predictions."""
+        pred_far_models = []
+        pred_mod = [self.args["pred_icar"],
+                    self.args["pred_glm"],
+                    self.args["pred_rf"]]
+        for (m, far_model) in enumerate(self.FAR_MODELS):
+            if pred_mod[m]:
+                pred_far_models.append(far_model)
+        return pred_far_models
+
+    def get_pred_far_periods(self):
+        """Get periods for far predictions."""
+        pred_far_periods = []
+        pred_date = [self.args["pred_far_t1"],
+                     self.args["pred_far_t2"]]
+        for (p, period) in enumerate(self.PERIODS):
+            if pred_date[p]:
+                pred_far_periods.append(period)
+        return pred_far_periods
+
+    def get_pred_mw_periods(self):
+        """Get periods for mw predictions."""
+        pred_mw_periods = []
+        pred_dates = [self.args["pred_mw_t1"],
+                      self.args["pred_mw_t2"]]
+        for (p, period) in enumerate(self.PERIODS):
+            if pred_dates[p]:
+                pred_mw_periods.append(period)
+        return pred_mw_periods
+
+    def get_val_periods(self):
+        """Get periods for validation."""
+        val_periods = []
+        val_dates = [self.args["val_t1"],
+                     self.args["val_t2"]]
+        for (p, period) in enumerate(self.PERIODS):
+            if val_dates[p]:
+                val_periods.append(period)
+        return val_periods
 
     def get_date(self, period):
         """Get date from period."""
@@ -328,18 +362,59 @@ class ForestatriskPlugin:
         csizes_val = [int(i) for i in csizes_val]
         return csizes_val
 
-    def get_models(self):
+    def get_val_models(self):
         """Get list of models for validation."""
-        models = []
-        win_sizes = self.dlg.win_size.text()
-        win_sizes = win_sizes.replace(" ", "").split(",")
+        val_models = []
+        win_sizes = self.args["win_sizes"]
+        val_far_mod = [self.args["val_icar"],
+                       self.args["val_glm"],
+                       self.args["val_rf"]]
+        if self.args["val_mw"]:
+            for win_size in win_sizes:
+                val_models.append("mw_" + str(win_size))
+        for (m, far_model) in enumerate(self.FAR_MODELS):
+            if val_far_mod[m]:
+                val_models.append(far_model)
+        return val_models
+
+    def get_all_models(self):
+        """Get list of all models for comparison."""
+        all_models = self.FAR_MODELS
+        win_sizes = self.args["win_sizes"]
         for win_size in win_sizes:
-            models.append("mw_" + win_size)
-        run_models = self.get_run_models()
-        for (m, run_model) in enumerate(self.FAR_MODELS):
-            if run_models[m]:
-                models.append(run_model)
-        return models
+            all_models.append("mw_" + str(win_size))
+        return all_models
+
+    def combine_model_results(self):
+        """Combine model results for comparison."""
+        os.chdir(self.args["workdir"])
+        indices_list = []
+        csizes_val = self.get_csizes_val()
+        models = self.get_all_models()
+        periods = self.PERIODS
+        # Loop on periods and models
+        for csize_val in csizes_val:
+            for period in periods:
+                date = self.get_date(period)
+                for model in models:
+                    ifile = os.path.join(
+                            self.OUT, "validation",
+                            f"indices_{model}_{date}_{csize_val}.csv")
+                    if os.path.isfile(ifile):
+                        df = pd.read_csv(ifile)
+                        df["model"] = model
+                        df["period"] = period
+                        indices_list.append(df)
+        # Concat indices
+        indices = pd.concat(indices_list, axis=0)
+        indices.sort_values(by=["csize_coarse_grid", "period", "model"])
+        indices = indices[["model", "period", "MedAE", "R2", "wRMSE",
+                           "ncell", "csize_coarse_grid",
+                           "csize_coarse_grid_ha"]]
+        indices.to_csv(
+            os.path.join(self.OUT, "validation", "indices_all.csv"),
+            sep=",", header=True,
+            index=False, index_label=False)
 
     def catch_arguments(self):
         """Catch arguments from UI."""
@@ -358,23 +433,34 @@ class ForestatriskPlugin:
         adapt = self.dlg.adapt.isChecked()
         seed = self.dlg.seed.text()
         csize = self.dlg.csize.text()
-        # Fit models
+        # FAR models
         variables = self.dlg.variables.text()
         beta_start = self.dlg.beta_start.text()
         prior_vrho = self.dlg.prior_vrho.text()
         mcmc = self.dlg.mcmc.text()
         varselection = self.dlg.varselection.isChecked()
-        # Predict risk
+        # FAR predict
         csize_interp = self.dlg.csize_interp.text()
-        model_icar = self.dlg.model_icar.isChecked()
-        model_glm = self.dlg.model_glm.isChecked()
-        model_rf = self.dlg.model_rf.isChecked()
-        # Rmj calibrate
+        pred_icar = self.dlg.pred_icar.isChecked()
+        pred_glm = self.dlg.pred_glm.isChecked()
+        pred_rf = self.dlg.pred_rf.isChecked()
+        pred_far_t1 = self.dlg.pred_far_t1.isChecked()
+        pred_far_t2 = self.dlg.pred_far_t2.isChecked()
+        # Rmj model
         defor_thresh = float(self.dlg.defor_thresh.text())
         max_dist = int(self.dlg.max_dist.text())
         win_sizes = self.get_win_sizes()
+        # Rmj predict
+        pred_mw_t1 = self.dlg.pred_mw_t1.isChecked()
+        pred_mw_t2 = self.dlg.pred_mw_t2.isChecked()
         # Validate
         csizes_val = self.get_csizes_val()
+        val_icar = self.dlg.val_icar.isChecked()
+        val_glm = self.dlg.val_glm.isChecked()
+        val_rf = self.dlg.val_rf.isChecked()
+        val_mw = self.dlg.val_mw.isChecked()
+        val_t1 = self.dlg.val_t1.isChecked()
+        val_t2 = self.dlg.val_t2.isChecked()
         # Default values
         iso = "MTQ" if iso == "" else iso
         proj = "EPSG:5490" if proj == "" else proj
@@ -411,10 +497,18 @@ class ForestatriskPlugin:
             "csize": csize, "variables": variables,
             "beta_start": beta_start, "prior_vrho": prior_vrho,
             "mcmc": mcmc, "varselection": varselection,
-            "csize_interp": csize_interp, "model_icar": model_icar,
-            "model_glm": model_glm, "model_rf": model_rf,
+            "csize_interp": csize_interp, "pred_icar": pred_icar,
+            "pred_glm": pred_glm, "pred_rf": pred_rf,
+            "pred_far_t1": pred_far_t1, "pred_far_t2": pred_far_t2,
             "defor_thresh": defor_thresh, "max_dist": max_dist,
-            "win_sizes": win_sizes, "csizes_val": csizes_val}
+            "win_sizes": win_sizes,
+            "pred_mw_t1": pred_mw_t1, "pred_mw_t2": pred_mw_t2,
+            "csizes_val": csizes_val,
+            "val_icar": val_icar,
+            "val_glm": val_glm, "val_rf": val_rf,
+            "val_mw": val_mw,
+            "val_t1": val_t1, "val_t2": val_t2
+        }
 
     def far_get_variables(self):
         """Get variables."""
@@ -470,25 +564,25 @@ class ForestatriskPlugin:
         """Predict deforestation risk."""
         # Catch arguments
         self.catch_arguments()
-        run_models = self.get_run_models()
+        pred_far_models = self.get_pred_far_models()
+        pred_far_periods = self.get_pred_far_periods()
         # Create tasks with loops on dates and models
-        for period in self.PERIODS:
+        for period in pred_far_periods:
             date = self.get_date(period)
-            for (model, run_model) in zip(self.FAR_MODELS, run_models):
-                if run_model:
-                    description = self.task_description(
-                        "FarPredict", model, date)
-                    task = FarPredictTask(
-                        description=description,
-                        iface=self.iface,
-                        workdir=self.args["workdir"],
-                        years=self.args["years"],
-                        csize=self.args["csize"],
-                        csize_interpolate=self.args["csize_interp"],
-                        period=period,
-                        model=model)
-                    # Add task to task manager
-                    self.tm.addTask(task)
+            for model in pred_far_models:
+                description = self.task_description(
+                    "FarPredict", model, date)
+                task = FarPredictTask(
+                    description=description,
+                    iface=self.iface,
+                    workdir=self.args["workdir"],
+                    years=self.args["years"],
+                    csize=self.args["csize"],
+                    csize_interpolate=self.args["csize_interp"],
+                    period=period,
+                    model=model)
+                # Add task to task manager
+                self.tm.addTask(task)
 
     def rmj_calibrate(self):
         """Compute distance threshold and local deforestation rate."""
@@ -514,7 +608,8 @@ class ForestatriskPlugin:
         # Catch arguments
         self.catch_arguments()
         win_sizes = self.get_win_sizes()
-        for period in self.PERIODS:
+        periods = self.get_pred_mw_periods()
+        for period in periods:
             date = self.get_date(period)
             for wsize in win_sizes:
                 model = f"mv_{wsize}"
@@ -534,17 +629,17 @@ class ForestatriskPlugin:
         """Model validation."""
         # Catch arguments
         self.catch_arguments()
-        run_models = self.get_run_models()
         csizes_val = self.get_csizes_val()
+        val_models = self.get_val_models()
+        val_periods = self.get_val_periods()
         # Main empty task
         description = self.task_description("Validate_all")
         main_task = EmptyTask(description)
-        models = self.get_models()
         # Tasks with loop on csizes_val, periods, and models
         for csize_val in csizes_val:
-            for period in self.PERIODS:
+            for period in val_periods:
                 date = self.get_date(period)
-                for model in models:
+                for model in val_models:
                     description = self.task_description(
                         "Validate", model, date)
                     task = ValidateTask(
@@ -557,9 +652,7 @@ class ForestatriskPlugin:
                         model=model)
                     main_task.addSubTask(task)
         # Combine model results
-        main_task.taskCompleted.connect(
-            lambda: combine_model_results(
-                self.args["workdir"], run_models))
+        main_task.taskCompleted.connect(self.combine_model_results)
         # Add first task to task manager
         self.tm.addTask(main_task)
 

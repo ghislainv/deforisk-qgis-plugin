@@ -18,40 +18,10 @@ from qgis.core import (
     Qgis, QgsTask, QgsMessageLog
 )
 
-import pandas as pd
 import forestatrisk as far
 
 # Alias
 opj = os.path.join
-
-
-def combine_model_results(workdir, run_models):
-    """Combine model results for comparison."""
-    os.chdir(workdir)
-    indices_list = []
-    periods = ["calibration", "validation"]
-    models = ["icar", "glm", "rf"]
-    # Loop on periods and models
-    for period in periods:
-        date = "t1" if period == "calibration" else "t2"
-        for (model, run_model) in zip(models, run_models):
-            if run_model:
-                df = pd.read_csv(opj(
-                    "outputs",
-                    f"indices_{model}_{date}.csv"))
-                df["model"] = model
-                df["period"] = period
-                indices_list.append(df)
-    # Concat indices
-    indices = pd.concat(indices_list, axis=0)
-    indices.sort_values(by=["period", "model"])
-    indices = indices[["model", "period", "MedAE", "R2", "wRMSE",
-                       "ncell", "csize_coarse_grid",
-                       "csize_coarse_grid_ha"]]
-    indices.to_csv(
-        opj("outputs", "indices_all.csv"),
-        sep=",", header=True,
-        index=False, index_label=False)
 
 
 class ValidateTask(QgsTask):

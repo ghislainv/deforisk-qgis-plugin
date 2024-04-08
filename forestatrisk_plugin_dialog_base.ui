@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>543</width>
-    <height>647</height>
+    <width>530</width>
+    <height>560</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,13 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>9</y>
-     <width>521</width>
-     <height>631</height>
+     <y>10</y>
+     <width>511</width>
+     <height>541</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -32,10 +32,10 @@
     <widget class="QGroupBox" name="groupBox_var">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>491</width>
-       <height>361</height>
+       <x>9</x>
+       <y>9</y>
+       <width>489</width>
+       <height>492</height>
       </rect>
      </property>
      <property name="title">
@@ -44,7 +44,7 @@
      <widget class="QPushButton" name="run_far_get_variable">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>400</x>
         <y>320</y>
         <width>71</width>
         <height>25</height>
@@ -54,12 +54,12 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>13</x>
-        <y>34</y>
-        <width>471</width>
+        <x>14</x>
+        <y>35</y>
+        <width>461</width>
         <height>275</height>
        </rect>
       </property>
@@ -166,7 +166,7 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="4">
+       <item row="6" column="0" colspan="3">
         <widget class="QLabel" name="label_remote_rclone">
          <property name="text">
           <string>GDrive Rclone remote</string>
@@ -212,27 +212,27 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_models_far">
+   <widget class="QWidget" name="tab_benchmark">
     <attribute name="title">
-     <string>Models FAR</string>
+     <string>Benchmark</string>
     </attribute>
-    <widget class="QGroupBox" name="groupBox_models">
+    <widget class="QGroupBox" name="groupBox_bmark_model">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>200</y>
+       <y>10</y>
        <width>491</width>
-       <height>231</height>
+       <height>71</height>
       </rect>
      </property>
      <property name="title">
-      <string>Fit models to data</string>
+      <string>Fit model to data</string>
      </property>
-     <widget class="QPushButton" name="run_far_calibrate">
+     <widget class="QPushButton" name="run_bmark_calibrate">
       <property name="geometry">
        <rect>
         <x>410</x>
-        <y>190</y>
+        <y>30</y>
         <width>71</width>
         <height>25</height>
        </rect>
@@ -241,16 +241,72 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_far_models">
+    <attribute name="title">
+     <string>FAR models</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox_models">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>491</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Fit models to data</string>
+     </property>
+     <widget class="QPushButton" name="run_far_calibrate">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>471</width>
-        <height>149</height>
+        <x>400</x>
+        <y>156</y>
+        <width>80</width>
+        <height>25</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_3">
+      <property name="maximumSize">
+       <size>
+        <width>309</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="varselection">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>157</y>
+        <width>141</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Variable selection</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>32</y>
+        <width>471</width>
+        <height>120</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_6">
        <item row="0" column="0">
         <widget class="QLabel" name="label_variables">
          <property name="text">
@@ -319,19 +375,6 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
-        <widget class="QCheckBox" name="varselection">
-         <property name="text">
-          <string>Variable selection</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-         <property name="tristate">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </widget>
@@ -339,9 +382,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>450</y>
+       <y>370</y>
        <width>491</width>
-       <height>141</height>
+       <height>131</height>
       </rect>
      </property>
      <property name="title">
@@ -350,9 +393,9 @@
      <widget class="QPushButton" name="run_far_predict">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>100</y>
-        <width>71</width>
+        <x>399</x>
+        <y>94</y>
+        <width>81</width>
         <height>25</height>
        </rect>
       </property>
@@ -360,16 +403,16 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
+        <x>13</x>
+        <y>32</y>
         <width>471</width>
         <height>56</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_4">
+      <layout class="QGridLayout" name="gridLayout_7">
        <item row="0" column="0" colspan="2">
         <widget class="QLabel" name="label_csize_interp">
          <property name="text">
@@ -388,7 +431,7 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QCheckBox" name="model_icar">
+        <widget class="QCheckBox" name="pred_icar">
          <property name="text">
           <string>iCAR model</string>
          </property>
@@ -401,7 +444,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QCheckBox" name="model_glm">
+        <widget class="QCheckBox" name="pred_glm">
          <property name="text">
           <string>GLM</string>
          </property>
@@ -414,12 +457,50 @@
         </widget>
        </item>
        <item row="1" column="2">
-        <widget class="QCheckBox" name="model_rf">
+        <widget class="QCheckBox" name="pred_rf">
          <property name="text">
           <string>RF model</string>
          </property>
          <property name="checked">
           <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>13</x>
+        <y>95</y>
+        <width>221</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="pred_far_t1">
+         <property name="text">
+          <string>t1</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="pred_far_t2">
+         <property name="text">
+          <string>t2</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
          <property name="tristate">
           <bool>false</bool>
@@ -435,7 +516,7 @@
        <x>10</x>
        <y>10</y>
        <width>491</width>
-       <height>171</height>
+       <height>131</height>
       </rect>
      </property>
      <property name="title">
@@ -444,9 +525,9 @@
      <widget class="QPushButton" name="run_far_sample">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>130</y>
-        <width>71</width>
+        <x>400</x>
+        <y>94</y>
+        <width>80</width>
         <height>25</height>
        </rect>
       </property>
@@ -454,16 +535,35 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget_2">
+     <widget class="QCheckBox" name="adapt">
       <property name="geometry">
        <rect>
-        <x>11</x>
-        <y>31</y>
-        <width>471</width>
+        <x>354</x>
+        <y>33</y>
+        <width>127</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Adapt sampling</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>32</y>
+        <width>331</width>
         <height>89</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_2">
+      <layout class="QGridLayout" name="gridLayout_5">
        <item row="0" column="0">
         <widget class="QLabel" name="label_nsamp">
          <property name="text">
@@ -478,19 +578,6 @@
          </property>
          <property name="placeholderText">
           <string>10000</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QCheckBox" name="adapt">
-         <property name="text">
-          <string>Adapt sampling</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-         <property name="tristate">
-          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -532,9 +619,9 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_model_mw">
+   <widget class="QWidget" name="tab_mw_model">
     <attribute name="title">
-     <string>Model MW</string>
+     <string>MW model</string>
     </attribute>
     <widget class="QGroupBox" name="groupBox_rmj_model">
      <property name="geometry">
@@ -564,13 +651,13 @@
      <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
+        <x>12</x>
+        <y>32</y>
         <width>471</width>
         <height>89</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_6">
+      <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <widget class="QLabel" name="label_defor_thresh">
          <property name="text">
@@ -631,7 +718,7 @@
        <x>10</x>
        <y>200</y>
        <width>491</width>
-       <height>80</height>
+       <height>71</height>
       </rect>
      </property>
      <property name="title">
@@ -640,8 +727,8 @@
      <widget class="QPushButton" name="run_rmj_predict">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>40</y>
+        <x>411</x>
+        <y>30</y>
         <width>71</width>
         <height>25</height>
        </rect>
@@ -650,9 +737,47 @@
        <string>Run</string>
       </property>
      </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>13</x>
+        <y>34</y>
+        <width>171</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_9">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="pred_mw_t1">
+         <property name="text">
+          <string>t1</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="pred_mw_t2">
+         <property name="text">
+          <string>t2</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab">
+   <widget class="QWidget" name="tab_validate">
     <attribute name="title">
      <string>Validation</string>
     </attribute>
@@ -662,7 +787,7 @@
        <x>10</x>
        <y>10</y>
        <width>491</width>
-       <height>111</height>
+       <height>171</height>
       </rect>
      </property>
      <property name="title">
@@ -672,7 +797,7 @@
       <property name="geometry">
        <rect>
         <x>410</x>
-        <y>70</y>
+        <y>130</y>
         <width>71</width>
         <height>25</height>
        </rect>
@@ -681,35 +806,113 @@
        <string>Run</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>40</y>
-       <width>471</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_csize_val">
-        <property name="text">
-         <string>Coarse grid cell sizes (# pixels)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="csizes_val">
-        <property name="text">
-         <string>50, 100</string>
-        </property>
-        <property name="placeholderText">
-         <string>50, 100, 1054</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>13</x>
+        <y>31</y>
+        <width>471</width>
+        <height>85</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="label_csize_val">
+         <property name="text">
+          <string>Coarse grid cell sizes (# pixels)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" colspan="2">
+        <widget class="QLineEdit" name="csizes_val">
+         <property name="text">
+          <string>50, 100</string>
+         </property>
+         <property name="placeholderText">
+          <string>50, 100, 1054</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="val_icar">
+         <property name="text">
+          <string>iCAR model</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="val_glm">
+         <property name="text">
+          <string>GLM</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QCheckBox" name="val_rf">
+         <property name="text">
+          <string>RF model</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QCheckBox" name="val_mw">
+         <property name="text">
+          <string>MW model</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="val_t1">
+         <property name="text">
+          <string>t1</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="val_t2">
+         <property name="text">
+          <string>t2</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>

@@ -78,9 +78,10 @@ class FarSampleObsTask(QgsTask):
 
             # Set working directory
             os.chdir(self.workdir)
+            far.make_dir(self.OUT)
 
             # Check for files
-            fcc_file = opj("data", "fcc.tif")
+            fcc_file = opj(self.DATA, "fcc.tif")
             if not os.path.isfile(fcc_file):
                 msg = ("No forest cover change "
                        "raster in the working directory. "
@@ -93,9 +94,9 @@ class FarSampleObsTask(QgsTask):
             dataset = far.sample(
                 nsamp=self.nsamp, adapt=self.adapt,
                 seed=self.seed, csize=self.csize,
-                var_dir="data",
+                var_dir=self.DATA,
                 input_forest_raster="fcc.tif",
-                output_file=opj("outputs", "sample.txt"),
+                output_file=opj(self.OUT, "sample.txt"),
                 blk_rows=0,
                 verbose=True)
 
@@ -113,8 +114,8 @@ class FarSampleObsTask(QgsTask):
             # Sample size
             ndefor = sum(self.dataset.fcc == 0)
             nfor = sum(self.dataset.fcc == 1)
-            with open("outputs/sample_size.csv",
-                      "w",
+            ifile = opj(self.OUT, "sample_size.csv")
+            with open(ifile, "w",
                       encoding="utf-8") as file:
                 file.write("Var, n\n")
                 file.write(f"ndefor, {ndefor}\n")
@@ -150,7 +151,7 @@ class FarSampleObsTask(QgsTask):
             y, data = dmatrices(formula_corr, data=self.dataset,
                                 return_type="dataframe")
             # Plots
-            ofile = opj("outputs", "correlation.pdf")
+            ofile = opj(self.OUT, "correlation.pdf")
             figs = far.plot.correlation(
                 y=y, data=data,
                 plots_per_page=3,
@@ -170,7 +171,7 @@ class FarSampleObsTask(QgsTask):
                 var_group = root.addGroup("Variables")
 
             # Add layer of sampled observations to QGis project
-            samp_file = opj(self.workdir, "outputs", "sample.txt")
+            samp_file = opj(self.workdir, self.OUT, "sample.txt")
             encoding = "UTF-8"
             delimiter = ","
             decimal = "."
