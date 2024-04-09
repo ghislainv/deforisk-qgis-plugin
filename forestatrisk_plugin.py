@@ -249,20 +249,30 @@ class ForestatriskPlugin:
             )
         self.print_dependency_version()
 
-    def task_description(self, task_name, model=None, date=None):
+    def task_description(self, task_name, model=None, date=None,
+                         csize_val=None):
         """Write down task description."""
         isocode = self.args["isocode"]
         years = self.args["years"]
         years = years.replace(" ", "").replace(",", "_")
         fcc_source = self.args["fcc_source"]
-        if (model is not None and date is not None):
-            description = (f"{task_name}_{isocode}_"
-                           f"{years}_{fcc_source}_"
-                           f"{model}_{date}")
-        elif (model is not None and date is None):
+        # Description for calibrate
+        if (model is not None and date is None):
             description = (f"{task_name}_{isocode}_"
                            f"{years}_{fcc_source}_"
                            f"{model}")
+        # Description for "predict"
+        elif (model is not None and date is not None
+              and csize_val is None):
+            description = (f"{task_name}_{isocode}_"
+                           f"{years}_{fcc_source}_"
+                           f"{model}_{date}")
+        # Description for "validate"
+        elif (model is not None and date is not None
+              and csize_val is not None):
+            description = (f"{task_name}_{isocode}_"
+                           f"{years}_{fcc_source}_"
+                           f"{model}_{date}_{csize_val}")
         else:
             description = (f"{task_name}_{isocode}_"
                            f"{years}_{fcc_source}")
@@ -304,7 +314,7 @@ class ForestatriskPlugin:
 
     def get_win_sizes(self):
         """Get window sizes as list."""
-        win_sizes = self.dlg.win_size.text()
+        win_sizes = self.args["win_sizes"]
         win_sizes = win_sizes.replace(" ", "").split(",")
         win_sizes = [int(i) for i in win_sizes]
         return win_sizes
@@ -357,7 +367,7 @@ class ForestatriskPlugin:
 
     def get_csizes_val(self):
         """Get coarse grid cell sizes as list."""
-        csizes_val = self.dlg.csizes_val.text()
+        csizes_val = self.args["csizes_val"]
         csizes_val = csizes_val.replace(" ", "").split(",")
         csizes_val = [int(i) for i in csizes_val]
         return csizes_val
@@ -365,7 +375,7 @@ class ForestatriskPlugin:
     def get_val_models(self):
         """Get list of models for validation."""
         val_models = []
-        win_sizes = self.args["win_sizes"]
+        win_sizes = self.get_win_sizes()
         val_far_mod = [self.args["val_icar"],
                        self.args["val_glm"],
                        self.args["val_rf"]]
@@ -379,26 +389,35 @@ class ForestatriskPlugin:
 
     def get_all_models(self):
         """Get list of all models for comparison."""
-        all_models = self.FAR_MODELS
-        win_sizes = self.args["win_sizes"]
+        # Be careful here to copy the list to avoid changing FAR_MODELS
+        all_models = self.FAR_MODELS.copy()
+        win_sizes = self.get_win_sizes()
         for win_size in win_sizes:
             all_models.append("mw_" + str(win_size))
         return all_models
 
+    def create_validation_directories(self):
+        """Create validation directories."""
+        workdir = self.args["workdir"]
+        os.chdir(workdir)
+        far.make_dir(os.path.join("outputs", "validation", "figures"))
+        far.make_dir(os.path.join("outputs", "validation", "tables"))
+
     def combine_model_results(self):
         """Combine model results for comparison."""
-        os.chdir(self.args["workdir"])
+        workdir = self.args["workdir"]
+        os.chdir(workdir)
         indices_list = []
         csizes_val = self.get_csizes_val()
         models = self.get_all_models()
-        periods = self.PERIODS
+        periods = self.PERIODS.copy()
         # Loop on periods and models
         for csize_val in csizes_val:
             for period in periods:
                 date = self.get_date(period)
                 for model in models:
                     ifile = os.path.join(
-                            self.OUT, "validation",
+                            self.OUT, "validation", "tables",
                             f"indices_{model}_{date}_{csize_val}.csv")
                     if os.path.isfile(ifile):
                         df = pd.read_csv(ifile)
@@ -408,9 +427,9 @@ class ForestatriskPlugin:
         # Concat indices
         indices = pd.concat(indices_list, axis=0)
         indices.sort_values(by=["csize_coarse_grid", "period", "model"])
-        indices = indices[["model", "period", "MedAE", "R2", "wRMSE",
-                           "ncell", "csize_coarse_grid",
-                           "csize_coarse_grid_ha"]]
+        indices = indices[["csize_coarse_grid", "csize_coarse_grid_ha",
+                           "ncell", "period", "model",
+                           "MedAE", "R2", "RMSE", "wRMSE"]]
         indices.to_csv(
             os.path.join(self.OUT, "validation", "indices_all.csv"),
             sep=",", header=True,
@@ -449,12 +468,12 @@ class ForestatriskPlugin:
         # Rmj model
         defor_thresh = float(self.dlg.defor_thresh.text())
         max_dist = int(self.dlg.max_dist.text())
-        win_sizes = self.get_win_sizes()
+        win_sizes = self.dlg.win_sizes.text()
         # Rmj predict
         pred_mw_t1 = self.dlg.pred_mw_t1.isChecked()
         pred_mw_t2 = self.dlg.pred_mw_t2.isChecked()
         # Validate
-        csizes_val = self.get_csizes_val()
+        csizes_val = self.dlg.csizes_val.text()
         val_icar = self.dlg.val_icar.isChecked()
         val_glm = self.dlg.val_glm.isChecked()
         val_rf = self.dlg.val_rf.isChecked()
@@ -507,7 +526,7 @@ class ForestatriskPlugin:
             "val_icar": val_icar,
             "val_glm": val_glm, "val_rf": val_rf,
             "val_mw": val_mw,
-            "val_t1": val_t1, "val_t2": val_t2
+            "val_t1": val_t1, "val_t2": val_t2,
         }
 
     def far_get_variables(self):
@@ -632,6 +651,8 @@ class ForestatriskPlugin:
         csizes_val = self.get_csizes_val()
         val_models = self.get_val_models()
         val_periods = self.get_val_periods()
+        # Create validation directories
+        self.create_validation_directories()
         # Main empty task
         description = self.task_description("Validate_all")
         main_task = EmptyTask(description)
@@ -641,7 +662,7 @@ class ForestatriskPlugin:
                 date = self.get_date(period)
                 for model in val_models:
                     description = self.task_description(
-                        "Validate", model, date)
+                        "Validate", model, date, csize_val)
                     task = ValidateTask(
                         description=description,
                         iface=self.iface,

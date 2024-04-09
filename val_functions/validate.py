@@ -28,7 +28,8 @@ class ValidateTask(QgsTask):
     """Validating deforestation risk map."""
 
     # Constants
-    OUT = opj("outputs", "validation")
+    OUT_FIG = opj("outputs", "validation", "figures")
+    OUT_TAB = opj("outputs", "validation", "tables")
     DATA = "data"
     MESSAGE_CATEGORY = "FAR plugin"
     FAR_MODELS = ["icar", "glm", "rf"]
@@ -83,7 +84,6 @@ class ValidateTask(QgsTask):
 
             # Set working directory
             os.chdir(self.workdir)
-            far.make_dir(self.OUT)
 
             # Compute time intervals from years
             time_interval = self.get_time_interval()
@@ -104,13 +104,13 @@ class ValidateTask(QgsTask):
                     f"defrate_cat_{self.model}_{date}.csv"),
                 csize_coarse_grid=self.csize_val,
                 indices_file_pred=opj(
-                    self.OUT,
+                    self.OUT_TAB,
                     f"indices_{self.model}_{date}_{self.csize_val}.csv"),
                 tab_file_pred=opj(
-                    self.OUT,
+                    self.OUT_TAB,
                     f"pred_obs_{self.model}_{date}_{self.csize_val}.csv"),
                 fig_file_pred=opj(
-                    self.OUT,
+                    self.OUT_FIG,
                     f"pred_obs_{self.model}_{date}_{self.csize_val}.png"),
                 verbose=False)
 

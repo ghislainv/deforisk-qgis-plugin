@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -54,7 +54,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>14</x>
@@ -297,7 +297,7 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>12</x>
@@ -403,7 +403,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>13</x>
@@ -471,7 +471,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>13</x>
@@ -554,7 +554,7 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>12</x>
@@ -648,7 +648,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>12</x>
@@ -693,14 +693,14 @@
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLabel" name="label_win_size">
+        <widget class="QLabel" name="label_win_sizes">
          <property name="text">
           <string>Window sizes (# pixels)</string>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="win_size">
+        <widget class="QLineEdit" name="win_sizes">
          <property name="text">
           <string>11, 21</string>
          </property>
@@ -737,7 +737,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>13</x>
@@ -806,7 +806,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>13</x>
@@ -817,7 +817,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0" colspan="2">
-        <widget class="QLabel" name="label_csize_val">
+        <widget class="QLabel" name="label_csizes_val">
          <property name="text">
           <string>Coarse grid cell sizes (# pixels)</string>
          </property>
