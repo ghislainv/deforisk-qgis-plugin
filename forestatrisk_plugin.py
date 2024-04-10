@@ -396,12 +396,19 @@ class ForestatriskPlugin:
             all_models.append("mw_" + str(win_size))
         return all_models
 
+    def create_rmj_calibrate_directory(self):
+        """Create rmj calibrate directory."""
+        workdir = self.args["workdir"]
+        far.make_dir(os.path.join(workdir, "outputs",
+                                  "rmj_moving_window"))
+
     def create_validation_directories(self):
         """Create validation directories."""
         workdir = self.args["workdir"]
-        os.chdir(workdir)
-        far.make_dir(os.path.join("outputs", "validation", "figures"))
-        far.make_dir(os.path.join("outputs", "validation", "tables"))
+        far.make_dir(os.path.join(workdir, "outputs", "validation",
+                                  "figures"))
+        far.make_dir(os.path.join(workdir, "outputs", "validation",
+                                  "tables"))
 
     def combine_model_results(self):
         """Combine model results for comparison."""
@@ -608,6 +615,9 @@ class ForestatriskPlugin:
         # Catch arguments
         self.catch_arguments()
         win_sizes = self.get_win_sizes()
+        # Create rmj calibrate directory
+        self.create_rmj_calibrate_directory()
+        # Loop on window sizes
         for win_size in win_sizes:
             model = f"mv_{win_size}"
             description = self.task_description("RmjCalibrate", model)

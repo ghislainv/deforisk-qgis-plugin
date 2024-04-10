@@ -96,9 +96,6 @@ class RmjCalibrateTask(QgsTask):
             # Set working directory
             os.chdir(self.workdir)
 
-            # Create output directory for rmj
-            rmj.make_dir(self.OUT)
-
             # Distance to forest edge threshold
             fcc_file = opj(self.DATA, "forest", "fcc123.tif")
             dist_edge_thresh = rmj.dist_edge_threshold(
