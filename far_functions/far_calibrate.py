@@ -123,12 +123,8 @@ class FarCalibrateTask(QgsTask):
             # List of variables
             var = self.variables.replace(" ", "")
             var = var.split(",")
-            # Order variable and place pa first
-            if "pa" in var:
-                var.remove("pa")
-                var = ["pa"] + var
             # Categorical variables and scaled continuous variables
-            var = ["C(pa)" if v == "pa" else f"scale({v})" for v in var]
+            var = [v if v[:2] == "C(" else f"scale({v})" for v in var]
             # Transform into numpy array
             # (to select with var_keep afterwards)
             variables = np.array(var)

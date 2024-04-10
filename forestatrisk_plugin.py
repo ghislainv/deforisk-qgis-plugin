@@ -496,9 +496,9 @@ class ForestatriskPlugin:
         csize = 1 if csize == "" else float(csize)
         self.set_wdpa_key(wdpa_key, workdir)
         # Fit models
-        var = ("dist_edge, "
+        var = ("C(pa), dist_edge, "
                "dist_road, dist_town, dist_river, "
-               "pa, altitude, slope")
+               "altitude, slope")
         variables = var if variables == "" else variables
         beta_start = -99 if beta_start == "" else float(beta_start)
         prior_vrho = -1 if prior_vrho == "" else int(prior_vrho)
