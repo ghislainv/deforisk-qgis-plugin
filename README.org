@@ -1,12 +1,13 @@
-#+title: forestatrisk QGIS plugin 📦🐍🌎
+#+title: deforisk QGIS plugin 📦🐍🌎
 #+author: Ghislain Vieilledent
 
 #+options: title:t author:nil date:nil ^:{} toc:nil num:nil
 
 #+link: GPLv3_link https://www.gnu.org/licenses/gpl-3.0.html
-#+link: website_link https://ecology.ghislainv.fr/forestatrisk-qgis-plugin
-#+link: pypkg_link https://ecology.ghislainv.fr/forestatrisk
-#+link: github_link https://github.com/ghislainv/forestatrisk-qgis-plugin
+#+link: website_link https://ecology.ghislainv.fr/deforisk-qgis-plugin
+#+link: github_link https://github.com/ghislainv/deforisk-qgis-plugin
+#+link: far_pypkg_link https://ecology.ghislainv.fr/forestatrisk
+#+link: rmj_pypkg_link https://ecology.ghislainv.fr/riskmapjnr
 
 # #+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
 # #+macro: website https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg
@@ -16,8 +17,9 @@
 
 [[GPLv3_link][https://img.shields.io/badge/licence-GPLv3-8f10cb.svg]]
 [[github_link][https://img.shields.io/badge/GitHub-repo-green.svg]]
-[[website_link][https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg]]
+[[website_link][https://img.shields.io/badge/web-Deforisk_QGIS_plugin-blue.svg]]
 [[pypkg_link][https://img.shields.io/badge/python-forestatrisk-306998?logo=python&logoColor=ffd43b&color=306998.svg]]
+[[rmj_pypkg_link][https://img.shields.io/badge/python-riskmapjnr-306998?logo=python&logoColor=ffd43b&color=306998.svg]]
 
 * Functionalities
 
@@ -29,7 +31,7 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 
 ** System dependencies
 
-[[https://www.qgis.org/en/site/][QGIS]] and [[https://gdal.org/index.html][GDAL]] must be installed on your system. The ~forestatrisk~ Python package must also be installed on your system before using the QGIS plugin.
+[[https://www.qgis.org/en/site/][QGIS]] and [[https://gdal.org/index.html][GDAL]] must be installed on your system. The ~forestatrisk~ and ~riskmapjnr~ Python packages must also be installed on your system before using the QGIS plugin.
 
 *** Windows
 
@@ -37,16 +39,16 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 
 To install QGIS and GDAL on Windows, use the [[https://trac.osgeo.org/osgeo4w/][OSGeo4W]] network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select /Express Install/ and install both QGIS and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install /OSGeo4W Shell/ to execute command lines.
 
-**** Install the ~forestatrisk~ Python package on Windows
+**** Install the ~forestatrisk~ and ~riskmapjnr~ Python packages on Windows
 
-To install the ~forestatrisk~ Python package, open OSGeo4W Shell, upgrade ~pip~ and ~setuptools~, and install ~forestatrisk~ with ~pip~.
+To install the ~forestatrisk~ and ~riskmapjnr~ Python packages, open OSGeo4W Shell, upgrade ~pip~ and ~setuptools~, and install ~forestatrisk~ and ~riskmapjnr~ with ~pip~.
 
 #+begin_src shell
 python3.exe -m pip install --upgrade pip setuptools
-python3.exe -m pip install forestatrisk
+python3.exe -m pip install forestatrisk riskmapjnr
 #+end_src
 
-Note: In case of problems, you can check the version of Python used by OSGeo4W using /OSGeo Shell/ and that the package wheels for ~forestatrisk~ are available on [[https://pypi.org/project/forestatrisk/#files][PyPI]] for your Windows and Python versions. Currently, PyPI provides wheels for Python 3.9 to 3.11 for Windows, Linux, and macOS 64-bit systems.
+Note: In case of problems, you can check the version of Python used by OSGeo4W using /OSGeo Shell/ and that the package wheels for ~forestatrisk~ and ~riskmapjnr~ are available on [[https://pypi.org/project/forestatrisk/#files][PyPI]] for your Windows and Python versions. Currently, PyPI provides wheels for Python 3.9 to 3.11 for Windows, Linux, and macOS 64-bit systems.
 
 #+begin_src shell
 python3.exe --version
@@ -65,14 +67,14 @@ sudo apt-get install qgis gdal-bin libgdal-dev
 
 After installing GDAL, you can test the installation by running ~gdalinfo --version~ in the command prompt or terminal, which should display the installed GDAL version.
 
-**** Install the ~forestatrisk~ Python package on Unix-like systems
+**** Install the ~forestatrisk~ and ~riskmapjnr~ Python packages on Unix-like systems
 
-On recent systems, you cannot use pip to install Python packages system-wide. As a consequence, we need to create a virtual environment and install the ~forestatrisk~ package in it. Make sure to also install the appropriate GDAL bindings using ~gdal==$(gdal-config --version)~. Once the package and its dependencies have been installed, you can deactivate the virtual environment.
+On recent systems, you cannot use pip to install Python packages system-wide. As a consequence, we need to create a virtual environment and install the ~forestatrisk~ and ~riskmapjnr~ packages in it. Make sure to also install the appropriate GDAL bindings using ~gdal==$(gdal-config --version)~. Once the package and its dependencies have been installed, you can deactivate the virtual environment.
 
 #+begin_src shell
 python3 -m venv /path/to/venv
 source  /path/to/venv/bin/activate
-python3 -m pip install forestatrisk gdal==$(gdal-config --version)
+python3 -m pip install forestatrisk riskmapjnr gdal==$(gdal-config --version)
 deactivate
 #+end_src
 
@@ -83,9 +85,9 @@ import sys
 sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 #+end_src
 
-** Installing the ~forestatrisk~ plugin in QGIS
+** Installing the ~deforisk~ plugin in QGIS
 
-- Download the ~forestatrisk~ [[https://github.com/ghislainv/forestatrisk-qgis-plugin/archive/refs/heads/main.zip][zip file]] from GitHub.
+- Download the ~deforisk~ [[https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip][zip file]] from GitHub.
 - Open QGIS.
 - In QGIS menu bar, go to ~Extensions/Install extensions/Install from ZIP~.
 - Select the zip file that has been downloaded.
@@ -94,7 +96,7 @@ sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 
 ** Plugin interface
 
-[[https://ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_plugin.png]]
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_plugin.png]]
 
 The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model MV~. The ~Get variables~ tab includes two boxes: ~Download and compute variables~ and ~Sample observations~. The items of each tab or box are detailed below. They usually correspond to function parameters from the ~forestatrisk~ Python package. 
 
@@ -132,7 +134,7 @@ Pushing the ~Run~ button in this box will sample the observations. Note that you
 
 ** Models FAR
 
-[[https://ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_models_far.png]]
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_models_far.png]]
 
 This tab is for collecting the information needed to spatially model deforestation using three statistical models available in the ~forestatrisk~ (FAR) Python package: iCAR, GLM, and Random Forest models.
 
@@ -146,8 +148,8 @@ Pushing the ~Run~ button in this tab will fit the statistical model to the defor
 
 ** Model MV
 
-[[https://ecology.ghislainv.fr/forestatrisk-qgis-plugin/images/interface_model_mv.png]]
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_model_mv.png]]
 
 * Contributing
 
-The ~forestatrisk~ QGIS plugin is Open Source and released under the [[file:license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[file:contributing.html][Community guidelines]]. Every contributor must agree to follow the project's [[file:code_of_conduct.html][Code of conduct]].
+The ~deforisk~ QGIS plugin is Open Source and released under the [[file:https:/ecology.ghislainv.fr/deforisk-qgis-plugin/license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[file:https:/ecology.ghislainv.fr/deforisk-qgis-plugin/contributing.html][Community guidelines]]. Every contributor must agree to follow the project's [[file:https:/ecology.ghislainv.fr/deforisk-qgis-plugin/code_of_conduct.html][Code of conduct]].

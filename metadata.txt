@@ -3,17 +3,17 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=Forestatrisk Plugin
+name=Deforisk
 qgisMinimumVersion=3.0
-description=Modelling and forecasting deforestation in the tropics.
+description=Create and compare maps of deforestation risk in the tropics.
 version=0.1
 author=Ghislain Vieilledent (Cirad)
 email=ghislain.vieilledent@cirad.fr
 
-about=The forestatrisk plugin can be used to model the tropical deforestation spatially and predict the spatial risk of deforestation. The risk of deforestation is estimated from various spatial explanatory variables. The plugin relies on the forestatrisk Python package.
+about=The deforisk Qgis plugin can be used to create and compare maps of deforestation risk in the tropics. Maps are derived from several spatial deforestation models based on different statistical approaches. The risk of deforestation is estimated from various spatial explanatory variables including the distance to forest edge. The plugin relies on the forestatrisk and riskmapjnr Python package.
 
-tracker=https://github.com/ghislainv/forestatrisk-qgis-plugin/issues
-repository=https://github.com/ghislainv/forestatrisk-qgis-plugin
+tracker=https://github.com/ghislainv/deforisk-qgis-plugin/issues
+repository=https://github.com/ghislainv/deforisk-qgis-plugin
 # End of mandatory metadata
 
 # Recommended items:
@@ -23,9 +23,9 @@ hasProcessingProvider=no
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=python
+tags=python, deforestation risk, tropical forests
 
-homepage=https://github.com/ghislainv/forestatrisk-qgis-plugin
+homepage=https://github.com/ghislainv/deforisk-qgis-plugin
 category=Plugins
 icon=icon.png
 # experimental flag
