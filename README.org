@@ -152,4 +152,4 @@ Pushing the ~Run~ button in this tab will fit the statistical model to the defor
 
 * Contributing
 
-The ~deforisk~ QGIS plugin is Open Source and released under the [[file:https:/ecology.ghislainv.fr/deforisk-qgis-plugin/license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[file:https:/ecology.ghislainv.fr/deforisk-qgis-plugin/contributing.html][Community guidelines]]. Every contributor must agree to follow the project's [[file:https:/ecology.ghislainv.fr/deforisk-qgis-plugin/code_of_conduct.html][Code of conduct]].
+The ~deforisk~ QGIS plugin is Open Source and released under the [[https:/ecology.ghislainv.fr/deforisk-qgis-plugin/license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[https:/ecology.ghislainv.fr/deforisk-qgis-plugin/contributing.html][Community guidelines]]. Every contributor must agree to follow the project's [[https:/ecology.ghislainv.fr/deforisk-qgis-plugin/code_of_conduct.html][Code of conduct]].
