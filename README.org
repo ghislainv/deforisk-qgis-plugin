@@ -1,4 +1,4 @@
-#+title: deforisk QGIS plugin 📦🐍🌎
+#+title: deforisk QGIS plugin 📦 🐍 🌎
 #+author: Ghislain Vieilledent
 
 #+options: title:t author:nil date:nil ^:{} toc:nil num:nil
@@ -18,8 +18,8 @@
 [[GPLv3_link][https://img.shields.io/badge/licence-GPLv3-8f10cb.svg]]
 [[github_link][https://img.shields.io/badge/GitHub-repo-green.svg]]
 [[website_link][https://img.shields.io/badge/web-Deforisk_QGIS_plugin-blue.svg]]
-[[pypkg_link][https://img.shields.io/badge/python-forestatrisk-306998?logo=python&logoColor=ffd43b&color=306998.svg]]
-[[rmj_pypkg_link][https://img.shields.io/badge/python-riskmapjnr-306998?logo=python&logoColor=ffd43b&color=306998.svg]]
+[[far_pypkg_link][https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg]]
+[[rmj_pypkg_link][https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg]]
 
 * Functionalities
 
