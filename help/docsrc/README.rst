@@ -11,23 +11,14 @@ deforisk QGIS plugin
 
 .. image:: https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
     :target: https://www.gnu.org/licenses/gpl-3.0.html
-    :alt: License GPLv3
-
 .. image:: https://img.shields.io/badge/GitHub-repo-green.svg
     :target: https://github.com/ghislainv/deforisk-qgis-plugin
-    :alt: GitHub
-
 .. image:: https://img.shields.io/badge/web-FAR\_QGIS\_plugin-blue.svg
     :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin
-    :alt: Website
-
 .. image:: https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg
     :target: https://ecology.ghislainv.fr/forestatrisk
-    :alt: forestarisk package
-
 .. image:: https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg
     :target: https://ecology.ghislainv.fr/riskmapjnr
-    :alt: riskmapjnr package
 
 Functionalities
 ---------------

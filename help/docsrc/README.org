@@ -23,15 +23,10 @@ deforisk QGIS plugin
 #+macro: far https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg
 #+macro: rmj https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg
 
-#+attr_rst: :alt License GPLv3
 [[GPLv3_link][{{{GPLv3}}}]]
-#+attr_rst: :alt GitHub
 [[github_link][{{{github}}}]]
-#+attr_rst: :alt Website
 [[website_link][{{{website}}}]]
-#+attr_rst: :alt forestarisk package
 [[far_link][{{{far}}}]]
-#+attr_rst: :alt riskmapjnr package
 [[rmj_link][{{{rmj}}}]]
 
 # [[GPLv3_link][https://img.shields.io/badge/licence-GPLv3-8f10cb.svg]]
