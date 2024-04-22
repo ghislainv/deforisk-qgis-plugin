@@ -1,5 +1,5 @@
 #/***************************************************************************
-# ForestatriskPlugin
+# DeforiskPlugin
 #
 # Deforestation risk mapping.
 #							 -------------------
@@ -38,15 +38,15 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	forestatrisk_plugin.py forestatrisk_plugin_dialog.py
+	deforisk_plugin.py deforisk_plugin_dialog.py
 
-PLUGINNAME = forestatrisk_plugin
+PLUGINNAME = deforisk_plugin
 
 PY_FILES = \
 	__init__.py \
-	forestatrisk_plugin.py forestatrisk_plugin_dialog.py
+	deforisk_plugin.py deforisk_plugin_dialog.py
 
-UI_FILES = forestatrisk_plugin_dialog_base.ui
+UI_FILES = deforisk_plugin_dialog_base.ui
 
 EXTRAS = metadata.txt icon.png
 

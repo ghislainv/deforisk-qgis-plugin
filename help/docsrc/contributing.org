@@ -1,21 +1,21 @@
 #+title: Community guidelines
 #+options: toc:nil num:nil
 
-The ~forestatrisk~ QGIS plugin is Open Source and released under
-the [[file:license.html][GNU GPL version 3 license]]. Anybody who is interested can
-contribute to the package development. There are many ways to
-contribute, such as writing tutorials, examples or tests, improving
-documentation, submitting bug reports and feature requests, or writing
-code to provide new functionalities which can be incorporated into
-future versions of the package. Every contributor must agree to follow
-the project's [[file:code_of_conduct.html][Code Of Conduct]].
+The ~deforisk~ QGIS plugin is Open Source and released under the [[file:license.html][GNU
+GPL version 3 license]]. Anybody who is interested can contribute to
+the package development. There are many ways to contribute, such as
+writing tutorials, examples or tests, improving documentation,
+submitting bug reports and feature requests, or writing code to
+provide new functionalities which can be incorporated into future
+versions of the package. Every contributor must agree to follow the
+project's [[file:code_of_conduct.html][Code Of Conduct]].
 
 * Report an issue
 :PROPERTIES:
 :CUSTOM_ID: report-an-issue
 :END:
 If you want to report a bug, request a feature, or discuss an issue,
-please open an [[https://github.com/ghislainv/forestatrisk-qgis-plugin/issues][issue]] on the GitHub project page.
+please open an [[https://github.com/ghislainv/deforisk-qgis-plugin/issues][issue]] on the GitHub project page.
 
 * Contribute to code
 :PROPERTIES:
@@ -31,12 +31,13 @@ Source]].
 
 The important steps to follow are:
 
-1. Start by creating a fork of the ~forestatrisk~ repository
+1. Start by creating a fork of the ~deforisk-qgis-plugin~ repository
 2. Make changes to the source code on a development branch, not the
-   default /main/ branch
+   default /main/ branch.
 3. Keep your fork's main and development branches up to date with
-   changes in the ~forestatrisk~ repository
+   changes in the ~deforisk-qgis-plugin~ repository.
 4. Commit the changes you made. Chris Beams has written a [[https://chris.beams.io/posts/git-commit/][guide]] on how
    to write good commit messages.
 5. Push to your fork and submit a pull request.
 
+# End Of File

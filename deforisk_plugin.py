@@ -8,7 +8,7 @@
                               -------------------
         begin                : 2023-12-13
         git sha              : $Format:%H$
-        copyright            : (C) 2023 by Ghislain Vieilledent (Cirad)
+        copyright            : (C) 2024 by Ghislain Vieilledent (Cirad)
         email                : ghislain.vieilledent@cirad.fr
  ***************************************************************************/
 
@@ -21,6 +21,12 @@
  *                                                                         *
  ***************************************************************************/
 """
+
+# Define double undescore variables
+# https://peps.python.org/pep-0008/#module-level-dunder-names
+__author__ = "Ghislain Vieilledent and Thomas Arzouse"
+__email__ = "ghislain.vieilledent@cirad.fr, thomas.arsouze@cirad.fr"
+__version__ = "0.1dev"
 
 import os
 import subprocess

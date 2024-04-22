@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- 2024-04-11 Thu 11:21 -->
+<!-- 2024-04-21 Sun 16:34 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>deforisk QGIS plugin 📦 🐍 🌎</title>
@@ -195,7 +195,47 @@
 <div id="content" class="content">
 <header>
 <h1 class="title">deforisk QGIS plugin 📦 🐍 🌎</h1>
-</header><p>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb707681">Functionalities</a></li>
+<li><a href="#org67e5373">Installation</a>
+<ul>
+<li><a href="#org8e8f064">System dependencies</a>
+<ul>
+<li><a href="#orgf8ca1bb">Windows</a>
+<ul>
+<li><a href="#orgb469dde">Turn on the developer mode</a></li>
+<li><a href="#orge4d4406">Install QGIS and GDAL on Windows</a></li>
+<li><a href="#org1fe9c0f">Install the <code>forestatrisk</code> and <code>riskmapjnr</code> Python packages on Windows</a></li>
+</ul>
+</li>
+<li><a href="#org09646a8">Unix-like systems (Linux and macOS)</a>
+<ul>
+<li><a href="#org455d52a">Install QGIS and GDAL on Unix-like systems</a></li>
+<li><a href="#org3159062">Install the <code>forestatrisk</code> and <code>riskmapjnr</code> Python packages on Unix-like systems</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org96ef70f">Installing the <code>deforisk</code> plugin in QGIS</a></li>
+</ul>
+</li>
+<li><a href="#orge6d0762">Basic usage</a>
+<ul>
+<li><a href="#orga42973b">Plugin interface</a></li>
+<li><a href="#org3c0c323">Download and compute variables</a></li>
+<li><a href="#org50ac66b">Sample observations</a></li>
+<li><a href="#org55ae472">Models FAR</a></li>
+<li><a href="#org7515620">Model MV</a></li>
+</ul>
+</li>
+<li><a href="#org5b97600">Contributing</a></li>
+</ul>
+</div>
+</nav>
+<p>
 <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://img.shields.io/badge/licence-GPLv3-8f10cb.svg" alt="licence-GPLv3-8f10cb.svg" class="org-svg"></a>
 <a href="https://github.com/ghislainv/deforisk-qgis-plugin"><img src="https://img.shields.io/badge/GitHub-repo-green.svg" alt="GitHub-repo-green.svg" class="org-svg"></a>
 <a href="https://ecology.ghislainv.fr/deforisk-qgis-plugin"><img src="https://img.shields.io/badge/web-Deforisk_QGIS_plugin-blue.svg" alt="web-Deforisk_QGIS_plugin-blue.svg" class="org-svg"></a>
@@ -203,11 +243,11 @@
 <a href="https://ecology.ghislainv.fr/riskmapjnr"><img src="https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&amp;logoColor=ffd43b&amp;.svg" alt="python-riskmapjnr-yellow?logo=python&amp;logoColor=ffd43b&amp;.svg" class="org-svg"></a>
 </p>
 
-<div id="outline-container-org9f36bc7" class="outline-2">
-<h2 id="org9f36bc7">Functionalities</h2>
-<div class="outline-text-2" id="text-org9f36bc7">
+<div id="outline-container-orgb707681" class="outline-2">
+<h2 id="orgb707681">Functionalities</h2>
+<div class="outline-text-2" id="text-orgb707681">
 <p>
-The plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: <a href="https://earthenginepartners.appspot.com/science-2013-global-forest">Global Forest Change</a> and <a href="https://forobs.jrc.ec.europa.eu/TMF">Tropical Moist Forests</a>.
+The <code>deforisk</code> QGis plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: <a href="https://earthenginepartners.appspot.com/science-2013-global-forest">Global Forest Change</a> and <a href="https://forobs.jrc.ec.europa.eu/TMF">Tropical Moist Forests</a>.
 </p>
 
 <p>
@@ -216,35 +256,50 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 </div>
 </div>
 
-<div id="outline-container-orgad0327d" class="outline-2">
-<h2 id="orgad0327d">Installation</h2>
-<div class="outline-text-2" id="text-orgad0327d">
+<div id="outline-container-org67e5373" class="outline-2">
+<h2 id="org67e5373">Installation</h2>
+<div class="outline-text-2" id="text-org67e5373">
 </div>
-<div id="outline-container-orga9c968a" class="outline-3">
-<h3 id="orga9c968a">System dependencies</h3>
-<div class="outline-text-3" id="text-orga9c968a">
+<div id="outline-container-org8e8f064" class="outline-3">
+<h3 id="org8e8f064">System dependencies</h3>
+<div class="outline-text-3" id="text-org8e8f064">
 <p>
 <a href="https://www.qgis.org/en/site/">QGIS</a> and <a href="https://gdal.org/index.html">GDAL</a> must be installed on your system. The <code>forestatrisk</code> and <code>riskmapjnr</code> Python packages must also be installed on your system before using the QGIS plugin.
 </p>
 </div>
 
-<div id="outline-container-org7f389ce" class="outline-4">
-<h4 id="org7f389ce">Windows</h4>
-<div class="outline-text-4" id="text-org7f389ce">
+<div id="outline-container-orgf8ca1bb" class="outline-4">
+<h4 id="orgf8ca1bb">Windows</h4>
+<div class="outline-text-4" id="text-orgf8ca1bb">
 </div>
+<div id="outline-container-orgb469dde" class="outline-5">
+<h5 id="orgb469dde">Turn on the developer mode</h5>
+<div class="outline-text-5" id="text-orgb469dde">
+<p>
+To be able to use the <code>deforisk</code> QGis plugin, you need to activate the developer mode on Windows. The developer mode allows creating symbolic links (symlinks) which are used by the plugin and necessary to avoid copying large files on disk. To activate the developer mode, follow <a href="https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development">these instructions</a>. In summary:
+</p>
 <ul class="org-ul">
-<li><a id="org8932ff5"></a>Install QGIS and GDAL on Windows<br>
-<div class="outline-text-5" id="text-org8932ff5">
+<li>Enter &ldquo;for developers&rdquo; into the search box in the taskbar to go to the &ldquo;For developers&rdquo; settings page.</li>
+<li>Toggle the Developer Mode setting, at the top of the &ldquo;For developers&rdquo; page.</li>
+<li>Read the disclaimer for the setting you choose. Click &ldquo;Yes&rdquo; to accept the change.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge4d4406" class="outline-5">
+<h5 id="orge4d4406">Install QGIS and GDAL on Windows</h5>
+<div class="outline-text-5" id="text-orge4d4406">
 <p>
 To install QGIS and GDAL on Windows, use the <a href="https://trac.osgeo.org/osgeo4w/">OSGeo4W</a> network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select <i>Express Install</i> and install both QGIS and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install <i>OSGeo4W Shell</i> to execute command lines.
 </p>
 </div>
-</li>
+</div>
 
-<li><a id="orgaab5672"></a>Install the <code>forestatrisk</code> and <code>riskmapjnr</code> Python packages on Windows<br>
-<div class="outline-text-5" id="text-orgaab5672">
+<div id="outline-container-org1fe9c0f" class="outline-5">
+<h5 id="org1fe9c0f">Install the <code>forestatrisk</code> and <code>riskmapjnr</code> Python packages on Windows</h5>
+<div class="outline-text-5" id="text-org1fe9c0f">
 <p>
-To install the <code>forestatrisk</code> and <code>riskmapjnr</code> Python packages, open OSGeo4W Shell, upgrade <code>pip</code> and <code>setuptools</code>, and install <code>forestatrisk</code> and <code>riskmapjnr</code> with <code>pip</code>.
+To install the <code>forestatrisk</code> and <code>riskmapjnr</code> Python packages, open <i>OSGeo4W Shell</i>, upgrade <code>pip</code> and <code>setuptools</code>, and install <code>forestatrisk</code> and <code>riskmapjnr</code> with <code>pip</code>.
 </p>
 
 <div class="org-src-container">
@@ -262,17 +317,16 @@ Note: In case of problems, you can check the version of Python used by OSGeo4W u
 </pre>
 </div>
 </div>
-</li>
-</ul>
+</div>
 </div>
 
-<div id="outline-container-orgcfb73e0" class="outline-4">
-<h4 id="orgcfb73e0">Unix-like systems (Linux and macOS)</h4>
-<div class="outline-text-4" id="text-orgcfb73e0">
+<div id="outline-container-org09646a8" class="outline-4">
+<h4 id="org09646a8">Unix-like systems (Linux and macOS)</h4>
+<div class="outline-text-4" id="text-org09646a8">
 </div>
-<ul class="org-ul">
-<li><a id="org9ecb80b"></a>Install QGIS and GDAL on Unix-like systems<br>
-<div class="outline-text-5" id="text-org9ecb80b">
+<div id="outline-container-org455d52a" class="outline-5">
+<h5 id="org455d52a">Install QGIS and GDAL on Unix-like systems</h5>
+<div class="outline-text-5" id="text-org455d52a">
 <p>
 Install QGIS and GDAL on your system, for example using <code>apt-get</code> for Debian/Ubuntu Linux distributions.
 </p>
@@ -287,10 +341,11 @@ sudo apt-get install qgis gdal-bin libgdal-dev
 After installing GDAL, you can test the installation by running <code>gdalinfo --version</code> in the command prompt or terminal, which should display the installed GDAL version.
 </p>
 </div>
-</li>
+</div>
 
-<li><a id="org16e4ec9"></a>Install the <code>forestatrisk</code> and <code>riskmapjnr</code> Python packages on Unix-like systems<br>
-<div class="outline-text-5" id="text-org16e4ec9">
+<div id="outline-container-org3159062" class="outline-5">
+<h5 id="org3159062">Install the <code>forestatrisk</code> and <code>riskmapjnr</code> Python packages on Unix-like systems</h5>
+<div class="outline-text-5" id="text-org3159062">
 <p>
 On recent systems, you cannot use pip to install Python packages system-wide. As a consequence, we need to create a virtual environment and install the <code>forestatrisk</code> and <code>riskmapjnr</code> packages in it. Make sure to also install the appropriate GDAL bindings using <code>gdal==$(gdal-config --version)</code>. Once the package and its dependencies have been installed, you can deactivate the virtual environment.
 </p>
@@ -313,14 +368,13 @@ sys.path.append(<span class="org-string">"/path/to/venv/lib/python3.11/site-pack
 </pre>
 </div>
 </div>
-</li>
-</ul>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org29624fe" class="outline-3">
-<h3 id="org29624fe">Installing the <code>deforisk</code> plugin in QGIS</h3>
-<div class="outline-text-3" id="text-org29624fe">
+<div id="outline-container-org96ef70f" class="outline-3">
+<h3 id="org96ef70f">Installing the <code>deforisk</code> plugin in QGIS</h3>
+<div class="outline-text-3" id="text-org96ef70f">
 <ul class="org-ul">
 <li>Download the <code>deforisk</code> <a href="https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip">zip file</a> from GitHub.</li>
 <li>Open QGIS.</li>
@@ -331,15 +385,15 @@ sys.path.append(<span class="org-string">"/path/to/venv/lib/python3.11/site-pack
 </div>
 </div>
 
-<div id="outline-container-org0428540" class="outline-2">
-<h2 id="org0428540">Basic usage</h2>
-<div class="outline-text-2" id="text-org0428540">
+<div id="outline-container-orge6d0762" class="outline-2">
+<h2 id="orge6d0762">Basic usage</h2>
+<div class="outline-text-2" id="text-orge6d0762">
 </div>
-<div id="outline-container-orge60b03d" class="outline-3">
-<h3 id="orge60b03d">Plugin interface</h3>
-<div class="outline-text-3" id="text-orge60b03d">
+<div id="outline-container-orga42973b" class="outline-3">
+<h3 id="orga42973b">Plugin interface</h3>
+<div class="outline-text-3" id="text-orga42973b">
 
-<figure id="orgeb89706">
+<figure id="org97de266">
 <img src="https://ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_plugin.png" alt="interface_plugin.png">
 
 </figure>
@@ -350,9 +404,9 @@ The plugin interface shows three tabs: <code>Get variables</code>, <code>Models 
 </div>
 </div>
 
-<div id="outline-container-orga98362e" class="outline-3">
-<h3 id="orga98362e">Download and compute variables</h3>
-<div class="outline-text-3" id="text-orga98362e">
+<div id="outline-container-org3c0c323" class="outline-3">
+<h3 id="org3c0c323">Download and compute variables</h3>
+<div class="outline-text-3" id="text-org3c0c323">
 <p>
 This box is for collecting the information needed to download the data and compute the variables that will be used to spatially model the deforestation risk for a given country.
 </p>
@@ -382,9 +436,9 @@ Pushing the <code>Run</code> button in this box will download the data and compu
 </div>
 </div>
 
-<div id="outline-container-org10e031e" class="outline-3">
-<h3 id="org10e031e">Sample observations</h3>
-<div class="outline-text-3" id="text-org10e031e">
+<div id="outline-container-org50ac66b" class="outline-3">
+<h3 id="org50ac66b">Sample observations</h3>
+<div class="outline-text-3" id="text-org50ac66b">
 <p>
 This box is for collecting the information needed to sample the deforestation observations. This is a necessary step as we cannot fit a model using all forest pixels which are usually too many. Nonetheless, sampled observations must be representative of the deforestation process in the study area.
 </p>
@@ -402,11 +456,11 @@ Pushing the <code>Run</code> button in this box will sample the observations. No
 </div>
 </div>
 
-<div id="outline-container-orgd78fedc" class="outline-3">
-<h3 id="orgd78fedc">Models FAR</h3>
-<div class="outline-text-3" id="text-orgd78fedc">
+<div id="outline-container-org55ae472" class="outline-3">
+<h3 id="org55ae472">Models FAR</h3>
+<div class="outline-text-3" id="text-org55ae472">
 
-<figure id="org45dc21a">
+<figure id="org23606b9">
 <img src="https://ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_models_far.png" alt="interface_models_far.png">
 
 </figure>
@@ -429,11 +483,11 @@ Pushing the <code>Run</code> button in this tab will fit the statistical model t
 </div>
 </div>
 
-<div id="outline-container-orgccd1375" class="outline-3">
-<h3 id="orgccd1375">Model MV</h3>
-<div class="outline-text-3" id="text-orgccd1375">
+<div id="outline-container-org7515620" class="outline-3">
+<h3 id="org7515620">Model MV</h3>
+<div class="outline-text-3" id="text-org7515620">
 
-<figure id="orgd939e4f">
+<figure id="orgbf22c74">
 <img src="https://ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_model_mv.png" alt="interface_model_mv.png">
 
 </figure>
@@ -441,11 +495,11 @@ Pushing the <code>Run</code> button in this tab will fit the statistical model t
 </div>
 </div>
 
-<div id="outline-container-org905d649" class="outline-2">
-<h2 id="org905d649">Contributing</h2>
-<div class="outline-text-2" id="text-org905d649">
+<div id="outline-container-org5b97600" class="outline-2">
+<h2 id="org5b97600">Contributing</h2>
+<div class="outline-text-2" id="text-org5b97600">
 <p>
-The <code>deforisk</code> QGIS plugin is Open Source and released under the <a href="https:/ecology.ghislainv.fr/deforisk-qgis-plugin/license.html">GNU GPL version 3 license</a>. Anybody who is interested can contribute to the package development following our <a href="https:/ecology.ghislainv.fr/deforisk-qgis-plugin/contributing.html">Community guidelines</a>. Every contributor must agree to follow the project&rsquo;s <a href="https:/ecology.ghislainv.fr/deforisk-qgis-plugin/code_of_conduct.html">Code of conduct</a>.
+The <code>deforisk</code> QGIS plugin is Open Source and released under the <a href="https://ecology.ghislainv.fr/deforisk-qgis-plugin/license.html">GNU GPL version 3 license</a>. Anybody who is interested can contribute to the package development following our <a href="https://ecology.ghislainv.fr/deforisk-qgis-plugin/contributing.html">Community guidelines</a>. Every contributor must agree to follow the project&rsquo;s <a href="https://ecology.ghislainv.fr/deforisk-qgis-plugin/code_of_conduct.html">Code of conduct</a>.
 </p>
 </div>
 </div>

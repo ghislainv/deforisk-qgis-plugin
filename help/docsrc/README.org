@@ -1,29 +1,48 @@
-#+title: deforisk QGIS plugin 📦 🐍 🌎
+#+title: deforisk QGIS plugin
 #+author: Ghislain Vieilledent
+#+options: title:nil author:nil date:nil ^:{} toc:nil num:nil H:4
 
-#+options: title:t author:nil date:nil ^:{} toc:nil num:nil
+#+attr_rst: :align right :width 140px :alt Logo riskmapjnr
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][./_static/logo-deforisk.svg]]
+
+#+BEGIN_EXPORT rst
+====================
+deforisk QGIS plugin
+====================
+#+END_EXPORT
 
 #+link: GPLv3_link https://www.gnu.org/licenses/gpl-3.0.html
-#+link: website_link https://ecology.ghislainv.fr/deforisk-qgis-plugin
 #+link: github_link https://github.com/ghislainv/deforisk-qgis-plugin
-#+link: far_pypkg_link https://ecology.ghislainv.fr/forestatrisk
-#+link: rmj_pypkg_link https://ecology.ghislainv.fr/riskmapjnr
+#+link: website_link https://ecology.ghislainv.fr/deforisk-qgis-plugin
+#+link: far_link https://ecology.ghislainv.fr/forestatrisk
+#+link: rmj_link https://ecology.ghislainv.fr/riskmapjnr
 
-# #+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
-# #+macro: website https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg
-# #+macro: pypkg https://img.shields.io/badge/python-forestatrisk-306998?logo=python&logoColor=ffd43b&color=306998.svg
-# This works for org but not for GitHub
-# [[GPLv3_link][{{{GPLv3}}}]] [[website_link][{{{website}}}]] [[pypkg_link][{{{pypkg}}}]]
+#+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
+#+macro: github https://img.shields.io/badge/GitHub-repo-green.svg
+#+macro: website https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg
+#+macro: far https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg
+#+macro: rmj https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg
 
-[[GPLv3_link][https://img.shields.io/badge/licence-GPLv3-8f10cb.svg]]
-[[github_link][https://img.shields.io/badge/GitHub-repo-green.svg]]
-[[website_link][https://img.shields.io/badge/web-Deforisk_QGIS_plugin-blue.svg]]
-[[far_pypkg_link][https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg]]
-[[rmj_pypkg_link][https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg]]
+#+attr_rst: :alt License GPLv3
+[[GPLv3_link][{{{GPLv3}}}]]
+#+attr_rst: :alt GitHub
+[[github_link][{{{github}}}]]
+#+attr_rst: :alt Website
+[[website_link][{{{website}}}]]
+#+attr_rst: :alt forestarisk package
+[[far_link][{{{far}}}]]
+#+attr_rst: :alt riskmapjnr package
+[[rmj_link][{{{rmj}}}]]
+
+# [[GPLv3_link][https://img.shields.io/badge/licence-GPLv3-8f10cb.svg]]
+# [[github_link][https://img.shields.io/badge/GitHub-repo-green.svg]]
+# [[website_link][https://img.shields.io/badge/web-Deforisk_QGIS_plugin-blue.svg]]
+# [[far_pypkg_link][https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg]]
+# [[rmj_pypkg_link][https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg]]
 
 * Functionalities
 
-The plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: [[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
+The ~deforisk~ QGis plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: [[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
 
 Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the [[https://verra.org/programs/jurisdictional-nested-redd-framework/][VCS Jurisdictional and Nested REDD+ Framework]].
 
@@ -35,13 +54,20 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 
 *** Windows
 
+**** Turn on the developer mode
+
+To be able to use the ~deforisk~ QGis plugin, you need to activate the developer mode on Windows. The developer mode allows creating symbolic links (symlinks) which are used by the plugin and necessary to avoid copying large files on disk. To activate the developer mode, follow [[https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development][these instructions]]. In summary:
+- Enter "for developers" into the search box in the taskbar to go to the "For developers" settings page.
+- Toggle the Developer Mode setting, at the top of the "For developers" page.
+- Read the disclaimer for the setting you choose. Click "Yes" to accept the change.
+  
 **** Install QGIS and GDAL on Windows
 
 To install QGIS and GDAL on Windows, use the [[https://trac.osgeo.org/osgeo4w/][OSGeo4W]] network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select /Express Install/ and install both QGIS and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install /OSGeo4W Shell/ to execute command lines.
 
 **** Install the ~forestatrisk~ and ~riskmapjnr~ Python packages on Windows
 
-To install the ~forestatrisk~ and ~riskmapjnr~ Python packages, open OSGeo4W Shell, upgrade ~pip~ and ~setuptools~, and install ~forestatrisk~ and ~riskmapjnr~ with ~pip~.
+To install the ~forestatrisk~ and ~riskmapjnr~ Python packages, open /OSGeo4W Shell/, upgrade ~pip~ and ~setuptools~, and install ~forestatrisk~ and ~riskmapjnr~ with ~pip~.
 
 #+begin_src shell
 python3.exe -m pip install --upgrade pip setuptools

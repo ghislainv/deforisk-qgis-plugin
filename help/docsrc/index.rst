@@ -1,12 +1,12 @@
-.. DeforiskPlugin documentation master file, created by
-   sphinx-quickstart on Sun Feb 12 17:11:03 2012.
+.. deforisk documentation master file, created by
+   sphinx-quickstart on Sun Apr 21 17:42:01 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to DeforiskPlugin's documentation!
-============================================
-
-Contents:
+.. include:: README.rst
+   
+Table of contents
+=================
 
 .. toctree::
    :maxdepth: 2
@@ -17,4 +17,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
