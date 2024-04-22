@@ -1,0 +1,66 @@
+#+title: Get started
+#+author: Ghislain Vieilledent
+#+options: title:t author:nil date:nil ^:{} toc:nil num:nil H:4
+
+#+begin_export rst
+..
+    This get_started.rst file is automatically generated. Please do not
+    modify it. If you want to make changes to this file, modify the
+    get_started.org source file directly.
+#+end_export
+
+* Plugin interface
+
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_plugin.png]]
+
+The plugin interface shows three tabs: ~Get variables~, ~Models FAR~, and ~Model MV~. The ~Get variables~ tab includes two boxes: ~Download and compute variables~ and ~Sample observations~. The items of each tab or box are detailed below. They usually correspond to function parameters from the ~forestatrisk~ Python package. 
+
+* Download and compute variables
+
+This box is for collecting the information needed to download the data and compute the variables that will be used to spatially model the deforestation risk for a given country.
+
+- ~Working directory~: Directory where all the data and model outputs are stored.
+- ~Country/state ISO code~: Country ISO 3166-1 alpha-3 code.
+- ~Projection EPSG code~: EPSG code of the coordinate reference system used for projecting maps.
+- ~Forest data source~: Source of the forest data. Could be either "tmf" or "gfc".
+- ~Tree cover percentage~: Tree cover percentage used to define the forest when using GFC.
+- ~GDrive Rclone remote~: Name of the GoogleDrive remote in Rclone.
+- ~GDrive folder~: Name of the folder where GEE data will be exported.
+- ~WDPA API key~: Your WDPA API key.
+
+Pushing the ~Run~ button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of QGIS layers. New folders are created in the working directory:
+
+- ~working_directory/iso_code~: Unique folder created for the study area.
+- ~working_directory/iso_code/data_raw~: Downloaded raw data for the study area.
+- ~working_directory/iso_code/data~: Processed data that will be used for modelling.
+- ~working_directory/iso_code/outputs~: Outputs (figures and tables).
+- ~working_directory/iso_code/qgis_layer_style~: Layer styles for QGIS. 
+  
+* Sample observations
+
+This box is for collecting the information needed to sample the deforestation observations. This is a necessary step as we cannot fit a model using all forest pixels which are usually too many. Nonetheless, sampled observations must be representative of the deforestation process in the study area.
+
+- ~N# samples~: Number of observations to be sampled.
+- ~Adapt sampling~: If checked, the number of observations is proportional to forest area.
+- ~Random seed~: Random seed used to make the random sample reproducible. 
+- ~Spatial cell size (km)~: Size of the spatial cells used to estimate spatial random effects. These spatial random effects account for the residual regional variability in the deforestation risk which is not taken into account by the spatial explanatory variables (e.g. distance to forest edge) included in the model.
+
+Pushing the ~Run~ button in this box will sample the observations. Note that you cannot sample the observations before downloading and computing the variables (see previous step). When the operation is finished, the sampled observations appear in the list of QGIS layers. You can navigate on the map to confirm that about half the observations have been sampled in the deforested area and half in the non-deforested area. Files ~sample.txt~, ~sample_size.csv~, and ~correlation.pdf~ are added to the ~outputs~ folder. 
+
+* Models FAR
+
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_models_far.png]]
+
+This tab is for collecting the information needed to spatially model deforestation using three statistical models available in the ~forestatrisk~ (FAR) Python package: iCAR, GLM, and Random Forest models.
+
+- ~List of variables~: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without ".tif" extension) in folder ~working_directory/iso_code/data~. Variable names must be separated by a comma.
+- ~Starting values for betas~: If -99 (recommended), starting values for betas correspond to estimates of a simple GLM with the same variables.
+- ~Prior Vrho~: If -1 (recommended), the prior for Vrho is an Inverse-Gamma.
+- ~MCMC~: Length of the MCMC for the final model.
+- ~Variable selection~: If checked (recommended), a variable selection is performed before fitting the final model.
+
+Pushing the ~Run~ button in this tab will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step). Files ~summary_icar.txt~, ~mod_icar.pickle~, and ~mcmc.pdf~ are added to the ~outputs~ folder.
+
+* Model MV
+
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_model_mv.png]]

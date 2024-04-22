@@ -1,5 +1,5 @@
 #+title: Community guidelines
-#+options: toc:nil num:nil
+#+options: title:t toc:nil num:nil author:nil
 
 The ~deforisk~ QGIS plugin is Open Source and released under the [[file:license.html][GNU
 GPL version 3 license]]. Anybody who is interested can contribute to

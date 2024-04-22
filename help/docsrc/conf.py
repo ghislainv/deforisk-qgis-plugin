@@ -25,10 +25,10 @@ def find_author_release():
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "deforisk"
-(author, release) = find_author_release()
+(_, release) = find_author_release()
 _today = datetime.date.today()
 year = _today.year
-copyright = f"{year}, {author}"
+copyright = f"{year}, Cirad and FAO"
 
 # -- Sphynx options ----------------------------------------------------------
 add_module_names = False
@@ -51,8 +51,40 @@ html_theme_options = {
     "navigation_with_keys": "false",
     "logo": {
         "text": "deforisk Qgis plugin"
-    }
+    },
+    "footer_start": ["copyright"],
+    "footer_center": ["sphinx-version"],
+    "footer_end": ["theme-version"],
+    "secondary_sidebar_items": ["page-toc"],
+    "navbar_end": ["navbar-icon-links"],
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/ghislainv/deforisk-qgis-plugin",
+            "icon": "fa-brands fa-github",
+        }
+    ],
+    # alternative way to set github header icons
+    # "github_url": "https://github.com/ghislainv/defor-qgis-plugin"
 }
+
+html_sidebars = {
+    "installation": [],
+    "get_started": [],
+    "articles": [],
+    "python_api": [],
+    "contributing/*": []
+}
+
+html_context = {
+    "github_user": "ghislainv",
+    "github_repo": "deforisk-qgis-plugin",
+    "github_version": "main",
+    "doc_path": "docs",
+    "default_mode": "light"
+}
+
+html_show_sourcelink = False
 
 html_logo = "_static/logo-deforisk.svg"
 html_favicon = "_static/favicon.ico"

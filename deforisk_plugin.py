@@ -24,7 +24,7 @@
 
 # Define double undescore variables
 # https://peps.python.org/pep-0008/#module-level-dunder-names
-__author__ = "Ghislain Vieilledent and Thomas Arzouse"
+__author__ = "Ghislain Vieilledent and Thomas Arsouze"
 __email__ = "ghislain.vieilledent@cirad.fr, thomas.arsouze@cirad.fr"
 __version__ = "0.1dev"
 

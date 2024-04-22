@@ -1,0 +1,70 @@
+#+title: deforisk QGIS plugin
+#+author: Ghislain Vieilledent
+#+options: title:nil author:nil date:nil ^:{} toc:nil num:nil H:4
+
+#+begin_export rst
+..
+    This index.rst file is automatically generated. Please do not
+    modify it. If you want to make changes to this file, modify the
+    index.org source file directly.
+#+end_export
+
+#+attr_rst: :align right :width 140px :alt Logo riskmapjnr
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][./_static/logo-deforisk.svg]]
+
+#+begin_export rst
+====================
+deforisk QGIS plugin
+====================
+#+end_export
+
+#+link: GPLv3_link https://www.gnu.org/licenses/gpl-3.0.html
+#+link: github_link https://github.com/ghislainv/deforisk-qgis-plugin
+#+link: website_link https://ecology.ghislainv.fr/deforisk-qgis-plugin
+#+link: far_link https://ecology.ghislainv.fr/forestatrisk
+#+link: rmj_link https://ecology.ghislainv.fr/riskmapjnr
+
+#+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
+#+macro: github https://img.shields.io/badge/GitHub-repo-green.svg
+#+macro: website https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg
+#+macro: far https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg
+#+macro: rmj https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg
+
+[[GPLv3_link][{{{GPLv3}}}]]
+[[github_link][{{{github}}}]]
+[[website_link][{{{website}}}]]
+[[far_link][{{{far}}}]]
+[[rmj_link][{{{rmj}}}]]
+
+# [[GPLv3_link][https://img.shields.io/badge/licence-GPLv3-8f10cb.svg]]
+# [[github_link][https://img.shields.io/badge/GitHub-repo-green.svg]]
+# [[website_link][https://img.shields.io/badge/web-Deforisk_QGIS_plugin-blue.svg]]
+# [[far_pypkg_link][https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg]]
+# [[rmj_pypkg_link][https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg]]
+
+* Functionalities
+
+The ~deforisk~ QGis plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: [[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
+
+Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the [[https://verra.org/programs/jurisdictional-nested-redd-framework/][VCS Jurisdictional and Nested REDD+ Framework]].
+
+[[file:_static/banner.png]]
+
+* Contributing
+
+The ~deforisk~ QGIS plugin is Open Source and released under the [[https://ecology.ghislainv.fr/deforisk-qgis-plugin/license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[https://ecology.ghislainv.fr/deforisk-qgis-plugin/contributing.html][Community guidelines]]. Every contributor must agree to follow the project's [[https://ecology.ghislainv.fr/deforisk-qgis-plugin/code_of_conduct.html][Code of conduct]].
+
+#+begin_export rst
+.. toctree::
+   :hidden:
+
+   Home <self>
+   installation
+   get_started
+   articles
+   python_api
+   contributing/community_guidelines
+   contributing/code_of_conduct
+   contributing/license
+#+end_export
+
