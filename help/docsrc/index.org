@@ -42,13 +42,25 @@ deforisk QGIS plugin
 # [[far_pypkg_link][https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg]]
 # [[rmj_pypkg_link][https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg]]
 
-* Functionalities
+* Aim
 
 The ~deforisk~ QGis plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: [[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
 
 Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the [[https://verra.org/programs/jurisdictional-nested-redd-framework/][VCS Jurisdictional and Nested REDD+ Framework]].
 
 [[file:_static/banner.png]]
+
+* Installing the ~deforisk~ plugin in QGIS
+
+#+attr_rst: :directive note
+#+begin_quote
+[[https://www.qgis.org/en/site/][QGIS]] and [[https://gdal.org/index.html][GDAL]] must be installed on your system. The ~forestatrisk~ and ~riskmapjnr~ Python packages must also be installed on your system before using the QGIS plugin. Follow the [[file:installation.html][installation instructions]] to install these dependencies on your system.
+#+end_quote
+
+- Download the ~deforisk~ [[https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip][zip file]] from GitHub.
+- Open QGIS.
+- In QGIS menu bar, go to ~Extensions/Install extensions/Install from ZIP~.
+- Select the zip file that has been downloaded.
 
 * Contributing
 
