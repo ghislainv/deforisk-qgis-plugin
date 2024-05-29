@@ -40,19 +40,16 @@ class FarGetVariablesTask(QgsTask):
     DATA = "data"
     DATA_RAW = "data_raw"
     MESSAGE_CATEGORY = "FAR plugin"
-    N_STEPS = 4
+    N_STEPS = 3
 
-    def __init__(self, description, iface, workdir, isocode, proj,
-                 fcc_source, perc, remote_rclone, gdrive_folder):
+    def __init__(self, description, iface, workdir, get_fcc_args,
+                 isocode, proj):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
+        self.get_fcc_args = get_fcc_args
         self.isocode = isocode
         self.proj = proj
-        self.fcc_source = fcc_source
-        self.perc = perc
-        self.remote_rclone = remote_rclone
-        self.gdrive_folder = gdrive_folder
         self.exception = None
 
     def create_symbolic_links(self):
@@ -127,30 +124,10 @@ class FarGetVariablesTask(QgsTask):
             # Check existence of rasters
             fcc_file = opj(self.DATA, "fcc.tif")
             if not os.path.isfile(fcc_file):
-                # Run gee for forest data
-                far.data.run_gee_forest(
-                    iso3=self.isocode,
-                    proj="EPSG:4326",
-                    output_dir=self.DATA_RAW,
-                    keep_dir=True,
-                    fcc_source=self.fcc_source,
-                    perc=self.perc,
-                    gdrive_remote_rclone=self.remote_rclone,
-                    gdrive_folder=self.gdrive_folder)
-
-                # Check isCanceled() to handle cancellation
-                if self.isCanceled():
-                    return False
-
-                # Progress
-                progress += 1
-                self.set_progress(progress, self.N_STEPS)
-
                 # Download data
                 far.data.country_download(
+                    get_fcc_args=self.get_fcc_args,
                     iso3=self.isocode,
-                    gdrive_remote_rclone=self.remote_rclone,
-                    gdrive_folder=self.gdrive_folder,
                     output_dir=self.DATA_RAW)
 
                 # Check isCanceled() to handle cancellation

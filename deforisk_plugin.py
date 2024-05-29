@@ -26,13 +26,14 @@
 # https://peps.python.org/pep-0008/#module-level-dunder-names
 __author__ = "Ghislain Vieilledent and Thomas Arsouze"
 __email__ = "ghislain.vieilledent@cirad.fr, thomas.arsouze@cirad.fr"
-__version__ = "0.1dev"
+__version__ = "0.2dev"
 
 import os
 import subprocess
 import platform
 import time
 from glob import glob
+import random
 
 from qgis.core import Qgis, QgsApplication
 
@@ -287,10 +288,10 @@ class DeforiskPlugin:
                            f"{years}_{fcc_source}")
         return description
 
-    def set_workdir(self, iso, years, fcc_source):
+    def set_workdir(self, iso, years, fcc_source, rand_num):
         """Set working directory."""
         years = years.replace(" ", "").replace(",", "_")
-        folder_name = f"{iso}_{years}_{fcc_source}"
+        folder_name = f"{iso}_{years}_{fcc_source}_{rand_num:04}"
         if platform.system() == "Windows":
             workdir = os.path.join(os.environ["HOMEDRIVE"],
                                    os.environ["HOMEPATH"],
@@ -299,6 +300,15 @@ class DeforiskPlugin:
             workdir = os.path.join(os.environ["HOME"],
                                    "far-qgis", folder_name)
         return workdir
+
+    def make_get_fcc_args(self, aoi, buff, years, fcc_source, perc,
+                          tile_size):
+        """Make get_ffc_args dictionary."""
+        get_fcc_args = {"aoi": aoi, "buff": buff, "years": years,
+                        "fcc_source": fcc_source, "perc": perc,
+                        "tile_size": tile_size,
+                        "output_file": "forest.tif"}
+        return get_fcc_args
 
     def set_wdpa_key(self, wdpa_key, workdir):
         """Set WDPA key."""
@@ -455,27 +465,28 @@ class DeforiskPlugin:
         """Catch arguments from UI."""
         # Get variables
         workdir = self.dlg.workdir.text()
-        iso = self.dlg.isocode.text()
-        proj = self.dlg.proj.text()
+        aoi = self.dlg.aoi.text()
+        buff = float(self.dlg.buff.text())
         years = self.dlg.years.text()
         fcc_source = self.dlg.fcc_source.text()
-        perc = self.dlg.perc.text()
-        remote_rclone = self.dlg.remote_rclone.text()
-        gdrive_folder = self.dlg.gdrive_folder.text()
+        perc = int(self.dlg.perc.text())
+        tile_size = float(self.dlg.tile_size.text())
+        iso = self.dlg.isocode.text()
         wdpa_key = self.dlg.wdpa_key.text()
+        proj = self.dlg.proj.text()
         # Sample observations
-        nsamp = self.dlg.nsamp.text()
+        nsamp = int(self.dlg.nsamp.text())
         adapt = self.dlg.adapt.isChecked()
-        seed = self.dlg.seed.text()
-        csize = self.dlg.csize.text()
+        seed = int(self.dlg.seed.text())
+        csize = float(self.dlg.csize.text())
         # FAR models
         variables = self.dlg.variables.text()
-        beta_start = self.dlg.beta_start.text()
-        prior_vrho = self.dlg.prior_vrho.text()
-        mcmc = self.dlg.mcmc.text()
+        beta_start = float(self.dlg.beta_start.text())
+        prior_vrho = int(self.dlg.prior_vrho.text())
+        mcmc = int((int(self.dlg.mcmc.text()) // 1000) * 1000)
         varselection = self.dlg.varselection.isChecked()
         # FAR predict
-        csize_interp = self.dlg.csize_interp.text()
+        csize_interp = float(self.dlg.csize_interp.text())
         pred_icar = self.dlg.pred_icar.isChecked()
         pred_glm = self.dlg.pred_glm.isChecked()
         pred_rf = self.dlg.pred_rf.isChecked()
@@ -496,38 +507,23 @@ class DeforiskPlugin:
         val_mw = self.dlg.val_mw.isChecked()
         val_t1 = self.dlg.val_t1.isChecked()
         val_t2 = self.dlg.val_t2.isChecked()
-        # Default values
-        iso = "MTQ" if iso == "" else iso
-        proj = "EPSG:5490" if proj == "" else proj
-        years = "2000, 2010, 2020" if years == "" else years
-        fcc_source = "jrc" if fcc_source == "" else fcc_source
-        perc = "50" if perc == "" else int(perc)
+        # Special variables
         if workdir == "":
-            workdir = self.set_workdir(iso, years, fcc_source)
-        remote_rclone = "gdrive_gv" if remote_rclone == "" else remote_rclone
-        if gdrive_folder == "":
-            gdrive_folder = "GEE/GEE-far-qgis-plugin"
-        nsamp = 10000 if nsamp == "" else int(nsamp)
-        seed = 1234 if seed == "" else int(seed)
-        csize = 1 if csize == "" else float(csize)
+            rand_num = random.randint(1, 9999)
+            workdir = self.set_workdir(iso, years, fcc_source, rand_num)
+        get_fcc_args = self.make_get_fcc_args(
+                    aoi, buff, years, fcc_source, perc, tile_size)
         self.set_wdpa_key(wdpa_key, workdir)
-        # Fit models
         var = ("C(pa), dist_edge, "
                "dist_road, dist_town, dist_river, "
                "altitude, slope")
         variables = var if variables == "" else variables
-        beta_start = -99 if beta_start == "" else float(beta_start)
-        prior_vrho = -1 if prior_vrho == "" else int(prior_vrho)
-        mcmc = 5000 if mcmc == "" else int((int(mcmc) // 1000) * 1000)
-        # Predict risk
-        csize_interp = 0.1 if csize_interp == "" else float(csize_interp)
         # Dictionary of arguments for far functions
         self.args = {
-            "workdir": workdir, "isocode": iso, "proj": proj,
-            "years": years,
-            "fcc_source": fcc_source, "perc": perc,
-            "remote_rclone": remote_rclone, "gdrive_folder": gdrive_folder,
-            "wdpa_key": wdpa_key,
+            "workdir": workdir,
+            "get_fcc_args": get_fcc_args,
+            "isocode": iso, "wdpa_key": wdpa_key,
+            "proj": proj,
             "nsamp": nsamp, "adapt": adapt, "seed": seed,
             "csize": csize, "variables": variables,
             "beta_start": beta_start, "prior_vrho": prior_vrho,
@@ -553,12 +549,9 @@ class DeforiskPlugin:
             description=description,
             iface=self.iface,
             workdir=self.args["workdir"],
+            get_fcc_args=self.args["get_fcc_args"],
             isocode=self.args["isocode"],
-            proj=self.args["proj"],
-            fcc_source=self.args["fcc_source"],
-            perc=self.args["perc"],
-            remote_rclone=self.args["remote_rclone"],
-            gdrive_folder=self.args["gdrive_folder"])
+            proj=self.args["proj"])
         # Add task to task manager
         self.tm.addTask(task)
 

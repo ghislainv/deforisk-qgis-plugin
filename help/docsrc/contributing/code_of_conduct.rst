@@ -2,9 +2,6 @@
 Code of Conduct
 ===============
 
-
-
-
 .. _our-pledge:
 
 Our Pledge

@@ -29,188 +29,207 @@
     <attribute name="title">
      <string>Get variables</string>
     </attribute>
-    <widget class="QGroupBox" name="groupBox_var">
-     <property name="geometry">
-      <rect>
-       <x>9</x>
-       <y>9</y>
-       <width>489</width>
-       <height>492</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>Download and compute variables</string>
-     </property>
-     <widget class="QPushButton" name="run_far_get_variable">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>320</y>
-        <width>71</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Run</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>14</x>
-        <y>35</y>
-        <width>461</width>
-        <height>275</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0" colspan="3">
-        <widget class="QLabel" name="label_workdir">
-         <property name="text">
-          <string>Working directory</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3" colspan="2">
-        <widget class="QLineEdit" name="workdir">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="placeholderText">
-          <string>C:\Users\&lt;name&gt;\Documents\deforisk</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="4">
-        <widget class="QLabel" name="label_isocode">
-         <property name="text">
-          <string>Country/state ISO code</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
-        <widget class="QLineEdit" name="isocode">
-         <property name="text">
-          <string>MTQ</string>
-         </property>
-         <property name="placeholderText">
-          <string>MTQ</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="3">
-        <widget class="QLabel" name="label_proj">
-         <property name="text">
-          <string>Projection EPSG code</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="4">
-        <widget class="QLineEdit" name="proj">
-         <property name="text">
-          <string>EPSG:5490</string>
-         </property>
-         <property name="placeholderText">
-          <string>EPSG:5490</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_years">
-         <property name="text">
-          <string>Years</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1" colspan="4">
-        <widget class="QLineEdit" name="years">
-         <property name="text">
-          <string>2000, 2010, 2020</string>
-         </property>
-         <property name="placeholderText">
-          <string>2000, 2010, 2020</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="3">
-        <widget class="QLabel" name="label_fcc_source">
-         <property name="text">
-          <string>Forest data source</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="3" colspan="2">
-        <widget class="QLineEdit" name="fcc_source">
-         <property name="text">
-          <string>jrc</string>
-         </property>
-         <property name="placeholderText">
-          <string>jrc</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="4">
-        <widget class="QLabel" name="label_perc">
-         <property name="text">
-          <string>Tree cover threshold (%)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="4">
-        <widget class="QLineEdit" name="perc">
-         <property name="text">
-          <string>50</string>
-         </property>
-         <property name="placeholderText">
-          <string>50</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0" colspan="3">
-        <widget class="QLabel" name="label_remote_rclone">
-         <property name="text">
-          <string>GDrive Rclone remote</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="4">
-        <widget class="QLineEdit" name="remote_rclone">
-         <property name="placeholderText">
-          <string>my_gdrive</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0" colspan="2">
-        <widget class="QLabel" name="label_gdrive_folder">
-         <property name="text">
-          <string>GDrive folder</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2" colspan="3">
-        <widget class="QLineEdit" name="gdrive_folder">
-         <property name="placeholderText">
-          <string>GEE-far-qgis-plugin</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0" colspan="2">
-        <widget class="QLabel" name="label_wdpa_key">
-         <property name="text">
-          <string>WDPA API key</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="2" colspan="3">
-        <widget class="QLineEdit" name="wdpa_key">
-         <property name="placeholderText">
-          <string>ca4703ffba6b9a26b2db73f78e56e088</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="0" column="0">
+      <widget class="QGroupBox" name="groupBox_var">
+       <property name="title">
+        <string>Download and compute variables</string>
+       </property>
+       <widget class="QPushButton" name="run_far_get_variable">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>370</y>
+          <width>71</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Run</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>15</x>
+          <y>34</y>
+          <width>461</width>
+          <height>306</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_workdir">
+           <property name="text">
+            <string>Working directory</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="workdir">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>C:\Users\&lt;name&gt;\Documents\deforisk</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_aoi">
+           <property name="text">
+            <string>Area Of Interest</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="aoi">
+           <property name="text">
+            <string>MTQ</string>
+           </property>
+           <property name="placeholderText">
+            <string>MTQ</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_buffer">
+           <property name="text">
+            <string>Buffer (dd)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="buff">
+           <property name="text">
+            <string>0.08983152841195216</string>
+           </property>
+           <property name="placeholderText">
+            <string>0.08983152841195216</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_years">
+           <property name="text">
+            <string>Years</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="years">
+           <property name="text">
+            <string>2000, 2010, 2020</string>
+           </property>
+           <property name="placeholderText">
+            <string>2000, 2010, 2020</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_fcc_source">
+           <property name="text">
+            <string>Forest data source</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="fcc_source">
+           <property name="text">
+            <string>jrc</string>
+           </property>
+           <property name="placeholderText">
+            <string>jrc</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_perc">
+           <property name="text">
+            <string>Tree cover threshold (%)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="perc">
+           <property name="text">
+            <string>50</string>
+           </property>
+           <property name="placeholderText">
+            <string>50</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_tile_size">
+           <property name="text">
+            <string>Tile size (dd)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="tile_size">
+           <property name="text">
+            <string>1.0</string>
+           </property>
+           <property name="placeholderText">
+            <string>1.0</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_isocode">
+           <property name="text">
+            <string>Country/state ISO code</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLineEdit" name="isocode">
+           <property name="text">
+            <string>MTQ</string>
+           </property>
+           <property name="placeholderText">
+            <string>MTQ</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_wdpa_key">
+           <property name="text">
+            <string>WDPA API key</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLineEdit" name="wdpa_key">
+           <property name="placeholderText">
+            <string>ca4703ffba6b9a26b2db73f78e56e088</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_proj">
+           <property name="text">
+            <string>Projection EPSG code</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QLineEdit" name="proj">
+           <property name="text">
+            <string>EPSG:5490</string>
+           </property>
+           <property name="placeholderText">
+            <string>EPSG:5490</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
    </widget>
    <widget class="QWidget" name="tab_benchmark">
     <attribute name="title">
