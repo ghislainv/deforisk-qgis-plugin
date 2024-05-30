@@ -70,10 +70,11 @@ class FarGetVariablesTask(QgsTask):
             for v in ["edge", "defor"]:
                 src_file = opj(self.DATA, period, f"dist_{v}_{date}.tif")
                 src_file = os.path.abspath(src_file)
-                dst_file = opj(f"data_{date}", f"dist_{v}.tif")
-                if os.path.isfile(dst_file):
-                    os.remove(dst_file)
-                os.symlink(src_file, dst_file)
+                if os.path.isfile(src_file):
+                    dst_file = opj(f"data_{date}", f"dist_{v}.tif")
+                    if os.path.isfile(dst_file):
+                        os.remove(dst_file)
+                    os.symlink(src_file, dst_file)
 
     def reformat_get_fcc_args(self):
         """Reformat get_fcc_args."""
@@ -189,7 +190,7 @@ class FarGetVariablesTask(QgsTask):
             # Plot
             fcc123_file = opj(self.DATA, "forest", "fcc123.tif")
             png_file = opj(self.OUT, "fcc123.png")
-            border_file = opj(self.DATA, "ctry_PROJ.shp")
+            border_file = opj(self.DATA, "ctry_PROJ.gpkg")
             fig_fcc123 = far.plot.fcc123(
                 input_fcc_raster=fcc123_file,
                 maxpixels=1e8,
@@ -209,7 +210,7 @@ class FarGetVariablesTask(QgsTask):
                 var_group = root.addGroup("Variables")
 
             # Add border layer to QGis project
-            border_file = opj(self.DATA, "ctry_PROJ.shp")
+            border_file = opj(self.DATA, "ctry_PROJ.gpkg")
             border_layer = QgsVectorLayer(border_file, "border", "ogr")
             border_layer.loadNamedStyle(opj("qgis_layer_style", "border.qml"))
             add_layer(far_project, border_layer)
