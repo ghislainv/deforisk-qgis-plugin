@@ -75,6 +75,23 @@ class FarGetVariablesTask(QgsTask):
                     os.remove(dst_file)
                 os.symlink(src_file, dst_file)
 
+    def reformat_get_fcc_args(self):
+        """Reformat get_fcc_args."""
+        # aoi
+        gfa = self.get_fcc_args.copy()
+        aoi = gfa["aoi"]
+        if aoi.startswith("("):
+            aoi = aoi.replace("(", "").replace(")", "").split(",")
+            aoi = tuple([float(i) for i in aoi])
+        # years
+        years = gfa["years"]
+        years = years.replace(" ", "").split(",")
+        years = [int(i) for i in years]
+        gfa["years"] = years
+        # output_file
+        gfa["output_file"] = opj(self.DATA_RAW, "forest_latlon.tif")
+        return gfa
+
     def set_progress(self, progress, n_steps):
         """Set progress."""
         if progress == 0:
@@ -126,7 +143,7 @@ class FarGetVariablesTask(QgsTask):
             if not os.path.isfile(fcc_file):
                 # Download data
                 far.data.country_download(
-                    get_fcc_args=self.get_fcc_args,
+                    get_fcc_args=self.reformat_get_fcc_args(),
                     iso3=self.isocode,
                     output_dir=self.DATA_RAW)
 

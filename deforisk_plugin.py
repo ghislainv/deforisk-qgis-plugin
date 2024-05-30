@@ -228,11 +228,6 @@ class DeforiskPlugin:
 
     def print_dependency_version(self):
         """Print package versions."""
-        # Rclone info
-        cmd = ["rclone", "--version"]
-        result = subprocess.run(cmd, capture_output=True, check=True)
-        result = result.stdout.splitlines()
-        print(result[0].decode())
         # osmconvert info
         cmd = ["osmconvert", "--help"]
         result = subprocess.run(cmd, capture_output=True, check=True)
@@ -263,9 +258,10 @@ class DeforiskPlugin:
                          csize_val=None):
         """Write down task description."""
         isocode = self.args["isocode"]
-        years = self.args["years"]
+        get_fcc_args = self.args["get_fcc_args"]
+        years = get_fcc_args["years"]
         years = years.replace(" ", "").replace(",", "_")
-        fcc_source = self.args["fcc_source"]
+        fcc_source = get_fcc_args["fcc_source"]
         # Description for calibrate
         if (model is not None and date is None):
             description = (f"{task_name}_{isocode}_"
@@ -295,10 +291,10 @@ class DeforiskPlugin:
         if platform.system() == "Windows":
             workdir = os.path.join(os.environ["HOMEDRIVE"],
                                    os.environ["HOMEPATH"],
-                                   "far-qgis", folder_name)
+                                   "deforisk", folder_name)
         else:
             workdir = os.path.join(os.environ["HOME"],
-                                   "far-qgis", folder_name)
+                                   "deforisk", folder_name)
         return workdir
 
     def make_get_fcc_args(self, aoi, buff, years, fcc_source, perc,
@@ -306,8 +302,7 @@ class DeforiskPlugin:
         """Make get_ffc_args dictionary."""
         get_fcc_args = {"aoi": aoi, "buff": buff, "years": years,
                         "fcc_source": fcc_source, "perc": perc,
-                        "tile_size": tile_size,
-                        "output_file": "forest.tif"}
+                        "tile_size": tile_size}
         return get_fcc_args
 
     def set_wdpa_key(self, wdpa_key, workdir):
@@ -509,6 +504,7 @@ class DeforiskPlugin:
         val_t2 = self.dlg.val_t2.isChecked()
         # Special variables
         if workdir == "":
+            random.seed(1234)  # temp: only to get same dir
             rand_num = random.randint(1, 9999)
             workdir = self.set_workdir(iso, years, fcc_source, rand_num)
         get_fcc_args = self.make_get_fcc_args(

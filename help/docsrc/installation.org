@@ -68,7 +68,7 @@ python3 -m pip install forestatrisk riskmapjnr gdal==$(gdal-config --version)
 deactivate
 #+end_src
 
-Then, in the ~setup.py~ [[https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts][Python file]], add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to ~sys.path~.
+Then, in the ~startup.py~ [[https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts][Python file]], add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to ~sys.path~.
 
 #+begin_src python :results output :exports both
 import sys
