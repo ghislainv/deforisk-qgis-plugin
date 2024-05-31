@@ -487,7 +487,7 @@ class DeforiskPlugin:
             seed = 1234  # Only for tests to get same dir
             workdir = self.set_workdir(iso, years, fcc_source, seed)
         get_fcc_args = self.make_get_fcc_args(
-                    aoi, buff, years, fcc_source, perc, tile_size)
+            aoi, buff, years, fcc_source, perc, tile_size)
         var = ("C(pa), dist_edge, "
                "dist_road, dist_town, dist_river, "
                "altitude, slope")

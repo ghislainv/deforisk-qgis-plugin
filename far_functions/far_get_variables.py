@@ -159,6 +159,8 @@ class FarGetVariablesTask(QgsTask):
         years = years.replace(" ", "").split(",")
         years = [int(i) for i in years]
         gfa["years"] = years
+        # parallel (False with QGis)
+        gfa["parallel"] = False
         # output_file
         gfa["output_file"] = opj(self.DATA_RAW, "forest_latlon.tif")
         return gfa
