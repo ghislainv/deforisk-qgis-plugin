@@ -31,8 +31,6 @@ __version__ = "0.2dev"
 import os
 import subprocess
 import platform
-import time
-from glob import glob
 import random
 
 from qgis.core import Qgis, QgsApplication
@@ -284,9 +282,11 @@ class DeforiskPlugin:
                            f"{years}_{fcc_source}")
         return description
 
-    def set_workdir(self, iso, years, fcc_source, rand_num):
+    def set_workdir(self, iso, years, fcc_source, seed=None):
         """Set working directory."""
         years = years.replace(" ", "").replace(",", "_")
+        random.seed(seed)
+        rand_num = random.randint(1, 9999)
         folder_name = f"{iso}_{years}_{fcc_source}_{rand_num:04}"
         if platform.system() == "Windows":
             workdir = os.path.join(os.environ["HOMEDRIVE"],
@@ -304,27 +304,6 @@ class DeforiskPlugin:
                         "fcc_source": fcc_source, "perc": perc,
                         "tile_size": tile_size}
         return get_fcc_args
-
-    def set_wdpa_key(self, wdpa_key, workdir):
-        """Set WDPA key."""
-        if wdpa_key == "":
-            env_file = os.path.join(workdir, ".env")
-            if os.path.isfile(env_file):
-                with open(env_file, encoding="utf-8") as file:
-                    lines = file.readlines()
-                    for line in lines:
-                        [key, value_key] = line.split("=")
-                        if key == "WDPA_KEY":
-                            os.environ[key] = value_key.replace("\"", "")
-            else:
-                msg = ("No WDPA API key provided "
-                       "(either as plugin argument or "
-                       "WDPA_KEY in workdir/.env)")
-                self.iface.messageBar().pushMessage(
-                    "Error", msg,
-                    level=Qgis.Critical)
-        else:
-            os.environ["WDPA_KEY"] = wdpa_key
 
     def get_win_sizes(self):
         """Get window sizes as list."""
@@ -467,6 +446,7 @@ class DeforiskPlugin:
         perc = int(self.dlg.perc.text())
         tile_size = float(self.dlg.tile_size.text())
         iso = self.dlg.isocode.text()
+        gc_project = self.dlg.gc_project.text()
         wdpa_key = self.dlg.wdpa_key.text()
         proj = self.dlg.proj.text()
         # Sample observations
@@ -504,12 +484,10 @@ class DeforiskPlugin:
         val_t2 = self.dlg.val_t2.isChecked()
         # Special variables
         if workdir == "":
-            random.seed(1234)  # temp: only to get same dir
-            rand_num = random.randint(1, 9999)
-            workdir = self.set_workdir(iso, years, fcc_source, rand_num)
+            seed = 1234  # Only for tests to get same dir
+            workdir = self.set_workdir(iso, years, fcc_source, seed)
         get_fcc_args = self.make_get_fcc_args(
                     aoi, buff, years, fcc_source, perc, tile_size)
-        self.set_wdpa_key(wdpa_key, workdir)
         var = ("C(pa), dist_edge, "
                "dist_road, dist_town, dist_river, "
                "altitude, slope")
@@ -518,7 +496,9 @@ class DeforiskPlugin:
         self.args = {
             "workdir": workdir,
             "get_fcc_args": get_fcc_args,
-            "isocode": iso, "wdpa_key": wdpa_key,
+            "isocode": iso,
+            "gc_project": gc_project,
+            "wdpa_key": wdpa_key,
             "proj": proj,
             "nsamp": nsamp, "adapt": adapt, "seed": seed,
             "csize": csize, "variables": variables,
@@ -547,6 +527,8 @@ class DeforiskPlugin:
             workdir=self.args["workdir"],
             get_fcc_args=self.args["get_fcc_args"],
             isocode=self.args["isocode"],
+            gc_project=self.args["gc_project"],
+            wdpa_key=self.args["wdpa_key"],
             proj=self.args["proj"])
         # Add task to task manager
         self.tm.addTask(task)

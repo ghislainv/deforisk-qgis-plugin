@@ -13,7 +13,9 @@ Get forestatrisk variables.
 """
 
 import os
+import json
 import shutil
+import platform
 from glob import glob
 
 from qgis.core import (
@@ -32,6 +34,38 @@ from ..utilities import add_layer, add_layer_to_group
 opj = os.path.join
 
 
+def get_default_file(file_path):
+    """Get default file."""
+    if platform.system() == "Windows":
+        home_dir = opj(os.environ["HOMEDRIVE"], os.environ["HOMEPATH"])
+    else:
+        home_dir = os.environ["HOME"]
+    default_file = opj(home_dir, "deforisk", file_path)
+    return default_file
+
+
+def ee_initialize_service_account(json_file):
+    """Initialize to EE with service account."""
+    with open(json_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    service_account = data["client_email"]
+    credentials = ee.ServiceAccountCredentials(
+        service_account, json_file)
+    ee.Initialize(credentials=credentials,
+                  opt_url=("https://earthengine-highvolume"
+                           ".googleapis.com"))
+
+
+def set_wdpa_env_var(env_file):
+    """Set WDPA environmental variable."""
+    with open(env_file, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+    for line in lines:
+        [key, value_key] = line.split("=")
+        if key == "WDPA_KEY":
+            os.environ[key] = value_key.replace("\"", "")
+
+
 class FarGetVariablesTask(QgsTask):
     """Get variables for modelling and forecasting deforestation."""
 
@@ -43,14 +77,50 @@ class FarGetVariablesTask(QgsTask):
     N_STEPS = 3
 
     def __init__(self, description, iface, workdir, get_fcc_args,
-                 isocode, proj):
+                 isocode, gc_project, wdpa_key, proj):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
         self.get_fcc_args = get_fcc_args
         self.isocode = isocode
+        self.gc_project = gc_project
+        self.wpda_key = wdpa_key
         self.proj = proj
         self.exception = None
+
+    def ee_initialize(self):
+        """Initialize Earth Engine."""
+        json_file = os.path.normpath(self.gc_project)
+        default_json_file = get_default_file("deforisk-gee.json")
+        if os.path.isfile(json_file):
+            ee_initialize_service_account(json_file)
+        elif len(self.gc_project) > 0:
+            ee.Initialize(project=self.gc_project,
+                          opt_url=("https://earthengine-highvolume"
+                                   ".googleapis.com"))
+        elif os.path.isfile(default_json_file):
+            ee_initialize_service_account(default_json_file)
+        else:
+            msg = "No Earth Engine access provided."
+            self.iface.messageBar().pushMessage(
+                "Error", msg,
+                level=Qgis.Critical)
+
+    def set_wdpa_key(self):
+        """Set WDPA key."""
+        env_file = os.path.normpath(self.wdpa_key)
+        default_env_file = get_default_file("env.txt")
+        if os.path.isfile(env_file):
+            set_wdpa_env_var(env_file)
+        elif len(self.wdpa_key) > 0:
+            os.environ["WDPA_KEY"] = self.wdpa_key
+        elif os.path.isfile(default_env_file):
+            set_wdpa_env_var(default_env_file)
+        else:
+            msg = "No WDPA API key provided."
+            self.iface.messageBar().pushMessage(
+                "Error", msg,
+                level=Qgis.Critical)
 
     def create_symbolic_links(self):
         """Create symbolic links for predictions."""
@@ -124,13 +194,6 @@ class FarGetVariablesTask(QgsTask):
             far.make_dir(self.DATA)
             far.make_dir(self.OUT)
 
-            # Initialize Earth Engine
-            # service_account = "far-qgis@forestatrisk.iam.gserviceaccount.com"
-            # json_key = opj(workdir, ".forestatrisk-gee.json")
-            # credentials = ee.ServiceAccountCredentials(
-            # service_account, json_key)
-            ee.Initialize(project="forestatrisk")
-
             # Copy qml files (layer style)
             src_dir = opj(os.path.dirname(os.path.dirname(__file__)),
                           "qgis_layer_style")
@@ -142,6 +205,10 @@ class FarGetVariablesTask(QgsTask):
             # Check existence of rasters
             fcc_file = opj(self.DATA, "fcc.tif")
             if not os.path.isfile(fcc_file):
+
+                # Initialize EE
+                self.ee_initialize()
+
                 # Download data
                 far.data.country_download(
                     get_fcc_args=self.reformat_get_fcc_args(),
