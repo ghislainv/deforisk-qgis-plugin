@@ -582,7 +582,7 @@ class DeforiskPlugin:
                     description=description,
                     iface=self.iface,
                     workdir=self.args["workdir"],
-                    years=self.args["years"],
+                    years=self.args["get_fcc_args"]["years"],
                     csize=self.args["csize"],
                     csize_interpolate=self.args["csize_interp"],
                     period=period,
@@ -605,7 +605,7 @@ class DeforiskPlugin:
                 description=description,
                 iface=self.iface,
                 workdir=self.args["workdir"],
-                years=self.args["years"],
+                years=self.args["get_fcc_args"]["years"],
                 defor_thresh=self.args["defor_thresh"],
                 max_dist=self.args["max_dist"],
                 win_size=win_size)
@@ -628,7 +628,7 @@ class DeforiskPlugin:
                     description=description,
                     iface=self.iface,
                     workdir=self.args["workdir"],
-                    years=self.args["years"],
+                    years=self.args["get_fcc_args"]["years"],
                     win_size=wsize,
                     period=period)
                 # Add task to task manager
@@ -657,7 +657,7 @@ class DeforiskPlugin:
                         description=description,
                         iface=self.iface,
                         workdir=self.args["workdir"],
-                        years=self.args["years"],
+                        years=self.args["get_fcc_args"]["years"],
                         csize_val=csize_val,
                         period=period,
                         model=model)

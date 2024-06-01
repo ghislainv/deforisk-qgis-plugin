@@ -80,7 +80,7 @@ class RmjPredictTask(QgsTask):
         """Plot probability of deforestation."""
         prob_file = opj(self.OUT, f"prob_{model}_{date}.tif")
         png_file = opj(self.OUT, f"prob_{model}_{date}.png")
-        border_file = opj(self.DATA, "ctry_PROJ.shp")
+        border_file = opj(self.DATA, "ctry_PROJ.gpkg")
         fig_prob = rmj.plot.riskmap(
             input_risk_map=prob_file,
             maxpixels=1e8,
@@ -187,7 +187,7 @@ class RmjPredictTask(QgsTask):
                 mw_group = root.addGroup("Moving window")
 
             # Add border layer to QGis project
-            border_file = opj(self.DATA, "ctry_PROJ.shp")
+            border_file = opj(self.DATA, "ctry_PROJ.gpkg")
             border_layer = QgsVectorLayer(border_file, "border", "ogr")
             border_layer.loadNamedStyle(opj("qgis_layer_style", "border.qml"))
             add_layer(far_project, border_layer)
@@ -197,7 +197,7 @@ class RmjPredictTask(QgsTask):
             prob_layer = QgsRasterLayer(prob_file,
                                         f"prob_{model}_{date}")
             prob_layer.loadNamedStyle(opj("qgis_layer_style",
-                                          "prob_mv.qml"))
+                                          "prob_mw.qml"))
             add_layer_to_group(far_project, mw_group,
                                prob_layer)
 

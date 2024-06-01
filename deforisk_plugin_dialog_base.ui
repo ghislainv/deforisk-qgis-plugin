@@ -67,7 +67,7 @@
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>11</x>
@@ -104,7 +104,7 @@
          <item row="1" column="1">
           <widget class="QLineEdit" name="aoi">
            <property name="text">
-            <string>MTQ</string>
+            <string>GTM</string>
            </property>
            <property name="placeholderText">
             <string>MTQ</string>
@@ -206,7 +206,7 @@
          <item row="7" column="1">
           <widget class="QLineEdit" name="isocode">
            <property name="text">
-            <string>MTQ</string>
+            <string>GTM</string>
            </property>
            <property name="placeholderText">
             <string>MTQ</string>
@@ -251,7 +251,7 @@
          <item row="10" column="1">
           <widget class="QLineEdit" name="proj">
            <property name="text">
-            <string>EPSG:5490</string>
+            <string>EPSG:32615</string>
            </property>
            <property name="placeholderText">
             <string>EPSG:5490</string>
