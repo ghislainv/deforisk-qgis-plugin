@@ -53,6 +53,7 @@ from .far_functions import (
     FarGetVariablesTask,
     FarSampleObsTask,
     FarCalibrateTask,
+    FarInterpolateRhoTask,
     FarPredictTask,
 )
 
@@ -568,8 +569,7 @@ class DeforiskPlugin:
 
     def far_predict(self):
         """Predict deforestation risk."""
-        # Catch arguments
-        self.catch_arguments()
+        # Models and periods
         pred_far_models = self.get_pred_far_models()
         pred_far_periods = self.get_pred_far_periods()
         # Create tasks with loops on dates and models
@@ -583,12 +583,26 @@ class DeforiskPlugin:
                     iface=self.iface,
                     workdir=self.args["workdir"],
                     years=self.args["get_fcc_args"]["years"],
-                    csize=self.args["csize"],
-                    csize_interpolate=self.args["csize_interp"],
                     period=period,
                     model=model)
                 # Add task to task manager
                 self.tm.addTask(task)
+
+    def far_predict_after_rho_interp(self):
+        """Interpolate rho."""
+        # Catch arguments
+        self.catch_arguments()
+        # Interpolate rho
+        description = self.task_description("FarInterpolateRho")
+        task = FarInterpolateRhoTask(
+            description=description,
+            iface=self.iface,
+            workdir=self.args["workdir"],
+            csize_interpolate=self.args["csize_interp"])
+        # Execute far_predict after task_rho
+        task.taskCompleted.connect(self.far_predict)
+        # Add first task to task manager
+        self.tm.addTask(task)
 
     def rmj_calibrate(self):
         """Compute distance threshold and local deforestation rate."""
@@ -688,7 +702,8 @@ class DeforiskPlugin:
 
         # FAR with icar, glm, and rf models
         self.dlg.run_far_calibrate.clicked.connect(self.far_calibrate)
-        self.dlg.run_far_predict.clicked.connect(self.far_predict)
+        self.dlg.run_far_predict.clicked.connect(
+            self.far_predict_after_rho_interp)
 
         # RMJ moving window model
         self.dlg.run_rmj_calibrate.clicked.connect(self.rmj_calibrate)

@@ -42,15 +42,13 @@ class FarPredictTask(QgsTask):
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 3
 
-    def __init__(self, description, iface, workdir, years,
-                 csize, csize_interpolate, period, model):
+    def __init__(self, description, iface, workdir, years, period,
+                 model):
         """Initialize the class."""
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
         self.years = years
-        self.csize = csize
-        self.csize_interpolate = csize_interpolate
         self.period = period
         self.model = model
         self.exception = None
@@ -101,16 +99,6 @@ class FarPredictTask(QgsTask):
                   y_design_info, x_design_info):
         """Get model."""
         if self.model == "icar":
-            # Interpolate the spatial random effects
-            ofile = opj(self.OUT, "rho.tif")
-            if not os.path.isfile(ofile):
-                rho = mod_icar_pickle["rho"]
-                far.interpolate_rho(
-                    rho=rho,
-                    input_raster=opj(self.datadir, "fcc.tif"),
-                    output_file=ofile,
-                    csize_orig=self.csize,
-                    csize_new=self.csize_interpolate)
             # Create icar_model object for predictions
             mod = far.icarModelPred(
                 formula=mod_icar_pickle["formula"],
