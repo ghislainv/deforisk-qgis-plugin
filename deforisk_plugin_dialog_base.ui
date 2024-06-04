@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -104,7 +104,7 @@
          <item row="1" column="1">
           <widget class="QLineEdit" name="aoi">
            <property name="text">
-            <string>GTM</string>
+            <string>MTQ</string>
            </property>
            <property name="placeholderText">
             <string>MTQ</string>
@@ -206,7 +206,7 @@
          <item row="7" column="1">
           <widget class="QLineEdit" name="isocode">
            <property name="text">
-            <string>GTM</string>
+            <string>MTQ</string>
            </property>
            <property name="placeholderText">
             <string>MTQ</string>
@@ -251,7 +251,7 @@
          <item row="10" column="1">
           <widget class="QLineEdit" name="proj">
            <property name="text">
-            <string>EPSG:32615</string>
+            <string>EPSG:5490</string>
            </property>
            <property name="placeholderText">
             <string>EPSG:5490</string>
@@ -475,7 +475,7 @@
        <item row="0" column="2">
         <widget class="QLineEdit" name="csize_interp">
          <property name="text">
-          <string>1</string>
+          <string>0.1</string>
          </property>
          <property name="placeholderText">
           <string>1</string>
@@ -660,7 +660,7 @@
        <item row="2" column="1">
         <widget class="QLineEdit" name="csize">
          <property name="text">
-          <string>10</string>
+          <string>1</string>
          </property>
          <property name="placeholderText">
           <string>10</string>

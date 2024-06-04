@@ -2,8 +2,8 @@
 
 import matplotlib
 
-from .rmj_calibrate import RmjCalibrateTask
-from .rmj_predict import RmjPredictTask
+from .mw_calibrate import MwCalibrateTask
+from .mw_predict import MwPredictTask
 
 # Use agg backend for QGis plugin
 matplotlib.use("agg")

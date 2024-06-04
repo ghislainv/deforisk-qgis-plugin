@@ -1,15 +1,5 @@
-# -*- coding: utf-8 -*-
-
-# ================================================================
-# author          :Ghislain Vieilledent
-# email           :ghislain.vieilledent@cirad.fr
-# web             :https://ecology.ghislainv.fr
-# python_version  :>=3.6
-# license         :GPLv3
-# ================================================================
-
 """
-Estimating the local deforestation risk with the moving window approach.
+Estimating the deforestation risk with the benchmark model.
 """
 
 import os
@@ -28,18 +18,17 @@ import riskmapjnr as rmj
 opj = os.path.join
 
 
-class RmjCalibrateTask(QgsTask):
-    """Estimating the local deforestation risk with the moving window
-    approach."""
+class BmCalibrateTask(QgsTask):
+    """Estimating the deforestation risk with the benchmark model."""
 
     # Constants
     DATA = "data"
-    OUT = opj("outputs", "rmj_moving_window")
+    OUT = opj("outputs", "rmj_benchmark")
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 2
 
     def __init__(self, description, iface, workdir, years,
-                 defor_thresh, max_dist, win_size):
+                 defor_thresh, max_dist):
         """Initialize the class."""
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
@@ -47,7 +36,6 @@ class RmjCalibrateTask(QgsTask):
         self.years = years
         self.defor_thresh = defor_thresh
         self.max_dist = max_dist
-        self.win_size = win_size
         self.exception = None
 
     def get_time_interval(self):
@@ -69,6 +57,13 @@ class RmjCalibrateTask(QgsTask):
             figsize=(6, 5), dpi=500)
         plt.close(fig_prob)
 
+    def get_dist_thresh(self):
+        """Get distance to forest edge threshold."""
+        ifile = opj(self.OUT, "dist_edge_threshold.csv")
+        dist_thresh_data = pd.read_csv(ifile)
+        dist_thresh = dist_thresh_data.loc[0, "dist_thresh"]
+        return dist_thresh
+
     def set_progress(self, progress, n_steps):
         """Set progress."""
         if progress == 0:
@@ -79,9 +74,7 @@ class RmjCalibrateTask(QgsTask):
             self.setProgress(prog_perc)
 
     def run(self):
-        """Risk map with moving window approach for calibration
-        period.
-        """
+        """Estimating the deforestation risk with the benchmark model."""
 
         try:
             # Starting message
@@ -126,21 +119,56 @@ class RmjCalibrateTask(QgsTask):
             progress += 1
             self.set_progress(progress, self.N_STEPS)
 
+            # Rasterize subjurisdictions
+            rmj.benchmark.rasterize_subjurisdictions(
+                input_file=opj(self.DATA, "ctry_PROJ.gpkg"),
+                fcc_file=opj(self.DATA, "fcc.tif"),
+                output_file=opj(self.OUT, "subj.tif"),
+                verbose=False)
+
+            # Check isCanceled() to handle cancellation
+            if self.isCanceled():
+                return False
+
+            # Progress
+            progress += 1
+            self.set_progress(progress, self.N_STEPS)
+
+            # Distance threshold
+            dist_thresh = self.get_dist_thresh()
+
+            # Compute vulnerability classes
+            dist_bins = rmj.benchmark.vulnerability_classes(
+                dist_file=opj(self.DATA, "dist_edge.tif"),
+                dist_thresh=dist_thresh,
+                subj_file=opj(self.OUT, "subj.tif"),
+                output_file=opj(self.OUT, "vulnerability_classes.tif"),
+                blk_rows=128,
+                verbose=False)
+
+            # Save dist_bins
+            ofile = opj(self.OUT, "dist_bins.csv")
+            with open(ofile, "w", encoding="utf-8") as f:
+                f.write(dist_bins)
+
+            # Check isCanceled() to handle cancellation
+            if self.isCanceled():
+                return False
+
+            # Progress
+            progress += 1
+            self.set_progress(progress, self.N_STEPS)
+
             # Compute time interval from years
             time_interval = self.get_time_interval()
 
-            # Model
-            model = f"mw_{self.win_size}"
-
-            # Compute local deforestation rate
-            rmj.local_defor_rate(
-                fcc_file=fcc_file,
-                defor_values=1,
-                ldefrate_file=opj(self.OUT, f"ldefrate_{model}.tif"),
-                win_size=self.win_size,
-                time_interval=time_interval,
-                rescale_min_val=2,
-                rescale_max_val=65535,
+            # Compute deforestation rate per vulnerability class
+            rmj.benchmark.defrate_per_class(
+                fcc_file=opj(self.DATA, "forest", "fcc123.tif"),
+                vulnerability_file=opj(self.OUT, "vulnerability_classes.tif"),
+                time_interval=time_interval[0],
+                period="calibration",
+                tab_file_defrate=opj(self.OUT, "defrate_per_class.csv"),
                 blk_rows=128,
                 verbose=False)
 
@@ -165,14 +193,14 @@ class RmjCalibrateTask(QgsTask):
 
         else:
             if self.exception is None:
-                msg = ('RmjCalibrateTask "{name}" not successful but without '
+                msg = ('BmCalibrateTask "{name}" not successful but without '
                        'exception (probably the task was manually '
                        'canceled by the user)')
                 msg = msg.format(name=self.description())
                 QgsMessageLog.logMessage(
                     msg, self.MESSAGE_CATEGORY, Qgis.Warning)
             else:
-                msg = 'RmjCalibrateTask "{name}" Exception: {exception}'
+                msg = 'BmCalibrateTask "{name}" Exception: {exception}'
                 msg = msg.format(
                         name=self.description(),
                         exception=self.exception)
@@ -182,7 +210,7 @@ class RmjCalibrateTask(QgsTask):
 
     def cancel(self):
         """Cancelation message."""
-        msg = 'RmjCalibrateTask "{name}" was canceled'
+        msg = 'BmCalibrateTask "{name}" was canceled'
         msg = msg.format(name=self.description())
         QgsMessageLog.logMessage(
             msg, self.MESSAGE_CATEGORY, Qgis.Info)

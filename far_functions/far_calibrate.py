@@ -184,6 +184,12 @@ class FarCalibrateTask(QgsTask):
                 beta_start = self.beta_start
 
             # Re-run the model with longer MCMC and estimated initial values
+            if self.mcmc >= 1000:
+                mcmc = int(self.mcmc // 1000) * 1000
+                thin = int(mcmc / 1000)
+            else:
+                mcmc = self.mcmc
+                thin = 1
             mod_icar = far.model_binomial_iCAR(
                 # Observations
                 suitability_formula=formula, data=dataset,
@@ -192,9 +198,9 @@ class FarCalibrateTask(QgsTask):
                 # Priors
                 priorVrho=self.prior_vrho,
                 # Chains
-                burnin=self.mcmc,
-                mcmc=self.mcmc,
-                thin=int(self.mcmc / 1000),
+                burnin=mcmc,
+                mcmc=mcmc,
+                thin=thin,
                 # Starting values
                 beta_start=beta_start)
 
@@ -286,8 +292,10 @@ class FarCalibrateTask(QgsTask):
             Y = y[:, 0]
             # We remove the first (intercept, 0 col) and last column (cells)
             X_rf = x[:, 1:-1]
-            mod_rf = RandomForestClassifier(n_estimators=500,
-                                            n_jobs=3)
+            n_cpu = max(3, os.cpu_count() - 4)
+            mod_rf = RandomForestClassifier(n_estimators=50,
+                                            max_depth=15,
+                                            n_jobs=n_cpu)
             mod_rf = mod_rf.fit(X_rf, Y)
             pred_rf = mod_rf.predict_proba(X_rf)
             # Use joblib for persistence

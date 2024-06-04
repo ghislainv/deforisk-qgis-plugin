@@ -59,8 +59,8 @@ from .far_functions import (
 
 # Local rmj function
 from .rmj_functions import (
-    RmjCalibrateTask,
-    RmjPredictTask,
+    MwCalibrateTask,
+    MwPredictTask,
 )
 
 # Local val function
@@ -459,7 +459,7 @@ class DeforiskPlugin:
         variables = self.dlg.variables.text()
         beta_start = float(self.dlg.beta_start.text())
         prior_vrho = int(self.dlg.prior_vrho.text())
-        mcmc = int((int(self.dlg.mcmc.text()) // 1000) * 1000)
+        mcmc = int(self.dlg.mcmc.text())
         varselection = self.dlg.varselection.isChecked()
         # FAR predict
         csize_interp = float(self.dlg.csize_interp.text())
@@ -604,7 +604,7 @@ class DeforiskPlugin:
         # Add first task to task manager
         self.tm.addTask(task)
 
-    def rmj_calibrate(self):
+    def mw_calibrate(self):
         """Compute distance threshold and local deforestation rate."""
         # Catch arguments
         self.catch_arguments()
@@ -614,8 +614,8 @@ class DeforiskPlugin:
         # Loop on window sizes
         for win_size in win_sizes:
             model = f"mv_{win_size}"
-            description = self.task_description("RmjCalibrate", model)
-            task = RmjCalibrateTask(
+            description = self.task_description("MwCalibrate", model)
+            task = MwCalibrateTask(
                 description=description,
                 iface=self.iface,
                 workdir=self.args["workdir"],
@@ -626,7 +626,7 @@ class DeforiskPlugin:
             # Add task to task manager
             self.tm.addTask(task)
 
-    def rmj_predict(self):
+    def mw_predict(self):
         """Predict deforestation rate with moving window approach."""
         # Catch arguments
         self.catch_arguments()
@@ -637,8 +637,8 @@ class DeforiskPlugin:
             for wsize in win_sizes:
                 model = f"mv_{wsize}"
                 description = self.task_description(
-                    "RmjPredict", model, date)
-                task = RmjPredictTask(
+                    "MwPredict", model, date)
+                task = MwPredictTask(
                     description=description,
                     iface=self.iface,
                     workdir=self.args["workdir"],
@@ -706,8 +706,8 @@ class DeforiskPlugin:
             self.far_predict_after_rho_interp)
 
         # RMJ moving window model
-        self.dlg.run_rmj_calibrate.clicked.connect(self.rmj_calibrate)
-        self.dlg.run_rmj_predict.clicked.connect(self.rmj_predict)
+        self.dlg.run_rmj_calibrate.clicked.connect(self.mw_calibrate)
+        self.dlg.run_rmj_predict.clicked.connect(self.mw_predict)
 
         # Model validation
         self.dlg.run_validate.clicked.connect(self.validate)

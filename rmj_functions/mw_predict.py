@@ -30,7 +30,7 @@ from ..utilities import add_layer, add_layer_to_group
 opj = os.path.join
 
 
-class RmjPredictTask(QgsTask):
+class MwPredictTask(QgsTask):
     """Deriving risk maps with the moving window approach."""
 
     # Constants
@@ -211,14 +211,14 @@ class RmjPredictTask(QgsTask):
 
         else:
             if self.exception is None:
-                msg = ('RmjPredictTask "{name}" not successful but without '
+                msg = ('MwPredictTask "{name}" not successful but without '
                        'exception (probably the task was manually '
                        'canceled by the user)')
                 msg = msg.format(name=self.description())
                 QgsMessageLog.logMessage(
                     msg, self.MESSAGE_CATEGORY, Qgis.Warning)
             else:
-                msg = 'RmjPredictTask "{name}" Exception: {exception}'
+                msg = 'MwPredictTask "{name}" Exception: {exception}'
                 msg = msg.format(
                         name=self.description(),
                         exception=self.exception)
@@ -228,7 +228,7 @@ class RmjPredictTask(QgsTask):
 
     def cancel(self):
         """Cancelation message."""
-        msg = 'RmjPredictTask "{name}" was canceled'
+        msg = 'MwPredictTask "{name}" was canceled'
         msg = msg.format(name=self.description())
         QgsMessageLog.logMessage(
             msg, self.MESSAGE_CATEGORY, Qgis.Info)
