@@ -39,11 +39,10 @@ class MwPredictTask(QgsTask):
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 4
 
-    def __init__(self, description, iface, workdir, years,
+    def __init__(self, description, workdir, years,
                  win_size, period):
         """Initialize the class."""
         super().__init__(description, QgsTask.CanCancel)
-        self.iface = iface
         self.workdir = workdir
         self.years = years
         self.win_size = win_size
@@ -124,14 +123,11 @@ class MwPredictTask(QgsTask):
             # Model
             model = f"mw_{self.win_size}"
 
-            # Distance threshold
-            dist_thresh = self.get_dist_thresh()
-
             # Compute predictions
             rmj.set_defor_cat_zero(
                 ldefrate_file=opj(self.OUT, f"ldefrate_{model}.tif"),
                 dist_file=self.get_dist_file(),
-                dist_thresh=dist_thresh,
+                dist_thresh=self.get_dist_thresh(),
                 ldefrate_with_zero_file=opj(
                     self.OUT,
                     f"prob_{model}_{date}.tif"),
@@ -149,13 +145,15 @@ class MwPredictTask(QgsTask):
             # Compute deforestation rate per category
             rmj.defrate_per_cat(
                 fcc_file=opj(self.DATA, "forest", "fcc123.tif"),
-                riskmap_file=opj(self.OUT,
-                                 f"prob_{model}_{date}.tif"),
+                riskmap_file=opj(
+                    self.OUT,
+                    f"prob_{model}_{date}.tif"),
                 time_interval=time_interval,
                 period=self.period,
                 tab_file_defrate=opj(
                     self.OUT,
                     f"defrate_cat_{model}_{date}.csv"),
+                blk_rows=128,
                 verbose=False)
 
             # Progress

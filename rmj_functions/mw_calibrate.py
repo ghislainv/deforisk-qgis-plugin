@@ -37,11 +37,10 @@ class MwCalibrateTask(QgsTask):
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 2
 
-    def __init__(self, description, iface, workdir, years,
+    def __init__(self, description, workdir, years,
                  defor_thresh, max_dist, win_size):
         """Initialize the class."""
         super().__init__(description, QgsTask.CanCancel)
-        self.iface = iface
         self.workdir = workdir
         self.years = years
         self.defor_thresh = defor_thresh
@@ -49,7 +48,7 @@ class MwCalibrateTask(QgsTask):
         self.win_size = win_size
         self.exception = None
 
-    def get_time_interval(self):
+    def get_time_interval_calibration(self):
         """Get time intervals from years."""
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
@@ -83,27 +82,32 @@ class MwCalibrateTask(QgsTask):
             # Set working directory
             os.chdir(self.workdir)
 
+            # Output directory
+            rmj.make_dir(self.OUT)
+
             # Distance to forest edge threshold
             fcc_file = opj(self.DATA, "forest", "fcc123.tif")
-            dist_edge_thresh = rmj.dist_edge_threshold(
-                fcc_file=fcc_file,
-                defor_values=1,
-                defor_threshold=self.defor_thresh,
-                dist_file=opj(self.DATA, "dist_edge.tif"),
-                dist_bins=np.arange(0, self.max_dist, step=30),
-                tab_file_dist=opj(self.OUT, "tab_dist.csv"),
-                fig_file_dist=opj(self.OUT, "perc_dist.png"),
-                blk_rows=128,
-                dist_file_available=True,
-                check_fcc=False,
-                verbose=True)
+            ofile = opj(self.OUT, "dist_edge_threshold.csv")
+            if not os.path.isfile(ofile):
+                dist_thresh = rmj.dist_edge_threshold(
+                    fcc_file=fcc_file,
+                    defor_values=1,
+                    defor_threshold=self.defor_thresh,
+                    dist_file=opj(self.DATA, "dist_edge.tif"),
+                    dist_bins=np.arange(0, self.max_dist, step=30),
+                    tab_file_dist=opj(self.OUT, "tab_dist.csv"),
+                    fig_file_dist=opj(self.OUT, "perc_dist.png"),
+                    blk_rows=128,
+                    dist_file_available=True,
+                    check_fcc=False,
+                    verbose=True)
 
-            # Save result
-            dist_edge_data = pd.DataFrame(dist_edge_thresh, index=[0])
-            dist_edge_data.to_csv(
-                opj(self.OUT, "dist_edge_threshold.csv"),
-                sep=",", header=True,
-                index=False, index_label=False)
+                # Save result
+                dist_edge_data = pd.DataFrame(dist_thresh, index=[0])
+                dist_edge_data.to_csv(
+                    ofile,
+                    sep=",", header=True,
+                    index=False, index_label=False)
 
             # Check isCanceled() to handle cancellation
             if self.isCanceled():
@@ -114,7 +118,7 @@ class MwCalibrateTask(QgsTask):
             self.set_progress(progress, self.N_STEPS)
 
             # Compute time interval from years
-            time_interval = self.get_time_interval()
+            time_interval = self.get_time_interval_calibration()
 
             # Model
             model = f"mw_{self.win_size}"

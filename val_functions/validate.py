@@ -28,6 +28,7 @@ class ValidateTask(QgsTask):
     """Validating deforestation risk map."""
 
     # Constants
+    OUT = "outputs"
     OUT_FIG = opj("outputs", "validation", "figures")
     OUT_TAB = opj("outputs", "validation", "tables")
     DATA = "data"
@@ -46,9 +47,11 @@ class ValidateTask(QgsTask):
         self.model = model
         self.exception = None
         if self.model in self.FAR_MODELS:
-            self.resdir = opj("outputs", "far_models")
+            self.resdir = opj(self.OUT, "far_models")
+        elif self.model == "bm":
+            self.resdir = opj(self.OUT, "rmj_benchmark")
         else:
-            self.resdir = opj("outputs", "rmj_moving_window")
+            self.resdir = opj(self.OUT, "rmj_moving_window")
 
     def get_time_interval(self):
         """Get time intervals from years."""

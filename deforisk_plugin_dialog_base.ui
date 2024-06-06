@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -268,23 +268,23 @@
     <attribute name="title">
      <string>Benchmark</string>
     </attribute>
-    <widget class="QGroupBox" name="groupBox_bmark_model">
+    <widget class="QGroupBox" name="groupBox_bm_model">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
        <width>491</width>
-       <height>71</height>
+       <height>171</height>
       </rect>
      </property>
      <property name="title">
       <string>Fit model to data</string>
      </property>
-     <widget class="QPushButton" name="run_bmark_calibrate">
+     <widget class="QPushButton" name="run_bm_calibrate">
       <property name="geometry">
        <rect>
         <x>410</x>
-        <y>30</y>
+        <y>130</y>
         <width>71</width>
         <height>25</height>
        </rect>
@@ -292,6 +292,116 @@
       <property name="text">
        <string>Run</string>
       </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>471</width>
+        <height>58</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_10">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_defor_thresh">
+         <property name="text">
+          <string>Deforestation threshold (%)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="defor_thresh">
+         <property name="text">
+          <string>99.5</string>
+         </property>
+         <property name="placeholderText">
+          <string>99.5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_max_dist">
+         <property name="text">
+          <string>Max. distance to forest edge (m)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="max_dist">
+         <property name="text">
+          <string>2500</string>
+         </property>
+         <property name="placeholderText">
+          <string>2500</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_bm_predict">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>491</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Predict the deforestation risk</string>
+     </property>
+     <widget class="QPushButton" name="run_bm_predict">
+      <property name="geometry">
+       <rect>
+        <x>411</x>
+        <y>40</y>
+        <width>71</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>171</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_11">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="pred_bm_t1">
+         <property name="text">
+          <string>t1</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="pred_bm_t2">
+         <property name="text">
+          <string>t2</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
@@ -333,7 +443,7 @@
      <widget class="QCheckBox" name="varselection">
       <property name="geometry">
        <rect>
-        <x>16</x>
+        <x>10</x>
         <y>157</y>
         <width>141</width>
         <height>23</height>
@@ -352,8 +462,8 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>12</x>
-        <y>32</y>
+        <x>10</x>
+        <y>30</y>
         <width>471</width>
         <height>120</height>
        </rect>
@@ -458,8 +568,8 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>13</x>
-        <y>32</y>
+        <x>10</x>
+        <y>30</y>
         <width>471</width>
         <height>56</height>
        </rect>
@@ -526,8 +636,8 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>13</x>
-        <y>95</y>
+        <x>10</x>
+        <y>90</y>
         <width>221</width>
         <height>25</height>
        </rect>
@@ -591,7 +701,7 @@
       <property name="geometry">
        <rect>
         <x>354</x>
-        <y>33</y>
+        <y>30</y>
         <width>127</width>
         <height>23</height>
        </rect>
@@ -609,8 +719,8 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>12</x>
-        <y>32</y>
+        <x>10</x>
+        <y>30</y>
         <width>331</width>
         <height>89</height>
        </rect>
@@ -675,7 +785,7 @@
     <attribute name="title">
      <string>MW model</string>
     </attribute>
-    <widget class="QGroupBox" name="groupBox_rmj_model">
+    <widget class="QGroupBox" name="groupBox_mw_model">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -687,7 +797,7 @@
      <property name="title">
       <string>Fit model to data</string>
      </property>
-     <widget class="QPushButton" name="run_rmj_calibrate">
+     <widget class="QPushButton" name="run_mw_calibrate">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -703,22 +813,22 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>12</x>
-        <y>32</y>
+        <x>10</x>
+        <y>30</y>
         <width>471</width>
         <height>89</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
-        <widget class="QLabel" name="label_defor_thresh">
+        <widget class="QLabel" name="label_defor_thresh_mw">
          <property name="text">
           <string>Deforestation threshold (%)</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QLineEdit" name="defor_thresh">
+        <widget class="QLineEdit" name="defor_thresh_mw">
          <property name="text">
           <string>99.5</string>
          </property>
@@ -728,14 +838,14 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="label_max_dist">
+        <widget class="QLabel" name="label_max_dist_mw">
          <property name="text">
           <string>Max. distance to forest edge (m)</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="max_dist">
+        <widget class="QLineEdit" name="max_dist_mw">
          <property name="text">
           <string>2500</string>
          </property>
@@ -764,23 +874,23 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="groupBox_rmj_predict">
+    <widget class="QGroupBox" name="groupBox_mw_predict">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>200</y>
        <width>491</width>
-       <height>71</height>
+       <height>81</height>
       </rect>
      </property>
      <property name="title">
       <string>Predict the deforestation risk</string>
      </property>
-     <widget class="QPushButton" name="run_rmj_predict">
+     <widget class="QPushButton" name="run_mw_predict">
       <property name="geometry">
        <rect>
-        <x>411</x>
-        <y>30</y>
+        <x>410</x>
+        <y>40</y>
         <width>71</width>
         <height>25</height>
        </rect>
@@ -792,8 +902,8 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>13</x>
-        <y>34</y>
+        <x>10</x>
+        <y>30</y>
         <width>171</width>
         <height>25</height>
        </rect>
@@ -861,8 +971,8 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>13</x>
-        <y>31</y>
+        <x>10</x>
+        <y>30</y>
         <width>471</width>
         <height>85</height>
        </rect>

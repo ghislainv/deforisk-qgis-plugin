@@ -59,6 +59,8 @@ from .far_functions import (
 
 # Local rmj function
 from .rmj_functions import (
+    BmCalibrateTask,
+    BmPredictTask,
     MwCalibrateTask,
     MwPredictTask,
 )
@@ -368,7 +370,7 @@ class DeforiskPlugin:
 
     def get_val_models(self):
         """Get list of models for validation."""
-        val_models = []
+        val_models = ["bm"]
         win_sizes = self.get_win_sizes()
         val_far_mod = [self.args["val_icar"],
                        self.args["val_glm"],
@@ -383,18 +385,12 @@ class DeforiskPlugin:
 
     def get_all_models(self):
         """Get list of all models for comparison."""
-        # Be careful here to copy the list to avoid changing FAR_MODELS
-        all_models = self.FAR_MODELS.copy()
+        all_models = ["bm"]
+        all_models.extend(self.FAR_MODELS)
         win_sizes = self.get_win_sizes()
         for win_size in win_sizes:
             all_models.append("mw_" + str(win_size))
         return all_models
-
-    def create_rmj_calibrate_directory(self):
-        """Create rmj calibrate directory."""
-        workdir = self.args["workdir"]
-        far.make_dir(os.path.join(workdir, "outputs",
-                                  "rmj_moving_window"))
 
     def create_validation_directories(self):
         """Create validation directories."""
@@ -609,15 +605,12 @@ class DeforiskPlugin:
         # Catch arguments
         self.catch_arguments()
         win_sizes = self.get_win_sizes()
-        # Create rmj calibrate directory
-        self.create_rmj_calibrate_directory()
         # Loop on window sizes
         for win_size in win_sizes:
             model = f"mv_{win_size}"
             description = self.task_description("MwCalibrate", model)
             task = MwCalibrateTask(
                 description=description,
-                iface=self.iface,
                 workdir=self.args["workdir"],
                 years=self.args["get_fcc_args"]["years"],
                 defor_thresh=self.args["defor_thresh"],
@@ -640,13 +633,44 @@ class DeforiskPlugin:
                     "MwPredict", model, date)
                 task = MwPredictTask(
                     description=description,
-                    iface=self.iface,
                     workdir=self.args["workdir"],
                     years=self.args["get_fcc_args"]["years"],
                     win_size=wsize,
                     period=period)
                 # Add task to task manager
                 self.tm.addTask(task)
+
+    def bm_calibrate(self):
+        """Compute distance threshold and vulnerability classes with
+        deforestation rates.
+        """
+        self.catch_arguments()
+        description = self.task_description("BmCalibrate")
+        task = BmCalibrateTask(
+            description=description,
+            workdir=self.args["workdir"],
+            years=self.args["get_fcc_args"]["years"],
+            defor_thresh=self.args["defor_thresh"],
+            max_dist=self.args["max_dist"])
+        # Add task to task manager
+        self.tm.addTask(task)
+
+    def bm_predict(self):
+        """Predict deforestation rate with the benchmark model."""
+        # Catch arguments
+        self.catch_arguments()
+        periods = self.get_pred_mw_periods()
+        for period in periods:
+            date = self.get_date(period)
+            description = self.task_description(
+                "BmPredict", "benchmark", date)
+            task = BmPredictTask(
+                description=description,
+                workdir=self.args["workdir"],
+                years=self.args["get_fcc_args"]["years"],
+                period=period)
+            # Add task to task manager
+            self.tm.addTask(task)
 
     def validate(self):
         """Model validation."""
@@ -700,14 +724,18 @@ class DeforiskPlugin:
         self.dlg.run_far_get_variable.clicked.connect(self.far_get_variables)
         self.dlg.run_far_sample.clicked.connect(self.far_sample_obs)
 
+        # Benchmark model
+        self.dlg.run_bm_calibrate.clicked.connect(self.bm_calibrate)
+        self.dlg.run_bm_predict.clicked.connect(self.bm_predict)
+
         # FAR with icar, glm, and rf models
         self.dlg.run_far_calibrate.clicked.connect(self.far_calibrate)
         self.dlg.run_far_predict.clicked.connect(
             self.far_predict_after_rho_interp)
 
-        # RMJ moving window model
-        self.dlg.run_rmj_calibrate.clicked.connect(self.mw_calibrate)
-        self.dlg.run_rmj_predict.clicked.connect(self.mw_predict)
+        # Moving window model
+        self.dlg.run_mw_calibrate.clicked.connect(self.mw_calibrate)
+        self.dlg.run_mw_predict.clicked.connect(self.mw_predict)
 
         # Model validation
         self.dlg.run_validate.clicked.connect(self.validate)

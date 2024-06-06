@@ -11,7 +11,7 @@
     <provider>
       <resampling enabled="false" zoomedOutResamplingMethod="nearestNeighbour" zoomedInResamplingMethod="nearestNeighbour" maxOversampling="2"/>
     </provider>
-    <rasterrenderer band="1" type="singlebandpseudocolor" classificationMin="1" classificationMax="65535" alphaBand="-1" nodataColor="" opacity="1">
+    <rasterrenderer band="1" type="singlebandpseudocolor" classificationMin="1001" classificationMax="30999" alphaBand="-1" nodataColor="" opacity="1">
       <rasterTransparency/>
       <minMaxOrigin>
         <limits>None</limits>
@@ -22,7 +22,7 @@
         <stdDevFactor>2</stdDevFactor>
       </minMaxOrigin>
       <rastershader>
-        <colorrampshader colorRampType="INTERPOLATED" maximumValue="65535" classificationMode="1" clip="0" minimumValue="1" labelPrecision="0">
+        <colorrampshader colorRampType="INTERPOLATED" maximumValue="30999" classificationMode="1" clip="0" minimumValue="1001" labelPrecision="0">
           <colorramp name="[source]" type="gradient">
             <Option type="Map">
               <Option name="color1" type="QString" value="25,110,25,255"/>
@@ -31,14 +31,14 @@
               <Option name="discrete" type="QString" value="0"/>
               <Option name="rampType" type="QString" value="gradient"/>
               <Option name="spec" type="QString" value="rgb"/>
-              <Option name="stops" type="QString" value="1.52593e-05;34,139,34,255;rgb;ccw:0.00303659;255,165,0,255;rgb;ccw:0.0305033;227,26,28,255;rgb;ccw"/>
+              <Option name="stops" type="QString" value="0.0333022;34,139,34,255;rgb;ccw:0.299987;255,165,0,255;rgb;ccw:0.633342;227,26,28,255;rgb;ccw"/>
             </Option>
           </colorramp>
-          <item label="1" color="#196e19" value="1" alpha="255"/>
-          <item label="2" color="#228b22" value="2" alpha="255"/>
-          <item label="200" color="#ffa500" value="200" alpha="255"/>
-          <item label="2000" color="#e31a1c" value="2000" alpha="255"/>
-          <item label="65535" color="#000000" value="65535" alpha="255"/>
+          <item label="1001" color="#196e19" value="1001" alpha="255"/>
+          <item label="2000" color="#228b22" value="2000" alpha="255"/>
+          <item label="10000" color="#ffa500" value="10000" alpha="255"/>
+          <item label="20000" color="#e31a1c" value="20000" alpha="255"/>
+          <item label="30999" color="#000000" value="30999" alpha="255"/>
           <rampLegendSettings prefix="" maximumLabel="" minimumLabel="" direction="0" orientation="2" useContinuousLegend="1" suffix="">
             <numericFormat id="basic">
               <Option type="Map">
