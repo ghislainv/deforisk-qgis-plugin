@@ -40,6 +40,8 @@ from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
 import pandas as pd
+import geefcc
+import pywdpa
 import forestatrisk as far
 import riskmapjnr as rmj
 
@@ -239,10 +241,14 @@ class DeforiskPlugin:
         result = subprocess.run(cmd, capture_output=True, check=True)
         result = result.stdout.splitlines()
         print(result[1].decode())
+        # geefcc
+        print(f"geefcc {geefcc.__version__}")
+        # pywdpa
+        print(f"pywdpa {pywdpa.__version__}")
         # forestatrisk
-        print(f"forestatrisk v{far.__version__}")
+        print(f"forestatrisk {far.__version__}")
         # riskmapjnr
-        print(f"riskmapjnr v{rmj.__version__}")
+        print(f"riskmapjnr {rmj.__version__}")
 
     def set_exe_path(self):
         """Add folder with windows executables to PATH."""
@@ -659,7 +665,7 @@ class DeforiskPlugin:
         """Predict deforestation rate with the benchmark model."""
         # Catch arguments
         self.catch_arguments()
-        periods = self.get_pred_mw_periods()
+        periods = ["validation"]  # Only validation period for benchmark
         for period in periods:
             date = self.get_date(period)
             description = self.task_description(
