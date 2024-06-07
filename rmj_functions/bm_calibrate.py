@@ -158,6 +158,7 @@ class BmCalibrateTask(QgsTask):
 
             # Compute vulnerability classes at t1
             rmj.benchmark.vulnerability_map(
+                forest_file=opj(self.DATA, "forest", "forest_t1.tif"),
                 dist_file=opj(self.DATA, "dist_edge.tif"),
                 dist_bins=dist_bins,
                 subj_file=opj(self.OUT, "subj.tif"),

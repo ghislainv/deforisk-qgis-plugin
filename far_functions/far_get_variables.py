@@ -84,7 +84,7 @@ class FarGetVariablesTask(QgsTask):
         self.get_fcc_args = get_fcc_args
         self.isocode = isocode
         self.gc_project = gc_project
-        self.wpda_key = wdpa_key
+        self.wdpa_key = wdpa_key
         self.proj = proj
         self.exception = None
 
@@ -112,10 +112,10 @@ class FarGetVariablesTask(QgsTask):
         default_env_file = get_default_file("env.txt")
         if os.path.isfile(env_file):
             set_wdpa_env_var(env_file)
-        elif len(self.wdpa_key) > 0:
-            os.environ["WDPA_KEY"] = self.wdpa_key
         elif os.path.isfile(default_env_file):
             set_wdpa_env_var(default_env_file)
+        elif len(self.wdpa_key) > 0:
+            os.environ["WDPA_KEY"] = self.wdpa_key
         else:
             msg = "No WDPA API key provided."
             self.iface.messageBar().pushMessage(
@@ -210,6 +210,9 @@ class FarGetVariablesTask(QgsTask):
 
                 # Initialize EE
                 self.ee_initialize()
+
+                # Set WDPA_KEY
+                self.set_wdpa_key()
 
                 # Download data
                 far.data.country_download(

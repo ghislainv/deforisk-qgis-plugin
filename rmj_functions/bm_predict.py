@@ -116,6 +116,7 @@ class BmPredictTask(QgsTask):
 
             # Compute vulnerability classes
             rmj.benchmark.vulnerability_map(
+                forest_file=opj(self.DATA, "forest", f"forest_{date}.tif"),
                 dist_file=self.get_dist_file(),
                 dist_bins=self.get_dist_bins(
                     opj(self.OUT, "dist_bins.csv")),
