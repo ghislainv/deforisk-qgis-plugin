@@ -457,19 +457,25 @@ class DeforiskPlugin:
         adapt = self.dlg.adapt.isChecked()
         seed = int(self.dlg.seed.text())
         csize = float(self.dlg.csize.text())
+        samp_calib = self.dlg.samp_calib.isChecked()
+        samp_hist = self.dlg.samp_hist.isChecked()
         # FAR models
         variables = self.dlg.variables.text()
         beta_start = float(self.dlg.beta_start.text())
         prior_vrho = int(self.dlg.prior_vrho.text())
         mcmc = int(self.dlg.mcmc.text())
         varselection = self.dlg.varselection.isChecked()
+        far_calib = self.dlg.far_calib.isChecked()
+        far_hist = self.dlg.far_hist.isChecked()
         # FAR predict
         csize_interp = float(self.dlg.csize_interp.text())
         pred_icar = self.dlg.pred_icar.isChecked()
         pred_glm = self.dlg.pred_glm.isChecked()
         pred_rf = self.dlg.pred_rf.isChecked()
-        pred_far_t1 = self.dlg.pred_far_t1.isChecked()
-        pred_far_t2 = self.dlg.pred_far_t2.isChecked()
+        pred_far_calib_t1 = self.dlg.pred_far_calib_t1.isChecked()
+        pred_far_calib_t2 = self.dlg.pred_far_calib_t2.isChecked()
+        pred_far_hist_t1 = self.dlg.pred_far_hist_t1.isChecked()
+        pred_far_hist_t3 = self.dlg.pred_far_hist_t3.isChecked()
         # Rmj model
         defor_thresh = float(self.dlg.defor_thresh.text())
         max_dist = int(self.dlg.max_dist.text())
@@ -504,12 +510,20 @@ class DeforiskPlugin:
             "wdpa_key": wdpa_key,
             "proj": proj,
             "nsamp": nsamp, "adapt": adapt, "seed": seed,
-            "csize": csize, "variables": variables,
+            "csize": csize,
+            "samp_period": {"samp_calib": samp_calib,
+                            "samp_hist": samp_hist},
+            "variables": variables,
             "beta_start": beta_start, "prior_vrho": prior_vrho,
             "mcmc": mcmc, "varselection": varselection,
+            "far_period": {"far_calib": far_calib,
+                           "far_hist": far_hist},
             "csize_interp": csize_interp, "pred_icar": pred_icar,
             "pred_glm": pred_glm, "pred_rf": pred_rf,
-            "pred_far_t1": pred_far_t1, "pred_far_t2": pred_far_t2,
+            "pred_far": {"pred_far_calib_t1": pred_far_calib_t1,
+                         "pred_far_calib_t2": pred_far_calib_t2,
+                         "pred_far_hist_t1": pred_far_hist_t1,
+                         "pred_far_hist_t3": pred_far_hist_t3},
             "defor_thresh": defor_thresh, "max_dist": max_dist,
             "win_sizes": win_sizes,
             "pred_mw_t1": pred_mw_t1, "pred_mw_t2": pred_mw_t2,
@@ -536,7 +550,7 @@ class DeforiskPlugin:
         # Add task to task manager
         self.tm.addTask(task)
 
-    def far_sample_obs(self):
+    def far_sample_obs_calibration(self):
         """Sample observations."""
         self.catch_arguments()
         description = self.task_description("SampleObs")
@@ -544,6 +558,7 @@ class DeforiskPlugin:
             description=description,
             iface=self.iface,
             workdir=self.args["workdir"],
+            period="calibration",
             proj=self.args["proj"],
             nsamp=self.args["nsamp"],
             adapt=self.args["adapt"],
@@ -552,7 +567,24 @@ class DeforiskPlugin:
         # Add task to task manager
         self.tm.addTask(task)
 
-    def far_calibrate(self):
+    def far_sample_obs_historical(self):
+        """Sample observations."""
+        self.catch_arguments()
+        description = self.task_description("SampleObs")
+        task = FarSampleObsTask(
+            description=description,
+            iface=self.iface,
+            workdir=self.args["workdir"],
+            period="historical",
+            proj=self.args["proj"],
+            nsamp=self.args["nsamp"],
+            adapt=self.args["adapt"],
+            seed=self.args["seed"],
+            csize=self.args["csize"])
+        # Add task to task manager
+        self.tm.addTask(task)
+
+    def far_calibrate_calibration(self):
         """Estimate forestatrisk model parameters."""
         self.catch_arguments()
         description = self.task_description("FarCalibrate")
@@ -560,6 +592,7 @@ class DeforiskPlugin:
             description=description,
             iface=self.iface,
             workdir=self.args["workdir"],
+            period="calibration",
             csize=self.args["csize"],
             variables=self.args["variables"],
             beta_start=self.args["beta_start"],
@@ -600,6 +633,7 @@ class DeforiskPlugin:
             description=description,
             iface=self.iface,
             workdir=self.args["workdir"],
+            period=period,
             csize_interpolate=self.args["csize_interp"])
         # Execute far_predict after task_rho
         task.taskCompleted.connect(self.far_predict)
@@ -728,14 +762,16 @@ class DeforiskPlugin:
 
         # Data
         self.dlg.run_far_get_variable.clicked.connect(self.far_get_variables)
-        self.dlg.run_far_sample.clicked.connect(self.far_sample_obs)
 
         # Benchmark model
         self.dlg.run_bm_calibrate.clicked.connect(self.bm_calibrate)
         self.dlg.run_bm_predict.clicked.connect(self.bm_predict)
 
         # FAR with icar, glm, and rf models
-        self.dlg.run_far_calibrate.clicked.connect(self.far_calibrate)
+        self.dlg.run_far_sample.clicked.connect(
+            self.far_sample_obs_calibration)
+        self.dlg.run_far_calibrate.clicked.connect(
+            self.far_calibrate_calibration)
         self.dlg.run_far_predict.clicked.connect(
             self.far_predict_after_rho_interp)
 

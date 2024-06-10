@@ -70,7 +70,7 @@ class FarGetVariablesTask(QgsTask):
     """Get variables for modelling and forecasting deforestation."""
 
     # Constants
-    OUT = opj("outputs", "far_models")
+    OUT = opj("outputs", "variables")
     DATA = "data"
     DATA_RAW = "data_raw"
     MESSAGE_CATEGORY = "FAR plugin"
@@ -121,30 +121,6 @@ class FarGetVariablesTask(QgsTask):
             self.iface.messageBar().pushMessage(
                 "Error", msg,
                 level=Qgis.Critical)
-
-    def create_symbolic_links(self):
-        """Create symbolic links for predictions."""
-        var_tif = self.DATA + "/*.tif"
-        raster_list = glob(var_tif)
-        dates = ["t2", "t3"]
-        periods = ["validation", "forecast"]
-        for (date, period) in zip(dates, periods):
-            far.make_dir(f"data_{date}")
-            for r in raster_list:
-                src_file = os.path.abspath(r)
-                r_basename = os.path.basename(r)
-                dst_file = opj(f"data_{date}", r_basename)
-                if os.path.isfile(dst_file):
-                    os.remove(dst_file)
-                os.symlink(src_file, dst_file)
-            for v in ["edge", "defor"]:
-                src_file = opj(self.DATA, period, f"dist_{v}_{date}.tif")
-                src_file = os.path.abspath(src_file)
-                if os.path.isfile(src_file):
-                    dst_file = opj(f"data_{date}", f"dist_{v}.tif")
-                    if os.path.isfile(dst_file):
-                        os.remove(dst_file)
-                    os.symlink(src_file, dst_file)
 
     def reformat_get_fcc_args(self):
         """Reformat get_fcc_args."""
@@ -205,7 +181,7 @@ class FarGetVariablesTask(QgsTask):
             shutil.copytree(src_dir, dst_dir)
 
             # Check existence of rasters
-            fcc_file = opj(self.DATA, "fcc.tif")
+            fcc_file = opj(self.DATA, "fcc12.tif")
             if not os.path.isfile(fcc_file):
 
                 # Initialize EE
@@ -257,10 +233,10 @@ class FarGetVariablesTask(QgsTask):
 
         if result:
             # Create symbolic links
-            self.create_symbolic_links()
+            far.create_symbolic_links(self.DATA)
 
             # Plot
-            fcc123_file = opj(self.DATA, "forest", "fcc123.tif")
+            fcc123_file = opj(self.DATA, "fcc123.tif")
             png_file = opj(self.OUT, "fcc123.png")
             border_file = opj(self.DATA, "ctry_PROJ.gpkg")
             fig_fcc123 = far.plot.fcc123(

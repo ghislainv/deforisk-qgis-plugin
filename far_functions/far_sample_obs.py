@@ -37,21 +37,23 @@ class FarSampleObsTask(QgsTask):
     # Constants
     OUT = opj("outputs", "far_models")
     DATA = "data"
-    DATA_RAW = "data_raw"
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 2
 
-    def __init__(self, description, iface, workdir, proj,
+    def __init__(self, description, iface, workdir, period, proj,
                  nsamp, adapt, seed, csize):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
+        self.period = period
         self.proj = proj
         self.nsamp = nsamp
         self.adapt = adapt
         self.seed = seed
         self.csize = csize
         self.dataset = pd.DataFrame()
+        self.datadir = f"data_{self.period}"
+        self.outdir = opj(self.OUT, self.period)
         self.exception = None
 
     def set_progress(self, progress, n_steps):
@@ -78,10 +80,10 @@ class FarSampleObsTask(QgsTask):
 
             # Set working directory
             os.chdir(self.workdir)
-            far.make_dir(self.OUT)
+            far.make_dir(self.outdir)
 
             # Check for files
-            fcc_file = opj(self.DATA, "fcc.tif")
+            fcc_file = opj(self.datadir, "fcc.tif")
             if not os.path.isfile(fcc_file):
                 msg = ("No forest cover change "
                        "raster in the working directory. "
@@ -94,9 +96,9 @@ class FarSampleObsTask(QgsTask):
             dataset = far.sample(
                 nsamp=self.nsamp, adapt=self.adapt,
                 seed=self.seed, csize=self.csize,
-                var_dir=self.DATA,
+                var_dir=self.datadir,
                 input_forest_raster="fcc.tif",
-                output_file=opj(self.OUT, "sample.txt"),
+                output_file=opj(self.outdir, "sample.txt"),
                 blk_rows=0,
                 verbose=True)
 
@@ -114,7 +116,7 @@ class FarSampleObsTask(QgsTask):
             # Sample size
             ndefor = sum(self.dataset.fcc == 0)
             nfor = sum(self.dataset.fcc == 1)
-            ifile = opj(self.OUT, "sample_size.csv")
+            ifile = opj(self.outdir, "sample_size.csv")
             with open(ifile, "w",
                       encoding="utf-8") as file:
                 file.write("Var, n\n")
@@ -151,7 +153,7 @@ class FarSampleObsTask(QgsTask):
             y, data = dmatrices(formula_corr, data=self.dataset,
                                 return_type="dataframe")
             # Plots
-            ofile = opj(self.OUT, "correlation.pdf")
+            ofile = opj(self.outdir, "correlation.pdf")
             figs = far.plot.correlation(
                 y=y, data=data,
                 plots_per_page=3,
@@ -171,7 +173,8 @@ class FarSampleObsTask(QgsTask):
                 var_group = root.addGroup("Variables")
 
             # Add layer of sampled observations to QGis project
-            samp_file = opj(self.workdir, self.OUT, "sample.txt")
+            samp_file = opj(self.workdir, self.outdir,
+                            "sample.txt")
             encoding = "UTF-8"
             delimiter = ","
             decimal = "."

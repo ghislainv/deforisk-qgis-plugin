@@ -53,11 +53,11 @@ class FarPredictTask(QgsTask):
         self.model = model
         self.exception = None
         if self.period == "calibration":
-            self.datadir = "data"
+            self.datadir = "data_calibration"
         elif self.period == "validation":
-            self.datadir = "data_t2"
+            self.datadir = "data_validation"
         else:
-            self.datadir = "data_t3"
+            self.datadir = "data_forecast"
 
     def get_time_interval(self):
         """Get time intervals from years."""
@@ -181,12 +181,12 @@ class FarPredictTask(QgsTask):
                     input_cell_raster=opj(self.OUT, "rho.tif"),
                     input_forest_raster=opj(
                         self.DATA,
-                        "forest",
                         f"forest_{date}.tif"),
                     output_file=opj(
                         self.OUT,
                         f"prob_icar_{date}.tif"),
-                    blk_rows=10)
+                    blk_rows=10,
+                    verbose=False)
             elif self.model in ["glm", "rf"]:
                 far.predict_raster(
                     model=mod,
@@ -194,12 +194,12 @@ class FarPredictTask(QgsTask):
                     var_dir=self.datadir,
                     input_forest_raster=opj(
                         self.DATA,
-                        "forest",
                         f"forest_{date}.tif"),
                     output_file=opj(
                         self.OUT,
                         f"prob_{self.model}_{date}.tif"),
-                    blk_rows=10)
+                    blk_rows=10,
+                    verbose=False)
 
             # Check isCanceled() to handle cancellation
             if self.isCanceled():
@@ -211,7 +211,7 @@ class FarPredictTask(QgsTask):
 
             # Compute deforestation rate per category
             far.defrate_per_cat(
-                fcc_file=opj(self.DATA, "forest", "fcc123.tif"),
+                fcc_file=opj(self.DATA, "fcc123.tif"),
                 riskmap_file=opj(self.OUT, f"prob_{self.model}_{date}.tif"),
                 time_interval=time_interval,
                 period=self.period,
@@ -243,9 +243,9 @@ class FarPredictTask(QgsTask):
             root = far_project.layerTreeRoot()
             group_names = [i.name() for i in root.children()]
             if "Predictions" in group_names:
-                predict_group = root.findGroup("Predictions")
+                predict_group = root.findGroup("FAR models")
             else:
-                predict_group = root.addGroup("Predictions")
+                predict_group = root.addGroup("FAR models")
 
             # Add border layer to QGis project
             border_file = opj(self.DATA, "ctry_PROJ.gpkg")

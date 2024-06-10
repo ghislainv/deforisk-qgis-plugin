@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>530</width>
-    <height>560</height>
+    <height>602</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,11 +19,11 @@
      <x>10</x>
      <y>10</y>
      <width>511</width>
-     <height>541</height>
+     <height>591</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -394,9 +394,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>160</y>
+       <y>175</y>
        <width>491</width>
-       <height>191</height>
+       <height>221</height>
       </rect>
      </property>
      <property name="title">
@@ -406,7 +406,7 @@
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>156</y>
+        <y>180</y>
         <width>80</width>
         <height>25</height>
        </rect>
@@ -419,25 +419,6 @@
       </property>
       <property name="text">
        <string>Run</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="varselection">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>157</y>
-        <width>141</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Variable selection</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-      <property name="tristate">
-       <bool>false</bool>
       </property>
      </widget>
      <widget class="QWidget" name="layoutWidget">
@@ -520,14 +501,68 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>156</y>
+        <width>311</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_11">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="varselection">
+         <property name="text">
+          <string>Variable selection</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="far_calib">
+         <property name="text">
+          <string>calib. period</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="far_hist">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>hist. period</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QGroupBox" name="groupBox_predict">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>370</y>
+       <y>402</y>
        <width>491</width>
-       <height>131</height>
+       <height>151</height>
       </rect>
      </property>
      <property name="title">
@@ -537,7 +572,7 @@
       <property name="geometry">
        <rect>
         <x>399</x>
-        <y>94</y>
+        <y>120</y>
         <width>81</width>
         <height>25</height>
        </rect>
@@ -546,13 +581,13 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>471</width>
-        <height>56</height>
+        <x>11</x>
+        <y>31</y>
+        <width>372</width>
+        <height>114</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_7">
@@ -612,22 +647,10 @@
          </property>
         </widget>
        </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>221</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_8">
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="pred_far_t1">
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="pred_far_calib_t1">
          <property name="text">
-          <string>t1</string>
+          <string>t1 calib.</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -637,13 +660,39 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QCheckBox" name="pred_far_t2">
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="pred_far_calib_t2">
          <property name="text">
-          <string>t2</string>
+          <string>t2 calib.</string>
          </property>
          <property name="checked">
           <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="pred_far_hist_t1">
+         <property name="text">
+          <string>t1 hist.</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="pred_far_hist_t3">
+         <property name="text">
+          <string>t3 hist.</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
          </property>
          <property name="tristate">
           <bool>false</bool>
@@ -657,9 +706,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
+       <y>6</y>
        <width>491</width>
-       <height>131</height>
+       <height>161</height>
       </rect>
      </property>
      <property name="title">
@@ -669,7 +718,7 @@
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>94</y>
+        <y>120</y>
         <width>80</width>
         <height>25</height>
        </rect>
@@ -697,13 +746,13 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
+        <x>11</x>
+        <y>31</y>
         <width>331</width>
-        <height>89</height>
+        <height>118</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_5">
@@ -755,6 +804,32 @@
          </property>
          <property name="placeholderText">
           <string>10</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="samp_calib">
+         <property name="text">
+          <string>calib. period</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="samp_hist">
+         <property name="text">
+          <string>hist. period</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
          </property>
         </widget>
        </item>

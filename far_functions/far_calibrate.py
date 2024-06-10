@@ -36,21 +36,23 @@ class FarCalibrateTask(QgsTask):
 
     # Constants
     OUT = opj("outputs", "far_models")
-    DATA = "data"
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 6
 
-    def __init__(self, description, iface, workdir, csize, variables,
+    def __init__(self, description, iface, workdir, period, csize, variables,
                  beta_start, prior_vrho, mcmc, varselection):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
+        self.period = period
         self.csize = csize
         self.variables = variables
         self.beta_start = beta_start
         self.prior_vrho = prior_vrho
         self.mcmc = mcmc
         self.varselection = varselection
+        self.datadir = f"data_{self.period}"
+        self.outdir = opj(self.OUT, self.period)
         self.exception = None
 
     def set_progress(self, progress, n_steps):
@@ -83,7 +85,7 @@ class FarCalibrateTask(QgsTask):
             os.chdir(self.workdir)
 
             # Dataset
-            dataset_file = opj(self.OUT, "sample.txt")
+            dataset_file = opj(self.outdir, "sample.txt")
             if not os.path.isfile(dataset_file):
                 msg = ("No data file in the outputs folder "
                        "of the working directory. "
@@ -108,7 +110,7 @@ class FarCalibrateTask(QgsTask):
             # -------------------
 
             # Neighborhood for spatial-autocorrelation
-            ifile = opj(self.DATA, "fcc.tif")
+            ifile = opj(self.datadir, "fcc.tif")
             nneigh, adj = far.cellneigh(raster=ifile,
                                         csize=self.csize, rank=1)
 
@@ -220,13 +222,13 @@ class FarCalibrateTask(QgsTask):
             print(mod_icar)
 
             # Write summary in file
-            ofile = opj(self.OUT, "summary_icar.txt")
+            ofile = opj(self.outdir, "summary_icar.txt")
             with open(ofile, "w", encoding="utf-8") as file:
                 file.write(str(mod_icar))
 
             # Traces
             figs = mod_icar.plot(
-                output_file=opj(self.OUT, "mcmc.pdf"),
+                output_file=opj(self.outdir, "mcmc.pdf"),
                 plots_per_page=3,
                 figsize=(10, 6),
                 dpi=80
@@ -253,7 +255,7 @@ class FarCalibrateTask(QgsTask):
                 "betas": mod_icar.betas,
                 "Vrho": mod_icar.Vrho,
                 "deviance": mod_icar.deviance}
-            ofile = opj(self.OUT, "mod_icar.pickle")
+            ofile = opj(self.outdir, "mod_icar.pickle")
             with open(ofile, "wb") as file:
                 pickle.dump(mod_icar_pickle, file)
 
@@ -269,7 +271,7 @@ class FarCalibrateTask(QgsTask):
             mod_null = LogisticRegression(solver="lbfgs")
             mod_null = mod_null.fit(X_null, Y)
             pred_null = mod_null.predict_proba(X_null)
-            ofile = opj(self.OUT, "mod_null.pickle")
+            ofile = opj(self.outdir, "mod_null.pickle")
             with open(ofile, "wb") as file:
                 pickle.dump(mod_null, file)
 
@@ -282,7 +284,7 @@ class FarCalibrateTask(QgsTask):
             mod_glm = LogisticRegression(solver="lbfgs")
             mod_glm = mod_glm.fit(X_glm, Y)
             pred_glm = mod_glm.predict_proba(X_glm)
-            ofile = opj(self.OUT, "mod_glm.pickle")
+            ofile = opj(self.outdir, "mod_glm.pickle")
             with open(ofile, "wb") as file:
                 pickle.dump(mod_glm, file)
 
@@ -300,7 +302,7 @@ class FarCalibrateTask(QgsTask):
             pred_rf = mod_rf.predict_proba(X_rf)
             # Use joblib for persistence
             # https://scikit-learn.org/stable/model_persistence.html
-            ofile = opj(self.OUT, "mod_rf.joblib")
+            ofile = opj(self.outdir, "mod_rf.joblib")
             with open(ofile, "wb") as file:
                 joblib.dump(mod_rf, file, compress=True)
 
@@ -320,7 +322,7 @@ class FarCalibrateTask(QgsTask):
             perc = 100*(1-mod_dev.deviance/deviance_null)
             mod_dev["perc"] = perc
             mod_dev = mod_dev.round(0)
-            ofile = opj(self.OUT, "model_deviances.csv")
+            ofile = opj(self.outdir, "model_deviances.csv")
             mod_dev.to_csv(ofile, header=True, index=False)
 
             # Progress

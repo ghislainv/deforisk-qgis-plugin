@@ -30,17 +30,19 @@ class FarInterpolateRhoTask(QgsTask):
     """Interpolate rhos."""
 
     # Constants
-    DATA = "data"
     OUT = opj("outputs", "far_models")
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 1
 
-    def __init__(self, description, iface, workdir,
+    def __init__(self, description, iface, workdir, period,
                  csize_interpolate):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
+        self.period = period
         self.csize_interpolate = float(csize_interpolate)
+        self.datadir = f"data_{self.period}"
+        self.outdir = opj(self.OUT, self.period)
         self.exception = None
 
     def get_icar_model(self, pickle_file):
@@ -85,21 +87,21 @@ class FarInterpolateRhoTask(QgsTask):
 
             # Get icar model
             mod_icar_pickle = self.get_icar_model(
-                pickle_file=opj(self.OUT, "mod_icar.pickle"))
+                pickle_file=opj(self.outdir, "mod_icar.pickle"))
             if not mod_icar_pickle:
                 return False
 
             # Interpolate the spatial random effects
-            csize_file = opj(self.OUT, "csize_icar.txt")
+            csize_file = opj(self.outdir, "csize_icar.txt")
             with open(csize_file, "r", encoding="utf-8") as f:
                 csize_icar = f.read()
                 csize_icar = float(csize_icar)
-            ofile = opj(self.OUT, "rho.tif")
+            ofile = opj(self.outdir, "rho.tif")
             if not os.path.isfile(ofile):
                 rho = mod_icar_pickle["rho"]
                 far.interpolate_rho(
                     rho=rho,
-                    input_raster=opj(self.DATA, "fcc.tif"),
+                    input_raster=opj(self.datadir, "fcc.tif"),
                     output_file=ofile,
                     csize_orig=csize_icar,
                     csize_new=self.csize_interpolate)
