@@ -73,13 +73,18 @@ from .val_functions import (
     ValidateTask
 )
 
+opj = os.path.join
+
 
 class DeforiskPlugin:
     """QGIS Plugin Implementation."""
 
     OUT = "outputs"
-    PERIODS = ["calibration", "validation"]
     FAR_MODELS = ["icar", "glm", "rf"]
+    MOD_PERIODS = ["calibration", "historical"]
+    PRED_PERIODS = ["calibration", "validation",
+                    "historical", "forecast"]
+    VAL_PERIODS = ["calibration", "validation"]
 
     def __init__(self, iface):
         """Constructor.
@@ -261,34 +266,24 @@ class DeforiskPlugin:
             )
         self.print_dependency_version()
 
-    def task_description(self, task_name, model=None, date=None,
-                         csize_val=None):
+    def task_description(self, task_name, model=None, period=None,
+                         date=None, csize_val=None):
         """Write down task description."""
         isocode = self.args["isocode"]
         get_fcc_args = self.args["get_fcc_args"]
         years = get_fcc_args["years"]
         years = years.replace(" ", "").replace(",", "_")
         fcc_source = get_fcc_args["fcc_source"]
-        # Description for calibrate
-        if (model is not None and date is None):
-            description = (f"{task_name}_{isocode}_"
-                           f"{years}_{fcc_source}_"
-                           f"{model}")
-        # Description for "predict"
-        elif (model is not None and date is not None
-              and csize_val is None):
-            description = (f"{task_name}_{isocode}_"
-                           f"{years}_{fcc_source}_"
-                           f"{model}_{date}")
-        # Description for "validate"
-        elif (model is not None and date is not None
-              and csize_val is not None):
-            description = (f"{task_name}_{isocode}_"
-                           f"{years}_{fcc_source}_"
-                           f"{model}_{date}_{csize_val}")
-        else:
-            description = (f"{task_name}_{isocode}_"
-                           f"{years}_{fcc_source}")
+        mod_desc = f"_{model}" if model else ""
+        period_desc = f"_{period}" if period else ""
+        date_desc = f"_{date}" if date else ""
+        csize_desc = f"_{csize_val}" if csize_val else ""
+        # Description
+        desc_base = (f"{task_name}_{isocode}_"
+                     f"{years}_{fcc_source}")
+        description = (desc_base + mod_desc
+                       + period_desc + date_desc
+                       + csize_desc)
         return description
 
     def set_workdir(self, iso, years, fcc_source, seed=None):
@@ -321,24 +316,48 @@ class DeforiskPlugin:
         win_sizes = [int(i) for i in win_sizes]
         return win_sizes
 
+    def get_samp_far_periods(self):
+        """Get periods for observation sampling."""
+        samp_far_periods = []
+        sfp = list(self.args["samp_far_periods"].values())
+        for (p, samp_period) in enumerate(self.MOD_PERIODS):
+            if sfp[p]:
+                samp_far_periods.append(samp_period)
+        return samp_far_periods
+
+    def get_mod_far_periods(self):
+        """Get periods for FAR models."""
+        mod_far_periods = []
+        mfp = list(self.args["mod_far_periods"].values())
+        for (p, mod_period) in enumerate(self.MOD_PERIODS):
+            if mfp[p]:
+                mod_far_periods.append(mod_period)
+        return mod_far_periods
+
+    def get_interp_far_periods(self):
+        """Get periods for rho interpolation."""
+        interp_far_periods = []
+        ifp = list(self.args["pred_far_periods"].values())
+        for (p, period) in enumerate(self.MOD_PERIODS):
+            if any(ifp[(2 * p): (2 * p + 2)]):
+                interp_far_periods.append(period)
+        return interp_far_periods
+
     def get_pred_far_models(self):
         """Get list of far models for predictions."""
         pred_far_models = []
-        pred_mod = [self.args["pred_icar"],
-                    self.args["pred_glm"],
-                    self.args["pred_rf"]]
+        pfm = list(self.args["pred_far_models"].values())
         for (m, far_model) in enumerate(self.FAR_MODELS):
-            if pred_mod[m]:
+            if pfm[m]:
                 pred_far_models.append(far_model)
         return pred_far_models
 
     def get_pred_far_periods(self):
         """Get periods for far predictions."""
         pred_far_periods = []
-        pred_date = [self.args["pred_far_t1"],
-                     self.args["pred_far_t2"]]
-        for (p, period) in enumerate(self.PERIODS):
-            if pred_date[p]:
+        ppf = list(self.args["pred_far_periods"].values())
+        for (p, period) in enumerate(self.PRED_PERIODS):
+            if ppf[p]:
                 pred_far_periods.append(period)
         return pred_far_periods
 
@@ -357,7 +376,7 @@ class DeforiskPlugin:
         val_periods = []
         val_dates = [self.args["val_t1"],
                      self.args["val_t2"]]
-        for (p, period) in enumerate(self.PERIODS):
+        for (p, period) in enumerate(self.VAL_PERIODS):
             if val_dates[p]:
                 val_periods.append(period)
         return val_periods
@@ -401,10 +420,10 @@ class DeforiskPlugin:
     def create_validation_directories(self):
         """Create validation directories."""
         workdir = self.args["workdir"]
-        far.make_dir(os.path.join(workdir, "outputs", "validation",
-                                  "figures"))
-        far.make_dir(os.path.join(workdir, "outputs", "validation",
-                                  "tables"))
+        far.make_dir(opj(workdir, "outputs",
+                         "validation", "figures"))
+        far.make_dir(opj(workdir, "outputs",
+                         "validation", "tables"))
 
     def combine_model_results(self):
         """Combine model results for comparison."""
@@ -419,7 +438,7 @@ class DeforiskPlugin:
             for period in periods:
                 date = self.get_date(period)
                 for model in models:
-                    ifile = os.path.join(
+                    ifile = opj(
                             self.OUT, "validation", "tables",
                             f"indices_{model}_{date}_{csize_val}.csv")
                     if os.path.isfile(ifile):
@@ -457,25 +476,25 @@ class DeforiskPlugin:
         adapt = self.dlg.adapt.isChecked()
         seed = int(self.dlg.seed.text())
         csize = float(self.dlg.csize.text())
-        samp_calib = self.dlg.samp_calib.isChecked()
-        samp_hist = self.dlg.samp_hist.isChecked()
+        samp_far_calib = self.dlg.samp_far_calib.isChecked()
+        samp_far_hist = self.dlg.samp_far_hist.isChecked()
         # FAR models
         variables = self.dlg.variables.text()
         beta_start = float(self.dlg.beta_start.text())
         prior_vrho = int(self.dlg.prior_vrho.text())
         mcmc = int(self.dlg.mcmc.text())
         varselection = self.dlg.varselection.isChecked()
-        far_calib = self.dlg.far_calib.isChecked()
-        far_hist = self.dlg.far_hist.isChecked()
+        mod_far_calib = self.dlg.mod_far_calib.isChecked()
+        mod_far_hist = self.dlg.mod_far_hist.isChecked()
         # FAR predict
         csize_interp = float(self.dlg.csize_interp.text())
         pred_icar = self.dlg.pred_icar.isChecked()
         pred_glm = self.dlg.pred_glm.isChecked()
         pred_rf = self.dlg.pred_rf.isChecked()
         pred_far_calib_t1 = self.dlg.pred_far_calib_t1.isChecked()
-        pred_far_calib_t2 = self.dlg.pred_far_calib_t2.isChecked()
+        pred_far_valid_t2 = self.dlg.pred_far_valid_t2.isChecked()
         pred_far_hist_t1 = self.dlg.pred_far_hist_t1.isChecked()
-        pred_far_hist_t3 = self.dlg.pred_far_hist_t3.isChecked()
+        pred_far_forecast_t3 = self.dlg.pred_far_forecast_t3.isChecked()
         # Rmj model
         defor_thresh = float(self.dlg.defor_thresh.text())
         max_dist = int(self.dlg.max_dist.text())
@@ -511,19 +530,25 @@ class DeforiskPlugin:
             "proj": proj,
             "nsamp": nsamp, "adapt": adapt, "seed": seed,
             "csize": csize,
-            "samp_period": {"samp_calib": samp_calib,
-                            "samp_hist": samp_hist},
+            "samp_far_periods": {
+                "samp_far_calib": samp_far_calib,
+                "samp_far_hist": samp_far_hist},
             "variables": variables,
             "beta_start": beta_start, "prior_vrho": prior_vrho,
             "mcmc": mcmc, "varselection": varselection,
-            "far_period": {"far_calib": far_calib,
-                           "far_hist": far_hist},
-            "csize_interp": csize_interp, "pred_icar": pred_icar,
-            "pred_glm": pred_glm, "pred_rf": pred_rf,
-            "pred_far": {"pred_far_calib_t1": pred_far_calib_t1,
-                         "pred_far_calib_t2": pred_far_calib_t2,
-                         "pred_far_hist_t1": pred_far_hist_t1,
-                         "pred_far_hist_t3": pred_far_hist_t3},
+            "mod_far_periods": {
+                "mod_far_calib": mod_far_calib,
+                "mod_far_hist": mod_far_hist},
+            "csize_interp": csize_interp,
+            "pred_far_models": {
+                "pred_icar": pred_icar,
+                "pred_glm": pred_glm,
+                "pred_rf": pred_rf},
+            "pred_far_periods": {
+                "pred_far_calib_t1": pred_far_calib_t1,
+                "pred_far_valid_t2": pred_far_valid_t2,
+                "pred_far_hist_t1": pred_far_hist_t1,
+                "pred_far_forecast_t3": pred_far_forecast_t3},
             "defor_thresh": defor_thresh, "max_dist": max_dist,
             "win_sizes": win_sizes,
             "pred_mw_t1": pred_mw_t1, "pred_mw_t2": pred_mw_t2,
@@ -550,57 +575,50 @@ class DeforiskPlugin:
         # Add task to task manager
         self.tm.addTask(task)
 
-    def far_sample_obs_calibration(self):
+    def far_sample_obs(self):
         """Sample observations."""
         self.catch_arguments()
-        description = self.task_description("SampleObs")
-        task = FarSampleObsTask(
-            description=description,
-            iface=self.iface,
-            workdir=self.args["workdir"],
-            period="calibration",
-            proj=self.args["proj"],
-            nsamp=self.args["nsamp"],
-            adapt=self.args["adapt"],
-            seed=self.args["seed"],
-            csize=self.args["csize"])
-        # Add task to task manager
-        self.tm.addTask(task)
+        # Periods
+        samp_far_periods = self.get_samp_far_periods()
+        # Create tasks with loops on periods
+        for period in samp_far_periods:
+            description = self.task_description(
+                "SampleObs", period=period)
+            task = FarSampleObsTask(
+                description=description,
+                iface=self.iface,
+                workdir=self.args["workdir"],
+                period=period,
+                proj=self.args["proj"],
+                nsamp=self.args["nsamp"],
+                adapt=self.args["adapt"],
+                seed=self.args["seed"],
+                csize=self.args["csize"])
+            # Add task to task manager
+            self.tm.addTask(task)
 
-    def far_sample_obs_historical(self):
-        """Sample observations."""
-        self.catch_arguments()
-        description = self.task_description("SampleObs")
-        task = FarSampleObsTask(
-            description=description,
-            iface=self.iface,
-            workdir=self.args["workdir"],
-            period="historical",
-            proj=self.args["proj"],
-            nsamp=self.args["nsamp"],
-            adapt=self.args["adapt"],
-            seed=self.args["seed"],
-            csize=self.args["csize"])
-        # Add task to task manager
-        self.tm.addTask(task)
-
-    def far_calibrate_calibration(self):
+    def far_calibrate(self):
         """Estimate forestatrisk model parameters."""
         self.catch_arguments()
-        description = self.task_description("FarCalibrate")
-        task = FarCalibrateTask(
-            description=description,
-            iface=self.iface,
-            workdir=self.args["workdir"],
-            period="calibration",
-            csize=self.args["csize"],
-            variables=self.args["variables"],
-            beta_start=self.args["beta_start"],
-            prior_vrho=self.args["prior_vrho"],
-            mcmc=self.args["mcmc"],
-            varselection=self.args["varselection"])
-        # Add task to task manager
-        self.tm.addTask(task)
+        # Periods
+        mod_far_periods = self.get_mod_far_periods()
+        # Create tasks with loops on periods
+        for period in mod_far_periods:
+            description = self.task_description(
+                "FarCalibrate", period=period)
+            task = FarCalibrateTask(
+                description=description,
+                iface=self.iface,
+                workdir=self.args["workdir"],
+                period=period,
+                csize=self.args["csize"],
+                variables=self.args["variables"],
+                beta_start=self.args["beta_start"],
+                prior_vrho=self.args["prior_vrho"],
+                mcmc=self.args["mcmc"],
+                varselection=self.args["varselection"])
+            # Add task to task manager
+            self.tm.addTask(task)
 
     def far_predict(self):
         """Predict deforestation risk."""
@@ -612,7 +630,7 @@ class DeforiskPlugin:
             date = self.get_date(period)
             for model in pred_far_models:
                 description = self.task_description(
-                    "FarPredict", model, date)
+                    "FarPredict", model=model, date=date)
                 task = FarPredictTask(
                     description=description,
                     iface=self.iface,
@@ -627,18 +645,22 @@ class DeforiskPlugin:
         """Interpolate rho."""
         # Catch arguments
         self.catch_arguments()
+        # Periods
+        interp_far_periods = self.get_interp_far_periods()
         # Interpolate rho
-        description = self.task_description("FarInterpolateRho")
-        task = FarInterpolateRhoTask(
-            description=description,
-            iface=self.iface,
-            workdir=self.args["workdir"],
-            period=period,
-            csize_interpolate=self.args["csize_interp"])
-        # Execute far_predict after task_rho
-        task.taskCompleted.connect(self.far_predict)
-        # Add first task to task manager
-        self.tm.addTask(task)
+        for period in interp_far_periods:
+            description = self.task_description(
+                "FarInterpolateRho", period=period)
+            task = FarInterpolateRhoTask(
+                description=description,
+                iface=self.iface,
+                workdir=self.args["workdir"],
+                period=period,
+                csize_interpolate=self.args["csize_interp"])
+            # Execute far_predict after task_rho
+            task.taskCompleted.connect(self.far_predict)
+            # Add first task to task manager
+            self.tm.addTask(task)
 
     def mw_calibrate(self):
         """Compute distance threshold and local deforestation rate."""
@@ -648,7 +670,8 @@ class DeforiskPlugin:
         # Loop on window sizes
         for win_size in win_sizes:
             model = f"mv_{win_size}"
-            description = self.task_description("MwCalibrate", model)
+            description = self.task_description(
+                "MwCalibrate", model=model)
             task = MwCalibrateTask(
                 description=description,
                 workdir=self.args["workdir"],
@@ -670,7 +693,7 @@ class DeforiskPlugin:
             for wsize in win_sizes:
                 model = f"mv_{wsize}"
                 description = self.task_description(
-                    "MwPredict", model, date)
+                    "MwPredict", model=model, date=date)
                 task = MwPredictTask(
                     description=description,
                     workdir=self.args["workdir"],
@@ -703,7 +726,7 @@ class DeforiskPlugin:
         for period in periods:
             date = self.get_date(period)
             description = self.task_description(
-                "BmPredict", "benchmark", date)
+                "BmPredict", "benchmark", date=date)
             task = BmPredictTask(
                 description=description,
                 workdir=self.args["workdir"],
@@ -730,7 +753,8 @@ class DeforiskPlugin:
                 date = self.get_date(period)
                 for model in val_models:
                     description = self.task_description(
-                        "Validate", model, date, csize_val)
+                        "Validate", model=model, date=date,
+                        csize_val=csize_val)
                     task = ValidateTask(
                         description=description,
                         iface=self.iface,
@@ -769,9 +793,9 @@ class DeforiskPlugin:
 
         # FAR with icar, glm, and rf models
         self.dlg.run_far_sample.clicked.connect(
-            self.far_sample_obs_calibration)
+            self.far_sample_obs)
         self.dlg.run_far_calibrate.clicked.connect(
-            self.far_calibrate_calibration)
+            self.far_calibrate)
         self.dlg.run_far_predict.clicked.connect(
             self.far_predict_after_rho_interp)
 

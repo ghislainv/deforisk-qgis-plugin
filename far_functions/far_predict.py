@@ -52,22 +52,38 @@ class FarPredictTask(QgsTask):
         self.period = period
         self.model = model
         self.exception = None
-        if self.period == "calibration":
-            self.datadir = "data_calibration"
-        elif self.period == "validation":
-            self.datadir = "data_validation"
-        else:
-            self.datadir = "data_forecast"
+        self.datadir = f"data_{self.period}"
+        self.outdir = self.get_outdir()
+
+    def get_outdir(self):
+        """Get output directory."""
+        if self.period in ["calibration", "validation"]:
+            outdir = opj(self.OUT, "calibration")
+        elif self.period in ["historical", "forecast"]:
+            outdir = opj(self.OUT, "historical")
+        return outdir
 
     def get_time_interval(self):
-        """Get time intervals from years."""
+        """Get time intervals from years and period."""
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
         if self.period == "calibration":
             time_interval = years[1] - years[0]
-        else:
+        elif self.period == "validation":
             time_interval = years[2] - years[1]
+        elif self.period in ["historical", "forecast"]:
+            time_interval = years[2] - years[0]
         return time_interval
+
+    def get_date(self):
+        """Get time intervals from period."""
+        if self.period in ["calibration", "historical"]:
+            date = "t1"
+        elif self.period == "validation":
+            date = "t2"
+        elif self.period == "forecast":
+            date = "t3"
+        return date
 
     def get_icar_model(self, pickle_file):
         """Get icar model."""
@@ -107,19 +123,19 @@ class FarPredictTask(QgsTask):
                 betas=mod_icar_pickle["betas"],
                 rho=mod_icar_pickle["rho"])
         if self.model == "glm":
-            ifile = opj(self.OUT, "mod_glm.pickle")
+            ifile = opj(self.outdir, "mod_glm.pickle")
             with open(ifile, "rb") as file:
                 mod = pickle.load(file)
         if self.model == "rf":
-            ifile = opj(self.OUT, "mod_rf.joblib")
+            ifile = opj(self.outdir, "mod_rf.joblib")
             with open(ifile, "rb") as file:
                 mod = joblib.load(file)
         return mod
 
     def plot_prob(self, model, date):
         """Plot probability of deforestation."""
-        prob_file = opj(self.OUT, f"prob_{model}_{date}.tif")
-        png_file = opj(self.OUT, f"prob_{model}_{date}.png")
+        prob_file = opj(self.outdir, f"prob_{model}_{date}.tif")
+        png_file = opj(self.outdir, f"prob_{model}_{date}.png")
         border_file = opj(self.DATA, "ctry_PROJ.gpkg")
         fig_prob = far.plot.prob(
             input_prob_raster=prob_file,
@@ -160,30 +176,30 @@ class FarPredictTask(QgsTask):
 
             # Get design info
             mod_icar_pickle = self.get_icar_model(
-                pickle_file=opj(self.OUT, "mod_icar.pickle"))
+                pickle_file=opj(self.outdir, "mod_icar.pickle"))
             if not mod_icar_pickle:
                 return False
             (y_design_info, x_design_info) = self.get_design_info(
-                mod_icar_pickle, dataset_file=opj(self.OUT, "sample.txt"))
+                mod_icar_pickle, dataset_file=opj(self.outdir, "sample.txt"))
 
             # Get model
             mod = self.get_model(mod_icar_pickle, y_design_info,
                                  x_design_info)
 
             # Date
-            date = "t1" if self.period == "calibration" else "t2"
+            date = self.get_date()
 
             # Compute predictions
             if self.model == "icar":
                 far.predict_raster_binomial_iCAR(
                     model=mod,
                     var_dir=self.datadir,
-                    input_cell_raster=opj(self.OUT, "rho.tif"),
+                    input_cell_raster=opj(self.outdir, "rho.tif"),
                     input_forest_raster=opj(
                         self.DATA,
                         f"forest_{date}.tif"),
                     output_file=opj(
-                        self.OUT,
+                        self.outdir,
                         f"prob_icar_{date}.tif"),
                     blk_rows=10,
                     verbose=False)
@@ -196,7 +212,7 @@ class FarPredictTask(QgsTask):
                         self.DATA,
                         f"forest_{date}.tif"),
                     output_file=opj(
-                        self.OUT,
+                        self.outdir,
                         f"prob_{self.model}_{date}.tif"),
                     blk_rows=10,
                     verbose=False)
@@ -212,11 +228,13 @@ class FarPredictTask(QgsTask):
             # Compute deforestation rate per category
             far.defrate_per_cat(
                 fcc_file=opj(self.DATA, "fcc123.tif"),
-                riskmap_file=opj(self.OUT, f"prob_{self.model}_{date}.tif"),
+                riskmap_file=opj(
+                    self.outdir,
+                    f"prob_{self.model}_{date}.tif"),
                 time_interval=time_interval,
                 period=self.period,
                 tab_file_defrate=opj(
-                    self.OUT,
+                    self.outdir,
                     f"defrate_cat_{self.model}_{date}.csv"),
                 verbose=False)
 
@@ -235,14 +253,14 @@ class FarPredictTask(QgsTask):
 
         if result:
             # Plot
-            date = "t1" if self.period == "calibration" else "t2"
+            date = self.get_date()
             self.plot_prob(model=self.model, date=date)
 
             # Qgis project and group
             far_project = QgsProject.instance()
             root = far_project.layerTreeRoot()
             group_names = [i.name() for i in root.children()]
-            if "Predictions" in group_names:
+            if "FAR models" in group_names:
                 predict_group = root.findGroup("FAR models")
             else:
                 predict_group = root.addGroup("FAR models")
@@ -254,8 +272,11 @@ class FarPredictTask(QgsTask):
             add_layer(far_project, border_layer)
 
             # Add prob layers to QGis project
-            prob_file = opj(self.OUT, f"prob_{self.model}_{date}.tif")
-            prob_layer = QgsRasterLayer(prob_file, f"prob_{self.model}_{date}")
+            prob_file = opj(self.outdir, f"prob_{self.model}_{date}.tif")
+            prob_layer = QgsRasterLayer(
+                prob_file,
+                f"prob_{self.model}_{date}_{self.period}",
+            )
             prob_layer.loadNamedStyle(opj("qgis_layer_style",
                                           "prob.qml"))
             add_layer_to_group(far_project, predict_group,

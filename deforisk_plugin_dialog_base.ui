@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -501,13 +501,13 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>156</y>
         <width>311</width>
-        <height>50</height>
+        <height>54</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_11">
@@ -525,7 +525,7 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QCheckBox" name="far_calib">
+        <widget class="QCheckBox" name="mod_far_calib">
          <property name="text">
           <string>calib. period</string>
          </property>
@@ -538,7 +538,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QCheckBox" name="far_hist">
+        <widget class="QCheckBox" name="mod_far_hist">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -581,7 +581,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>11</x>
@@ -650,7 +650,7 @@
        <item row="2" column="0">
         <widget class="QCheckBox" name="pred_far_calib_t1">
          <property name="text">
-          <string>t1 calib.</string>
+          <string>t1 calibration</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -661,9 +661,9 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QCheckBox" name="pred_far_calib_t2">
+        <widget class="QCheckBox" name="pred_far_valid_t2">
          <property name="text">
-          <string>t2 calib.</string>
+          <string>t2 validation</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -676,7 +676,7 @@
        <item row="3" column="0">
         <widget class="QCheckBox" name="pred_far_hist_t1">
          <property name="text">
-          <string>t1 hist.</string>
+          <string>t1 historical</string>
          </property>
          <property name="checked">
           <bool>false</bool>
@@ -687,9 +687,9 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QCheckBox" name="pred_far_hist_t3">
+        <widget class="QCheckBox" name="pred_far_forecast_t3">
          <property name="text">
-          <string>t3 hist.</string>
+          <string>t3 forecast</string>
          </property>
          <property name="checked">
           <bool>false</bool>
@@ -746,7 +746,7 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>11</x>
@@ -800,7 +800,7 @@
        <item row="2" column="1">
         <widget class="QLineEdit" name="csize">
          <property name="text">
-          <string>1</string>
+          <string>2</string>
          </property>
          <property name="placeholderText">
           <string>10</string>
@@ -808,7 +808,7 @@
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QCheckBox" name="samp_calib">
+        <widget class="QCheckBox" name="samp_far_calib">
          <property name="text">
           <string>calib. period</string>
          </property>
@@ -821,7 +821,7 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QCheckBox" name="samp_hist">
+        <widget class="QCheckBox" name="samp_far_hist">
          <property name="text">
           <string>hist. period</string>
          </property>

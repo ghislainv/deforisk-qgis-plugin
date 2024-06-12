@@ -183,7 +183,8 @@ class FarSampleObsTask(QgsTask):
             uri = (f"file:///{samp_file}?encoding={encoding}"
                    f"&delimiter={delimiter}&decimalPoint={decimal}"
                    f"&crs={self.proj}&xField={x}&yField={y}")
-            samp_layer = QgsVectorLayer(uri, "sampled_obs", "delimitedtext")
+            layer_name = f"sampled_obs_{self.period}"
+            samp_layer = QgsVectorLayer(uri, layer_name, "delimitedtext")
             samp_layer.loadNamedStyle(opj("qgis_layer_style",
                                           "sample.qml"))
             add_layer_to_group(far_project, var_group, samp_layer)
