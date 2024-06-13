@@ -39,18 +39,18 @@ class FarCalibrateTask(QgsTask):
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 6
 
-    def __init__(self, description, iface, workdir, period, csize, variables,
-                 beta_start, prior_vrho, mcmc, varselection):
+    def __init__(self, description, iface, workdir, csize, variables,
+                 beta_start, prior_vrho, mcmc, varselection, period):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
-        self.period = period
         self.csize = csize
         self.variables = variables
         self.beta_start = beta_start
         self.prior_vrho = prior_vrho
         self.mcmc = mcmc
         self.varselection = varselection
+        self.period = period
         self.datadir = f"data_{self.period}"
         self.outdir = opj(self.OUT, self.period)
         self.exception = None

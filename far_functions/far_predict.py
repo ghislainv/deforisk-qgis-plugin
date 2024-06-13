@@ -236,6 +236,7 @@ class FarPredictTask(QgsTask):
                 tab_file_defrate=opj(
                     self.outdir,
                     f"defrate_cat_{self.model}_{self.period}.csv"),
+                blk_rows=128,
                 verbose=False)
 
             # Progress
