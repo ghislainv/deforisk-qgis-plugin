@@ -31,34 +31,42 @@ class BmCalibrateTask(QgsTask):
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 5
 
-    def __init__(self, description, workdir, years,
-                 defor_thresh, max_dist):
+    def __init__(self, description, workdir, years, defor_thresh,
+                 max_dist, period):
         """Initialize the class."""
         super().__init__(description, QgsTask.CanCancel)
         self.workdir = workdir
         self.years = years
         self.defor_thresh = defor_thresh
         self.max_dist = max_dist
+        self.period = period
+        self.datadir = f"data_{self.period}"
+        self.outdir = opj(self.OUT, self.period)
         self.exception = None
 
     def get_dist_thresh(self):
         """Get distance to forest edge threshold."""
-        ifile = opj(self.OUT, "dist_edge_threshold.csv")
+        ifile = opj(self.outdir, "dist_edge_threshold.csv")
         dist_thresh_data = pd.read_csv(ifile)
         dist_thresh = dist_thresh_data.loc[0, "dist_thresh"]
         return dist_thresh
 
-    def get_time_interval_calibration(self):
-        """Get time intervals from years."""
+    def get_time_interval(self):
+        """Get time intervals from years and period."""
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
-        time_interval_calibration = years[1] - years[0]
-        return time_interval_calibration
+        if self.period == "calibration":
+            time_interval = years[1] - years[0]
+        elif self.period == "validation":
+            time_interval = years[2] - years[1]
+        elif self.period in ["historical", "forecast"]:
+            time_interval = years[2] - years[0]
+        return time_interval
 
     def plot_prob(self, model, date):
         """Plot probability of deforestation."""
-        prob_file = opj(self.OUT, f"prob_{model}_{date}.tif")
-        png_file = opj(self.OUT, f"prob_{model}_{date}.png")
+        prob_file = opj(self.outdir, f"prob_{model}_{date}.tif")
+        png_file = opj(self.outdir, f"prob_{model}_{date}.png")
         border_file = opj(self.DATA, "ctry_PROJ.gpkg")
         fig_prob = rmj.benchmark.plot.vulnerability_map(
             input_map=prob_file,
@@ -95,20 +103,20 @@ class BmCalibrateTask(QgsTask):
             os.chdir(self.workdir)
 
             # Output directory
-            rmj.make_dir(self.OUT)
+            rmj.make_dir(self.outdir)
 
             # Distance to forest edge threshold
-            fcc_file = opj(self.DATA, "forest", "fcc123.tif")
-            ofile = opj(self.OUT, "dist_edge_threshold.csv")
+            fcc_file = opj(self.DATA, "fcc123.tif")
+            ofile = opj(self.outdir, "dist_edge_threshold.csv")
             if not os.path.isfile(ofile):
                 dist_thresh = rmj.dist_edge_threshold(
                     fcc_file=fcc_file,
                     defor_values=1,
                     defor_threshold=self.defor_thresh,
-                    dist_file=opj(self.DATA, "dist_edge.tif"),
+                    dist_file=opj(self.datadir, "dist_edge.tif"),
                     dist_bins=np.arange(0, self.max_dist, step=30),
-                    tab_file_dist=opj(self.OUT, "tab_dist.csv"),
-                    fig_file_dist=opj(self.OUT, "perc_dist.png"),
+                    tab_file_dist=opj(self.outdir, "tab_dist.csv"),
+                    fig_file_dist=opj(self.outdir, "perc_dist.png"),
                     blk_rows=128,
                     dist_file_available=True,
                     check_fcc=False,
@@ -132,8 +140,8 @@ class BmCalibrateTask(QgsTask):
             # Rasterize subjurisdictions
             rmj.benchmark.rasterize_subjurisdictions(
                 input_file=opj(self.DATA, "ctry_PROJ.gpkg"),
-                fcc_file=opj(self.DATA, "fcc.tif"),
-                output_file=opj(self.OUT, "subj.tif"),
+                fcc_file=opj(self.datadir, "fcc.tif"),
+                output_file=opj(self.outdir, "subj.tif"),
                 verbose=False)
 
             # Check isCanceled() to handle cancellation
@@ -146,23 +154,23 @@ class BmCalibrateTask(QgsTask):
 
             # Compute bins
             dist_bins = rmj.benchmark.compute_dist_bins(
-                dist_file=opj(self.DATA, "dist_edge.tif"),
+                dist_file=opj(self.datadir, "dist_edge.tif"),
                 dist_thresh=self.get_dist_thresh(),
             )
             dist_bins_str = [str(i) for i in dist_bins]
 
             # Save dist_bins
-            ofile = opj(self.OUT, "dist_bins.csv")
+            ofile = opj(self.outdir, "dist_bins.csv")
             with open(ofile, "w", encoding="utf-8") as f:
                 f.write("\n".join(dist_bins_str))
 
             # Compute vulnerability classes at t1
             rmj.benchmark.vulnerability_map(
-                forest_file=opj(self.DATA, "forest", "forest_t1.tif"),
-                dist_file=opj(self.DATA, "dist_edge.tif"),
+                forest_file=opj(self.DATA, "forest_t1.tif"),
+                dist_file=opj(self.datadir, "dist_edge.tif"),
                 dist_bins=dist_bins,
-                subj_file=opj(self.OUT, "subj.tif"),
-                output_file=opj(self.OUT, "prob_bm_t1.tif"),
+                subj_file=opj(self.outdir, "subj.tif"),
+                output_file=opj(self.outdir, "prob_bm_t1.tif"),
                 blk_rows=128,
                 verbose=False)
 
@@ -175,19 +183,19 @@ class BmCalibrateTask(QgsTask):
             self.set_progress(progress, self.N_STEPS)
 
             # Compute time interval from years
-            time_interval_calibration = self.get_time_interval_calibration()
+            time_interval = self.get_time_interval()
 
             # Compute deforestation rate per vulnerability class
             rmj.benchmark.defrate_per_class(
-                fcc_file=opj(self.DATA, "forest", "fcc123.tif"),
+                fcc_file=opj(self.DATA, "fcc123.tif"),
                 vulnerability_file=opj(
-                    self.OUT,
+                    self.outdir,
                     "prob_bm_t1.tif"),
-                time_interval=time_interval_calibration,
-                period="calibration",
+                time_interval=time_interval,
+                period=self.period,
                 tab_file_defrate=opj(
-                    self.OUT,
-                    "defrate_cat_bm_t1.csv"),
+                    self.outdir,
+                    f"defrate_cat_bm_{self.period}.csv"),
                 blk_rows=128,
                 verbose=False)
 
@@ -226,9 +234,9 @@ class BmCalibrateTask(QgsTask):
             add_layer(far_project, border_layer)
 
             # Add prob layers to QGis project
-            prob_file = opj(self.OUT, f"prob_bm_{date}.tif")
+            prob_file = opj(self.outdir, f"prob_bm_{date}.tif")
             prob_layer = QgsRasterLayer(prob_file,
-                                        f"prob_bm_{date}")
+                                        f"prob_bm_{date}_{self.period}")
             prob_layer.loadNamedStyle(opj("qgis_layer_style",
                                           "prob_bm.qml"))
             add_layer_to_group(far_project, mw_group,

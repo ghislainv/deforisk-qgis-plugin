@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -339,11 +339,11 @@
        </item>
       </layout>
      </widget>
-     <widget class="QLabel" name="label_doc_2">
+     <widget class="QLabel" name="label_mod_bm">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>100</y>
+        <y>130</y>
         <width>331</width>
         <height>21</height>
        </rect>
@@ -358,6 +358,47 @@
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QCheckBox" name="mod_bm_calib">
+      <property name="geometry">
+       <rect>
+        <x>12</x>
+        <y>100</y>
+        <width>152</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>calib. period</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="mod_bm_hist">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>100</y>
+        <width>151</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>hist. period</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
     </widget>
     <widget class="QGroupBox" name="groupBox_bm_predict">
      <property name="geometry">
@@ -365,17 +406,17 @@
        <x>10</x>
        <y>200</y>
        <width>491</width>
-       <height>81</height>
+       <height>91</height>
       </rect>
      </property>
      <property name="title">
-      <string>Predict the deforestation risk at t2</string>
+      <string>Predict the deforestation risk</string>
      </property>
      <widget class="QPushButton" name="run_bm_predict">
       <property name="geometry">
        <rect>
         <x>411</x>
-        <y>40</y>
+        <y>50</y>
         <width>71</width>
         <height>25</height>
        </rect>
@@ -384,6 +425,44 @@
        <string>Run</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QCheckBox" name="pred_bm_valid_t2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>231</y>
+       <width>107</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>t2 validation</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="tristate">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="pred_bm_forecast_t3">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>260</y>
+       <width>107</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>t3 forecast</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="tristate">
+      <bool>false</bool>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="tab_far_models">

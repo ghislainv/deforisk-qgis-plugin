@@ -42,18 +42,18 @@ class FarPredictTask(QgsTask):
     MESSAGE_CATEGORY = "FAR plugin"
     N_STEPS = 3
 
-    def __init__(self, description, iface, workdir, years, period,
-                 model):
+    def __init__(self, description, iface, workdir, years, model,
+                 period):
         """Initialize the class."""
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
         self.years = years
-        self.period = period
         self.model = model
-        self.exception = None
+        self.period = period
         self.datadir = f"data_{self.period}"
         self.outdir = self.get_outdir()
+        self.exception = None
 
     def get_outdir(self):
         """Get output directory."""
@@ -76,7 +76,7 @@ class FarPredictTask(QgsTask):
         return time_interval
 
     def get_date(self):
-        """Get time intervals from period."""
+        """Get date from period."""
         if self.period in ["calibration", "historical"]:
             date = "t1"
         elif self.period == "validation":
@@ -235,7 +235,7 @@ class FarPredictTask(QgsTask):
                 period=self.period,
                 tab_file_defrate=opj(
                     self.outdir,
-                    f"defrate_cat_{self.model}_{date}.csv"),
+                    f"defrate_cat_{self.model}_{self.period}.csv"),
                 verbose=False)
 
             # Progress
