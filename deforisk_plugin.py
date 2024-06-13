@@ -345,6 +345,15 @@ class DeforiskPlugin:
                 mod_bm_periods.append(mod_period)
         return mod_bm_periods
 
+    def get_mod_mw_periods(self):
+        """Get periods for Moving Window model."""
+        mod_mw_periods = []
+        mbp = list(self.args["mod_mw_periods"].values())
+        for (p, mod_period) in enumerate(self.MOD_PERIODS):
+            if mbp[p]:
+                mod_mw_periods.append(mod_period)
+        return mod_mw_periods
+
     def get_interp_far_periods(self):
         """Get periods for rho interpolation."""
         interp_far_periods = []
@@ -366,28 +375,27 @@ class DeforiskPlugin:
     def get_pred_far_periods(self):
         """Get periods for far predictions."""
         pred_far_periods = []
-        ppf = list(self.args["pred_far_periods"].values())
+        pfp = list(self.args["pred_far_periods"].values())
         for (p, period) in enumerate(self.PRED_PERIODS):
-            if ppf[p]:
+            if pfp[p]:
                 pred_far_periods.append(period)
         return pred_far_periods
 
     def get_pred_bm_periods(self):
         """Get periods for benchmark predictions."""
         pred_bm_periods = []
-        ppf = list(self.args["pred_bm_periods"].values())
+        pbp = list(self.args["pred_bm_periods"].values())
         for (p, period) in enumerate(self.PRED_BM_PERIODS):
-            if ppf[p]:
+            if pbp[p]:
                 pred_bm_periods.append(period)
         return pred_bm_periods
 
     def get_pred_mw_periods(self):
         """Get periods for mw predictions."""
         pred_mw_periods = []
-        pred_dates = [self.args["pred_mw_t1"],
-                      self.args["pred_mw_t2"]]
-        for (p, period) in enumerate(self.PERIODS):
-            if pred_dates[p]:
+        pmp = list(self.args["pred_mw_periods"].values())
+        for (p, period) in enumerate(self.PRED_PERIODS):
+            if pmp[p]:
                 pred_mw_periods.append(period)
         return pred_mw_periods
 
@@ -529,9 +537,13 @@ class DeforiskPlugin:
         defor_thresh = float(self.dlg.defor_thresh.text())
         max_dist = int(self.dlg.max_dist.text())
         win_sizes = self.dlg.win_sizes.text()
+        mod_mw_calib = self.dlg.mod_mw_calib.isChecked()
+        mod_mw_hist = self.dlg.mod_mw_hist.isChecked()
         # Rmj predict
-        pred_mw_t1 = self.dlg.pred_mw_t1.isChecked()
-        pred_mw_t2 = self.dlg.pred_mw_t2.isChecked()
+        pred_mw_calib_t1 = self.dlg.pred_mw_calib_t1.isChecked()
+        pred_mw_valid_t2 = self.dlg.pred_mw_valid_t2.isChecked()
+        pred_mw_hist_t1 = self.dlg.pred_mw_hist_t1.isChecked()
+        pred_mw_forecast_t3 = self.dlg.pred_mw_forecast_t3.isChecked()
         # Validate
         csizes_val = self.dlg.csizes_val.text()
         val_icar = self.dlg.val_icar.isChecked()
@@ -593,7 +605,14 @@ class DeforiskPlugin:
                 "pred_far_forecast_t3": pred_far_forecast_t3},
             # Moving Window
             "win_sizes": win_sizes,
-            "pred_mw_t1": pred_mw_t1, "pred_mw_t2": pred_mw_t2,
+            "mod_mw_periods": {
+                "mod_mw_calib": mod_mw_calib,
+                "mod_mw_hist": mod_mw_hist},
+            "pred_mw_periods": {
+                "pred_mw_calib_t1": pred_mw_calib_t1,
+                "pred_mw_valid_t2": pred_mw_valid_t2,
+                "pred_mw_hist_t1": pred_mw_hist_t1,
+                "pred_mw_forecast_t3": pred_mw_forecast_t3},
             # Validation
             "csizes_val": csizes_val,
             "val_icar": val_icar,
@@ -641,8 +660,8 @@ class DeforiskPlugin:
     def far_calibrate(self):
         """Estimate forestatrisk model parameters."""
         self.catch_arguments()
-        mod_far_periods = self.get_mod_far_periods()
-        for period in mod_far_periods:
+        periods = self.get_mod_far_periods()
+        for period in periods:
             description = self.task_description(
                 "FarCalibrate", period=period)
             task = FarCalibrateTask(
@@ -662,12 +681,12 @@ class DeforiskPlugin:
     def far_predict(self):
         """Predict deforestation risk."""
         # Models and periods
-        pred_far_models = self.get_pred_far_models()
-        pred_far_periods = self.get_pred_far_periods()
+        models = self.get_pred_far_models()
+        periods = self.get_pred_far_periods()
         # Tasks with loops on dates and models
-        for period in pred_far_periods:
+        for period in periods:
             date = self.get_date(period)
-            for model in pred_far_models:
+            for model in models:
                 description = self.task_description(
                     "FarPredict", model=model,
                     period=period, date=date)
@@ -684,9 +703,9 @@ class DeforiskPlugin:
     def far_predict_after_rho_interp(self):
         """Interpolate rho."""
         self.catch_arguments()
-        interp_far_periods = self.get_interp_far_periods()
+        periods = self.get_interp_far_periods()
         # Interpolate rho
-        for period in interp_far_periods:
+        for period in periods:
             description = self.task_description(
                 "FarInterpolateRho", period=period)
             task = FarInterpolateRhoTask(
@@ -704,20 +723,23 @@ class DeforiskPlugin:
         """Compute distance threshold and local deforestation rate."""
         self.catch_arguments()
         win_sizes = self.get_win_sizes()
+        periods = self.get_mod_mw_periods()
         # Loop on window sizes
-        for win_size in win_sizes:
-            model = f"mv_{win_size}"
-            description = self.task_description(
-                "MwCalibrate", model=model)
-            task = MwCalibrateTask(
-                description=description,
-                workdir=self.args["workdir"],
-                years=self.args["get_fcc_args"]["years"],
-                defor_thresh=self.args["defor_thresh"],
-                max_dist=self.args["max_dist"],
-                win_size=win_size)
-            # Add task to task manager
-            self.tm.addTask(task)
+        for period in periods:
+            for win_size in win_sizes:
+                model = f"mv_{win_size}"
+                description = self.task_description(
+                    "MwCalibrate", model=model, period=period)
+                task = MwCalibrateTask(
+                    description=description,
+                    workdir=self.args["workdir"],
+                    years=self.args["get_fcc_args"]["years"],
+                    defor_thresh=self.args["defor_thresh"],
+                    max_dist=self.args["max_dist"],
+                    win_size=win_size,
+                    period=period)
+                # Add task to task manager
+                self.tm.addTask(task)
 
     def mw_predict(self):
         """Predict deforestation rate with moving window approach."""

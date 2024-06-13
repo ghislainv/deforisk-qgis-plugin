@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>530</width>
-    <height>602</height>
+    <height>639</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,11 +19,11 @@
      <x>10</x>
      <y>10</y>
      <width>511</width>
-     <height>591</height>
+     <height>621</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -406,7 +406,7 @@
        <x>10</x>
        <y>200</y>
        <width>491</width>
-       <height>91</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="title">
@@ -416,7 +416,7 @@
       <property name="geometry">
        <rect>
         <x>411</x>
-        <y>50</y>
+        <y>60</y>
         <width>71</width>
         <height>25</height>
        </rect>
@@ -473,7 +473,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>175</y>
+       <y>190</y>
        <width>491</width>
        <height>221</height>
       </rect>
@@ -639,7 +639,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>402</y>
+       <y>430</y>
        <width>491</width>
        <height>151</height>
       </rect>
@@ -785,7 +785,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>6</y>
+       <y>10</y>
        <width>491</width>
        <height>161</height>
       </rect>
@@ -1015,7 +1015,7 @@
        <x>10</x>
        <y>200</y>
        <width>491</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="title">
@@ -1025,7 +1025,7 @@
       <property name="geometry">
        <rect>
         <x>410</x>
-        <y>40</y>
+        <y>60</y>
         <width>71</width>
         <height>25</height>
        </rect>
@@ -1034,20 +1034,20 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>171</width>
-        <height>25</height>
+        <x>12</x>
+        <y>31</y>
+        <width>227</width>
+        <height>54</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_9">
+      <layout class="QGridLayout" name="gridLayout_8">
        <item row="0" column="0">
-        <widget class="QCheckBox" name="pred_mw_t1">
+        <widget class="QCheckBox" name="pred_mw_calib_t1">
          <property name="text">
-          <string>t1</string>
+          <string>t1 calibration</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -1058,9 +1058,9 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QCheckBox" name="pred_mw_t2">
+        <widget class="QCheckBox" name="pred_mw_valid_t2">
          <property name="text">
-          <string>t2</string>
+          <string>t2 validation</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -1070,8 +1070,75 @@
          </property>
         </widget>
        </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="pred_mw_hist_t1">
+         <property name="text">
+          <string>t1 historical</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="pred_mw_forecast_t3">
+         <property name="text">
+          <string>t3 forecast</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
+    </widget>
+    <widget class="QCheckBox" name="mod_mw_calib">
+     <property name="geometry">
+      <rect>
+       <x>22</x>
+       <y>140</y>
+       <width>152</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>calib. period</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="tristate">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="mod_mw_hist">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>140</y>
+       <width>151</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>hist. period</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="tristate">
+      <bool>false</bool>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="tab_validate">
