@@ -47,38 +47,56 @@ class MwPredictTask(QgsTask):
         self.years = years
         self.win_size = win_size
         self.period = period
+        self.datadir = f"data_{self.period}"
+        self.outdir = self.get_outdir()
         self.exception = None
 
+    def get_outdir(self):
+        """Get output directory."""
+        if self.period in ["calibration", "validation"]:
+            outdir = opj(self.OUT, "calibration")
+        elif self.period in ["historical", "forecast"]:
+            outdir = opj(self.OUT, "historical")
+        return outdir
+
     def get_time_interval(self):
-        """Get time intervals from years."""
+        """Get time intervals from years and period."""
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
         if self.period == "calibration":
             time_interval = years[1] - years[0]
-        else:
+        elif self.period == "validation":
             time_interval = years[2] - years[1]
+        elif self.period in ["historical", "forecast"]:
+            time_interval = years[2] - years[0]
         return time_interval
+
+    def get_date(self):
+        """Get date from period."""
+        if self.period in ["calibration", "historical"]:
+            date = "t1"
+        elif self.period == "validation":
+            date = "t2"
+        elif self.period == "forecast":
+            date = "t3"
+        return date
 
     def get_dist_file(self):
         """Get distance to forest edge file."""
-        if self.period == "calibration":
-            dist_file = opj(self.DATA, "dist_edge.tif")
-        else:
-            dist_file = opj(self.DATA, "validation",
-                            "dist_edge_t2.tif")
+        dist_file = opj(self.datadir, "dist_edge.tif")
         return dist_file
 
     def get_dist_thresh(self):
         """Get distance to forest edge threshold."""
-        ifile = opj(self.OUT, "dist_edge_threshold.csv")
+        ifile = opj(self.outdir, "dist_edge_threshold.csv")
         dist_thresh_data = pd.read_csv(ifile)
         dist_thresh = dist_thresh_data.loc[0, "dist_thresh"]
         return dist_thresh
 
     def plot_prob(self, model, date):
         """Plot probability of deforestation."""
-        prob_file = opj(self.OUT, f"prob_{model}_{date}.tif")
-        png_file = opj(self.OUT, f"prob_{model}_{date}.png")
+        prob_file = opj(self.outdir, f"prob_{model}_{date}.tif")
+        png_file = opj(self.outdir, f"prob_{model}_{date}.png")
         border_file = opj(self.DATA, "ctry_PROJ.gpkg")
         fig_prob = rmj.plot.riskmap(
             input_risk_map=prob_file,
@@ -118,18 +136,19 @@ class MwPredictTask(QgsTask):
             time_interval = self.get_time_interval()
 
             # Date
-            date = "t1" if self.period == "calibration" else "t2"
+            date = self.get_date()
 
             # Model
             model = f"mw_{self.win_size}"
 
             # Compute predictions
             rmj.set_defor_cat_zero(
-                ldefrate_file=opj(self.OUT, f"ldefrate_{model}.tif"),
+                ldefrate_file=opj(self.outdir,
+                                  f"ldefrate_{model}.tif"),
                 dist_file=self.get_dist_file(),
                 dist_thresh=self.get_dist_thresh(),
                 ldefrate_with_zero_file=opj(
-                    self.OUT,
+                    self.outdir,
                     f"prob_{model}_{date}.tif"),
                 blk_rows=128,
                 verbose=False)
@@ -144,15 +163,15 @@ class MwPredictTask(QgsTask):
 
             # Compute deforestation rate per category
             rmj.defrate_per_cat(
-                fcc_file=opj(self.DATA, "forest", "fcc123.tif"),
+                fcc_file=opj(self.DATA, "fcc123.tif"),
                 riskmap_file=opj(
-                    self.OUT,
+                    self.outdir,
                     f"prob_{model}_{date}.tif"),
                 time_interval=time_interval,
                 period=self.period,
                 tab_file_defrate=opj(
-                    self.OUT,
-                    f"defrate_cat_{model}_{date}.csv"),
+                    self.outdir,
+                    f"defrate_cat_{model}_{self.period}.csv"),
                 blk_rows=128,
                 verbose=False)
 
@@ -171,7 +190,7 @@ class MwPredictTask(QgsTask):
 
         if result:
             # Plot
-            date = "t1" if self.period == "calibration" else "t2"
+            date = self.get_date()
             model = f"mw_{self.win_size}"
             self.plot_prob(model=model, date=date)
 
@@ -191,9 +210,12 @@ class MwPredictTask(QgsTask):
             add_layer(far_project, border_layer)
 
             # Add prob layers to QGis project
-            prob_file = opj(self.OUT, f"prob_{model}_{date}.tif")
-            prob_layer = QgsRasterLayer(prob_file,
-                                        f"prob_{model}_{date}")
+            prob_file = opj(self.outdir,
+                            f"prob_{model}_{date}.tif")
+            prob_layer = QgsRasterLayer(
+                prob_file,
+                f"prob_{model}_{date}_{self.period}"
+            )
             prob_layer.loadNamedStyle(opj("qgis_layer_style",
                                           "prob_mw.qml"))
             add_layer_to_group(far_project, mw_group,
