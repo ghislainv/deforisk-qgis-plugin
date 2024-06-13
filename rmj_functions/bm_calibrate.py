@@ -52,16 +52,26 @@ class BmCalibrateTask(QgsTask):
         return dist_thresh
 
     def get_time_interval(self):
-        """Get time intervals from years and period."""
+        """Get time intervals from years and period.
+
+        There is only two possible periods for model fitting:
+        "calibration" and "historical".
+        """
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
         if self.period == "calibration":
             time_interval = years[1] - years[0]
-        elif self.period == "validation":
-            time_interval = years[2] - years[1]
-        elif self.period in ["historical", "forecast"]:
+        elif self.period == "historical":
             time_interval = years[2] - years[0]
         return time_interval
+
+    def get_defor_values(self):
+        """Get defor values from period."""
+        if self.period == "calibration":
+            defor_values = 1
+        elif self.period == "historical":
+            defor_values = [1, 2]
+        return defor_values
 
     def plot_prob(self, model, date):
         """Plot probability of deforestation."""
@@ -111,7 +121,7 @@ class BmCalibrateTask(QgsTask):
             if not os.path.isfile(ofile):
                 dist_thresh = rmj.dist_edge_threshold(
                     fcc_file=fcc_file,
-                    defor_values=1,
+                    defor_values=self.get_defor_values(),
                     defor_threshold=self.defor_thresh,
                     dist_file=opj(self.datadir, "dist_edge.tif"),
                     dist_bins=np.arange(0, self.max_dist, step=30),
