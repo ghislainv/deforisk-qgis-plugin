@@ -59,6 +59,7 @@ class MwCalibrateTask(QgsTask):
         """
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
+        time_interval = None
         if self.period == "calibration":
             time_interval = years[1] - years[0]
         elif self.period == "historical":
@@ -67,6 +68,7 @@ class MwCalibrateTask(QgsTask):
 
     def get_defor_values(self):
         """Get defor values from period."""
+        defor_values = None
         if self.period == "calibration":
             defor_values = 1
         elif self.period == "historical":
@@ -110,17 +112,20 @@ class MwCalibrateTask(QgsTask):
                     fcc_file=fcc_file,
                     defor_values=self.get_defor_values(),
                     defor_threshold=self.defor_thresh,
-                    dist_file=opj(self.datadir, "dist_edge.tif"),
+                    dist_file=opj(self.datadir,
+                                  "dist_edge.tif"),
                     dist_bins=np.arange(0, self.max_dist, step=30),
                     tab_file_dist=opj(self.outdir, "tab_dist.csv"),
-                    fig_file_dist=opj(self.outdir, "perc_dist.png"),
+                    fig_file_dist=opj(self.outdir,
+                                      "perc_dist.png"),
                     blk_rows=128,
                     dist_file_available=True,
                     check_fcc=False,
                     verbose=True)
 
                 # Save result
-                dist_edge_data = pd.DataFrame(dist_thresh, index=[0])
+                dist_edge_data = pd.DataFrame(dist_thresh,
+                                              index=[0])
                 dist_edge_data.to_csv(
                     ofile,
                     sep=",", header=True,
@@ -144,7 +149,8 @@ class MwCalibrateTask(QgsTask):
             rmj.local_defor_rate(
                 fcc_file=fcc_file,
                 defor_values=self.get_defor_values(),
-                ldefrate_file=opj(self.outdir, f"ldefrate_{model}.tif"),
+                ldefrate_file=opj(self.outdir,
+                                  f"ldefrate_{model}.tif"),
                 win_size=self.win_size,
                 time_interval=time_interval,
                 rescale_min_val=2,

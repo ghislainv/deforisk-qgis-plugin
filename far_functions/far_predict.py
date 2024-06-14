@@ -52,21 +52,24 @@ class FarPredictTask(QgsTask):
         self.model = model
         self.period = period
         self.datadir = f"data_{self.period}"
-        self.outdir = self.get_outdir()
+        self.moddir = self.get_moddir()
+        self.outdir = opj(self.OUT, self.period)
         self.exception = None
 
-    def get_outdir(self):
-        """Get output directory."""
+    def get_moddir(self):
+        """Get model directory."""
+        moddir = None
         if self.period in ["calibration", "validation"]:
-            outdir = opj(self.OUT, "calibration")
+            moddir = opj(self.OUT, "calibration")
         elif self.period in ["historical", "forecast"]:
-            outdir = opj(self.OUT, "historical")
-        return outdir
+            moddir = opj(self.OUT, "historical")
+        return moddir
 
     def get_time_interval(self):
         """Get time intervals from years and period."""
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
+        time_interval = None
         if self.period == "calibration":
             time_interval = years[1] - years[0]
         elif self.period == "validation":
@@ -77,6 +80,7 @@ class FarPredictTask(QgsTask):
 
     def get_date(self):
         """Get date from period."""
+        date = None
         if self.period in ["calibration", "historical"]:
             date = "t1"
         elif self.period == "validation":
@@ -123,11 +127,11 @@ class FarPredictTask(QgsTask):
                 betas=mod_icar_pickle["betas"],
                 rho=mod_icar_pickle["rho"])
         if self.model == "glm":
-            ifile = opj(self.outdir, "mod_glm.pickle")
+            ifile = opj(self.moddir, "mod_glm.pickle")
             with open(ifile, "rb") as file:
                 mod = pickle.load(file)
         if self.model == "rf":
-            ifile = opj(self.outdir, "mod_rf.joblib")
+            ifile = opj(self.moddir, "mod_rf.joblib")
             with open(ifile, "rb") as file:
                 mod = joblib.load(file)
         return mod
@@ -171,16 +175,19 @@ class FarPredictTask(QgsTask):
             # Set working directory
             os.chdir(self.workdir)
 
+            # Create directory
+            far.make_dir(self.outdir)
+
             # Compute time interval from years
             time_interval = self.get_time_interval()
 
             # Get design info
             mod_icar_pickle = self.get_icar_model(
-                pickle_file=opj(self.outdir, "mod_icar.pickle"))
+                pickle_file=opj(self.moddir, "mod_icar.pickle"))
             if not mod_icar_pickle:
                 return False
             (y_design_info, x_design_info) = self.get_design_info(
-                mod_icar_pickle, dataset_file=opj(self.outdir, "sample.txt"))
+                mod_icar_pickle, dataset_file=opj(self.moddir, "sample.txt"))
 
             # Get model
             mod = self.get_model(mod_icar_pickle, y_design_info,
@@ -194,7 +201,7 @@ class FarPredictTask(QgsTask):
                 far.predict_raster_binomial_iCAR(
                     model=mod,
                     var_dir=self.datadir,
-                    input_cell_raster=opj(self.outdir, "rho.tif"),
+                    input_cell_raster=opj(self.moddir, "rho.tif"),
                     input_forest_raster=opj(
                         self.DATA,
                         f"forest_{date}.tif"),

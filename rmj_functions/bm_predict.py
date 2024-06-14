@@ -46,21 +46,24 @@ class BmPredictTask(QgsTask):
         self.years = years
         self.period = period
         self.datadir = f"data_{self.period}"
-        self.outdir = self.get_outdir()
+        self.moddir = self.get_moddir()
+        self.outdir = opj(self.OUT, self.period)
         self.exception = None
 
-    def get_outdir(self):
-        """Get output directory."""
+    def get_moddir(self):
+        """Get model directory."""
+        moddir = None
         if self.period in ["calibration", "validation"]:
-            outdir = opj(self.OUT, "calibration")
+            moddir = opj(self.OUT, "calibration")
         elif self.period in ["historical", "forecast"]:
-            outdir = opj(self.OUT, "historical")
-        return outdir
+            moddir = opj(self.OUT, "historical")
+        return moddir
 
     def get_time_interval(self):
         """Get time intervals from years and period."""
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
+        time_interval = None
         if self.period == "calibration":
             time_interval = years[1] - years[0]
         elif self.period == "validation":
@@ -71,6 +74,7 @@ class BmPredictTask(QgsTask):
 
     def get_date(self):
         """Get date from period."""
+        date = None
         if self.period in ["calibration", "historical"]:
             date = "t1"
         elif self.period == "validation":
@@ -129,17 +133,22 @@ class BmPredictTask(QgsTask):
             # Set working directory
             os.chdir(self.workdir)
 
+            # Create directory
+            rmj.make_dir(self.outdir)
+
             # Date
             date = self.get_date()
 
             # Compute vulnerability classes
             rmj.benchmark.vulnerability_map(
-                forest_file=opj(self.DATA, f"forest_{date}.tif"),
+                forest_file=opj(self.DATA,
+                                f"forest_{date}.tif"),
                 dist_file=self.get_dist_file(),
                 dist_bins=self.get_dist_bins(
-                    opj(self.outdir, "dist_bins.csv")),
-                subj_file=opj(self.outdir, "subj.tif"),
-                output_file=opj(self.outdir, f"prob_bm_{date}.tif"),
+                    opj(self.moddir, "dist_bins.csv")),
+                subj_file=opj(self.moddir, "subj.tif"),
+                output_file=opj(self.outdir,
+                                f"prob_bm_{date}.tif"),
                 blk_rows=128,
                 verbose=False)
 
@@ -155,6 +164,7 @@ class BmPredictTask(QgsTask):
             time_interval = self.get_time_interval()
 
             # Deforestation rate on model's period
+            deforate_model = None
             if self.period == "validation":
                 deforate_model = opj(
                     self.OUT, "calibration",

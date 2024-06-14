@@ -402,8 +402,9 @@ class DeforiskPlugin:
     def get_val_periods(self):
         """Get periods for validation."""
         val_periods = []
-        val_dates = [self.args["val_t1"],
-                     self.args["val_t2"]]
+        val_dates = [self.args["val_calib"],
+                     self.args["val_valid"],
+                     self.args["val_histo"]]
         for (p, period) in enumerate(self.VAL_PERIODS):
             if val_dates[p]:
                 val_periods.append(period)
@@ -411,6 +412,7 @@ class DeforiskPlugin:
 
     def get_date(self, period):
         """Get date from period."""
+        date = None
         if period in ["calibration", "historical"]:
             date = "t1"
         elif period == "validation":
@@ -450,13 +452,15 @@ class DeforiskPlugin:
             all_models.append("mw_" + str(win_size))
         return all_models
 
-    def create_validation_directories(self):
+    def create_validation_directories(self, period):
         """Create validation directories."""
         workdir = self.args["workdir"]
         far.make_dir(opj(workdir, "outputs",
-                         "validation", "figures"))
+                         "model_validation", period,
+                         "figures"))
         far.make_dir(opj(workdir, "outputs",
-                         "validation", "tables"))
+                         "model_validation", period,
+                         "tables"))
 
     def combine_model_results(self):
         """Combine model results for comparison."""
@@ -465,15 +469,16 @@ class DeforiskPlugin:
         indices_list = []
         csizes_val = self.get_csizes_val()
         models = self.get_all_models()
-        periods = self.PERIODS.copy()
+        periods = self.VAL_PERIODS.copy()
         # Loop on periods and models
         for csize_val in csizes_val:
             for period in periods:
-                date = self.get_date(period)
                 for model in models:
                     ifile = opj(
-                            self.OUT, "validation", "tables",
-                            f"indices_{model}_{date}_{csize_val}.csv")
+                        self.OUT, "model_validation",
+                        period, "tables",
+                        f"indices_{model}_{period}_{csize_val}.csv"
+                    )
                     if os.path.isfile(ifile):
                         df = pd.read_csv(ifile)
                         df["model"] = model
@@ -486,7 +491,7 @@ class DeforiskPlugin:
                            "ncell", "period", "model",
                            "MedAE", "R2", "RMSE", "wRMSE"]]
         indices.to_csv(
-            os.path.join(self.OUT, "validation", "indices_all.csv"),
+            os.path.join(self.OUT, "model_validation", "indices_all.csv"),
             sep=",", header=True,
             index=False, index_label=False)
 
@@ -550,8 +555,9 @@ class DeforiskPlugin:
         val_glm = self.dlg.val_glm.isChecked()
         val_rf = self.dlg.val_rf.isChecked()
         val_mw = self.dlg.val_mw.isChecked()
-        val_t1 = self.dlg.val_t1.isChecked()
-        val_t2 = self.dlg.val_t2.isChecked()
+        val_calib = self.dlg.val_calib.isChecked()
+        val_valid = self.dlg.val_valid.isChecked()
+        val_histo = self.dlg.val_histo.isChecked()
         # Special variables
         if workdir == "":
             seed = 1234  # Only for tests to get same dir
@@ -618,7 +624,8 @@ class DeforiskPlugin:
             "val_icar": val_icar,
             "val_glm": val_glm, "val_rf": val_rf,
             "val_mw": val_mw,
-            "val_t1": val_t1, "val_t2": val_t2,
+            "val_calib": val_calib, "val_valid": val_valid,
+            "val_histo": val_histo,
         }
 
     def far_get_variables(self):
@@ -803,18 +810,18 @@ class DeforiskPlugin:
         csizes_val = self.get_csizes_val()
         val_models = self.get_val_models()
         val_periods = self.get_val_periods()
-        # Create validation directories
-        self.create_validation_directories()
         # Main empty task
         description = self.task_description("Validate_all")
         main_task = EmptyTask(description)
         # Tasks with loop on csizes_val, periods, and models
         for csize_val in csizes_val:
             for period in val_periods:
+                self.create_validation_directories(period)
                 date = self.get_date(period)
                 for model in val_models:
                     description = self.task_description(
-                        "Validate", model=model, date=date,
+                        "Validate", model=model,
+                        period=period, date=date,
                         csize_val=csize_val)
                     task = ValidateTask(
                         description=description,
@@ -846,11 +853,14 @@ class DeforiskPlugin:
         # Action if buttons ares clicked
 
         # Data
-        self.dlg.run_far_get_variable.clicked.connect(self.far_get_variables)
+        self.dlg.run_far_get_variable.clicked.connect(
+            self.far_get_variables)
 
         # Benchmark model
-        self.dlg.run_bm_calibrate.clicked.connect(self.bm_calibrate)
-        self.dlg.run_bm_predict.clicked.connect(self.bm_predict)
+        self.dlg.run_bm_calibrate.clicked.connect(
+            self.bm_calibrate)
+        self.dlg.run_bm_predict.clicked.connect(
+            self.bm_predict)
 
         # FAR with icar, glm, and rf models
         self.dlg.run_far_sample.clicked.connect(
@@ -861,11 +871,14 @@ class DeforiskPlugin:
             self.far_predict_after_rho_interp)
 
         # Moving window model
-        self.dlg.run_mw_calibrate.clicked.connect(self.mw_calibrate)
-        self.dlg.run_mw_predict.clicked.connect(self.mw_predict)
+        self.dlg.run_mw_calibrate.clicked.connect(
+            self.mw_calibrate)
+        self.dlg.run_mw_predict.clicked.connect(
+            self.mw_predict)
 
         # Model validation
-        self.dlg.run_validate.clicked.connect(self.validate)
+        self.dlg.run_validate.clicked.connect(
+            self.validate)
 
         # Show the dialog
         self.dlg.show()

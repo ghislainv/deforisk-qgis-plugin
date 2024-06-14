@@ -59,6 +59,7 @@ class BmCalibrateTask(QgsTask):
         """
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
+        time_interval = None
         if self.period == "calibration":
             time_interval = years[1] - years[0]
         elif self.period == "historical":
@@ -67,6 +68,7 @@ class BmCalibrateTask(QgsTask):
 
     def get_defor_values(self):
         """Get defor values from period."""
+        defor_values = None
         if self.period == "calibration":
             defor_values = 1
         elif self.period == "historical":
@@ -123,17 +125,20 @@ class BmCalibrateTask(QgsTask):
                     fcc_file=fcc_file,
                     defor_values=self.get_defor_values(),
                     defor_threshold=self.defor_thresh,
-                    dist_file=opj(self.datadir, "dist_edge.tif"),
+                    dist_file=opj(self.datadir,
+                                  "dist_edge.tif"),
                     dist_bins=np.arange(0, self.max_dist, step=30),
                     tab_file_dist=opj(self.outdir, "tab_dist.csv"),
-                    fig_file_dist=opj(self.outdir, "perc_dist.png"),
+                    fig_file_dist=opj(self.outdir,
+                                      "perc_dist.png"),
                     blk_rows=128,
                     dist_file_available=True,
                     check_fcc=False,
                     verbose=True)
 
                 # Save result
-                dist_edge_data = pd.DataFrame(dist_thresh, index=[0])
+                dist_edge_data = pd.DataFrame(dist_thresh,
+                                              index=[0])
                 dist_edge_data.to_csv(
                     ofile,
                     sep=",", header=True,
@@ -239,14 +244,17 @@ class BmCalibrateTask(QgsTask):
 
             # Add border layer to QGis project
             border_file = opj(self.DATA, "ctry_PROJ.gpkg")
-            border_layer = QgsVectorLayer(border_file, "border", "ogr")
-            border_layer.loadNamedStyle(opj("qgis_layer_style", "border.qml"))
+            border_layer = QgsVectorLayer(
+                border_file, "border", "ogr")
+            border_layer.loadNamedStyle(
+                opj("qgis_layer_style", "border.qml"))
             add_layer(far_project, border_layer)
 
             # Add prob layers to QGis project
             prob_file = opj(self.outdir, f"prob_bm_{date}.tif")
-            prob_layer = QgsRasterLayer(prob_file,
-                                        f"prob_bm_{date}_{self.period}")
+            prob_layer = QgsRasterLayer(
+                prob_file,
+                f"prob_bm_{date}_{self.period}")
             prob_layer.loadNamedStyle(opj("qgis_layer_style",
                                           "prob_bm.qml"))
             add_layer_to_group(far_project, mw_group,

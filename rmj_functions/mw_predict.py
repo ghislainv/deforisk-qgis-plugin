@@ -48,21 +48,24 @@ class MwPredictTask(QgsTask):
         self.win_size = win_size
         self.period = period
         self.datadir = f"data_{self.period}"
-        self.outdir = self.get_outdir()
+        self.moddir = self.get_moddir()
+        self.outdir = opj(self.OUT, self.period)
         self.exception = None
 
-    def get_outdir(self):
-        """Get output directory."""
+    def get_moddir(self):
+        """Get model directory."""
+        moddir = None
         if self.period in ["calibration", "validation"]:
-            outdir = opj(self.OUT, "calibration")
+            moddir = opj(self.OUT, "calibration")
         elif self.period in ["historical", "forecast"]:
-            outdir = opj(self.OUT, "historical")
-        return outdir
+            moddir = opj(self.OUT, "historical")
+        return moddir
 
     def get_time_interval(self):
         """Get time intervals from years and period."""
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
+        time_interval = None
         if self.period == "calibration":
             time_interval = years[1] - years[0]
         elif self.period == "validation":
@@ -73,6 +76,7 @@ class MwPredictTask(QgsTask):
 
     def get_date(self):
         """Get date from period."""
+        date = None
         if self.period in ["calibration", "historical"]:
             date = "t1"
         elif self.period == "validation":
@@ -88,7 +92,7 @@ class MwPredictTask(QgsTask):
 
     def get_dist_thresh(self):
         """Get distance to forest edge threshold."""
-        ifile = opj(self.outdir, "dist_edge_threshold.csv")
+        ifile = opj(self.moddir, "dist_edge_threshold.csv")
         dist_thresh_data = pd.read_csv(ifile)
         dist_thresh = dist_thresh_data.loc[0, "dist_thresh"]
         return dist_thresh
@@ -132,6 +136,9 @@ class MwPredictTask(QgsTask):
             # Set working directory
             os.chdir(self.workdir)
 
+            # Create directory
+            rmj.make_dir(self.outdir)
+
             # Compute time interval from years
             time_interval = self.get_time_interval()
 
@@ -143,7 +150,7 @@ class MwPredictTask(QgsTask):
 
             # Compute predictions
             rmj.set_defor_cat_zero(
-                ldefrate_file=opj(self.outdir,
+                ldefrate_file=opj(self.moddir,
                                   f"ldefrate_{model}.tif"),
                 dist_file=self.get_dist_file(),
                 dist_thresh=self.get_dist_thresh(),

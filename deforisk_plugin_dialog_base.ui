@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -1034,7 +1034,7 @@
        <string>Run</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>12</x>
@@ -1250,7 +1250,7 @@
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QCheckBox" name="val_t1">
+        <widget class="QCheckBox" name="val_calib">
          <property name="text">
           <string>calib. period</string>
          </property>
@@ -1263,9 +1263,22 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QCheckBox" name="val_t2">
+        <widget class="QCheckBox" name="val_valid">
          <property name="text">
           <string>valid. period</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QCheckBox" name="val_histo">
+         <property name="text">
+          <string>hist. period</string>
          </property>
          <property name="checked">
           <bool>true</bool>

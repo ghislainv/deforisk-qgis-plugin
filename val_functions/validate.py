@@ -29,39 +29,61 @@ class ValidateTask(QgsTask):
 
     # Constants
     OUT = "outputs"
-    OUT_FIG = opj("outputs", "validation", "figures")
-    OUT_TAB = opj("outputs", "validation", "tables")
     DATA = "data"
     MESSAGE_CATEGORY = "FAR plugin"
     FAR_MODELS = ["icar", "glm", "rf"]
     N_STEPS = 1
 
     def __init__(self, description, iface, workdir, years, csize_val,
-                 period, model):
+                 model, period):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
         self.years = years
         self.csize_val = csize_val
-        self.period = period
         self.model = model
+        self.period = period
         self.exception = None
         if self.model in self.FAR_MODELS:
-            self.resdir = opj(self.OUT, "far_models")
+            self.resdir = opj(
+                self.OUT, "far_models", self.period
+            )
         elif self.model == "bm":
-            self.resdir = opj(self.OUT, "rmj_benchmark")
+            self.resdir = opj(
+                self.OUT, "rmj_benchmark", self.period
+            )
         else:
-            self.resdir = opj(self.OUT, "rmj_moving_window")
+            self.resdir = opj(
+                self.OUT, "rmj_moving_window", self.period
+            )
+        self.out_fig = opj(self.OUT, "model_validation",
+                           self.period, "figures")
+        self.out_tab = opj(self.OUT, "model_validation",
+                           self.period, "tables")
 
     def get_time_interval(self):
-        """Get time intervals from years."""
+        """Get time intervals from years and period."""
         years = self.years.replace(" ", "").split(",")
         years = [int(i) for i in years]
+        time_interval = None
         if self.period == "calibration":
             time_interval = years[1] - years[0]
-        else:
+        elif self.period == "validation":
             time_interval = years[2] - years[1]
+        elif self.period in ["historical", "forecast"]:
+            time_interval = years[2] - years[0]
         return time_interval
+
+    def get_date(self):
+        """Get date from period."""
+        date = None
+        if self.period in ["calibration", "historical"]:
+            date = "t1"
+        elif self.period == "validation":
+            date = "t2"
+        elif self.period == "forecast":
+            date = "t3"
+        return date
 
     def set_progress(self, progress, n_steps):
         """Set progress."""
@@ -92,11 +114,11 @@ class ValidateTask(QgsTask):
             time_interval = self.get_time_interval()
 
             # Date
-            date = "t1" if self.period == "calibration" else "t2"
+            date = self.get_date()
 
             # Validation
             far.validation_udef_arp(
-                fcc_file=opj(self.DATA, "forest", "fcc123.tif"),
+                fcc_file=opj(self.DATA, "fcc123.tif"),
                 period=self.period,
                 time_interval=time_interval,
                 riskmap_file=opj(
@@ -104,17 +126,20 @@ class ValidateTask(QgsTask):
                     f"prob_{self.model}_{date}.tif"),
                 tab_file_defor=opj(
                     self.resdir,
-                    f"defrate_cat_{self.model}_{date}.csv"),
+                    f"defrate_cat_{self.model}_{self.period}.csv"),
                 csize_coarse_grid=self.csize_val,
                 indices_file_pred=opj(
-                    self.OUT_TAB,
-                    f"indices_{self.model}_{date}_{self.csize_val}.csv"),
+                    self.out_tab,
+                    f"indices_{self.model}_{self.period}_{self.csize_val}.csv"
+                ),
                 tab_file_pred=opj(
-                    self.OUT_TAB,
-                    f"pred_obs_{self.model}_{date}_{self.csize_val}.csv"),
+                    self.out_tab,
+                    f"pred_obs_{self.model}_{self.period}_{self.csize_val}.csv"
+                ),
                 fig_file_pred=opj(
-                    self.OUT_FIG,
-                    f"pred_obs_{self.model}_{date}_{self.csize_val}.png"),
+                    self.out_fig,
+                    f"pred_obs_{self.model}_{self.period}_{self.csize_val}.png"
+                ),
                 verbose=False)
 
             # Check isCanceled() to handle cancellation
