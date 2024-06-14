@@ -26,10 +26,10 @@ jobs:
       - name: Installing Python packages
         run: |
           python3 -m pip install --upgrade pip setuptools wheel
-          python3 -m pip install sphinx nbsphinx ipython
+          python3 -m pip install sphinx pydata-sphinx-theme nbsphinx ipython 
 
       - name: Building documentation
-        run: sphinx-build help/docsrc help/build/html -b html -d help/build/doctrees
+        run: sphinx-build help/docsrc help/build/html -b HTML -d help/build/doctrees
 
       - name: Adding nojekyll file
         run: touch help/build/html/.nojekyll
