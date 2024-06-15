@@ -79,7 +79,7 @@ class BmCalibrateTask(QgsTask):
         """Plot probability of deforestation."""
         prob_file = opj(self.outdir, f"prob_{model}_{date}.tif")
         png_file = opj(self.outdir, f"prob_{model}_{date}.png")
-        border_file = opj(self.DATA, "ctry_PROJ.gpkg")
+        border_file = opj(self.DATA, "aoi_proj.gpkg")
         fig_prob = rmj.benchmark.plot.vulnerability_map(
             input_map=prob_file,
             maxpixels=1e8,
@@ -154,7 +154,7 @@ class BmCalibrateTask(QgsTask):
 
             # Rasterize subjurisdictions
             rmj.benchmark.rasterize_subjurisdictions(
-                input_file=opj(self.DATA, "ctry_PROJ.gpkg"),
+                input_file=opj(self.DATA, "aoi_proj.gpkg"),
                 fcc_file=opj(self.datadir, "fcc.tif"),
                 output_file=opj(self.outdir, "subj.tif"),
                 verbose=False)
@@ -243,7 +243,7 @@ class BmCalibrateTask(QgsTask):
                 mw_group = root.addGroup("Benchmark")
 
             # Add border layer to QGis project
-            border_file = opj(self.DATA, "ctry_PROJ.gpkg")
+            border_file = opj(self.DATA, "aoi_proj.gpkg")
             border_layer = QgsVectorLayer(
                 border_file, "border", "ogr")
             border_layer.loadNamedStyle(

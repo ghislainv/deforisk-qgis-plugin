@@ -238,7 +238,7 @@ class FarGetVariablesTask(QgsTask):
             # Plot
             fcc123_file = opj(self.DATA, "fcc123.tif")
             png_file = opj(self.OUT, "fcc123.png")
-            border_file = opj(self.DATA, "ctry_PROJ.gpkg")
+            border_file = opj(self.DATA, "aoi_proj.gpkg")
             fig_fcc123 = far.plot.fcc123(
                 input_fcc_raster=fcc123_file,
                 maxpixels=1e8,
@@ -258,7 +258,7 @@ class FarGetVariablesTask(QgsTask):
                 var_group = root.addGroup("Variables")
 
             # Add border layer to QGis project
-            border_file = opj(self.DATA, "ctry_PROJ.gpkg")
+            border_file = opj(self.DATA, "aoi_proj.gpkg")
             border_layer = QgsVectorLayer(border_file, "border", "ogr")
             border_layer.loadNamedStyle(opj("qgis_layer_style", "border.qml"))
             add_layer(far_project, border_layer)

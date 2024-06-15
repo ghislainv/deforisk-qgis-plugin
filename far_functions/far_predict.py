@@ -140,7 +140,7 @@ class FarPredictTask(QgsTask):
         """Plot probability of deforestation."""
         prob_file = opj(self.outdir, f"prob_{model}_{date}.tif")
         png_file = opj(self.outdir, f"prob_{model}_{date}.png")
-        border_file = opj(self.DATA, "ctry_PROJ.gpkg")
+        border_file = opj(self.DATA, "aoi_proj.gpkg")
         fig_prob = far.plot.prob(
             input_prob_raster=prob_file,
             maxpixels=1e8,
@@ -274,7 +274,7 @@ class FarPredictTask(QgsTask):
                 predict_group = root.addGroup("FAR models")
 
             # Add border layer to QGis project
-            border_file = opj(self.DATA, "ctry_PROJ.gpkg")
+            border_file = opj(self.DATA, "aoi_proj.gpkg")
             border_layer = QgsVectorLayer(border_file, "border", "ogr")
             border_layer.loadNamedStyle(opj("qgis_layer_style", "border.qml"))
             add_layer(far_project, border_layer)
