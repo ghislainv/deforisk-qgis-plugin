@@ -39,7 +39,7 @@
         <property name="geometry">
          <rect>
           <x>410</x>
-          <y>450</y>
+          <y>360</y>
           <width>71</width>
           <height>25</height>
          </rect>
@@ -51,14 +51,14 @@
        <widget class="QLabel" name="label_doc">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>380</y>
-          <width>461</width>
-          <height>51</height>
+          <x>100</x>
+          <y>490</y>
+          <width>321</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For more details on arguments, see the plugin's documentation: &lt;a href=&quot;https://ecology.ghislainv.fr/deforisk-qgis-plugin&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://ecology.ghislainv.fr/deforisk-qgis-plugin&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For more details on arguments, see the plugin's documentation:&lt;a href=&quot;https://ecology.ghislainv.fr/deforisk-qgis-plugin&quot;&gt;&lt;br&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://ecology.ghislainv.fr/deforisk-qgis-plugin&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -73,10 +73,17 @@
           <x>11</x>
           <y>31</y>
           <width>471</width>
-          <height>337</height>
+          <height>311</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout">
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_fcc_source">
+           <property name="text">
+            <string>Forest data source</string>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_workdir">
            <property name="text">
@@ -84,13 +91,87 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="workdir">
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_wdpa_key">
            <property name="text">
-            <string/>
+            <string>WDPA API key</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="label_proj">
+           <property name="text">
+            <string>Projection EPSG code</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_perc">
+           <property name="text">
+            <string>Tree cover threshold (%)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="perc">
+           <property name="text">
+            <string>50</string>
            </property>
            <property name="placeholderText">
-            <string>C:\Users\&lt;name&gt;\deforisk</string>
+            <string>50</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QLineEdit" name="proj">
+           <property name="text">
+            <string>EPSG:5490</string>
+           </property>
+           <property name="placeholderText">
+            <string>EPSG:5490</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_years">
+           <property name="text">
+            <string>Years</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="tile_size">
+           <property name="text">
+            <string>1.0</string>
+           </property>
+           <property name="placeholderText">
+            <string>1.0</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="isocode">
+           <property name="text">
+            <string>MTQ</string>
+           </property>
+           <property name="placeholderText">
+            <string>MTQ</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QgsFileWidget" name="workdir">
+           <property name="fileWidgetButtonVisible">
+            <bool>true</bool>
+           </property>
+           <property name="dialogTitle">
+            <string>Select a working directory for your Deforisk project</string>
+           </property>
+           <property name="storageMode">
+            <enum>QgsFileWidget::GetDirectory</enum>
+           </property>
+           <property name="options">
+            <set>QFileDialog::ShowDirsOnly</set>
            </property>
           </widget>
          </item>
@@ -98,6 +179,23 @@
           <widget class="QLabel" name="label_aoi">
            <property name="text">
             <string>Area Of Interest</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QgsFileWidget" name="wdpa_key">
+           <property name="dialogTitle">
+            <string>Select an environment file with your WDPA API key</string>
+           </property>
+           <property name="defaultRoot">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_isocode">
+           <property name="text">
+            <string>Country/state ISO code</string>
            </property>
           </widget>
          </item>
@@ -111,48 +209,14 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_buffer">
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_tile_size">
            <property name="text">
-            <string>Buffer (dd)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLineEdit" name="buff">
-           <property name="text">
-            <string>0.08983152841195216</string>
-           </property>
-           <property name="placeholderText">
-            <string>0.08983152841195216</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_years">
-           <property name="text">
-            <string>Years</string>
+            <string>Tile size (dd)</string>
            </property>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="years">
-           <property name="text">
-            <string>2000, 2010, 2020</string>
-           </property>
-           <property name="placeholderText">
-            <string>2000, 2010, 2020</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_fcc_source">
-           <property name="text">
-            <string>Forest data source</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
           <widget class="QLineEdit" name="fcc_source">
            <property name="text">
             <string>jrc</string>
@@ -162,103 +226,50 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_perc">
-           <property name="text">
-            <string>Tree cover threshold (%)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLineEdit" name="perc">
-           <property name="text">
-            <string>50</string>
-           </property>
-           <property name="placeholderText">
-            <string>50</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_tile_size">
-           <property name="text">
-            <string>Tile size (dd)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QLineEdit" name="tile_size">
-           <property name="text">
-            <string>1.0</string>
-           </property>
-           <property name="placeholderText">
-            <string>1.0</string>
-           </property>
-          </widget>
-         </item>
          <item row="7" column="0">
-          <widget class="QLabel" name="label_isocode">
-           <property name="text">
-            <string>Country/state ISO code</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="1">
-          <widget class="QLineEdit" name="isocode">
-           <property name="text">
-            <string>MTQ</string>
-           </property>
-           <property name="placeholderText">
-            <string>MTQ</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="0">
           <widget class="QLabel" name="label_gc_project">
            <property name="text">
             <string>Earth Engine access</string>
            </property>
           </widget>
          </item>
-         <item row="8" column="1">
-          <widget class="QLineEdit" name="gc_project">
-           <property name="placeholderText">
-            <string>C:\Users\&lt;name&gt;\deforisk\deforisk-gee.json</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0">
-          <widget class="QLabel" name="label_wdpa_key">
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="years">
            <property name="text">
-            <string>WDPA API key</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="1">
-          <widget class="QLineEdit" name="wdpa_key">
-           <property name="placeholderText">
-            <string>C:\Users\&lt;name&gt;\deforisk\env.txt</string>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="0">
-          <widget class="QLabel" name="label_proj">
-           <property name="text">
-            <string>Projection EPSG code</string>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="1">
-          <widget class="QLineEdit" name="proj">
-           <property name="text">
-            <string>EPSG:5490</string>
+            <string>2000, 2010, 2020</string>
            </property>
            <property name="placeholderText">
-            <string>EPSG:5490</string>
+            <string>2000, 2010, 2020</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QgsFileWidget" name="gc_project">
+           <property name="dialogTitle">
+            <string>Select a service account json file for Earth Engine access</string>
            </property>
           </widget>
          </item>
         </layout>
+       </widget>
+       <widget class="QLabel" name="logo">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>480</y>
+          <width>71</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>help/docsrc/_images/logo-deforisk.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
        </widget>
       </widget>
      </item>
@@ -1294,6 +1305,13 @@
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFileWidget</class>
+   <extends>QWidget</extends>
+   <header>qgsfilewidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
