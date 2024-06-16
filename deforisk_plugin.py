@@ -303,12 +303,12 @@ class DeforiskPlugin:
                                    "deforisk", folder_name)
         return workdir
 
-    def make_get_fcc_args(self, aoi, buff, years, fcc_source, perc,
+    def make_get_fcc_args(self, aoi, years, fcc_source, perc,
                           tile_size):
         """Make get_ffc_args dictionary."""
-        get_fcc_args = {"aoi": aoi, "buff": buff, "years": years,
-                        "fcc_source": fcc_source, "perc": perc,
-                        "tile_size": tile_size}
+        get_fcc_args = {"aoi": aoi, "years": years, "fcc_source":
+                        fcc_source, "perc": perc, "tile_size":
+                        tile_size}
         return get_fcc_args
 
     def get_win_sizes(self):
@@ -498,16 +498,15 @@ class DeforiskPlugin:
     def catch_arguments(self):
         """Catch arguments from UI."""
         # Get variables
-        workdir = self.dlg.workdir.text()
+        workdir = self.dlg.workdir.filePath()
         aoi = self.dlg.aoi.text()
-        buff = float(self.dlg.buff.text())
         years = self.dlg.years.text()
         fcc_source = self.dlg.fcc_source.text()
         perc = int(self.dlg.perc.text())
         tile_size = float(self.dlg.tile_size.text())
         iso = self.dlg.isocode.text()
-        gc_project = self.dlg.gc_project.text()
-        wdpa_key = self.dlg.wdpa_key.text()
+        gc_project = self.dlg.gc_project.filePath()
+        wdpa_key = self.dlg.wdpa_key.filePath()
         proj = self.dlg.proj.text()
         # Sample observations
         nsamp = int(self.dlg.nsamp.text())
@@ -563,7 +562,7 @@ class DeforiskPlugin:
             seed = 1234  # Only for tests to get same dir
             workdir = self.set_workdir(iso, years, fcc_source, seed)
         get_fcc_args = self.make_get_fcc_args(
-            aoi, buff, years, fcc_source, perc, tile_size)
+            aoi, years, fcc_source, perc, tile_size)
         var = ("C(pa), dist_edge, "
                "dist_road, dist_town, dist_river, "
                "altitude, slope")
