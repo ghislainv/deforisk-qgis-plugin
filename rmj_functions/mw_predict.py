@@ -211,8 +211,8 @@ class MwPredictTask(QgsTask):
                 mw_group = root.addGroup("Moving window")
 
             # Add border layer to QGis project
-            border_file = opj(self.DATA, "aoi_proj.gpkg")
-            border_layer = QgsVectorLayer(border_file, "border", "ogr")
+            border_file = opj(self.DATA, "aoi_proj.gpkg|layername=aoi")
+            border_layer = QgsVectorLayer(border_file, "aoi border", "ogr")
             border_layer.loadNamedStyle(opj("qgis_layer_style", "border.qml"))
             add_layer(far_project, border_layer)
 

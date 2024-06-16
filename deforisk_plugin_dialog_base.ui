@@ -199,16 +199,6 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="aoi">
-           <property name="text">
-            <string>MTQ</string>
-           </property>
-           <property name="placeholderText">
-            <string>MTQ</string>
-           </property>
-          </widget>
-         </item>
          <item row="5" column="0">
           <widget class="QLabel" name="label_tile_size">
            <property name="text">
@@ -247,6 +237,13 @@
           <widget class="QgsFileWidget" name="gc_project">
            <property name="dialogTitle">
             <string>Select a service account json file for Earth Engine access</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QgsFileWidget" name="aoi">
+           <property name="dialogTitle">
+            <string>Select gpkg file with &quot;aoi&quot; and &quot;subj&quot; layers</string>
            </property>
           </widget>
          </item>

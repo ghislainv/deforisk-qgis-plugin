@@ -499,7 +499,7 @@ class DeforiskPlugin:
         """Catch arguments from UI."""
         # Get variables
         workdir = self.dlg.workdir.filePath()
-        aoi = self.dlg.aoi.text()
+        aoi = self.dlg.aoi.filePath()
         years = self.dlg.years.text()
         fcc_source = self.dlg.fcc_source.text()
         perc = int(self.dlg.perc.text())
