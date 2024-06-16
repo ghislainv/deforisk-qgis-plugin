@@ -32,6 +32,7 @@ from ..utilities import add_layer, add_layer_to_group
 
 # Alias
 opj = os.path.join
+opb = os.path.basename
 
 
 def get_default_file(file_path):
@@ -135,6 +136,8 @@ class FarGetVariablesTask(QgsTask):
         years = years.replace(" ", "").split(",")
         years = [int(i) for i in years]
         gfa["years"] = years
+        # default buffer of ~10km in dd
+        gfa["buff"] = 0.08983152841195216
         # parallel (False with QGis)
         gfa["parallel"] = False
         # output_file
@@ -190,11 +193,22 @@ class FarGetVariablesTask(QgsTask):
                 # Set WDPA_KEY
                 self.set_wdpa_key()
 
+                # Check if we need GADM
+                # If aoi is file, copy it to data_raw
+                # and set gadm to False
+                gadm = True
+                aoi = self.get_fcc_args["aoi"]
+                if os.path.isfile(aoi):
+                    gadm = False
+                    ofile = opj(self.DATA_RAW, "aoi_latlon.gpkg")
+                    shutil.copy(aoi, ofile)
+
                 # Download data
                 far.data.country_download(
                     get_fcc_args=self.reformat_get_fcc_args(),
                     iso3=self.isocode,
-                    output_dir=self.DATA_RAW)
+                    output_dir=self.DATA_RAW,
+                    gadm=gadm)
 
                 # Check isCanceled() to handle cancellation
                 if self.isCanceled():
