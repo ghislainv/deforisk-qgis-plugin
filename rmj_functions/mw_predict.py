@@ -136,9 +136,6 @@ class MwPredictTask(QgsTask):
             # Set working directory
             os.chdir(self.workdir)
 
-            # Create directory
-            rmj.make_dir(self.outdir)
-
             # Compute time interval from years
             time_interval = self.get_time_interval()
 

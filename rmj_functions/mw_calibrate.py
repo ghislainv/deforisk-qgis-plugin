@@ -101,9 +101,6 @@ class MwCalibrateTask(QgsTask):
             # Set working directory
             os.chdir(self.workdir)
 
-            # Output directory
-            rmj.make_dir(self.outdir)
-
             # Distance to forest edge threshold
             fcc_file = opj(self.DATA, "fcc123.tif")
             ofile = opj(self.outdir, "dist_edge_threshold.csv")

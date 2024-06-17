@@ -452,6 +452,20 @@ class DeforiskPlugin:
             all_models.append("mw_" + str(win_size))
         return all_models
 
+    def create_far_directory(self, period):
+        """Create MW directories."""
+        workdir = self.args["workdir"]
+        rmj.make_dir(opj(workdir, "outputs",
+                         "far_models",
+                         period))
+
+    def create_mw_directory(self, period):
+        """Create MW directories."""
+        workdir = self.args["workdir"]
+        rmj.make_dir(opj(workdir, "outputs",
+                         "rmj_moving_window",
+                         period))
+
     def create_validation_directories(self, period):
         """Create validation directories."""
         workdir = self.args["workdir"]
@@ -691,6 +705,7 @@ class DeforiskPlugin:
         periods = self.get_pred_far_periods()
         # Tasks with loops on dates and models
         for period in periods:
+            self.create_far_directory(period)
             date = self.get_date(period)
             for model in models:
                 description = self.task_description(
@@ -736,6 +751,7 @@ class DeforiskPlugin:
         periods = self.get_mod_mw_periods()
         # Loop on window sizes
         for period in periods:
+            self.create_mw_directory(period)
             for win_size in win_sizes:
                 model = f"mv_{win_size}"
                 description = self.task_description(
@@ -757,6 +773,7 @@ class DeforiskPlugin:
         win_sizes = self.get_win_sizes()
         periods = self.get_pred_mw_periods()
         for period in periods:
+            self.create_mw_directory(period)
             date = self.get_date(period)
             for wsize in win_sizes:
                 model = f"mv_{wsize}"
