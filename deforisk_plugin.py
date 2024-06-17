@@ -292,8 +292,8 @@ class DeforiskPlugin:
         """Set working directory."""
         years = years.replace(" ", "").replace(",", "_")
         random.seed(seed)
-        rand_num = random.randint(1, 9999)
-        folder_name = f"{iso}_{years}_{fcc_source}_{rand_num:04}"
+        rand_int = random.randint(1, 9999)
+        folder_name = f"{iso}_{years}_{fcc_source}_{rand_int:04}"
         if platform.system() == "Windows":
             workdir = os.path.join(os.environ["HOMEDRIVE"],
                                    os.environ["HOMEPATH"],
@@ -710,6 +710,9 @@ class DeforiskPlugin:
         """Interpolate rho."""
         self.catch_arguments()
         periods = self.get_interp_far_periods()
+        # Main empty task
+        description = self.task_description("FarInterpolateRho")
+        main_task = EmptyTask(description)
         # Interpolate rho
         for period in periods:
             description = self.task_description(
@@ -720,10 +723,11 @@ class DeforiskPlugin:
                 workdir=self.args["workdir"],
                 period=period,
                 csize_interpolate=self.args["csize_interp"])
-            # Execute far_predict after task_rho
-            task.taskCompleted.connect(self.far_predict)
-            # Add first task to task manager
-            self.tm.addTask(task)
+            main_task.addSubTask(task)
+        # Execute far_predict after rho interpolation
+        main_task.taskCompleted.connect(self.far_predict)
+        # Add main task to task manager
+        self.tm.addTask(main_task)
 
     def mw_calibrate(self):
         """Compute distance threshold and local deforestation rate."""
