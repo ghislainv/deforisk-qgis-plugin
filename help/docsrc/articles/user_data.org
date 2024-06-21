@@ -1,15 +1,14 @@
-==========
-Case study
-==========
+#+title: User's data
+#+author: Ghislain Vieilledent
+#+options: title:t author:nil date:nil ^:{} toc:nil num:nil H:4
 
-
+#+begin_export rst
 ..
     This case_study.rst file is automatically generated. Please do not
     modify it. If you want to make changes to this file, modify the
     case_study.org source file directly.
+#+end_export
 
-First section
--------------
+* First section
 
-Second section
---------------
+* Second section

@@ -23,18 +23,24 @@ deforisk QGIS plugin
 #+link: website_link https://ecology.ghislainv.fr/deforisk-qgis-plugin
 #+link: far_link https://ecology.ghislainv.fr/forestatrisk
 #+link: rmj_link https://ecology.ghislainv.fr/riskmapjnr
+#+link: pywdpa_link https://ecology.ghislainv.fr/pywdpa
+#+link: geefcc_link https://ecology.ghislainv.fr/geefcc
 
 #+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
 #+macro: github https://img.shields.io/badge/GitHub-repo-green.svg
 #+macro: website https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg
 #+macro: far https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg
 #+macro: rmj https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg
+#+macro: pywdpa https://img.shields.io/badge/python-pywdpa-90b478?logo=python&logoColor=ffd43b&.svg
+#+macro: geefcc https://img.shields.io/badge/python-geefcc-3c8c3c?logo=python&logoColor=ffd43b&.svg
 
 [[GPLv3_link][{{{GPLv3}}}]]
 [[github_link][{{{github}}}]]
 [[website_link][{{{website}}}]]
 [[far_link][{{{far}}}]]
 [[rmj_link][{{{rmj}}}]]
+[[pywdpa_link][{{{pywdpa}}}]]
+[[geefcc_link][{{{geefcc}}}]]
 
 # [[GPLv3_link][https://img.shields.io/badge/licence-GPLv3-8f10cb.svg]]
 # [[github_link][https://img.shields.io/badge/GitHub-repo-green.svg]]
@@ -44,23 +50,33 @@ deforisk QGIS plugin
 
 * Aim
 
-The ~deforisk~ QGis plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: [[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
+The ~deforisk~ QGis plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: the iCAR, GLM, Random Forest, and Moving Window models. These four models can be compared to a benchmark model which assumes a simple decrease of the deforestation risk with distance to forest edge. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps can be provided by the user or derived from two global tree/forest cover change products: [[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
 
 Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the [[https://verra.org/programs/jurisdictional-nested-redd-framework/][VCS Jurisdictional and Nested REDD+ Framework]].
 
 [[file:_static/banner.png]]
 
-* Installing the ~deforisk~ plugin in QGIS
+* Installing the ~deforisk~ plugin in Qgis
 
 #+attr_rst: :directive note
 #+begin_quote
-[[https://www.qgis.org/en/site/][QGIS]] and [[https://gdal.org/index.html][GDAL]] must be installed on your system. The ~forestatrisk~ and ~riskmapjnr~ Python packages must also be installed on your system before using the QGIS plugin. Follow the [[file:installation.html][installation instructions]] to install these dependencies on your system.
+[[https://www.qgis.org/en/site/][Qgis]] and [[https://gdal.org/index.html][GDAL]] must be installed on your system before using the ~deforisk~ plugin. *On Unix-like systems only*, you must also install [[https://wiki.openstreetmap.org/wiki/Osmconvert][osmconvert]] and [[https://wiki.openstreetmap.org/wiki/Osmfilter][osmfilter]]. On Windows systems, these dependencies are already included in the plugin as binary ~.exe~ files so you don't need to install them. Then, the ~forestatrisk~ and ~riskmapjnr~ Python packages must be installed on your system. Follow the [[file:installation.html][installation instructions]] to install all these dependencies on your system.
 #+end_quote
 
 - Download the ~deforisk~ [[https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip][zip file]] from GitHub.
-- Open QGIS.
-- In QGIS menu bar, go to ~Extensions/Install extensions/Install from ZIP~.
+- Open Qgis.
+- In Qgis menu bar, go to ~Extensions/Install extensions/Install from ZIP~.
 - Select the zip file that has been downloaded.
+
+* Funding
+
+The development of the plugin has been funded by [[https://www.cirad.fr/en/][Cirad]] and [[https://www.fao.org/][FAO]].
+
+#+attr_rst: :align left :height 70px :alt Logo Cirad
+[[file:_static/logo_cirad.png]]
+#+attr_rst: :height 100px :alt Logo FAO
+[[file:_static/logo_fao.png]]
+
 
 * Contributing
 
@@ -74,7 +90,7 @@ The ~deforisk~ QGIS plugin is Open Source and released under the [[https://ecolo
    installation
    get_started
    articles
-   python_api
+   plugin_api
    contributing/community_guidelines
    contributing/code_of_conduct
    contributing/license

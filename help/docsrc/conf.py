@@ -7,6 +7,8 @@ import os
 import sys
 import datetime
 import re
+from sphinx.builders.html import StandaloneHTMLBuilder
+
 sys.path.insert(0, os.path.abspath(".."))
 
 
@@ -44,6 +46,14 @@ extensions = ['sphinx.ext.autodoc',
 templates_path = ['_templates']
 exclude_patterns = []
 
+
+StandaloneHTMLBuilder.supported_image_types = [
+    "image/svg+xml",
+    "image/gif",
+    "image/png",
+    "image/jpeg",
+]
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
@@ -72,7 +82,8 @@ html_sidebars = {
     "installation": [],
     "get_started": [],
     "articles": [],
-    "python_api": [],
+    "articles/*": [],
+    "plugin_api": [],
     "contributing/*": []
 }
 

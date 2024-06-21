@@ -9,7 +9,10 @@ Articles
     articles.org source file directly.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
+   installation
    get_started
-   case_study
+   plugin_api
+   articles/subnational_jurisd
+   articles/user_data

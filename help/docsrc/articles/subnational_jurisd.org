@@ -1,4 +1,4 @@
-#+title: Case study
+#+title: Subnational jurisdictions
 #+author: Ghislain Vieilledent
 #+options: title:t author:nil date:nil ^:{} toc:nil num:nil H:4
 

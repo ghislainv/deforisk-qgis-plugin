@@ -1,12 +1,12 @@
 ===========
-Get started
+User’s data
 ===========
 
 
 ..
-    This get_started.rst file is automatically generated. Please do not
+    This case_study.rst file is automatically generated. Please do not
     modify it. If you want to make changes to this file, modify the
-    get_started.org source file directly.
+    case_study.org source file directly.
 
 First section
 -------------

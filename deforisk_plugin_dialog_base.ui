@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_get_var">
     <attribute name="title">
@@ -94,7 +94,7 @@
          <item row="8" column="0">
           <widget class="QLabel" name="label_wdpa_key">
            <property name="text">
-            <string>WDPA API key</string>
+            <string>WDPA access</string>
            </property>
           </widget>
          </item>
@@ -209,7 +209,7 @@
          <item row="3" column="1">
           <widget class="QLineEdit" name="fcc_source">
            <property name="text">
-            <string>jrc</string>
+            <string>tmf</string>
            </property>
            <property name="placeholderText">
             <string>jrc</string>
@@ -924,9 +924,9 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_mw_model">
+   <widget class="QWidget" name="tab_mw_models">
     <attribute name="title">
-     <string>MW model</string>
+     <string>MW models</string>
     </attribute>
     <widget class="QGroupBox" name="groupBox_mw_model">
      <property name="geometry">
