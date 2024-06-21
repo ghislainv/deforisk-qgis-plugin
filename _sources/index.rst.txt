@@ -24,30 +24,48 @@ deforisk QGIS plugin
     :target: https://ecology.ghislainv.fr/forestatrisk
 .. image:: https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg
     :target: https://ecology.ghislainv.fr/riskmapjnr
+.. image:: https://img.shields.io/badge/python-pywdpa-90b478?logo=python&logoColor=ffd43b&.svg
+    :target: https://ecology.ghislainv.fr/pywdpa
+.. image:: https://img.shields.io/badge/python-geefcc-3c8c3c?logo=python&logoColor=ffd43b&.svg
+    :target: https://ecology.ghislainv.fr/geefcc
 
 Aim
 ---
 
-The ``deforisk`` QGis plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: iCAR, GLM, Random Forest, and Moving Window models. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps are provided by the user or derived from two global tree/forest cover change products: `Global Forest Change <https://earthenginepartners.appspot.com/science-2013-global-forest>`_ and `Tropical Moist Forests <https://forobs.jrc.ec.europa.eu/TMF>`_.
+The ``deforisk`` QGis plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: the iCAR, GLM, Random Forest, and Moving Window models. These four models can be compared to a benchmark model which assumes a simple decrease of the deforestation risk with distance to forest edge. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps can be provided by the user or derived from two global tree/forest cover change products: `Global Forest Change <https://earthenginepartners.appspot.com/science-2013-global-forest>`_ and `Tropical Moist Forests <https://forobs.jrc.ec.europa.eu/TMF>`_.
 
 Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the `VCS Jurisdictional and Nested REDD+ Framework <https://verra.org/programs/jurisdictional-nested-redd-framework/>`_.
 
 .. image:: _static/banner.png
 
-Installing the ``deforisk`` plugin in QGIS
+Installing the ``deforisk`` plugin in Qgis
 ------------------------------------------
 
 .. note::
 
-    `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ must be installed on your system. The ``forestatrisk`` and ``riskmapjnr`` Python packages must also be installed on your system before using the QGIS plugin. Follow the `installation instructions <installation.html>`_ to install these dependencies on your system.
+    `Qgis <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ must be installed on your system before using the ``deforisk`` plugin. **On Unix-like systems only**, you must also install `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and `osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. On Windows systems, these dependencies are already included in the plugin as binary ``.exe`` files so you don’t need to install them. Then, the ``forestatrisk`` and ``riskmapjnr`` Python packages must be installed on your system. Follow the `installation instructions <installation.html>`_ to install all these dependencies on your system.
 
 - Download the ``deforisk`` `zip file <https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip>`_ from GitHub.
 
-- Open QGIS.
+- Open Qgis.
 
-- In QGIS menu bar, go to ``Extensions/Install extensions/Install from ZIP``.
+- In Qgis menu bar, go to ``Extensions/Install extensions/Install from ZIP``.
 
 - Select the zip file that has been downloaded.
+
+Funding
+-------
+
+The development of the plugin has been funded by `Cirad <https://www.cirad.fr/en/>`_ and `FAO <https://www.fao.org/>`_.
+
+.. image:: _static/logo_cirad.png
+    :align: left
+    :height: 70px
+    :alt: Logo Cirad
+
+.. image:: _static/logo_fao.png
+    :height: 100px
+    :alt: Logo FAO
 
 Contributing
 ------------
@@ -61,7 +79,7 @@ The ``deforisk`` QGIS plugin is Open Source and released under the `GNU GPL vers
    installation
    get_started
    articles
-   python_api
+   plugin_api
    contributing/community_guidelines
    contributing/code_of_conduct
    contributing/license

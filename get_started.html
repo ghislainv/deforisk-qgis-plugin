@@ -166,8 +166,8 @@
 
 
 <li class="nav-item pst-header-nav-item">
-  <a class="nav-link nav-internal" href="python_api.html">
-    Python API
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    Plugin API
   </a>
 </li>
 
@@ -317,8 +317,8 @@
 
 
 <li class="nav-item pst-header-nav-item">
-  <a class="nav-link nav-internal" href="python_api.html">
-    Python API
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    Plugin API
   </a>
 </li>
 
@@ -424,60 +424,11 @@
                   
   <section id="get-started">
 <h1>Get started<a class="headerlink" href="#get-started" title="Link to this heading">#</a></h1>
-<section id="plugin-interface">
-<h2>Plugin interface<a class="headerlink" href="#plugin-interface" title="Link to this heading">#</a></h2>
-<img alt="/ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_plugin.png" src="/ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_plugin.png" />
-<p>The plugin interface shows three tabs: <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code>, <code class="docutils literal notranslate"><span class="pre">Models</span> <span class="pre">FAR</span></code>, and <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">MV</span></code>. The <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> tab includes two boxes: <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">and</span> <span class="pre">compute</span> <span class="pre">variables</span></code> and <code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">observations</span></code>. The items of each tab or box are detailed below. They usually correspond to function parameters from the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> Python package.</p>
+<section id="first-section">
+<h2>First section<a class="headerlink" href="#first-section" title="Link to this heading">#</a></h2>
 </section>
-<section id="download-and-compute-variables">
-<h2>Download and compute variables<a class="headerlink" href="#download-and-compute-variables" title="Link to this heading">#</a></h2>
-<p>This box is for collecting the information needed to download the data and compute the variables that will be used to spatially model the deforestation risk for a given country.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">directory</span></code>: Directory where all the data and model outputs are stored.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Country/state</span> <span class="pre">ISO</span> <span class="pre">code</span></code>: Country ISO 3166-1 alpha-3 code.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>: EPSG code of the coordinate reference system used for projecting maps.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Forest</span> <span class="pre">data</span> <span class="pre">source</span></code>: Source of the forest data. Could be either “tmf” or “gfc”.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Tree</span> <span class="pre">cover</span> <span class="pre">percentage</span></code>: Tree cover percentage used to define the forest when using GFC.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GDrive</span> <span class="pre">Rclone</span> <span class="pre">remote</span></code>: Name of the GoogleDrive remote in Rclone.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GDrive</span> <span class="pre">folder</span></code>: Name of the folder where GEE data will be exported.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">API</span> <span class="pre">key</span></code>: Your WDPA API key.</p></li>
-</ul>
-<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of QGIS layers. New folders are created in the working directory:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code</span></code>: Unique folder created for the study area.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/data_raw</span></code>: Downloaded raw data for the study area.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/data</span></code>: Processed data that will be used for modelling.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/outputs</span></code>: Outputs (figures and tables).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/qgis_layer_style</span></code>: Layer styles for QGIS.</p></li>
-</ul>
-</section>
-<section id="sample-observations">
-<h2>Sample observations<a class="headerlink" href="#sample-observations" title="Link to this heading">#</a></h2>
-<p>This box is for collecting the information needed to sample the deforestation observations. This is a necessary step as we cannot fit a model using all forest pixels which are usually too many. Nonetheless, sampled observations must be representative of the deforestation process in the study area.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">N#</span> <span class="pre">samples</span></code>: Number of observations to be sampled.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Adapt</span> <span class="pre">sampling</span></code>: If checked, the number of observations is proportional to forest area.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Random</span> <span class="pre">seed</span></code>: Random seed used to make the random sample reproducible.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(km)</span></code>: Size of the spatial cells used to estimate spatial random effects. These spatial random effects account for the residual regional variability in the deforestation risk which is not taken into account by the spatial explanatory variables (e.g. distance to forest edge) included in the model.</p></li>
-</ul>
-<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will sample the observations. Note that you cannot sample the observations before downloading and computing the variables (see previous step). When the operation is finished, the sampled observations appear in the list of QGIS layers. You can navigate on the map to confirm that about half the observations have been sampled in the deforested area and half in the non-deforested area. Files <code class="docutils literal notranslate"><span class="pre">sample.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_size.csv</span></code>, and <code class="docutils literal notranslate"><span class="pre">correlation.pdf</span></code> are added to the <code class="docutils literal notranslate"><span class="pre">outputs</span></code> folder.</p>
-</section>
-<section id="models-far">
-<h2>Models FAR<a class="headerlink" href="#models-far" title="Link to this heading">#</a></h2>
-<img alt="/ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_models_far.png" src="/ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_models_far.png" />
-<p>This tab is for collecting the information needed to spatially model deforestation using three statistical models available in the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> (FAR) Python package: iCAR, GLM, and Random Forest models.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code>: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without “.tif” extension) in folder <code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/data</span></code>. Variable names must be separated by a comma.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Starting</span> <span class="pre">values</span> <span class="pre">for</span> <span class="pre">betas</span></code>: If -99 (recommended), starting values for betas correspond to estimates of a simple GLM with the same variables.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Prior</span> <span class="pre">Vrho</span></code>: If -1 (recommended), the prior for Vrho is an Inverse-Gamma.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MCMC</span></code>: Length of the MCMC for the final model.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">selection</span></code>: If checked (recommended), a variable selection is performed before fitting the final model.</p></li>
-</ul>
-<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this tab will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step). Files <code class="docutils literal notranslate"><span class="pre">summary_icar.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_icar.pickle</span></code>, and <code class="docutils literal notranslate"><span class="pre">mcmc.pdf</span></code> are added to the <code class="docutils literal notranslate"><span class="pre">outputs</span></code> folder.</p>
-</section>
-<section id="model-mv">
-<h2>Model MV<a class="headerlink" href="#model-mv" title="Link to this heading">#</a></h2>
-<img alt="/ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_model_mv.png" src="/ecology.ghislainv.fr/deforisk-qgis-plugin/images/interface_model_mv.png" />
+<section id="second-section">
+<h2>Second section<a class="headerlink" href="#second-section" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -527,11 +478,8 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-interface">Plugin interface</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-compute-variables">Download and compute variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-observations">Sample observations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models-far">Models FAR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-mv">Model MV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-section">First section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-section">Second section</a></li>
 </ul>
   </nav></div>
 

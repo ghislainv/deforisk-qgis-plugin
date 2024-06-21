@@ -166,8 +166,8 @@
 
 
 <li class="nav-item pst-header-nav-item">
-  <a class="nav-link nav-internal" href="python_api.html">
-    Python API
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    Plugin API
   </a>
 </li>
 
@@ -317,8 +317,8 @@
 
 
 <li class="nav-item pst-header-nav-item">
-  <a class="nav-link nav-internal" href="python_api.html">
-    Python API
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    Plugin API
   </a>
 </li>
 
@@ -426,7 +426,7 @@
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> and <a class="reference external" href="https://gdal.org/index.html">GDAL</a> must be installed on your system. The <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages must also be installed on your system before using the QGIS plugin. Follow the instructions below to install these dependencies on your system.</p>
+<p><a class="reference external" href="https://www.qgis.org/en/site/">Qgis</a> and <a class="reference external" href="https://gdal.org/index.html">GDAL</a> must be installed on your system before using the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin. <strong>On Unix-like systems only</strong>, you must also install <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmconvert">osmconvert</a> and <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a>. On Windows systems, these dependencies are already included in the plugin as binary <code class="docutils literal notranslate"><span class="pre">.exe</span></code> files so you don’t need to install them. Then, the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages must be installed on your system. Follow the instructions below to install all these dependencies on your system.</p>
 </div>
 <section id="on-windows">
 <h2>On Windows<a class="headerlink" href="#on-windows" title="Link to this heading">#</a></h2>
@@ -440,8 +440,8 @@
 </ul>
 </section>
 <section id="install-qgis-and-gdal-on-windows">
-<h3>Install QGIS and GDAL on Windows<a class="headerlink" href="#install-qgis-and-gdal-on-windows" title="Link to this heading">#</a></h3>
-<p>To install QGIS and GDAL on Windows, use the <a class="reference external" href="https://trac.osgeo.org/osgeo4w/">OSGeo4W</a> network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select <em>Express Install</em> and install both QGIS and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install <em>OSGeo4W Shell</em> to execute command lines.</p>
+<h3>Install Qgis and GDAL on Windows<a class="headerlink" href="#install-qgis-and-gdal-on-windows" title="Link to this heading">#</a></h3>
+<p>To install Qgis and GDAL on Windows, use the <a class="reference external" href="https://trac.osgeo.org/osgeo4w/">OSGeo4W</a> network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select <em>Express Install</em> and install both Qgis and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install <em>OSGeo4W Shell</em> to execute command lines.</p>
 </section>
 <section id="install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows">
 <h3>Install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages on Windows<a class="headerlink" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows" title="Link to this heading">#</a></h3>
@@ -459,13 +459,17 @@ python3.exe<span class="w"> </span>-m<span class="w"> </span>pip<span class="w">
 <section id="on-unix-like-systems-linux-and-macos">
 <h2>On Unix-like systems (Linux and macOS)<a class="headerlink" href="#on-unix-like-systems-linux-and-macos" title="Link to this heading">#</a></h2>
 <section id="install-qgis-and-gdal-on-unix-like-systems">
-<h3>Install QGIS and GDAL on Unix-like systems<a class="headerlink" href="#install-qgis-and-gdal-on-unix-like-systems" title="Link to this heading">#</a></h3>
-<p>Install QGIS and GDAL on your system, for example using <code class="docutils literal notranslate"><span class="pre">apt-get</span></code> for Debian/Ubuntu Linux distributions.</p>
+<h3>Install Qgis and GDAL on Unix-like systems<a class="headerlink" href="#install-qgis-and-gdal-on-unix-like-systems" title="Link to this heading">#</a></h3>
+<p>Install Qgis and GDAL on your system, for example using <code class="docutils literal notranslate"><span class="pre">apt-get</span></code> for Debian/Ubuntu Linux distributions.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>qgis<span class="w"> </span>gdal-bin<span class="w"> </span>libgdal-dev
 </pre></div>
 </div>
 <p>After installing GDAL, you can test the installation by running <code class="docutils literal notranslate"><span class="pre">gdalinfo</span> <span class="pre">--version</span></code> in the command prompt or terminal, which should display the installed GDAL version.</p>
+</section>
+<section id="install-osmconvert-and-osmfilter">
+<h3>Install <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code><a class="headerlink" href="#install-osmconvert-and-osmfilter" title="Link to this heading">#</a></h3>
+<p>On Unix-like systems, you must also install osmconvert and osmfilter before using the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin. osmconvert can be used to convert and process OpenStreetMap files while osmfilter is a command line tool used to filter OpenStreetMap data files for specific tags. To install them on your system, follow the instructions on the <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmconvert">osmconvert</a> and <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a> webpages.</p>
 </section>
 <section id="install-the-forestatrisk-and-riskmapjnr-python-packages-on-unix-like-systems">
 <h3>Install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages on Unix-like systems<a class="headerlink" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-unix-like-systems" title="Link to this heading">#</a></h3>
@@ -476,19 +480,37 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 deactivate
 </pre></div>
 </div>
-<p>Then, in the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> <a class="reference external" href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts">Python file</a>, add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>.</p>
+<p>Then, in the <code class="docutils literal notranslate"><span class="pre">startup.py</span></code> <a class="reference external" href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts">Python file</a>, add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when Qgis starts and will add the path to the packages installed in the virtual environment to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/path/to/venv/lib/python3.11/site-packages/&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 </section>
+<section id="access-to-gee-and-wdpa">
+<h2>Access to GEE and WDPA<a class="headerlink" href="#access-to-gee-and-wdpa" title="Link to this heading">#</a></h2>
+<p>The plugin download forest data from Google Earth Engine (GEE) using the <code class="docutils literal notranslate"><span class="pre">geefcc</span></code> Python package and protected area data from the World Database on Protected Areas (WDPA) using the <code class="docutils literal notranslate"><span class="pre">pywdpa</span></code> Python package. You will need an access to GEE and WDPA to be able to use the plugin.</p>
+<section id="access-to-gee">
+<h3>Access to GEE<a class="headerlink" href="#access-to-gee" title="Link to this heading">#</a></h3>
+<p>To be able to use GEE, you will need either (i) a Google account and a Google Cloud project that is <a class="reference external" href="https://developers.google.com/earth-engine/guides/access#a-role-in-a-cloud-project">registered to use Earth Engine</a> or (ii) a service account allowing you to use Google Earth Engine through a registered Google Cloud project (in this case, you don’t need a Google account). Please follow this link if you want to <a class="reference external" href="https://code.earthengine.google.com/register">register a project for using Earth Engine</a>.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin, for the <code class="docutils literal notranslate"><span class="pre">Earth</span> <span class="pre">Engine</span> <span class="pre">access</span></code> argument available in the “Get variables” tab, you must indicate either the name of a Google Cloud project registered to use Earth Engine (and for which you are identified as a user) or a path to a JSON private key file authorizing you to access Earth Engine through a service account.</p>
+<a class="reference internal image-reference" href="_images/ee_access.png"><img alt="Earth Engine access" src="_images/ee_access.png" style="width: 500px;" />
+</a>
+</section>
+<section id="access-to-wdpa">
+<h3>Access to WDPA<a class="headerlink" href="#access-to-wdpa" title="Link to this heading">#</a></h3>
+<p>To uses the Protected Planet API to access data on world protected areas, you must first have obtained a Personal API Token by filling in the <a class="reference external" href="https://api.protectedplanet.net/request">form</a> available at Protected Planet.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin, for the <code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code> argument available in the “Get variables” tab, you must indicate either your Personal API Token (a series of letters and numbers such as <code class="docutils literal notranslate"><span class="pre">ca4703ffba6b9a26b2db73f78e56e088</span></code>) or a path to a text file specifying the value of the “WDPA_KEY” environmental variable (eg. a simple text file including on one line <code class="docutils literal notranslate"><span class="pre">WDPA_KEY=&quot;3e404871700e77c453c4e189d848f739&quot;</span></code> for example).</p>
+<a class="reference internal image-reference" href="_images/wdpa_access.png"><img alt="WDPA access" src="_images/wdpa_access.png" style="width: 500px;" />
+</a>
+</section>
+</section>
 <section id="installing-the-deforisk-plugin-in-qgis">
-<h2>Installing the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin in QGIS<a class="headerlink" href="#installing-the-deforisk-plugin-in-qgis" title="Link to this heading">#</a></h2>
+<h2>Installing the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin in Qgis<a class="headerlink" href="#installing-the-deforisk-plugin-in-qgis" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Download the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> <a class="reference external" href="https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip">zip file</a> from GitHub.</p></li>
-<li><p>Open QGIS.</p></li>
-<li><p>In QGIS menu bar, go to <code class="docutils literal notranslate"><span class="pre">Extensions/Install</span> <span class="pre">extensions/Install</span> <span class="pre">from</span> <span class="pre">ZIP</span></code>.</p></li>
+<li><p>Open Qgis.</p></li>
+<li><p>In Qgis menu bar, go to <code class="docutils literal notranslate"><span class="pre">Extensions/Install</span> <span class="pre">extensions/Install</span> <span class="pre">from</span> <span class="pre">ZIP</span></code>.</p></li>
 <li><p>Select the zip file that has been downloaded.</p></li>
 </ul>
 </section>
@@ -542,16 +564,22 @@ deactivate
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-windows">On Windows</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turn-on-the-developer-mode">Turn on the developer mode</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-windows">Install QGIS and GDAL on Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-windows">Install Qgis and GDAL on Windows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows">Install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages on Windows</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-unix-like-systems-linux-and-macos">On Unix-like systems (Linux and macOS)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-unix-like-systems">Install QGIS and GDAL on Unix-like systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-unix-like-systems">Install Qgis and GDAL on Unix-like systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-osmconvert-and-osmfilter">Install <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-unix-like-systems">Install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages on Unix-like systems</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-deforisk-plugin-in-qgis">Installing the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin in QGIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-gee-and-wdpa">Access to GEE and WDPA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-gee">Access to GEE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-wdpa">Access to WDPA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-deforisk-plugin-in-qgis">Installing the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin in Qgis</a></li>
 </ul>
   </nav></div>
 
