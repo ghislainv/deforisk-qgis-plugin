@@ -4,7 +4,7 @@
     modify it. If you want to make changes to this file, modify the
     index.org source file directly.
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_images/logo-deforisk.svg
+.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-deforisk.svg
     :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin
     :align: right
     :width: 140px
