@@ -68,11 +68,21 @@ html_theme_options = {
     "secondary_sidebar_items": ["page-toc"],
     "navbar_end": ["navbar-icon-links"],
     "icon_links": [
-        {
-            "name": "GitHub",
-            "url": "https://github.com/ghislainv/deforisk-qgis-plugin",
-            "icon": "fa-brands fa-github",
-        }
+        {"name": "GitHub",
+         "url": "https://github.com/ghislainv/deforisk-qgis-plugin",
+         "icon": "fa-brands fa-github"},
+        {"name": "Qgis",
+         "url": "https://www.qgis.org/",
+         "icon": "_static/icon_qgis.png",
+         "type": "local"},
+        {"name": "Cirad",
+         "url": "https://www.cirad.fr/en",
+         "icon": "_static/icon_cirad.png",
+         "type": "local"},
+        {"name": "FAO",
+         "url": "https://www.fao.org",
+         "icon": "_static/logo_fao.png",
+         "type": "local"}
     ],
     # alternative way to set github header icons
     # "github_url": "https://github.com/ghislainv/defor-qgis-plugin"

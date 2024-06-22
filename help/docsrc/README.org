@@ -55,7 +55,7 @@ The ~deforisk~ QGis plugin can be used to map the deforestation risk for a count
 Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the [[https://verra.org/programs/jurisdictional-nested-redd-framework/][VCS Jurisdictional and Nested REDD+ Framework]].
 
 #+attr_rst: :alt Banner
-[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_images/banner.png]]
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/banner.png]]
 
 * Installing the ~deforisk~ plugin in Qgis
 
@@ -74,9 +74,9 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 The development of the plugin has been funded by [[https://www.cirad.fr/en/][Cirad]] and [[https://www.fao.org/][FAO]].
 
 #+attr_rst: :align left :height 70px :alt Logo Cirad
-[[https://www.cirad.fr/en][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_images/logo_cirad.png]]
+[[https://www.cirad.fr/en][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo_cirad.png]]
 #+attr_rst: :height 100px :alt Logo FAO
-[[https://www.fao.org][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_images/logo_fao.png]]
+[[https://www.fao.org][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo_fao.png]]
 
 
 * Contributing
