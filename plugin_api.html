@@ -38,6 +38,7 @@
     <script src="_static/documentation_options.js?v=64289a84"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'plugin_api';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -440,29 +441,81 @@
 <p>This box is for collecting the information needed to download the data and compute the variables that will be used to spatially model the deforestation risk for a given area of interest.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">directory</span></code>: Path to the working directory where all the data and model outputs will be stored.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code>: Country ISO 3166-1 alpha-3 code (eg. MTQ) or path to GPKG vector file in lat/lon delimiting the area of interest (jurisdiction) and the sub-jurisdictions. The GPKG vector file must include two layers, the first one must be named “aoi” for the jurisdiction and the second one must be named “subj” for subjurisdictions. This GPKG vector file can be manually obtained using Qgis tools and data from the Global Administrative Areas (<a class="reference external" href="https://gadm.org/download_country.html">GADM</a>) website. An example is given in the following article on using <a class="reference external" href="articles/subnational_jurisd.html">subnational jurisdictions</a>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Years</span></code>: Years delimiting the two periods (calibration and validation periods) for forest cover change observations. Three years must be provided. Years can be in the interval 2001–2024 for GFC (GFC does not provide loss for the year 2000) and 2000–2023 for TMF.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code>: Country ISO 3166-1 alpha-3 code (e.g. MTQ) or path to GPKG vector file in lat/lon delimiting the area of interest (jurisdiction) and the sub-jurisdictions. The GPKG vector file must include two layers, the first one must be named “aoi” for the jurisdiction and the second one must be named “subj” for subjurisdictions. This GPKG vector file can be manually obtained using Qgis tools and data from the Global Administrative Areas (<a class="reference external" href="https://gadm.org/download_country.html">GADM</a>) website. An example is given in the following article on using <a class="reference external" href="articles/subnational_jurisd.html">subnational jurisdictions</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Years</span></code>: Years delimiting the two periods (calibration and validation periods) for forest cover change observations. Three years must be provided. Years can be in the interval 2001–2024 for GFC (GFC does not provide tree cover loss for the year 2000) and 2000–2023 for TMF.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Forest</span> <span class="pre">data</span> <span class="pre">source</span></code>: Source of the forest data. Could be either “tmf” or “gfc”.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Tree</span> <span class="pre">cover</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: Tree cover percentage used to define the forest when using GFC.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Tile</span> <span class="pre">size</span> <span class="pre">(dd)</span></code>: Tile size (in decimal degrees) used to download forest cover change. A value of 1 degree is recommended.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Country/state</span> <span class="pre">ISO</span> <span class="pre">code</span></code>: Country or state ISO code used to download GADM, OSM, SRTM, and WDPA data. The iso code should correspond to the country to which the aoi provided in <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> belongs. For Brazilian states, use the code of the state in the form “BRA-XX” (e.g. “BRA-AM” for the Amazonas state). A list of codes that can be used with the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin can be found in this <a class="reference external" href="https://github.com/ghislainv/forestatrisk/blob/master/forestatrisk/csv/ctry_run.csv">.csv</a> file (see column iso3).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Country/state</span> <span class="pre">ISO</span> <span class="pre">code</span></code>: Country or state ISO code used to download GADM, OSM, SRTM, and WDPA data. The iso code should correspond to the country to which the aoi provided in <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> belongs. For Brazilian states, use the code of the state in the form “BRA-XX” (e.g. “BRA-AM” for the Amazonas state). A list of codes that can be used with the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin can be found in this <a class="reference external" href="https://github.com/ghislainv/forestatrisk/blob/master/forestatrisk/csv/ctry_run.tsv">.tsv</a> file (see column iso3).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Earth</span> <span class="pre">Engine</span> <span class="pre">access</span></code>: Name of a Google Cloud project registered to use Earth Engine (and for which you are identified as a user) or a path to a JSON private key file authorizing you to access Earth Engine through a service account.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code>: Personal API Token (a series of letters and numbers such as <code class="docutils literal notranslate"><span class="pre">ca4703ffba6b9a26b2db73f78e56e088</span></code>) or a path to a text file specifying the value of the “WDPA_KEY” environmental variable (eg. a simple text file including on one line <code class="docutils literal notranslate"><span class="pre">WDPA_KEY=&quot;3e404871700e77c453c4e189d848f739&quot;</span></code> for example).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code>: Personal API Token (a series of letters and numbers such as <code class="docutils literal notranslate"><span class="pre">ca4703ffba6b9a26b2db73f78e56e088</span></code>) or a path to a text file specifying the value of the “WDPA_KEY” environmental variable (e.g. a simple text file including on one line <code class="docutils literal notranslate"><span class="pre">WDPA_KEY=&quot;3e404871700e77c453c4e189d848f739&quot;</span></code> for example).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>: EPSG code of the coordinate reference system used for projecting maps.</p></li>
 </ul>
-<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of QGIS layers. New folders are created in the working directory:</p>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of Qgis layers and a plot of the forest cover change <code class="docutils literal notranslate"><span class="pre">fcc123.png</span></code> is created in folder <code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>. New folders are created in the working directory:</p>
+<p>Six data folders are created:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code</span></code>: Unique folder created for the study area.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/data_raw</span></code>: Downloaded raw data for the study area.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/data</span></code>: Processed data that will be used for modelling.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/outputs</span></code>: Outputs (figures and tables).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/qgis_layer_style</span></code>: Layer styles for QGIS.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_raw</span></code>: raw data with intermediary files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: processed data used for models and plots.</p></li>
+</ul>
+<p>The following four folders only include symlinks to avoid duplicating data:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>: data used for model calibration on the calibration period (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_validation</span></code>: data used to predict the deforestation risk at t2 and validate models on the validation period (t2–t3). This folder used for prediction does not include a <code class="docutils literal notranslate"><span class="pre">fcc.tif</span></code> file but only raster files of explanatory variables.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_historical</span></code>: data used for model calibration on the historical period (t1–t3).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_forecast</span></code>: data used to predict the deforestation risk at t3 and forecast deforestation beyond t3. This folder does not include any <code class="docutils literal notranslate"><span class="pre">fcc.tif</span></code> file either.</p></li>
+</ul>
+<p>Three other folders are created:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">outputs</span></code>: Outputs (figures and tables).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>: Output for variables.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qgis_layer_style</span></code>: Layer styles for Qgis.</p></li>
 </ul>
 </section>
 </section>
 <section id="benchmark">
 <h2>Benchmark<a class="headerlink" href="#benchmark" title="Link to this heading">#</a></h2>
 <img alt="_images/interface_benchmark.png" src="_images/interface_benchmark.png" />
+<section id="fit-model-to-data">
+<h3>Fit model to data<a class="headerlink" href="#fit-model-to-data" title="Link to this heading">#</a></h3>
+<p>This tab is for collecting the information needed to map the deforestation risk using the benchmark model from the <a class="reference external" href="https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/">Verra JNR Unplanned Deforestation Allocation (UDef-A) tool</a>. In summary, the benchmark model assumes that deforestation is negligible beyond a given distance to forest edge, that the deforestation risk decreases with the distance to forest edge and that for a given distance to forest edge the risk varies between subjurisdictions.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: Accumulated deforestation threshold used to identify the distance to forest edge threshold. Default to 99.5% as suggested in the UDef-A methodology.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: Maximal distance to forest edge used to compute the accumulated deforestation as a function of the distance to forest edge. Default to 2500 m as most of the deforestation should occur below this distance. Increase this number if the 99.5% threshold for the accumulated deforestation is not reached.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: If checked, the model is fitted for the calibration period (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: If checked, the model is fitted for the historical period (t1–t3).</p></li>
+</ul>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will estimate the distance to forest edge beyond which the deforestation risk is assumed negligible. This distance threshold is used to define a first class of deforestation risk. Then, 29 classes of deforestation risk are estimated from the distance to forest edge using a geometric series to identified bins. Classes with higher deforestation risks have narrower ranges of distance to forest edge. Finally, a deforestation rate is estimated for each of the 30 classes within each subjurisdiction based on the observed deforestation for the time period considered.</p>
+<p>The following folders are created: <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/historical</span></code>. The following files are added to these folders:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tab_dist.csv</span></code>: Table with the cumulated deforestation as a function of the distance to forest edge.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">perc_dist.png</span></code>: Plot of the cumulated deforestation as a function of the distance to forest edge showing the distance threshold.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dist_edge_threshold.csv</span></code>: Table with distance threshold and corresponding cumulated deforestation (which must be <span class="math notranslate nohighlight">\(\geq\)</span> 99.5%).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dist_bins.csv</span></code>: Table with the bins used to convert distance to forest edge into 29 classes of deforestation risk using a geometric series.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subj.tif</span></code>: Raster of subjurisdictions with values going from 1 to potentially 999.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prob_bm_t1.tif</span></code>: Raster with classes of deforestation risk going from 1001 to potentially 30999.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prob_bm_t1.png</span></code>: Plot of the deforestation risk map.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defrate_cat_bm_&lt;period&gt;.csv</span></code>: Table with deforestation rates on the period for each class of deforestation risk (see details <a class="reference external" href="plugin_api.html#defrate-table">below</a>).</p></li>
+</ul>
+<section id="table-defrate-cat-model-period-csv">
+<span id="defrate-table"></span><h4>Table <code class="docutils literal notranslate"><span class="pre">defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code><a class="headerlink" href="#table-defrate-cat-model-period-csv" title="Link to this heading">#</a></h4>
+<p>Table <code class="docutils literal notranslate"><span class="pre">defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code> includes the following columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cat</span></code>: The class (or category) of deforestation risk (denoted <span class="math notranslate nohighlight">\(i_{}\)</span>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nfor</span></code>: The number of forest pixels at the beginning of the period (denoted <span class="math notranslate nohighlight">\(n_{i}\)</span>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ndefor</span></code>: The number of deforested pixels during the period considered (denoted <span class="math notranslate nohighlight">\(d_{i}\)</span>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time_interval</span></code>: Time interval for the period (denoted <span class="math notranslate nohighlight">\(T\)</span>, in years). E.g. 10 yr for the period 2000–2010.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pixel_area</span></code>: Pixel area (denoted <span class="math notranslate nohighlight">\(A\)</span>, in ha). E.g. 0.9 ha for 30 × 30 m pixels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_obs</span></code>: Observed annual deforestation rate per class computed as <span class="math notranslate nohighlight">\(\theta_{o,i} = 1 - (1 - d_{i} / n_{i})^{(1 / T)}\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_mod</span></code>: Relative spatial deforestation probability from model computed as <span class="math notranslate nohighlight">\(\theta_{m,i}=d_{i}/n_{i}\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rate_abs</span></code>: Absolute deforestation probability with quantity adjustment (so that total predicted deforestation equals the observed deforestation on the period), computed from an adjustment factor <span class="math notranslate nohighlight">\(\rho\)</span> as <span class="math notranslate nohighlight">\(\theta_{a,i} = \rho \theta_{m,i}\)</span> with <span class="math notranslate nohighlight">\(\rho = \sum_{i} d_{i} / \sum_i n_{i} \theta_{m,i}\)</span>. For the benchmark model for the calibration and historical period, <span class="math notranslate nohighlight">\(\rho=1\)</span> and <span class="math notranslate nohighlight">\(\theta_{a,i}=\theta_{m,i}\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defor_dens</span></code>: Deforestation density (in ha/pixel/yr) computed as <span class="math notranslate nohighlight">\(D_{i} = \theta_{a, i} \times A / T\)</span>. The deforestation density is used to predict the amount of deforestation for each pixel belonging to a given class of deforestation risk.</p></li>
+</ul>
+</section>
+</section>
+<section id="predict-the-deforestation-risk">
+<h3>Predict the deforestation risk<a class="headerlink" href="#predict-the-deforestation-risk" title="Link to this heading">#</a></h3>
+<p>To be done…</p>
+</section>
 </section>
 <section id="far-models">
 <h2>FAR models<a class="headerlink" href="#far-models" title="Link to this heading">#</a></h2>
@@ -474,32 +527,87 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">N#</span> <span class="pre">samples</span></code>: Number of observations to be sampled.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Adapt</span> <span class="pre">sampling</span></code>: If checked, the number of observations is proportional to forest area.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Random</span> <span class="pre">seed</span></code>: Random seed used to make the random sample reproducible.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(km)</span></code>: Size of the spatial cells used to estimate spatial random effects. These spatial random effects account for the residual regional variability in the deforestation risk which is not taken into account by the spatial explanatory variables (e.g. distance to forest edge) included in the model. Use a value so that you have (roughly) between 500 and 1000 spatial cells covering your area of interest.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(km)</span></code>: Size of the spatial cells used to estimate spatial random effects. These spatial random effects account for the residual regional variability in the deforestation risk which is not taken into account by the spatial explanatory variables (e.g. distance to forest edge) included in the model. Because one parameter is estimated for each cell, use a value so that you have (roughly) between 500 and 1000 spatial cells covering your area of interest.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: If checked, the observations are sampled for the calibration period (t1–t2).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: If checked, the observations are sampled for the historical period (t1–t3).</p></li>
 </ul>
-<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will sample the observations. Note that you cannot sample the observations before downloading and computing the variables (see previous step). When the operation is finished, the sampled observations appear in the list of Qgis layers. You can navigate on the map to confirm that about half the observations have been sampled in the deforested area and half in the non-deforested area. Files <code class="docutils literal notranslate"><span class="pre">sample.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_size.csv</span></code>, and <code class="docutils literal notranslate"><span class="pre">correlation.pdf</span></code> are added to the <code class="docutils literal notranslate"><span class="pre">outputs</span></code> folder.</p>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will sample the observations. Note that you cannot sample the observations before downloading and computing the variables (see previous step). When the operation is finished, the sampled observations appear in the list of Qgis layers. You can navigate the map to confirm that about half the observations have been sampled in the deforested area and half in the non-deforested area.</p>
+<p>The folder <code class="docutils literal notranslate"><span class="pre">outputs/far_models</span></code> is created with <code class="docutils literal notranslate"><span class="pre">calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">historical</span></code> subfolders if <code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> and <code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code> have been checked respectively. Files <code class="docutils literal notranslate"><span class="pre">sample.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">sample_size.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">csize_icar.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">correlation.pdf</span></code> are added to the output folders for each period.</p>
 </section>
 <section id="fit-models-to-data">
 <h3>Fit models to data<a class="headerlink" href="#fit-models-to-data" title="Link to this heading">#</a></h3>
 <p>This tab is for collecting the information needed to spatially model deforestation using three statistical models available in the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> (FAR) Python package: iCAR, GLM, and Random Forest models.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code>: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without “.tif” extension) in folder <code class="docutils literal notranslate"><span class="pre">working_directory/iso_code/data</span></code>. Variable names must be separated by a comma.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code>: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without “.tif” extension) in folder <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code> or <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>. Variable names must be separated by a comma. For categorical variables (such as protected areas) use the variable name with notation <code class="docutils literal notranslate"><span class="pre">C()</span></code>, such as <code class="docutils literal notranslate"><span class="pre">C(pa)</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Starting</span> <span class="pre">values</span> <span class="pre">for</span> <span class="pre">betas</span></code>: If -99 (recommended), starting values for betas correspond to estimates of a simple GLM with the same variables.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Prior</span> <span class="pre">Vrho</span></code>: If -1 (recommended), the prior for Vrho is an Inverse-Gamma.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MCMC</span></code>: Length of the MCMC for the final model.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">selection</span></code>: If checked (recommended), a variable selection is performed before fitting the final model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">selection</span></code>: If checked (recommended), a variable selection (backward selection) is performed before fitting the final model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: If checked, models are fitted for the calibration period (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: If checked, models are fitted for the historical period (t1–t3).</p></li>
 </ul>
-<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this tab will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step). Files <code class="docutils literal notranslate"><span class="pre">summary_icar.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_icar.pickle</span></code>, and <code class="docutils literal notranslate"><span class="pre">mcmc.pdf</span></code> are added to the <code class="docutils literal notranslate"><span class="pre">outputs</span></code> folder.</p>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step).</p>
+<p>The following folders are created: <code class="docutils literal notranslate"><span class="pre">outputs/far_models/calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/far_models/historical</span></code>. The following files are added to the <code class="docutils literal notranslate"><span class="pre">outputs/far_models/calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/far_models/historical</span></code> folders:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">summary_icar.txt</span></code>: Summary of the iCAR model with mean, standard-deviation, and credible intervals for model parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mcmc.pdf</span></code>: Trace and posterior distribution for the icar model parameters. Used to check MCMC convergence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mod_icar.pickle</span></code>: A compressed file with iCAR model characteristics. Used for projections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mod_null.pickle</span></code>: A compressed file with null model characteristics. Only used as an archive.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mod_glm.pickle</span></code>: A compressed file with GLM model characteristics. Used for projections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mod_rf.joblib</span></code>: A compressed file with Random Forest model characteristics. Used for projections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_deviances.csv</span></code>. A text file comparing the percent deviance explained between models. This percentage is an indication of the goodness-of-fit of the model.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Predict the deforestation risk<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>This step is for predicting the deforestation risk and deriving risk maps using the models fitted on the calibration or historical period.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: If checked, computes predictions with the iCAR model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code>: If checked, computes predictions with GLM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code>: If checked, computes predictions with the Random Forest model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">calibration</span></code>: If checked, computes predictions at t1 using models fitted for the calibration period.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: If checked, computes predictions at t2 for validation (using models fitted for the calibration period).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">historical</span></code>: If checked, computes predictions at t1 using models fitted for the historical period.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: If checked, computes predictions at t3 for forecasting (using models fitted for the historical period).</p></li>
+</ul>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will use the statistical models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge, of the distance to roads, or of protected areas.</p>
+<p>The following folders are created for each date and period: <code class="docutils literal notranslate"><span class="pre">outputs/far-models/&lt;date_and_period&gt;</span></code>. The following files are created for each model, date and period:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prob_&lt;far_model&gt;_&lt;date&gt;.tif</span></code>: Raster with classes of deforestation risk going from 1 to 65535 (high deforestation risk).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prob_&lt;far_model&gt;_&lt;date&gt;.png</span></code>: Plot of the deforestation risk map.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code>: Table with deforestation rates on the period for each class of deforestation risk. See details <a class="reference external" href="plugin_api.html#defrate-table">above</a> with one exception for FAR models: column <code class="docutils literal notranslate"><span class="pre">rate_mod</span></code> is computed as <span class="math notranslate nohighlight">\(\theta_{m, i} = ((i_{} - 1) \times 999999 / 65534 + 1) \times 1e^{-6}\)</span>. This formula leads to an almost null (<span class="math notranslate nohighlight">\(1e^{-6}\)</span>) deforestation probability when <span class="math notranslate nohighlight">\(i=1\)</span> and to a deforestation probability of 1 when <span class="math notranslate nohighlight">\(i=65535\)</span>.</p></li>
+</ul>
 </section>
 </section>
 <section id="mw-models">
 <h2>MW models<a class="headerlink" href="#mw-models" title="Link to this heading">#</a></h2>
 <img alt="_images/interface_mw_models.png" src="_images/interface_mw_models.png" />
+<p>To be done…</p>
 </section>
 <section id="validation">
 <h2>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
 <img alt="_images/interface_validation.png" src="_images/interface_validation.png" />
+<section id="model-validation">
+<h3>Model validation<a class="headerlink" href="#model-validation" title="Link to this heading">#</a></h3>
+<p>This step is used to validate deforestation models and maps and estimate their performance at correctly predicting the location of the deforestation. By default, the performance of the benchmark model is always estimated.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Coarse</span> <span class="pre">grid</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>: Spatial cell size in number of pixels used to compare observed deforested area with predicted deforested area. Cell size must be &lt; 10 km. As an example, a value of 300 corresponds to 9 km for a 30 m resolution raster. Several values can be provided if separated with comma. Default to “50, 100”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: If checked, estimates the performance of the iCAR model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code>: If checked, estimates the performance of the GLM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code>: If checked, estimates the performance of the Random Forest model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MW</span> <span class="pre">model</span></code>: If checked, estimates the performance of the Moving Window models.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: If checked, estimates model performances for the calibration period (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">valid.</span> <span class="pre">period</span></code>: If checked, estimates model performances for the validation period (t2–t3).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: If checked, estimates model performances for the historical period (t1–t3).</p></li>
+</ul>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will compute the predicted deforested area in each grid cell for each model and each period selected and compare this value to the observed deforested area for the same grid cell and period. Note that you cannot validate models if you have not fitted these models (see previous step).</p>
+<p>The following folders are created for each period: <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/figures</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/tables</span></code>. The following files are added for each model, period, and grid cell size:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tables/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.csv</span></code>: Values of observed and predicted deforested area in each grid cell.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tables/indices_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.csv</span></code>: Values of performance indices for a given model, period, and grid cell size. Performance indices include the R<sup>2</sup>, the median absolute error (MedAE, in ha), the root mean square error (RMSE, in ha), and the weighted root mean square error (wRMSE, in ha), fo which the weights are determined by the number of forest pixels in each coarse grid cell.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">figures/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.png</span></code>: Plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the R<sup>2</sup>and the MedAE.</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -554,14 +662,25 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-compute-variables">Download and compute variables</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark">Benchmark</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark">Benchmark</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-model-to-data">Fit model to data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#table-defrate-cat-model-period-csv">Table <code class="docutils literal notranslate"><span class="pre">defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-deforestation-risk">Predict the deforestation risk</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#far-models">FAR models</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-observations">Sample observations</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-models-to-data">Fit models to data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Predict the deforestation risk</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mw-models">MW models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-validation">Model validation</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

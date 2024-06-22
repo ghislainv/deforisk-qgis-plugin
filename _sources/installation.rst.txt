@@ -10,7 +10,7 @@ Installation
 
 .. note::
 
-    `Qgis <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ must be installed on your system before using the ``deforisk`` plugin. **On Unix-like systems only**, you must also install `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and `osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. On Windows systems, these dependencies are already included in the plugin as binary ``.exe`` files so you don’t need to install them. Then, the ``forestatrisk`` and ``riskmapjnr`` Python packages must be installed on your system. Follow the instructions below to install all these dependencies on your system.
+    **Dependencies**: `Qgis <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ must be installed on your system before using the ``deforisk`` plugin. *On Unix-like systems*, you must also install `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and `osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *On Windows systems*, these dependencies are already included in the plugin as binary ``.exe`` files so you don’t need to install them. Then, the ``forestatrisk`` and ``riskmapjnr`` Python packages must be installed on your system. Follow the instructions below to install these dependencies.
 
 On Windows
 ----------
@@ -107,7 +107,7 @@ Access to WDPA
 
 To uses the Protected Planet API to access data on world protected areas, you must first have obtained a Personal API Token by filling in the `form <https://api.protectedplanet.net/request>`_ available at Protected Planet.
 
-In the ``deforisk`` plugin, for the ``WDPA access`` argument available in the “Get variables” tab, you must indicate either your Personal API Token (a series of letters and numbers such as ``ca4703ffba6b9a26b2db73f78e56e088``) or a path to a text file specifying the value of the “WDPA\_KEY” environmental variable (eg. a simple text file including on one line ``WDPA_KEY="3e404871700e77c453c4e189d848f739"`` for example).
+In the ``deforisk`` plugin, for the ``WDPA access`` argument available in the “Get variables” tab, you must indicate either your Personal API Token (a series of letters and numbers such as ``ca4703ffba6b9a26b2db73f78e56e088`` which is a fake token) or a path to a text file specifying the value of the “WDPA\_KEY” environmental variable (eg. a simple text file including on one line ``WDPA_KEY="ca4703ffba6b9a26b2db73f78e56e088"`` for example).
 
 .. image:: _static/wdpa_access.png
     :width: 500px
