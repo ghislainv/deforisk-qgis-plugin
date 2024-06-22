@@ -60,7 +60,7 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 
 #+attr_rst: :directive note
 #+begin_quote
-[[https://www.qgis.org/en/site/][Qgis]] and [[https://gdal.org/index.html][GDAL]] must be installed on your system before using the ~deforisk~ plugin. *On Unix-like systems only*, you must also install [[https://wiki.openstreetmap.org/wiki/Osmconvert][osmconvert]] and [[https://wiki.openstreetmap.org/wiki/Osmfilter][osmfilter]]. On Windows systems, these dependencies are already included in the plugin as binary ~.exe~ files so you don't need to install them. Then, the ~forestatrisk~ and ~riskmapjnr~ Python packages must be installed on your system. Follow the [[file:installation.html][installation instructions]] to install all these dependencies on your system.
+*Dependencies*: [[https://www.qgis.org/en/site/][Qgis]] and [[https://gdal.org/index.html][GDAL]] must be installed on your system before using the ~deforisk~ plugin. /On Unix-like systems/, you must also install [[https://wiki.openstreetmap.org/wiki/Osmconvert][osmconvert]] and [[https://wiki.openstreetmap.org/wiki/Osmfilter][osmfilter]]. /On Windows systems/, these dependencies are already included in the plugin as binary ~.exe~ files so you don't need to install them. Then, the ~forestatrisk~ and ~riskmapjnr~ Python packages must be installed on your system. Follow the [[file:installation.html][installation instructions]] to install these dependencies.
 #+end_quote
 
 - Download the ~deforisk~ [[https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip][zip file]] from GitHub.

@@ -27,9 +27,9 @@ This box is for collecting the information needed to download the data and compu
 
 - ``Working directory``: Path to the working directory where all the data and model outputs will be stored.
 
-- ``Area Of Interest``: Country ISO 3166-1 alpha-3 code (eg. MTQ) or path to GPKG vector file in lat/lon delimiting the area of interest (jurisdiction) and the sub-jurisdictions. The GPKG vector file must include two layers, the first one must be named “aoi” for the jurisdiction and the second one must be named “subj” for subjurisdictions. This GPKG vector file can be manually obtained using Qgis tools and data from the Global Administrative Areas (`GADM <https://gadm.org/download_country.html>`_) website. An example is given in the following article on using `subnational jurisdictions <articles/subnational_jurisd.html>`_.
+- ``Area Of Interest``: Country ISO 3166-1 alpha-3 code (e.g. MTQ) or path to GPKG vector file in lat/lon delimiting the area of interest (jurisdiction) and the sub-jurisdictions. The GPKG vector file must include two layers, the first one must be named “aoi” for the jurisdiction and the second one must be named “subj” for subjurisdictions. This GPKG vector file can be manually obtained using Qgis tools and data from the Global Administrative Areas (`GADM <https://gadm.org/download_country.html>`_) website. An example is given in the following article on using `subnational jurisdictions <articles/subnational_jurisd.html>`_.
 
-- ``Years``: Years delimiting the two periods (calibration and validation periods) for forest cover change observations. Three years must be provided. Years can be in the interval 2001--2024 for GFC (GFC does not provide loss for the year 2000) and 2000--2023 for TMF.
+- ``Years``: Years delimiting the two periods (calibration and validation periods) for forest cover change observations. Three years must be provided. Years can be in the interval 2001--2024 for GFC (GFC does not provide tree cover loss for the year 2000) and 2000--2023 for TMF.
 
 - ``Forest data source``: Source of the forest data. Could be either “tmf” or “gfc”.
 
@@ -37,30 +37,107 @@ This box is for collecting the information needed to download the data and compu
 
 - ``Tile size (dd)``: Tile size (in decimal degrees) used to download forest cover change. A value of 1 degree is recommended.
 
-- ``Country/state ISO code``: Country or state ISO code used to download GADM, OSM, SRTM, and WDPA data. The iso code should correspond to the country to which the aoi provided in ``Area Of Interest`` belongs. For Brazilian states, use the code of the state in the form “BRA-XX” (e.g. “BRA-AM” for the Amazonas state). A list of codes that can be used with the ``deforisk`` plugin can be found in this `.csv <https://github.com/ghislainv/forestatrisk/blob/master/forestatrisk/csv/ctry_run.csv>`_ file (see column iso3).
+- ``Country/state ISO code``: Country or state ISO code used to download GADM, OSM, SRTM, and WDPA data. The iso code should correspond to the country to which the aoi provided in ``Area Of Interest`` belongs. For Brazilian states, use the code of the state in the form “BRA-XX” (e.g. “BRA-AM” for the Amazonas state). A list of codes that can be used with the ``deforisk`` plugin can be found in this `.tsv <https://github.com/ghislainv/forestatrisk/blob/master/forestatrisk/csv/ctry_run.tsv>`_ file (see column iso3).
 
 - ``Earth Engine access``: Name of a Google Cloud project registered to use Earth Engine (and for which you are identified as a user) or a path to a JSON private key file authorizing you to access Earth Engine through a service account.
 
-- ``WDPA access``: Personal API Token (a series of letters and numbers such as ``ca4703ffba6b9a26b2db73f78e56e088``) or a path to a text file specifying the value of the “WDPA\_KEY” environmental variable (eg. a simple text file including on one line ``WDPA_KEY="3e404871700e77c453c4e189d848f739"`` for example).
+- ``WDPA access``: Personal API Token (a series of letters and numbers such as ``ca4703ffba6b9a26b2db73f78e56e088``) or a path to a text file specifying the value of the “WDPA\_KEY” environmental variable (e.g. a simple text file including on one line ``WDPA_KEY="3e404871700e77c453c4e189d848f739"`` for example).
 
 - ``Projection EPSG code``: EPSG code of the coordinate reference system used for projecting maps.
 
-Pushing the ``Run`` button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of QGIS layers. New folders are created in the working directory:
+Pushing the ``Run`` button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of Qgis layers and a plot of the forest cover change ``fcc123.png`` is created in folder ``outputs/variables``. New folders are created in the working directory:
 
-- ``working_directory/iso_code``: Unique folder created for the study area.
+Six data folders are created:
 
-- ``working_directory/iso_code/data_raw``: Downloaded raw data for the study area.
+- ``data_raw``: raw data with intermediary files.
 
-- ``working_directory/iso_code/data``: Processed data that will be used for modelling.
+- ``data``: processed data used for models and plots.
 
-- ``working_directory/iso_code/outputs``: Outputs (figures and tables).
+The following four folders only include symlinks to avoid duplicating data:
 
-- ``working_directory/iso_code/qgis_layer_style``: Layer styles for QGIS.
+- ``data_calibration``: data used for model calibration on the calibration period (t1--t2).
+
+- ``data_validation``: data used to predict the deforestation risk at t2 and validate models on the validation period (t2--t3). This folder used for prediction does not include a ``fcc.tif`` file but only raster files of explanatory variables.
+
+- ``data_historical``: data used for model calibration on the historical period (t1--t3).
+
+- ``data_forecast``: data used to predict the deforestation risk at t3 and forecast deforestation beyond t3. This folder does not include any ``fcc.tif`` file either.
+
+Three other folders are created:
+
+- ``outputs``: Outputs (figures and tables).
+
+- ``outputs/variables``: Output for variables.
+
+- ``qgis_layer_style``: Layer styles for Qgis.
 
 Benchmark
 ---------
 
 .. image:: _static/interface_benchmark.png
+
+Fit model to data
+~~~~~~~~~~~~~~~~~
+
+This tab is for collecting the information needed to map the deforestation risk using the benchmark model from the `Verra JNR Unplanned Deforestation Allocation (UDef-A) tool <https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/>`_. In summary, the benchmark model assumes that deforestation is negligible beyond a given distance to forest edge, that the deforestation risk decreases with the distance to forest edge and that for a given distance to forest edge the risk varies between subjurisdictions.
+
+- ``Deforestation threshold (%)``: Accumulated deforestation threshold used to identify the distance to forest edge threshold. Default to 99.5% as suggested in the UDef-A methodology.
+
+- ``Max. distance to forest edge (m)``: Maximal distance to forest edge used to compute the accumulated deforestation as a function of the distance to forest edge. Default to 2500 m as most of the deforestation should occur below this distance. Increase this number if the 99.5% threshold for the accumulated deforestation is not reached.
+
+- ``calib. period``: If checked, the model is fitted for the calibration period (t1--t2).
+
+- ``hist. period``: If checked, the model is fitted for the historical period (t1--t3).
+
+Pushing the ``Run`` button in this box will estimate the distance to forest edge beyond which the deforestation risk is assumed negligible. This distance threshold is used to define a first class of deforestation risk. Then, 29 classes of deforestation risk are estimated from the distance to forest edge using a geometric series to identified bins. Classes with higher deforestation risks have narrower ranges of distance to forest edge. Finally, a deforestation rate is estimated for each of the 30 classes within each subjurisdiction based on the observed deforestation for the time period considered.
+
+The following folders are created: ``outputs/rmj_benchmark/calibration`` and ``outputs/rmj_benchmark/historical``. The following files are added to these folders:
+
+- ``tab_dist.csv``: Table with the cumulated deforestation as a function of the distance to forest edge.
+
+- ``perc_dist.png``: Plot of the cumulated deforestation as a function of the distance to forest edge showing the distance threshold.
+
+- ``dist_edge_threshold.csv``: Table with distance threshold and corresponding cumulated deforestation (which must be :math:`\geq` 99.5%).
+
+- ``dist_bins.csv``: Table with the bins used to convert distance to forest edge into 29 classes of deforestation risk using a geometric series.
+
+- ``subj.tif``: Raster of subjurisdictions with values going from 1 to potentially 999.
+
+- ``prob_bm_t1.tif``: Raster with classes of deforestation risk going from 1001 to potentially 30999.
+
+- ``prob_bm_t1.png``: Plot of the deforestation risk map.
+
+- ``defrate_cat_bm_<period>.csv``: Table with deforestation rates on the period for each class of deforestation risk (see details `below <plugin_api.html#defrate-table>`_).
+
+.. _defrate-table:
+
+Table ``defrate_cat_<model>_<period>.csv``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Table ``defrate_cat_<model>_<period>.csv`` includes the following columns:
+
+- ``cat``: The class (or category) of deforestation risk (denoted :math:`i_{}`).
+
+- ``nfor``: The number of forest pixels at the beginning of the period (denoted :math:`n_{i}`).
+
+- ``ndefor``: The number of deforested pixels during the period considered (denoted :math:`d_{i}`).
+
+- ``time_interval``: Time interval for the period (denoted :math:`T`, in years). E.g. 10 yr for the period 2000--2010.
+
+- ``pixel_area``: Pixel area (denoted :math:`A`, in ha). E.g. 0.9 ha for 30 × 30 m pixels.
+
+- ``rate_obs``: Observed annual deforestation rate per class computed as :math:`\theta_{o,i} = 1 - (1 - d_{i} / n_{i})^{(1 / T)}`.
+
+- ``rate_mod``: Relative spatial deforestation probability from model computed as :math:`\theta_{m,i}=d_{i}/n_{i}`.
+
+- ``rate_abs``: Absolute deforestation probability with quantity adjustment (so that total predicted deforestation equals the observed deforestation on the period), computed from an adjustment factor :math:`\rho` as :math:`\theta_{a,i} = \rho \theta_{m,i}` with :math:`\rho = \sum_{i} d_{i} / \sum_i n_{i} \theta_{m,i}`. For the benchmark model for the calibration and historical period, :math:`\rho=1` and :math:`\theta_{a,i}=\theta_{m,i}`.
+
+- ``defor_dens``: Deforestation density (in ha/pixel/yr) computed as :math:`D_{i} = \theta_{a, i} \times A / T`. The deforestation density is used to predict the amount of deforestation for each pixel belonging to a given class of deforestation risk.
+
+Predict the deforestation risk
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To be done...
 
 FAR models
 ----------
@@ -78,20 +155,22 @@ This box is for collecting the information needed to sample the deforestation ob
 
 - ``Random seed``: Random seed used to make the random sample reproducible.
 
-- ``Spatial cell size (km)``: Size of the spatial cells used to estimate spatial random effects. These spatial random effects account for the residual regional variability in the deforestation risk which is not taken into account by the spatial explanatory variables (e.g. distance to forest edge) included in the model. Use a value so that you have (roughly) between 500 and 1000 spatial cells covering your area of interest.
+- ``Spatial cell size (km)``: Size of the spatial cells used to estimate spatial random effects. These spatial random effects account for the residual regional variability in the deforestation risk which is not taken into account by the spatial explanatory variables (e.g. distance to forest edge) included in the model. Because one parameter is estimated for each cell, use a value so that you have (roughly) between 500 and 1000 spatial cells covering your area of interest.
 
 - ``calib. period``: If checked, the observations are sampled for the calibration period (t1--t2).
 
 - ``hist. period``: If checked, the observations are sampled for the historical period (t1--t3).
 
-Pushing the ``Run`` button in this box will sample the observations. Note that you cannot sample the observations before downloading and computing the variables (see previous step). When the operation is finished, the sampled observations appear in the list of Qgis layers. You can navigate on the map to confirm that about half the observations have been sampled in the deforested area and half in the non-deforested area. Files ``sample.txt``, ``sample_size.csv``, and ``correlation.pdf`` are added to the ``outputs`` folder. 
+Pushing the ``Run`` button in this box will sample the observations. Note that you cannot sample the observations before downloading and computing the variables (see previous step). When the operation is finished, the sampled observations appear in the list of Qgis layers. You can navigate the map to confirm that about half the observations have been sampled in the deforested area and half in the non-deforested area.
+
+The folder ``outputs/far_models`` is created with ``calibration`` and ``historical`` subfolders if ``calib. period`` and ``hist. period`` have been checked respectively. Files ``sample.txt``, ``sample_size.csv``, ``csize_icar.txt``, and ``correlation.pdf`` are added to the output folders for each period. 
 
 Fit models to data
 ~~~~~~~~~~~~~~~~~~
 
 This tab is for collecting the information needed to spatially model deforestation using three statistical models available in the ``forestatrisk`` (FAR) Python package: iCAR, GLM, and Random Forest models.
 
-- ``List of variables``: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without “.tif” extension) in folder ``working_directory/iso_code/data``. Variable names must be separated by a comma.
+- ``List of variables``: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without “.tif” extension) in folder ``data_calibration`` or ``data_historical``. Variable names must be separated by a comma. For categorical variables (such as protected areas) use the variable name with notation ``C()``, such as ``C(pa)``.
 
 - ``Starting values for betas``: If -99 (recommended), starting values for betas correspond to estimates of a simple GLM with the same variables.
 
@@ -99,16 +178,98 @@ This tab is for collecting the information needed to spatially model deforestati
 
 - ``MCMC``: Length of the MCMC for the final model.
 
-- ``Variable selection``: If checked (recommended), a variable selection is performed before fitting the final model.
+- ``Variable selection``: If checked (recommended), a variable selection (backward selection) is performed before fitting the final model.
 
-Pushing the ``Run`` button in this tab will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step). Files ``summary_icar.txt``, ``mod_icar.pickle``, and ``mcmc.pdf`` are added to the ``outputs`` folder.
+- ``calib. period``: If checked, models are fitted for the calibration period (t1--t2).
+
+- ``hist. period``: If checked, models are fitted for the historical period (t1--t3).
+
+Pushing the ``Run`` button in this box will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step).
+
+The following folders are created: ``outputs/far_models/calibration`` and ``outputs/far_models/historical``. The following files are added to the ``outputs/far_models/calibration`` and ``outputs/far_models/historical`` folders:
+
+- ``summary_icar.txt``: Summary of the iCAR model with mean, standard-deviation, and credible intervals for model parameters.
+
+- ``mcmc.pdf``: Trace and posterior distribution for the icar model parameters. Used to check MCMC convergence.
+
+- ``mod_icar.pickle``: A compressed file with iCAR model characteristics. Used for projections.
+
+- ``mod_null.pickle``: A compressed file with null model characteristics. Only used as an archive.
+
+- ``mod_glm.pickle``: A compressed file with GLM model characteristics. Used for projections.
+
+- ``mod_rf.joblib``: A compressed file with Random Forest model characteristics. Used for projections.
+
+- ``model_deviances.csv``. A text file comparing the percent deviance explained between models. This percentage is an indication of the goodness-of-fit of the model.
+
+Predict the deforestation risk
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This step is for predicting the deforestation risk and deriving risk maps using the models fitted on the calibration or historical period.
+
+- ``iCAR model``: If checked, computes predictions with the iCAR model.
+
+- ``GLM``: If checked, computes predictions with GLM.
+
+- ``RF model``: If checked, computes predictions with the Random Forest model.
+
+- ``t1 calibration``: If checked, computes predictions at t1 using models fitted for the calibration period.
+
+- ``t2 validation``: If checked, computes predictions at t2 for validation (using models fitted for the calibration period).
+
+- ``t1 historical``: If checked, computes predictions at t1 using models fitted for the historical period.
+
+- ``t3 forecast``: If checked, computes predictions at t3 for forecasting (using models fitted for the historical period).
+
+Pushing the ``Run`` button in this box will use the statistical models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge, of the distance to roads, or of protected areas.
+
+The following folders are created for each date and period: ``outputs/far-models/<date_and_period>``. The following files are created for each model, date and period:
+
+- ``prob_<far_model>_<date>.tif``: Raster with classes of deforestation risk going from 1 to 65535 (high deforestation risk).
+
+- ``prob_<far_model>_<date>.png``: Plot of the deforestation risk map.
+
+- ``defrate_cat_<model>_<period>.csv``: Table with deforestation rates on the period for each class of deforestation risk. See details `above <plugin_api.html#defrate-table>`_ with one exception for FAR models: column ``rate_mod`` is computed as :math:`\theta_{m, i} = ((i_{} - 1) \times 999999 / 65534 + 1) \times 1e^{-6}`. This formula leads to an almost null (:math:`1e^{-6}`) deforestation probability when :math:`i=1` and to a deforestation probability of 1 when :math:`i=65535`.
 
 MW models
 ---------
 
 .. image:: _static/interface_mw_models.png
 
+To be done...
+
 Validation
 ----------
 
 .. image:: _static/interface_validation.png
+
+Model validation
+~~~~~~~~~~~~~~~~
+
+This step is used to validate deforestation models and maps and estimate their performance at correctly predicting the location of the deforestation. By default, the performance of the benchmark model is always estimated.
+
+- ``Coarse grid cell size (# pixels)``: Spatial cell size in number of pixels used to compare observed deforested area with predicted deforested area. Cell size must be < 10 km. As an example, a value of 300 corresponds to 9 km for a 30 m resolution raster. Several values can be provided if separated with comma. Default to “50, 100”.
+
+- ``iCAR model``: If checked, estimates the performance of the iCAR model.
+
+- ``GLM``: If checked, estimates the performance of the GLM.
+
+- ``RF model``: If checked, estimates the performance of the Random Forest model.
+
+- ``MW model``: If checked, estimates the performance of the Moving Window models.
+
+- ``calib. period``: If checked, estimates model performances for the calibration period (t1--t2).
+
+- ``valid. period``: If checked, estimates model performances for the validation period (t2--t3).
+
+- ``hist. period``: If checked, estimates model performances for the historical period (t1--t3).
+
+Pushing the ``Run`` button in this box will compute the predicted deforested area in each grid cell for each model and each period selected and compare this value to the observed deforested area for the same grid cell and period. Note that you cannot validate models if you have not fitted these models (see previous step).
+
+The following folders are created for each period: ``outputs/model_validation/<period>/figures`` and ``outputs/model_validation/<period>/tables``. The following files are added for each model, period, and grid cell size:
+
+- ``tables/pred_obs_<model>_<period>_<cell_size>.csv``: Values of observed and predicted deforested area in each grid cell.
+
+- ``tables/indices_<model>_<period>_<cell_size>.csv``: Values of performance indices for a given model, period, and grid cell size. Performance indices include the R\ :sup:`2`\, the median absolute error (MedAE, in ha), the root mean square error (RMSE, in ha), and the weighted root mean square error (wRMSE, in ha), fo which the weights are determined by the number of forest pixels in each coarse grid cell.
+
+- ``figures/pred_obs_<model>_<period>_<cell_size>.png``: Plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the R\ :sup:`2`\ and the MedAE.
