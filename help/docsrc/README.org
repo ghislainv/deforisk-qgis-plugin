@@ -10,7 +10,7 @@
 #+end_export
 
 #+attr_rst: :align right :width 140px :alt Logo riskmapjnr
-[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][./_static/logo-deforisk.svg]]
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_images/logo-deforisk.svg]]
 
 #+begin_export rst
 ====================
@@ -54,7 +54,8 @@ The ~deforisk~ QGis plugin can be used to map the deforestation risk for a count
 
 Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the [[https://verra.org/programs/jurisdictional-nested-redd-framework/][VCS Jurisdictional and Nested REDD+ Framework]].
 
-[[file:_static/banner.png]]
+#+attr_rst: :alt Banner
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_images/banner.png]]
 
 * Installing the ~deforisk~ plugin in Qgis
 
@@ -73,26 +74,12 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 The development of the plugin has been funded by [[https://www.cirad.fr/en/][Cirad]] and [[https://www.fao.org/][FAO]].
 
 #+attr_rst: :align left :height 70px :alt Logo Cirad
-[[file:_static/logo_cirad.png]]
+[[https://www.cirad.fr/en][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_images/logo_cirad.png]]
 #+attr_rst: :height 100px :alt Logo FAO
-[[file:_static/logo_fao.png]]
+[[https://www.fao.org][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_images/logo_fao.png]]
 
 
 * Contributing
 
 The ~deforisk~ QGIS plugin is Open Source and released under the [[https://ecology.ghislainv.fr/deforisk-qgis-plugin/license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[https://ecology.ghislainv.fr/deforisk-qgis-plugin/contributing.html][Community guidelines]]. Every contributor must agree to follow the project's [[https://ecology.ghislainv.fr/deforisk-qgis-plugin/code_of_conduct.html][Code of conduct]].
-
-#+begin_export rst
-.. toctree::
-   :hidden:
-
-   Home <self>
-   installation
-   get_started
-   articles
-   plugin_api
-   contributing/community_guidelines
-   contributing/code_of_conduct
-   contributing/license
-#+end_export
 
