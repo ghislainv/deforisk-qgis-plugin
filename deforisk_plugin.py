@@ -573,7 +573,7 @@ class DeforiskPlugin:
         val_histo = self.dlg.val_histo.isChecked()
         # Special variables
         if workdir == "":
-            seed = 1234  # Only for tests to get same dir
+            # seed = 1234  # Only for tests to get same dir
             workdir = self.set_workdir(iso, years, fcc_source, seed)
         get_fcc_args = self.make_get_fcc_args(
             aoi, years, fcc_source, perc, tile_size)

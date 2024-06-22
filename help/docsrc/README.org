@@ -1,4 +1,4 @@
-#+title: deforisk QGIS plugin
+#+title: deforisk Qgis plugin
 #+author: Ghislain Vieilledent
 #+options: title:nil author:nil date:nil ^:{} toc:nil num:nil H:4
 
@@ -50,7 +50,7 @@ deforisk QGIS plugin
 
 * Aim
 
-The ~deforisk~ QGis plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: the iCAR, GLM, Random Forest, and Moving Window models. These four models can be compared to a benchmark model which assumes a simple decrease of the deforestation risk with distance to forest edge. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps can be provided by the user or derived from two global tree/forest cover change products: [[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
+The ~deforisk~ QGIS plugin can be used to map the deforestation risk for a country or area of interest. Four models can be used to derive the risk maps: the iCAR, GLM, Random Forest, and Moving Window models. These four models can be compared to a benchmark model which assumes a simple decrease of the deforestation risk with distance to forest edge. All models are calibrated using past deforestation observations for a given period of time between 2000 and 2022. Forest cover change maps can be provided by the user or derived from two global tree/forest cover change products: [[https://earthenginepartners.appspot.com/science-2013-global-forest][Global Forest Change]] and [[https://forobs.jrc.ec.europa.eu/TMF][Tropical Moist Forests]].
 
 Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the [[https://verra.org/programs/jurisdictional-nested-redd-framework/][VCS Jurisdictional and Nested REDD+ Framework]].
 

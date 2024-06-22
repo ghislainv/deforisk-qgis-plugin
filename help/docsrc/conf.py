@@ -60,7 +60,7 @@ StandaloneHTMLBuilder.supported_image_types = [
 html_theme_options = {
     "navigation_with_keys": "false",
     "logo": {
-        "text": "deforisk Qgis plugin"
+        "text": "deforisk QGIS plugin"
     },
     "footer_start": ["copyright"],
     "footer_center": ["sphinx-version"],
@@ -71,7 +71,7 @@ html_theme_options = {
         {"name": "GitHub",
          "url": "https://github.com/ghislainv/deforisk-qgis-plugin",
          "icon": "fa-brands fa-github"},
-        {"name": "Qgis",
+        {"name": "QGIS",
          "url": "https://www.qgis.org/",
          "icon": "_static/icon_qgis.png",
          "type": "local"},
