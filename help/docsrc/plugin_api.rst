@@ -128,9 +128,9 @@ Table ``defrate_cat_<model>_<period>.csv`` includes the following columns:
 
 - ``rate_obs``: Observed annual deforestation rate per class computed as :math:`\theta_{o,i} = 1 - (1 - d_{i} / n_{i})^{(1 / T)}`.
 
-- ``rate_mod``: Relative spatial deforestation probability from model computed as :math:`\theta_{m,i}=d_{i}/n_{i}`.
+- ``rate_mod``: Relative spatial deforestation probability from model. *For the benchmark model*, it is computed as :math:`\theta_{m,i}=d_{i}/n_{i}`.
 
-- ``rate_abs``: Absolute deforestation probability with quantity adjustment (so that total predicted deforestation equals the observed deforestation on the period), computed from an adjustment factor :math:`\rho` as :math:`\theta_{a,i} = \rho \theta_{m,i}` with :math:`\rho = \sum_{i} d_{i} / \sum_i n_{i} \theta_{m,i}`. For the benchmark model for the calibration and historical period, :math:`\rho=1` and :math:`\theta_{a,i}=\theta_{m,i}`.
+- ``rate_abs``: Absolute deforestation probability with quantity adjustment (so that total predicted deforestation equals the observed deforestation on the period), computed from an adjustment factor :math:`\rho` as :math:`\theta_{a,i} = \rho \theta_{m,i}` with :math:`\rho = \sum_{i} d_{i} / \sum_i n_{i} \theta_{m,i}`. *For the benchmark model for the calibration and historical periods*, :math:`\rho=1` and :math:`\theta_{a,i}=\theta_{m,i}`.
 
 - ``defor_dens``: Deforestation density (in ha/pixel/yr) computed as :math:`D_{i} = \theta_{a, i} \times A / T`. The deforestation density is used to predict the amount of deforestation for each pixel belonging to a given class of deforestation risk.
 
