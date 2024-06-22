@@ -79,15 +79,15 @@ Benchmark
 Fit model to data
 ~~~~~~~~~~~~~~~~~
 
-This tab is for collecting the information needed to map the deforestation risk using the benchmark model from the `Verra JNR Unplanned Deforestation Allocation (UDef-A) tool <https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/>`_. In summary, the benchmark model assumes that deforestation is negligible beyond a given distance to forest edge, that the deforestation risk decreases with the distance to forest edge and that for a given distance to forest edge the risk varies between subjurisdictions.
+This tab is for collecting the information needed to map the deforestation risk using the benchmark model from the `Verra <https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/>`_ `JNR Unplanned Deforestation Allocation (UDef-A) tool <_static/VT0007-Unplanned-Deforestation-Allocation-v1.0.pdf>`_. In summary, the benchmark model assumes that deforestation is negligible beyond a given distance to forest edge, that the deforestation risk decreases with the distance to forest edge and that for a given distance to forest edge the risk varies between subjurisdictions.
 
 - ``Deforestation threshold (%)``: Accumulated deforestation threshold used to identify the distance to forest edge threshold. Default to 99.5% as suggested in the UDef-A methodology.
 
 - ``Max. distance to forest edge (m)``: Maximal distance to forest edge used to compute the accumulated deforestation as a function of the distance to forest edge. Default to 2500 m as most of the deforestation should occur below this distance. Increase this number if the 99.5% threshold for the accumulated deforestation is not reached.
 
-- ``calib. period``: If checked, the model is fitted for the calibration period (t1--t2).
+- ``calib. period``: If checked, the model is fitted over the calibration period (t1--t2).
 
-- ``hist. period``: If checked, the model is fitted for the historical period (t1--t3).
+- ``hist. period``: If checked, the model is fitted over the historical period (t1--t3).
 
 Pushing the ``Run`` button in this box will estimate the distance to forest edge beyond which the deforestation risk is assumed negligible. This distance threshold is used to define a first class of deforestation risk. Then, 29 classes of deforestation risk are estimated from the distance to forest edge using a geometric series to identified bins. Classes with higher deforestation risks have narrower ranges of distance to forest edge. Finally, a deforestation rate is estimated for each of the 30 classes within each subjurisdiction based on the observed deforestation for the time period considered.
 
@@ -132,12 +132,26 @@ Table ``defrate_cat_<model>_<period>.csv`` includes the following columns:
 
 - ``rate_abs``: Absolute deforestation probability with quantity adjustment (so that total predicted deforestation equals the observed deforestation on the period), computed from an adjustment factor :math:`\rho` as :math:`\theta_{a,i} = \rho \theta_{m,i}` with :math:`\rho = \sum_{i} d_{i} / \sum_i n_{i} \theta_{m,i}`. *For the benchmark model for the calibration and historical periods*, :math:`\rho=1` and :math:`\theta_{a,i}=\theta_{m,i}`.
 
-- ``defor_dens``: Deforestation density (in ha/pixel/yr) computed as :math:`D_{i} = \theta_{a, i} \times A / T`. The deforestation density is used to predict the amount of deforestation for each pixel belonging to a given class of deforestation risk.
+- ``defor_dens``: Deforestation density (in ha/pixel/yr) computed as :math:`D_{i} = \theta_{a,i} \times A / T`. The deforestation density is used to predict the amount of deforestation for each pixel belonging to a given class of deforestation risk.
 
 Predict the deforestation risk
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To be done...
+This step is for predicting the deforestation risk and deriving risk maps using the benchmark models fitted on the calibration or historical period.
+
+- ``t2 validation``: If checked, computes predictions at t2 for validation (using the benchmark model fitted over the calibration period).
+
+- ``t3 forecast``: If checked, computes predictions at t3 for forecasting (using the benchmark model fitted over the historical period).
+
+Pushing the ``Run`` button in this box will use the benchmark models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge.
+
+The following folders are created: ``outputs/rmj_benchmark/validation`` and ``outputs/rmj_benchmark/forecast``.The following files are added to these folders:
+
+- ``prob_bm_<date>.tif``: Raster with classes of deforestation risk going from 1001 to potentially 30999 (high deforestation risk).
+
+- ``prob_bm_<date>.png``: Plot of the deforestation risk map.
+
+- ``defrate_cat_bm_<period>.csv``: Table with deforestation rates on the period for each class of deforestation risk. See details `above <plugin_api.html#defrate-table>`_ with one exception: column ``rate_mod`` indicates deforestation rates obtained during either the calibration (when predicting at t2) or historical (when predicting at t3) period.
 
 FAR models
 ----------
@@ -180,9 +194,9 @@ This tab is for collecting the information needed to spatially model deforestati
 
 - ``Variable selection``: If checked (recommended), a variable selection (backward selection) is performed before fitting the final model.
 
-- ``calib. period``: If checked, models are fitted for the calibration period (t1--t2).
+- ``calib. period``: If checked, models are fitted over the calibration period (t1--t2).
 
-- ``hist. period``: If checked, models are fitted for the historical period (t1--t3).
+- ``hist. period``: If checked, models are fitted over the historical period (t1--t3).
 
 Pushing the ``Run`` button in this box will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step).
 
@@ -205,7 +219,7 @@ The following folders are created: ``outputs/far_models/calibration`` and ``outp
 Predict the deforestation risk
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This step is for predicting the deforestation risk and deriving risk maps using the models fitted on the calibration or historical period.
+This step is for predicting the deforestation risk and deriving risk maps using the FAR models fitted on the calibration or historical period.
 
 - ``iCAR model``: If checked, computes predictions with the iCAR model.
 
@@ -213,30 +227,78 @@ This step is for predicting the deforestation risk and deriving risk maps using 
 
 - ``RF model``: If checked, computes predictions with the Random Forest model.
 
-- ``t1 calibration``: If checked, computes predictions at t1 using models fitted for the calibration period.
+- ``t1 calibration``: If checked, computes predictions at t1 using models fitted over the calibration period.
 
-- ``t2 validation``: If checked, computes predictions at t2 for validation (using models fitted for the calibration period).
+- ``t2 validation``: If checked, computes predictions at t2 for validation (using models fitted over the calibration period).
 
-- ``t1 historical``: If checked, computes predictions at t1 using models fitted for the historical period.
+- ``t1 historical``: If checked, computes predictions at t1 using models fitted over the historical period.
 
-- ``t3 forecast``: If checked, computes predictions at t3 for forecasting (using models fitted for the historical period).
+- ``t3 forecast``: If checked, computes predictions at t3 for forecasting (using models fitted over the historical period).
 
 Pushing the ``Run`` button in this box will use the statistical models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge, of the distance to roads, or of protected areas.
 
-The following folders are created for each date and period: ``outputs/far-models/<date_and_period>``. The following files are created for each model, date and period:
+The following folders are created for each period: ``outputs/far_models/<period>``. The following files are created for each model, date or period:
 
-- ``prob_<far_model>_<date>.tif``: Raster with classes of deforestation risk going from 1 to 65535 (high deforestation risk).
+- ``prob_<far_model>_<date>.tif``: Raster with classes of deforestation risk going from 1 to 65535 (highest deforestation risk).
 
 - ``prob_<far_model>_<date>.png``: Plot of the deforestation risk map.
 
-- ``defrate_cat_<model>_<period>.csv``: Table with deforestation rates on the period for each class of deforestation risk. See details `above <plugin_api.html#defrate-table>`_ with one exception for FAR models: column ``rate_mod`` is computed as :math:`\theta_{m, i} = ((i_{} - 1) \times 999999 / 65534 + 1) \times 1e^{-6}`. This formula leads to an almost null (:math:`1e^{-6}`) deforestation probability when :math:`i=1` and to a deforestation probability of 1 when :math:`i=65535`.
+- ``defrate_cat_<model>_<period>.csv``: Table with deforestation rates on the period for each class of deforestation risk. See details `above <plugin_api.html#defrate-table>`_ with one exception for FAR models: column ``rate_mod`` is computed as :math:`\theta_{m,i} = ((i - 1) \times 999999 / 65534 + 1) \times 1e^{-6}`. This formula leads to an almost null (:math:`1e^{-6}`) deforestation probability when :math:`i=1` and to a deforestation probability of 1 when :math:`i=65535`.
 
 MW models
 ---------
 
 .. image:: _static/interface_mw_models.png
 
-To be done...
+Fit model to data
+~~~~~~~~~~~~~~~~~
+
+This tab is for collecting the information needed to map the deforestation risk using the moving window model which was first proposed by `Verra <https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/>`_ in the `JNR Risk Mapping Tool v0.1 <_static/DRAFT_JNR_Risk_Mapping_Tool_15APR2021.pdf>`_. In summary, the moving model assumes that deforestation is negligible beyond a given distance to forest edge (as for the benchmark model), and that the deforestation risk can be estimated in the remaining area with a moving window approach.
+
+- ``Deforestation threshold (%)``: Accumulated deforestation threshold used to identify the distance to forest edge threshold. Default to 99.5%.
+
+- ``Max. distance to forest edge (m)``: Maximal distance to forest edge used to compute the accumulated deforestation as a function of the distance to forest edge. Default to 2500 m as most of the deforestation should occur below this distance. Increase this number if the threshold for the accumulated deforestation is not reached.
+
+- ``Window sizes (# pixels)``: Window sizes in number of pixels. Several window sizes can be specified if separated with a comma, such as “11, 21” for example which are the default values.
+
+- ``calib. period``: If checked, the model is fitted over the calibration period (t1--t2).
+
+- ``hist. period``: If checked, the model is fitted over the historical period (t1--t3).
+
+Pushing the ``Run`` button in this box will estimate the distance to forest edge beyond which the deforestation risk is assumed negligible. This distance threshold is used to define a first class of deforestation risk equal to 1. Then deforestation rates are estimated in the remaining area with a moving window. Deforestation rates on the interval [0, 1] are rescaled on the interval [2, 65535].
+
+The following folders are created: ``outputs/rmj_moving_window/calibration`` and ``outputs/rmj_moving_window/historical``. The following files are added to these folders:
+
+- ``tab_dist.csv``: Table with the cumulated deforestation as a function of the distance to forest edge.
+
+- ``perc_dist.png``: Plot of the cumulated deforestation as a function of the distance to forest edge showing the distance threshold.
+
+- ``dist_edge_threshold.csv``: Table with distance threshold and corresponding cumulated deforestation (which must be greater or equal to the defined deforestation threshold).
+
+- ``ldefrate_mw_<window_size>.tif``: Raster with local deforestation rates rescaled on [2, 65535].
+
+Predict the deforestation risk
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This step is for predicting the deforestation risk and deriving risk maps using the moving window models fitted on the calibration or historical period.
+
+- ``t1 calibration``: If checked, computes predictions at t1 using models fitted over the calibration period.
+
+- ``t2 validation``: If checked, computes predictions at t2 for validation (using models fitted over the calibration period).
+
+- ``t1 historical``: If checked, computes predictions at t1 using models fitted over the historical period.
+
+- ``t3 forecast``: If checked, computes predictions at t3 for forecasting (using models fitted over the historical period).
+
+Pushing the ``Run`` button in this box will use the moving window models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates.
+
+The following folders are created for each period: ``outputs/rmj_benchmark/<period>``. The following files are created for each window size, date or period:
+
+- ``prob_mw_<window_size>_<date>.tif``: Raster with classes of deforestation risk going from 1 (null deforestation risk beyond the distance threshold) to 65535 (highest deforestation risk).
+
+- ``prob_mw_<window_size>_<date>.png``: Plot of the deforestation risk map.
+
+- ``defrate_cat_mw_<window_size>_<period>.csv``: Table with deforestation rates on the period for each class of deforestation risk. See details `above <plugin_api.html#defrate-table>`_ with one exception for moving window models: column ``rate_mod`` is computed as :math:`\theta_{m,1} = 0` and :math:`\theta_{m,i} = ((i - 2) \times 999999 / 65533 + 1) \times 1e^{-6}` for :math:`i \geq 2`. This formula leads to an almost null (:math:`1e^{-6}`) deforestation probability when :math:`i=2` and to a deforestation probability of 1 when :math:`i=65535`.
 
 Validation
 ----------
@@ -270,6 +332,6 @@ The following folders are created for each period: ``outputs/model_validation/<p
 
 - ``tables/pred_obs_<model>_<period>_<cell_size>.csv``: Values of observed and predicted deforested area in each grid cell.
 
-- ``tables/indices_<model>_<period>_<cell_size>.csv``: Values of performance indices for a given model, period, and grid cell size. Performance indices include the R\ :sup:`2`\, the median absolute error (MedAE, in ha), the root mean square error (RMSE, in ha), and the weighted root mean square error (wRMSE, in ha), fo which the weights are determined by the number of forest pixels in each coarse grid cell.
+- ``tables/indices_<model>_<period>_<cell_size>.csv``: Values of performance indices for a given model, period, and grid cell size. Performance indices include the :math:`R^{2}`, the median absolute error (MedAE, in ha), the root mean square error (RMSE, in ha), and the weighted root mean square error (wRMSE, in ha), fo which the weights are determined by the number of forest pixels in each coarse grid cell.
 
-- ``figures/pred_obs_<model>_<period>_<cell_size>.png``: Plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the R\ :sup:`2`\ and the MedAE.
+- ``figures/pred_obs_<model>_<period>_<cell_size>.png``: Plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the :math:`R^{2}` and the MedAE.

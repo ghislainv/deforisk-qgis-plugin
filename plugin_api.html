@@ -124,7 +124,7 @@
     <script>document.write(`<img src="_static/logo-deforisk.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">deforisk Qgis plugin</p>
+    <p class="title logo__title">deforisk QGIS plugin</p>
   
 </a></div>
     
@@ -247,7 +247,7 @@
           
           
           
-          <a href="https://www.qgis.org/" title="Qgis" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="Qgis"/></a>
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
         </li>
         <li class="nav-item">
           
@@ -410,7 +410,7 @@
           
           
           
-          <a href="https://www.qgis.org/" title="Qgis" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="Qgis"/></a>
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
         </li>
         <li class="nav-item">
           
@@ -543,12 +543,12 @@
 <img alt="_images/interface_benchmark.png" src="_images/interface_benchmark.png" />
 <section id="fit-model-to-data">
 <h3>Fit model to data<a class="headerlink" href="#fit-model-to-data" title="Link to this heading">#</a></h3>
-<p>This tab is for collecting the information needed to map the deforestation risk using the benchmark model from the <a class="reference external" href="https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/">Verra JNR Unplanned Deforestation Allocation (UDef-A) tool</a>. In summary, the benchmark model assumes that deforestation is negligible beyond a given distance to forest edge, that the deforestation risk decreases with the distance to forest edge and that for a given distance to forest edge the risk varies between subjurisdictions.</p>
+<p>This tab is for collecting the information needed to map the deforestation risk using the benchmark model from the <a class="reference external" href="https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/">Verra</a> <a class="reference external" href="_static/VT0007-Unplanned-Deforestation-Allocation-v1.0.pdf">JNR Unplanned Deforestation Allocation (UDef-A) tool</a>. In summary, the benchmark model assumes that deforestation is negligible beyond a given distance to forest edge, that the deforestation risk decreases with the distance to forest edge and that for a given distance to forest edge the risk varies between subjurisdictions.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: Accumulated deforestation threshold used to identify the distance to forest edge threshold. Default to 99.5% as suggested in the UDef-A methodology.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: Maximal distance to forest edge used to compute the accumulated deforestation as a function of the distance to forest edge. Default to 2500 m as most of the deforestation should occur below this distance. Increase this number if the 99.5% threshold for the accumulated deforestation is not reached.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: If checked, the model is fitted for the calibration period (t1–t2).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: If checked, the model is fitted for the historical period (t1–t3).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: If checked, the model is fitted over the calibration period (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: If checked, the model is fitted over the historical period (t1–t3).</p></li>
 </ul>
 <p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will estimate the distance to forest edge beyond which the deforestation risk is assumed negligible. This distance threshold is used to define a first class of deforestation risk. Then, 29 classes of deforestation risk are estimated from the distance to forest edge using a geometric series to identified bins. Classes with higher deforestation risks have narrower ranges of distance to forest edge. Finally, a deforestation rate is estimated for each of the 30 classes within each subjurisdiction based on the observed deforestation for the time period considered.</p>
 <p>The following folders are created: <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/historical</span></code>. The following files are added to these folders:</p>
@@ -574,13 +574,24 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">rate_obs</span></code>: Observed annual deforestation rate per class computed as <span class="math notranslate nohighlight">\(\theta_{o,i} = 1 - (1 - d_{i} / n_{i})^{(1 / T)}\)</span>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rate_mod</span></code>: Relative spatial deforestation probability from model. <em>For the benchmark model</em>, it is computed as <span class="math notranslate nohighlight">\(\theta_{m,i}=d_{i}/n_{i}\)</span>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rate_abs</span></code>: Absolute deforestation probability with quantity adjustment (so that total predicted deforestation equals the observed deforestation on the period), computed from an adjustment factor <span class="math notranslate nohighlight">\(\rho\)</span> as <span class="math notranslate nohighlight">\(\theta_{a,i} = \rho \theta_{m,i}\)</span> with <span class="math notranslate nohighlight">\(\rho = \sum_{i} d_{i} / \sum_i n_{i} \theta_{m,i}\)</span>. <em>For the benchmark model for the calibration and historical periods</em>, <span class="math notranslate nohighlight">\(\rho=1\)</span> and <span class="math notranslate nohighlight">\(\theta_{a,i}=\theta_{m,i}\)</span>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">defor_dens</span></code>: Deforestation density (in ha/pixel/yr) computed as <span class="math notranslate nohighlight">\(D_{i} = \theta_{a, i} \times A / T\)</span>. The deforestation density is used to predict the amount of deforestation for each pixel belonging to a given class of deforestation risk.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defor_dens</span></code>: Deforestation density (in ha/pixel/yr) computed as <span class="math notranslate nohighlight">\(D_{i} = \theta_{a,i} \times A / T\)</span>. The deforestation density is used to predict the amount of deforestation for each pixel belonging to a given class of deforestation risk.</p></li>
 </ul>
 </section>
 </section>
 <section id="predict-the-deforestation-risk">
 <h3>Predict the deforestation risk<a class="headerlink" href="#predict-the-deforestation-risk" title="Link to this heading">#</a></h3>
-<p>To be done…</p>
+<p>This step is for predicting the deforestation risk and deriving risk maps using the benchmark models fitted on the calibration or historical period.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: If checked, computes predictions at t2 for validation (using the benchmark model fitted over the calibration period).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: If checked, computes predictions at t3 for forecasting (using the benchmark model fitted over the historical period).</p></li>
+</ul>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will use the benchmark models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge.</p>
+<p>The following folders are created: <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/validation</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/forecast</span></code>.The following files are added to these folders:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prob_bm_&lt;date&gt;.tif</span></code>: Raster with classes of deforestation risk going from 1001 to potentially 30999 (high deforestation risk).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prob_bm_&lt;date&gt;.png</span></code>: Plot of the deforestation risk map.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defrate_cat_bm_&lt;period&gt;.csv</span></code>: Table with deforestation rates on the period for each class of deforestation risk. See details <a class="reference external" href="plugin_api.html#defrate-table">above</a> with one exception: column <code class="docutils literal notranslate"><span class="pre">rate_mod</span></code> indicates deforestation rates obtained during either the calibration (when predicting at t2) or historical (when predicting at t3) period.</p></li>
+</ul>
 </section>
 </section>
 <section id="far-models">
@@ -609,8 +620,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Prior</span> <span class="pre">Vrho</span></code>: If -1 (recommended), the prior for Vrho is an Inverse-Gamma.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MCMC</span></code>: Length of the MCMC for the final model.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">selection</span></code>: If checked (recommended), a variable selection (backward selection) is performed before fitting the final model.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: If checked, models are fitted for the calibration period (t1–t2).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: If checked, models are fitted for the historical period (t1–t3).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: If checked, models are fitted over the calibration period (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: If checked, models are fitted over the historical period (t1–t3).</p></li>
 </ul>
 <p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step).</p>
 <p>The following folders are created: <code class="docutils literal notranslate"><span class="pre">outputs/far_models/calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/far_models/historical</span></code>. The following files are added to the <code class="docutils literal notranslate"><span class="pre">outputs/far_models/calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/far_models/historical</span></code> folders:</p>
@@ -626,29 +637,64 @@
 </section>
 <section id="id1">
 <h3>Predict the deforestation risk<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>This step is for predicting the deforestation risk and deriving risk maps using the models fitted on the calibration or historical period.</p>
+<p>This step is for predicting the deforestation risk and deriving risk maps using the FAR models fitted on the calibration or historical period.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: If checked, computes predictions with the iCAR model.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code>: If checked, computes predictions with GLM.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code>: If checked, computes predictions with the Random Forest model.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">calibration</span></code>: If checked, computes predictions at t1 using models fitted for the calibration period.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: If checked, computes predictions at t2 for validation (using models fitted for the calibration period).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">historical</span></code>: If checked, computes predictions at t1 using models fitted for the historical period.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: If checked, computes predictions at t3 for forecasting (using models fitted for the historical period).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">calibration</span></code>: If checked, computes predictions at t1 using models fitted over the calibration period.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: If checked, computes predictions at t2 for validation (using models fitted over the calibration period).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">historical</span></code>: If checked, computes predictions at t1 using models fitted over the historical period.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: If checked, computes predictions at t3 for forecasting (using models fitted over the historical period).</p></li>
 </ul>
 <p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will use the statistical models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge, of the distance to roads, or of protected areas.</p>
-<p>The following folders are created for each date and period: <code class="docutils literal notranslate"><span class="pre">outputs/far-models/&lt;date_and_period&gt;</span></code>. The following files are created for each model, date and period:</p>
+<p>The following folders are created for each period: <code class="docutils literal notranslate"><span class="pre">outputs/far_models/&lt;period&gt;</span></code>. The following files are created for each model, date or period:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">prob_&lt;far_model&gt;_&lt;date&gt;.tif</span></code>: Raster with classes of deforestation risk going from 1 to 65535 (high deforestation risk).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prob_&lt;far_model&gt;_&lt;date&gt;.tif</span></code>: Raster with classes of deforestation risk going from 1 to 65535 (highest deforestation risk).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">prob_&lt;far_model&gt;_&lt;date&gt;.png</span></code>: Plot of the deforestation risk map.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code>: Table with deforestation rates on the period for each class of deforestation risk. See details <a class="reference external" href="plugin_api.html#defrate-table">above</a> with one exception for FAR models: column <code class="docutils literal notranslate"><span class="pre">rate_mod</span></code> is computed as <span class="math notranslate nohighlight">\(\theta_{m, i} = ((i_{} - 1) \times 999999 / 65534 + 1) \times 1e^{-6}\)</span>. This formula leads to an almost null (<span class="math notranslate nohighlight">\(1e^{-6}\)</span>) deforestation probability when <span class="math notranslate nohighlight">\(i=1\)</span> and to a deforestation probability of 1 when <span class="math notranslate nohighlight">\(i=65535\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code>: Table with deforestation rates on the period for each class of deforestation risk. See details <a class="reference external" href="plugin_api.html#defrate-table">above</a> with one exception for FAR models: column <code class="docutils literal notranslate"><span class="pre">rate_mod</span></code> is computed as <span class="math notranslate nohighlight">\(\theta_{m,i} = ((i - 1) \times 999999 / 65534 + 1) \times 1e^{-6}\)</span>. This formula leads to an almost null (<span class="math notranslate nohighlight">\(1e^{-6}\)</span>) deforestation probability when <span class="math notranslate nohighlight">\(i=1\)</span> and to a deforestation probability of 1 when <span class="math notranslate nohighlight">\(i=65535\)</span>.</p></li>
 </ul>
 </section>
 </section>
 <section id="mw-models">
 <h2>MW models<a class="headerlink" href="#mw-models" title="Link to this heading">#</a></h2>
 <img alt="_images/interface_mw_models.png" src="_images/interface_mw_models.png" />
-<p>To be done…</p>
+<section id="id3">
+<h3>Fit model to data<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>This tab is for collecting the information needed to map the deforestation risk using the moving window model which was first proposed by <a class="reference external" href="https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/">Verra</a> in the <a class="reference external" href="_static/DRAFT_JNR_Risk_Mapping_Tool_15APR2021.pdf">JNR Risk Mapping Tool v0.1</a>. In summary, the moving model assumes that deforestation is negligible beyond a given distance to forest edge (as for the benchmark model), and that the deforestation risk can be estimated in the remaining area with a moving window approach.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: Accumulated deforestation threshold used to identify the distance to forest edge threshold. Default to 99.5%.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: Maximal distance to forest edge used to compute the accumulated deforestation as a function of the distance to forest edge. Default to 2500 m as most of the deforestation should occur below this distance. Increase this number if the threshold for the accumulated deforestation is not reached.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Window</span> <span class="pre">sizes</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>: Window sizes in number of pixels. Several window sizes can be specified if separated with a comma, such as “11, 21” for example which are the default values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: If checked, the model is fitted over the calibration period (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: If checked, the model is fitted over the historical period (t1–t3).</p></li>
+</ul>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will estimate the distance to forest edge beyond which the deforestation risk is assumed negligible. This distance threshold is used to define a first class of deforestation risk equal to 1. Then deforestation rates are estimated in the remaining area with a moving window. Deforestation rates on the interval [0, 1] are rescaled on the interval [2, 65535].</p>
+<p>The following folders are created: <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/historical</span></code>. The following files are added to these folders:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tab_dist.csv</span></code>: Table with the cumulated deforestation as a function of the distance to forest edge.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">perc_dist.png</span></code>: Plot of the cumulated deforestation as a function of the distance to forest edge showing the distance threshold.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dist_edge_threshold.csv</span></code>: Table with distance threshold and corresponding cumulated deforestation (which must be greater or equal to the defined deforestation threshold).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ldefrate_mw_&lt;window_size&gt;.tif</span></code>: Raster with local deforestation rates rescaled on [2, 65535].</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Predict the deforestation risk<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>This step is for predicting the deforestation risk and deriving risk maps using the moving window models fitted on the calibration or historical period.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">calibration</span></code>: If checked, computes predictions at t1 using models fitted over the calibration period.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: If checked, computes predictions at t2 for validation (using models fitted over the calibration period).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">historical</span></code>: If checked, computes predictions at t1 using models fitted over the historical period.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: If checked, computes predictions at t3 for forecasting (using models fitted over the historical period).</p></li>
+</ul>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will use the moving window models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates.</p>
+<p>The following folders are created for each period: <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/&lt;period&gt;</span></code>. The following files are created for each window size, date or period:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prob_mw_&lt;window_size&gt;_&lt;date&gt;.tif</span></code>: Raster with classes of deforestation risk going from 1 (null deforestation risk beyond the distance threshold) to 65535 (highest deforestation risk).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prob_mw_&lt;window_size&gt;_&lt;date&gt;.png</span></code>: Plot of the deforestation risk map.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">defrate_cat_mw_&lt;window_size&gt;_&lt;period&gt;.csv</span></code>: Table with deforestation rates on the period for each class of deforestation risk. See details <a class="reference external" href="plugin_api.html#defrate-table">above</a> with one exception for moving window models: column <code class="docutils literal notranslate"><span class="pre">rate_mod</span></code> is computed as <span class="math notranslate nohighlight">\(\theta_{m,1} = 0\)</span> and <span class="math notranslate nohighlight">\(\theta_{m,i} = ((i - 2) \times 999999 / 65533 + 1) \times 1e^{-6}\)</span> for <span class="math notranslate nohighlight">\(i \geq 2\)</span>. This formula leads to an almost null (<span class="math notranslate nohighlight">\(1e^{-6}\)</span>) deforestation probability when <span class="math notranslate nohighlight">\(i=2\)</span> and to a deforestation probability of 1 when <span class="math notranslate nohighlight">\(i=65535\)</span>.</p></li>
+</ul>
+</section>
 </section>
 <section id="validation">
 <h2>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
@@ -670,8 +716,8 @@
 <p>The following folders are created for each period: <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/figures</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/tables</span></code>. The following files are added for each model, period, and grid cell size:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">tables/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.csv</span></code>: Values of observed and predicted deforested area in each grid cell.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tables/indices_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.csv</span></code>: Values of performance indices for a given model, period, and grid cell size. Performance indices include the R<sup>2</sup>, the median absolute error (MedAE, in ha), the root mean square error (RMSE, in ha), and the weighted root mean square error (wRMSE, in ha), fo which the weights are determined by the number of forest pixels in each coarse grid cell.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">figures/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.png</span></code>: Plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the R<sup>2</sup>and the MedAE.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tables/indices_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.csv</span></code>: Values of performance indices for a given model, period, and grid cell size. Performance indices include the <span class="math notranslate nohighlight">\(R^{2}\)</span>, the median absolute error (MedAE, in ha), the root mean square error (RMSE, in ha), and the weighted root mean square error (wRMSE, in ha), fo which the weights are determined by the number of forest pixels in each coarse grid cell.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">figures/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.png</span></code>: Plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the <span class="math notranslate nohighlight">\(R^{2}\)</span> and the MedAE.</p></li>
 </ul>
 </section>
 </section>
@@ -742,7 +788,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Predict the deforestation risk</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mw-models">MW models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mw-models">MW models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Fit model to data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Predict the deforestation risk</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-validation">Model validation</a></li>
 </ul>

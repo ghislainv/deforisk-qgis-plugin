@@ -123,7 +123,7 @@
     <script>document.write(`<img src="_static/logo-deforisk.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">deforisk Qgis plugin</p>
+    <p class="title logo__title">deforisk QGIS plugin</p>
   
 </a></div>
     
@@ -246,7 +246,7 @@
           
           
           
-          <a href="https://www.qgis.org/" title="Qgis" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="Qgis"/></a>
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
         </li>
         <li class="nav-item">
           
@@ -409,7 +409,7 @@
           
           
           
-          <a href="https://www.qgis.org/" title="Qgis" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="Qgis"/></a>
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
         </li>
         <li class="nav-item">
           
@@ -490,11 +490,43 @@
                   
   <section id="get-started">
 <h1>Get started<a class="headerlink" href="#get-started" title="Link to this heading">#</a></h1>
-<section id="first-section">
-<h2>First section<a class="headerlink" href="#first-section" title="Link to this heading">#</a></h2>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>To test the plugin installation and have a first look at its functionalities, try it on a small area of interest (AOI) such as the <a class="reference external" href="https://en.wikipedia.org/wiki/Martinique">Martinique</a> island (1128 km<sup>2</sup>) which as the MTQ iso code. Testing the plugin on a small AOI has the advantage of making computations faster so that you can directly see the outputs, interpret the results, and understand the functioning of the plugin.</p>
 </section>
-<section id="second-section">
-<h2>Second section<a class="headerlink" href="#second-section" title="Link to this heading">#</a></h2>
+<section id="get-variables">
+<h2>Get variables<a class="headerlink" href="#get-variables" title="Link to this heading">#</a></h2>
+<img alt="MTQ variables" src="_images/interface_MTQ-tuto.png" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">directory</span></code>: Select your working directory. Here <code class="docutils literal notranslate"><span class="pre">/home/&lt;username&gt;/deforisk/MTQ-tuto</span></code>, but it could be <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\deforisk\MTQ-tuto</span></code> on Windows for example.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code>: MTQ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Years</span></code>: 2000, 2010, 2020</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Forest</span> <span class="pre">data</span> <span class="pre">source</span></code>: tmf</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tree</span> <span class="pre">cover</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 50 (could be left empty, not useful here for tmf data source)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tile</span> <span class="pre">size</span> <span class="pre">(dd)</span></code>: 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Country/state</span> <span class="pre">ISO</span> <span class="pre">code</span></code>: MTQ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Earth</span> <span class="pre">Engine</span> <span class="pre">access</span></code>: Google Cloud project name with Earth Engine access or path to a JSON private key file for service account.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code>: Personal WDPA API Token or path to text file with WDPA_KEY environmental variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>: EPSG:5490</p></li>
+</ul>
+<p>Click the run button and you should get the following layer on QGIS:</p>
+<a class="reference internal image-reference" href="_images/qgis-variables.png"><img alt="QGIS variables" src="_images/qgis-variables.png" style="width: 650px;" />
+</a>
+</section>
+<section id="benchmark-model">
+<h2>Benchmark model<a class="headerlink" href="#benchmark-model" title="Link to this heading">#</a></h2>
+</section>
+<section id="forestatrisk-models">
+<h2>Forestatrisk models<a class="headerlink" href="#forestatrisk-models" title="Link to this heading">#</a></h2>
+</section>
+<section id="moving-window-models">
+<h2>Moving window models<a class="headerlink" href="#moving-window-models" title="Link to this heading">#</a></h2>
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -544,8 +576,13 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-section">First section</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-section">Second section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-variables">Get variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-model">Benchmark model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forestatrisk-models">Forestatrisk models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-window-models">Moving window models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 
