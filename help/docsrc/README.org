@@ -10,7 +10,7 @@
 #+end_export
 
 #+attr_rst: :align right :width 140px :alt Logo riskmapjnr
-[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_images/logo-deforisk.svg]]
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-deforisk.svg]]
 
 #+begin_export rst
 ====================
