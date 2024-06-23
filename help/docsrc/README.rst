@@ -40,6 +40,37 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
     :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin
     :alt: Banner
 
+Specificities
+-------------
+
+**Python based.** The ``deforisk`` plugin relies on four specific Python packages developed specifically for modelling deforestation: ``geefcc``, ``pywdpa``, ``forestatrisk``, and ``riskmapjnr``. The ``geefcc`` packages can be used to make forest cover change maps from Google Earth Engine (GEE) and download them locally using two global tree/forest cover change products: Global Forest Change or Tropical Moist Forests. The ``pywdpa`` package allows downloading vector files of protected areas for any countries using the World Database on Protected Areas (WDPA). The ``forestatrisk`` package provides functions to model deforestation and predict the spatial deforestation risk using various explanatory variables (distance to forest edge, elevation, protected areas, etc.) and various statistical models including iCAR, GLM, and Random Forest models. The ``riskmapjnr`` package allows deriving deforestation risk maps following Verra JNR methodologies which include a moving window model and a benchmark model which assumes a decrease of the deforestation risk with the distance to forest edge.
+
+.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-geefcc.png
+    :target: https://ecology.ghislainv.fr/geefcc
+    :alt: geefc
+    :width: 100px
+
+.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-pywdpa.png
+    :target: https://ecology.ghislainv.fr/pywdpa
+    :alt: pywdpa
+    :width: 100px
+
+.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-forestatrisk.png
+    :target: https://ecology.ghislainv.fr/forestatrisk
+    :alt: forestatrisk
+    :width: 100px
+
+.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-riskmapjnr.png
+    :target: https://ecology.ghislainv.fr/riskmapjnr
+    :alt: riskmapjnr
+    :width: 100px
+
+**Processing raster by blocks.** Raster files of forest cover change and explanatory variables might occupy a space of several gigabytes on disk. Processing such large rasters in memory can be prohibitively intensive on computers with limited RAM. Functions used in the ``deforisk`` plugin process large rasters by blocks of pixels representing subsets of the raster data. This makes computation efficient, with low memory usage. Reading and writing subsets of raster data is done by using functions from GDAL, a dependency of the plugin. Numerical computations on arrays are performed with the NumPy Python package, whose core is mostly made of optimized and compiled C code that runs quickly.
+
+**Running tasks in parallel.** State-of-the-art approach to select the best deforestation risk map and forecast deforestation implies comparing various models, fit the models using forest cover change over different time periods and predict the deforestation risk at several dates. This implies repeating a high number of tasks. To save computation time, the ``deforisk`` plugin use the QGIS task manager which allows running several analysis in parallel.
+
+**OS independent.** Using both computation by block for large rasters and task parallelization, the ``deforisk`` plugin allows selecting the best deforestation risk map and forecast deforestation for large countries or areas of interest in a limited amount of time, even on personal computers with average performance hardware. Because the ``deforisk`` is a QGIS plugin written in Python, it should run on all operating systems able to run QGIS, including Windows (:math:`\geq10`), Linux, and Mac OS.
+
 Installing the ``deforisk`` plugin in Qgis
 ------------------------------------------
 

@@ -155,7 +155,9 @@ class FarCalibrateTask(QgsTask):
                         # Chains
                         burnin=1000, mcmc=1000, thin=1,
                         # Starting values
-                        beta_start=self.beta_start)
+                        beta_start=self.beta_start,
+                        # Verbose = False for QGIS task
+                        verbose=0)
                     # Ecological and statistical significance
                     effects = mod_icar.betas[1:]
                     positive_effects = effects >= 0
@@ -204,7 +206,9 @@ class FarCalibrateTask(QgsTask):
                 mcmc=mcmc,
                 thin=thin,
                 # Starting values
-                beta_start=beta_start)
+                beta_start=beta_start,
+                # Verbose = False for QGIS task
+                verbose=0)
 
             # Check isCanceled() to handle cancellation
             if self.isCanceled():
