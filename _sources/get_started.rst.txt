@@ -18,7 +18,7 @@ Introduction
 
 Open QGIS on your computer. To have access to log messages, activate the “Log Messages” panel in QGIS going to ``View > Panel > Log Messages`` in the Menu. When using a plugin, it is also a good habit to open the Python console in QGIS to have access to Python messages returned in the console. To open it, click on the Python icon |ico_py| in the “Plugins Toolbar”. If the toolbar is not visible, activate it going to ``View > Toolbars > Plugins Toolbar`` in the Menu.
 
-Once the plugin has been installed (see `Installation <installation.html>`_ instructions), open the plugin clicking on its icon |ico_deforisk|. You should see the versions of the dependencies installed in your environment written in the Python console. Check that these version numbers correspond to the last version for each dependency. Otherwise upgrade your dependencies.
+Once the plugin has been installed (see `Installation <installation.html>`_ instructions), open the plugin clicking on its icon |ico_deforisk|. You should see the versions of the dependencies installed in your environment written in the Python console. Check that these version numbers correspond to the last version for each dependency. Otherwise upgrade the dependencies.
 
 .. code:: python
 
