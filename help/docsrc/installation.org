@@ -23,9 +23,9 @@ To be able to use the ~deforisk~ QGIS plugin, you need to activate the developer
 - Toggle the Developer Mode setting, at the top of the "For developers" page.
 - Read the disclaimer for the setting you choose. Click "Yes" to accept the change.
   
-** Install Qgis and GDAL on Windows
+** Install QGIS and GDAL on Windows
 
-To install Qgis and GDAL on Windows, use the [[https://trac.osgeo.org/osgeo4w/][OSGeo4W]] network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select /Express Install/ and install both Qgis and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install /OSGeo4W Shell/ to execute command lines.
+To install QGIS and GDAL on Windows, use the [[https://trac.osgeo.org/osgeo4w/][OSGeo4W]] network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select /Express Install/ and install both QGIS and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install /OSGeo4W Shell/ to execute command lines.
 
 ** Install the ~forestatrisk~ and ~riskmapjnr~ Python packages on Windows
 
@@ -44,9 +44,9 @@ python3.exe --version
 
 * On Unix-like systems (Linux and macOS)
 
-** Install Qgis and GDAL on Unix-like systems
+** Install QGIS and GDAL on Unix-like systems
 
-Install Qgis and GDAL on your system, for example using ~apt-get~ for Debian/Ubuntu Linux distributions.
+Install QGIS and GDAL on your system, for example using ~apt-get~ for Debian/Ubuntu Linux distributions.
 
 #+begin_src shell
 sudo apt-get update
@@ -70,7 +70,7 @@ python3 -m pip install forestatrisk riskmapjnr gdal==$(gdal-config --version)
 deactivate
 #+end_src
 
-Then, in the ~startup.py~ [[https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts][Python file]], add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when Qgis starts and will add the path to the packages installed in the virtual environment to ~sys.path~.
+Then, in the ~startup.py~ [[https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts][Python file]], add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to ~sys.path~.
 
 #+begin_src python :results output :exports both
 import sys
@@ -99,9 +99,9 @@ In the ~deforisk~ plugin, for the ~WDPA access~ argument available in the "Get v
 #+attr_rst: :width 500px :alt WDPA access
 [[file:_static/wdpa_access.png]]
 
-* Installing the ~deforisk~ plugin in Qgis
+* Installing the ~deforisk~ plugin in QGIS
 
 - Download the ~deforisk~ [[https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip][zip file]] from GitHub.
-- Open Qgis.
-- In Qgis menu bar, go to ~Extensions/Install extensions/Install from ZIP~.
+- Open QGIS.
+- In QGIS menu bar, go to ~Extensions/Install extensions/Install from ZIP~.
 - Select the zip file that has been downloaded.
