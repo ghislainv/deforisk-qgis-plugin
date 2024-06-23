@@ -66,7 +66,7 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 #+attr_rst: :alt pywdpa :width 100px
 [[https://ecology.ghislainv.fr/pywdpa][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-pywdpa.png]]
 #+attr_rst: :alt forestatrisk :width 100px
-[[https://ecology.ghislainv.fr/forestatrisk][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-forestatrisk.png]]
+[[https://ecology.ghislainv.fr/forestatrisk][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-far.png]]
 #+attr_rst: :alt riskmapjnr :width 100px
 [[https://ecology.ghislainv.fr/riskmapjnr][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-riskmapjnr.png]]
 
