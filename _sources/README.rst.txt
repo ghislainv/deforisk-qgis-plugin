@@ -55,7 +55,7 @@ Specificities
     :alt: pywdpa
     :width: 100px
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-forestatrisk.png
+.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-far.png
     :target: https://ecology.ghislainv.fr/forestatrisk
     :alt: forestatrisk
     :width: 100px
