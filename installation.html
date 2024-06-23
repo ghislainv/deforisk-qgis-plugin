@@ -506,8 +506,8 @@
 </ul>
 </section>
 <section id="install-qgis-and-gdal-on-windows">
-<h3>Install Qgis and GDAL on Windows<a class="headerlink" href="#install-qgis-and-gdal-on-windows" title="Link to this heading">#</a></h3>
-<p>To install Qgis and GDAL on Windows, use the <a class="reference external" href="https://trac.osgeo.org/osgeo4w/">OSGeo4W</a> network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select <em>Express Install</em> and install both Qgis and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install <em>OSGeo4W Shell</em> to execute command lines.</p>
+<h3>Install QGIS and GDAL on Windows<a class="headerlink" href="#install-qgis-and-gdal-on-windows" title="Link to this heading">#</a></h3>
+<p>To install QGIS and GDAL on Windows, use the <a class="reference external" href="https://trac.osgeo.org/osgeo4w/">OSGeo4W</a> network installer. OSGeo4W is a binary distribution of a broad set of open source geospatial software for Windows environments (Windows 11 down to 7). Select <em>Express Install</em> and install both QGIS and GDAL. Several Gb of space will be needed on disk to install these programs. This will also install <em>OSGeo4W Shell</em> to execute command lines.</p>
 </section>
 <section id="install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows">
 <h3>Install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages on Windows<a class="headerlink" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows" title="Link to this heading">#</a></h3>
@@ -525,8 +525,8 @@ python3.exe<span class="w"> </span>-m<span class="w"> </span>pip<span class="w">
 <section id="on-unix-like-systems-linux-and-macos">
 <h2>On Unix-like systems (Linux and macOS)<a class="headerlink" href="#on-unix-like-systems-linux-and-macos" title="Link to this heading">#</a></h2>
 <section id="install-qgis-and-gdal-on-unix-like-systems">
-<h3>Install Qgis and GDAL on Unix-like systems<a class="headerlink" href="#install-qgis-and-gdal-on-unix-like-systems" title="Link to this heading">#</a></h3>
-<p>Install Qgis and GDAL on your system, for example using <code class="docutils literal notranslate"><span class="pre">apt-get</span></code> for Debian/Ubuntu Linux distributions.</p>
+<h3>Install QGIS and GDAL on Unix-like systems<a class="headerlink" href="#install-qgis-and-gdal-on-unix-like-systems" title="Link to this heading">#</a></h3>
+<p>Install QGIS and GDAL on your system, for example using <code class="docutils literal notranslate"><span class="pre">apt-get</span></code> for Debian/Ubuntu Linux distributions.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>qgis<span class="w"> </span>gdal-bin<span class="w"> </span>libgdal-dev
 </pre></div>
@@ -546,7 +546,7 @@ python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </s
 deactivate
 </pre></div>
 </div>
-<p>Then, in the <code class="docutils literal notranslate"><span class="pre">startup.py</span></code> <a class="reference external" href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts">Python file</a>, add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when Qgis starts and will add the path to the packages installed in the virtual environment to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>.</p>
+<p>Then, in the <code class="docutils literal notranslate"><span class="pre">startup.py</span></code> <a class="reference external" href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts">Python file</a>, add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/path/to/venv/lib/python3.11/site-packages/&quot;</span><span class="p">)</span>
 </pre></div>
@@ -572,11 +572,11 @@ deactivate
 </section>
 </section>
 <section id="installing-the-deforisk-plugin-in-qgis">
-<h2>Installing the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin in Qgis<a class="headerlink" href="#installing-the-deforisk-plugin-in-qgis" title="Link to this heading">#</a></h2>
+<h2>Installing the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin in QGIS<a class="headerlink" href="#installing-the-deforisk-plugin-in-qgis" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Download the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> <a class="reference external" href="https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip">zip file</a> from GitHub.</p></li>
-<li><p>Open Qgis.</p></li>
-<li><p>In Qgis menu bar, go to <code class="docutils literal notranslate"><span class="pre">Extensions/Install</span> <span class="pre">extensions/Install</span> <span class="pre">from</span> <span class="pre">ZIP</span></code>.</p></li>
+<li><p>Open QGIS.</p></li>
+<li><p>In QGIS menu bar, go to <code class="docutils literal notranslate"><span class="pre">Extensions/Install</span> <span class="pre">extensions/Install</span> <span class="pre">from</span> <span class="pre">ZIP</span></code>.</p></li>
 <li><p>Select the zip file that has been downloaded.</p></li>
 </ul>
 </section>
@@ -630,12 +630,12 @@ deactivate
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-windows">On Windows</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turn-on-the-developer-mode">Turn on the developer mode</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-windows">Install Qgis and GDAL on Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-windows">Install QGIS and GDAL on Windows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows">Install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages on Windows</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-unix-like-systems-linux-and-macos">On Unix-like systems (Linux and macOS)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-unix-like-systems">Install Qgis and GDAL on Unix-like systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-unix-like-systems">Install QGIS and GDAL on Unix-like systems</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-osmconvert-and-osmfilter">Install <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-unix-like-systems">Install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages on Unix-like systems</a></li>
 </ul>
@@ -645,7 +645,7 @@ deactivate
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-wdpa">Access to WDPA</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-deforisk-plugin-in-qgis">Installing the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin in Qgis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-deforisk-plugin-in-qgis">Installing the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin in QGIS</a></li>
 </ul>
   </nav></div>
 

@@ -492,11 +492,21 @@
 <h1>Get started<a class="headerlink" href="#get-started" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>To test the plugin installation and have a first look at its functionalities, try it on a small area of interest (AOI) such as the <a class="reference external" href="https://en.wikipedia.org/wiki/Martinique">Martinique</a> island (1128 km<sup>2</sup>) which as the MTQ iso code. Testing the plugin on a small AOI has the advantage of making computations faster so that you can directly see the outputs, interpret the results, and understand the functioning of the plugin.</p>
+<p>Open QGIS on your computer. To have access to log messages, activate the “Log Messages” panel in QGIS going to <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">&gt;</span> <span class="pre">Panel</span> <span class="pre">&gt;</span> <span class="pre">Log</span> <span class="pre">Messages</span></code> in the Menu. When using a plugin, it is also a good habit to open the Python console in QGIS to have access to Python messages returned in the console. To open it, click on the Python icon <img alt="ico_py" class="no-scaled-link" src="_images/icon_python_console_toolbar.png" /> in the “Plugins Toolbar”. If the toolbar is not visible, activate it going to <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">&gt;</span> <span class="pre">Toolbars</span> <span class="pre">&gt;</span> <span class="pre">Plugins</span> <span class="pre">Toolbar</span></code> in the Menu.</p>
+<p>Once the plugin has been installed (see <a class="reference external" href="installation.html">Installation</a> instructions), open the plugin clicking on its icon <img alt="ico_deforisk" class="no-scaled-link" src="_images/icon_deforisk_toolbar.png" />. You should see the versions of the dependencies installed in your environment written in the Python console. Check that these version numbers correspond to the last version for each dependency. Otherwise upgrade your dependencies.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">osmconvert</span> <span class="mf">0.8.10</span>
+<span class="n">osmfilter</span> <span class="mf">1.4.4</span>
+<span class="n">geefcc</span> <span class="mf">0.1.3</span>
+<span class="n">pywdpa</span> <span class="mf">0.1.6</span>
+<span class="n">forestatrisk</span> <span class="mf">1.2</span>
+<span class="n">riskmapjnr</span> <span class="mf">1.3</span>
+</pre></div>
+</div>
+<p>To test the plugin and have a first look at its functionalities, try it on a small area of interest (AOI) such as the <a class="reference external" href="https://en.wikipedia.org/wiki/Martinique">Martinique</a> island (1128 km<sup>2</sup>) which has the MTQ iso code. Testing the plugin on a small AOI has the advantage of making computations fast so that you can directly see the outputs, interpret the results, and understand the functioning of the plugin.</p>
 </section>
 <section id="get-variables">
 <h2>Get variables<a class="headerlink" href="#get-variables" title="Link to this heading">#</a></h2>
-<img alt="MTQ variables" src="_images/interface_MTQ-tuto.png" />
+<img alt="MTQ variables" src="_images/interface_MTQ-tuto-variables.png" />
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">directory</span></code>: Select your working directory. Here <code class="docutils literal notranslate"><span class="pre">/home/&lt;username&gt;/deforisk/MTQ-tuto</span></code>, but it could be <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\deforisk\MTQ-tuto</span></code> on Windows for example.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code>: MTQ</p></li>
@@ -509,12 +519,33 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code>: Personal WDPA API Token or path to text file with WDPA_KEY environmental variable.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>: EPSG:5490</p></li>
 </ul>
-<p>Click the run button and you should get the following layer on QGIS:</p>
-<a class="reference internal image-reference" href="_images/qgis-variables.png"><img alt="QGIS variables" src="_images/qgis-variables.png" style="width: 650px;" />
+<p>Click the run button. A forest cover change map appears in the list of QGIS layers (see image below and click to enlarge) and a plot of the forest cover change <code class="docutils literal notranslate"><span class="pre">fcc123.png</span></code> is created in folder <code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>. New folders are created in the working directory among which the <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> folder which includes raw data with intermediary files and the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder which includes processed data used for models and plots. You can visualize the road network for example adding the <code class="docutils literal notranslate"><span class="pre">roads_proj.shp</span></code> vector file, which is located in the <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> directory, in QGIS.</p>
+<a class="reference internal image-reference" href="_images/qgis-variables-results.png"><img alt="QGIS variables" src="_images/qgis-variables-results.png" style="width: 650px;" />
 </a>
 </section>
 <section id="benchmark-model">
 <h2>Benchmark model<a class="headerlink" href="#benchmark-model" title="Link to this heading">#</a></h2>
+<img alt="MTQ variables" src="_images/interface_MTQ-tuto-benchmark.png" />
+<section id="fit-model-to-data">
+<h3>Fit model to data<a class="headerlink" href="#fit-model-to-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 99.5%</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: 2500</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Checked, the model is fitted over the calibration period (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Checked, the model is fitted over the historical period (t1–t3).</p></li>
+</ul>
+<p>Click the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button to estimate the deforestation risk with the benchmark model and predict the deforestation risk at t1 using both data on the calibration and historical periods. Maps with classes of deforestation risk are added to the list of QGIS layers (see image below) and new folders with results are created in the <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/</span></code> directory including the <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_bm_&lt;period&gt;.csv</span></code> tables with deforestation rates for each class of deforestation risk (see details <a class="reference external" href="plugin_api.html#defrate-table">here</a>).</p>
+<a class="reference internal image-reference" href="_images/qgis-benchmark-results.png"><img alt="QGIS variables" src="_images/qgis-benchmark-results.png" style="width: 650px;" />
+</a>
+</section>
+<section id="predict-the-deforestation-risk">
+<h3>Predict the deforestation risk<a class="headerlink" href="#predict-the-deforestation-risk" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: Checked, computes predictions at t2 for validation (using the benchmark model fitted over the calibration period).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: Checked, computes predictions at t3 for forecasting (using the benchmark model fitted over the historical period).</p></li>
+</ul>
+<p>Click the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button to predict the deforestation risk at t2 and t3 using the benchmark model. Maps with classes of deforestation risk are added to the list of QGIS layers (see image below) and new folders with results are created in the <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/</span></code> directory.</p>
+</section>
 </section>
 <section id="forestatrisk-models">
 <h2>Forestatrisk models<a class="headerlink" href="#forestatrisk-models" title="Link to this heading">#</a></h2>
@@ -578,7 +609,11 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-variables">Get variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-model">Benchmark model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-model">Benchmark model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-model-to-data">Fit model to data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-deforestation-risk">Predict the deforestation risk</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forestatrisk-models">Forestatrisk models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-window-models">Moving window models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>

@@ -27,7 +27,7 @@ This box is for collecting the information needed to download the data and compu
 
 - ``Working directory``: Path to the working directory where all the data and model outputs will be stored.
 
-- ``Area Of Interest``: Country ISO 3166-1 alpha-3 code (e.g. MTQ) or path to GPKG vector file in lat/lon delimiting the area of interest (jurisdiction) and the sub-jurisdictions. The GPKG vector file must include two layers, the first one must be named “aoi” for the jurisdiction and the second one must be named “subj” for subjurisdictions. This GPKG vector file can be manually obtained using Qgis tools and data from the Global Administrative Areas (`GADM <https://gadm.org/download_country.html>`_) website. An example is given in the following article on using `subnational jurisdictions <articles/subnational_jurisd.html>`_.
+- ``Area Of Interest``: Country ISO 3166-1 alpha-3 code (e.g. MTQ) or path to GPKG vector file in lat/lon delimiting the area of interest (jurisdiction) and the sub-jurisdictions. The GPKG vector file must include two layers, the first one must be named “aoi” for the jurisdiction and the second one must be named “subj” for subjurisdictions. This GPKG vector file can be manually obtained using QGIS tools and data from the Global Administrative Areas (`GADM <https://gadm.org/download_country.html>`_) website. An example is given in the following article on using `subnational jurisdictions <articles/subnational_jurisd.html>`_.
 
 - ``Years``: Years delimiting the two periods (calibration and validation periods) for forest cover change observations. Three years must be provided. Years can be in the interval 2001--2024 for GFC (GFC does not provide tree cover loss for the year 2000) and 2000--2023 for TMF.
 
@@ -45,7 +45,7 @@ This box is for collecting the information needed to download the data and compu
 
 - ``Projection EPSG code``: EPSG code of the coordinate reference system used for projecting maps.
 
-Pushing the ``Run`` button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of Qgis layers and a plot of the forest cover change ``fcc123.png`` is created in folder ``outputs/variables``. New folders are created in the working directory:
+Pushing the ``Run`` button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of QGIS layers and a plot of the forest cover change ``fcc123.png`` is created in folder ``outputs/variables``. New folders are created in the working directory:
 
 Six data folders are created:
 
@@ -69,7 +69,7 @@ Three other folders are created:
 
 - ``outputs/variables``: Output for variables.
 
-- ``qgis_layer_style``: Layer styles for Qgis.
+- ``qgis_layer_style``: Layer styles for QGIS.
 
 Benchmark
 ---------
@@ -143,7 +143,7 @@ This step is for predicting the deforestation risk and deriving risk maps using 
 
 - ``t3 forecast``: If checked, computes predictions at t3 for forecasting (using the benchmark model fitted over the historical period).
 
-Pushing the ``Run`` button in this box will use the benchmark models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge.
+Pushing the ``Run`` button in this box will use the benchmark models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of QGIS layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge.
 
 The following folders are created: ``outputs/rmj_benchmark/validation`` and ``outputs/rmj_benchmark/forecast``.The following files are added to these folders:
 
@@ -175,7 +175,7 @@ This box is for collecting the information needed to sample the deforestation ob
 
 - ``hist. period``: If checked, the observations are sampled for the historical period (t1--t3).
 
-Pushing the ``Run`` button in this box will sample the observations. Note that you cannot sample the observations before downloading and computing the variables (see previous step). When the operation is finished, the sampled observations appear in the list of Qgis layers. You can navigate the map to confirm that about half the observations have been sampled in the deforested area and half in the non-deforested area.
+Pushing the ``Run`` button in this box will sample the observations. Note that you cannot sample the observations before downloading and computing the variables (see previous step). When the operation is finished, the sampled observations appear in the list of QGIS layers. You can navigate the map to confirm that about half the observations have been sampled in the deforested area and half in the non-deforested area.
 
 The folder ``outputs/far_models`` is created with ``calibration`` and ``historical`` subfolders if ``calib. period`` and ``hist. period`` have been checked respectively. Files ``sample.txt``, ``sample_size.csv``, ``csize_icar.txt``, and ``correlation.pdf`` are added to the output folders for each period. 
 
@@ -235,7 +235,7 @@ This step is for predicting the deforestation risk and deriving risk maps using 
 
 - ``t3 forecast``: If checked, computes predictions at t3 for forecasting (using models fitted over the historical period).
 
-Pushing the ``Run`` button in this box will use the statistical models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge, of the distance to roads, or of protected areas.
+Pushing the ``Run`` button in this box will use the statistical models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of QGIS layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates. For example, you can have a look at the effect of the distance to forest edge, of the distance to roads, or of protected areas.
 
 The following folders are created for each period: ``outputs/far_models/<period>``. The following files are created for each model, date or period:
 
@@ -290,7 +290,7 @@ This step is for predicting the deforestation risk and deriving risk maps using 
 
 - ``t3 forecast``: If checked, computes predictions at t3 for forecasting (using models fitted over the historical period).
 
-Pushing the ``Run`` button in this box will use the moving window models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of Qgis layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates.
+Pushing the ``Run`` button in this box will use the moving window models for predictions. Note that you cannot make predictions if you have not fitted the models (see previous step). When the operation is finished, rasters representing the classes of deforestation risk appear in the list of QGIS layers. You can navigate the different maps to see how the risk of deforestation is changing in space for the different dates.
 
 The following folders are created for each period: ``outputs/rmj_benchmark/<period>``. The following files are created for each window size, date or period:
 
@@ -298,7 +298,7 @@ The following folders are created for each period: ``outputs/rmj_benchmark/<peri
 
 - ``prob_mw_<window_size>_<date>.png``: Plot of the deforestation risk map.
 
-- ``defrate_cat_mw_<window_size>_<period>.csv``: Table with deforestation rates on the period for each class of deforestation risk. See details `above <plugin_api.html#defrate-table>`_ with one exception for moving window models: column ``rate_mod`` is computed as :math:`\theta_{m,1} = 0` and :math:`\theta_{m,i} = ((i - 2) \times 999999 / 65533 + 1) \times 1e^{-6}` for :math:`i \geq 2`. This formula leads to an almost null (:math:`1e^{-6}`) deforestation probability when :math:`i=2` and to a deforestation probability of 1 when :math:`i=65535`.
+- ``defrate_cat_mw_<window_size>_<period>.csv``: Table with deforestation rates on the period for each class of deforestation risk. See details `above <plugin_api.html#defrate-table>`_ with one exception for moving window models: column ``rate_mod`` is computed as :math:`\theta_{m,1} = 0` and :math:`\theta_{m,i} = ((i - 2) \times 999999 / 65533 + 1) \times 1e^{-6}` for :math:`i > 1`. This formula leads to an almost null (:math:`1e^{-6}`) deforestation probability when :math:`i=2` and to a deforestation probability of 1 when :math:`i=65535`.
 
 Validation
 ----------
