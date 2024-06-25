@@ -12,7 +12,7 @@
 
 * Plugin interface
 
-[[file:_static/interface_plugin.gif]]
+[[file:_static/plugin_api/interface_plugin.gif]]
 
 The plugin interface shows five tabs: ~Get variables~, ~Benchmark~, ~FAR models~, ~MW models~, and ~Validation~. Each tab includes one or several boxes. For example, the ~Far models~ tab includes three boxes: ~Sample observations~, ~Fit models to data~, and ~Predict the deforestation risk~. The arguments of each tab or box are detailed below. They usually correspond to function parameters from the Python packages used by the ~deforisk~ plugin. 
 
@@ -20,7 +20,7 @@ The plugin interface shows five tabs: ~Get variables~, ~Benchmark~, ~FAR models~
 
 ** Download and compute variables
 
-[[file:_static/interface_variables.png]]
+[[file:_static/plugin_api/interface_variables.png]]
 
 This box is for collecting the information needed to download the data and compute the variables that will be used to spatially model the deforestation risk for a given area of interest.
 
@@ -54,7 +54,7 @@ Three other folders are created:
 
 * Benchmark
 
-[[file:_static/interface_benchmark.png]]
+[[file:_static/plugin_api/interface_benchmark.png]]
 
 ** Fit model to data
 
@@ -109,13 +109,13 @@ The following folders are created: ~outputs/rmj_benchmark/validation~ and ~outpu
 
 * FAR models
 
-[[file:_static/interface_far_models.png]]
+[[file:_static/plugin_api/interface_far_models.png]]
 
 ** Sample observations
 
 This box is for collecting the information needed to sample the deforestation observations. This is a necessary step as we cannot fit a model using all forest pixels which are usually too many. Nonetheless, sampled observations must be representative of the deforestation process in the study area.
 
-- ~N# samples~: Number of observations to be sampled.
+- ~N# samples~: Number of observations to be sampled. It is a stratified sampling (N# samples in each class, deforested/non-deforested).
 - ~Adapt sampling~: If checked, the number of observations is proportional to forest area.
 - ~Random seed~: Random seed used to make the random sample reproducible. 
 - ~Spatial cell size (km)~: Size of the spatial cells used to estimate spatial random effects. These spatial random effects account for the residual regional variability in the deforestation risk which is not taken into account by the spatial explanatory variables (e.g. distance to forest edge) included in the model. Because one parameter is estimated for each cell, use a value so that you have (roughly) between 500 and 1000 spatial cells covering your area of interest.
@@ -130,7 +130,7 @@ The folder ~outputs/far_models~ is created with ~calibration~ and ~historical~ s
 
 This tab is for collecting the information needed to spatially model deforestation using three statistical models available in the ~forestatrisk~ (FAR) Python package: iCAR, GLM, and Random Forest models.
 
-- ~List of variables~: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without ".tif" extension) in folder ~data_calibration~ or ~data_historical~. Variable names must be separated by a comma. For categorical variables (such as protected areas) use the variable name with notation ~C()~, such as ~C(pa)~.
+- ~List of variables~: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without ".tif" extension) in folder ~data_calibration~ or ~data_historical~. Variable names must be separated by a comma. For categorical variables (such as protected areas) use the variable name with notation ~C()~, such as ~C(pa)~. It empty, it will use the default formula: ~C(pa) + altitude + slope + dist_edge + dist_road + dist_river + dist_town~.
 - ~Starting values for betas~: If -99 (recommended), starting values for betas correspond to estimates of a simple GLM with the same variables.
 - ~Prior Vrho~: If -1 (recommended), the prior for Vrho is an Inverse-Gamma.
 - ~MCMC~: Length of the MCMC for the final model.
@@ -140,7 +140,7 @@ This tab is for collecting the information needed to spatially model deforestati
 
 Pushing the ~Run~ button in this box will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step).
 
-The following folders are created: ~outputs/far_models/calibration~ and ~outputs/far_models/historical~. The following files are added to the ~outputs/far_models/calibration~ and ~outputs/far_models/historical~ folders:
+The following files are added to the ~outputs/far_models/calibration~ and ~outputs/far_models/historical~ folders:
 - ~summary_icar.txt~: Summary of the iCAR model with mean, standard-deviation, and credible intervals for model parameters.
 - ~mcmc.pdf~: Trace and posterior distribution for the icar model parameters. Used to check MCMC convergence.
 - ~mod_icar.pickle~: A compressed file with iCAR model characteristics. Used for projections.
@@ -170,7 +170,7 @@ The following folders are created for each period: ~outputs/far_models/<period>~
 
 * MW models
 
-[[file:_static/interface_mw_models.png]]
+[[file:_static/plugin_api/interface_mw_models.png]]
 
 ** Fit model to data
 
@@ -208,7 +208,7 @@ The following folders are created for each period: ~outputs/rmj_benchmark/<perio
 
 * Validation
 
-[[file:_static/interface_validation.png]]
+[[file:_static/plugin_api/interface_validation.png]]
 
 ** Model validation
 

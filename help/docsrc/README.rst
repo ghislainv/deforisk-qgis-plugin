@@ -71,18 +71,18 @@ Specificities
 
 **OS independent.** Using both computation by block for large rasters and task parallelization, the ``deforisk`` plugin allows selecting the best deforestation risk map and forecast deforestation for large countries or areas of interest in a limited amount of time, even on personal computers with average performance hardware. Because the ``deforisk`` is a QGIS plugin written in Python, it should run on all operating systems able to run QGIS, including Windows (:math:`\geq10`), Linux, and Mac OS.
 
-Installing the ``deforisk`` plugin in Qgis
+Installing the ``deforisk`` plugin in QGIS
 ------------------------------------------
 
 .. note::
 
-    **Dependencies**: `Qgis <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ must be installed on your system before using the ``deforisk`` plugin. *On Unix-like systems*, you must also install `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and `osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *On Windows systems*, these dependencies are already included in the plugin as binary ``.exe`` files so you don’t need to install them. Then, the ``forestatrisk`` and ``riskmapjnr`` Python packages must be installed on your system. Follow the `installation instructions <installation.html>`_ to install these dependencies.
+    **Dependencies**: `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ must be installed on your system before using the ``deforisk`` plugin. *On Unix-like systems*, you must also install `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and `osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *On Windows systems*, these dependencies are already included in the plugin as binary ``.exe`` files so you don’t need to install them. Then, the ``forestatrisk`` and ``riskmapjnr`` Python packages must be installed on your system. Follow the `installation instructions <installation.html>`_ to install these dependencies.
 
 - Download the ``deforisk`` `zip file <https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip>`_ from GitHub.
 
-- Open Qgis.
+- Open QGIS.
 
-- In Qgis menu bar, go to ``Extensions/Install extensions/Install from ZIP``.
+- In QGIS menu bar, go to ``Extensions/Install extensions/Install from ZIP``.
 
 - Select the zip file that has been downloaded.
 
