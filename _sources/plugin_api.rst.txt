@@ -11,7 +11,7 @@ Plugin API
 Plugin interface
 ----------------
 
-.. image:: _static/interface_plugin.gif
+.. image:: _static/plugin_api/interface_plugin.gif
 
 The plugin interface shows five tabs: ``Get variables``, ``Benchmark``, ``FAR models``, ``MW models``, and ``Validation``. Each tab includes one or several boxes. For example, the ``Far models`` tab includes three boxes: ``Sample observations``, ``Fit models to data``, and ``Predict the deforestation risk``. The arguments of each tab or box are detailed below. They usually correspond to function parameters from the Python packages used by the ``deforisk`` plugin. 
 
@@ -21,7 +21,7 @@ Get variables
 Download and compute variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: _static/interface_variables.png
+.. image:: _static/plugin_api/interface_variables.png
 
 This box is for collecting the information needed to download the data and compute the variables that will be used to spatially model the deforestation risk for a given area of interest.
 
@@ -74,7 +74,7 @@ Three other folders are created:
 Benchmark
 ---------
 
-.. image:: _static/interface_benchmark.png
+.. image:: _static/plugin_api/interface_benchmark.png
 
 Fit model to data
 ~~~~~~~~~~~~~~~~~
@@ -156,7 +156,7 @@ The following folders are created: ``outputs/rmj_benchmark/validation`` and ``ou
 FAR models
 ----------
 
-.. image:: _static/interface_far_models.png
+.. image:: _static/plugin_api/interface_far_models.png
 
 Sample observations
 ~~~~~~~~~~~~~~~~~~~
@@ -248,7 +248,7 @@ The following folders are created for each period: ``outputs/far_models/<period>
 MW models
 ---------
 
-.. image:: _static/interface_mw_models.png
+.. image:: _static/plugin_api/interface_mw_models.png
 
 Fit model to data
 ~~~~~~~~~~~~~~~~~
@@ -303,7 +303,7 @@ The following folders are created for each period: ``outputs/rmj_benchmark/<peri
 Validation
 ----------
 
-.. image:: _static/interface_validation.png
+.. image:: _static/plugin_api/interface_validation.png
 
 Model validation
 ~~~~~~~~~~~~~~~~

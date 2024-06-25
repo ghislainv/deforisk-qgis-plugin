@@ -12,9 +12,12 @@ Introduction
 ------------
 
 .. |ico_py| image:: _static/icon_python_console_toolbar.png
-   :class: no-scaled-link
+  :class: no-scaled-link
 .. |ico_deforisk| image:: _static/icon_deforisk_toolbar.png
-   :class: no-scaled-link   
+  :class: no-scaled-link
+.. |br| raw:: html
+
+  <br/>
 
 Open QGIS on your computer. To have access to log messages, activate the “Log Messages” panel in QGIS going to ``View > Panel > Log Messages`` in the Menu. When using a plugin, it is also a good habit to open the Python console in QGIS to have access to Python messages returned in the console. To open it, click on the Python icon |ico_py| in the “Plugins Toolbar”. If the toolbar is not visible, activate it going to ``View > Toolbars > Plugins Toolbar`` in the Menu.
 
@@ -34,8 +37,9 @@ To test the plugin and have a first look at its functionalities, try it on a sma
 Get variables
 -------------
 
-.. image:: _static/interface_MTQ-tuto-variables.png
-    :alt: MTQ variables
+.. image:: _static/get_started/interface-variables.png
+
+|br|
 
 - ``Working directory``: Select your working directory. Here ``/home/<username>/deforisk/MTQ-tuto``, but it could be ``C:\Users\<username>\deforisk\MTQ-tuto`` on Windows for example.
 
@@ -59,15 +63,13 @@ Get variables
 
 Click the run button. A forest cover change map appears in the list of QGIS layers (see image below and click to enlarge) and a plot of the forest cover change ``fcc123.png`` is created in folder ``outputs/variables``. New folders are created in the working directory among which the ``data_raw`` folder which includes raw data with intermediary files and the ``data`` folder which includes processed data used for models and plots. You can visualize the road network for example adding the ``roads_proj.shp`` vector file, which is located in the ``data_raw`` directory, in QGIS.
 
-.. image:: _static/qgis-variables-results.png
+.. image:: _static/get_started/qgis-variables-results.png
     :width: 650px
-    :alt: QGIS variables
 
 Benchmark model
 ---------------
 
-.. image:: _static/interface_MTQ-tuto-benchmark.png
-    :alt: MTQ variables
+.. image:: _static/get_started/interface-benchmark.png
 
 Fit model to data
 ~~~~~~~~~~~~~~~~~
@@ -80,11 +82,7 @@ Fit model to data
 
 - ``hist. period``: Checked, the model is fitted over the historical period (t1--t3).
 
-Click the ``Run`` button to estimate the deforestation risk with the benchmark model and predict the deforestation risk at t1 using both data on the calibration and historical periods. Maps with classes of deforestation risk are added to the list of QGIS layers (see image below) and new folders with results are created in the ``outputs/rmj_benchmark/`` directory including the ``<period>/defrate_cat_bm_<period>.csv`` tables with deforestation rates for each class of deforestation risk (see details `here <plugin_api.html#defrate-table>`_).
-
-.. image:: _static/qgis-benchmark-results.png
-    :width: 650px
-    :alt: QGIS variables
+Click the ``Run`` button to estimate the deforestation risk with the benchmark model and predict the deforestation risk at t1 using data on both the calibration and historical periods. Maps with classes of deforestation risk are added to the list of QGIS layers (see image below) and new folders with results are created in the ``outputs/rmj_benchmark/`` directory including the ``<period>/defrate_cat_bm_<period>.csv`` tables with deforestation rates for each class of deforestation risk (see details `here <plugin_api.html#defrate-table>`_).
 
 Predict the deforestation risk
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,11 +93,154 @@ Predict the deforestation risk
 
 Click the ``Run`` button to predict the deforestation risk at t2 and t3 using the benchmark model. Maps with classes of deforestation risk are added to the list of QGIS layers (see image below) and new folders with results are created in the ``outputs/rmj_benchmark/`` directory.
 
+.. image:: _static/get_started/qgis-benchmark-results.png
+    :width: 650px
+
 Forestatrisk models
 -------------------
 
+.. image:: _static/get_started/interface-far.png
+
+Sample observations
+~~~~~~~~~~~~~~~~~~~
+
+- ``N# samples``: 10000
+
+- ``Adapt sampling``: Checked, the number of observations is proportional to forest area.
+
+- ``Random seed``: 1234
+
+- ``Spatial cell size (km)``: 2
+
+- ``calib. period``: Checked, the observations are sampled for the calibration period (t1--t2).
+
+- ``hist. period``: Checked, the observations are sampled for the historical period (t1--t3).
+
+Pushing the ``Run`` button in this box will sample the observations. When the operation is finished, the sampled observations appear in the list of QGIS layers.
+
+.. image:: _static/get_started/qgis-far-sample-results.png
+    :width: 650px
+
+|br|
+
+New folders with results are created in the ``outputs/far_models/`` directory including the ``<period>/sample.txt`` file which is the observation dataset with variable values.
+
+.. table:: Five first observations for the calibration period.
+    :name: tab-observations
+
+    +----------+------------+-------------+------------+------------+-----+----+-------+--------+---------+------+
+    | altitude | dist\_edge | dist\_river | dist\_road | dist\_town | fcc | pa | slope |      X |       Y | cell |
+    +==========+============+=============+============+============+=====+====+=======+========+=========+======+
+    |       56 |         30 |         750 |          0 |        150 |   0 |  1 |     6 | 700155 | 1645545 |   63 |
+    +----------+------------+-------------+------------+------------+-----+----+-------+--------+---------+------+
+    |       56 |         30 |         750 |          0 |        150 |   0 |  1 |     6 | 700185 | 1645545 |   63 |
+    +----------+------------+-------------+------------+------------+-----+----+-------+--------+---------+------+
+    |      100 |         30 |         875 |          0 |       1657 |   0 |  1 |     5 | 698265 | 1645425 |   62 |
+    +----------+------------+-------------+------------+------------+-----+----+-------+--------+---------+------+
+    |       93 |         30 |         600 |          0 |       1358 |   0 |  1 |     8 | 698565 | 1645425 |   62 |
+    +----------+------------+-------------+------------+------------+-----+----+-------+--------+---------+------+
+    |       68 |         30 |         300 |          0 |        335 |   0 |  1 |     7 | 699615 | 1645425 |   63 |
+    +----------+------------+-------------+------------+------------+-----+----+-------+--------+---------+------+
+
+Fit model to data
+~~~~~~~~~~~~~~~~~
+
+- ``List of variables``: Leave empty, it will use the default formula: ``C(pa) + altitude + slope + dist_edge + dist_road + dist_river + dist_town``.
+
+- ``Starting values for betas``: -99
+
+- ``Prior Vrho``: -1
+
+- ``MCMC``: 100
+
+- ``Variable selection``: Leave unchecked, no variable selection (make computations faster for this example).
+
+- ``calib. period``: Checked, models are fitted over the calibration period (t1--t2).
+
+- ``hist. period``: Checked, models are fitted over the historical period (t1--t3).
+
+Pushing the ``Run`` button in this box will fit the statistical model to the deforestation observations. Three statistical models are fitted (iCAR model, GLM, and Random Forest model). New files are added to the ``outputs/far_models/calibration`` and ``outputs/far_models/historical`` folders. In particular, the ``summary_icar.txt`` file is the summary of the iCAR model with mean, standard-deviation, and credible intervals for model parameters.
+
+.. table:: Summary of the iCAR model for the calibration period.
+    :name: tab-parameters
+
+    +--------------------+----------+--------+----------+----------+
+    | \                  |     Mean |    Std |  CI\_low | CI\_high |
+    +====================+==========+========+==========+==========+
+    | Intercept          |    -3.39 |  0.158 |     -3.7 |     -3.1 |
+    +--------------------+----------+--------+----------+----------+
+    | C(pa)[T.1.0]       |  -0.0915 |  0.122 |   -0.282 |    0.172 |
+    +--------------------+----------+--------+----------+----------+
+    | scale(dist\_edge)  |    -10.3 |  0.417 |    -11.1 |    -9.63 |
+    +--------------------+----------+--------+----------+----------+
+    | scale(dist\_road)  |   -0.256 | 0.0537 |    -0.36 |   -0.144 |
+    +--------------------+----------+--------+----------+----------+
+    | scale(dist\_town)  |   0.0342 | 0.0464 |  -0.0551 |    0.123 |
+    +--------------------+----------+--------+----------+----------+
+    | scale(dist\_river) |  -0.0817 | 0.0544 |   -0.188 |   0.0199 |
+    +--------------------+----------+--------+----------+----------+
+    | scale(altitude)    |   -0.554 | 0.0809 |   -0.728 |     -0.4 |
+    +--------------------+----------+--------+----------+----------+
+    | scale(slope)       |   -0.532 | 0.0392 |   -0.611 |   -0.457 |
+    +--------------------+----------+--------+----------+----------+
+    | Vrho               |     6.89 |  0.756 |     5.64 |     8.49 |
+    +--------------------+----------+--------+----------+----------+
+    | Deviance           | 1.36e+04 |   24.9 | 1.36e+04 | 1.37e+04 |
+    +--------------------+----------+--------+----------+----------+
+
+The ``model_deviances.csv`` file compare percent of deviance explained between models.
+
+.. table:: Percent of deviance explained by models for the calibration period.
+    :name: tab-deviances
+
+    +-------+----------+-------+
+    | model | deviance |  perc |
+    +=======+==========+=======+
+    | null  |  26769.0 |   0.0 |
+    +-------+----------+-------+
+    | glm   |  16864.0 |  37.0 |
+    +-------+----------+-------+
+    | rf    |   6668.0 |  75.0 |
+    +-------+----------+-------+
+    | icar  |  13636.0 |  49.0 |
+    +-------+----------+-------+
+    | full  |      0.0 | 100.0 |
+    +-------+----------+-------+
+
+Predict the deforestation risk
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Moving window models
 --------------------
+
+.. image:: _static/get_started/interface-mw.png
+
+Fit model to data
+~~~~~~~~~~~~~~~~~
+
+- ``Deforestation threshold (%)``: 99.5%
+
+- ``Max. distance to forest edge (m)``: 2500
+
+- ``Window sizes (# pixels)``: 11, 21
+
+- ``calib. period``: Checked, the model is fitted over the calibration period (t1--t2).
+
+- ``hist. period``: Checked, the model is fitted over the historical period (t1--t3).
+
+Click the ``Run`` button to estimate the deforestation risk with the moving window model using data on both the calibration and historical periods. New folders with results are created in the ``outputs/rmj_moving_window/`` directory including the ``<period>/ldefrate_mw_<window_size>.tif`` raster file with local deforestation rates rescaled on [2, 65535].
+
+Predict the deforestation risk
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- ``t2 validation``: Checked, computes predictions at t2 for validation (using the moving window model fitted over the calibration period).
+
+- ``t3 forecast``: Checked, computes predictions at t3 for forecasting (using the moving window model fitted over the historical period).
+
+Click the ``Run`` button to predict the deforestation risk at t2 and t3 using the moving window model. Maps with classes of deforestation risk are added to the list of QGIS layers (see image below) and new folders with results are created in the ``outputs/rmj_moving_window/`` directory, including the ``<period>/defrate_cat_mv_<window_size>_<period>.csv`` tables with deforestation rates for each class of deforestation risk (see details `here <plugin_api.html#defrate-table>`_).
+
+.. image:: _static/get_started/qgis-mw-results.png
+    :width: 650px
 
 Validation
 ----------
