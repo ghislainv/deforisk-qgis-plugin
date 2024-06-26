@@ -298,8 +298,11 @@ class FarCalibrateTask(QgsTask):
             Y = y[:, 0]
             # We remove the first (intercept, 0 col) and last column (cells)
             X_rf = x[:, 1:-1]
-            n_cpu = max(3, os.cpu_count() - 4)
+            # I suggest using n_cpu=1 to avoid problems in QGis with tasks.
+            # n_cpu = max(3, os.cpu_count() - 4)
+            n_cpu = 1
             mod_rf = RandomForestClassifier(n_estimators=50,
+                                            min_samples_leaf=2,
                                             max_depth=15,
                                             n_jobs=n_cpu)
             mod_rf = mod_rf.fit(X_rf, Y)
