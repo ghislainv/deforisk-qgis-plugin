@@ -82,7 +82,41 @@ Fit model to data
 
 - ``hist. period``: Checked, the model is fitted over the historical period (t1--t3).
 
-Click the ``Run`` button to estimate the deforestation risk with the benchmark model and predict the deforestation risk at t1 using data on both the calibration and historical periods. Maps with classes of deforestation risk are added to the list of QGIS layers (see image below) and new folders with results are created in the ``outputs/rmj_benchmark/`` directory including the ``<period>/defrate_cat_bm_<period>.csv`` tables with deforestation rates for each class of deforestation risk (see details `here <plugin_api.html#defrate-table>`_).
+Click the ``Run`` button to estimate the deforestation risk with the benchmark model and predict the deforestation risk at t1 using data on both the calibration and historical periods. Maps with classes of deforestation risk are added to the list of QGIS layers (see image below).
+
+.. image:: _static/get_started/qgis-benchmark-results.png
+    :width: 650px
+
+|br|
+
+New folders with results are created in the ``outputs/rmj_benchmark/`` directory for each period. In particular, the output folders include the ``<period>/perc_dist.png`` file. This file shows the plot of the cumulated deforestation as a function of the distance to forest edge and indicates the distance thresholds (here 240 m for the calibration period).
+
+.. _fig-perc-dist:
+
+.. figure:: _static/get_started/perc_dist.png
+    :width: 600px
+
+
+    Distance threshold for the calibration period.
+
+The output folders also include the ``<period>/defrate_cat_bm_<period>.csv`` table which shows the deforestation rates for each class of deforestation risk (see details `here <plugin_api.html#defrate-table>`_).
+
+.. table:: Deforestation rate for each class of deforestation risk (numbers truncated to three decimal digits).
+    :name: tab-defrate
+
+    +------+-------+--------+-----------+-----------+-----------+----------------+-------------+-------------+
+    |  cat |  nfor | ndefor | rate\_obs | rate\_mod | rate\_abs | time\_interval | pixel\_area | defor\_dens |
+    +======+=======+========+===========+===========+===========+================+=============+=============+
+    | 1001 | 33433 |      0 |       0.0 |       0.0 |       0.0 |             10 |        0.09 |         0.0 |
+    +------+-------+--------+-----------+-----------+-----------+----------------+-------------+-------------+
+    | 1002 | 12965 |      0 |       0.0 |       0.0 |       0.0 |             10 |        0.09 |         0.0 |
+    +------+-------+--------+-----------+-----------+-----------+----------------+-------------+-------------+
+    | 1003 | 91686 |     19 | 2.072e-05 | 2.072e-04 | 2.072e-04 |             10 |        0.09 |   1.865e-06 |
+    +------+-------+--------+-----------+-----------+-----------+----------------+-------------+-------------+
+    | 1004 | 82279 |      5 | 6.077e-06 | 6.076e-05 | 6.076e-05 |             10 |        0.09 |   5.469e-07 |
+    +------+-------+--------+-----------+-----------+-----------+----------------+-------------+-------------+
+    | 2001 |  1373 |      0 |       0.0 |       0.0 |       0.0 |             10 |        0.09 |         0.0 |
+    +------+-------+--------+-----------+-----------+-----------+----------------+-------------+-------------+
 
 Predict the deforestation risk
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,10 +125,7 @@ Predict the deforestation risk
 
 - ``t3 forecast``: Checked, computes predictions at t3 for forecasting (using the benchmark model fitted over the historical period).
 
-Click the ``Run`` button to predict the deforestation risk at t2 and t3 using the benchmark model. Maps with classes of deforestation risk are added to the list of QGIS layers (see image below) and new folders with results are created in the ``outputs/rmj_benchmark/`` directory.
-
-.. image:: _static/get_started/qgis-benchmark-results.png
-    :width: 650px
+Click the ``Run`` button to predict the deforestation risk at t2 and t3 using the benchmark model. Maps with classes of deforestation risk are added to the list of QGIS layers and new files are added to the output folders.
 
 Forestatrisk models
 -------------------
@@ -282,7 +313,56 @@ Validation
 
 Pushing the ``Run`` button in this box will compute the predicted deforested area in each grid cell for each model and each period selected and compare this value to the observed deforested area for the same grid cell and period.
 
-New folders are created for each period: ``outputs/model_validation/<period>/figures`` and ``outputs/model_validation/<period>/tables``. Several output files are added to each folder including files ``figures/pred_obs_<model>_<period>_<cell_size>.png`` which include the plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the :math:`R^{2}` and the MedAE.
+New folders are created for each period: ``outputs/model_validation/<period>/figures`` and ``outputs/model_validation/<period>/tables``. Several output files are added to each folder.
+
+Files ``figures/pred_obs_<model>_<period>_<cell_size>.png`` which show the plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the :math:`R^{2}` and the MedAE.
+
+.. image:: _static/get_started/pred_obs_icar_validation_50.png
+    :width: 600px
+
+File ``outputs/model_validation/indices_all.csv`` includes a table with the performance indices for all validation cell sizes, all models, and all periods. In this example, both the Random Forest model and the iCAR model are better than the benchmark model whatever the performance indices considered. The iCAR model is the best model has it has the lowest MedAE, the lowest RMSE, and the highest :math:`R^{2}` for the validation period which is the only period with independent data (i.e. which have not be used to calibrate the models). This is true whatever the validation cell size chosen.
+
+.. table:: Performance indices.
+    :name: tab-indices
+
+    +---------------------+-------------------------+-------+------------+--------+-------+------+------+-------+
+    | csize\_coarse\_grid | csize\_coarse\_grid\_ha | ncell | period     | model  | MedAE |   R2 | RMSE | wRMSE |
+    +=====================+=========================+=======+============+========+=======+======+======+=======+
+    |                  50 |                   225.0 |   604 | validation | bm     |  2.71 | 0.43 | 6.08 |  6.22 |
+    +---------------------+-------------------------+-------+------------+--------+-------+------+------+-------+
+    |                  50 |                   225.0 |   604 | validation | icar   |  1.78 | 0.65 | 4.79 |  4.59 |
+    +---------------------+-------------------------+-------+------------+--------+-------+------+------+-------+
+    |                  50 |                   225.0 |   604 | validation | glm    |  2.39 | 0.38 | 6.39 |  6.52 |
+    +---------------------+-------------------------+-------+------------+--------+-------+------+------+-------+
+    |                  50 |                   225.0 |   604 | validation | rf     |  2.09 | 0.50 | 5.69 |  5.74 |
+    +---------------------+-------------------------+-------+------------+--------+-------+------+------+-------+
+    |                  50 |                   225.0 |   604 | validation | mw\_11 |  2.34 | 0.56 | 7.66 |  6.83 |
+    +---------------------+-------------------------+-------+------------+--------+-------+------+------+-------+
+    |                  50 |                   225.0 |   604 | validation | mw\_21 |  2.51 | 0.56 | 7.54 |  6.66 |
+    +---------------------+-------------------------+-------+------------+--------+-------+------+------+-------+
 
 Conclusion
 ----------
+
+The deforestation risk map obtained with the iCAR model at t3 can be used to allocate deforestation after year 2020. Both the risk map with classes of deforestation from 1 to 65535 and the ``defrate_cat_icar_forecast.csv`` table with deforestation rates for all classes of deforestation risk are necessary to allocate deforestation in the future.
+
+The table only includes values for ``rate_mod``, the relative spatial deforestation rates from the iCAR model estimated on the historical period. As for the validation step, the deforestation must be adjusted for quantity depending on the amount of deforestation expected in the future.
+
+.. table:: Deforestation rates for the iCAR model classes for forecasting deforestation.
+    :name: tab-defrate-icar-forecast
+
+    +-----+--------+--------+-----------+------------------------+-----------+----------------+-------------+-------------+
+    | cat |   nfor | ndefor | rate\_obs |              rate\_mod | rate\_abs | time\_interval | pixel\_area | defor\_dens |
+    +=====+========+========+===========+========================+===========+================+=============+=============+
+    |   1 | 137575 |      0 |       0.0 |                  1e-06 |       0.0 |             20 |        0.09 |         0.0 |
+    +-----+--------+--------+-----------+------------------------+-----------+----------------+-------------+-------------+
+    |   2 |   5425 |      0 |       0.0 | 1.6259239478743857e-05 |       0.0 |             20 |        0.09 |         0.0 |
+    +-----+--------+--------+-----------+------------------------+-----------+----------------+-------------+-------------+
+    |   3 |   3523 |      0 |       0.0 |  3.151847895748772e-05 |       0.0 |             20 |        0.09 |         0.0 |
+    +-----+--------+--------+-----------+------------------------+-----------+----------------+-------------+-------------+
+    |   4 |   2458 |      0 |       0.0 |  4.677771843623157e-05 |       0.0 |             20 |        0.09 |         0.0 |
+    +-----+--------+--------+-----------+------------------------+-----------+----------------+-------------+-------------+
+    |   5 |   2078 |      0 |       0.0 |  6.203695791497542e-05 |       0.0 |             20 |        0.09 |         0.0 |
+    +-----+--------+--------+-----------+------------------------+-----------+----------------+-------------+-------------+
+
+Considering a total deforestation :math:`D` for the next :math:`Y` years, the adjustment factor is :math:`\rho = D / (A \sum_i n_{i} \theta_{m,i})`, the absolute rate is :math:`\theta_{a,i} = \rho \theta_{m,i}`, and the deforestation density is :math:`\delta_{i} = \theta_{a,i} \times A / Y`. The deforestation density is used to predict the amount of deforestation (in ha/pixel/yr) for each forest pixel belonging to a given class of deforestation risk for the next :math:`Y` years (for notations, see details `here <plugin_api.html#defrate-table>`_).
