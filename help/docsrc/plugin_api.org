@@ -223,7 +223,7 @@ This step is used to validate deforestation models and maps and estimate their p
 - ~valid. period~: If checked, estimates model performances for the validation period (t2--t3).
 - ~hist. period~: If checked, estimates model performances for the historical period (t1--t3).
 
-Pushing the ~Run~ button in this box will compute the predicted deforested area in each grid cell for each model and each period selected and compare this value to the observed deforested area for the same grid cell and period. Note that you cannot validate models if you have not fitted these models (see previous step).
+Pushing the ~Run~ button in this box will compute the predicted deforested area in each grid cell for each model and each period which have been selected and will compare this value to the observed deforested area for the same grid cell and period. Note that you cannot validate models if you have not fitted these models (see previous step).
 
 The following folders are created for each period: ~outputs/model_validation/<period>/figures~ and ~outputs/model_validation/<period>/tables~. The following files are added for each model, period, and grid cell size:
 - ~tables/pred_obs_<model>_<period>_<cell_size>.csv~: Values of observed and predicted deforested area in each grid cell. 

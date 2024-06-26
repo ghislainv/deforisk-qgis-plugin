@@ -12,7 +12,7 @@
     <property key="identify/format" value="Value"/>
   </customproperties>
   <pipe>
-    <rasterrenderer opacity="1" band="1" classificationMin="0" classificationMax="65535" alphaBand="-1" type="singlebandpseudocolor">
+    <rasterrenderer band="1" type="singlebandpseudocolor" classificationMin="1" classificationMax="65535" alphaBand="-1" nodataColor="" opacity="1">
       <rasterTransparency/>
       <minMaxOrigin>
         <limits>None</limits>
@@ -23,7 +23,7 @@
         <stdDevFactor>2</stdDevFactor>
       </minMaxOrigin>
       <rastershader>
-        <colorrampshader clip="0" classificationMode="1" colorRampType="INTERPOLATED">
+        <colorrampshader clip="0" minimumValue="1" maximumValue="65535" classificationMode="1" colorRampType="INTERPOLATED">
           <colorramp name="[source]" type="gradient">
             <prop v="0,0,255,255" k="color1"/>
             <prop v="0,255,0,255" k="color2"/>
@@ -37,8 +37,8 @@
         </colorrampshader>
       </rastershader>
     </rasterrenderer>
-    <brightnesscontrast brightness="0" contrast="0"/>
-    <huesaturation colorizeRed="255" colorizeBlue="128" colorizeStrength="100" grayscaleMode="0" saturation="0" colorizeGreen="128" colorizeOn="0"/>
+    <brightnesscontrast gamma="1" brightness="0" contrast="0"/>
+    <huesaturation colorizeStrength="100" colorizeRed="255" grayscaleMode="0" colorizeGreen="128" invertColors="0" colorizeOn="0" saturation="0" colorizeBlue="128"/>
     <rasterresampler maxOversampling="2"/>
   </pipe>
   <blendMode>0</blendMode>
