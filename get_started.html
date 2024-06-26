@@ -38,6 +38,7 @@
     <script src="_static/documentation_options.js?v=64289a84"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'get_started';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -735,7 +736,7 @@
 </tbody>
 </table>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">model_deviances.csv</span></code> file compare percent of deviance explained between models.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">model_deviances.csv</span></code> file include a table for comparing percent of deviance explained between models.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-deviances">
 <caption><span class="caption-text">Percent of deviance explained by models for the calibration period.</span><a class="headerlink" href="#tab-deviances" title="Link to this table">#</a></caption>
 <thead>
@@ -771,13 +772,25 @@
 </section>
 <section id="id2">
 <h3>Predict the deforestation risk<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: Checked, computes predictions with the iCAR model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code>: Checked, computes predictions with GLM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code>: Checked, computes predictions with the Random Forest model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">calibration</span></code>: Checked, computes predictions at t1 using models fitted over the calibration period.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: Checked, computes predictions at t2 for validation (using models fitted over the calibration period).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">historical</span></code>: Checked, computes predictions at t1 using models fitted over the historical period.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: Checked, computes predictions at t3 for forecasting (using models fitted over the historical period).</p></li>
+</ul>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will use the statistical models for predictions. When the operation is finished, rasters representing the classes of deforestation risk appear in the list of QGIS layers. New folders are created <code class="docutils literal notranslate"><span class="pre">outputs/far_models/validation</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/far_models/forecast</span></code>. They include the <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code> tables with deforestation rates for each class of deforestation risk (see details <a class="reference external" href="plugin_api.html#defrate-table">here</a>).</p>
+<a class="reference internal image-reference" href="_images/qgis-far-results.png"><img alt="_images/qgis-far-results.png" src="_images/qgis-far-results.png" style="width: 650px;" />
+</a>
 </section>
 </section>
 <section id="moving-window-models">
 <h2>Moving window models<a class="headerlink" href="#moving-window-models" title="Link to this heading">#</a></h2>
 <img alt="_images/interface-mw.png" src="_images/interface-mw.png" />
-<section id="id3">
-<h3>Fit model to data<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3>Fit model to data<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 99.5%</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: 2500</p></li>
@@ -787,8 +800,8 @@
 </ul>
 <p>Click the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button to estimate the deforestation risk with the moving window model using data on both the calibration and historical periods. New folders with results are created in the <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code> directory including the <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/ldefrate_mw_&lt;window_size&gt;.tif</span></code> raster file with local deforestation rates rescaled on [2, 65535].</p>
 </section>
-<section id="id4">
-<h3>Predict the deforestation risk<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>Predict the deforestation risk<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: Checked, computes predictions at t2 for validation (using the moving window model fitted over the calibration period).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: Checked, computes predictions at t3 for forecasting (using the moving window model fitted over the historical period).</p></li>
@@ -800,6 +813,18 @@
 </section>
 <section id="validation">
 <h2>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Coarse</span> <span class="pre">grid</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>: 50, 100</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: Checked, estimates the performance of the iCAR model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code>: Checked, estimates the performance of the GLM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code>: Checked, estimates the performance of the Random Forest model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MW</span> <span class="pre">model</span></code>: Checked, estimates the performance of the Moving Window models.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Checked, estimates model performances for the calibration period (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">valid.</span> <span class="pre">period</span></code>: Checked, estimates model performances for the validation period (t2–t3).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Checked, estimates model performances for the historical period (t1–t3).</p></li>
+</ul>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will compute the predicted deforested area in each grid cell for each model and each period selected and compare this value to the observed deforested area for the same grid cell and period.</p>
+<p>New folders are created for each period: <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/figures</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/tables</span></code>. Several output files are added to each folder including files <code class="docutils literal notranslate"><span class="pre">figures/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.png</span></code> which include the plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the <span class="math notranslate nohighlight">\(R^{2}\)</span> and the MedAE.</p>
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
@@ -866,8 +891,8 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-window-models">Moving window models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Fit model to data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Predict the deforestation risk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Fit model to data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Predict the deforestation risk</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>

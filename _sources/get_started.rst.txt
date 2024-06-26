@@ -188,7 +188,7 @@ Pushing the ``Run`` button in this box will fit the statistical model to the def
     | Deviance           | 1.36e+04 |   24.9 | 1.36e+04 | 1.37e+04 |
     +--------------------+----------+--------+----------+----------+
 
-The ``model_deviances.csv`` file compare percent of deviance explained between models.
+The ``model_deviances.csv`` file include a table for comparing percent of deviance explained between models.
 
 .. table:: Percent of deviance explained by models for the calibration period.
     :name: tab-deviances
@@ -209,6 +209,25 @@ The ``model_deviances.csv`` file compare percent of deviance explained between m
 
 Predict the deforestation risk
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- ``iCAR model``: Checked, computes predictions with the iCAR model.
+
+- ``GLM``: Checked, computes predictions with GLM.
+
+- ``RF model``: Checked, computes predictions with the Random Forest model.
+
+- ``t1 calibration``: Checked, computes predictions at t1 using models fitted over the calibration period.
+
+- ``t2 validation``: Checked, computes predictions at t2 for validation (using models fitted over the calibration period).
+
+- ``t1 historical``: Checked, computes predictions at t1 using models fitted over the historical period.
+
+- ``t3 forecast``: Checked, computes predictions at t3 for forecasting (using models fitted over the historical period).
+
+Pushing the ``Run`` button in this box will use the statistical models for predictions. When the operation is finished, rasters representing the classes of deforestation risk appear in the list of QGIS layers. New folders are created ``outputs/far_models/validation`` and ``outputs/far_models/forecast``. They include the ``<period>/defrate_cat_<model>_<period>.csv`` tables with deforestation rates for each class of deforestation risk (see details `here <plugin_api.html#defrate-table>`_).
+
+.. image:: _static/get_started/qgis-far-results.png
+    :width: 650px
 
 Moving window models
 --------------------
@@ -244,6 +263,26 @@ Click the ``Run`` button to predict the deforestation risk at t2 and t3 using th
 
 Validation
 ----------
+
+- ``Coarse grid cell size (# pixels)``: 50, 100
+
+- ``iCAR model``: Checked, estimates the performance of the iCAR model.
+
+- ``GLM``: Checked, estimates the performance of the GLM.
+
+- ``RF model``: Checked, estimates the performance of the Random Forest model.
+
+- ``MW model``: Checked, estimates the performance of the Moving Window models.
+
+- ``calib. period``: Checked, estimates model performances for the calibration period (t1--t2).
+
+- ``valid. period``: Checked, estimates model performances for the validation period (t2--t3).
+
+- ``hist. period``: Checked, estimates model performances for the historical period (t1--t3).
+
+Pushing the ``Run`` button in this box will compute the predicted deforested area in each grid cell for each model and each period selected and compare this value to the observed deforested area for the same grid cell and period.
+
+New folders are created for each period: ``outputs/model_validation/<period>/figures`` and ``outputs/model_validation/<period>/tables``. Several output files are added to each folder including files ``figures/pred_obs_<model>_<period>_<cell_size>.png`` which include the plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the :math:`R^{2}` and the MedAE.
 
 Conclusion
 ----------
