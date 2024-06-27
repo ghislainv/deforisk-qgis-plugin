@@ -495,11 +495,55 @@
                   
   <section id="subnational-jurisdictions">
 <h1>Subnational jurisdictions<a class="headerlink" href="#subnational-jurisdictions" title="Link to this heading">#</a></h1>
-<section id="first-section">
-<h2>First section<a class="headerlink" href="#first-section" title="Link to this heading">#</a></h2>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<p>The aim is to obtain a GPKG file named <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code> with two layers named <code class="docutils literal notranslate"><span class="pre">aoi</span></code> for the jurisdiction and <code class="docutils literal notranslate"><span class="pre">subj</span></code> for the subjurisdictions.
+This file can then be used with the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin to define the area of interest (AOI).</p>
 </section>
-<section id="second-section">
-<h2>Second section<a class="headerlink" href="#second-section" title="Link to this heading">#</a></h2>
+<section id="file-creation-using-qgis-tools">
+<h2>File creation using QGIS tools<a class="headerlink" href="#file-creation-using-qgis-tools" title="Link to this heading">#</a></h2>
+<p>Download country data from <a class="reference external" href="https://gadm.org">GADM</a> using a GPKG file.</p>
+<a class="reference internal image-reference" href="../_images/gadm_peru.png"><img alt="../_images/gadm_peru.png" src="../_images/gadm_peru.png" style="width: 650px;" />
+</a>
+<p><br/></p>
+<p>Add all layers from the GPKG file to QGIS.</p>
+<a class="reference internal image-reference" href="../_images/all_layers.png"><img alt="../_images/all_layers.png" src="../_images/all_layers.png" style="width: 650px;" />
+</a>
+<p><br/></p>
+<p>Select the jurisdiction, using the selection toolbar (if the toolbar is not visible, activate it in <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">&gt;</span> <span class="pre">Toolbars</span> <span class="pre">&gt;</span> <span class="pre">Selection</span> <span class="pre">Toolbar</span></code>).</p>
+<a class="reference internal image-reference" href="../_images/select_jurisdiction.png"><img alt="../_images/select_jurisdiction.png" src="../_images/select_jurisdiction.png" style="width: 650px;" />
+</a>
+<p><br/></p>
+<p>Save the feature in a new GPKG file called <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code> right clicking on the layer and selecting <code class="docutils literal notranslate"><span class="pre">Export</span> <span class="pre">&gt;</span> <span class="pre">Save</span> <span class="pre">Selected</span> <span class="pre">Feature</span> <span class="pre">As</span></code>. Tick <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">only</span> <span class="pre">selected</span> <span class="pre">features</span></code> and name the layer <code class="docutils literal notranslate"><span class="pre">aoi</span></code> (it is mandatory to use this layer name).</p>
+<a class="reference internal image-reference" href="../_images/save_jurisdiction.png"><img alt="../_images/save_jurisdiction.png" src="../_images/save_jurisdiction.png" style="width: 500px;" />
+</a>
+<p><br/></p>
+<p>Select the subjurisdictions (to save several features with the selection tool, maintain the <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> button pushed).</p>
+<a class="reference internal image-reference" href="../_images/select_subjurisdictions.png"><img alt="../_images/select_subjurisdictions.png" src="../_images/select_subjurisdictions.png" style="width: 650px;" />
+</a>
+<p><br/></p>
+<p>Save the features in the same GPKG file as previously (<code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code>) and name the layer <code class="docutils literal notranslate"><span class="pre">subj</span></code> (it is also mandatory to use this layer name).</p>
+<a class="reference internal image-reference" href="../_images/save_subjurisdictions.png"><img alt="../_images/save_subjurisdictions.png" src="../_images/save_subjurisdictions.png" style="width: 500px;" />
+</a>
+<p><br/></p>
+<p>We have just created a GPKG file named <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code> with two layers named <code class="docutils literal notranslate"><span class="pre">aoi</span></code> for the jurisdiction and <code class="docutils literal notranslate"><span class="pre">subj</span></code> for the subjurisdictions.
+Note that you can select jurisdiction and subjurisdictions at different administrative levels, selecting features at level 1, 2, or 3 in the GADM dataset.</p>
+</section>
+<section id="looking-at-the-data-in-qgis">
+<h2>Looking at the data in QGIS<a class="headerlink" href="#looking-at-the-data-in-qgis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Open the file Browser. If not visible, activate it in <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">&gt;</span> <span class="pre">Panels</span> <span class="pre">&gt;</span> <span class="pre">Browser</span></code>.</p></li>
+<li><p>Search for the <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code> file in your folders.</p></li>
+<li><p>Drag and drop the GPKG file to add the <code class="docutils literal notranslate"><span class="pre">aoi</span></code> and <code class="docutils literal notranslate"><span class="pre">subj</span></code> layers in the list of QGIS layers.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/file_browser.png"><img alt="../_images/file_browser.png" src="../_images/file_browser.png" style="width: 650px;" />
+</a>
+</section>
+<section id="use-with-the-deforisk-plugin">
+<h2>Use with the deforisk plugin<a class="headerlink" href="#use-with-the-deforisk-plugin" title="Link to this heading">#</a></h2>
+<p>Select the GPKG file when defining the area of interest (AOI).</p>
+<a class="reference internal image-reference" href="../_images/interface_aoi_madre_de_dios.png"><img alt="../_images/interface_aoi_madre_de_dios.png" src="../_images/interface_aoi_madre_de_dios.png" style="width: 500px;" />
+</a>
 </section>
 </section>
 
@@ -549,8 +593,10 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-section">First section</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-section">Second section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-creation-using-qgis-tools">File creation using QGIS tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-the-data-in-qgis">Looking at the data in QGIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-with-the-deforisk-plugin">Use with the deforisk plugin</a></li>
 </ul>
   </nav></div>
 
