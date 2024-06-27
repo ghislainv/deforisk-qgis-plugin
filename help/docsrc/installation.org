@@ -11,7 +11,7 @@
 
 #+attr_rst: :directive note
 #+begin_quote
-*Dependencies*: [[https://www.qgis.org/en/site/][Qgis]] and [[https://gdal.org/index.html][GDAL]] must be installed on your system before using the ~deforisk~ plugin. /On Unix-like systems/, you must also install [[https://wiki.openstreetmap.org/wiki/Osmconvert][osmconvert]] and [[https://wiki.openstreetmap.org/wiki/Osmfilter][osmfilter]]. /On Windows systems/, these dependencies are already included in the plugin as binary ~.exe~ files so you don't need to install them. Then, the ~forestatrisk~ and ~riskmapjnr~ Python packages must be installed on your system. Follow the instructions below to install these dependencies.
+*Dependencies*: [[https://www.qgis.org/en/site/][QGIS]] and [[https://gdal.org/index.html][GDAL]] must be installed on your system before using the ~deforisk~ plugin. /On Unix-like systems/, you must also install [[https://wiki.openstreetmap.org/wiki/Osmconvert][osmconvert]] and [[https://wiki.openstreetmap.org/wiki/Osmfilter][osmfilter]]. /On Windows systems/, these dependencies are already included in the plugin as binary ~.exe~ files so you don't need to install them. Then, the ~forestatrisk~ and ~riskmapjnr~ Python packages must be installed on your system. Follow the instructions below to install these dependencies.
 #+end_quote
 
 * On Windows
