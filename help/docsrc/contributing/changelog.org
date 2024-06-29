@@ -1,0 +1,10 @@
+#+title: Changelog
+#+author: Ghislain Vieilledent
+#+options: title:t author:nil date:nil ^:{} toc:nil num:nil H:4
+
+* deforisk v0.5
+
+Stable version tested on Windows and Linux with QGIS 3.34 and 3.38 with almost all functionalities, but:
+- No parallel computing for geefcc.
+- No function to estimate emissions.
+

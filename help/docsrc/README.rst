@@ -28,6 +28,8 @@ deforisk QGIS plugin
     :target: https://ecology.ghislainv.fr/pywdpa
 .. image:: https://img.shields.io/badge/python-geefcc-3c8c3c?logo=python&logoColor=ffd43b&.svg
     :target: https://ecology.ghislainv.fr/geefcc
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.12593893.svg
+    :target: https://doi.org/10.5281/zenodo.12593893
 
 Aim
 ---

@@ -25,6 +25,7 @@ deforisk QGIS plugin
 #+link: rmj_link https://ecology.ghislainv.fr/riskmapjnr
 #+link: pywdpa_link https://ecology.ghislainv.fr/pywdpa
 #+link: geefcc_link https://ecology.ghislainv.fr/geefcc
+#+link: zenodo_link https://doi.org/10.5281/zenodo.12593893
 
 #+macro: GPLv3 https://img.shields.io/badge/licence-GPLv3-8f10cb.svg
 #+macro: github https://img.shields.io/badge/GitHub-repo-green.svg
@@ -33,6 +34,7 @@ deforisk QGIS plugin
 #+macro: rmj https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg
 #+macro: pywdpa https://img.shields.io/badge/python-pywdpa-90b478?logo=python&logoColor=ffd43b&.svg
 #+macro: geefcc https://img.shields.io/badge/python-geefcc-3c8c3c?logo=python&logoColor=ffd43b&.svg
+#+macro: zenodo https://zenodo.org/badge/DOI/10.5281/zenodo.12593893.svg
 
 [[GPLv3_link][{{{GPLv3}}}]]
 [[github_link][{{{github}}}]]
@@ -41,6 +43,7 @@ deforisk QGIS plugin
 [[rmj_link][{{{rmj}}}]]
 [[pywdpa_link][{{{pywdpa}}}]]
 [[geefcc_link][{{{geefcc}}}]]
+[[zenodo_link][{{{zenodo}}}]]
 
 # [[GPLv3_link][https://img.shields.io/badge/licence-GPLv3-8f10cb.svg]]
 # [[github_link][https://img.shields.io/badge/GitHub-repo-green.svg]]
