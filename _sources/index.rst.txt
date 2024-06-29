@@ -8,6 +8,7 @@
    get_started
    articles
    plugin_api
+   contributing/changelog
    contributing/community_guidelines
    contributing/code_of_conduct
    contributing/license
