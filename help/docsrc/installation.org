@@ -101,7 +101,7 @@ In the ~deforisk~ plugin, for the ~WDPA access~ argument available in the "Get v
 
 * Installing the ~deforisk~ plugin in QGIS
 
-- Download the ~deforisk~ [[https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip][zip file]] from GitHub.
+- Download the ~deforisk~ [[https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/tags/v0.5.zip][zip file]] from GitHub.
 - Open QGIS.
 - In QGIS menu bar, go to ~Extensions/Install extensions/Install from ZIP~.
 - Select the zip file that has been downloaded.
