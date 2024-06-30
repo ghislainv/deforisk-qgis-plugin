@@ -19,7 +19,7 @@ class FarGetFccTileTask(QgsTask):
     """Get forest cover change tile."""
 
     # Constants
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
     N_STEPS = 1
 
     def __init__(self, description, index, ext, grid_args):

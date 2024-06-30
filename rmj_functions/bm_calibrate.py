@@ -28,7 +28,7 @@ class BmCalibrateTask(QgsTask):
     # Constants
     DATA = "data"
     OUT = opj("outputs", "rmj_benchmark")
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
     N_STEPS = 5
 
     def __init__(self, description, workdir, years, defor_thresh,

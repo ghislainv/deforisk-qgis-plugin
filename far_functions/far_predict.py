@@ -39,7 +39,7 @@ class FarPredictTask(QgsTask):
     # Constants
     DATA = "data"
     OUT = opj("outputs", "far_models")
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
     N_STEPS = 3
 
     def __init__(self, description, iface, workdir, years, model,

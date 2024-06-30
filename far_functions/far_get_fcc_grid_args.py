@@ -47,7 +47,7 @@ class FarGetFccGridArgsTask(QgsTask):
 
     # Constants
     DATA_RAW = "data_raw"
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
     N_STEPS = 1
 
     def __init__(self, description, iface, workdir, get_fcc_args, gc_project):

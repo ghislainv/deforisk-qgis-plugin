@@ -26,7 +26,7 @@ class EmptyTask(QgsTask):
     """
 
     # Constants
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
 
     def __init__(self, description):
         super().__init__(description, QgsTask.CanCancel)

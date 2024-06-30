@@ -73,7 +73,7 @@ class FarGetVariablesTask(QgsTask):
     OUT = opj("outputs", "variables")
     DATA = "data"
     DATA_RAW = "data_raw"
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
     N_STEPS = 3
 
     def __init__(self, description, iface, workdir, get_fcc_args,

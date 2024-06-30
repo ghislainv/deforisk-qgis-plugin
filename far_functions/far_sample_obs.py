@@ -37,7 +37,7 @@ class FarSampleObsTask(QgsTask):
     # Constants
     OUT = opj("outputs", "far_models")
     DATA = "data"
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
     N_STEPS = 2
 
     def __init__(self, description, iface, workdir, period, proj,

@@ -30,7 +30,7 @@ class ValidateTask(QgsTask):
     # Constants
     OUT = "outputs"
     DATA = "data"
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
     FAR_MODELS = ["icar", "glm", "rf"]
     N_STEPS = 1
 

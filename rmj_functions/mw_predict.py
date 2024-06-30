@@ -36,7 +36,7 @@ class MwPredictTask(QgsTask):
     # Constants
     DATA = "data"
     OUT = opj("outputs", "rmj_moving_window")
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
     N_STEPS = 4
 
     def __init__(self, description, workdir, years,

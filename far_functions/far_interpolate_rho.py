@@ -31,7 +31,7 @@ class FarInterpolateRhoTask(QgsTask):
 
     # Constants
     OUT = opj("outputs", "far_models")
-    MESSAGE_CATEGORY = "FAR plugin"
+    MESSAGE_CATEGORY = "Deforisk"
     N_STEPS = 1
 
     def __init__(self, description, iface, workdir, period,
