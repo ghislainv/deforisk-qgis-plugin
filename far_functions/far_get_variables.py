@@ -208,7 +208,8 @@ class FarGetVariablesTask(QgsTask):
                     get_fcc_args=self.reformat_get_fcc_args(),
                     iso3=self.isocode,
                     output_dir=self.DATA_RAW,
-                    gadm=gadm)
+                    gadm=gadm,
+                    forest=False)  # See task with geefcc
 
                 # Check isCanceled() to handle cancellation
                 if self.isCanceled():
