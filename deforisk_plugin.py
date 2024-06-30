@@ -33,7 +33,7 @@ import subprocess
 import platform
 import random
 
-from qgis.core import Qgis, QgsApplication
+from qgis.core import Qgis, QgsApplication, QgsTask
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
@@ -52,6 +52,8 @@ from .deforisk_plugin_dialog import DeforiskPluginDialog
 
 # Local far functions
 from .far_functions import (
+    FarGetFccGridArgsTask,
+    FarGetFccTileTask,
     FarGetVariablesTask,
     FarSampleObsTask,
     FarCalibrateTask,
@@ -115,7 +117,8 @@ class DeforiskPlugin:
         # Declare instance attributes
         self.actions = []
         self.menu = self.tr("&Deforisk")
-        self.args = None  # GV: arguments for far functions.
+        self.args = None  # GV: arguments for tasks.
+        self.task_grid = None  # GV: arguments for fcc tile.
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
@@ -641,6 +644,43 @@ class DeforiskPlugin:
             "val_histo": val_histo,
         }
 
+    def far_get_fcc_grid_args(self):
+        """Get fcc grid arguments."""
+        self.catch_arguments()
+        description = self.task_description("GetFccGridArgs")
+        self.task_grid = FarGetFccGridArgsTask(
+            description=description,
+            iface=self.iface,
+            workdir=self.args["workdir"],
+            get_fcc_args=self.args["get_fcc_args"],
+            gc_project=self.args["gc_project"],
+        )
+        self.task_grid.taskCompleted.connect(self.far_get_fcc_tiles)
+        # Add task to task manager
+        self.tm.addTask(self.task_grid)
+
+    def far_get_fcc_tiles(self):
+        """Get fcc."""
+        self.catch_arguments()
+        # Main empty task
+        description = self.task_description("GetFccTiles")
+        main_task = EmptyTask(description)
+        grid = self.task_grid.grid_args["grid"]
+        for (i, ext) in enumerate(grid):
+            description = self.task_description(
+                f"GetFccTile_{i}")
+            task = FarGetFccTileTask(
+                description=description,
+                index=i,
+                ext=ext,
+                grid_args=self.task_grid.grid_args,
+            )
+            main_task.addSubTask(task, [], QgsTask.ParentDependsOnSubTask)
+        # Execute far_predict after rho interpolation
+        main_task.taskCompleted.connect(self.far_get_variables)
+        # Add main task to task manager
+        self.tm.addTask(main_task)
+
     def far_get_variables(self):
         """Get variables."""
         self.catch_arguments()
@@ -738,7 +778,7 @@ class DeforiskPlugin:
                 workdir=self.args["workdir"],
                 period=period,
                 csize_interpolate=self.args["csize_interp"])
-            main_task.addSubTask(task)
+            main_task.addSubTask(task, [], QgsTask.ParentDependsOnSubTask)
         # Execute far_predict after rho interpolation
         main_task.taskCompleted.connect(self.far_predict)
         # Add main task to task manager
@@ -874,7 +914,7 @@ class DeforiskPlugin:
 
         # Data
         self.dlg.run_far_get_variable.clicked.connect(
-            self.far_get_variables)
+            self.far_get_fcc_grid_args)
 
         # Benchmark model
         self.dlg.run_bm_calibrate.clicked.connect(

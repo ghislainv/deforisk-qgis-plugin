@@ -16,7 +16,6 @@ import os
 import json
 import shutil
 import platform
-from glob import glob
 
 from qgis.core import (
     Qgis, QgsTask, QgsProject,
@@ -141,7 +140,8 @@ class FarGetVariablesTask(QgsTask):
         # parallel (False with QGis)
         gfa["parallel"] = False
         # output_file
-        gfa["output_file"] = opj(self.DATA_RAW, "forest_latlon.tif")
+        gfa["output_file"] = opj(self.DATA_RAW,
+                                 "forest_latlon.tif")
         return gfa
 
     def set_progress(self, progress, n_steps):
