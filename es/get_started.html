@@ -1,0 +1,1210 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Empezar &#8212; deforisk — Create and compare deforestation risk maps</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=dfba06c8"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'get_started';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Artículos" href="articles.html" />
+    <link rel="prev" title="Instalación" href="installation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo-deforisk.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="_static/logo-deforisk.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">deforisk QGIS plugin</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    Inicio
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Instalación
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Empezar
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="articles.html">
+    Artículos
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    Plugin API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/changelog.html">
+    Registro de cambios
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/community_guidelines.html">
+    Directrices comunitarias
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/code_of_conduct.html">
+    Código de conducta
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/license.html">
+    Licencia
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.cirad.fr/en" title="Cirad" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_cirad.png" class="icon-link-image" alt="Cirad"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.fao.org" title="FAO" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/logo_fao.png" class="icon-link-image" alt="FAO"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    Inicio
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Instalación
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Empezar
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="articles.html">
+    Artículos
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    Plugin API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/changelog.html">
+    Registro de cambios
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/community_guidelines.html">
+    Directrices comunitarias
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/code_of_conduct.html">
+    Código de conducta
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/license.html">
+    Licencia
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.cirad.fr/en" title="Cirad" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_cirad.png" class="icon-link-image" alt="Cirad"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.fao.org" title="FAO" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/logo_fao.png" class="icon-link-image" alt="FAO"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Miga de pan" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Inicio">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Empezar</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="get-started">
+<h1>Empezar<a class="headerlink" href="#get-started" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introducción<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Abra QGIS en su ordenador. Para tener acceso a los mensajes de registro, active el panel «Mensajes de Registro» en QGIS yendo a <code class="docutils literal notranslate"><span class="pre">Ver</span> <span class="pre">&gt;</span> <span class="pre">Panel</span> <span class="pre">&gt;</span> <span class="pre">Mensajes</span> <span class="pre">de</span> <span class="pre">Registro</span></code> en el Menú. Cuando se utiliza un plugin, también es un buen hábito abrir la consola Python en QGIS para tener acceso a los mensajes Python devueltos en la consola. Para abrirla, haz clic en el icono de Python <img alt="ico_py" class="no-scaled-link" src="_images/icon_python_console_toolbar.png" /> en la «Barra de herramientas de plugins». Si la barra de herramientas no está visible, actívela yendo a <code class="docutils literal notranslate"><span class="pre">Ver</span> <span class="pre">&gt;</span> <span class="pre">Barras</span> <span class="pre">de</span> <span class="pre">herramientas</span> <span class="pre">&gt;</span> <span class="pre">Barra</span> <span class="pre">de</span> <span class="pre">herramientas</span> <span class="pre">de</span> <span class="pre">plugins</span></code> en el Menú.</p>
+<p>Una vez instalado el plugin (ver instrucciones para la <a class="reference external" href="installation.html">instalación</a> ), abre el plugin pulsando sobre su icono <img alt="ico_deforisk" class="no-scaled-link" src="_images/icon_deforisk_toolbar.png" />. Deberías ver las versiones de las dependencias instaladas en tu entorno escritas en la consola de Python. Comprueba que estos números de versión corresponden a la última versión de cada dependencia. En caso contrario actualiza las dependencias.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">osmconvert</span> <span class="mf">0.8.10</span>
+<span class="n">osmfilter</span> <span class="mf">1.4.4</span>
+<span class="n">geefcc</span> <span class="mf">0.1.3</span>
+<span class="n">pywdpa</span> <span class="mf">0.1.6</span>
+<span class="n">forestatrisk</span> <span class="mf">1.2</span>
+<span class="n">riskmapjnr</span> <span class="mf">1.3</span>
+</pre></div>
+</div>
+<p>Para probar el plugin y echar un primer vistazo a sus funcionalidades, pruébelo en una pequeña área de interés (AOI) como la isla <a class="reference external" href="https://en.wikipedia.org/wiki/Martinique">Martinique</a> (1128 km<sup>2</sup>) que tiene el código iso MTQ. Probar el plugin en una pequeña AOI tiene la ventaja de que los cálculos son rápidos y puedes ver directamente las salidas, interpretar los resultados y entender el funcionamiento del plugin.</p>
+</section>
+<section id="get-variables">
+<h2>Obtener variables<a class="headerlink" href="#get-variables" title="Link to this heading">#</a></h2>
+<img alt="_images/interface-variables.png" src="_images/interface-variables.png" />
+<p><br/></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">directory</span></code>: Selecciona tu directorio de trabajo. Aquí <code class="docutils literal notranslate"><span class="pre">/home/&lt;username&gt;/deforisk/MTQ-tuto</span></code>, pero podría ser <code class="docutils literal notranslate"><span class="pre">C:\sers\&lt;username&gt;\deforisk\MTQ-tuto</span></code> en Windows por ejemplo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code>: MTQ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Years</span></code>: 2000, 2010, 2020</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Forest</span> <span class="pre">data</span> <span class="pre">source</span></code>: tmf</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tree</span> <span class="pre">cover</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 50 (podría dejarse vacío, no es útil aquí para la fuente de datos tmf)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tile</span> <span class="pre">size</span> <span class="pre">(dd)</span></code>: 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Country/state</span> <span class="pre">ISO</span> <span class="pre">code</span></code>: MTQ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Earth</span> <span class="pre">Engine</span> <span class="pre">access</span></code>: Nombre del proyecto de Google Cloud con acceso a Earth Engine o ruta a un archivo de clave privada JSON para la cuenta de servicio.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code>: Token personal de la API de la WDPA o ruta a un archivo de texto con la variable de entorno WDPA_KEY.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>: EPSG:5490</p></li>
+</ul>
+<p>Haga clic en el botón Ejecutar. Aparecerá un mapa de cambios en la cubierta forestal en la lista de capas de QGIS (véase la imagen inferior y haga clic para ampliarla) y se creará un gráfico de los cambios en la cubierta forestal <code class="docutils literal notranslate"><span class="pre">fcc123.png</span></code> en la carpeta <code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>. Se crean nuevas carpetas en el directorio de trabajo, entre ellas la carpeta <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> que incluye los datos originales con archivos intermedios y la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code> que incluye los datos procesados utilizados para los modelos y los gráficos. Puede visualizar la red de carreteras, por ejemplo, añadiendo el archivo vectorial <code class="docutils literal notranslate"><span class="pre">roads_proj.shp</span></code>, que se encuentra en el directorio <code class="docutils literal notranslate"><span class="pre">data_raw</span></code>, en QGIS.</p>
+<a class="reference internal image-reference" href="_images/qgis-variables-results.png"><img alt="_images/qgis-variables-results.png" src="_images/qgis-variables-results.png" style="width: 650px;" />
+</a>
+</section>
+<section id="benchmark-model">
+<h2>Modelo de referencia<a class="headerlink" href="#benchmark-model" title="Link to this heading">#</a></h2>
+<img alt="_images/interface-benchmark.png" src="_images/interface-benchmark.png" />
+<section id="fit-model-to-data">
+<h3>Ajustar el modelo a los datos<a class="headerlink" href="#fit-model-to-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 99,5%.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: 2500</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Comprobado, el modelo se ajusta sobre el periodo de calibración (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Si se marca, el modelo se ajusta al periodo histórico (t1–t3).</p></li>
+</ul>
+<p>Haga clic en el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> para estimar el riesgo de deforestación con el modelo de referencia y predecir el riesgo de deforestación en t1 utilizando los datos de los periodos de calibración e histórico. Los mapas con clases de riesgo de deforestación se añaden a la lista de capas de QGIS (véase la imagen siguiente).</p>
+<a class="reference internal image-reference" href="_images/qgis-benchmark-results.png"><img alt="_images/qgis-benchmark-results.png" src="_images/qgis-benchmark-results.png" style="width: 650px;" />
+</a>
+<p><br/></p>
+<p>En el directorio <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/</span></code> se crean nuevas carpetas con los resultados de cada periodo. En concreto, las carpetas de resultados incluyen el archivo <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/perc_dist.png</span></code>. Este archivo muestra el gráfico de la deforestación acumulada en función de la distancia al borde del bosque e indica los limites de distancia (aquí 240  m para el periodo de calibración).</p>
+<figure class="align-default" id="id8">
+<span id="fig-perc-dist"></span><a class="reference internal image-reference" href="_images/perc_dist.png"><img alt="_images/perc_dist.png" src="_images/perc_dist.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Limite de distancia para el periodo de calibración.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Las carpetas de salida también incluyen la tabla <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_bm_&lt;period&gt;.csv</span></code> que muestra las tasas de deforestación para cada clase de riesgo de deforestación (ver detalles <a class="reference external" href="plugin_api.html#defrate-table">aquí</a>).</p>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-defrate">
+<caption><span class="caption-text">Tasa de deforestación para cada clase de riesgo de deforestación (cifras truncadas a tres dígitos decimales).</span><a class="headerlink" href="#tab-defrate" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>cat</p></th>
+<th class="head"><p>nfor</p></th>
+<th class="head"><p>ndefor</p></th>
+<th class="head"><p>rate_obs</p></th>
+<th class="head"><p>rate_mod</p></th>
+<th class="head"><p>rate_abs</p></th>
+<th class="head"><p>time_interval</p></th>
+<th class="head"><p>pixel_area</p></th>
+<th class="head"><p>defor_dens</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1001</p></td>
+<td><p>33433</p></td>
+<td><p>0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>10</p></td>
+<td><p>0.09</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1002</p></td>
+<td><p>12965</p></td>
+<td><p>0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>10</p></td>
+<td><p>0.09</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>1003</p></td>
+<td><p>91686</p></td>
+<td><p>19</p></td>
+<td><p>2.072e-05</p></td>
+<td><p>2.072e-04</p></td>
+<td><p>2.072e-04</p></td>
+<td><p>10</p></td>
+<td><p>0.09</p></td>
+<td><p>1.865e-06</p></td>
+</tr>
+<tr class="row-odd"><td><p>1004</p></td>
+<td><p>82279</p></td>
+<td><p>5</p></td>
+<td><p>6.077e-06</p></td>
+<td><p>6.076e-05</p></td>
+<td><p>6.076e-05</p></td>
+<td><p>10</p></td>
+<td><p>0.09</p></td>
+<td><p>5.469e-07</p></td>
+</tr>
+<tr class="row-even"><td><p>2001</p></td>
+<td><p>1373</p></td>
+<td><p>0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>10</p></td>
+<td><p>0.09</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="predict-the-deforestation-risk">
+<h3>Predecir el riesgo de deforestación<a class="headerlink" href="#predict-the-deforestation-risk" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: Marcado, calcula las predicciones en t2 para la validación (utilizando el modelo de referencia ajustado durante el periodo de calibración).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: Marcado, calcula predicciones en t3 para previsión (utilizando el modelo de referencia ajustado sobre el periodo histórico).</p></li>
+</ul>
+<p>Haga clic en el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> para predecir el riesgo de deforestación en t2 y t3 utilizando el modelo de referencia. Los mapas con clases de riesgo de deforestación se añaden a la lista de capas de QGIS y se añaden nuevos archivos a las carpetas de salida.</p>
+</section>
+</section>
+<section id="forestatrisk-models">
+<h2>Modelos forestatrisk<a class="headerlink" href="#forestatrisk-models" title="Link to this heading">#</a></h2>
+<img alt="_images/interface-far.png" src="_images/interface-far.png" />
+<section id="sample-observations">
+<h3>Observaciones por muestreo<a class="headerlink" href="#sample-observations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">N#</span> <span class="pre">samples</span></code>: 10000</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Adapt</span> <span class="pre">sampling</span></code>: Marcado, el número de observaciones es proporcional a la superficie forestal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Random</span> <span class="pre">seed</span></code>: 1234</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(km)</span></code>: 2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Marcado, las observaciones se muestrean para el periodo de calibración (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Marcado, las observaciones se muestrean para el periodo histórico (t1–t3).</p></li>
+</ul>
+<p>Al pulsar el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> en este cuadro se muestrearán las observaciones. Una vez finalizada la operación, las observaciones muestreadas aparecerán en la lista de capas de QGIS.</p>
+<a class="reference internal image-reference" href="_images/qgis-far-sample-results.png"><img alt="_images/qgis-far-sample-results.png" src="_images/qgis-far-sample-results.png" style="width: 650px;" />
+</a>
+<p><br/></p>
+<p>Se crean nuevas carpetas con los resultados en el directorio <code class="docutils literal notranslate"><span class="pre">outputs/far_models/</span></code> incluyendo el archivo <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/sample.txt</span></code> que es el conjunto de datos de observación con los valores de las variables.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-observations">
+<caption><span class="caption-text">Cinco primeras observaciones para el periodo de calibración.</span><a class="headerlink" href="#tab-observations" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>altitude</p></th>
+<th class="head"><p>dist_edge</p></th>
+<th class="head"><p>dist_river</p></th>
+<th class="head"><p>dist_road</p></th>
+<th class="head"><p>dist_town</p></th>
+<th class="head"><p>fcc</p></th>
+<th class="head"><p>pa</p></th>
+<th class="head"><p>slope</p></th>
+<th class="head"><p>X</p></th>
+<th class="head"><p>Y</p></th>
+<th class="head"><p>cell</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>56</p></td>
+<td><p>30</p></td>
+<td><p>750</p></td>
+<td><p>0</p></td>
+<td><p>150</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>6</p></td>
+<td><p>700155</p></td>
+<td><p>1645545</p></td>
+<td><p>63</p></td>
+</tr>
+<tr class="row-odd"><td><p>56</p></td>
+<td><p>30</p></td>
+<td><p>750</p></td>
+<td><p>0</p></td>
+<td><p>150</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>6</p></td>
+<td><p>700185</p></td>
+<td><p>1645545</p></td>
+<td><p>63</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>30</p></td>
+<td><p>875</p></td>
+<td><p>0</p></td>
+<td><p>1657</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>5</p></td>
+<td><p>698265</p></td>
+<td><p>1645425</p></td>
+<td><p>62</p></td>
+</tr>
+<tr class="row-odd"><td><p>93</p></td>
+<td><p>30</p></td>
+<td><p>600</p></td>
+<td><p>0</p></td>
+<td><p>1358</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>8</p></td>
+<td><p>698565</p></td>
+<td><p>1645425</p></td>
+<td><p>62</p></td>
+</tr>
+<tr class="row-even"><td><p>68</p></td>
+<td><p>30</p></td>
+<td><p>300</p></td>
+<td><p>0</p></td>
+<td><p>335</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>7</p></td>
+<td><p>699615</p></td>
+<td><p>1645425</p></td>
+<td><p>63</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id1">
+<h3>Ajustar el modelo a los datos<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code>: Dejar vacío, utilizará la fórmula por defecto: <code class="docutils literal notranslate"><span class="pre">C(pa)</span> <span class="pre">+</span> <span class="pre">altitude</span> <span class="pre">+</span> <span class="pre">slope</span> <span class="pre">+</span> <span class="pre">dist_edge</span> <span class="pre">+</span> <span class="pre">dist_road</span> <span class="pre">+</span> <span class="pre">dist_river</span> <span class="pre">+</span> <span class="pre">dist_town</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Starting</span> <span class="pre">values</span> <span class="pre">for</span> <span class="pre">betas</span></code>: -99</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Prior</span> <span class="pre">Vrho</span></code>: -1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MCMC</span></code>: 100</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">selection</span></code>: Dejar sin marcar, sin selección de variables (hace los cálculos más rápidos para este ejemplo).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Comprobado, los modelos se ajustan durante el periodo de calibración (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Marcado, los modelos se ajustan sobre el periodo histórico (t1–t3).</p></li>
+</ul>
+<p>Al pulsar el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> en este cuadro se ajustará el modelo estadístico a las observaciones de deforestación. Se ajustan tres modelos estadísticos (modelo iCAR, GLM y modelo Random Forest). Se añaden nuevos archivos a las carpetas <code class="docutils literal notranslate"><span class="pre">outputs/far_models/calibration</span></code> y <code class="docutils literal notranslate"><span class="pre">outputs/far_models/historical</span></code>. En concreto, el archivo <code class="docutils literal notranslate"><span class="pre">summary_icar.txt</span></code> es el resumen del modelo iCAR con la media, la desviación estándar y los intervalos de credibilidad de los parámetros del modelo.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-parameters">
+<caption><span class="caption-text">Resumen del modelo iCAR para el periodo de calibración.</span><a class="headerlink" href="#tab-parameters" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Mean</p></th>
+<th class="head"><p>Std</p></th>
+<th class="head"><p>CI_low</p></th>
+<th class="head"><p>CI_high</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Intercept</p></td>
+<td><p>-3.39</p></td>
+<td><p>0.158</p></td>
+<td><p>-3.7</p></td>
+<td><p>-3.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>C(pa)[T.1.0]</p></td>
+<td><p>-0.0915</p></td>
+<td><p>0.122</p></td>
+<td><p>-0.282</p></td>
+<td><p>0.172</p></td>
+</tr>
+<tr class="row-even"><td><p>scale(dist_edge)</p></td>
+<td><p>-10.3</p></td>
+<td><p>0.417</p></td>
+<td><p>-11.1</p></td>
+<td><p>-9.63</p></td>
+</tr>
+<tr class="row-odd"><td><p>scale(dist_road)</p></td>
+<td><p>-0.256</p></td>
+<td><p>0.0537</p></td>
+<td><p>-0.36</p></td>
+<td><p>-0.144</p></td>
+</tr>
+<tr class="row-even"><td><p>scale(dist_town)</p></td>
+<td><p>0.0342</p></td>
+<td><p>0.0464</p></td>
+<td><p>-0.0551</p></td>
+<td><p>0.123</p></td>
+</tr>
+<tr class="row-odd"><td><p>scale(dist_river)</p></td>
+<td><p>-0.0817</p></td>
+<td><p>0.0544</p></td>
+<td><p>-0.188</p></td>
+<td><p>0.0199</p></td>
+</tr>
+<tr class="row-even"><td><p>scale(altitude)</p></td>
+<td><p>-0.554</p></td>
+<td><p>0.0809</p></td>
+<td><p>-0.728</p></td>
+<td><p>-0.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>scale(slope)</p></td>
+<td><p>-0.532</p></td>
+<td><p>0.0392</p></td>
+<td><p>-0.611</p></td>
+<td><p>-0.457</p></td>
+</tr>
+<tr class="row-even"><td><p>Vrho</p></td>
+<td><p>6.89</p></td>
+<td><p>0.756</p></td>
+<td><p>5.64</p></td>
+<td><p>8.49</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deviance</p></td>
+<td><p>1.36e+04</p></td>
+<td><p>24.9</p></td>
+<td><p>1.36e+04</p></td>
+<td><p>1.37e+04</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>El archivo <code class="docutils literal notranslate"><span class="pre">model_deviances.csv</span></code> incluye una tabla para comparar el porcentaje de desviación explicada entre modelos.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-deviances">
+<caption><span class="caption-text">Porcentaje de desviación explicado por los modelos para el periodo de calibración.</span><a class="headerlink" href="#tab-deviances" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>model</p></th>
+<th class="head"><p>deviance</p></th>
+<th class="head"><p>perc</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>null</p></td>
+<td><p>26769.0</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>glm</p></td>
+<td><p>16864.0</p></td>
+<td><p>37.0</p></td>
+</tr>
+<tr class="row-even"><td><p>rf</p></td>
+<td><p>6668.0</p></td>
+<td><p>75.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>icar</p></td>
+<td><p>13636.0</p></td>
+<td><p>49.0</p></td>
+</tr>
+<tr class="row-even"><td><p>full</p></td>
+<td><p>0.0</p></td>
+<td><p>100.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id2">
+<h3>Predecir el riesgo de deforestación<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: Marcado, calcula predicciones con el modelo iCAR.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code>: Comprobado, calcula predicciones con GLM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code>: Marcado, calcula predicciones con el modelo Random Forest.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">calibration</span></code>: Comprobado, calcula predicciones en t1 utilizando modelos ajustados durante el periodo de calibración.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: Marcado, calcula predicciones en t2 para la validación (utilizando modelos ajustados durante el periodo de calibración).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">historical</span></code>: Comprobado, calcula predicciones en t1 utilizando modelos ajustados en el periodo histórico.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: Marcado, calcula predicciones en t3 para previsión (usando modelos ajustados sobre el periodo histórico).</p></li>
+</ul>
+<p>Al pulsar el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> en este cuadro se utilizarán los modelos estadísticos para las predicciones. Una vez finalizada la operación, los rásters que representan las clases de riesgo de deforestación aparecen en la lista de capas de QGIS. Se crean nuevas carpetas <code class="docutils literal notranslate"><span class="pre">outputs/far_models/validation</span></code> y <code class="docutils literal notranslate"><span class="pre">outputs/far_models/forecast</span></code>. Incluyen las tablas <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code> con las tasas de deforestación para cada clase de riesgo de deforestación (ver detalles <a class="reference external" href="plugin_api.html#defrate-table">aquí</a>).</p>
+<a class="reference internal image-reference" href="_images/qgis-far-results.png"><img alt="_images/qgis-far-results.png" src="_images/qgis-far-results.png" style="width: 650px;" />
+</a>
+</section>
+</section>
+<section id="moving-window-models">
+<h2>Modelos de ventanas móviles<a class="headerlink" href="#moving-window-models" title="Link to this heading">#</a></h2>
+<img alt="_images/interface-mw.png" src="_images/interface-mw.png" />
+<section id="id4">
+<h3>Ajustar el modelo a los datos<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 99,5%.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: 2500</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Window</span> <span class="pre">sizes</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>: 11, 21</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Comprobado, el modelo se ajusta sobre el periodo de calibración (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Si se marca, el modelo se ajusta al periodo histórico (t1–t3).</p></li>
+</ul>
+<p>Haga clic en el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> para estimar el riesgo de deforestación con el modelo de ventana móvil utilizando datos de los periodos de calibración e histórico. Se crean nuevas carpetas con los resultados en el directorio <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code> incluyendo el archivo raster <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/ldefrate_mw_&lt;window_size&gt;.tif</span></code> con las tasas locales de deforestación reescaladas en [2, 65535].</p>
+</section>
+<section id="id5">
+<h3>Predecir el riesgo de deforestación<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code>: Marcado, calcula predicciones en t2 para la validación (usando el modelo de ventana móvil ajustado sobre el periodo de calibración).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: Marcado, calcula predicciones en t3 para la previsión (utilizando el modelo de ventana móvil ajustado sobre el periodo histórico).</p></li>
+</ul>
+<p>Haga clic en el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> para predecir el riesgo de deforestación en t2 y t3 utilizando el modelo de ventana móvil. Los mapas con las clases de riesgo de deforestación se añaden a la lista de capas de QGIS (ver imagen inferior) y se crean nuevas carpetas con los resultados en el directorio <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code>, incluyendo las tablas <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_mv_&lt;window_size&gt;_&lt;period&gt;.csv</span></code> con las tasas de deforestación para cada clase de riesgo de deforestación (ver detalles <a class="reference external" href="plugin_api.html#defrate-table">aquí</a>).</p>
+<a class="reference internal image-reference" href="_images/qgis-mw-results.png"><img alt="_images/qgis-mw-results.png" src="_images/qgis-mw-results.png" style="width: 650px;" />
+</a>
+</section>
+</section>
+<section id="validation">
+<h2>Validación<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Coarse</span> <span class="pre">grid</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>: 50, 100</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: Marcado, estima el rendimiento del modelo iCAR.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code>: Marcado, estima el rendimiento del GLM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code>: Marcado, estima el rendimiento del modelo Random Forest.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MW</span> <span class="pre">model</span></code>: Comprobado, estima el rendimiento de los modelos de ventana móvil.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Comprobado, estima el rendimiento del modelo para el periodo de calibración (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">valid.</span> <span class="pre">period</span></code>: Comprobado, estima el rendimiento del modelo para el periodo de validación (t2–t3).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Comprobado, estima el rendimiento del modelo para el periodo histórico (t1–t3).</p></li>
+</ul>
+<p>Al pulsar el botón «Run» en este cuadro se calculará el área deforestada prevista en cada celda de la cuadrícula para cada modelo y cada período seleccionado y se comparará este valor con el área deforestada observada para la misma celda de la cuadrícula y el mismo período.</p>
+<p>Se crean nuevas carpetas para cada periodo: <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/figures</span></code> y <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/tables</span></code>. En cada carpeta se añaden varios archivos de salida.</p>
+<p>Archivos <code class="docutils literal notranslate"><span class="pre">figures/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.png</span></code> que muestran el gráfico del área deforestada predicha frente a la observada. El gráfico muestra los valores del área deforestada predicha y observada en cada celda de la cuadrícula como puntos y la línea de uno a uno. El gráfico muestra también el número de celdas de la cuadrícula (o puntos) y los valores de dos de los índices de rendimiento: el <span class="math notranslate nohighlight">\(R^{2}\)</span> y el MedAE.</p>
+<a class="reference internal image-reference" href="_images/pred_obs_icar_validation_50.png"><img alt="_images/pred_obs_icar_validation_50.png" src="_images/pred_obs_icar_validation_50.png" style="width: 600px;" />
+</a>
+<p>El archivo <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/indices_all.csv</span></code> incluye una tabla con los índices de rendimiento para todos los tamaños de celda de validación, todos los modelos y todos los periodos. En este ejemplo, tanto el modelo Random Forest como el modelo iCAR  son mejores que el modelo de referencia sean cuales sean los índices de rendimiento considerados. El modelo iCAR es el mejor porque tiene el MedAE más bajo, el RMSE más bajo y el <span class="math notranslate nohighlight">\(R^{2}\)</span> más alto para el periodo de validación, que es el único periodo con datos independientes (es decir, que no se han utilizado para calibrar los modelos). Esto es así sea cual sea el tamaño de celda de validación elegido.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-indices">
+<caption><span class="caption-text">Índices de rendimiento.</span><a class="headerlink" href="#tab-indices" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>csize_coarse_grid</p></th>
+<th class="head"><p>csize_coarse_grid_ha</p></th>
+<th class="head"><p>ncell</p></th>
+<th class="head"><p>period</p></th>
+<th class="head"><p>model</p></th>
+<th class="head"><p>MedAE</p></th>
+<th class="head"><p>R2</p></th>
+<th class="head"><p>RMSE</p></th>
+<th class="head"><p>wRMSE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>225.0</p></td>
+<td><p>604</p></td>
+<td><p>validation</p></td>
+<td><p>bm</p></td>
+<td><p>2.71</p></td>
+<td><p>0.43</p></td>
+<td><p>6.08</p></td>
+<td><p>6.22</p></td>
+</tr>
+<tr class="row-odd"><td><p>50</p></td>
+<td><p>225.0</p></td>
+<td><p>604</p></td>
+<td><p>validation</p></td>
+<td><p>icar</p></td>
+<td><p>1.78</p></td>
+<td><p>0.65</p></td>
+<td><p>4.79</p></td>
+<td><p>4.59</p></td>
+</tr>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>225.0</p></td>
+<td><p>604</p></td>
+<td><p>validation</p></td>
+<td><p>glm</p></td>
+<td><p>2.39</p></td>
+<td><p>0.38</p></td>
+<td><p>6.39</p></td>
+<td><p>6.52</p></td>
+</tr>
+<tr class="row-odd"><td><p>50</p></td>
+<td><p>225.0</p></td>
+<td><p>604</p></td>
+<td><p>validation</p></td>
+<td><p>rf</p></td>
+<td><p>2.09</p></td>
+<td><p>0.50</p></td>
+<td><p>5.69</p></td>
+<td><p>5.74</p></td>
+</tr>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>225.0</p></td>
+<td><p>604</p></td>
+<td><p>validation</p></td>
+<td><p>mw_11</p></td>
+<td><p>2.34</p></td>
+<td><p>0.56</p></td>
+<td><p>7.66</p></td>
+<td><p>6.83</p></td>
+</tr>
+<tr class="row-odd"><td><p>50</p></td>
+<td><p>225.0</p></td>
+<td><p>604</p></td>
+<td><p>validation</p></td>
+<td><p>mw_21</p></td>
+<td><p>2.51</p></td>
+<td><p>0.56</p></td>
+<td><p>7.54</p></td>
+<td><p>6.66</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>El mapa de riesgo de deforestación obtenido con el modelo iCAR en t3 puede utilizarse para asignar la deforestación después del año 2020. Tanto el mapa de riesgo con las clases de deforestación de 1 a 65535 como la tabla <code class="docutils literal notranslate"><span class="pre">defrate_cat_icar_forecast.csv</span></code> con las tasas de deforestación para todas las clases de riesgo de deforestación son necesarios para asignar la deforestación en el futuro.</p>
+<p>La tabla sólo incluye valores para <code class="docutils literal notranslate"><span class="pre">rate_mod</span></code>, las tasas relativas de deforestación espacial del modelo iCAR estimadas en el periodo histórico. En cuanto al paso de validación, la deforestación debe ajustarse cuantitativamente en función de la cantidad de deforestación prevista en el futuro.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="tab-defrate-icar-forecast">
+<caption><span class="caption-text">Tasas de deforestación de las clases del modelo iCAR para la previsión de la deforestación.</span><a class="headerlink" href="#tab-defrate-icar-forecast" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>cat</p></th>
+<th class="head"><p>nfor</p></th>
+<th class="head"><p>ndefor</p></th>
+<th class="head"><p>rate_obs</p></th>
+<th class="head"><p>rate_mod</p></th>
+<th class="head"><p>rate_abs</p></th>
+<th class="head"><p>time_interval</p></th>
+<th class="head"><p>pixel_area</p></th>
+<th class="head"><p>defor_dens</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>137575</p></td>
+<td><p>0</p></td>
+<td><p>0.0</p></td>
+<td><p>1e-06</p></td>
+<td><p>0.0</p></td>
+<td><p>20</p></td>
+<td><p>0.09</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>5425</p></td>
+<td><p>0</p></td>
+<td><p>0.0</p></td>
+<td><p>1.6259239478743857e-05</p></td>
+<td><p>0.0</p></td>
+<td><p>20</p></td>
+<td><p>0.09</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>3523</p></td>
+<td><p>0</p></td>
+<td><p>0.0</p></td>
+<td><p>3.151847895748772e-05</p></td>
+<td><p>0.0</p></td>
+<td><p>20</p></td>
+<td><p>0.09</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2458</p></td>
+<td><p>0</p></td>
+<td><p>0.0</p></td>
+<td><p>4.677771843623157e-05</p></td>
+<td><p>0.0</p></td>
+<td><p>20</p></td>
+<td><p>0.09</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>2078</p></td>
+<td><p>0</p></td>
+<td><p>0.0</p></td>
+<td><p>6.203695791497542e-05</p></td>
+<td><p>0.0</p></td>
+<td><p>20</p></td>
+<td><p>0.09</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Considerando una deforestación total <span class="math notranslate nohighlight">\(D\)</span> (en ha) para los próximos <span class="math notranslate nohighlight">\(Y\)</span> años a nivel jurisdiccional, el factor de ajuste es <span class="math notranslate nohighlight">\(\rho = D / (A \sum_i n_{i} \theta_{m,i})\)</span>, siendo <span class="math notranslate nohighlight">\(A\)</span> el área del píxel en ha, la tasa absoluta es <span class="math notranslate nohighlight">\(\theta_{a,i} = \rho \theta_{m,i}\)</span>, y la densidad de deforestación es <span class="math notranslate nohighlight">\(\delta_{i} = \theta_{a,i} \times A / Y\)</span>. La densidad de deforestación <span class="math notranslate nohighlight">\(\delta_{i}\)</span> se utiliza para predecir la cantidad de deforestación (en ha/año) para cada píxel forestal perteneciente a una clase determinada de riesgo de deforestación para los próximos <span class="math notranslate nohighlight">\(Y\)</span> años (para las notaciones, véanse los detalles <a class="reference external" href="plugin_api.html#defrate-table">aquí</a>).</p>
+<p>El mapa de riesgo, junto con la tabla de densidad de deforestación computada, puede ser utilizado para <a class="reference external" href="https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/">asignar proporcionalmente fracciones</a> de la línea de base de datos de la actividad de deforestación no planificada jurisdiccional (en el contexto de <a class="reference external" href="https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/">VMD0055</a>) o del FREL jurisdiccional (en el contexto del Marco VCS <a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">Jurisdiccional y Anidado de REDD+</a>) a proyectos o programas a ser implementados dentro de la jurisdicción. Para eso, se debe calcular una tabla con el número de píxeles para cada clase de riesgo de deforestación en el área del proyecto. Esto se hace fácilmente con las herramientas de QGIS <code class="docutils literal notranslate"><span class="pre">Raster</span> <span class="pre">&gt;</span> <span class="pre">Extracción</span> <span class="pre">&gt;</span> <span class="pre">Recortar</span> <span class="pre">raster</span> <span class="pre">por</span> <span class="pre">capa</span> <span class="pre">de</span> <span class="pre">máscara</span></code> para recortar el mapa de riesgo hasta el límite del proyecto y <code class="docutils literal notranslate"><span class="pre">Procesamiento</span> <span class="pre">&gt;</span> <span class="pre">Caja</span> <span class="pre">de</span> <span class="pre">herramientas</span> <span class="pre">&gt;</span> <span class="pre">Informe</span> <span class="pre">de</span> <span class="pre">valores</span> <span class="pre">únicos</span> <span class="pre">de</span> <span class="pre">capa</span> <span class="pre">raster</span></code>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="installation.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Instalación</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="articles.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Artículos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> En esta página
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-variables">Obtener variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-model">Modelo de referencia</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-model-to-data">Ajustar el modelo a los datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-deforestation-risk">Predecir el riesgo de deforestación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forestatrisk-models">Modelos forestatrisk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-observations">Observaciones por muestreo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ajustar el modelo a los datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Predecir el riesgo de deforestación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-window-models">Modelos de ventanas móviles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Ajustar el modelo a los datos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Predecir el riesgo de deforestación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusión</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Cirad and FAO.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Construido con el <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">Tema PyData Sphinx</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

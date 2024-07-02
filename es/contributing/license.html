@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Licencia &#8212; deforisk — Create and compare deforestation risk maps</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=dfba06c8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=efdbd0b9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contributing/license';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="prev" title="Código de conducta" href="code_of_conduct.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo-deforisk.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo-deforisk.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">deforisk QGIS plugin</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Inicio
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Instalación
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../get_started.html">
+    Empezar
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../articles.html">
+    Artículos
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../plugin_api.html">
+    Plugin API
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="changelog.html">
+    Registro de cambios
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="community_guidelines.html">
+    Directrices comunitarias
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="code_of_conduct.html">
+    Código de conducta
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="#">
+    Licencia
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.cirad.fr/en" title="Cirad" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/icon_cirad.png" class="icon-link-image" alt="Cirad"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.fao.org" title="FAO" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logo_fao.png" class="icon-link-image" alt="FAO"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Inicio
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Instalación
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../get_started.html">
+    Empezar
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../articles.html">
+    Artículos
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../plugin_api.html">
+    Plugin API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="changelog.html">
+    Registro de cambios
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="community_guidelines.html">
+    Directrices comunitarias
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="code_of_conduct.html">
+    Código de conducta
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Licencia
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.cirad.fr/en" title="Cirad" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/icon_cirad.png" class="icon-link-image" alt="Cirad"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.fao.org" title="FAO" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/logo_fao.png" class="icon-link-image" alt="FAO"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Miga de pan" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Inicio">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Licencia</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="license">
+<h1>Licencia<a class="headerlink" href="#license" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta es una copia local de la <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License Version 3.0</a>.</p>
+</div>
+<section id="gnu-general-public-license">
+<h2>Licencia pública general GNU<a class="headerlink" href="#gnu-general-public-license" title="Link to this heading">#</a></h2>
+<p>Versión 3, 29 de junio de 2007</p>
+<p>Copyright (C) 2007 Free Software Foundation, Inc. <a class="reference external" href="https://fsf.org/">https://fsf.org/</a></p>
+<p>Todo el mundo puede copiar y distribuir copias literales de este documento de licencia, pero no está permitido modificarlo.</p>
+</section>
+<section id="preamble">
+<span id="id1"></span><h2>Preámbulo<a class="headerlink" href="#preamble" title="Link to this heading">#</a></h2>
+<p>La Licencia Pública General GNU es una licencia libre con copyleft para software y otros tipos de obras.</p>
+<p>Las licencias de la mayoría del software y otras obras prácticas están diseñadas para privarle de la libertad de compartir y modificar las obras. Por el contrario, la Licencia Pública General de GNU está pensada para garantizar su libertad de compartir y cambiar todas las versiones de un programa, para asegurarse de que sigue siendo software libre para todos sus usuarios. Nosotros, la Free Software Foundation, usamos la Licencia Pública General de GNU para la mayoría de nuestro software; se aplica también a cualquier otro trabajo publicado de esta forma por sus autores. Usted también puede aplicarla a sus programas.</p>
+<p>Cuando hablamos de software libre, nos referimos a la libertad, no al precio. Nuestras Licencias Públicas Generales están diseñadas para garantizar que usted tenga la libertad de distribuir copias de software libre (y cobrar por ellas si lo desea), que reciba el código fuente o pueda obtenerlo si lo desea, que pueda modificar el software o utilizar partes de él en nuevos programas libres, y que sepa que puede hacer estas cosas.</p>
+<p>Para proteger sus derechos, tenemos que impedir que otros le nieguen estos derechos o le pidan que renuncie a ellos. Por lo tanto, usted tiene ciertas responsabilidades si distribuye copias del software, o si lo modifica: responsabilidades de respetar la libertad de los demás.</p>
+<p>Por ejemplo, si distribuye copias de un programa de este tipo, ya sea gratuitamente u onerosamente, debe transmitir a los destinatarios las mismas libertades que usted recibió. Debe asegurarse de que ellos también reciben o pueden obtener el código fuente. Y debes mostrarles estas condiciones para que conozcan sus derechos.</p>
+<p>Los desarrolladores que utilizan la GPL de GNU protegen sus derechos con dos pasos: (1) hacer valer los derechos de autor sobre el software, y (2) ofrecerle esta Licencia que le da permiso legal para copiarlo, distribuirlo y/o modificarlo.</p>
+<p>Para protección de desarrolladores y autores, la GPL explica claramente que no hay garantía para este software libre. Para protección de usuarios y autores, la GPL exige que las versiones modificadas se marquen como cambiadas, para que sus problemas no se atribuyan erróneamente a los autores de versiones anteriores.</p>
+<p>Algunos dispositivos están diseñados para denegar a los usuarios el acceso a la instalación o ejecución de versiones modificadas del software que contienen, aunque el fabricante pueda hacerlo. Esto es fundamentalmente incompatible con el objetivo de proteger la libertad de los usuarios para modificar el software. El patrón sistemático de este tipo de abusos se da en el ámbito de los productos para uso particular, que es precisamente donde resulta más inaceptable. Por ello, hemos diseñado esta versión de la GPL para prohibir esta práctica en esos productos. Si tales problemas surgen sustancialmente en otros ámbitos, estamos dispuestos a ampliar esta disposición a esos ámbitos en futuras versiones de la GPL, según sea necesario para proteger la libertad de los usuarios.</p>
+<p>Por último, todos los programas se ven amenazados constantemente por las patentes de software. Los Estados no deberían permitir que las patentes restrinjan el desarrollo y uso de software en ordenadores de propósito general, pero en aquellos que sí lo hacen, deseamos evitar el peligro especial de que las patentes aplicadas a un programa libre puedan convertirlo efectivamente en privativo. Para evitarlo, la GPL garantiza que las patentes no puedan utilizarse para hacer que el programa no sea libre.</p>
+<p>A continuación figuran las condiciones precisas para la copia, distribución y modificación.</p>
+</section>
+<section id="terms-and-conditions">
+<span id="id2"></span><h2>CONDICIONES GENERALES<a class="headerlink" href="#terms-and-conditions" title="Link to this heading">#</a></h2>
+<section id="definitions">
+<span id="id3"></span><h3>0. Definiciones.<a class="headerlink" href="#definitions" title="Link to this heading">#</a></h3>
+<p>«Esta Licencia» se refiere a la versión 3 de la Licencia Pública General GNU.</p>
+<p>«Derechos de autor» también significa leyes similares a los derechos de autor que se aplican a otros tipos de obras, como las máscaras de semiconductores.</p>
+<p>«El Programa» se refiere a cualquier trabajo con derechos de autor licenciado bajo esta Licencia. A cada licenciatario se le denomina «usted». Los «licenciatarios» y los «destinatarios» pueden ser particulares u organizaciones.</p>
+<p>Modificar» una obra significa copiarla o adaptarla total o parcialmente de un modo que requiera autorización de los derechos de autor y que no sea una copia exacta. La obra resultante se denomina «versión modificada» de la obra anterior u obra «basada en» la obra anterior.</p>
+<p>Por «obra amparada» se entiende el Programa sin modificar o una obra basada en el Programa.</p>
+<p>Propagar» una obra significa hacer con ella cualquier cosa que, sin permiso, le haría directa o secundariamente responsable de infracción según la legislación aplicable sobre derechos de autor, excepto ejecutarla en un ordenador o modificar una copia privada. La propagación incluye la copia, la distribución (con o sin modificación), la puesta a disposición del público y, en algunos países, también otras actividades.</p>
+<p>Por «transmitir» una obra se entiende cualquier tipo de propagación que permita a otras partes hacer o recibir copias. La mera interacción con un usuario a través de una red informática, sin transferencia de una copia, no es transmisión.</p>
+<p>Una interfaz de usuario interactiva muestra «Avisos Legales Apropiados» en la medida en que incluye un elemento conveniente y prominentemente visible que (1) muestra un aviso de copyright apropiado, y (2) indica al usuario que no hay garantía para el trabajo (excepto en la medida en que se proporcionen garantías), que los licenciatarios pueden transmitir el trabajo bajo esta Licencia, y cómo ver una copia de esta Licencia. Si la interfaz presenta una lista de comandos u opciones para el usuario, como un menú, un elemento destacado de la lista cumple este criterio.</p>
+</section>
+<section id="source-code">
+<span id="id4"></span><h3>1. Código fuente.<a class="headerlink" href="#source-code" title="Link to this heading">#</a></h3>
+<p>Por «código fuente» de una obra se entiende la forma preferida de la obra para realizar modificaciones en ella. Por «código objeto» se entiende cualquier forma no fuente de una obra.</p>
+<p>Por «interfaz estándar» se entiende una interfaz que, o bien es una norma oficial definida por un organismo de normalización reconocido, o bien, en el caso de interfaces especificadas para un lenguaje de programación concreto, es una interfaz ampliamente utilizada entre los desarrolladores que trabajan en ese lenguaje.</p>
+<p>Las «Bibliotecas del Sistema» de una obra ejecutable incluyen cualquier cosa, distinta de la obra en su conjunto, que (a) se incluya en la forma normal de empaquetar un Componente Principal, pero que no forme parte de ese Componente Principal, y (b) sirva únicamente para permitir el uso de la obra con ese Componente Principal, o para implementar una Interfaz Estándar para la que esté disponible al público una implementación en forma de código fuente. Un «Componente Principal», en este contexto, significa un componente esencial principal (núcleo, sistema de ventanas, etc.) del sistema operativo específico (si existe) en el que se ejecuta la obra ejecutable, o un compilador utilizado para producir la obra, o un intérprete de código objeto utilizado para ejecutarla.</p>
+<p>Por «código fuente correspondiente» de una obra en forma de código objeto se entiende todo el código fuente necesario para generar, instalar y (en el caso de una obra ejecutable) ejecutar el código objeto y modificar la obra, incluidas las secuencias de comandos para controlar dichas actividades. Sin embargo, no incluye las bibliotecas del sistema de la obra, ni las herramientas de uso general o los programas gratuitos generalmente disponibles que se utilizan sin modificar para realizar esas actividades pero que no forman parte de la obra. Por ejemplo, la Fuente Correspondiente incluye los archivos de definición de interfaz asociados a los archivos fuente de la obra, y el código fuente de las bibliotecas compartidas y los subprogramas enlazados dinámicamente que la obra está específicamente diseñada para requerir, como por ejemplo mediante la comunicación íntima de datos o el flujo de control entre esos subprogramas y otras partes de la obra.</p>
+<p>No es necesario que la Fuente Correspondiente incluya nada que los usuarios puedan regenerar automáticamente a partir de otras partes de la Fuente Correspondiente.</p>
+<p>La Fuente Correspondiente de una obra en forma de código fuente es esa misma obra.</p>
+</section>
+<section id="basic-permissions">
+<span id="id5"></span><h3>2. Permisos básicos.<a class="headerlink" href="#basic-permissions" title="Link to this heading">#</a></h3>
+<p>Todos los derechos otorgados bajo esta Licencia se conceden por el período de vigencia de los derechos de autor sobre el Programa, y son irrevocables siempre que se cumplan las condiciones establecidas. Esta Licencia afirma explícitamente su permiso ilimitado para ejecutar el Programa sin modificaciones. El resultado de ejecutar un trabajo amparado está cubierto por esta Licencia sólo si el resultado, dado su contenido, constituye un trabajo amparado. Esta Licencia reconoce sus derechos de uso justo u otros equivalentes, según lo dispuesto por la ley de derechos de autor.</p>
+<p>Usted puede hacer, ejecutar y propagar trabajos amparados que no transmita, sin condiciones mientras su licencia siga vigente. Puede transmitir obras amparadas a terceros con el único propósito de que realicen modificaciones exclusivamente para usted, o le proporcionen instalaciones para ejecutar dichas obras, siempre que cumpla los términos de esta Licencia al transmitir todo el material sobre el que no controle los derechos de autor. Aquellos que realicen o ejecuten para usted los trabajos amparados deberán hacerlo exclusivamente en su nombre, bajo su dirección y control, en términos que les prohíban realizar cualquier copia de su material protegido por derechos de autor fuera de su relación con usted.</p>
+<p>La transmisión en cualquier otra circunstancia sólo está permitida en las condiciones que se indican a continuación. No se permite la sublicencia; la sección 10 la hace innecesaria.</p>
+</section>
+<section id="protecting-users-legal-rights-from-anti-circumvention-law">
+<span id="id6"></span><h3>3. Protección de los derechos legales de los usuarios frente a la ley antielusión.<a class="headerlink" href="#protecting-users-legal-rights-from-anti-circumvention-law" title="Link to this heading">#</a></h3>
+<p>Ninguna obra amparada se considerará parte de una medida tecnológica efectiva en virtud de cualquier ley aplicable que cumpla las obligaciones del artículo 11 del tratado de la OMPI sobre derechos de autor adoptado el 20 de diciembre de 1996, o leyes similares que prohíban o restrinjan la elusión de dichas medidas.</p>
+<p>Cuando usted transmite una obra amparada, renuncia a cualquier facultad legal de prohibir la elusión de medidas tecnológicas en la medida en que dicha elusión se efectúe mediante el ejercicio de derechos en virtud de esta Licencia con respecto a la obra amparada, y renuncia a cualquier intención de limitar el funcionamiento o la modificación de la obra como medio de hacer valer, frente a los usuarios de la obra, sus derechos legales o los de terceros de prohibir la elusión de medidas tecnológicas.</p>
+</section>
+<section id="conveying-verbatim-copies">
+<span id="id7"></span><h3>4. Transmisión de copias literales.<a class="headerlink" href="#conveying-verbatim-copies" title="Link to this heading">#</a></h3>
+<p>Usted puede transmitir copias literales del código fuente del Programa tal y como lo reciba, en cualquier medio, siempre que publique de forma visible y apropiada en cada copia un aviso de copyright apropiado; mantenga intactos todos los avisos que indiquen que esta Licencia y cualquier término no permisivo añadido de acuerdo con la sección 7 se aplican al código; mantenga intactos todos los avisos de ausencia de cualquier garantía; y entregue a todos los destinatarios una copia de esta Licencia junto con el Programa.</p>
+<p>Puede cobrar cualquier precio o no cobrar nada por cada copia que transmita, y puede ofrecer asistencia o protección de garantía a cambio de una cuota.</p>
+</section>
+<section id="conveying-modified-source-versions">
+<span id="id8"></span><h3>5. Transmisión de versiones fuente modificadas.<a class="headerlink" href="#conveying-modified-source-versions" title="Link to this heading">#</a></h3>
+<p>Usted puede transmitir un trabajo basado en el Programa, o las modificaciones para producirlo a partir del Programa, en forma de código fuente bajo los términos de la sección 4, siempre que también cumpla todas estas condiciones:</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>La obra debe llevar avisos visibles que indiquen que usted la ha modificado y la fecha correspondiente.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>La obra debe llevar avisos prominentes que indiquen que se libera bajo esta Licencia y cualquier condición añadida bajo la sección 7. Este requisito modifica el requisito de la sección 4 de «mantener intactos todos los avisos».</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Usted debe licenciar el trabajo completo, como un todo, bajo esta Licencia a cualquiera que entre en posesión de una copia. Por lo tanto, esta Licencia se aplicará, junto con cualquier término adicional aplicable de la sección 7, a la totalidad de la obra, y a todas sus partes, independientemente de cómo estén empaquetadas. Esta Licencia no autoriza a licenciar la obra de ninguna otra forma, pero no invalida dicha autorización si usted la ha recibido por separado.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Si la obra tiene interfaces de usuario interactivas, cada una de ellas debe mostrar Avisos Legales Adecuados; sin embargo, si el Programa tiene interfaces interactivas que no muestran Avisos Legales Adecuados, su obra no necesita hacer que lo hagan.</p></li>
+</ol>
+</li>
+</ul>
+<p>Una compilación de una obra amparada con otras obras separadas e independientes, que no sean por su naturaleza extensiones de la obra amparada, y que no estén combinadas con ella de forma que formen un programa mayor, en o sobre un volumen de un medio de almacenamiento o distribución, se denomina «agregado» si la compilación y su copyright resultante no se utilizan para limitar el acceso o los derechos legales de los usuarios de la compilación más allá de lo que permiten las obras individuales. La inclusión de una obra amparada en un agregado no hace que esta Licencia se aplique a las demás partes del agregado.</p>
+</section>
+<section id="conveying-non-source-forms">
+<span id="id9"></span><h3>6. Transmisión de formularios no fuente.<a class="headerlink" href="#conveying-non-source-forms" title="Link to this heading">#</a></h3>
+<p>Usted puede distribuir un trabajo amparado en forma de código objeto bajo los términos de las secciones 4 y 5, siempre que también distribuya la Fuente Correspondiente legible por máquina bajo los términos de esta Licencia, de una de estas maneras:</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Transmitir el código objeto en, o incorporado a, un producto físico (incluido un soporte físico de distribución), acompañado de la Fuente Correspondiente fijada en un soporte físico duradero utilizado habitualmente para el intercambio de software.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Transmitir el código objeto en, o incorporado a, un producto físico (incluido un soporte físico de distribución), acompañado de una oferta por escrito, válida durante al menos tres años y válida mientras ofrezca piezas de repuesto o soporte al cliente para ese modelo de producto, dar a cualquiera que posea el código objeto (1) una copia de la Fuente Correspondiente para todo el software del producto cubierto por esta Licencia, en un soporte físico duradero utilizado habitualmente para el intercambio de software, por un precio no superior a su coste razonable de realizar físicamente esta transmisión de la fuente, o (2) acceso para copiar la Fuente Correspondiente desde un servidor de red sin coste alguno.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Entregar copias individuales del código objeto con una copia de la oferta escrita de proporcionar la Fuente Correspondiente. Esta alternativa sólo se permite de forma ocasional y no comercial, y sólo si usted recibió el código objeto con dicha oferta, de acuerdo con la subsección 6b.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Transmita el código objeto ofreciendo acceso desde un lugar designado (gratuitamente u onerosamente), y ofrezca un acceso equivalente a la Fuente Correspondiente de la misma manera a través del mismo lugar sin coste adicional. No es necesario exigir a los destinatarios que copien la Fuente Correspondiente junto con el código objeto. Si el lugar para copiar el código objeto es un servidor de red, la Fuente Correspondiente puede estar en un servidor diferente (operado por usted o por un tercero) que admita facilidades de copia equivalentes, siempre que usted mantenga indicaciones claras junto al código objeto que digan dónde encontrar la Fuente Correspondiente. Independientemente del servidor que aloje la Fuente Correspondiente, usted sigue estando obligado a garantizar que esté disponible durante el tiempo que sea necesario para satisfacer estos requisitos.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="5">
+<li><p>Transmitir el código objeto utilizando la transmisión entre pares, siempre que informe a los demás pares de que el código objeto y la Fuente Correspondiente de la obra se ofrecen al público en general de forma gratuita en virtud de la subsección 6d.</p></li>
+</ol>
+</li>
+</ul>
+<p>Una porción separable del código objeto, cuyo código fuente está excluido de la Fuente Correspondiente como Biblioteca del Sistema, no necesita ser incluida en la transmisión del trabajo de código objeto.</p>
+<p>Un «producto de usuario» es (1) un «producto de consumo», es decir, cualquier bien personal tangible que se utilice normalmente con fines personales, familiares o domésticos, o (2) cualquier cosa diseñada o vendida para su incorporación a una vivienda. Para determinar si un producto es de consumo, los casos dudosos se resolverán a favor de la cobertura. Para un producto concreto recibido por un usuario concreto, «normalmente utilizado» se refiere a un uso típico o común de esa clase de producto, independientemente de la condición del usuario concreto o de la forma en que el usuario concreto utilice realmente, o espere o se espere que utilice, el producto. Un producto es un producto de consumo independientemente de que tenga usos comerciales, industriales o no relacionados con el consumo, a menos que dichos usos representen el único modo significativo de utilización del producto.</p>
+<p>«Información de instalación» para un Producto de Usuario significa cualquier método, procedimiento, clave de autorización u otra información necesaria para instalar y ejecutar versiones modificadas de un trabajo amparado en ese Producto de Usuario a partir de una versión modificada de su Fuente Correspondiente. La información debe ser suficiente para garantizar que el funcionamiento continuado del código objeto modificado no se vea impedido o interferido en ningún caso por el mero hecho de que se haya realizado una modificación.</p>
+<p>Si usted transmite un trabajo de código objeto en virtud de esta sección en, o con, o específicamente para su uso en, un Producto de Usuario, y la transmisión se produce como parte de una transacción en la que el derecho de posesión y uso del Producto de Usuario se transfiere al destinatario a perpetuidad o por un plazo fijo (independientemente de cómo se caracterice la transacción), la Fuente Correspondiente transmitida en virtud de esta sección debe ir acompañada de la Información de Instalación. Pero este requisito no se aplica si ni usted ni ningún tercero conserva la capacidad de instalar el código objeto modificado en el Producto de Usuario (por ejemplo, el trabajo se ha instalado en ROM).</p>
+<p>El requisito de proporcionar Información sobre la instalación no incluye el requisito de seguir prestando servicio de asistencia, garantía o actualizaciones para una obra que haya sido modificada o instalada por el destinatario, ni para el Producto de usuario en el que se haya modificado o instalado. Podrá denegarse el acceso a una red cuando la modificación en sí afecte material y negativamente al funcionamiento de la red o infrinja las normas y protocolos de comunicación a través de la red.</p>
+<p>La fuente correspondiente transmitida, y la información de instalación proporcionada, de acuerdo con esta sección debe estar en un formato que esté documentado públicamente (y con una implementación disponible al público en forma de código fuente), y no debe requerir ninguna contraseña o clave especial para desempaquetar, leer o copiar.</p>
+</section>
+<section id="additional-terms">
+<span id="id10"></span><h3>7. Condiciones adicionales.<a class="headerlink" href="#additional-terms" title="Link to this heading">#</a></h3>
+<p>«Permisos adicionales» son términos que complementan los términos de esta Licencia haciendo excepciones a una o más de sus condiciones. Los permisos adicionales que sean aplicables a todo el Programa serán tratados como si estuvieran incluidos en esta Licencia, en la medida en que sean válidos bajo la ley aplicable. Si los permisos adicionales se aplican sólo a una parte del Programa, esa parte podrá ser utilizada por separado bajo esos permisos, pero todo el Programa seguirá rigiéndose por esta Licencia sin tener en cuenta los permisos adicionales.</p>
+<p>Cuando usted transmite una copia de una obra amparada, puede, a su elección, eliminar cualquier permiso adicional de dicha copia, o de cualquier parte de la misma. (Los permisos adicionales pueden estar escritos para requerir su propia eliminación en ciertos casos cuando usted modifique la obra). Puede colocar permisos adicionales en el material, añadido por usted a una obra amparada, para el que tenga o pueda conceder el permiso de copyright correspondiente.</p>
+<p>Sin perjuicio de cualquier otra disposición de esta Licencia, para el material que añada a una obra amparada, puede (si lo autorizan los titulares de los derechos de autor de dicho material) complementar los términos de esta Licencia con términos:</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Renuncia a la garantía o limitación de la responsabilidad de forma diferente a los términos de las secciones 15 y 16 de esta Licencia; o</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Exigir la conservación de los avisos legales o atribuciones de autor razonables especificados en dicho material o en los Avisos Legales Adecuados mostrados por las obras que lo contengan; o bien</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Prohibir la tergiversación del origen de dicho material, o exigir que las versiones modificadas de dicho material se marquen de forma razonable como diferentes de la versión original.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Limitar el uso con fines publicitarios de los nombres de los licenciantes o autores del material.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="5">
+<li><p>Rechazar la concesión de derechos en virtud de la legislación sobre marcas para el uso de algunos nombres comerciales, marcas registradas o marcas de servicio.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="6">
+<li><p>Exigir una indemnización a los licenciantes y autores de dicho material por parte de cualquiera que transmita el material (o versiones modificadas del mismo) con supuestos contractuales de responsabilidad al destinatario, por cualquier responsabilidad que estos supuestos contractuales impongan directamente a dichos licenciantes y autores.</p></li>
+</ol>
+</li>
+</ul>
+<p>Todos los demás términos adicionales no permisivos se consideran «restricciones adicionales» en el sentido de la sección 10. Si el Programa tal y como usted lo recibió, o cualquier parte del mismo, contiene un aviso indicando que se rige por esta Licencia junto con un término que es una restricción adicional, usted puede eliminar ese término. Si un documento de licencia contiene una restricción adicional pero permite la concesión de nuevas licencias o la cesión bajo esta Licencia, usted podrá añadir a un trabajo amparado material regido por los términos de dicho documento de licencia, siempre que la restricción adicional no subsista a dicha concesión de nuevas licencias o cesión.</p>
+<p>Si añade condiciones a una obra amparada de acuerdo con esta sección, deberá incluir, en los archivos fuente pertinentes, una declaración de las condiciones adicionales que se aplican a dichos archivos, o un aviso que indique dónde encontrar las condiciones aplicables.</p>
+<p>Los términos adicionales, permisivos o no permisivos, pueden establecerse en forma de una licencia escrita por separado, o establecerse como excepciones; los requisitos anteriores se aplican de cualquier manera.</p>
+</section>
+<section id="termination">
+<span id="id11"></span><h3>8. Terminación.<a class="headerlink" href="#termination" title="Link to this heading">#</a></h3>
+<p>Usted no puede propagar o modificar una obra amparada salvo en los casos expresamente previstos en esta Licencia. Cualquier otro intento de propagación o modificación será nulo y pondrá fin automáticamente a sus derechos en virtud de esta Licencia (incluidas las licencias de patentes concedidas en virtud del tercer párrafo de la sección 11).</p>
+<p>Sin embargo, si usted cesa toda violación de esta Licencia, entonces su licencia de un titular de derechos de autor en particular se restablece (a) provisionalmente, a menos que y hasta que el titular de derechos de autor explícita y finalmente termine su licencia, y (b) permanentemente, si el titular de derechos de autor no le notifica de la violación por algún medio razonable antes de 60 días después del cese.</p>
+<p>Además, su licencia de un titular de derechos de autor concreto se restablecerá de forma permanente si el titular de los derechos de autor le notifica la infracción por algún medio razonable, es la primera vez que recibe un aviso de infracción de esta Licencia (para cualquier obra) de ese titular de derechos de autor y subsana la infracción antes de que transcurran 30 días desde la recepción del aviso.</p>
+<p>La terminación de sus derechos bajo esta sección no termina las licencias de las partes que han recibido copias o derechos de usted bajo esta Licencia. Si sus derechos han finalizado y no se han restablecido de forma permanente, no podrá recibir nuevas licencias para el mismo material en virtud de la sección 10.</p>
+</section>
+<section id="acceptance-not-required-for-having-copies">
+<span id="id12"></span><h3>9. No es necesaria la aceptación para disponer de copias.<a class="headerlink" href="#acceptance-not-required-for-having-copies" title="Link to this heading">#</a></h3>
+<p>Usted no está obligado a aceptar esta Licencia para recibir o ejecutar una copia del Programa. La propagación accesoria de un trabajo amparado que se produzca únicamente como consecuencia del uso de la transmisión de igual a igual para recibir una copia tampoco requiere aceptación. Sin embargo, nada más que esta Licencia le otorga permiso para propagar o modificar cualquier trabajo amparado. Estas acciones infringen los derechos de autor si no acepta esta Licencia. Por lo tanto, al modificar o propagar un trabajo amparado, usted indica que acepta esta Licencia para hacerlo.</p>
+</section>
+<section id="automatic-licensing-of-downstream-recipients">
+<span id="id13"></span><h3>10. Concesión automática de licencias a los destinatarios intermedios.<a class="headerlink" href="#automatic-licensing-of-downstream-recipients" title="Link to this heading">#</a></h3>
+<p>Cada vez que usted transmite una obra amparada, el destinatario recibe automáticamente una licencia de los licenciantes originales, para ejecutar, modificar y propagar esa obra, con sujeción a esta Licencia. Usted no es responsable de exigir a terceros el cumplimiento de esta Licencia.</p>
+<p>Una «transacción de entidad» es una transacción por la que se transfiere el control de una organización, o sustancialmente todos los activos de una, o se subdivide una organización, o se fusionan organizaciones. Si la reproducción de una obra amparada es el resultado de una transacción entre entidades, cada una de las partes de dicha transacción que reciba una copia de la obra también recibirá cualquier licencia de la obra que el predecesor en interés de la parte tuviera o pudiera conceder en virtud del párrafo anterior, además de un derecho a la posesión de la Fuente Correspondiente de la obra del predecesor en interés, si el predecesor la tiene o puede obtenerla con esfuerzos razonables.</p>
+<p>Usted no podrá imponer ninguna otra restricción al ejercicio de los derechos concedidos o afirmados bajo esta Licencia. Por ejemplo, no podrá imponer una tasa de licencia, regalía u otro cargo por el ejercicio de los derechos concedidos en virtud de esta Licencia, y no podrá iniciar un litigio (incluyendo una demanda cruzada o reconvención en un juicio) alegando que se infringe cualquier reivindicación de patente al hacer, usar, vender, ofrecer para la venta o importar el Programa o cualquier parte del mismo.</p>
+</section>
+<section id="patents">
+<span id="id14"></span><h3>11. Patentes.<a class="headerlink" href="#patents" title="Link to this heading">#</a></h3>
+<p>Un «colaborador» es un titular de derechos de autor que autoriza el uso bajo esta Licencia del Programa o de un trabajo en el que se basa el Programa. El trabajo así licenciado se denomina «versión del colaborador».</p>
+<p>Las «reivindicaciones de patentes esenciales» de un colaborador son todas las reivindicaciones de patentes propiedad del colaborador o controladas por él, ya adquiridas o adquiridas en el futuro, que se infringirían de alguna manera, permitida por esta Licencia, al fabricar, utilizar o vender su versión del colaborador, pero no incluyen las reivindicaciones que se infringirían sólo como consecuencia de una modificación posterior de la versión del colaborador. A los efectos de esta definición, «control» incluye el derecho a conceder sublicencias de patentes de forma coherente con los requisitos de esta Licencia.</p>
+<p>Cada colaborador le concede una licencia de patente no exclusiva, mundial y exenta de regalías en virtud de las reivindicaciones de patente esenciales del colaborador, para fabricar, utilizar, vender, ofrecer para la venta, importar y ejecutar de cualquier otro modo, modificar y propagar los contenidos de su versión de colaborador.</p>
+<p>En los tres párrafos siguientes, una «licencia de patente» es cualquier acuerdo o compromiso expreso, sea cual sea su denominación, de no hacer valer una patente (como un permiso expreso para practicar una patente o un pacto de no demandar por infracción de patente). Conceder» una licencia de patente a una parte significa llegar a un acuerdo o compromiso de no hacer valer una patente contra dicha parte.</p>
+<p>Si usted transmite una obra amparada, confiando a sabiendas en una licencia de patente, y la Fuente Correspondiente de la obra no está disponible para que cualquiera la copie, de forma gratuita y bajo los términos de esta Licencia, a través de un servidor de red de acceso público u otros medios de fácil acceso, entonces usted debe (1) hacer que la Fuente Correspondiente esté disponible, o (2) tomar las medidas necesarias para privarse del beneficio de la licencia de patente para esta obra en particular, o (3) tomar las medidas necesarias, de forma coherente con los requisitos de esta Licencia, para extender la licencia de patente a los destinatarios posteriores. «Confiar a sabiendas» significa que usted tiene conocimiento real de que, de no ser por la licencia de patente, su transmisión de la obra amparada en un país, o el uso de la obra amparada por su destinatario en un país, infringiría una o más patentes identificables en ese país que usted tiene razones para creer que son válidas.</p>
+<p>Si, de conformidad con o en relación con una única transacción o acuerdo, usted transmite, o propaga procurando la transmisión de, una obra amparada, y concede una licencia de patente a algunas de las partes que reciben la obra amparada autorizándoles a utilizar, propagar, modificar o transmitir una copia específica de la obra amparada, entonces la licencia de patente que usted concede se extiende automáticamente a todos los receptores de la obra amparada y de las obras basadas en ella.</p>
+<p>Una licencia de patente es «discriminatoria» si no incluye dentro de su ámbito de cobertura, prohíbe el ejercicio o está condicionada al no ejercicio de uno o más de los derechos que se conceden específicamente bajo esta Licencia. Usted no puede transmitir un trabajo amparado si es parte de un acuerdo con un tercero que se dedica a la distribución de software, en virtud del cual usted realiza un pago al tercero basado en el alcance de su actividad de transmisión del trabajo, y en virtud del cual el tercero concede, a cualquiera de las partes que recibirían de usted el trabajo amparado, una licencia de patente discriminatoria (a) en relación con las copias de la obra amparada transmitidas por usted (o las copias realizadas a partir de dichas copias), o (b) principalmente para y en relación con productos o compilaciones específicos que contengan la obra amparada, a menos que usted llegara a ese acuerdo, o esa licencia de patente se concediera, antes del 28 de marzo de 2007.</p>
+<p>Nada de lo dispuesto en esta Licencia se interpretará en el sentido de que excluye o limita cualquier licencia implícita u otras defensas frente a la infracción que puedan estar a su disposición en virtud de la legislación aplicable en materia de patentes.</p>
+</section>
+<section id="no-surrender-of-others-freedom">
+<span id="id15"></span><h3>12. No renunciar a la libertad de los demás.<a class="headerlink" href="#no-surrender-of-others-freedom" title="Link to this heading">#</a></h3>
+<p>Si se le imponen condiciones (ya sea por orden judicial, acuerdo o de otro modo) que contradigan las condiciones de esta Licencia, no le eximen de las condiciones de esta Licencia. Si usted no puede transmitir una obra amparada de forma que satisfaga simultáneamente sus obligaciones bajo esta Licencia y cualesquiera otras obligaciones pertinentes, entonces, como consecuencia, no podrá transmitirla en absoluto. Por ejemplo, si usted acepta unos términos que le obligan a cobrar un canon por la transmisión posterior a aquellos a los que transmita el Programa, la única forma de satisfacer tanto esos términos como esta Licencia sería abstenerse por completo de transmitir el Programa.</p>
+</section>
+<section id="use-with-the-gnu-affero-general-public-license">
+<span id="id16"></span><h3>13. Uso con la Licencia Pública General Affero GNU.<a class="headerlink" href="#use-with-the-gnu-affero-general-public-license" title="Link to this heading">#</a></h3>
+<p>A pesar de cualquier otra disposición de esta Licencia, usted tiene permiso para enlazar o combinar cualquier trabajo amparado con un trabajo licenciado bajo la versión 3 de la Licencia Pública General Affero de GNU en un único trabajo combinado, y para transmitir el trabajo resultante. Los términos de esta Licencia continuarán aplicándose a la parte que es la obra amparada, pero los requisitos especiales de la Licencia Pública General Affero de GNU, sección 13, relativos a la interacción a través de una red se aplicarán a la combinación como tal.</p>
+</section>
+<section id="revised-versions-of-this-license">
+<span id="id17"></span><h3>14. Versiones revisadas de esta Licencia.<a class="headerlink" href="#revised-versions-of-this-license" title="Link to this heading">#</a></h3>
+<p>La Free Software Foundation puede publicar versiones revisadas y/o nuevas de la Licencia Pública General de GNU de vez en cuando. Estas nuevas versiones serán similares en espíritu a la versión actual, pero pueden diferir en detalles para abordar nuevos problemas o preocupaciones.</p>
+<p>Cada versión tiene un número de versión distintivo. Si el Programa especifica que se le aplica una determinada versión numerada de la Licencia Pública General de GNU «o cualquier versión posterior», usted tiene la opción de seguir los términos y condiciones de esa versión numerada o de cualquier versión posterior publicada por la Free Software Foundation. Si el Programa no especifica un número de versión de la Licencia Pública General de GNU, puede elegir cualquier versión publicada por la Free Software Foundation.</p>
+<p>Si el Programa especifica que un apoderado puede decidir qué versiones futuras de la Licencia Pública General GNU se pueden utilizar, la declaración pública de aceptación de una versión por parte de ese apoderado le autoriza permanentemente a elegir esa versión para el Programa.</p>
+<p>Las versiones posteriores de la licencia pueden otorgarle permisos adicionales o diferentes. Sin embargo, no se imponen obligaciones adicionales a ningún autor o titular de derechos de autor como resultado de su elección de seguir una versión posterior.</p>
+</section>
+<section id="disclaimer-of-warranty">
+<span id="id18"></span><h3>15. Renuncia de garantía.<a class="headerlink" href="#disclaimer-of-warranty" title="Link to this heading">#</a></h3>
+<p>EL PROGRAMA NO OFRECE GARANTÍA ALGUNA, EN LA MEDIDA EN QUE LO PERMITA LA LEGISLACIÓN APLICABLE. SALVO QUE SE INDIQUE LO CONTRARIO POR ESCRITO, LOS TITULARES DE LOS DERECHOS DE AUTOR Y/U OTRAS PARTES PROPORCIONAN EL PROGRAMA «TAL CUAL», SIN GARANTÍA DE NINGÚN TIPO, YA SEA EXPRESA O IMPLÍCITA, INCLUIDAS, ENTRE OTRAS, LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD E IDONEIDAD PARA UN FIN DETERMINADO. USTED ASUME TODO EL RIESGO EN CUANTO A LA CALIDAD Y EL FUNCIONAMIENTO DEL PROGRAMA. EN CASO DE QUE EL PROGRAMA RESULTE DEFECTUOSO, USTED ASUME EL COSTE DE TODOS LOS SERVICIOS, REPARACIONES O CORRECCIONES NECESARIOS.</p>
+</section>
+<section id="limitation-of-liability">
+<span id="id19"></span><h3>16. 16. Limitación de responsabilidad.<a class="headerlink" href="#limitation-of-liability" title="Link to this heading">#</a></h3>
+<p>EN NINGÚN CASO, A MENOS QUE ASÍ LO EXIJA LA LEGISLACIÓN APLICABLE O SE ACUERDE POR ESCRITO, NINGÚN TITULAR DE LOS DERECHOS DE AUTOR, NI NINGUNA OTRA PARTE QUE MODIFIQUE Y/O TRANSMITA EL PROGRAMA SEGÚN LO PERMITIDO ANTERIORMENTE, SERÁ RESPONSABLE ANTE USTED POR DAÑOS, INCLUIDOS DAÑOS GENERALES, ESPECIALES, INCIDENTALES O CONSECUENTES QUE SURJAN DEL USO O DE LA IMPOSIBILIDAD DE USAR EL PROGRAMA (INCLUIDOS, ENTRE OTROS, LA PÉRDIDA DE DATOS O QUE LOS DATOS SE VUELVAN INEXACTOS O LAS PÉRDIDAS SUFRIDAS POR USTED O POR TERCEROS O UN FALLO DEL PROGRAMA PARA FUNCIONAR CON CUALQUIER OTRO PROGRAMA), INCLUSO SI DICHO TITULAR U OTRA PARTE HA SIDO ADVERTIDA DE LA POSIBILIDAD DE DICHOS DAÑOS.</p>
+</section>
+<section id="interpretation-of-sections-15-and-16">
+<span id="id20"></span><h3>17. Interpretación de las Secciones 15 y 16.<a class="headerlink" href="#interpretation-of-sections-15-and-16" title="Link to this heading">#</a></h3>
+<p>Si no se puede dar efecto legal local a la renuncia de garantía y limitación de responsabilidad proporcionadas anteriormente de acuerdo con sus términos, los tribunales revisores aplicarán la ley local que más se aproxime a una renuncia absoluta de toda responsabilidad civil en relación con el Programa, a menos que una garantía o asunción de responsabilidad acompañe a una copia del Programa a cambio de una tarifa.</p>
+<p>FIN DE LAS CONDICIONES GENERALES</p>
+</section>
+</section>
+<section id="how-to-apply-these-terms-to-your-new-programs">
+<span id="id21"></span><h2>Cómo aplicar estas condiciones a sus nuevos programas<a class="headerlink" href="#how-to-apply-these-terms-to-your-new-programs" title="Link to this heading">#</a></h2>
+<p>Si desarrolla un nuevo programa y quiere que sea de la mayor utilidad posible para el público, la mejor manera de conseguirlo es convertirlo en software libre que todo el mundo pueda redistribuir y modificar bajo estas condiciones.</p>
+<p>Para ello, adjunte los siguientes avisos al programa. Lo más seguro es adjuntarlos al principio de cada archivo fuente para indicar de forma más efectiva la exclusión de garantía; y cada archivo debe tener al menos la línea «copyright» y un puntero a donde se encuentra el aviso completo.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">one</span> <span class="n">line</span> <span class="n">to</span> <span class="n">give</span> <span class="n">the</span> <span class="n">program</span><span class="s1">&#39;s name and a brief idea of what it does.&gt;</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">year</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">name</span> <span class="n">of</span> <span class="n">author</span><span class="o">&gt;</span>
+
+<span class="n">This</span> <span class="n">program</span> <span class="ow">is</span> <span class="n">free</span> <span class="n">software</span><span class="p">:</span> <span class="n">you</span> <span class="n">can</span> <span class="n">redistribute</span> <span class="n">it</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">modify</span>
+<span class="n">it</span> <span class="n">under</span> <span class="n">the</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="k">as</span> <span class="n">published</span> <span class="n">by</span>
+<span class="n">the</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">,</span> <span class="n">either</span> <span class="n">version</span> <span class="mi">3</span> <span class="n">of</span> <span class="n">the</span> <span class="n">License</span><span class="p">,</span> <span class="ow">or</span>
+<span class="p">(</span><span class="n">at</span> <span class="n">your</span> <span class="n">option</span><span class="p">)</span> <span class="nb">any</span> <span class="n">later</span> <span class="n">version</span><span class="o">.</span>
+
+<span class="n">This</span> <span class="n">program</span> <span class="ow">is</span> <span class="n">distributed</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">hope</span> <span class="n">that</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">useful</span><span class="p">,</span>
+<span class="n">but</span> <span class="n">WITHOUT</span> <span class="n">ANY</span> <span class="n">WARRANTY</span><span class="p">;</span> <span class="n">without</span> <span class="n">even</span> <span class="n">the</span> <span class="n">implied</span> <span class="n">warranty</span> <span class="n">of</span>
+<span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span>  <span class="n">See</span> <span class="n">the</span>
+<span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="k">for</span> <span class="n">more</span> <span class="n">details</span><span class="o">.</span>
+
+<span class="n">You</span> <span class="n">should</span> <span class="n">have</span> <span class="n">received</span> <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span>
+<span class="n">along</span> <span class="k">with</span> <span class="n">this</span> <span class="n">program</span><span class="o">.</span>  <span class="n">If</span> <span class="ow">not</span><span class="p">,</span> <span class="n">see</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">gnu</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">licenses</span><span class="o">/&gt;.</span>
+</pre></div>
+</div>
+<p>Añada también información sobre cómo ponerse en contacto con usted por correo electrónico y en papel.</p>
+<p>Si el programa interactúa con el terminal, haga que emita un breve aviso como éste cuando se inicie en modo interactivo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;program&gt;  Copyright (C) &lt;year&gt;  &lt;name of author&gt;
+This program comes with ABSOLUTELY NO WARRANTY; for details type `show w&#39;.
+This is free software, and you are welcome to redistribute it
+under certain conditions; type `show c&#39; for details.
+</pre></div>
+</div>
+<p>Los comandos hipotéticos `show w” y `show c” deberían mostrar las partes apropiadas de la Licencia Pública General. Por supuesto, los comandos de su programa podrían ser diferentes; para una interfaz GUI, usted usaría un «about box».</p>
+<p>También debería conseguir que su empleador (si trabaja como programador) o la escuela, si la hay, firmen una «renuncia de derechos de autor» para el programa, si es necesario. Para más información sobre esto, y sobre cómo aplicar y seguir la GPL de GNU, consulte <a class="reference external" href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
+<p>La Licencia Pública General de GNU no permite incorporar su programa a programas privativos. Si su programa es una biblioteca de subrutinas, puede considerar más útil permitir enlazar aplicaciones privativas con la biblioteca. Si esto es lo que quiere hacer, utilice la Licencia Pública General Reducida de GNU en lugar de esta Licencia. Pero primero, por favor lea <a class="reference external" href="https://www.gnu.org/licenses/why-not-lgpl.html">https://www.gnu.org/licenses/why-not-lgpl.html</a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="code_of_conduct.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Código de conducta</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> En esta página
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-general-public-license">Licencia pública general GNU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Preámbulo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terms-and-conditions">CONDICIONES GENERALES</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">0. Definiciones.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">1. Código fuente.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-permissions">2. Permisos básicos.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protecting-users-legal-rights-from-anti-circumvention-law">3. Protección de los derechos legales de los usuarios frente a la ley antielusión.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conveying-verbatim-copies">4. Transmisión de copias literales.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conveying-modified-source-versions">5. Transmisión de versiones fuente modificadas.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conveying-non-source-forms">6. Transmisión de formularios no fuente.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-terms">7. Condiciones adicionales.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#termination">8. Terminación.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-not-required-for-having-copies">9. No es necesaria la aceptación para disponer de copias.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-licensing-of-downstream-recipients">10. Concesión automática de licencias a los destinatarios intermedios.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#patents">11. Patentes.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-surrender-of-others-freedom">12. No renunciar a la libertad de los demás.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-with-the-gnu-affero-general-public-license">13. Uso con la Licencia Pública General Affero GNU.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-versions-of-this-license">14. Versiones revisadas de esta Licencia.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disclaimer-of-warranty">15. Renuncia de garantía.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitation-of-liability">16. 16. Limitación de responsabilidad.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-sections-15-and-16">17. Interpretación de las Secciones 15 y 16.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-apply-these-terms-to-your-new-programs">Cómo aplicar estas condiciones a sus nuevos programas</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Cirad and FAO.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Construido con el <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">Tema PyData Sphinx</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
