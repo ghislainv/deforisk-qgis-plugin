@@ -1,0 +1,1373 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Cirad and FAO
+# This file is distributed under the same license as the deforisk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Ghislain Vieilledent, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: deforisk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-01 14:07-0400\n"
+"PO-Revision-Date: 2024-07-01 18:38+0000\n"
+"Last-Translator: Ghislain Vieilledent, 2024\n"
+"Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: ../../docsrc/plugin_api.rst:3 b4b53b8f43e14f50b7cca9992aa04a3f
+msgid "Plugin API"
+msgstr "API de Plugin"
+
+#: ../../docsrc/plugin_api.rst:12 1a6aa50a98de4a5489d5f12413b170c2
+msgid "Plugin interface"
+msgstr "Interface du plugin"
+
+#: ../../docsrc/plugin_api.rst:16 e2a8a03f144b4701b99320828ade1bbd
+msgid ""
+"The plugin interface shows five tabs: ``Get variables``, ``Benchmark``, "
+"``FAR models``, ``MW models``, and ``Validation``. Each tab includes one or "
+"several boxes. For example, the ``Far models`` tab includes three boxes: "
+"``Sample observations``, ``Fit models to data``, and ``Predict the "
+"deforestation risk``. The arguments of each tab or box are detailed below. "
+"They usually correspond to function parameters from the Python packages used"
+" by the ``deforisk`` plugin."
+msgstr ""
+"L'interface du plugin affiche cinq onglets : \"Obtenir des variables\", "
+"\"Benchmark\", \"Modèles FAR\", \"Modèles MW\" et \"Validation\". Chaque "
+"onglet comprend une ou plusieurs boîtes. Par exemple, l'onglet \"Modèles "
+"FAR\" comprend trois boîtes : \"Observations d'échantillon\", \"Adapter les "
+"modèles aux données\" et \"Prédire le risque de déforestation\". Les "
+"arguments de chaque onglet ou boîte sont détaillés ci-dessous. Ils "
+"correspondent généralement aux paramètres de fonction des packages Python "
+"utilisés par le plugin \"deforisk\"."
+
+#: ../../docsrc/plugin_api.rst:19 0f26b7f77c86419696bbc8bc5a9b4804
+msgid "Get variables"
+msgstr "Obtenir des variables"
+
+#: ../../docsrc/plugin_api.rst:22 953481f111a34544a86fe4fd2e1e9c88
+msgid "Download and compute variables"
+msgstr "Télécharger et calculer les variables"
+
+#: ../../docsrc/plugin_api.rst:26 ba05b50d201a46b29f76449b330ebce9
+msgid ""
+"This box is for collecting the information needed to download the data and "
+"compute the variables that will be used to spatially model the deforestation"
+" risk for a given area of interest."
+msgstr ""
+"Cette case permet de collecter les informations nécessaires au "
+"téléchargement des données et au calcul des variables qui seront utilisées "
+"pour modéliser spatialement le risque de déforestation pour une zone "
+"d'intérêt donnée."
+
+#: ../../docsrc/plugin_api.rst:28 670c513cbf724f35a90d015b4b915876
+msgid ""
+"``Working directory``: Path to the working directory where all the data and "
+"model outputs will be stored."
+msgstr ""
+"``Répertoire de travail`` : Chemin d'accès au répertoire de travail où "
+"toutes les données et les résultats du modèle seront stockés."
+
+#: ../../docsrc/plugin_api.rst:30 9e6889edf6e04992ad3129f93a29ee7a
+msgid ""
+"``Area Of Interest``: Country ISO 3166-1 alpha-3 code (e.g. MTQ) or path to "
+"GPKG vector file in lat/lon delimiting the area of interest (jurisdiction) "
+"and the sub-jurisdictions. The GPKG vector file must include two layers, the"
+" first one must be named “aoi” for the jurisdiction and the second one must "
+"be named “subj” for subjurisdictions. This GPKG vector file can be manually "
+"obtained using QGIS tools and data from the Global Administrative Areas "
+"(`GADM <https://gadm.org/download_country.html>`_) website. An example is "
+"given in the following article on using `subnational jurisdictions "
+"<articles/subnational_jurisd.html>`_."
+msgstr ""
+"``Zone d'intérêt`` : Code ISO 3166-1 alpha-3 du pays (par exemple MTQ) ou "
+"chemin d'accès au fichier vectoriel GPKG en lat/lon délimitant la zone "
+"d'intérêt (juridiction) et les sous juridictions. Le fichier vectoriel GPKG "
+"doit inclure deux couches, la première doit être nommée \"aoi\" pour la "
+"juridiction et la seconde doit être nommée \"subj\" pour les sous "
+"juridictions. Ce fichier vectoriel GPKG peut être obtenu manuellement à "
+"l'aide des outils QGIS et des données du site web Global Administrative "
+"Areas (`GADM <https://gadm.org/download_country.html>`_). Un exemple est "
+"donné dans l'article suivant sur l'utilisation des `subnational "
+"jurisdictions <articles/subnational_jurisd.html>`_."
+
+#: ../../docsrc/plugin_api.rst:32 090ded0306dc400f9e2fa709a77829a5
+msgid ""
+"``Years``: Years delimiting the two periods (calibration and validation "
+"periods) for forest cover change observations. Three years must be provided."
+" Years can be in the interval 2001--2024 for GFC (GFC does not provide tree "
+"cover loss for the year 2000) and 2000--2023 for TMF."
+msgstr ""
+"``Années`` : Années délimitant les deux périodes (périodes d'étalonnage et "
+"de validation) pour les observations des changements du couvert forestier. "
+"Trois années doivent être fournies. Les années peuvent se situer dans "
+"l'intervalle 2001--2024 pour le GFC (le GFC ne fournit pas la perte de "
+"couvert forestier pour l'année 2000) et 2000--2023 pour le TMF."
+
+#: ../../docsrc/plugin_api.rst:34 a2d6950bfde249639351d0709d313dcb
+msgid ""
+"``Forest data source``: Source of the forest data. Could be either “tmf” or "
+"“gfc”."
+msgstr ""
+"``Source de données forestières`` : Source des données forestières. Il peut "
+"s'agir de \"tmf\" ou de \"gfc\"."
+
+#: ../../docsrc/plugin_api.rst:36 eab61406d6eb4da18c137dab559a7cf8
+msgid ""
+"``Tree cover threshold (%)``: Tree cover percentage used to define the "
+"forest when using GFC."
+msgstr ""
+"``Seuil de couverture arborée (%)`` : Pourcentage de couvert arboré utilisé "
+"pour définir la forêt lors de l'utilisation de GFC."
+
+#: ../../docsrc/plugin_api.rst:38 e7a48d463ca641e69abb4d3bf14a86d5
+msgid ""
+"``Tile size (dd)``: Tile size (in decimal degrees) used to download forest "
+"cover change. A value of 1 degree is recommended."
+msgstr ""
+"``Taille de la tuile (dd)`` : Taille de la tuile (en degrés décimaux) "
+"utilisée pour télécharger les changements du couvert forestier. Une valeur "
+"de 1 degré est recommandée."
+
+#: ../../docsrc/plugin_api.rst:40 698a250c71b9415cb6c567970b8602e8
+msgid ""
+"``Country/state ISO code``: Country or state ISO code used to download GADM,"
+" OSM, SRTM, and WDPA data. The iso code should correspond to the country to "
+"which the aoi provided in ``Area Of Interest`` belongs. For Brazilian "
+"states, use the code of the state in the form “BRA-XX” (e.g. “BRA-AM” for "
+"the Amazonas state). A list of codes that can be used with the ``deforisk`` "
+"plugin can be found in this `.tsv "
+"<https://github.com/ghislainv/forestatrisk/blob/master/forestatrisk/csv/ctry_run.tsv>`_"
+" file (see column iso3)."
+msgstr ""
+"``Code ISO du pays/de l'état`` : Code ISO du pays ou de l'état utilisé pour "
+"télécharger les données GADM, OSM, SRTM et WDPA. Le code ISO doit "
+"correspondre au pays auquel appartient la zone d'intérêt (aoi) indiquée dans"
+" la rubrique \"Area Of Interest\" (zone d'intérêt). Pour les États "
+"brésiliens, utilisez le code de l'État sous la forme \"BRA-XX\" (par "
+"exemple, \"BRA-AM\" pour l'État d'Amazonas). Une liste de codes pouvant être"
+" utilisés avec le plugin ``deforisk`` se trouve dans ce fichier `.tsv "
+"<https://github.com/ghislainv/forestatrisk/blob/master/forestatrisk/csv/ctry_run.tsv>`_"
+" (voir colonne iso3)."
+
+#: ../../docsrc/plugin_api.rst:42 afc1454921204b52b94e362251b10236
+msgid ""
+"``Earth Engine access``: Name of a Google Cloud project registered to use "
+"Earth Engine (and for which you are identified as a user) or a path to a "
+"JSON private key file authorizing you to access Earth Engine through a "
+"service account."
+msgstr ""
+"``Earth Engine access`` : Nom d'un projet Google Cloud enregistré pour "
+"utiliser Earth Engine (et pour lequel vous êtes identifié en tant "
+"qu'utilisateur) ou chemin d'accès à un fichier de clé privée JSON vous "
+"autorisant à accéder à Earth Engine par l'intermédiaire d'un compte de "
+"service."
+
+#: ../../docsrc/plugin_api.rst:44 878370a68e07461daddcda34daf420d2
+msgid ""
+"``WDPA access``: Personal API Token (a series of letters and numbers such as"
+" ``ca4703ffba6b9a26b2db73f78e56e088``) or a path to a text file specifying "
+"the value of the “WDPA\\_KEY” environmental variable (e.g. a simple text "
+"file including on one line ``WDPA_KEY=\"3e404871700e77c453c4e189d848f739\"``"
+" for example)."
+msgstr ""
+"``WDPA access`` : Token API personnel (une série de lettres et de chiffres "
+"comme `ca4703ffba6b9a26b2db73f78e56e088`) ou un chemin vers un fichier texte"
+" spécifiant la valeur de la variable d'environnement \"WDPA\\_KEY\" (par "
+"exemple, un simple fichier texte incluant sur une ligne "
+"``WDPA_KEY=\"3e404871700e77c453c4e189d848f739\"`` par exemple)."
+
+#: ../../docsrc/plugin_api.rst:46 9f37a3dcb34a4aafbd14a7027b8bcea9
+msgid ""
+"``Projection EPSG code``: EPSG code of the coordinate reference system used "
+"for projecting maps."
+msgstr ""
+"``Code EPSG de projection`` : Code EPSG du système de référence de "
+"coordonnées utilisé pour la projection des cartes."
+
+#: ../../docsrc/plugin_api.rst:48 bc066effcf1b4eb481f121e279507575
+msgid ""
+"Pushing the ``Run`` button in this box will download the data and compute "
+"the variables in the background. When the operation is finished, a forest "
+"cover change map appears in the list of QGIS layers and a plot of the forest"
+" cover change ``fcc123.png`` is created in folder ``outputs/variables``. New"
+" folders are created in the working directory:"
+msgstr ""
+"En appuyant sur le bouton \"Exécuter\" dans cette boîte, les données seront "
+"téléchargées et les variables calculées en arrière-plan. Lorsque l'opération"
+" est terminée, une carte des changements du couvert forestier apparaît dans "
+"la liste des couches de QGIS et un graphique des changements du couvert "
+"forestier ``fcc123.png`` est créé dans le dossier ``outputs/variables``. De "
+"nouveaux dossiers sont créés dans le répertoire de travail :"
+
+#: ../../docsrc/plugin_api.rst:50 3effa37cad1a43e68fe8a6fd8f8c72a1
+msgid "Six data folders are created:"
+msgstr "Six dossiers de données sont créés :"
+
+#: ../../docsrc/plugin_api.rst:52 aa085201e49145dca349d19fa6d46a90
+msgid "``data_raw``: raw data with intermediary files."
+msgstr "``data_raw`` : données brutes avec fichiers intermédiaires."
+
+#: ../../docsrc/plugin_api.rst:54 82478c9255774a238b9eac8cfd8f66a6
+msgid "``data``: processed data used for models and plots."
+msgstr ""
+"``data`` : données traitées utilisées pour les modèles et les graphiques."
+
+#: ../../docsrc/plugin_api.rst:56 2be23fac5e974cf2ad0b6779870b1990
+msgid ""
+"The following four folders only include symlinks to avoid duplicating data:"
+msgstr ""
+"Les quatre dossiers suivants ne comportent que des liens symboliques afin "
+"d'éviter la duplication des données :"
+
+#: ../../docsrc/plugin_api.rst:58 3297c5edb514476b92fe0ef9f66b28b5
+msgid ""
+"``data_calibration``: data used for model calibration on the calibration "
+"period (t1--t2)."
+msgstr ""
+"``data_calibration`` : données utilisées pour la calibration du modèle sur "
+"la période de calibration (t1--t2)."
+
+#: ../../docsrc/plugin_api.rst:60 1d68b385e1444261a5a99312aa8213df
+msgid ""
+"``data_validation``: data used to predict the deforestation risk at t2 and "
+"validate models on the validation period (t2--t3). This folder used for "
+"prediction does not include a ``fcc.tif`` file but only raster files of "
+"explanatory variables."
+msgstr ""
+"``data_validation`` : données utilisées pour prédire le risque de "
+"déforestation à t2 et valider les modèles sur la période de validation (t2--"
+"t3). Ce dossier utilisé pour la prédiction ne contient pas de fichier "
+"``fcc.tif`` mais seulement des fichiers raster de variables explicatives."
+
+#: ../../docsrc/plugin_api.rst:62 aec64d777c1f47e6a004d4fd8ce2254d
+msgid ""
+"``data_historical``: data used for model calibration on the historical "
+"period (t1--t3)."
+msgstr ""
+"``data_historical`` : données utilisées pour la calibration du modèle sur la"
+" période historique (t1--t3)."
+
+#: ../../docsrc/plugin_api.rst:64 a2b96ff00395468793a8632006a151c1
+msgid ""
+"``data_forecast``: data used to predict the deforestation risk at t3 and "
+"forecast deforestation beyond t3. This folder does not include any "
+"``fcc.tif`` file either."
+msgstr ""
+"``data_forecast`` : données utilisées pour prédire le risque de "
+"déforestation à t3 et prévoir la déforestation au-delà de t3. Ce dossier ne "
+"contient pas non plus de fichier `fcc.tif`."
+
+#: ../../docsrc/plugin_api.rst:66 faa9ef099f3a4390a8468b656022255e
+msgid "Three other folders are created:"
+msgstr "Trois autres dossiers sont créés :"
+
+#: ../../docsrc/plugin_api.rst:68 5e90d737b79643239e67da393eb2cd9d
+msgid "``outputs``: Outputs (figures and tables)."
+msgstr "``sorties`` : Résultats (figures et tableaux)."
+
+#: ../../docsrc/plugin_api.rst:70 8f23890bf16a41a198756ce4dbb8c8ca
+msgid "``outputs/variables``: Output for variables."
+msgstr "``outputs/variables`` : Sortie pour les variables."
+
+#: ../../docsrc/plugin_api.rst:72 f51cf25e6f8747d8b0af898dfe48907d
+msgid "``qgis_layer_style``: Layer styles for QGIS."
+msgstr "``qgis_layer_style`` : Styles de couche pour QGIS."
+
+#: ../../docsrc/plugin_api.rst:75 543b032fa1b44984b3f77f0a993efd50
+msgid "Benchmark"
+msgstr "Repère"
+
+#: ../../docsrc/plugin_api.rst:80 ../../docsrc/plugin_api.rst:254
+#: 8966ca3d250c4d70a0ee4b01d2e289b6 1e53b3ed509543a4a6a52beb0d966be8
+msgid "Fit model to data"
+msgstr "Adapter le modèle aux données"
+
+#: ../../docsrc/plugin_api.rst:82 3c9846eeaed14f229bd8fe53c3e5139e
+msgid ""
+"This tab is for collecting the information needed to map the deforestation "
+"risk using the benchmark model from the `Verra "
+"<https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-"
+"udef-a-v1-0/>`_ `JNR Unplanned Deforestation Allocation (UDef-A) tool "
+"<_static/VT0007-Unplanned-Deforestation-Allocation-v1.0.pdf>`_. In summary, "
+"the benchmark model assumes that deforestation is negligible beyond a given "
+"distance to forest edge, that the deforestation risk decreases with the "
+"distance to forest edge and that for a given distance to forest edge the "
+"risk varies between subjurisdictions."
+msgstr ""
+"Cet onglet permet de collecter les informations nécessaires pour "
+"cartographier le risque de déforestation à l'aide du modèle de référence de "
+"`Verra <https://verra.org/methodologies/vt0007-unplanned-deforestation-"
+"allocation-udef-a-v1-0/>`_ `JNR Unplanned Deforestation Allocation (UDef-A) "
+"tool <_static/VT0007-Unplanned-Deforestation-Allocation-v1.0.pdf>`_. En "
+"résumé, le modèle de référence suppose que la déforestation est négligeable "
+"au-delà d'une distance donnée de la lisière de la forêt, que le risque de "
+"déforestation diminue avec la distance de la lisière de la forêt et que pour"
+" une distance donnée de la lisière de la forêt, le risque varie entre les "
+"sous-juridictions."
+
+#: ../../docsrc/plugin_api.rst:84 7ca4ae1691d64201a5799517006858f3
+msgid ""
+"``Deforestation threshold (%)``: Accumulated deforestation threshold used to"
+" identify the distance to forest edge threshold. Default to 99.5% as "
+"suggested in the UDef-A methodology."
+msgstr ""
+"``Seuil de déforestation (%)`` : Seuil de déforestation cumulée utilisé pour"
+" identifier le seuil de distance à la lisière de la forêt. La valeur par "
+"défaut est de 99,5 %, comme le suggère la méthodologie UDef-A."
+
+#: ../../docsrc/plugin_api.rst:86 d4b1efaa00c043908d8b16248a17f2c9
+msgid ""
+"``Max. distance to forest edge (m)``: Maximal distance to forest edge used "
+"to compute the accumulated deforestation as a function of the distance to "
+"forest edge. Default to 2500 m as most of the deforestation should occur "
+"below this distance. Increase this number if the 99.5% threshold for the "
+"accumulated deforestation is not reached."
+msgstr ""
+"``Distance max. à la lisière de la forêt (m)`` : Distance maximale à la "
+"lisière de la forêt utilisée pour calculer la déforestation cumulée en "
+"fonction de la distance à la lisière de la forêt. La valeur par défaut est "
+"2500  m, car la majeure partie de la déforestation devrait se produire en "
+"dessous de cette distance. Augmentez ce chiffre si le seuil de 99,5 % pour "
+"la déforestation cumulée n'est pas atteint."
+
+#: ../../docsrc/plugin_api.rst:88 ../../docsrc/plugin_api.rst:264
+#: 80bdcb27e9714a6997a4b82bc4e8fc82 a050f4fb6e3a4731b604476e080626ae
+msgid ""
+"``calib. period``: If checked, the model is fitted over the calibration "
+"period (t1--t2)."
+msgstr ""
+"``calib. period`` : Si cette case est cochée, le modèle est ajusté sur la "
+"période d'étalonnage (t1--t2)."
+
+#: ../../docsrc/plugin_api.rst:90 ../../docsrc/plugin_api.rst:266
+#: 200f2d953548484ca19300ebca1ef1bf bc433644920b4f5d8f6a17e47f3ae20c
+msgid ""
+"``hist. period``: If checked, the model is fitted over the historical period"
+" (t1--t3)."
+msgstr ""
+"``hist. period`` : Si cette case est cochée, le modèle est ajusté sur la "
+"période historique (t1--t3)."
+
+#: ../../docsrc/plugin_api.rst:92 e9dd8be6d2cb4c98bcf35cfeba2808b5
+msgid ""
+"Pushing the ``Run`` button in this box will estimate the distance to forest "
+"edge beyond which the deforestation risk is assumed negligible. This "
+"distance threshold is used to define a first class of deforestation risk. "
+"Then, 29 classes of deforestation risk are estimated from the distance to "
+"forest edge using a geometric series to identified bins. Classes with higher"
+" deforestation risks have narrower ranges of distance to forest edge. "
+"Finally, a deforestation rate is estimated for each of the 30 classes within"
+" each subjurisdiction based on the observed deforestation for the time "
+"period considered."
+msgstr ""
+"En appuyant sur le bouton \"Exécuter\" dans cette case, vous estimerez la "
+"distance à la lisière de la forêt au-delà de laquelle le risque de "
+"déforestation est considéré comme négligeable. Ce seuil de distance est "
+"utilisé pour définir une première classe de risque de déforestation. "
+"Ensuite, 29 classes de risque de déforestation sont estimées à partir de la "
+"distance à la lisière de la forêt à l'aide d'une série géométrique vers des "
+"bins identifiés. Les classes présentant des risques de déforestation plus "
+"élevés ont des fourchettes de distance à la lisière de la forêt plus "
+"étroites. Enfin, un taux de déforestation est estimé pour chacune des 30 "
+"classes au sein de chaque sous-juridiction sur la base de la déforestation "
+"observée pour la période considérée."
+
+#: ../../docsrc/plugin_api.rst:94 cfb56018ea4d43488827cb8eda1d668f
+msgid ""
+"The following folders are created: ``outputs/rmj_benchmark/calibration`` and"
+" ``outputs/rmj_benchmark/historical``. The following files are added to "
+"these folders:"
+msgstr ""
+"Les dossiers suivants sont créés : ``outputs/rmj_benchmark/calibration`` et "
+"``outputs/rmj_benchmark/historical``. Les fichiers suivants sont ajoutés à "
+"ces dossiers :"
+
+#: ../../docsrc/plugin_api.rst:96 ../../docsrc/plugin_api.rst:272
+#: b404389985944a28a05f6eb709e0e734 9949634ac0b642e2b157fc1865b894e3
+msgid ""
+"``tab_dist.csv``: Table with the cumulated deforestation as a function of "
+"the distance to forest edge."
+msgstr ""
+"``tab_dist.csv`` : Tableau avec la déforestation cumulée en fonction de la "
+"distance à la lisière de la forêt."
+
+#: ../../docsrc/plugin_api.rst:98 ../../docsrc/plugin_api.rst:274
+#: 9dcb20890322463286384237670511bf 2cabbcf92f8c4823815fe17916757bdf
+msgid ""
+"``perc_dist.png``: Plot of the cumulated deforestation as a function of the "
+"distance to forest edge showing the distance threshold."
+msgstr ""
+"``perc_dist.png`` : Tracé de la déforestation cumulée en fonction de la "
+"distance à la lisière de la forêt, montrant le seuil de distance."
+
+#: ../../docsrc/plugin_api.rst:100 ef0f1808cd5748c1a611f4edbd2fc4e2
+msgid ""
+"``dist_edge_threshold.csv``: Table with distance threshold and corresponding"
+" cumulated deforestation (which must be :math:`\\geq` 99.5%)."
+msgstr ""
+"``dist_edge_threshold.csv`` : Tableau avec le seuil de distance et la "
+"déforestation cumulée correspondante (qui doit être :math:`\\geq` 99.5%)."
+
+#: ../../docsrc/plugin_api.rst:102 029a4327ebe44a61982105e1b2140def
+msgid ""
+"``dist_bins.csv``: Table with the bins used to convert distance to forest "
+"edge into 29 classes of deforestation risk using a geometric series."
+msgstr ""
+"``dist_bins.csv`` : Tableau avec les bins utilisés pour convertir la "
+"distance à la lisière de la forêt en 29 classes de risque de déforestation à"
+" l'aide d'une série géométrique."
+
+#: ../../docsrc/plugin_api.rst:104 a8fab3c777df4e79952ffefb06aff372
+msgid ""
+"``subj.tif``: Raster of subjurisdictions with values going from 1 to "
+"potentially 999."
+msgstr ""
+"``subj.tif`` : Raster des sous-juridictions avec des valeurs allant de 1 à "
+"potentiellement 999."
+
+#: ../../docsrc/plugin_api.rst:106 27e67176dc0049a8b69b6dc86efe6197
+msgid ""
+"``prob_bm_t1.tif``: Raster with classes of deforestation risk going from "
+"1001 to potentially 30999."
+msgstr ""
+"``prob_bm_t1.tif`` : Raster avec des classes de risque de déforestation "
+"allant de 1001 à potentiellement 30999."
+
+#: ../../docsrc/plugin_api.rst:108 b09172d2654f4adc85c6bb317898d9d4
+msgid "``prob_bm_t1.png``: Plot of the deforestation risk map."
+msgstr "``prob_bm_t1.png`` : Tracé de la carte des risques de déforestation."
+
+#: ../../docsrc/plugin_api.rst:110 32dd36a0abd84e888981aa3ee8b39308
+msgid ""
+"``defrate_cat_bm_<period>.csv``: Table with deforestation rates on the "
+"period for each class of deforestation risk (see details `below "
+"<plugin_api.html#defrate-table>`_)."
+msgstr ""
+"``defrate_cat_bm_<period>.csv`` : Tableau des taux de déforestation sur la "
+"période pour chaque classe de risque de déforestation (voir détails `sous "
+"<plugin_api.html#defrate-table>`_)."
+
+#: ../../docsrc/plugin_api.rst:115 d52c5d92a1404de4a2e6c567c7d810b9
+msgid "Table ``defrate_cat_<model>_<period>.csv``"
+msgstr "Table ``defrate_cat_<model>_<period>.csv``"
+
+#: ../../docsrc/plugin_api.rst:117 a83b0b39e164418a89555b5b1b79f34e
+msgid ""
+"Table ``defrate_cat_<model>_<period>.csv`` includes the following columns:"
+msgstr ""
+"La table ``defrate_cat_<model>_<period>.csv`` comprend les colonnes "
+"suivantes :"
+
+#: ../../docsrc/plugin_api.rst:119 8bc6140a6b8141249846c6d64975d40d
+msgid ""
+"``cat``: The class (or category) of deforestation risk (denoted "
+":math:`i_{}`)."
+msgstr ""
+"``cat`` : La classe (ou catégorie) de risque de déforestation (notée "
+":math:`i_{}`)."
+
+#: ../../docsrc/plugin_api.rst:121 1c3318f5dc6b43eb8e6bcde8421f6aaa
+msgid ""
+"``nfor``: The number of forest pixels at the beginning of the period "
+"(denoted :math:`n_{i}`)."
+msgstr ""
+"``nfor`` : Le nombre de pixels de la forêt au début de la période (noté "
+":math:`n_{i}`)."
+
+#: ../../docsrc/plugin_api.rst:123 b341d4973fb449a7ad5712e0ec4ac0e0
+msgid ""
+"``ndefor``: The number of deforested pixels during the period considered "
+"(denoted :math:`d_{i}`)."
+msgstr ""
+"``ndefor`` : Le nombre de pixels déboisés pendant la période considérée "
+"(noté :math:`d_{i}`)."
+
+#: ../../docsrc/plugin_api.rst:125 120dc10d562143df97671f5ca6e310c3
+msgid ""
+"``time_interval``: Time interval for the period (denoted :math:`T`, in "
+"years). E.g. 10 yr for the period 2000--2010."
+msgstr ""
+"``time_interval`` : Intervalle de temps pour la période (noté :math:`T`, en "
+"années). Par exemple, 10 ans pour la période 2000--2010."
+
+#: ../../docsrc/plugin_api.rst:127 4efc2b508b1d4469b39059929d15a58f
+msgid ""
+"``pixel_area``: Pixel area (denoted :math:`A`, in ha). E.g. 0.9 ha for 30 × "
+"30 m pixels."
+msgstr ""
+"``pixel_area`` : Surface du pixel (notée :math:`A`, en ha). Par exemple, 0,9"
+" ha pour des pixels de 30 × 30 m."
+
+#: ../../docsrc/plugin_api.rst:129 1aafb21a7c8545ba95b6860b1a94d8d6
+msgid ""
+"``rate_obs``: Observed annual deforestation rate per class computed as "
+":math:`\\theta_{o,i} = 1 - (1 - d_{i} / n_{i})^{(1 / T)}`."
+msgstr ""
+"``rate_obs`` : Taux de déforestation annuel observé par classe calculé comme"
+" :math:`theta_{o,i} = 1 - (1 - d_{i} / n_{i})^{(1 / T)}`."
+
+#: ../../docsrc/plugin_api.rst:131 4b4ee965e95b49a0bbe2bc8e693e1935
+msgid ""
+"``rate_mod``: Relative spatial deforestation probability from model. *For "
+"the benchmark model*, it is computed as :math:`\\theta_{m,i}=d_{i}/n_{i}`."
+msgstr ""
+"``rate_mod`` : Probabilité relative de déforestation spatiale du modèle. "
+"*Pour le modèle de référence*, elle est calculée comme "
+":math:`\\theta_{m,i}=d_{i}/n_{i}`."
+
+#: ../../docsrc/plugin_api.rst:133 9d7f455000034153bff92190b6eae59d
+msgid ""
+"``rate_abs``: Absolute deforestation probability with quantity adjustment "
+"(so that total predicted deforestation equals the observed deforestation on "
+"the period), computed from an adjustment factor :math:`\\rho` as "
+":math:`\\theta_{a,i} = \\rho \\theta_{m,i}` with :math:`\\rho = \\sum_{i} "
+"d_{i} / \\sum_i n_{i} \\theta_{m,i}`. *For the benchmark model for the "
+"calibration and historical periods*, :math:`\\rho=1` and "
+":math:`\\theta_{a,i}=\\theta_{m,i}`."
+msgstr ""
+"``rate_abs`` : Probabilité absolue de déforestation avec ajustement "
+"quantitatif (de sorte que la déforestation totale prédite soit égale à la "
+"déforestation observée sur la période), calculée à partir d'un facteur "
+"d'ajustement :math:\\rho` comme :math:\\theta_{a,i} = \\rho \\theta_{m,i}` "
+"avec :math:\\rho = \\sum_{i} d_{i} / \\sum_i n_{i} \\theta_{m,i}`. *Pour le "
+"modèle de référence pour les périodes d'étalonnage et historique*, "
+":math:\\rho=1` et :math:\\theta_{a,i}=\\theta_{m,i}`."
+
+#: ../../docsrc/plugin_api.rst:135 34ab5e50958242a080f04f740fe92bf6
+msgid ""
+"``defor_dens``: Deforestation density (in ha/pixel/yr) computed as "
+":math:`D_{i} = \\theta_{a,i} \\times A / T`. The deforestation density is "
+"used to predict the amount of deforestation for each pixel belonging to a "
+"given class of deforestation risk."
+msgstr ""
+"``defor_dens`` : Densité de déforestation (en ha/pixel/an) calculée comme "
+":math:`D_{i} = \\theta_{a,i} \\Temps A / T`. La densité de déforestation est"
+" utilisée pour prédire la quantité de déforestation pour chaque pixel "
+"appartenant à une classe donnée de risque de déforestation."
+
+#: ../../docsrc/plugin_api.rst:138 ../../docsrc/plugin_api.rst:220
+#: ../../docsrc/plugin_api.rst:281 db8b0ed60eab4b729dfc93474ce78b93
+#: 6f068a6b7de0486cbc98ac036863d09a 0f4936aab75b4dbfbc259de4a20bf114
+msgid "Predict the deforestation risk"
+msgstr "Prévoir le risque de déforestation"
+
+#: ../../docsrc/plugin_api.rst:140 05a7912717164c69a1c077ff93002095
+msgid ""
+"This step is for predicting the deforestation risk and deriving risk maps "
+"using the benchmark models fitted on the calibration or historical period."
+msgstr ""
+"Cette étape permet de prévoir le risque de déforestation et d'établir des "
+"cartes de risque à l'aide des modèles de référence adaptés à la période "
+"d'étalonnage ou à la période historique."
+
+#: ../../docsrc/plugin_api.rst:142 25bfae00d3934cffa28b9110d318b37f
+msgid ""
+"``t2 validation``: If checked, computes predictions at t2 for validation "
+"(using the benchmark model fitted over the calibration period)."
+msgstr ""
+"``t2 validation`` : Si coché, calcule les prédictions à t2 pour la "
+"validation (en utilisant le modèle de référence ajusté sur la période "
+"d'étalonnage)."
+
+#: ../../docsrc/plugin_api.rst:144 32eacb36448e436db1f633849213baee
+msgid ""
+"``t3 forecast``: If checked, computes predictions at t3 for forecasting "
+"(using the benchmark model fitted over the historical period)."
+msgstr ""
+"``t3 forecast`` : Si coché, calcule les prévisions à t3 pour les prévisions "
+"(en utilisant le modèle de référence ajusté sur la période historique)."
+
+#: ../../docsrc/plugin_api.rst:146 9d7d5d90fd4148dbaaf7feef5b74dc7f
+msgid ""
+"Pushing the ``Run`` button in this box will use the benchmark models for "
+"predictions. Note that you cannot make predictions if you have not fitted "
+"the models (see previous step). When the operation is finished, rasters "
+"representing the classes of deforestation risk appear in the list of QGIS "
+"layers. You can navigate the different maps to see how the risk of "
+"deforestation is changing in space for the different dates. For example, you"
+" can have a look at the effect of the distance to forest edge."
+msgstr ""
+"En appuyant sur le bouton \"Run\" dans cette boîte, vous utiliserez les "
+"modèles de référence pour les prédictions. Notez que vous ne pouvez pas "
+"faire de prédictions si vous n'avez pas ajusté les modèles (voir l'étape "
+"précédente). Lorsque l'opération est terminée, les rasters représentant les "
+"classes de risque de déforestation apparaissent dans la liste des couches de"
+" QGIS. Vous pouvez naviguer dans les différentes cartes pour voir comment le"
+" risque de déforestation évolue dans l'espace pour les différentes dates. "
+"Par exemple, vous pouvez observer l'effet de la distance à la lisière de la "
+"forêt."
+
+#: ../../docsrc/plugin_api.rst:148 036499f0518e4e0cac303b59e62145b7
+msgid ""
+"The following folders are created: ``outputs/rmj_benchmark/validation`` and "
+"``outputs/rmj_benchmark/forecast``.The following files are added to these "
+"folders:"
+msgstr ""
+"Les dossiers suivants sont créés : ``outputs/rmj_benchmark/validation`` et "
+"``outputs/rmj_benchmark/forecast`` Les fichiers suivants sont ajoutés à ces "
+"dossiers :"
+
+#: ../../docsrc/plugin_api.rst:150 fb352733efc84780b8d01d90eab0eea8
+msgid ""
+"``prob_bm_<date>.tif``: Raster with classes of deforestation risk going from"
+" 1001 to potentially 30999 (high deforestation risk)."
+msgstr ""
+"``prob_bm_<date>.tif`` : Raster avec des classes de risque de déforestation "
+"allant de 1001 à potentiellement 30999 (risque de déforestation élevé)."
+
+#: ../../docsrc/plugin_api.rst:152 1080b2ce0c234239a9ee77e1edfee89d
+msgid "``prob_bm_<date>.png``: Plot of the deforestation risk map."
+msgstr ""
+"``prob_bm_<date>.png`` : Tracé de la carte des risques de déforestation."
+
+#: ../../docsrc/plugin_api.rst:154 38ee8d4ddb2b44188448dc19d6e9f4db
+msgid ""
+"``defrate_cat_bm_<period>.csv``: Table with deforestation rates on the "
+"period for each class of deforestation risk. See details `above "
+"<plugin_api.html#defrate-table>`_ with one exception: column ``rate_mod`` "
+"indicates deforestation rates obtained during either the calibration (when "
+"predicting at t2) or historical (when predicting at t3) period."
+msgstr ""
+"``defrate_cat_bm_<period>.csv`` : Tableau des taux de déforestation sur la "
+"période pour chaque classe de risque de déforestation. Voir les détails "
+"`supra <plugin_api.html#defrate-table>`_ à une exception près : la colonne "
+"``rate_mod`` indique les taux de déforestation obtenus pendant la période de"
+" calibration (lors de la prédiction à t2) ou la période historique (lors de "
+"la prédiction à t3)."
+
+#: ../../docsrc/plugin_api.rst:157 362d068fb936481a9d91052e2c243b1a
+msgid "FAR models"
+msgstr "Modèles FAR"
+
+#: ../../docsrc/plugin_api.rst:162 e21fce0d69394ea4a632ee03cc9e7c41
+msgid "Sample observations"
+msgstr "Exemples d'observations"
+
+#: ../../docsrc/plugin_api.rst:164 8fab706fead24ba2bb2c519b23786c13
+msgid ""
+"This box is for collecting the information needed to sample the "
+"deforestation observations. This is a necessary step as we cannot fit a "
+"model using all forest pixels which are usually too many. Nonetheless, "
+"sampled observations must be representative of the deforestation process in "
+"the study area."
+msgstr ""
+"Cette case permet de collecter les informations nécessaires à "
+"l'échantillonnage des observations de déforestation. Il s'agit d'une étape "
+"nécessaire car nous ne pouvons pas ajuster un modèle en utilisant tous les "
+"pixels de la forêt qui sont généralement trop nombreux. Néanmoins, les "
+"observations échantillonnées doivent être représentatives du processus de "
+"déforestation dans la zone d'étude."
+
+#: ../../docsrc/plugin_api.rst:166 da29ed7c08fc4dd08d62e052c6fcb01b
+msgid "``N# samples``: Number of observations to be sampled."
+msgstr "``N# samples`` : Nombre d'observations à échantillonner."
+
+#: ../../docsrc/plugin_api.rst:168 877190f2aa034ccfab1af2778c90e640
+msgid ""
+"``Adapt sampling``: If checked, the number of observations is proportional "
+"to forest area."
+msgstr ""
+"``Echantillonnage adapté`` : Si cette option est cochée, le nombre "
+"d'observations est proportionnel à la superficie de la forêt."
+
+#: ../../docsrc/plugin_api.rst:170 ccd446ef1d0c47b59b88febce5045c0f
+msgid ""
+"``Random seed``: Random seed used to make the random sample reproducible."
+msgstr ""
+"``Graine aléatoire`` : Graine aléatoire utilisée pour rendre l'échantillon "
+"aléatoire reproductible."
+
+#: ../../docsrc/plugin_api.rst:172 c0be1eccfe5c4b7fa4da1f750b188e24
+msgid ""
+"``Spatial cell size (km)``: Size of the spatial cells used to estimate "
+"spatial random effects. These spatial random effects account for the "
+"residual regional variability in the deforestation risk which is not taken "
+"into account by the spatial explanatory variables (e.g. distance to forest "
+"edge) included in the model. Because one parameter is estimated for each "
+"cell, use a value so that you have (roughly) between 500 and 1000 spatial "
+"cells covering your area of interest."
+msgstr ""
+"``Taille de la cellule spatiale (km)`` : Taille des cellules spatiales "
+"utilisées pour estimer les effets aléatoires spatiaux. Ces effets aléatoires"
+" spatiaux tiennent compte de la variabilité régionale résiduelle du risque "
+"de déforestation qui n'est pas prise en compte par les variables "
+"explicatives spatiales (par exemple, la distance à la lisière de la forêt) "
+"incluses dans le modèle. Étant donné qu'un paramètre est estimé pour chaque "
+"cellule, utilisez une valeur telle que vous ayez (approximativement) entre "
+"500 et 1000 cellules spatiales couvrant votre zone d'intérêt."
+
+#: ../../docsrc/plugin_api.rst:174 225deefe9f974e3fbc02499c6ed70e9a
+msgid ""
+"``calib. period``: If checked, the observations are sampled for the "
+"calibration period (t1--t2)."
+msgstr ""
+"``Période d'étalonnage`` : Si cette case est cochée, les observations sont "
+"échantillonnées pour la période d'étalonnage (t1--t2)."
+
+#: ../../docsrc/plugin_api.rst:176 78b5faf77d5c45dd8cc7eac8b77b20d1
+msgid ""
+"``hist. period``: If checked, the observations are sampled for the "
+"historical period (t1--t3)."
+msgstr ""
+"``hist. period`` : Si cette case est cochée, les observations sont "
+"échantillonnées pour la période historique (t1--t3)."
+
+#: ../../docsrc/plugin_api.rst:178 e869a70cda934388aec94f2510431ca2
+msgid ""
+"Pushing the ``Run`` button in this box will sample the observations. Note "
+"that you cannot sample the observations before downloading and computing the"
+" variables (see previous step). When the operation is finished, the sampled "
+"observations appear in the list of QGIS layers. You can navigate the map to "
+"confirm that about half the observations have been sampled in the deforested"
+" area and half in the non-deforested area."
+msgstr ""
+"En appuyant sur le bouton \"Run\" dans cette boîte, vous échantillonnerez "
+"les observations. Notez que vous ne pouvez pas échantillonner les "
+"observations avant d'avoir téléchargé et calculé les variables (voir l'étape"
+" précédente). Lorsque l'opération est terminée, les observations "
+"échantillonnées apparaissent dans la liste des couches de QGIS. Vous pouvez "
+"naviguer sur la carte pour confirmer qu'environ la moitié des observations "
+"ont été échantillonnées dans la zone déboisée et l'autre moitié dans la zone"
+" non déboisée."
+
+#: ../../docsrc/plugin_api.rst:180 811b0285c1394faaacade4d18a5a2b2a
+msgid ""
+"The folder ``outputs/far_models`` is created with ``calibration`` and "
+"``historical`` subfolders if ``calib. period`` and ``hist. period`` have "
+"been checked respectively. Files ``sample.txt``, ``sample_size.csv``, "
+"``csize_icar.txt``, and ``correlation.pdf`` are added to the output folders "
+"for each period."
+msgstr ""
+"Le dossier ``outputs/far_models`` est créé avec les sous-dossiers "
+"``calibration`` et ``historical`` si ``calib. period`` et ``hist. period`` "
+"ont été cochés respectivement. Les fichiers ``sample.txt``, "
+"``sample_size.csv``, ``csize_icar.txt``, et ``correlation.pdf`` sont ajoutés"
+" aux dossiers de sortie pour chaque période."
+
+#: ../../docsrc/plugin_api.rst:183 fc4e5ad9bbf54c8ebd36f41127bb5e5b
+msgid "Fit models to data"
+msgstr "Adapter les modèles aux données"
+
+#: ../../docsrc/plugin_api.rst:185 ce8edda8a31e4f04ab1988597aefeb41
+msgid ""
+"This tab is for collecting the information needed to spatially model "
+"deforestation using three statistical models available in the "
+"``forestatrisk`` (FAR) Python package: iCAR, GLM, and Random Forest models."
+msgstr ""
+"Cet onglet permet de collecter les informations nécessaires à la "
+"modélisation spatiale de la déforestation à l'aide de trois modèles "
+"statistiques disponibles dans le paquetage Python ``forestatrisk`` (FAR) : "
+"iCAR, GLM, et les modèles Random Forest."
+
+#: ../../docsrc/plugin_api.rst:187 bd3f6f9e73704224b1413690b30932ab
+msgid ""
+"``List of variables``: List of explanatory variables used for statistical "
+"modelling. Variable names must correspond to file names (without “.tif” "
+"extension) in folder ``data_calibration`` or ``data_historical``. Variable "
+"names must be separated by a comma. For categorical variables (such as "
+"protected areas) use the variable name with notation ``C()``, such as "
+"``C(pa)``."
+msgstr ""
+"``Liste de variables`` : Liste des variables explicatives utilisées pour la "
+"modélisation statistique. Les noms des variables doivent correspondre aux "
+"noms des fichiers (sans l'extension \".tif\") dans le dossier "
+"``data_calibration`` ou ``data_historical``. Les noms de variables doivent "
+"être séparés par une virgule. Pour les variables catégorielles (telles que "
+"les zones protégées), utilisez le nom de la variable avec la notation "
+"``C()``, comme ``C(pa)``."
+
+#: ../../docsrc/plugin_api.rst:189 b6dc69563ab0425bae7697364a2c3a63
+msgid ""
+"``Starting values for betas``: If -99 (recommended), starting values for "
+"betas correspond to estimates of a simple GLM with the same variables."
+msgstr ""
+"``Valeurs de départ pour les bêtas`` : Si -99 (recommandé), les valeurs de "
+"départ pour les bêtas correspondent aux estimations d'un GLM simple avec les"
+" mêmes variables."
+
+#: ../../docsrc/plugin_api.rst:191 9bbb25b676334e30b78f3bc4e11f9f73
+msgid ""
+"``Prior Vrho``: If -1 (recommended), the prior for Vrho is an Inverse-Gamma."
+msgstr ""
+"``Prior Vrho`` : Si -1 (recommandé), l'a priori pour Vrho est un Inverse-"
+"Gamma."
+
+#: ../../docsrc/plugin_api.rst:193 cb49feb090424cf480b78f7354387c05
+msgid "``MCMC``: Length of the MCMC for the final model."
+msgstr "``MCMC`` : Longueur du MCMC pour le modèle final."
+
+#: ../../docsrc/plugin_api.rst:195 e3a16dd41acb477e99b51b31808ff31b
+msgid ""
+"``Variable selection``: If checked (recommended), a variable selection "
+"(backward selection) is performed before fitting the final model."
+msgstr ""
+"``Sélection de variables`` : Si la case est cochée (recommandé), une "
+"sélection de variables (sélection à rebours) est effectuée avant d'ajuster "
+"le modèle final."
+
+#: ../../docsrc/plugin_api.rst:197 d37fb3f964184330af91837fef727bdd
+msgid ""
+"``calib. period``: If checked, models are fitted over the calibration period"
+" (t1--t2)."
+msgstr ""
+"``Période d'étalonnage`` : Si cette case est cochée, les modèles sont "
+"ajustés sur la période d'étalonnage (t1--t2)."
+
+#: ../../docsrc/plugin_api.rst:199 4f5804d178c74264913a12eff788b6fc
+msgid ""
+"``hist. period``: If checked, models are fitted over the historical period "
+"(t1--t3)."
+msgstr ""
+"``hist. period`` : Si cette case est cochée, les modèles sont ajustés sur la"
+" période historique (t1--t3)."
+
+#: ../../docsrc/plugin_api.rst:201 4910a30aeca74aedaf44d15584b20fe3
+msgid ""
+"Pushing the ``Run`` button in this box will fit the statistical model to the"
+" deforestation observations. Note that you cannot fit the model if you have "
+"not sampled the observations (see previous step)."
+msgstr ""
+"En appuyant sur le bouton \"Run\" dans cette boîte, le modèle statistique "
+"sera ajusté aux observations de déforestation. Notez que vous ne pouvez pas "
+"ajuster le modèle si vous n'avez pas échantillonné les observations (voir "
+"l'étape précédente)."
+
+#: ../../docsrc/plugin_api.rst:203 c496bd6dddc84930ae704b81d26eb04e
+msgid ""
+"The following folders are created: ``outputs/far_models/calibration`` and "
+"``outputs/far_models/historical``. The following files are added to the "
+"``outputs/far_models/calibration`` and ``outputs/far_models/historical`` "
+"folders:"
+msgstr ""
+"Les dossiers suivants sont créés : ``outputs/far_models/calibration`` et "
+"``outputs/far_models/historical``. Les fichiers suivants sont ajoutés aux "
+"dossiers ``outputs/far_models/calibration`` et "
+"``outputs/far_models/historical`` :"
+
+#: ../../docsrc/plugin_api.rst:205 cec7105420c74a968d620aae8a0bb6c2
+msgid ""
+"``summary_icar.txt``: Summary of the iCAR model with mean, standard-"
+"deviation, and credible intervals for model parameters."
+msgstr ""
+"``summary_icar.txt`` : Résumé du modèle iCAR avec la moyenne, l'écart-type "
+"et les intervalles de confiance pour les paramètres du modèle."
+
+#: ../../docsrc/plugin_api.rst:207 f8bab85145c24da8ae201ae8ee99a156
+msgid ""
+"``mcmc.pdf``: Trace and posterior distribution for the icar model "
+"parameters. Used to check MCMC convergence."
+msgstr ""
+"``mcmc.pdf`` : Trace et distribution postérieure des paramètres du modèle "
+"icar. Utilisé pour vérifier la convergence du MCMC."
+
+#: ../../docsrc/plugin_api.rst:209 2a529348af654760a3b21ef89e7500ac
+msgid ""
+"``mod_icar.pickle``: A compressed file with iCAR model characteristics. Used"
+" for projections."
+msgstr ""
+"``mod_icar.pickle`` : Un fichier compressé avec les caractéristiques du "
+"modèle iCAR. Utilisé pour les projections."
+
+#: ../../docsrc/plugin_api.rst:211 6fcba7438e194b849c7cee655a9040c8
+msgid ""
+"``mod_null.pickle``: A compressed file with null model characteristics. Only"
+" used as an archive."
+msgstr ""
+"``mod_null.pickle`` : Un fichier compressé avec les caractéristiques d'un "
+"modèle nul. Utilisé uniquement comme archive."
+
+#: ../../docsrc/plugin_api.rst:213 43a9ca3de379479c831f8cea960dc935
+msgid ""
+"``mod_glm.pickle``: A compressed file with GLM model characteristics. Used "
+"for projections."
+msgstr ""
+"``mod_glm.pickle`` : Un fichier compressé avec les caractéristiques du "
+"modèle GLM. Utilisé pour les projections."
+
+#: ../../docsrc/plugin_api.rst:215 7b09ab45b34b4709852d4f27860dc34b
+msgid ""
+"``mod_rf.joblib``: A compressed file with Random Forest model "
+"characteristics. Used for projections."
+msgstr ""
+"``mod_rf.joblib`` : Un fichier compressé avec les caractéristiques du modèle"
+" Random Forest. Utilisé pour les projections."
+
+#: ../../docsrc/plugin_api.rst:217 05ee89bd583a4b6c823250e4877532e9
+msgid ""
+"``model_deviances.csv``. A text file comparing the percent deviance "
+"explained between models. This percentage is an indication of the goodness-"
+"of-fit of the model."
+msgstr ""
+"``model_deviances.csv``. Un fichier texte comparant le pourcentage de "
+"déviance expliquée entre les modèles. Ce pourcentage est une indication de "
+"la qualité de l'ajustement du modèle."
+
+#: ../../docsrc/plugin_api.rst:222 61e1e2a996ad41d4999ba58da436bad8
+msgid ""
+"This step is for predicting the deforestation risk and deriving risk maps "
+"using the FAR models fitted on the calibration or historical period."
+msgstr ""
+"Cette étape permet de prévoir le risque de déforestation et d'établir des "
+"cartes de risque à l'aide des modèles FAR adaptés à la période d'étalonnage "
+"ou à la période historique."
+
+#: ../../docsrc/plugin_api.rst:224 6bbe2d268a3f49ad98c1ae1e18dfda83
+msgid "``iCAR model``: If checked, computes predictions with the iCAR model."
+msgstr ""
+"``Modèle iCAR`` : Si coché, calcule les prédictions avec le modèle iCAR."
+
+#: ../../docsrc/plugin_api.rst:226 27b37dee97d44c35ada5e4ef3e51ba26
+msgid "``GLM``: If checked, computes predictions with GLM."
+msgstr "``GLM`` : Si coché, calcule les prédictions avec GLM."
+
+#: ../../docsrc/plugin_api.rst:228 7410b9ef8c0148628c82c4c46ee0f726
+msgid ""
+"``RF model``: If checked, computes predictions with the Random Forest model."
+msgstr ""
+"``RF model`` : Si coché, calcule les prédictions avec le modèle Random "
+"Forest."
+
+#: ../../docsrc/plugin_api.rst:230 ../../docsrc/plugin_api.rst:285
+#: 34082d3b769546269b1ec70f2d9a8881 997c87839ae24c0cbbdde7f73c574b2d
+msgid ""
+"``t1 calibration``: If checked, computes predictions at t1 using models "
+"fitted over the calibration period."
+msgstr ""
+"``t1 calibration`` : Si coché, calcule les prédictions à t1 en utilisant des"
+" modèles ajustés sur la période de calibration."
+
+#: ../../docsrc/plugin_api.rst:232 ../../docsrc/plugin_api.rst:287
+#: 945ca633f99f47d69af4cd552a2aa96b 77c57d0d9e714c78845b22c30298f4a8
+msgid ""
+"``t2 validation``: If checked, computes predictions at t2 for validation "
+"(using models fitted over the calibration period)."
+msgstr ""
+"``t2 validation`` : Si coché, calcule les prédictions à t2 pour la "
+"validation (en utilisant les modèles ajustés sur la période d'étalonnage)."
+
+#: ../../docsrc/plugin_api.rst:234 ../../docsrc/plugin_api.rst:289
+#: 9181045163e940de8d59ace86b9a3e57 e6eb3abbfe67420fa402c38a2875dfed
+msgid ""
+"``t1 historical``: If checked, computes predictions at t1 using models "
+"fitted over the historical period."
+msgstr ""
+"``t1 historical`` : Si coché, calcule les prédictions à t1 en utilisant des "
+"modèles ajustés sur la période historique."
+
+#: ../../docsrc/plugin_api.rst:236 ../../docsrc/plugin_api.rst:291
+#: a3f66bf069f6468983620ce92b761b63 1acdb0db5a43429dbab3cabd0d2cbddb
+msgid ""
+"``t3 forecast``: If checked, computes predictions at t3 for forecasting "
+"(using models fitted over the historical period)."
+msgstr ""
+"``t3 forecast`` : Si coché, calcule les prévisions à t3 pour les prévisions "
+"(en utilisant des modèles ajustés sur la période historique)."
+
+#: ../../docsrc/plugin_api.rst:238 42dda4a3179e4d0391f74dd3848cb1e5
+msgid ""
+"Pushing the ``Run`` button in this box will use the statistical models for "
+"predictions. Note that you cannot make predictions if you have not fitted "
+"the models (see previous step). When the operation is finished, rasters "
+"representing the classes of deforestation risk appear in the list of QGIS "
+"layers. You can navigate the different maps to see how the risk of "
+"deforestation is changing in space for the different dates. For example, you"
+" can have a look at the effect of the distance to forest edge, of the "
+"distance to roads, or of protected areas."
+msgstr ""
+"En appuyant sur le bouton \"Run\" dans cette boîte, vous utiliserez les "
+"modèles statistiques pour les prédictions. Notez que vous ne pouvez pas "
+"faire de prédictions si vous n'avez pas ajusté les modèles (voir l'étape "
+"précédente). Lorsque l'opération est terminée, les rasters représentant les "
+"classes de risque de déforestation apparaissent dans la liste des couches de"
+" QGIS. Vous pouvez naviguer dans les différentes cartes pour voir comment le"
+" risque de déforestation évolue dans l'espace pour les différentes dates. "
+"Par exemple, vous pouvez examiner l'effet de la distance à la lisière de la "
+"forêt, de la distance aux routes ou des zones protégées."
+
+#: ../../docsrc/plugin_api.rst:240 e8efdb974dac445f8ff9e75fe9b3b8e8
+msgid ""
+"The following folders are created for each period: "
+"``outputs/far_models/<period>``. The following files are created for each "
+"model, date or period:"
+msgstr ""
+"Les dossiers suivants sont créés pour chaque période : "
+"``outputs/far_models/<period>``. Les fichiers suivants sont créés pour "
+"chaque modèle, date ou période :"
+
+#: ../../docsrc/plugin_api.rst:242 967c35254e684948811a3a8ca50fc109
+msgid ""
+"``prob_<far_model>_<date>.tif``: Raster with classes of deforestation risk "
+"going from 1 to 65535 (highest deforestation risk)."
+msgstr ""
+"``prob_<far_model>_<date>.tif`` : Raster avec des classes de risque de "
+"déforestation allant de 1 à 65535 (risque de déforestation le plus élevé)."
+
+#: ../../docsrc/plugin_api.rst:244 3ff20046d9cf41d9a63edb1008aec3c3
+msgid "``prob_<far_model>_<date>.png``: Plot of the deforestation risk map."
+msgstr ""
+"``prob_<far_model>_<date>.png`` : Tracé de la carte des risques de "
+"déforestation."
+
+#: ../../docsrc/plugin_api.rst:246 ce17cf087e6d4f46808a8357a7b8957d
+msgid ""
+"``defrate_cat_<model>_<period>.csv``: Table with deforestation rates on the "
+"period for each class of deforestation risk. See details `above "
+"<plugin_api.html#defrate-table>`_ with one exception for FAR models: column "
+"``rate_mod`` is computed as :math:`\\theta_{m,i} = ((i - 1) \\times 999999 /"
+" 65534 + 1) \\times 1e^{-6}`. This formula leads to an almost null "
+"(:math:`1e^{-6}`) deforestation probability when :math:`i=1` and to a "
+"deforestation probability of 1 when :math:`i=65535`."
+msgstr ""
+"``defrate_cat_<model>_<period>.csv`` : Tableau des taux de déforestation sur"
+" la période pour chaque classe de risque de déforestation. Voir les détails "
+"`supra <plugin_api.html#defrate-table>`_ à une exception près pour les "
+"modèles FAR : la colonne ``rate_mod`` est calculée comme :math:`theta_{m,i} "
+"= ((i - 1) \\times 999999 / 65534 + 1) \\times 1e^{-6}`. Cette formule "
+"conduit à une probabilité de déforestation presque nulle (:math:`1e^{-6}`) "
+"lorsque :math:`i=1` et à une probabilité de déforestation de 1 lorsque "
+":math:`i=65535`."
+
+#: ../../docsrc/plugin_api.rst:249 82569ea0498b4cd8be1a316803741a8b
+msgid "MW models"
+msgstr "Modèles MW"
+
+#: ../../docsrc/plugin_api.rst:256 009f9df006cd4c68b987d5d1dc0de303
+msgid ""
+"This tab is for collecting the information needed to map the deforestation "
+"risk using the moving window model which was first proposed by `Verra "
+"<https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-"
+"udef-a-v1-0/>`_ in the `JNR Risk Mapping Tool v0.1 "
+"<_static/DRAFT_JNR_Risk_Mapping_Tool_15APR2021.pdf>`_. In summary, the "
+"moving model assumes that deforestation is negligible beyond a given "
+"distance to forest edge (as for the benchmark model), and that the "
+"deforestation risk can be estimated in the remaining area with a moving "
+"window approach."
+msgstr ""
+"Cet onglet permet de collecter les informations nécessaires pour "
+"cartographier le risque de déforestation à l'aide du modèle de la fenêtre "
+"mobile qui a été proposé pour la première fois par `Verra "
+"<https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-"
+"udef-a-v1-0/>`_ dans le `JNR Risk Mapping Tool v0.1 "
+"<_static/DRAFT_JNR_Risk_Mapping_Tool_15APR2021.pdf>`_. En résumé, le modèle "
+"mobile suppose que la déforestation est négligeable au-delà d'une distance "
+"donnée de la lisière de la forêt (comme pour le modèle de référence), et que"
+" le risque de déforestation peut être estimé dans la zone restante à l'aide "
+"d'une approche par fenêtre mobile."
+
+#: ../../docsrc/plugin_api.rst:258 bb4dbdeca048406b96cfe3093a82a026
+msgid ""
+"``Deforestation threshold (%)``: Accumulated deforestation threshold used to"
+" identify the distance to forest edge threshold. Default to 99.5%."
+msgstr ""
+"``Seuil de déforestation (%)`` : Seuil de déforestation cumulée utilisé pour"
+" identifier le seuil de distance à la lisière de la forêt. La valeur par "
+"défaut est 99,5 %."
+
+#: ../../docsrc/plugin_api.rst:260 f9d2abf2ad22433f9294ca3aa5b223e5
+msgid ""
+"``Max. distance to forest edge (m)``: Maximal distance to forest edge used "
+"to compute the accumulated deforestation as a function of the distance to "
+"forest edge. Default to 2500 m as most of the deforestation should occur "
+"below this distance. Increase this number if the threshold for the "
+"accumulated deforestation is not reached."
+msgstr ""
+"``Distance max. à la lisière de la forêt (m)`` : Distance maximale à la "
+"lisière de la forêt utilisée pour calculer la déforestation cumulée en "
+"fonction de la distance à la lisière de la forêt. La valeur par défaut est "
+"2500  m, car la majeure partie de la déforestation devrait se produire en "
+"dessous de cette distance. Augmentez ce chiffre si le seuil de déforestation"
+" cumulée n'est pas atteint."
+
+#: ../../docsrc/plugin_api.rst:262 c80d28ba07c54d16970a9b93a4d25875
+msgid ""
+"``Window sizes (# pixels)``: Window sizes in number of pixels. Several "
+"window sizes can be specified if separated with a comma, such as “11, 21” "
+"for example which are the default values."
+msgstr ""
+"``Taille des fenêtres (# pixels)`` : Taille des fenêtres en nombre de "
+"pixels. Plusieurs tailles de fenêtres peuvent être spécifiées en les "
+"séparant par une virgule, comme par exemple \"11, 21\" qui sont les valeurs "
+"par défaut."
+
+#: ../../docsrc/plugin_api.rst:268 e2034c2a606241cfb33ea07a14dbc017
+msgid ""
+"Pushing the ``Run`` button in this box will estimate the distance to forest "
+"edge beyond which the deforestation risk is assumed negligible. This "
+"distance threshold is used to define a first class of deforestation risk "
+"equal to 1. Then deforestation rates are estimated in the remaining area "
+"with a moving window. Deforestation rates on the interval [0, 1] are "
+"rescaled on the interval [2, 65535]."
+msgstr ""
+"En appuyant sur le bouton \"Exécuter\" dans cette case, on estime la "
+"distance à la lisière de la forêt au-delà de laquelle le risque de "
+"déforestation est considéré comme négligeable. Ce seuil de distance est "
+"utilisé pour définir une première classe de risque de déforestation égale à "
+"1. Les taux de déforestation sont ensuite estimés dans la zone restante à "
+"l'aide d'une fenêtre mobile. Les taux de déforestation sur l'intervalle [0, "
+"1] sont rééchelonnés sur l'intervalle [2, 65535]."
+
+#: ../../docsrc/plugin_api.rst:270 ca3d6f81f64f438588e6b6224789cc53
+msgid ""
+"The following folders are created: ``outputs/rmj_moving_window/calibration``"
+" and ``outputs/rmj_moving_window/historical``. The following files are added"
+" to these folders:"
+msgstr ""
+"Les dossiers suivants sont créés : ``outputs/rmj_moving_window/calibration``"
+" et ``outputs/rmj_moving_window/historical``. Les fichiers suivants sont "
+"ajoutés à ces dossiers :"
+
+#: ../../docsrc/plugin_api.rst:276 00f47a8b60c84e339554410a8eba9d5e
+msgid ""
+"``dist_edge_threshold.csv``: Table with distance threshold and corresponding"
+" cumulated deforestation (which must be greater or equal to the defined "
+"deforestation threshold)."
+msgstr ""
+"``dist_edge_threshold.csv`` : Tableau avec le seuil de distance et la "
+"déforestation cumulée correspondante (qui doit être supérieure ou égale au "
+"seuil de déforestation défini)."
+
+#: ../../docsrc/plugin_api.rst:278 0090112f808d44d69de84103b441ee35
+msgid ""
+"``ldefrate_mw_<window_size>.tif``: Raster with local deforestation rates "
+"rescaled on [2, 65535]."
+msgstr ""
+"``ldefrate_mw_<window_size>.tif`` : Raster avec les taux de déforestation "
+"locaux remis à l'échelle sur [2, 65535]."
+
+#: ../../docsrc/plugin_api.rst:283 a90a722683394429801c496b57461dee
+msgid ""
+"This step is for predicting the deforestation risk and deriving risk maps "
+"using the moving window models fitted on the calibration or historical "
+"period."
+msgstr ""
+"Cette étape permet de prévoir le risque de déforestation et d'établir des "
+"cartes de risque à l'aide de modèles à fenêtre mobile adaptés à la période "
+"d'étalonnage ou à la période historique."
+
+#: ../../docsrc/plugin_api.rst:293 90674834216d48f587cf55c2a202954b
+msgid ""
+"Pushing the ``Run`` button in this box will use the moving window models for"
+" predictions. Note that you cannot make predictions if you have not fitted "
+"the models (see previous step). When the operation is finished, rasters "
+"representing the classes of deforestation risk appear in the list of QGIS "
+"layers. You can navigate the different maps to see how the risk of "
+"deforestation is changing in space for the different dates."
+msgstr ""
+"En appuyant sur le bouton \"Run\" dans cette boîte, vous utiliserez les "
+"modèles à fenêtre mobile pour les prédictions. Notez que vous ne pouvez pas "
+"faire de prédictions si vous n'avez pas ajusté les modèles (voir l'étape "
+"précédente). Lorsque l'opération est terminée, les rasters représentant les "
+"classes de risque de déforestation apparaissent dans la liste des couches de"
+" QGIS. Vous pouvez naviguer dans les différentes cartes pour voir comment le"
+" risque de déforestation évolue dans l'espace pour les différentes dates."
+
+#: ../../docsrc/plugin_api.rst:295 f4819db263284004bedb72b1e13cabb3
+msgid ""
+"The following folders are created for each period: "
+"``outputs/rmj_benchmark/<period>``. The following files are created for each"
+" window size, date or period:"
+msgstr ""
+"Les dossiers suivants sont créés pour chaque période : "
+"``outputs/rmj_benchmark/<period>``. Les fichiers suivants sont créés pour "
+"chaque taille de fenêtre, date ou période :"
+
+#: ../../docsrc/plugin_api.rst:297 e1764904af4044118cc255557d9aae89
+msgid ""
+"``prob_mw_<window_size>_<date>.tif``: Raster with classes of deforestation "
+"risk going from 1 (null deforestation risk beyond the distance threshold) to"
+" 65535 (highest deforestation risk)."
+msgstr ""
+"``prob_mw_<window_size>_<date>.tif`` : Raster avec des classes de risque de "
+"déforestation allant de 1 (risque de déforestation nul au-delà du seuil de "
+"distance) à 65535 (risque de déforestation le plus élevé)."
+
+#: ../../docsrc/plugin_api.rst:299 be2d54d487a8415d928f3828ecf693be
+msgid ""
+"``prob_mw_<window_size>_<date>.png``: Plot of the deforestation risk map."
+msgstr ""
+"``prob_mw_<window_size>_<date>.png`` : Tracé de la carte des risques de "
+"déforestation."
+
+#: ../../docsrc/plugin_api.rst:301 ae744cf22b654793b4e37dddceae4801
+msgid ""
+"``defrate_cat_mw_<window_size>_<period>.csv``: Table with deforestation "
+"rates on the period for each class of deforestation risk. See details `above"
+" <plugin_api.html#defrate-table>`_ with one exception for moving window "
+"models: column ``rate_mod`` is computed as :math:`\\theta_{m,1} = 0` and "
+":math:`\\theta_{m,i} = ((i - 2) \\times 999999 / 65533 + 1) \\times 1e^{-6}`"
+" for :math:`i > 1`. This formula leads to an almost null (:math:`1e^{-6}`) "
+"deforestation probability when :math:`i=2` and to a deforestation "
+"probability of 1 when :math:`i=65535`."
+msgstr ""
+"``defrate_cat_mw_<window_size>_<period>.csv`` : Tableau avec les taux de "
+"déforestation sur la période pour chaque classe de risque de déforestation. "
+"Voir les détails `supra <plugin_api.html#defrate-table>`_ avec une exception"
+" pour les modèles à fenêtre mobile : la colonne ``rate_mod`` est calculée "
+"comme :math:\\theta_{m,1} = 0` et :math:\\theta_{m,i} = ((i - 2) \\times "
+"999999 / 65533 + 1) \\times 1e^{-6}` pour :math:\\i > 1`. Cette formule "
+"conduit à une probabilité de déforestation presque nulle (:math:`1e^{-6}`) "
+"lorsque :math:`i=2` et à une probabilité de déforestation de 1 lorsque "
+":math:`i=65535`."
+
+#: ../../docsrc/plugin_api.rst:304 03bf97f6353442fdbcd34236c024ad0c
+msgid "Validation"
+msgstr "Validation"
+
+#: ../../docsrc/plugin_api.rst:309 6cc09130db8c48499553d4b40f63cab6
+msgid "Model validation"
+msgstr "Validation du modèle"
+
+#: ../../docsrc/plugin_api.rst:311 27cd361551964f99ab6cac94f439531c
+msgid ""
+"This step is used to validate deforestation models and maps and estimate "
+"their performance at correctly predicting the location of the deforestation."
+" By default, the performance of the benchmark model is always estimated."
+msgstr ""
+"Cette étape permet de valider les modèles et les cartes de déforestation et "
+"d'estimer leur capacité à prédire correctement la localisation de la "
+"déforestation. Par défaut, la performance du modèle de référence est "
+"toujours estimée."
+
+#: ../../docsrc/plugin_api.rst:313 88b090a2c5e347ffabbe3e4014ad7d00
+msgid ""
+"``Coarse grid cell size (# pixels)``: Spatial cell size in number of pixels "
+"used to compare observed deforested area with predicted deforested area. "
+"Cell size must be < 10 km. As an example, a value of 300 corresponds to 9 km"
+" for a 30 m resolution raster. Several values can be provided if separated "
+"with comma. Default to “50, 100”."
+msgstr ""
+"``Taille des cellules de la grille grossière (# pixels)`` : Taille de la "
+"cellule spatiale en nombre de pixels utilisée pour comparer la zone déboisée"
+" observée à la zone déboisée prédite. La taille des cellules doit être "
+"inférieure à 10 km. A titre d'exemple, une valeur de 300 correspond à 9 km "
+"pour un raster de 30 m de résolution. Plusieurs valeurs peuvent être "
+"fournies si elles sont séparées par une virgule. La valeur par défaut est "
+"\"50, 100\"."
+
+#: ../../docsrc/plugin_api.rst:315 efd9443a5a9140bda5348f7d95bfc648
+msgid ""
+"``iCAR model``: If checked, estimates the performance of the iCAR model."
+msgstr ""
+"``Modèle iCAR`` : Si cette option est cochée, elle permet d'estimer les "
+"performances du modèle iCAR."
+
+#: ../../docsrc/plugin_api.rst:317 8810d5df21344480a2e5b785aa90fc73
+msgid "``GLM``: If checked, estimates the performance of the GLM."
+msgstr ""
+"``GLM`` : Si cette option est cochée, elle permet d'estimer la performance "
+"du GLM."
+
+#: ../../docsrc/plugin_api.rst:319 8cb0ba2c726f4da4831dc84d2dff0a6e
+msgid ""
+"``RF model``: If checked, estimates the performance of the Random Forest "
+"model."
+msgstr ""
+"``RF model`` : Si coché, estime la performance du modèle Random Forest."
+
+#: ../../docsrc/plugin_api.rst:321 7f3887a1ac0d4114856b2e1f1f1a05a4
+msgid ""
+"``MW model``: If checked, estimates the performance of the Moving Window "
+"models."
+msgstr ""
+"``Modèle MW`` : Si cette option est cochée, elle permet d'estimer la "
+"performance des modèles à fenêtre mobile."
+
+#: ../../docsrc/plugin_api.rst:323 7f8cc72ebb714f698cd6b2e99df928d0
+msgid ""
+"``calib. period``: If checked, estimates model performances for the "
+"calibration period (t1--t2)."
+msgstr ""
+"``calib. period`` : Si cette case est cochée, les performances du modèle "
+"sont estimées pour la période de calibration (t1--t2)."
+
+#: ../../docsrc/plugin_api.rst:325 35daa5505b584dfab4c95536eeaa3097
+msgid ""
+"``valid. period``: If checked, estimates model performances for the "
+"validation period (t2--t3)."
+msgstr ""
+"``période de validation`` : Si cette case est cochée, les performances du "
+"modèle sont estimées pour la période de validation (t2--t3)."
+
+#: ../../docsrc/plugin_api.rst:327 8f02ec1191794b59bd33d85e89200173
+msgid ""
+"``hist. period``: If checked, estimates model performances for the "
+"historical period (t1--t3)."
+msgstr ""
+"``hist. period`` : Si coché, estime les performances du modèle pour la "
+"période historique (t1--t3)."
+
+#: ../../docsrc/plugin_api.rst:329 1ef53d53c13d4c4bb868b998cb5851ff
+msgid ""
+"Pushing the ``Run`` button in this box will compute the predicted deforested"
+" area in each grid cell for each model and each period selected and compare "
+"this value to the observed deforested area for the same grid cell and "
+"period. Note that you cannot validate models if you have not fitted these "
+"models (see previous step)."
+msgstr ""
+"En appuyant sur le bouton \"Exécuter\" dans cette boîte, vous calculerez la "
+"surface déboisée prédite dans chaque cellule de la grille pour chaque modèle"
+" et chaque période sélectionnés et vous comparerez cette valeur à la surface"
+" déboisée observée pour la même cellule de la grille et la même période. "
+"Notez que vous ne pouvez pas valider les modèles si vous ne les avez pas "
+"ajustés (voir l'étape précédente)."
+
+#: ../../docsrc/plugin_api.rst:331 1f17311f85f542cb91e0be136d2c488f
+msgid ""
+"The following folders are created for each period: "
+"``outputs/model_validation/<period>/figures`` and "
+"``outputs/model_validation/<period>/tables``. The following files are added "
+"for each model, period, and grid cell size:"
+msgstr ""
+"Les dossiers suivants sont créés pour chaque période : "
+"``outputs/model_validation/<period>/figures`` et "
+"``outputs/model_validation/<period>/tables``. Les fichiers suivants sont "
+"ajoutés pour chaque modèle, période et taille de cellule de la grille :"
+
+#: ../../docsrc/plugin_api.rst:333 8b2a8ab537bb4378bd24b4f7b2b3d5a0
+msgid ""
+"``tables/pred_obs_<model>_<period>_<cell_size>.csv``: Values of observed and"
+" predicted deforested area in each grid cell."
+msgstr ""
+"``tables/pred_obs_<model>_<period>_<cell_size>.csv`` : Valeurs des zones "
+"déboisées observées et prédites dans chaque cellule de la grille."
+
+#: ../../docsrc/plugin_api.rst:335 781e0eea26904fbe9b223ed0647a09fb
+msgid ""
+"``tables/indices_<model>_<period>_<cell_size>.csv``: Values of performance "
+"indices for a given model, period, and grid cell size. Performance indices "
+"include the :math:`R^{2}`, the median absolute error (MedAE, in ha), the "
+"root mean square error (RMSE, in ha), and the weighted root mean square "
+"error (wRMSE, in ha), fo which the weights are determined by the number of "
+"forest pixels in each coarse grid cell."
+msgstr ""
+"``tables/indices_<model>_<period>_<cell_size>.csv`` : Valeurs des indices de"
+" performance pour un modèle, une période et une taille de cellule de grille "
+"donnés. Les indices de performance comprennent :math:`R^{2}`, l'erreur "
+"absolue médiane (MedAE, en ha), l'erreur quadratique moyenne (RMSE, en ha) "
+"et l'erreur quadratique moyenne pondérée (wRMSE, en ha), pour laquelle les "
+"poids sont déterminés par le nombre de pixels de forêt dans chaque cellule "
+"de grille grossière."
+
+#: ../../docsrc/plugin_api.rst:337 fd6916027bc14b99b0977e5c43c22bd4
+msgid ""
+"``figures/pred_obs_<model>_<period>_<cell_size>.png``: Plot of predicted vs."
+" observed deforested area. The plot shows values of predicted and observed "
+"deforested area in each grid cell as points and the one-one line. The plot "
+"reports also the number of grid cells (or points), and the values of two of "
+"the performance indices: the :math:`R^{2}` and the MedAE."
+msgstr ""
+"``figures/pred_obs_<model>_<period>_<cell_size>.png`` : Graphique de la "
+"surface déboisée prédite par rapport à la surface déboisée observée. Le "
+"graphique montre les valeurs de la zone déboisée prédite et observée dans "
+"chaque cellule de la grille sous forme de points et de ligne univoque. Le "
+"graphique indique également le nombre de cellules de la grille (ou de "
+"points) et les valeurs de deux des indices de performance : le :math:`R^{2}`"
+" et le MedAE."

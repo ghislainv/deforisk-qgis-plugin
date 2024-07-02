@@ -1,5 +1,5 @@
-# Installation folder for forestatrisk
-forestatrisk
+# Transifex
+help/docsrc/tx
 
 # .db
 *.db

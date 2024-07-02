@@ -1,0 +1,1666 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Cirad and FAO
+# This file is distributed under the same license as the deforisk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Ghislain Vieilledent, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: deforisk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-01 14:07-0400\n"
+"PO-Revision-Date: 2024-07-01 18:38+0000\n"
+"Last-Translator: Ghislain Vieilledent, 2024\n"
+"Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: ../../docsrc/get_started.rst:3 aeefb9f7ac8c467e81a8359a1f9e0c82
+msgid "Get started"
+msgstr "Empezar"
+
+#: ../../docsrc/get_started.rst:12 2fb08d949b904934a5bc94d95ee65e5b
+msgid "Introduction"
+msgstr "Introducción"
+
+#: ../../docsrc/get_started.rst:22 b7eac78ce66d49c5814d731c076af9dc
+msgid ""
+"Open QGIS on your computer. To have access to log messages, activate the "
+"“Log Messages” panel in QGIS going to ``View > Panel > Log Messages`` in the"
+" Menu. When using a plugin, it is also a good habit to open the Python "
+"console in QGIS to have access to Python messages returned in the console. "
+"To open it, click on the Python icon |ico_py| in the “Plugins Toolbar”. If "
+"the toolbar is not visible, activate it going to ``View > Toolbars > Plugins"
+" Toolbar`` in the Menu."
+msgstr ""
+"Abra QGIS en su ordenador. Para tener acceso a los mensajes de registro, "
+"active el panel \"Mensajes de Registro\" en QGIS yendo a ``Ver > Panel > "
+"Mensajes de Registro`` en el Menú. Cuando se utiliza un plugin, también es "
+"un buen hábito abrir la consola Python en QGIS para tener acceso a los "
+"mensajes Python devueltos en la consola. Para abrirla, haz clic en el icono "
+"de Python |ico_py| en la \"Barra de herramientas de plugins\". Si la barra "
+"de herramientas no está visible, actívela yendo a ``Ver > Barras de "
+"herramientas > Barra de herramientas de plugins`` en el Menú."
+
+#: ../../docsrc/get_started.rst:14 9bd4a767c41349659e4ef23697d4bfcf
+msgid "ico_py"
+msgstr "ico_py"
+
+#: ../../docsrc/get_started.rst:24 159a7ac46a834dddb3a955dc928e5bef
+msgid ""
+"Once the plugin has been installed (see `Installation <installation.html>`_ "
+"instructions), open the plugin clicking on its icon |ico_deforisk|. You "
+"should see the versions of the dependencies installed in your environment "
+"written in the Python console. Check that these version numbers correspond "
+"to the last version for each dependency. Otherwise upgrade the dependencies."
+msgstr ""
+"Una vez instalado el plugin (ver instrucciones para la `instalación "
+"<installation.html>`_ ), abre el plugin pulsando sobre su icono "
+"|ico_deforisk|. Deberías ver las versiones de las dependencias instaladas en"
+" tu entorno escritas en la consola de Python. Comprueba que estos números de"
+" versión corresponden a la última versión de cada dependencia. En caso "
+"contrario actualiza las dependencias."
+
+#: ../../docsrc/get_started.rst:16 257454f2b10b45e88357159034c9d2f8
+msgid "ico_deforisk"
+msgstr "ico_deforisk"
+
+#: ../../docsrc/get_started.rst:35 b4439bd6a5314b9d841518b08f7a754d
+msgid ""
+"To test the plugin and have a first look at its functionalities, try it on a"
+" small area of interest (AOI) such as the `Martinique "
+"<https://en.wikipedia.org/wiki/Martinique>`_ island (1128 km\\ :sup:`2`\\) "
+"which has the MTQ iso code. Testing the plugin on a small AOI has the "
+"advantage of making computations fast so that you can directly see the "
+"outputs, interpret the results, and understand the functioning of the "
+"plugin."
+msgstr ""
+"Para probar el plugin y echar un primer vistazo a sus funcionalidades, "
+"pruébelo en una pequeña área de interés (AOI) como la isla `Martinique "
+"<https://en.wikipedia.org/wiki/Martinique>`_ (1128 km\\ :sup:`2`\\) que "
+"tiene el código iso MTQ. Probar el plugin en una pequeña AOI tiene la "
+"ventaja de que los cálculos son rápidos y puedes ver directamente las "
+"salidas, interpretar los resultados y entender el funcionamiento del plugin."
+
+#: ../../docsrc/get_started.rst:38 f1fc85e1ce114c2da5b8de8e05d515ec
+msgid "Get variables"
+msgstr "Obtener variables"
+
+#: ../../docsrc/get_started.rst:42 ../../docsrc/get_started.rst:90
+#: ../../docsrc/get_started.rst:155 9201cbf3a04a41b1a414a10c0b80e720
+#: 16097af30ee14c6bb6c0b8f63aa4c280 7ef6dbf61c9f46a8a9cce22da0a2a0d2
+msgid "|br|"
+msgstr "|br|"
+
+#: ../../docsrc/get_started.rst:44 ce51dce3c7b74d98bf7ee32e4cfd92e0
+msgid ""
+"``Working directory``: Select your working directory. Here "
+"``/home/<username>/deforisk/MTQ-tuto``, but it could be "
+"``C:\\Users\\<username>\\deforisk\\MTQ-tuto`` on Windows for example."
+msgstr ""
+"``Working directory``: Selecciona tu directorio de trabajo. Aquí "
+"``/home/<username>/deforisk/MTQ-tuto``, pero podría ser "
+"``C:\\sers\\<username>\\deforisk\\MTQ-tuto`` en Windows por ejemplo."
+
+#: ../../docsrc/get_started.rst:46 4910bcf804b147a69f68ea91a300583f
+msgid "``Area Of Interest``: MTQ"
+msgstr "``Area Of Interest``: MTQ"
+
+#: ../../docsrc/get_started.rst:48 afbd0da4de0c436595ff62c6a2355e6b
+msgid "``Years``: 2000, 2010, 2020"
+msgstr "``Years``: 2000, 2010, 2020"
+
+#: ../../docsrc/get_started.rst:50 bdb47d16dd65413fa609d0b519ca03a4
+msgid "``Forest data source``: tmf"
+msgstr "``Forest data source``: tmf"
+
+#: ../../docsrc/get_started.rst:52 791568197ecc4164abc0e517b008c1d4
+msgid ""
+"``Tree cover threshold (%)``: 50 (could be left empty, not useful here for "
+"tmf data source)"
+msgstr ""
+"``Tree cover threshold (%)``: 50 (podría dejarse vacío, no es útil aquí para"
+" la fuente de datos tmf)"
+
+#: ../../docsrc/get_started.rst:54 434b878d55d74e96aa9999c3eb2f4250
+msgid "``Tile size (dd)``: 1"
+msgstr "``Tile size (dd)``: 1"
+
+#: ../../docsrc/get_started.rst:56 935f9fd7cc934bd6b391864bf3311e92
+msgid "``Country/state ISO code``: MTQ"
+msgstr "``Country/state ISO code``: MTQ"
+
+#: ../../docsrc/get_started.rst:58 93f16c626e924d589dd4cc9e0fa7292c
+msgid ""
+"``Earth Engine access``: Google Cloud project name with Earth Engine access "
+"or path to a JSON private key file for service account."
+msgstr ""
+"``Earth Engine access``: Nombre del proyecto de Google Cloud con acceso a "
+"Earth Engine o ruta a un archivo de clave privada JSON para la cuenta de "
+"servicio."
+
+#: ../../docsrc/get_started.rst:60 a394f8eef9804a58a3ecf1e186500eb6
+msgid ""
+"``WDPA access``: Personal WDPA API Token or path to text file with "
+"WDPA\\_KEY environmental variable."
+msgstr ""
+"``WDPA access``: Token personal de la API de la WDPA o ruta a un archivo de "
+"texto con la variable de entorno WDPA\\_KEY."
+
+#: ../../docsrc/get_started.rst:62 d00e7ed59d224060ad22ffbb91d8cc3d
+msgid "``Projection EPSG code``: EPSG:5490"
+msgstr "``Projection EPSG code``: EPSG:5490"
+
+#: ../../docsrc/get_started.rst:64 4dab33faa9b743e7bda42835e6c95065
+msgid ""
+"Click the run button. A forest cover change map appears in the list of QGIS "
+"layers (see image below and click to enlarge) and a plot of the forest cover"
+" change ``fcc123.png`` is created in folder ``outputs/variables``. New "
+"folders are created in the working directory among which the ``data_raw`` "
+"folder which includes raw data with intermediary files and the ``data`` "
+"folder which includes processed data used for models and plots. You can "
+"visualize the road network for example adding the ``roads_proj.shp`` vector "
+"file, which is located in the ``data_raw`` directory, in QGIS."
+msgstr ""
+"Haga clic en el botón Ejecutar. Aparecerá un mapa de cambios en la cubierta "
+"forestal en la lista de capas de QGIS (véase la imagen inferior y haga clic "
+"para ampliarla) y se creará un gráfico de los cambios en la cubierta "
+"forestal ``fcc123.png`` en la carpeta ``outputs/variables``. Se crean nuevas"
+" carpetas en el directorio de trabajo, entre ellas la carpeta ``data_raw`` "
+"que incluye los datos originales con archivos intermedios y la carpeta "
+"``data`` que incluye los datos procesados utilizados para los modelos y los "
+"gráficos. Puede visualizar la red de carreteras, por ejemplo, añadiendo el "
+"archivo vectorial ``roads_proj.shp``, que se encuentra en el directorio "
+"``data_raw``, en QGIS."
+
+#: ../../docsrc/get_started.rst:70 98f0a9e46b5d4625a6acf36ec2593689
+msgid "Benchmark model"
+msgstr "Modelo de referencia"
+
+#: ../../docsrc/get_started.rst:75 ../../docsrc/get_started.rst:177
+#: ../../docsrc/get_started.rst:269 2ad834f6340647d482e914c1a1f50997
+#: d019a178757044b4ba9367867d5ba274 871a3b313cf140cdbc60d69847599996
+msgid "Fit model to data"
+msgstr "Ajustar el modelo a los datos"
+
+#: ../../docsrc/get_started.rst:77 ../../docsrc/get_started.rst:271
+#: a935e4a2aa4640ce97e6fbdd38115c70 9c83ec3f27c649ee8610cce494b37633
+msgid "``Deforestation threshold (%)``: 99.5%"
+msgstr "``Deforestation threshold (%)``: 99,5%."
+
+#: ../../docsrc/get_started.rst:79 ../../docsrc/get_started.rst:273
+#: 43911b56d26d47bb851a293ff189c556 1420eea38c3c437fb16708de8720d832
+msgid "``Max. distance to forest edge (m)``: 2500"
+msgstr "``Max. distance to forest edge (m)``: 2500"
+
+#: ../../docsrc/get_started.rst:81 ../../docsrc/get_started.rst:277
+#: f5c9839e769f45c88ca0a169b2984f11 d7a65e4f8f584fc1b0443fa948471151
+msgid ""
+"``calib. period``: Checked, the model is fitted over the calibration period "
+"(t1--t2)."
+msgstr ""
+"``calib. period``: Comprobado, el modelo se ajusta sobre el periodo de "
+"calibración (t1--t2)."
+
+#: ../../docsrc/get_started.rst:83 ../../docsrc/get_started.rst:279
+#: 994fa1e39fb84eafbd14dabf8c9dcd0b 2fbddb8b0cb344f7b655538881809750
+msgid ""
+"``hist. period``: Checked, the model is fitted over the historical period "
+"(t1--t3)."
+msgstr ""
+"``hist. period``: Si se marca, el modelo se ajusta al periodo histórico (t1"
+"--t3)."
+
+#: ../../docsrc/get_started.rst:85 3143023f29a84816a7d421066af16ff6
+msgid ""
+"Click the ``Run`` button to estimate the deforestation risk with the "
+"benchmark model and predict the deforestation risk at t1 using data on both "
+"the calibration and historical periods. Maps with classes of deforestation "
+"risk are added to the list of QGIS layers (see image below)."
+msgstr ""
+"Haga clic en el botón ``Run`` para estimar el riesgo de deforestación con el"
+" modelo de referencia y predecir el riesgo de deforestación en t1 utilizando"
+" los datos de los periodos de calibración e histórico. Los mapas con clases "
+"de riesgo de deforestación se añaden a la lista de capas de QGIS (véase la "
+"imagen siguiente)."
+
+#: ../../docsrc/get_started.rst:92 e8b137bfd5674669a1dce76cbd5f6938
+msgid ""
+"New folders with results are created in the ``outputs/rmj_benchmark/`` "
+"directory for each period. In particular, the output folders include the "
+"``<period>/perc_dist.png`` file. This file shows the plot of the cumulated "
+"deforestation as a function of the distance to forest edge and indicates the"
+" distance thresholds (here 240 m for the calibration period)."
+msgstr ""
+"En el directorio ``outputs/rmj_benchmark/`` se crean nuevas carpetas con los"
+" resultados de cada periodo. En concreto, las carpetas de resultados "
+"incluyen el archivo ``<period>/perc_dist.png``. Este archivo muestra el "
+"gráfico de la deforestación acumulada en función de la distancia al borde "
+"del bosque e indica los limites de distancia (aquí 240  m para el periodo de"
+" calibración)."
+
+#: ../../docsrc/get_started.rst:100 e65e278cef4148cd9d7ef3937e4a5a41
+msgid "Distance threshold for the calibration period."
+msgstr "Limite de distancia para el periodo de calibración."
+
+#: ../../docsrc/get_started.rst:102 b6401df727264c86b4c3d286a07602eb
+msgid ""
+"The output folders also include the ``<period>/defrate_cat_bm_<period>.csv``"
+" table which shows the deforestation rates for each class of deforestation "
+"risk (see details `here <plugin_api.html#defrate-table>`_)."
+msgstr ""
+"Las carpetas de salida también incluyen la tabla "
+"``<period>/defrate_cat_bm_<period>.csv`` que muestra las tasas de "
+"deforestación para cada clase de riesgo de deforestación (ver detalles `aquí"
+" <plugin_api.html#defrate-table>`_)."
+
+#: ../../docsrc/get_started.rst:104 2a6b9f6596d64a4c8926c7b9676ee546
+msgid ""
+"Deforestation rate for each class of deforestation risk (numbers truncated "
+"to three decimal digits)."
+msgstr ""
+"Tasa de deforestación para cada clase de riesgo de deforestación (cifras "
+"truncadas a tres dígitos decimales)."
+
+#: ../../docsrc/get_started.rst:108 ../../docsrc/get_started.rst:355
+#: 0586861a4f254583afc7d59c71854f1d b30d3ba68bdc4a3daffd0f43aeefecc1
+msgid "cat"
+msgstr "cat"
+
+#: ../../docsrc/get_started.rst:108 ../../docsrc/get_started.rst:355
+#: 0ce366ea14ee47d8bfe61a6b2eb11044 da02a87ab9eb4145881120bab86361b5
+msgid "nfor"
+msgstr "nfor"
+
+#: ../../docsrc/get_started.rst:108 ../../docsrc/get_started.rst:355
+#: 8fabab95508348538f8c5adffe69bdf2 29042c2160a346e2a9eb537dbf1d61a6
+msgid "ndefor"
+msgstr "ndefor"
+
+#: ../../docsrc/get_started.rst:108 ../../docsrc/get_started.rst:355
+#: 35947158e4e54ea6a383493fa00f5e39 ae92e4a06ee14f9a8d169e207420064b
+msgid "rate\\_obs"
+msgstr "rate\\_obs"
+
+#: ../../docsrc/get_started.rst:108 ../../docsrc/get_started.rst:355
+#: d052a59530884b6cadb259305b497915 efdcb444460741b6966a7a805609a4a6
+msgid "rate\\_mod"
+msgstr "rate\\_mod"
+
+#: ../../docsrc/get_started.rst:108 ../../docsrc/get_started.rst:355
+#: c1ecfa935dee41a09bcd365fad52fb22 27b0373100e74a3c984e03efd687562d
+msgid "rate\\_abs"
+msgstr "rate\\_abs"
+
+#: ../../docsrc/get_started.rst:108 ../../docsrc/get_started.rst:355
+#: 91716e96cdd7424584d7bc685858c87b 361ce0da9e0a46ed832c63372081fb97
+msgid "time\\_interval"
+msgstr "time\\_interval"
+
+#: ../../docsrc/get_started.rst:108 ../../docsrc/get_started.rst:355
+#: 9c2f929dece44253ba562cde4f35320f 243dd3536df7434ea531e9846855a876
+msgid "pixel\\_area"
+msgstr "pixel\\_area"
+
+#: ../../docsrc/get_started.rst:108 ../../docsrc/get_started.rst:355
+#: a399183b00124d74b2fa3856ce27efc1 c3e4a09d2dbd40ddae94b903484ce0fd
+msgid "defor\\_dens"
+msgstr "defor\\_dens"
+
+#: ../../docsrc/get_started.rst:110 a30872175cea4343abac6f4a5e0750d7
+msgid "1001"
+msgstr "1001"
+
+#: ../../docsrc/get_started.rst:110 77b8c0d451194dd9bb5a2a2ab5b84368
+msgid "33433"
+msgstr "33433"
+
+#: ../../docsrc/get_started.rst:110 ../../docsrc/get_started.rst:112
+#: ../../docsrc/get_started.rst:118 ../../docsrc/get_started.rst:165
+#: ../../docsrc/get_started.rst:167 ../../docsrc/get_started.rst:169
+#: ../../docsrc/get_started.rst:171 ../../docsrc/get_started.rst:173
+#: ../../docsrc/get_started.rst:357 ../../docsrc/get_started.rst:359
+#: ../../docsrc/get_started.rst:361 ../../docsrc/get_started.rst:363
+#: ../../docsrc/get_started.rst:365 cfe3fb29b5d446c6b54d8cc91f81e406
+#: 509481aab98a40fbaa6acde77a7735e0 60f97c51c9b945d48b31034053cdc019
+#: 65a8cb3ec2be4590a12f0c941a56d288 30c8884f6e28401199e345de50e15ef0
+#: 7f0a3ed25a13401fa8090a1429e30d8d 137eb866a9034194b93c9353a27441ca
+#: f5b6317df9b94b15a143802f1aa62200 6846728569a04a6cbcdf963db0b72311
+#: 4526a49b213d4485aeeeeeb297c555cc 7bea1b4982804fe5b7d46761e1bff782
+#: a01a139587f5473fb8a3ca79728b4022 6783332dc5e04346bded9815a531915a
+#: 69b4bff2466f4b88bbb949a8006835ab 57615976592644308df2ff77f2e88a04
+#: aed1f8acefb542d2bc9f50d98a32bcda 15355d6349014c579ba9a7305628f1a0
+#: c83fb95435af4535b369680e13499c01
+msgid "0"
+msgstr "0"
+
+#: ../../docsrc/get_started.rst:110 ../../docsrc/get_started.rst:112
+#: ../../docsrc/get_started.rst:118 ../../docsrc/get_started.rst:230
+#: ../../docsrc/get_started.rst:238 ../../docsrc/get_started.rst:357
+#: ../../docsrc/get_started.rst:359 ../../docsrc/get_started.rst:361
+#: ../../docsrc/get_started.rst:363 ../../docsrc/get_started.rst:365
+#: 663c76a4f8a246b8996343603a009394 548625cdba4b4484900904d49b66ad46
+#: b8a3840a4e9c457cb1b559f95722bc7d e7a57ec16d694044ba7d58465a44e671
+#: 9e3ce6ced85742f1b7b97db6abb20d62 13da32ff21a8460fb68b7617e6a8ed47
+#: a5909833413043be9b826c153db1e830 47ff9fc9593b435bbf7a4573097b8843
+#: 3698c79830e048fa96c502dab7bcb274 09a7fedb699247bc900bbbbc7adc8a88
+#: 44e5a64483de4ed3bf1272cb2c81696d 4799717d1f564e8e807a50d3e7166ce3
+#: 4e8122b8c83f49088fbe4cf2518cec1a 9dac6c8a4f184440b975f65bab5dca43
+#: 3b64a5ac89a14b168ac7e0a29506d032 0ee5a8f91ff14fcc89157dc6ce831a66
+#: a1638b06f9654ba8b85c09ec6d6cccdb 7090531a72d24902a6f4c1c6702f8157
+#: 475d35ca7d00490bb83f7776e4af5e78 0beacc8950214eb3a99d146e552a1c56
+#: e214dda0daf0407f8fda4de249a562ad e16de8819d0c4ab4b9fe15e88ad64fc8
+#: da4ac7c7b35340798b3bac015a2055a0 18515447470e41a49102f7542fa67ebf
+#: 1d93b8df8ae942ec841df99cdb8aed0b b349bbd1c65349b9a77c37c1cac22bbc
+#: f9ab6581d3124d1896bc5d4048c58af0 eed7d0f0da4b40c6a9f837ae56500296
+#: 3b21f96d77cb4bba8bd5d4aa9f69022c
+msgid "0.0"
+msgstr "0.0"
+
+#: ../../docsrc/get_started.rst:110 ../../docsrc/get_started.rst:112
+#: ../../docsrc/get_started.rst:114 ../../docsrc/get_started.rst:116
+#: ../../docsrc/get_started.rst:118 1e358baff5aa48cbbf041f405f809773
+#: 2e4df84f8cac4eb3908e72a03c9a6535 8037b6971667478db7c8502f0e6612e1
+#: 935d1ff58bef41829523ed5d39c31128 b53306a2a21741828d1f6d7add8baec3
+msgid "10"
+msgstr "10"
+
+#: ../../docsrc/get_started.rst:110 ../../docsrc/get_started.rst:112
+#: ../../docsrc/get_started.rst:114 ../../docsrc/get_started.rst:116
+#: ../../docsrc/get_started.rst:118 ../../docsrc/get_started.rst:357
+#: ../../docsrc/get_started.rst:359 ../../docsrc/get_started.rst:361
+#: ../../docsrc/get_started.rst:363 ../../docsrc/get_started.rst:365
+#: db94565bcd4f440883d4c9d231ff2f1c c1962578268e43109977abdf52cae815
+#: 43b94755d59641d7b7930b45bb1d656f b657103dd75243819e08bdc83a60abc2
+#: add245e4662a49c2ae873120bf2e0f81 c3e09ccdec2b484aa1d0f23053a56265
+#: 00fe3e2a583d4850860dbd8ebd96e62e 5ff4db23fd1b454298c1ce8a7fc1d491
+#: bbe3406469764fd59136b542a5f17c4f df501de5424c4293b716f547c7b8eb31
+msgid "0.09"
+msgstr "0.09"
+
+#: ../../docsrc/get_started.rst:112 ca37ccc5bc8745ce926244a2ec0a564a
+msgid "1002"
+msgstr "1002"
+
+#: ../../docsrc/get_started.rst:112 c24b12d0081a451d80f0d5bf4cde8ecd
+msgid "12965"
+msgstr "12965"
+
+#: ../../docsrc/get_started.rst:114 46d20428319f49c1aff900f258492be3
+msgid "1003"
+msgstr "1003"
+
+#: ../../docsrc/get_started.rst:114 490958f196e04a0890a2b91fa6c80ede
+msgid "91686"
+msgstr "91686"
+
+#: ../../docsrc/get_started.rst:114 335bc03000f84ca987f0589b16f2795d
+msgid "19"
+msgstr "19"
+
+#: ../../docsrc/get_started.rst:114 8a5dd942c18f4feb940ddfc77efd1439
+msgid "2.072e-05"
+msgstr "2.072e-05"
+
+#: ../../docsrc/get_started.rst:114 618699a3065b4f4497b27dcedf3bab4a
+#: 54d0cdbda04045b0a01776a7cae5b2cd
+msgid "2.072e-04"
+msgstr "2.072e-04"
+
+#: ../../docsrc/get_started.rst:114 537badb58a564b1f9c3ea9d846c3f475
+msgid "1.865e-06"
+msgstr "1.865e-06"
+
+#: ../../docsrc/get_started.rst:116 1724ed52050a4e818d8043f4edfba197
+msgid "1004"
+msgstr "1004"
+
+#: ../../docsrc/get_started.rst:116 c6573a6cdc8645079bc39a52d6830e38
+msgid "82279"
+msgstr "82279"
+
+#: ../../docsrc/get_started.rst:116 ../../docsrc/get_started.rst:169
+#: ../../docsrc/get_started.rst:365 5d5c4a5c995a4b5885663ebc9d05f794
+#: d6d0b6af46564ad3b1c3e14b61f0f852 7d9c7d43a1b44e079feb3d3245ebf70e
+msgid "5"
+msgstr "5"
+
+#: ../../docsrc/get_started.rst:116 97c41c941efb4ed29df7f77641b6e3a7
+msgid "6.077e-06"
+msgstr "6.077e-06"
+
+#: ../../docsrc/get_started.rst:116 3d88bbabacde47068b4cf6c4c54c5b51
+#: 3edf905f214c4585b25f0c9a3e0ef578
+msgid "6.076e-05"
+msgstr "6.076e-05"
+
+#: ../../docsrc/get_started.rst:116 55c7255adab94a8086e23558e8af8796
+msgid "5.469e-07"
+msgstr "5.469e-07"
+
+#: ../../docsrc/get_started.rst:118 ce12cc1ff23d4fd4b4d2866def149601
+msgid "2001"
+msgstr "2001"
+
+#: ../../docsrc/get_started.rst:118 81c718aa2f1247b6977e441eef666f2f
+msgid "1373"
+msgstr "1373"
+
+#: ../../docsrc/get_started.rst:122 ../../docsrc/get_started.rst:242
+#: ../../docsrc/get_started.rst:284 810114b43981435ab1c73825e12395be
+#: 1cd7e902bb79453a974db0d396c0150e c5c069d887cf4aab8f7407a4be319ebd
+msgid "Predict the deforestation risk"
+msgstr "Predecir el riesgo de deforestación"
+
+#: ../../docsrc/get_started.rst:124 a5c5d65e9d7c49928db1584ef201968b
+msgid ""
+"``t2 validation``: Checked, computes predictions at t2 for validation (using"
+" the benchmark model fitted over the calibration period)."
+msgstr ""
+"``t2 validation``: Marcado, calcula las predicciones en t2 para la "
+"validación (utilizando el modelo de referencia ajustado durante el periodo "
+"de calibración)."
+
+#: ../../docsrc/get_started.rst:126 5080e50ae6ba40f1a2a23f8329acb3d5
+msgid ""
+"``t3 forecast``: Checked, computes predictions at t3 for forecasting (using "
+"the benchmark model fitted over the historical period)."
+msgstr ""
+"``t3 forecast``: Marcado, calcula predicciones en t3 para previsión "
+"(utilizando el modelo de referencia ajustado sobre el periodo histórico)."
+
+#: ../../docsrc/get_started.rst:128 2bbbc09ea17546a293d774b22d9e0e2d
+msgid ""
+"Click the ``Run`` button to predict the deforestation risk at t2 and t3 "
+"using the benchmark model. Maps with classes of deforestation risk are added"
+" to the list of QGIS layers and new files are added to the output folders."
+msgstr ""
+"Haga clic en el botón ``Run`` para predecir el riesgo de deforestación en t2"
+" y t3 utilizando el modelo de referencia. Los mapas con clases de riesgo de "
+"deforestación se añaden a la lista de capas de QGIS y se añaden nuevos "
+"archivos a las carpetas de salida."
+
+#: ../../docsrc/get_started.rst:131 368d17e328694ccf9d13c0bde7acd47e
+msgid "Forestatrisk models"
+msgstr "Modelos forestatrisk"
+
+#: ../../docsrc/get_started.rst:136 31d826268dd2421fb98dde5a115072d4
+msgid "Sample observations"
+msgstr "Observaciones por muestreo"
+
+#: ../../docsrc/get_started.rst:138 8d1da3568f6b4a4abc84f2b4ab51f00b
+msgid "``N# samples``: 10000"
+msgstr "``N# samples``: 10000"
+
+#: ../../docsrc/get_started.rst:140 69cc47999a2d44838f8041fe28a0ff68
+msgid ""
+"``Adapt sampling``: Checked, the number of observations is proportional to "
+"forest area."
+msgstr ""
+"``Adapt sampling``: Marcado, el número de observaciones es proporcional a la"
+" superficie forestal."
+
+#: ../../docsrc/get_started.rst:142 6b06863a518d4b6bae8492edc856db5a
+msgid "``Random seed``: 1234"
+msgstr "``Random seed``: 1234"
+
+#: ../../docsrc/get_started.rst:144 da57db5f547547b5b7684d5b1dde20b6
+msgid "``Spatial cell size (km)``: 2"
+msgstr "``Spatial cell size (km)``: 2"
+
+#: ../../docsrc/get_started.rst:146 ffb5980497704a1daf5653f8d225de32
+msgid ""
+"``calib. period``: Checked, the observations are sampled for the calibration"
+" period (t1--t2)."
+msgstr ""
+"``calib. period``: Marcado, las observaciones se muestrean para el periodo "
+"de calibración (t1--t2)."
+
+#: ../../docsrc/get_started.rst:148 301ea2e3b791447aaa3858ce55fda22b
+msgid ""
+"``hist. period``: Checked, the observations are sampled for the historical "
+"period (t1--t3)."
+msgstr ""
+"``hist. period``: Marcado, las observaciones se muestrean para el periodo "
+"histórico (t1--t3)."
+
+#: ../../docsrc/get_started.rst:150 585c0ebd778d4e97a2787f8a91711310
+msgid ""
+"Pushing the ``Run`` button in this box will sample the observations. When "
+"the operation is finished, the sampled observations appear in the list of "
+"QGIS layers."
+msgstr ""
+"Al pulsar el botón ``Run`` en este cuadro se muestrearán las observaciones. "
+"Una vez finalizada la operación, las observaciones muestreadas aparecerán en"
+" la lista de capas de QGIS."
+
+#: ../../docsrc/get_started.rst:157 b886a0636b0d462995159df35cf15ed6
+msgid ""
+"New folders with results are created in the ``outputs/far_models/`` "
+"directory including the ``<period>/sample.txt`` file which is the "
+"observation dataset with variable values."
+msgstr ""
+"Se crean nuevas carpetas con los resultados en el directorio "
+"``outputs/far_models/`` incluyendo el archivo ``<period>/sample.txt`` que es"
+" el conjunto de datos de observación con los valores de las variables."
+
+#: ../../docsrc/get_started.rst:159 2c14851a56b94fbfb9288c5f4dba5956
+msgid "Five first observations for the calibration period."
+msgstr "Cinco primeras observaciones para el periodo de calibración."
+
+#: ../../docsrc/get_started.rst:163 f910ce96629042c8974da1dab4e2ed6e
+msgid "altitude"
+msgstr "altitude"
+
+#: ../../docsrc/get_started.rst:163 ca727a0b77aa43c39ca437e5ce7c65a7
+msgid "dist\\_edge"
+msgstr "dist\\_edge"
+
+#: ../../docsrc/get_started.rst:163 3a282e33c0a541cf9ced433a9bd4f753
+msgid "dist\\_river"
+msgstr "dist\\_river"
+
+#: ../../docsrc/get_started.rst:163 e703fbbf33e94fdeaf2efed22b314eef
+msgid "dist\\_road"
+msgstr "dist\\_road"
+
+#: ../../docsrc/get_started.rst:163 1697484244674a9797cd4a85ffb711e0
+msgid "dist\\_town"
+msgstr "dist\\_town"
+
+#: ../../docsrc/get_started.rst:163 783a0dcc858a4f3b9081336ed6eacba9
+msgid "fcc"
+msgstr "fcc"
+
+#: ../../docsrc/get_started.rst:163 0f61406dc0d546bb9e145c6cfa7913e5
+msgid "pa"
+msgstr "pa"
+
+#: ../../docsrc/get_started.rst:163 9014ecb9be4946baac24b194a46d7680
+msgid "slope"
+msgstr "slope"
+
+#: ../../docsrc/get_started.rst:163 75da52622797492f91c8742380f58b3f
+msgid "X"
+msgstr "X"
+
+#: ../../docsrc/get_started.rst:163 96baf78bce1d4cb399d3d7a04645d8f9
+msgid "Y"
+msgstr "Y"
+
+#: ../../docsrc/get_started.rst:163 e7d8847b91464fa19e3c1c7aa3b20447
+msgid "cell"
+msgstr "cell"
+
+#: ../../docsrc/get_started.rst:165 ../../docsrc/get_started.rst:167
+#: 246c83296deb4398b3be5c9b76aeff34 5ff72b9d1190480d9482a6a93df39791
+msgid "56"
+msgstr "56"
+
+#: ../../docsrc/get_started.rst:165 ../../docsrc/get_started.rst:167
+#: ../../docsrc/get_started.rst:169 ../../docsrc/get_started.rst:171
+#: ../../docsrc/get_started.rst:173 8be2b98c0b814b64bb8edb7e84b7e175
+#: 596d49f2fcfa410f813353ee9091fde7 b20e644185a04028b848ad0ccdccc7a8
+#: 2bd66947e7f9451cabb28082d89940c7 f99499e21b5b42369013539c7d390115
+msgid "30"
+msgstr "30"
+
+#: ../../docsrc/get_started.rst:165 ../../docsrc/get_started.rst:167
+#: 95ebeb861ef54262be8adbedff234d6d c7d261d628b54b28af8b772f43ed7d36
+msgid "750"
+msgstr "750"
+
+#: ../../docsrc/get_started.rst:165 ../../docsrc/get_started.rst:167
+#: ab6d5e245af044c8a0bcd1e92d649bd4 1016f554902747d79696de86ab4979e4
+msgid "150"
+msgstr "150"
+
+#: ../../docsrc/get_started.rst:165 ../../docsrc/get_started.rst:167
+#: ../../docsrc/get_started.rst:169 ../../docsrc/get_started.rst:171
+#: ../../docsrc/get_started.rst:173 ../../docsrc/get_started.rst:357
+#: dde48760105b4f259425da3a7b9bb14a a116b0cd89314678ae0d0f04a1c98605
+#: aa756fcf30ec4baf98b8c64687fec30a 4fa2ba544232410b9fba5bb1b9897760
+#: f78447aa2071467f810d2c0cd545005b c993765b60a64a648d5aebb1cf2cbf2f
+msgid "1"
+msgstr "1"
+
+#: ../../docsrc/get_started.rst:165 ../../docsrc/get_started.rst:167
+#: 1f2c140ed8f2448c997e8d8244eb405c 11af186ef3f34ded90622141e2a5d568
+msgid "6"
+msgstr "6"
+
+#: ../../docsrc/get_started.rst:165 008965d32f774662b0b2badf463cc161
+msgid "700155"
+msgstr "700155"
+
+#: ../../docsrc/get_started.rst:165 ../../docsrc/get_started.rst:167
+#: d780924b9ebb411bb040a7700c0685cd 90b837d547fd44a2bba3e2a6845a4925
+msgid "1645545"
+msgstr "1645545"
+
+#: ../../docsrc/get_started.rst:165 ../../docsrc/get_started.rst:167
+#: ../../docsrc/get_started.rst:173 26881e13c4444e14b0a7d0b60b09388b
+#: d9173b1c75a84d5997e4628557850ed8 bd07fc7fb9144d3ba44be67a3ee4fe17
+msgid "63"
+msgstr "63"
+
+#: ../../docsrc/get_started.rst:167 9d5bf48f9dcb47ca845107c854fa472f
+msgid "700185"
+msgstr "700185"
+
+#: ../../docsrc/get_started.rst:169 b8024cbc2c4346e19498df5c3e6ae9db
+msgid "100"
+msgstr "100"
+
+#: ../../docsrc/get_started.rst:169 da9c6269ccbc4931a2013c208168e717
+msgid "875"
+msgstr "875"
+
+#: ../../docsrc/get_started.rst:169 54f1106e3f6f426f9ff3818484fddf0a
+msgid "1657"
+msgstr "1657"
+
+#: ../../docsrc/get_started.rst:169 b533bce33e5e4081b61dd7c3d541a7ad
+msgid "698265"
+msgstr "698265"
+
+#: ../../docsrc/get_started.rst:169 ../../docsrc/get_started.rst:171
+#: ../../docsrc/get_started.rst:173 e5f3514c3f284d9e8ac8e808f13cc906
+#: de97775ee6e746d497c80cb459ac0b5c d854675e0b6240309a7bec0f6640a1f9
+msgid "1645425"
+msgstr "1645425"
+
+#: ../../docsrc/get_started.rst:169 ../../docsrc/get_started.rst:171
+#: f0d3d94a2bdf4ea0b41f11d3bd33bdda 0c5da766383e4181ae6bd06a5c2a2f7b
+msgid "62"
+msgstr "62"
+
+#: ../../docsrc/get_started.rst:171 d738def138f4499ca55eda4be4055ff8
+msgid "93"
+msgstr "93"
+
+#: ../../docsrc/get_started.rst:171 e121fbec323a4df99799202e67dc851c
+msgid "600"
+msgstr "600"
+
+#: ../../docsrc/get_started.rst:171 baefac038eef41d898ccc55f27102575
+msgid "1358"
+msgstr "1358"
+
+#: ../../docsrc/get_started.rst:171 e7d0c4dd5d684bcc8fbf26f21da6da04
+msgid "8"
+msgstr "8"
+
+#: ../../docsrc/get_started.rst:171 53c2620f3dc744859c25e2439b0f095f
+msgid "698565"
+msgstr "698565"
+
+#: ../../docsrc/get_started.rst:173 060d4291c15e4f10b697d5c59dd6c3ae
+msgid "68"
+msgstr "68"
+
+#: ../../docsrc/get_started.rst:173 aef9994691c2425ca36d9a2c6dd73a50
+msgid "300"
+msgstr "300"
+
+#: ../../docsrc/get_started.rst:173 247d5c6b475c45e18870b145bc912b2f
+msgid "335"
+msgstr "335"
+
+#: ../../docsrc/get_started.rst:173 2dba2a85a0f84a69bd52f10e56cc32eb
+msgid "7"
+msgstr "7"
+
+#: ../../docsrc/get_started.rst:173 d676773926fb4945b40cc253ecaeeeab
+msgid "699615"
+msgstr "699615"
+
+#: ../../docsrc/get_started.rst:179 cba3a406950941dd9575eb28fb3015bd
+msgid ""
+"``List of variables``: Leave empty, it will use the default formula: ``C(pa)"
+" + altitude + slope + dist_edge + dist_road + dist_river + dist_town``."
+msgstr ""
+"``List of variables``: Dejar vacío, utilizará la fórmula por defecto: "
+"``C(pa) + altitude + slope + dist_edge + dist_road + dist_river + "
+"dist_town``."
+
+#: ../../docsrc/get_started.rst:181 3d3f8dfc94e34ae8b9a5a12856502de7
+msgid "``Starting values for betas``: -99"
+msgstr "``Starting values for betas``: -99"
+
+#: ../../docsrc/get_started.rst:183 209bfadf9d884a978b4a0fbb56e940de
+msgid "``Prior Vrho``: -1"
+msgstr "``Prior Vrho``: -1"
+
+#: ../../docsrc/get_started.rst:185 21d5a5589e4f4dcdbf635720b34c3a26
+msgid "``MCMC``: 100"
+msgstr "``MCMC``: 100"
+
+#: ../../docsrc/get_started.rst:187 938efcf9598f413d871525846f04bbdd
+msgid ""
+"``Variable selection``: Leave unchecked, no variable selection (make "
+"computations faster for this example)."
+msgstr ""
+"``Variable selection``: Dejar sin marcar, sin selección de variables (hace "
+"los cálculos más rápidos para este ejemplo)."
+
+#: ../../docsrc/get_started.rst:189 b82a0c17110841109c215858aa28f58b
+msgid ""
+"``calib. period``: Checked, models are fitted over the calibration period "
+"(t1--t2)."
+msgstr ""
+"``calib. period``: Comprobado, los modelos se ajustan durante el periodo de "
+"calibración (t1--t2)."
+
+#: ../../docsrc/get_started.rst:191 66a9aaf27a394c0f9ebed512470adb36
+msgid ""
+"``hist. period``: Checked, models are fitted over the historical period (t1"
+"--t3)."
+msgstr ""
+"``hist. period``: Marcado, los modelos se ajustan sobre el periodo histórico"
+" (t1--t3)."
+
+#: ../../docsrc/get_started.rst:193 7af32eb28cfd45edb07332dfe32c7494
+msgid ""
+"Pushing the ``Run`` button in this box will fit the statistical model to the"
+" deforestation observations. Three statistical models are fitted (iCAR "
+"model, GLM, and Random Forest model). New files are added to the "
+"``outputs/far_models/calibration`` and ``outputs/far_models/historical`` "
+"folders. In particular, the ``summary_icar.txt`` file is the summary of the "
+"iCAR model with mean, standard-deviation, and credible intervals for model "
+"parameters."
+msgstr ""
+"Al pulsar el botón ``Run`` en este cuadro se ajustará el modelo estadístico "
+"a las observaciones de deforestación. Se ajustan tres modelos estadísticos "
+"(modelo iCAR, GLM y modelo Random Forest). Se añaden nuevos archivos a las "
+"carpetas ``outputs/far_models/calibration`` y "
+"``outputs/far_models/historical``. En concreto, el archivo "
+"``summary_icar.txt`` es el resumen del modelo iCAR con la media, la "
+"desviación estándar y los intervalos de credibilidad de los parámetros del "
+"modelo."
+
+#: ../../docsrc/get_started.rst:195 e5a1097606b6456ea58fab3718e1461d
+msgid "Summary of the iCAR model for the calibration period."
+msgstr "Resumen del modelo iCAR para el periodo de calibración."
+
+#: ../../docsrc/get_started.rst:199 c9ac0f56d49e4cb194dd39dbd72d54f6
+msgid "\\"
+msgstr "\\"
+
+#: ../../docsrc/get_started.rst:199 a684154fa5a24c81850247499fa0103a
+msgid "Mean"
+msgstr "Mean"
+
+#: ../../docsrc/get_started.rst:199 446e461e25cd4223bf1c233d6c3af216
+msgid "Std"
+msgstr "Std"
+
+#: ../../docsrc/get_started.rst:199 40cc9bab22f04753a79112bb6a19ae58
+msgid "CI\\_low"
+msgstr "CI\\_low"
+
+#: ../../docsrc/get_started.rst:199 2f519b9259c04d428bf0d8cfe5f7284a
+msgid "CI\\_high"
+msgstr "CI\\_high"
+
+#: ../../docsrc/get_started.rst:201 9bfc901ff1604ac692a42aad40c23203
+msgid "Intercept"
+msgstr "Intercept"
+
+#: ../../docsrc/get_started.rst:201 d10a025da4a744f0ac1b98c6488b95bb
+msgid "-3.39"
+msgstr "-3.39"
+
+#: ../../docsrc/get_started.rst:201 cd7ff97972b545268cb3d88011f52398
+msgid "0.158"
+msgstr "0.158"
+
+#: ../../docsrc/get_started.rst:201 25bfb7e8d00f467c997a6efcace4af2e
+msgid "-3.7"
+msgstr "-3.7"
+
+#: ../../docsrc/get_started.rst:201 09e6aaa460484a049816e3b636d4a1bb
+msgid "-3.1"
+msgstr "-3.1"
+
+#: ../../docsrc/get_started.rst:203 7eeef5b1da454316a12507517911b821
+msgid "C(pa)[T.1.0]"
+msgstr "C(pa)[T.1.0]"
+
+#: ../../docsrc/get_started.rst:203 57ea8aca3f4f4b5f801d61c3258379ea
+msgid "-0.0915"
+msgstr "-0.0915"
+
+#: ../../docsrc/get_started.rst:203 3c38a1007a754438b64efc9680a32d80
+msgid "0.122"
+msgstr "0.122"
+
+#: ../../docsrc/get_started.rst:203 2bc9737d932646db868303d57e3d5e73
+msgid "-0.282"
+msgstr "-0.282"
+
+#: ../../docsrc/get_started.rst:203 c6e131b1d6104288987b49e1fbc350a3
+msgid "0.172"
+msgstr "0.172"
+
+#: ../../docsrc/get_started.rst:205 b599c089a09d461fba9d70f86e2af30a
+msgid "scale(dist\\_edge)"
+msgstr "scale(dist\\_edge)"
+
+#: ../../docsrc/get_started.rst:205 0c138d099d514d32a2052fefb5786f1d
+msgid "-10.3"
+msgstr "-10.3"
+
+#: ../../docsrc/get_started.rst:205 14e9eaa265a042b6912bc40a2ea68887
+msgid "0.417"
+msgstr "0.417"
+
+#: ../../docsrc/get_started.rst:205 1ceae0eb35924e5a91482c23d22cadb7
+msgid "-11.1"
+msgstr "-11.1"
+
+#: ../../docsrc/get_started.rst:205 599a7810d112456491d625eaf1354dd7
+msgid "-9.63"
+msgstr "-9.63"
+
+#: ../../docsrc/get_started.rst:207 d427375f94404c52aa7ed2bc6a7129d5
+msgid "scale(dist\\_road)"
+msgstr "scale(dist\\_road)"
+
+#: ../../docsrc/get_started.rst:207 07e2d3b29b6a465797b46c7c55e6769f
+msgid "-0.256"
+msgstr "-0.256"
+
+#: ../../docsrc/get_started.rst:207 867264f50fa444b0b91cf85022e1612a
+msgid "0.0537"
+msgstr "0.0537"
+
+#: ../../docsrc/get_started.rst:207 8988c4a843b6406893f803c7d318570a
+msgid "-0.36"
+msgstr "-0.36"
+
+#: ../../docsrc/get_started.rst:207 2778420aa04a46c89260f6f45711e3b5
+msgid "-0.144"
+msgstr "-0.144"
+
+#: ../../docsrc/get_started.rst:209 6e96276c0ae04138a87d27143d5abcd0
+msgid "scale(dist\\_town)"
+msgstr "scale(dist\\_town)"
+
+#: ../../docsrc/get_started.rst:209 7f7d98e170cd45549fb410b4999a2bb8
+msgid "0.0342"
+msgstr "0.0342"
+
+#: ../../docsrc/get_started.rst:209 77ddbea2d6d241c0928777f9d209adec
+msgid "0.0464"
+msgstr "0.0464"
+
+#: ../../docsrc/get_started.rst:209 f146e94d0c1d4ff597ca94e508bbd61e
+msgid "-0.0551"
+msgstr "-0.0551"
+
+#: ../../docsrc/get_started.rst:209 363b301c7a944c3dbceac2bbeee39f66
+msgid "0.123"
+msgstr "0.123"
+
+#: ../../docsrc/get_started.rst:211 ff84069dd0704b58b6de5bf88f30d0d0
+msgid "scale(dist\\_river)"
+msgstr "scale(dist\\_river)"
+
+#: ../../docsrc/get_started.rst:211 b3e1ce2f6a58468dab43fe07379ea937
+msgid "-0.0817"
+msgstr "-0.0817"
+
+#: ../../docsrc/get_started.rst:211 cbaf426ffbf646c48f9217cf89963576
+msgid "0.0544"
+msgstr "0.0544"
+
+#: ../../docsrc/get_started.rst:211 701a4348b40a4bf19ff208bcc7d498ad
+msgid "-0.188"
+msgstr "-0.188"
+
+#: ../../docsrc/get_started.rst:211 52812e368aff4f7b8e6b9a5f11ca3afa
+msgid "0.0199"
+msgstr "0.0199"
+
+#: ../../docsrc/get_started.rst:213 66ff62f2b1794711838a17c782509197
+msgid "scale(altitude)"
+msgstr "scale(altitude)"
+
+#: ../../docsrc/get_started.rst:213 af0f010f4b364a51b77ca627eb97247a
+msgid "-0.554"
+msgstr "-0.554"
+
+#: ../../docsrc/get_started.rst:213 a134462f142a432ebe7b4ca0f164f9b8
+msgid "0.0809"
+msgstr "0.0809"
+
+#: ../../docsrc/get_started.rst:213 ee15a9fd04f746d8955d87e5a09a9b0e
+msgid "-0.728"
+msgstr "-0.728"
+
+#: ../../docsrc/get_started.rst:213 b8ebe1553a8a48ee81b792a0859cd49c
+msgid "-0.4"
+msgstr "-0.4"
+
+#: ../../docsrc/get_started.rst:215 3b3c70bd631e4a2d81001668ac790293
+msgid "scale(slope)"
+msgstr "scale(slope)"
+
+#: ../../docsrc/get_started.rst:215 8e336308813e45b5822496eb8a598bde
+msgid "-0.532"
+msgstr "-0.532"
+
+#: ../../docsrc/get_started.rst:215 9854fa12f38e40ed9a93ac78673b2d35
+msgid "0.0392"
+msgstr "0.0392"
+
+#: ../../docsrc/get_started.rst:215 f6e42e12bee44d7989a7b48399bf67a8
+msgid "-0.611"
+msgstr "-0.611"
+
+#: ../../docsrc/get_started.rst:215 96443bbe94b84d4096518c15b2b3c49c
+msgid "-0.457"
+msgstr "-0.457"
+
+#: ../../docsrc/get_started.rst:217 3f67b26f02af4f13a5d795ccebc79522
+msgid "Vrho"
+msgstr "Vrho"
+
+#: ../../docsrc/get_started.rst:217 6e63eeca4ae8470a897c64cea1e694c1
+msgid "6.89"
+msgstr "6.89"
+
+#: ../../docsrc/get_started.rst:217 ee29557ead984f689cf823c880ba4a43
+msgid "0.756"
+msgstr "0.756"
+
+#: ../../docsrc/get_started.rst:217 4ef89bc6f6df49f7b4ff1ee01cfffb5f
+msgid "5.64"
+msgstr "5.64"
+
+#: ../../docsrc/get_started.rst:217 3610f17897334051897bbab67fe0b8c2
+msgid "8.49"
+msgstr "8.49"
+
+#: ../../docsrc/get_started.rst:219 a6c8129489474307bf68eba10c09ba4d
+msgid "Deviance"
+msgstr "Deviance"
+
+#: ../../docsrc/get_started.rst:219 85c60fe0c5574c8382e2a45739d45049
+#: d9205a07d0eb4a3785b8dabc60a533a6
+msgid "1.36e+04"
+msgstr "1.36e+04"
+
+#: ../../docsrc/get_started.rst:219 8a0c7c51d7de4ab5b666369f2a2af8fa
+msgid "24.9"
+msgstr "24.9"
+
+#: ../../docsrc/get_started.rst:219 ce8f464aac1d4d92bf27901eea7b753d
+msgid "1.37e+04"
+msgstr "1.37e+04"
+
+#: ../../docsrc/get_started.rst:222 d2b88a7910ec4e6aa5aa23e20e442a43
+msgid ""
+"The ``model_deviances.csv`` file include a table for comparing percent of "
+"deviance explained between models."
+msgstr ""
+"El archivo ``model_deviances.csv`` incluye una tabla para comparar el "
+"porcentaje de desviación explicada entre modelos."
+
+#: ../../docsrc/get_started.rst:224 1a99040074bc4106ac38ec7001b81179
+msgid "Percent of deviance explained by models for the calibration period."
+msgstr ""
+"Porcentaje de desviación explicado por los modelos para el periodo de "
+"calibración."
+
+#: ../../docsrc/get_started.rst:228 ../../docsrc/get_started.rst:329
+#: dbd95418e3d5460ca41c15b1b8485410 bb2b32357bce4cf5accfd11e7baea975
+msgid "model"
+msgstr "model"
+
+#: ../../docsrc/get_started.rst:228 6f7f8d34c84a4a8ca664e09ccfeb9464
+msgid "deviance"
+msgstr "deviance"
+
+#: ../../docsrc/get_started.rst:228 66d47291ff4043a49b90d3a0d344c27a
+msgid "perc"
+msgstr "perc"
+
+#: ../../docsrc/get_started.rst:230 d98aeb8e43b84a68b959a6e3852c3dbf
+msgid "null"
+msgstr "null"
+
+#: ../../docsrc/get_started.rst:230 3f8da20080a24d2f820518c13e5c8ce5
+msgid "26769.0"
+msgstr "26769.0"
+
+#: ../../docsrc/get_started.rst:232 ../../docsrc/get_started.rst:335
+#: 5f372508719a45159ab6bc6f591ea7e1 e711ff8f5380465185c1803cc05780df
+msgid "glm"
+msgstr "glm"
+
+#: ../../docsrc/get_started.rst:232 8fef31def0c3444099806d2e4e011b68
+msgid "16864.0"
+msgstr "16864.0"
+
+#: ../../docsrc/get_started.rst:232 1656df8be26745f792e6bec5ce5af9ad
+msgid "37.0"
+msgstr "37.0"
+
+#: ../../docsrc/get_started.rst:234 ../../docsrc/get_started.rst:337
+#: 424b51f5168b4caf89fc95652dd2d397 b9892da38bc84d1d9839f2112474dd3e
+msgid "rf"
+msgstr "rf"
+
+#: ../../docsrc/get_started.rst:234 91a2386c6d7842a8b9aa101ea65e899e
+msgid "6668.0"
+msgstr "6668.0"
+
+#: ../../docsrc/get_started.rst:234 8a396c67a6314c21a33571596e431bf3
+msgid "75.0"
+msgstr "75.0"
+
+#: ../../docsrc/get_started.rst:236 ../../docsrc/get_started.rst:333
+#: 8d66254cef684593be2df5857ac18f5a ef76277a037645dd9518b841da4c1093
+msgid "icar"
+msgstr "icar"
+
+#: ../../docsrc/get_started.rst:236 1418d5ae8f1940a188027888676f33ac
+msgid "13636.0"
+msgstr "13636.0"
+
+#: ../../docsrc/get_started.rst:236 688652929a394567af883888271f3bfd
+msgid "49.0"
+msgstr "49.0"
+
+#: ../../docsrc/get_started.rst:238 ec8c4cc930524381b46b8d42577924f1
+msgid "full"
+msgstr "full"
+
+#: ../../docsrc/get_started.rst:238 fdb2b8710594419a977b0a87934909d6
+msgid "100.0"
+msgstr "100.0"
+
+#: ../../docsrc/get_started.rst:244 5aa226a9f2e6433fa49e6aecb2f6f7b0
+msgid "``iCAR model``: Checked, computes predictions with the iCAR model."
+msgstr "``iCAR model``: Marcado, calcula predicciones con el modelo iCAR."
+
+#: ../../docsrc/get_started.rst:246 7b4b0b7c3b174a8a948125368a8f3fa2
+msgid "``GLM``: Checked, computes predictions with GLM."
+msgstr "``GLM``: Comprobado, calcula predicciones con GLM."
+
+#: ../../docsrc/get_started.rst:248 41b7eb925c1f48bc9f09b971db99c3db
+msgid ""
+"``RF model``: Checked, computes predictions with the Random Forest model."
+msgstr ""
+"``RF model``: Marcado, calcula predicciones con el modelo Random Forest."
+
+#: ../../docsrc/get_started.rst:250 522873213d274d70a3f306b0b366f401
+msgid ""
+"``t1 calibration``: Checked, computes predictions at t1 using models fitted "
+"over the calibration period."
+msgstr ""
+"``t1 calibration``: Comprobado, calcula predicciones en t1 utilizando "
+"modelos ajustados durante el periodo de calibración."
+
+#: ../../docsrc/get_started.rst:252 48448f2ff2584876ba9996c0fc55b81a
+msgid ""
+"``t2 validation``: Checked, computes predictions at t2 for validation (using"
+" models fitted over the calibration period)."
+msgstr ""
+"``t2 validation``: Marcado, calcula predicciones en t2 para la validación "
+"(utilizando modelos ajustados durante el periodo de calibración)."
+
+#: ../../docsrc/get_started.rst:254 d42fff75181149e98fab03fd2528624c
+msgid ""
+"``t1 historical``: Checked, computes predictions at t1 using models fitted "
+"over the historical period."
+msgstr ""
+"``t1 historical``: Comprobado, calcula predicciones en t1 utilizando modelos"
+" ajustados en el periodo histórico."
+
+#: ../../docsrc/get_started.rst:256 b937e8e3b10d4e23a9ad380a0bcd617e
+msgid ""
+"``t3 forecast``: Checked, computes predictions at t3 for forecasting (using "
+"models fitted over the historical period)."
+msgstr ""
+"``t3 forecast``: Marcado, calcula predicciones en t3 para previsión (usando "
+"modelos ajustados sobre el periodo histórico)."
+
+#: ../../docsrc/get_started.rst:258 b0056ee4e1724ca4b03e8b822db71af9
+msgid ""
+"Pushing the ``Run`` button in this box will use the statistical models for "
+"predictions. When the operation is finished, rasters representing the "
+"classes of deforestation risk appear in the list of QGIS layers. New folders"
+" are created ``outputs/far_models/validation`` and "
+"``outputs/far_models/forecast``. They include the "
+"``<period>/defrate_cat_<model>_<period>.csv`` tables with deforestation "
+"rates for each class of deforestation risk (see details `here "
+"<plugin_api.html#defrate-table>`_)."
+msgstr ""
+"Al pulsar el botón ``Run`` en este cuadro se utilizarán los modelos "
+"estadísticos para las predicciones. Una vez finalizada la operación, los "
+"rásters que representan las clases de riesgo de deforestación aparecen en la"
+" lista de capas de QGIS. Se crean nuevas carpetas "
+"``outputs/far_models/validation`` y ``outputs/far_models/forecast``. "
+"Incluyen las tablas ``<period>/defrate_cat_<model>_<period>.csv`` con las "
+"tasas de deforestación para cada clase de riesgo de deforestación (ver "
+"detalles `aquí <plugin_api.html#defrate-table>`_)."
+
+#: ../../docsrc/get_started.rst:264 79b1dca241a44f368d42e2bbfdd26ec0
+msgid "Moving window models"
+msgstr "Modelos de ventanas móviles"
+
+#: ../../docsrc/get_started.rst:275 e2a6612e31ad47d4977a63b23786e972
+msgid "``Window sizes (# pixels)``: 11, 21"
+msgstr "``Window sizes (# pixels)``: 11, 21"
+
+#: ../../docsrc/get_started.rst:281 8b090b537df246cb9081cb91e1d2fab7
+msgid ""
+"Click the ``Run`` button to estimate the deforestation risk with the moving "
+"window model using data on both the calibration and historical periods. New "
+"folders with results are created in the ``outputs/rmj_moving_window/`` "
+"directory including the ``<period>/ldefrate_mw_<window_size>.tif`` raster "
+"file with local deforestation rates rescaled on [2, 65535]."
+msgstr ""
+"Haga clic en el botón ``Run`` para estimar el riesgo de deforestación con el"
+" modelo de ventana móvil utilizando datos de los periodos de calibración e "
+"histórico. Se crean nuevas carpetas con los resultados en el directorio "
+"``outputs/rmj_moving_window/`` incluyendo el archivo raster "
+"``<period>/ldefrate_mw_<window_size>.tif`` con las tasas locales de "
+"deforestación reescaladas en [2, 65535]."
+
+#: ../../docsrc/get_started.rst:286 7e5b6cc068804b21aa3116813a46eb3a
+msgid ""
+"``t2 validation``: Checked, computes predictions at t2 for validation (using"
+" the moving window model fitted over the calibration period)."
+msgstr ""
+"``t2 validation``: Marcado, calcula predicciones en t2 para la validación "
+"(usando el modelo de ventana móvil ajustado sobre el periodo de "
+"calibración)."
+
+#: ../../docsrc/get_started.rst:288 9286c8cf4055410e94e24f74caaf3e3b
+msgid ""
+"``t3 forecast``: Checked, computes predictions at t3 for forecasting (using "
+"the moving window model fitted over the historical period)."
+msgstr ""
+"``t3 forecast``: Marcado, calcula predicciones en t3 para la previsión "
+"(utilizando el modelo de ventana móvil ajustado sobre el periodo histórico)."
+
+#: ../../docsrc/get_started.rst:290 28c3a880c76e49c1a874cb26c63f6115
+msgid ""
+"Click the ``Run`` button to predict the deforestation risk at t2 and t3 "
+"using the moving window model. Maps with classes of deforestation risk are "
+"added to the list of QGIS layers (see image below) and new folders with "
+"results are created in the ``outputs/rmj_moving_window/`` directory, "
+"including the ``<period>/defrate_cat_mv_<window_size>_<period>.csv`` tables "
+"with deforestation rates for each class of deforestation risk (see details "
+"`here <plugin_api.html#defrate-table>`_)."
+msgstr ""
+"Haga clic en el botón ``Run`` para predecir el riesgo de deforestación en t2"
+" y t3 utilizando el modelo de ventana móvil. Los mapas con las clases de "
+"riesgo de deforestación se añaden a la lista de capas de QGIS (ver imagen "
+"inferior) y se crean nuevas carpetas con los resultados en el directorio "
+"``outputs/rmj_moving_window/``, incluyendo las tablas "
+"``<period>/defrate_cat_mv_<window_size>_<period>.csv`` con las tasas de "
+"deforestación para cada clase de riesgo de deforestación (ver detalles `aquí"
+" <plugin_api.html#defrate-table>`_)."
+
+#: ../../docsrc/get_started.rst:296 8080ab5e1a594f98bef61e83c910d182
+msgid "Validation"
+msgstr "Validación"
+
+#: ../../docsrc/get_started.rst:298 6fb308b313f04afc85645823832e4108
+msgid "``Coarse grid cell size (# pixels)``: 50, 100"
+msgstr "``Coarse grid cell size (# pixels)``: 50, 100"
+
+#: ../../docsrc/get_started.rst:300 9d8e545e5ec94e78b0f195beccb3071d
+msgid "``iCAR model``: Checked, estimates the performance of the iCAR model."
+msgstr "``iCAR model``: Marcado, estima el rendimiento del modelo iCAR."
+
+#: ../../docsrc/get_started.rst:302 b1040bec47e64f7fb361f44bcc440171
+msgid "``GLM``: Checked, estimates the performance of the GLM."
+msgstr "``GLM``: Marcado, estima el rendimiento del GLM."
+
+#: ../../docsrc/get_started.rst:304 4e0aab90002c44c1a7e10a1baa89ed40
+msgid ""
+"``RF model``: Checked, estimates the performance of the Random Forest model."
+msgstr ""
+"``RF model``: Marcado, estima el rendimiento del modelo Random Forest."
+
+#: ../../docsrc/get_started.rst:306 8fcbbf6c19f54f16b092db035d3e755c
+msgid ""
+"``MW model``: Checked, estimates the performance of the Moving Window "
+"models."
+msgstr ""
+"``MW model``: Comprobado, estima el rendimiento de los modelos de ventana "
+"móvil."
+
+#: ../../docsrc/get_started.rst:308 f490a2c846014501b7d33e0f3e609012
+msgid ""
+"``calib. period``: Checked, estimates model performances for the calibration"
+" period (t1--t2)."
+msgstr ""
+"``calib. period``: Comprobado, estima el rendimiento del modelo para el "
+"periodo de calibración (t1--t2)."
+
+#: ../../docsrc/get_started.rst:310 06eb5bb8126540a4a7eca6eaea15ab08
+msgid ""
+"``valid. period``: Checked, estimates model performances for the validation "
+"period (t2--t3)."
+msgstr ""
+"``valid. period``: Comprobado, estima el rendimiento del modelo para el "
+"periodo de validación (t2--t3)."
+
+#: ../../docsrc/get_started.rst:312 1ea1941b4e9140aabafffe42157cdbb6
+msgid ""
+"``hist. period``: Checked, estimates model performances for the historical "
+"period (t1--t3)."
+msgstr ""
+"``hist. period``: Comprobado, estima el rendimiento del modelo para el "
+"periodo histórico (t1--t3)."
+
+#: ../../docsrc/get_started.rst:314 5556511065ff49d0a89f3f027ab4c5fa
+msgid ""
+"Pushing the ``Run`` button in this box will compute the predicted deforested"
+" area in each grid cell for each model and each period selected and compare "
+"this value to the observed deforested area for the same grid cell and "
+"period."
+msgstr ""
+"Al pulsar el botón \"Run\" en este cuadro se calculará el área deforestada "
+"prevista en cada celda de la cuadrícula para cada modelo y cada período "
+"seleccionado y se comparará este valor con el área deforestada observada "
+"para la misma celda de la cuadrícula y el mismo período."
+
+#: ../../docsrc/get_started.rst:316 3f838b6e64f54053b0272e1a4bb165f8
+msgid ""
+"New folders are created for each period: "
+"``outputs/model_validation/<period>/figures`` and "
+"``outputs/model_validation/<period>/tables``. Several output files are added"
+" to each folder."
+msgstr ""
+"Se crean nuevas carpetas para cada periodo: "
+"``outputs/model_validation/<period>/figures`` y "
+"``outputs/model_validation/<period>/tables``. En cada carpeta se añaden "
+"varios archivos de salida."
+
+#: ../../docsrc/get_started.rst:318 549ae05019bb4ebba15e9c5d18e96029
+msgid ""
+"Files ``figures/pred_obs_<model>_<period>_<cell_size>.png`` which show the "
+"plot of predicted vs. observed deforested area. The plot shows values of "
+"predicted and observed deforested area in each grid cell as points and the "
+"one-one line. The plot reports also the number of grid cells (or points), "
+"and the values of two of the performance indices: the :math:`R^{2}` and the "
+"MedAE."
+msgstr ""
+"Archivos ``figures/pred_obs_<model>_<period>_<cell_size>.png`` que muestran "
+"el gráfico del área deforestada predicha frente a la observada. El gráfico "
+"muestra los valores del área deforestada predicha y observada en cada celda "
+"de la cuadrícula como puntos y la línea de uno a uno. El gráfico muestra "
+"también el número de celdas de la cuadrícula (o puntos) y los valores de dos"
+" de los índices de rendimiento: el :math:`R^{2}` y el MedAE."
+
+#: ../../docsrc/get_started.rst:323 eecd452f2ae240828bcd10833791bcf5
+msgid ""
+"File ``outputs/model_validation/indices_all.csv`` includes a table with the "
+"performance indices for all validation cell sizes, all models, and all "
+"periods. In this example, both the Random Forest model and the iCAR model "
+"are better than the benchmark model whatever the performance indices "
+"considered. The iCAR model is the best model has it has the lowest MedAE, "
+"the lowest RMSE, and the highest :math:`R^{2}` for the validation period "
+"which is the only period with independent data (i.e. which have not be used "
+"to calibrate the models). This is true whatever the validation cell size "
+"chosen."
+msgstr ""
+"El archivo ``outputs/model_validation/indices_all.csv`` incluye una tabla "
+"con los índices de rendimiento para todos los tamaños de celda de "
+"validación, todos los modelos y todos los periodos. En este ejemplo, tanto "
+"el modelo Random Forest como el modelo iCAR  son mejores que el modelo de "
+"referencia sean cuales sean los índices de rendimiento considerados. El "
+"modelo iCAR es el mejor porque tiene el MedAE más bajo, el RMSE más bajo y "
+"el :math:`R^{2}` más alto para el periodo de validación, que es el único "
+"periodo con datos independientes (es decir, que no se han utilizado para "
+"calibrar los modelos). Esto es así sea cual sea el tamaño de celda de "
+"validación elegido."
+
+#: ../../docsrc/get_started.rst:325 a74041cf05ca4b3baa0efa4fbffea031
+msgid "Performance indices."
+msgstr "Índices de rendimiento."
+
+#: ../../docsrc/get_started.rst:329 49475a560de8469fab534fd535792c32
+msgid "csize\\_coarse\\_grid"
+msgstr "csize\\_coarse\\_grid"
+
+#: ../../docsrc/get_started.rst:329 02608763d96b4f79828f3cf8bd046f08
+msgid "csize\\_coarse\\_grid\\_ha"
+msgstr "csize\\_coarse\\_grid\\_ha"
+
+#: ../../docsrc/get_started.rst:329 e81bf74790c047948c0b25ab37b0f2a7
+msgid "ncell"
+msgstr "ncell"
+
+#: ../../docsrc/get_started.rst:329 0fe0d2f9d05f475c90f57c62dc7ff6ad
+msgid "period"
+msgstr "period"
+
+#: ../../docsrc/get_started.rst:329 db84a670d6c74ca98fcd38adb5aeba80
+msgid "MedAE"
+msgstr "MedAE"
+
+#: ../../docsrc/get_started.rst:329 597e1bcaba8143e0ae5d86478a0a5f14
+msgid "R2"
+msgstr "R2"
+
+#: ../../docsrc/get_started.rst:329 61fe3c83470648ed9ff60c53d754f758
+msgid "RMSE"
+msgstr "RMSE"
+
+#: ../../docsrc/get_started.rst:329 4c603a352f4542389b0e2063e09a5a86
+msgid "wRMSE"
+msgstr "wRMSE"
+
+#: ../../docsrc/get_started.rst:331 ../../docsrc/get_started.rst:333
+#: ../../docsrc/get_started.rst:335 ../../docsrc/get_started.rst:337
+#: ../../docsrc/get_started.rst:339 ../../docsrc/get_started.rst:341
+#: ee33aac3d5e24ca18369d47b79b7f6c8 ca34d6568416498cba1db114f5bc398e
+#: fd2dde1227ad499c9002d9877f8f2901 92adc1b69a1d41cba197872d3b30178f
+#: c14530e1c6ed40e59ad7df057925decb 8b747a7a346742a09fc06e6b8f74c937
+msgid "50"
+msgstr "50"
+
+#: ../../docsrc/get_started.rst:331 ../../docsrc/get_started.rst:333
+#: ../../docsrc/get_started.rst:335 ../../docsrc/get_started.rst:337
+#: ../../docsrc/get_started.rst:339 ../../docsrc/get_started.rst:341
+#: 866332cd3f514dbbbaf56d2cfa3cb974 1b3b40f0e0784a0981ecf99484deb7e7
+#: 73969522802b47449fa51338cd76996b 3c5dc5fb778e4a7bbe29866ae07d0a62
+#: 7fc7eb50827c460ba9e549ca792da2a7 97292ece75b94e89a658a3bd49420dd4
+msgid "225.0"
+msgstr "225.0"
+
+#: ../../docsrc/get_started.rst:331 ../../docsrc/get_started.rst:333
+#: ../../docsrc/get_started.rst:335 ../../docsrc/get_started.rst:337
+#: ../../docsrc/get_started.rst:339 ../../docsrc/get_started.rst:341
+#: 7833fbdf86a6415982e288f8cbdb9d65 7382c6970b32456fb1752ea08aecffc9
+#: b8ac577dc245493b8ed1f60153a90652 b54ea62a33bc41618d85f167c178d787
+#: 456d5b4ec9ca457b8e43f6d14560c2e8 da8225666e7a4195911a0008fd19cfd1
+msgid "604"
+msgstr "604"
+
+#: ../../docsrc/get_started.rst:331 ../../docsrc/get_started.rst:333
+#: ../../docsrc/get_started.rst:335 ../../docsrc/get_started.rst:337
+#: ../../docsrc/get_started.rst:339 ../../docsrc/get_started.rst:341
+#: d89c7e1ecfd84bbfba1d90f647a79e48 2bc25edf4398486e8ecd6d13350bfb0f
+#: 497ed5b5cd754e32a0ee648bae70a23a 143bf8e6b0a846df86a0d863149d79f8
+#: 00965f6f7662442795fd7fe79a035997 e625fe3d4fb74cffa1251f8c177f2cfa
+msgid "validation"
+msgstr "validation"
+
+#: ../../docsrc/get_started.rst:331 6397503294b74837bd0c9fd710f707fb
+msgid "bm"
+msgstr "bm"
+
+#: ../../docsrc/get_started.rst:331 b914a91b54004a7eb5b454a169130bf5
+msgid "2.71"
+msgstr "2.71"
+
+#: ../../docsrc/get_started.rst:331 0b3262a8dc844fcd8f10f3888559f00a
+msgid "0.43"
+msgstr "0.43"
+
+#: ../../docsrc/get_started.rst:331 3a13700e9b334bffafbefa33ec3fd34c
+msgid "6.08"
+msgstr "6.08"
+
+#: ../../docsrc/get_started.rst:331 338fe6f0596841268eb09595b8ddbea2
+msgid "6.22"
+msgstr "6.22"
+
+#: ../../docsrc/get_started.rst:333 551a27930b334d818fd3dbaeee1a9dbb
+msgid "1.78"
+msgstr "1.78"
+
+#: ../../docsrc/get_started.rst:333 f29ae3e8280944a094b2b8b91d068dac
+msgid "0.65"
+msgstr "0.65"
+
+#: ../../docsrc/get_started.rst:333 b82cb9b7b0f041c48217f572bff31b3d
+msgid "4.79"
+msgstr "4.79"
+
+#: ../../docsrc/get_started.rst:333 4beda760bf614c5b9f7f64b385ab699c
+msgid "4.59"
+msgstr "4.59"
+
+#: ../../docsrc/get_started.rst:335 891cce7690f84e958ae48b27a4d1e405
+msgid "2.39"
+msgstr "2.39"
+
+#: ../../docsrc/get_started.rst:335 f41a7761a56149418c41cf34a1ffa565
+msgid "0.38"
+msgstr "0.38"
+
+#: ../../docsrc/get_started.rst:335 2dd4fa86c22440a9907dbf75979e64bb
+msgid "6.39"
+msgstr "6.39"
+
+#: ../../docsrc/get_started.rst:335 24bbbc7c69c44404957fa2062edf44a0
+msgid "6.52"
+msgstr "6.52"
+
+#: ../../docsrc/get_started.rst:337 e6e1b2d991614d9d8a5f0b4244944967
+msgid "2.09"
+msgstr "2.09"
+
+#: ../../docsrc/get_started.rst:337 7e695c93febd4f68bcd81a71524fbbc1
+msgid "0.50"
+msgstr "0.50"
+
+#: ../../docsrc/get_started.rst:337 e21b025bcb964cafa19b041010af0092
+msgid "5.69"
+msgstr "5.69"
+
+#: ../../docsrc/get_started.rst:337 a726695163524eddbe1ffee5577dfa52
+msgid "5.74"
+msgstr "5.74"
+
+#: ../../docsrc/get_started.rst:339 21305feb3e394a11aaff7409f71c0e87
+msgid "mw\\_11"
+msgstr "mw\\_11"
+
+#: ../../docsrc/get_started.rst:339 3c386160acdf422b8f6f55bf2d272a33
+msgid "2.34"
+msgstr "2.34"
+
+#: ../../docsrc/get_started.rst:339 ../../docsrc/get_started.rst:341
+#: cd5392e880e24822af3f33e4128805b4 30ab7011d6a44fe48431706e449357fa
+msgid "0.56"
+msgstr "0.56"
+
+#: ../../docsrc/get_started.rst:339 2d906ea901254fbdb1740774f3e6ae22
+msgid "7.66"
+msgstr "7.66"
+
+#: ../../docsrc/get_started.rst:339 ab8f8a999d124b588f1a5ae52ee97b44
+msgid "6.83"
+msgstr "6.83"
+
+#: ../../docsrc/get_started.rst:341 78cfb302fb2b4a56a9c9d6481ac5596d
+msgid "mw\\_21"
+msgstr "mw\\_21"
+
+#: ../../docsrc/get_started.rst:341 1271813365d64edc973080a82155c185
+msgid "2.51"
+msgstr "2.51"
+
+#: ../../docsrc/get_started.rst:341 1bc9796d532b44b9a8f1e8f72b7a3d9f
+msgid "7.54"
+msgstr "7.54"
+
+#: ../../docsrc/get_started.rst:341 430764d2a49a479db0131c613a2b06b1
+msgid "6.66"
+msgstr "6.66"
+
+#: ../../docsrc/get_started.rst:345 24152df6598c445f82af74b782a0aa7b
+msgid "Conclusion"
+msgstr "Conclusión"
+
+#: ../../docsrc/get_started.rst:347 7f063d6ecfa14002bd7b78b77c878b33
+msgid ""
+"The deforestation risk map obtained with the iCAR model at t3 can be used to"
+" allocate deforestation after year 2020. Both the risk map with classes of "
+"deforestation from 1 to 65535 and the ``defrate_cat_icar_forecast.csv`` "
+"table with deforestation rates for all classes of deforestation risk are "
+"necessary to allocate deforestation in the future."
+msgstr ""
+"El mapa de riesgo de deforestación obtenido con el modelo iCAR en t3 puede "
+"utilizarse para asignar la deforestación después del año 2020. Tanto el mapa"
+" de riesgo con las clases de deforestación de 1 a 65535 como la tabla "
+"``defrate_cat_icar_forecast.csv`` con las tasas de deforestación para todas "
+"las clases de riesgo de deforestación son necesarios para asignar la "
+"deforestación en el futuro."
+
+#: ../../docsrc/get_started.rst:349 943c8e8bb0c34a0e8a38cbbd0fba0b2d
+msgid ""
+"The table only includes values for ``rate_mod``, the relative spatial "
+"deforestation rates from the iCAR model estimated on the historical period. "
+"As for the validation step, the deforestation must be adjusted for quantity "
+"depending on the amount of deforestation expected in the future."
+msgstr ""
+"La tabla sólo incluye valores para ``rate_mod``, las tasas relativas de "
+"deforestación espacial del modelo iCAR estimadas en el periodo histórico. En"
+" cuanto al paso de validación, la deforestación debe ajustarse "
+"cuantitativamente en función de la cantidad de deforestación prevista en el "
+"futuro."
+
+#: ../../docsrc/get_started.rst:351 93e6b97fc9a246a58317fa19c5a8129c
+msgid ""
+"Deforestation rates for the iCAR model classes for forecasting "
+"deforestation."
+msgstr ""
+"Tasas de deforestación de las clases del modelo iCAR para la previsión de la"
+" deforestación."
+
+#: ../../docsrc/get_started.rst:357 ba0d01049e5d4ca787ee2f504885418e
+msgid "137575"
+msgstr "137575"
+
+#: ../../docsrc/get_started.rst:357 f0d77924807142f58b4177577d674c5b
+msgid "1e-06"
+msgstr "1e-06"
+
+#: ../../docsrc/get_started.rst:357 ../../docsrc/get_started.rst:359
+#: ../../docsrc/get_started.rst:361 ../../docsrc/get_started.rst:363
+#: ../../docsrc/get_started.rst:365 ca60c84342ba4c69acd3aee88b99ad38
+#: c37d471c24f14c23b9c9a78a3bf38be7 8263c2dfd3954cb7820bf89349958f5a
+#: 2f686d19dbd349868d07a4707ff4b729 b76341d3982e4c7eac711992a116e433
+msgid "20"
+msgstr "20"
+
+#: ../../docsrc/get_started.rst:359 aa1ed981f8054a23a60475040427a1fe
+msgid "2"
+msgstr "2"
+
+#: ../../docsrc/get_started.rst:359 ea841ffd733d4f22a390b181090a5ab5
+msgid "5425"
+msgstr "5425"
+
+#: ../../docsrc/get_started.rst:359 38e73ad381334e52991513169d8e049f
+msgid "1.6259239478743857e-05"
+msgstr "1.6259239478743857e-05"
+
+#: ../../docsrc/get_started.rst:361 20e07f8f0e1f4988a0b9181e20165400
+msgid "3"
+msgstr "3"
+
+#: ../../docsrc/get_started.rst:361 d2d1c54389a945cf95503a486f76e1f5
+msgid "3523"
+msgstr "3523"
+
+#: ../../docsrc/get_started.rst:361 6f8d6a4d35a8475f8403717ba04e1f5e
+msgid "3.151847895748772e-05"
+msgstr "3.151847895748772e-05"
+
+#: ../../docsrc/get_started.rst:363 55fd0886c97d4ff38d2ebb963247bc81
+msgid "4"
+msgstr "4"
+
+#: ../../docsrc/get_started.rst:363 e20ebcc625ab4f52aab4bf85c800cf93
+msgid "2458"
+msgstr "2458"
+
+#: ../../docsrc/get_started.rst:363 56fff89401a54e28a07690cccdca5bde
+msgid "4.677771843623157e-05"
+msgstr "4.677771843623157e-05"
+
+#: ../../docsrc/get_started.rst:365 55c82238749a44a881cd4f05f908017a
+msgid "2078"
+msgstr "2078"
+
+#: ../../docsrc/get_started.rst:365 75f7daf7dd3b4d568c95493fc282a88d
+msgid "6.203695791497542e-05"
+msgstr "6.203695791497542e-05"
+
+#: ../../docsrc/get_started.rst:368 93414f3939fb4f129ab67138f1954dfb
+msgid ""
+"Considering a total deforestation :math:`D` (in ha) for the next :math:`Y` "
+"years at the jurisdictional level, the adjustment factor is :math:`\\rho = D"
+" / (A \\sum_i n_{i} \\theta_{m,i})`, with :math:`A` the pixel area in ha, "
+"the absolute rate is :math:`\\theta_{a,i} = \\rho \\theta_{m,i}`, and the "
+"deforestation density is :math:`\\delta_{i} = \\theta_{a,i} \\times A / Y`. "
+"The deforestation density :math:`\\delta_{i}` is used to predict the amount "
+"of deforestation (in ha/yr) for each forest pixel belonging to a given class"
+" of deforestation risk for the next :math:`Y` years (for notations, see "
+"details `here <plugin_api.html#defrate-table>`_)."
+msgstr ""
+"Considerando una deforestación total :math:`D` (en ha) para los próximos "
+":math:`Y` años a nivel jurisdiccional, el factor de ajuste es :math:`\\rho ="
+" D / (A \\sum_i n_{i} \\theta_{m,i})`, siendo :math:`A` el área del píxel en"
+" ha, la tasa absoluta es :math:`\\theta_{a,i} = \\rho \\theta_{m,i}`, y la "
+"densidad de deforestación es :math:`\\delta_{i} = \\theta_{a,i} \\times A / "
+"Y`. La densidad de deforestación :math:`\\delta_{i}` se utiliza para "
+"predecir la cantidad de deforestación (en ha/año) para cada píxel forestal "
+"perteneciente a una clase determinada de riesgo de deforestación para los "
+"próximos :math:`Y` años (para las notaciones, véanse los detalles `aquí "
+"<plugin_api.html#defrate-table>`_)."
+
+#: ../../docsrc/get_started.rst:370 f745995689e24c90a9706ae9903c6898
+msgid ""
+"The risk map together with the table of computed deforestation density can "
+"be used to `proportionally allocate fractions <https://verra.org/verra-"
+"launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-"
+"supplementary-materials/>`_ of either the jurisdictional unplanned "
+"deforestation activity data baseline (in the context of `VMD0055 "
+"<https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-"
+"from-avoiding-unplanned-deforestation-v1-0/>`_) or the jurisdictional FREL "
+"(in the context of the VCS `Jurisdictional and Nested REDD+ "
+"<https://verra.org/programs/jurisdictional-nested-redd-framework/>`_ "
+"Framework) to projects or programs to be implemented within the "
+"jurisdiction. To do so, a table with the number of pixels for each class of "
+"deforestation risk in the project area must be computed. This is easily done"
+" with QGIS tools ``Raster > Extraction > Clip Raster by Mask Layer`` to crop"
+" the risk map to the project border and ``Processing > Toolbox > Raster "
+"layer unique values report``."
+msgstr ""
+"El mapa de riesgo, junto con la tabla de densidad de deforestación "
+"computada, puede ser utilizado para `asignar proporcionalmente fracciones "
+"<https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-"
+"vt0007-issues-call-for-supplementary-materials/>`_ de la línea de base de "
+"datos de la actividad de deforestación no planificada jurisdiccional (en el "
+"contexto de `VMD0055 <https://verra.org/methodologies/vmd0055-estimation-of-"
+"emission-reductions-from-avoiding-unplanned-deforestation-v1-0/>`_) o del "
+"FREL jurisdiccional (en el contexto del Marco VCS `Jurisdiccional y Anidado "
+"de REDD+ <https://verra.org/programs/jurisdictional-nested-redd-"
+"framework/>`_) a proyectos o programas a ser implementados dentro de la "
+"jurisdicción. Para eso, se debe calcular una tabla con el número de píxeles "
+"para cada clase de riesgo de deforestación en el área del proyecto. Esto se "
+"hace fácilmente con las herramientas de QGIS ``Raster > Extracción > "
+"Recortar raster por capa de máscara`` para recortar el mapa de riesgo hasta "
+"el límite del proyecto y ``Procesamiento > Caja de herramientas > Informe de"
+" valores únicos de capa raster``."

@@ -1,0 +1,111 @@
+[main]
+host = https://www.transifex.com
+
+[o:Cirad:p:deforisk-qgis-plugin:r:README]
+file_filter            = locales/<lang>/LC_MESSAGES/README.po
+source_file            = ../build/gettext/README.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = README
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:articles]
+file_filter            = locales/<lang>/LC_MESSAGES/articles.po
+source_file            = ../build/gettext/articles.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = articles
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:articles--subnational_jurisd]
+file_filter            = locales/<lang>/LC_MESSAGES/articles/subnational_jurisd.po
+source_file            = ../build/gettext/articles/subnational_jurisd.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = articles--subnational_jurisd
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:articles--user_data]
+file_filter            = locales/<lang>/LC_MESSAGES/articles/user_data.po
+source_file            = ../build/gettext/articles/user_data.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = articles--user_data
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:contributing--changelog]
+file_filter            = locales/<lang>/LC_MESSAGES/contributing/changelog.po
+source_file            = ../build/gettext/contributing/changelog.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = contributing--changelog
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:contributing--code_of_conduct]
+file_filter            = locales/<lang>/LC_MESSAGES/contributing/code_of_conduct.po
+source_file            = ../build/gettext/contributing/code_of_conduct.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = contributing--code_of_conduct
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:contributing--community_guidelines]
+file_filter            = locales/<lang>/LC_MESSAGES/contributing/community_guidelines.po
+source_file            = ../build/gettext/contributing/community_guidelines.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = contributing--community_guidelines
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:contributing--license]
+file_filter            = locales/<lang>/LC_MESSAGES/contributing/license.po
+source_file            = ../build/gettext/contributing/license.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = contributing--license
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:get_started]
+file_filter            = locales/<lang>/LC_MESSAGES/get_started.po
+source_file            = ../build/gettext/get_started.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = get_started
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:index]
+file_filter            = locales/<lang>/LC_MESSAGES/index.po
+source_file            = ../build/gettext/index.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = index
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:installation]
+file_filter            = locales/<lang>/LC_MESSAGES/installation.po
+source_file            = ../build/gettext/installation.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = installation
+replace_edited_strings = false
+keep_translations      = false
+
+[o:Cirad:p:deforisk-qgis-plugin:r:plugin_api]
+file_filter            = locales/<lang>/LC_MESSAGES/plugin_api.po
+source_file            = ../build/gettext/plugin_api.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = plugin_api
+replace_edited_strings = false
+keep_translations      = false
+

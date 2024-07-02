@@ -1,0 +1,411 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Cirad and FAO
+# This file is distributed under the same license as the deforisk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Ghislain Vieilledent, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: deforisk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-01 14:07-0400\n"
+"PO-Revision-Date: 2024-07-01 18:38+0000\n"
+"Last-Translator: Ghislain Vieilledent, 2024\n"
+"Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:3
+#: 0ea83f0e10064e17b3c7977e99dc1b58
+msgid "Code of Conduct"
+msgstr "Code de conduite"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:8
+#: 4a4ab390a6f04e80a6df838b98bc9e37
+msgid "Our Pledge"
+msgstr "Notre engagement"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:10
+#: 744067e93e054019a30819ac98732138
+msgid ""
+"We as members, contributors, and leaders pledge to make participation in our"
+" community a harassment-free experience for everyone, regardless of age, "
+"body size, visible or invisible disability, ethnicity, sex characteristics, "
+"gender identity and expression, level of experience, education, socio-"
+"economic status, nationality, personal appearance, race, caste, color, "
+"religion, or sexual identity and orientation."
+msgstr ""
+"En tant que membres, contributeurs et dirigeants, nous nous engageons à "
+"faire de la participation à notre communauté une expérience sans harcèlement"
+" pour tous, indépendamment de l'âge, de la taille, d'un handicap visible ou "
+"invisible, de l'ethnicité, des caractéristiques sexuelles, de l'identité et "
+"de l'expression de genre, du niveau d'expérience, de l'éducation, du statut "
+"socio-économique, de la nationalité, de l'apparence personnelle, de la race,"
+" de la caste, de la couleur, de la religion, ou de l'identité et de "
+"l'orientation sexuelles."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:17
+#: c42690e6758f43dba50b352e7972ee40
+msgid ""
+"We pledge to act and interact in ways that contribute to an open, welcoming,"
+" diverse, inclusive, and healthy community."
+msgstr ""
+"Nous nous engageons à agir et à interagir de manière à contribuer à une "
+"communauté ouverte, accueillante, diverse, inclusive et saine."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:23
+#: 972d8198906d4312857b1353191b8a8b
+msgid "Our Standards"
+msgstr "Nos normes"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:25
+#: 650eb138b6b54cfb88bd0bb506341b38
+msgid ""
+"Examples of behavior that contributes to a positive environment for our "
+"community include:"
+msgstr ""
+"Voici quelques exemples de comportements qui contribuent à créer un "
+"environnement positif pour notre communauté :"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:28
+#: 9a645879b8e648459560a2aedbaa225c
+msgid "Demonstrating empathy and kindness toward other people"
+msgstr "Faire preuve d'empathie et de gentillesse à l'égard d'autrui"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:30
+#: de2ac0934d034af4937dbdd037478e80
+msgid "Being respectful of differing opinions, viewpoints, and experiences"
+msgstr ""
+"Respecter les opinions, les points de vue et les expériences divergents"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:32
+#: 416a766767d54fe49a926a8b0bae6f0d
+msgid "Giving and gracefully accepting constructive feedback"
+msgstr "Donner et accepter avec élégance un retour d'information constructif"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:34
+#: d0caed74b6854f78b6e74e62f6f8528d
+msgid ""
+"Accepting responsibility and apologizing to those affected by our mistakes, "
+"and learning from the experience"
+msgstr ""
+"Accepter la responsabilité et s'excuser auprès des personnes affectées par "
+"nos erreurs, et tirer les leçons de l'expérience."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:37
+#: 7c9d7eafc8e34d41b984c2de3301b2dc
+msgid ""
+"Focusing on what is best not just for us as individuals, but for the overall"
+" community"
+msgstr ""
+"Se concentrer sur ce qui est le mieux non seulement pour nous en tant "
+"qu'individus, mais aussi pour l'ensemble de la communauté"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:40
+#: ed73c98482ea4a8783986ab27ba6f00c
+msgid "Examples of unacceptable behavior include:"
+msgstr "Voici quelques exemples de comportements inacceptables :"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:42
+#: abc7931aff624e878756df545d8ce276
+msgid ""
+"The use of sexualized language or imagery, and sexual attention or advances "
+"of any kind"
+msgstr ""
+"L'utilisation d'un langage ou d'une imagerie à caractère sexuel, ainsi que "
+"d'attentions ou d'avances sexuelles de quelque nature que ce soit."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:45
+#: e2f5fa8fab7845a49778ec77d60bb4c5
+msgid ""
+"Trolling, insulting or derogatory comments, and personal or political "
+"attacks"
+msgstr ""
+"Trolling, commentaires insultants ou désobligeants, attaques personnelles ou"
+" politiques"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:48
+#: 634b8e16e6b14fa593cc6bfc0e948d10
+msgid "Public or private harassment"
+msgstr "Harcèlement public ou privé"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:50
+#: 2d8bfa49133149ad8dae2d4e3f447b27
+msgid ""
+"Publishing others’ private information, such as a physical or email address,"
+" without their explicit permission"
+msgstr ""
+"Publier des informations privées d'autrui, telles qu'une adresse physique ou"
+" électronique, sans leur autorisation explicite."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:53
+#: 3251b3f960474a8899c5350a7ca2f360
+msgid ""
+"Other conduct which could reasonably be considered inappropriate in a "
+"professional setting"
+msgstr ""
+"Tout autre comportement qui pourrait raisonnablement être considéré comme "
+"inapproprié dans un cadre professionnel."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:59
+#: bd77af1e4fa84825a2b2b39e210df711
+msgid "Enforcement Responsibilities"
+msgstr "Responsabilités en matière d'application de la loi"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:61
+#: 43830c3453904a139e60102bf5eab4c9
+msgid ""
+"Community leaders are responsible for clarifying and enforcing our standards"
+" of acceptable behavior and will take appropriate and fair corrective action"
+" in response to any behavior that they deem inappropriate, threatening, "
+"offensive, or harmful."
+msgstr ""
+"Les responsables de la communauté sont chargés de clarifier et de faire "
+"respecter nos normes de comportement acceptable et prendront des mesures "
+"correctives appropriées et équitables en réponse à tout comportement qu'ils "
+"jugent inapproprié, menaçant, offensant ou préjudiciable."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:66
+#: 869e6bcc1bd8456e9f0c56bf77c131fc
+msgid ""
+"Community leaders have the right and responsibility to remove, edit, or "
+"reject comments, commits, code, wiki edits, issues, and other contributions "
+"that are not aligned to this Code of Conduct, and will communicate reasons "
+"for moderation decisions when appropriate."
+msgstr ""
+"Les responsables de la communauté ont le droit et la responsabilité de "
+"supprimer, d'éditer ou de rejeter les commentaires, les engagements, le "
+"code, les éditions de wiki, les problèmes et autres contributions qui ne "
+"sont pas conformes à ce code de conduite, et ils communiqueront les raisons "
+"de leurs décisions de modération le cas échéant."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:74
+#: b4aeb5e8e4174c71a58a65e0efd0eb24
+msgid "Scope"
+msgstr "Champ d'application"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:76
+#: ddbaa50be49641519c856f4e2ee67f7c
+msgid ""
+"This Code of Conduct applies within all community spaces, and also applies "
+"when an individual is officially representing the community in public "
+"spaces. Examples of representing our community include using an official "
+"email address, posting via an official social media account, or acting as an"
+" appointed representative at an online or offline event."
+msgstr ""
+"Ce code de conduite s'applique à tous les espaces communautaires, ainsi "
+"qu'aux personnes qui représentent officiellement la communauté dans les "
+"espaces publics. Les exemples de représentation de notre communauté incluent"
+" l'utilisation d'une adresse électronique officielle, la publication de "
+"messages via un compte officiel sur les médias sociaux, ou le fait d'agir en"
+" tant que représentant désigné lors d'un événement en ligne ou hors ligne."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:85
+#: 0590c86d96224982ba9222a134c2ad12
+msgid "Enforcement"
+msgstr "Application de la loi"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:87
+#: e1bbbccb6a7341ff86be4a5cbc274d55
+msgid ""
+"Instances of abusive, harassing, or otherwise unacceptable behavior may be "
+"reported to the community leaders responsible for enforcement at [INSERT "
+"CONTACT METHOD]. All complaints will be reviewed and investigated promptly "
+"and fairly."
+msgstr ""
+"Les cas de comportement abusif, de harcèlement ou de toute autre forme de "
+"comportement inacceptable peuvent être signalés aux responsables "
+"communautaires chargés de l'application de la loi à [INSÉREZ LA MÉTHODE DE "
+"CONTACT]. Toutes les plaintes seront examinées et feront l'objet d'une "
+"enquête rapide et équitable."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:92
+#: ab049c3df48943659e158289851256b1
+msgid ""
+"All community leaders are obligated to respect the privacy and security of "
+"the reporter of any incident."
+msgstr ""
+"Tous les dirigeants de la communauté sont tenus de respecter la vie privée "
+"et la sécurité de l'auteur de l'incident."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:98
+#: b105baceb44b414083ad4d06ebb0a08e
+msgid "Enforcement Guidelines"
+msgstr "Lignes directrices pour l'application de la législation"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:100
+#: 67ac772736944a37a1360778ee223dee
+msgid ""
+"Community leaders will follow these Community Impact Guidelines in "
+"determining the consequences for any action they deem in violation of this "
+"Code of Conduct:"
+msgstr ""
+"Les dirigeants communautaires suivront les présentes lignes directrices "
+"relatives à l'impact sur la communauté pour déterminer les conséquences de "
+"toute action qu'ils jugent contraire au présent code de conduite :"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:107
+#: c55a8c7ed8554a069c37f7c9339bbdd6
+msgid "1. Correction"
+msgstr "1. Correction"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:109
+#: 0f079cad75034ac984d1a5bf96948c19
+msgid ""
+"**Community Impact**: Use of inappropriate language or other behavior deemed"
+" unprofessional or unwelcome in the community."
+msgstr ""
+"**Impact sur la communauté** : L'utilisation d'un langage inapproprié ou "
+"d'un autre comportement jugé non professionnel ou indésirable au sein de la "
+"communauté."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:112
+#: 3116da504e1944edaed8ed029f1a9b74
+msgid ""
+"**Consequence**: A private, written warning from community leaders, "
+"providing clarity around the nature of the violation and an explanation of "
+"why the behavior was inappropriate. A public apology may be requested."
+msgstr ""
+"**Conséquence** : Un avertissement privé et écrit de la part des dirigeants "
+"de la communauté, précisant la nature de l'infraction et expliquant pourquoi"
+" le comportement était inapproprié. Des excuses publiques peuvent être "
+"demandées."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:120
+#: 9cec5743a9e3440ca7c8e643afc3c391
+msgid "2. Warning"
+msgstr "2. Avertissement"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:122
+#: 882fbcf161ff4673b472cac17a02906e
+msgid ""
+"**Community Impact**: A violation through a single incident or series of "
+"actions."
+msgstr ""
+"**Impact sur la communauté** : Une violation par le biais d'un incident "
+"unique ou d'une série d'actions."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:125
+#: 56f74977766247b082b7ac9d276b131c
+msgid ""
+"**Consequence**: A warning with consequences for continued behavior. No "
+"interaction with the people involved, including unsolicited interaction with"
+" those enforcing the Code of Conduct, for a specified period of time. This "
+"includes avoiding interactions in community spaces as well as external "
+"channels like social media. Violating these terms may lead to a temporary or"
+" permanent ban."
+msgstr ""
+"**Conséquence** : Un avertissement assorti de conséquences en cas de "
+"poursuite du comportement. Aucune interaction avec les personnes impliquées,"
+" y compris les interactions non sollicitées avec les personnes chargées de "
+"l'application du code de conduite, pendant une période déterminée. Il s'agit"
+" notamment d'éviter les interactions dans les espaces communautaires ainsi "
+"que dans les canaux externes tels que les médias sociaux. La violation de "
+"ces conditions peut entraîner un bannissement temporaire ou permanent."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:135
+#: a67f2a04fc974629b58ae703f5a6cd1b
+msgid "3. Temporary Ban"
+msgstr "3. Interdiction temporaire"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:137
+#: 1629d52f5ff14ed1847bfe57463185b8
+msgid ""
+"**Community Impact**: A serious violation of community standards, including "
+"sustained inappropriate behavior."
+msgstr ""
+"**Impact sur la communauté** : Une violation grave des normes de la "
+"communauté, y compris un comportement inapproprié soutenu."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:140
+#: 3e625ccf2d7443608dea5b9cb149eafe
+msgid ""
+"**Consequence**: A temporary ban from any sort of interaction or public "
+"communication with the community for a specified period of time. No public "
+"or private interaction with the people involved, including unsolicited "
+"interaction with those enforcing the Code of Conduct, is allowed during this"
+" period. Violating these terms may lead to a permanent ban."
+msgstr ""
+"**Conséquence** : Interdiction temporaire de toute forme d'interaction ou de"
+" communication publique avec la communauté pendant une période déterminée. "
+"Aucune interaction publique ou privée avec les personnes concernées, y "
+"compris toute interaction non sollicitée avec les personnes chargées de "
+"l'application du code de conduite, n'est autorisée pendant cette période. La"
+" violation de ces conditions peut entraîner un bannissement permanent."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:150
+#: ede1376745c7428bafab050175d15e9f
+msgid "4. Permanent Ban"
+msgstr "4. Interdiction permanente"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:152
+#: bf6522050f324f7f8afb620c0e559d0e
+msgid ""
+"**Community Impact**: Demonstrating a pattern of violation of community "
+"standards, including sustained inappropriate behavior, harassment of an "
+"individual, or aggression toward or disparagement of classes of individuals."
+msgstr ""
+"**Impact sur la communauté** : Démonstration d'un schéma de violation des "
+"normes communautaires, y compris un comportement inapproprié soutenu, le "
+"harcèlement d'un individu, ou l'agression ou le dénigrement de catégories "
+"d'individus."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:157
+#: 022a7548c9274cd88c663a17636c4226
+msgid ""
+"**Consequence**: A permanent ban from any sort of public interaction within "
+"the community."
+msgstr ""
+"**Conséquence** : Une interdiction permanente de toute interaction publique "
+"au sein de la communauté."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:163
+#: 028c3045d5c745f1854b61f2e2aa961f
+msgid "Attribution"
+msgstr "Attribution"
+
+#: ../../docsrc/contributing/code_of_conduct.rst:165
+#: c2b6f8ef094944b78fb47561a22c938a
+msgid ""
+"This Code of Conduct is adapted from the `Contributor Covenant "
+"<https://www.contributor-covenant.org>`_, version 2.1, available at "
+"`https://www.contributor-covenant.org/version/2/1/code_of_conduct.html "
+"<https://www.contributor-covenant.org/version/2/1/code_of_conduct.html>`_."
+msgstr ""
+"Le présent code de conduite est adapté de la \"Convention des "
+"contributeurs\" <https://www.contributor-covenant.org>`_, version 2.1, "
+"disponible sur `https://www.contributor-"
+"covenant.org/version/2/1/code_of_conduct.html <https://www.contributor-"
+"covenant.org/version/2/1/code_of_conduct.html>`_."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:170
+#: f8ac6ebe0581445a826a2b88235e64f0
+msgid ""
+"Community Impact Guidelines were inspired by `Mozilla’s code of conduct "
+"enforcement ladder <https://github.com/mozilla/diversity>`_."
+msgstr ""
+"Les Community Impact Guidelines ont été inspirées par l'échelle "
+"d'application du code de conduite de Mozilla "
+"<https://github.com/mozilla/diversity>`_."
+
+#: ../../docsrc/contributing/code_of_conduct.rst:174
+#: 09337ccf8be64f3b82c5cbc1c7cad903
+msgid ""
+"For answers to common questions about this code of conduct, see the FAQ at "
+"`https://www.contributor-covenant.org/faq <https://www.contributor-"
+"covenant.org/faq>`_. Translations are available at `https://www.contributor-"
+"covenant.org/translations <https://www.contributor-"
+"covenant.org/translations>`_."
+msgstr ""
+"Pour obtenir des réponses aux questions les plus courantes concernant ce "
+"code de conduite, consultez la FAQ sur `https://www.contributor-"
+"covenant.org/faq <https://www.contributor-covenant.org/faq>`_. Des "
+"traductions sont disponibles sur `https://www.contributor-"
+"covenant.org/translations <https://www.contributor-"
+"covenant.org/translations>`_."

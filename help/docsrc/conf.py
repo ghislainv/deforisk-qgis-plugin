@@ -116,4 +116,12 @@ html_base_url = "https://ecology.ghislainv.fr/deforisk-qgis-plugin/"
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
 
+# Internationalization
+# https://docs.readthedocs.io/en/stable/guides/manage-translations-sphinx.html
+
+language = "en"
+gettext_uuid = True
+gettext_compact = False
+locale_dirs = ["locales"]
+
 # End Of File

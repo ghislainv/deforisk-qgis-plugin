@@ -1,0 +1,170 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Cirad and FAO
+# This file is distributed under the same license as the deforisk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Ghislain Vieilledent, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: deforisk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-01 14:07-0400\n"
+"PO-Revision-Date: 2024-07-01 18:38+0000\n"
+"Last-Translator: Ghislain Vieilledent, 2024\n"
+"Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: ../../docsrc/articles/subnational_jurisd.rst:3
+#: 5bf157f4f6bf462ea56d01164feae173
+msgid "Subnational jurisdictions"
+msgstr "Jurisdicciones subnacionales"
+
+#: ../../docsrc/articles/subnational_jurisd.rst:16
+#: 634916d7dbb64a73b02b92b2ad7a73a1
+msgid "Objective"
+msgstr "Objetivo"
+
+#: ../../docsrc/articles/subnational_jurisd.rst:18
+#: b1e3662ee70f46fd8e39077dd02afd4f
+msgid ""
+"The aim is to obtain a GPKG file named ``aoi_latlon.gpkg`` with two layers "
+"named ``aoi`` for the jurisdiction and ``subj`` for the subjurisdictions. "
+"This file can then be used with the ``deforisk`` plugin to define the area "
+"of interest (AOI)."
+msgstr ""
+"El objetivo es obtener un archivo GPKG llamado ``aoi_latlon.gpkg`` con dos "
+"capas llamadas ``aoi`` para la jurisdicción y ``subj`` para las "
+"subjurisdicciones. Este archivo puede luego ser utilizado con el plugin "
+"``deforisk`` para definir el área de interés (AOI)."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:22
+#: 4b64ec5d125e4fa7af5025c092b08803
+msgid "File creation using QGIS tools"
+msgstr "Creación de archivos con herramientas de QGIS"
+
+#: ../../docsrc/articles/subnational_jurisd.rst:24
+#: 9ba02e70423540c9a32400feaf15dc16
+msgid ""
+"Download country data from `GADM <https://gadm.org>`_ using a GPKG file."
+msgstr ""
+"Descargue datos del país desde `GADM <https://gadm.org>`_ utilizando un "
+"archivo GPKG."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:29
+#: ../../docsrc/articles/subnational_jurisd.rst:36
+#: ../../docsrc/articles/subnational_jurisd.rst:43
+#: ../../docsrc/articles/subnational_jurisd.rst:50
+#: ../../docsrc/articles/subnational_jurisd.rst:57
+#: ../../docsrc/articles/subnational_jurisd.rst:64
+#: f0eb12905a754b72bc030686556b823b b83bc4f91e744635aef34c0ade5511ab
+#: 21668fd1cd9c4c1786c88e617e31d225 80cae4b8d91e4f1cae97e2cb3ec3bfd5
+#: 83f680a5d41049e68d091aaf106d191c 60b11b30b38e43f399a4b597fa066aa2
+msgid "|br|"
+msgstr "|br|"
+
+#: ../../docsrc/articles/subnational_jurisd.rst:31
+#: 545efc61ec0a4498a7f0596310dda0e7
+msgid "Add all layers from the GPKG file to QGIS."
+msgstr "Agregar todas las capas del archivo GPKG a QGIS."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:38
+#: 3172cdb48b364854865716286c4b528b
+msgid ""
+"Select the jurisdiction, using the selection toolbar (if the toolbar is not "
+"visible, activate it in ``View > Toolbars > Selection Toolbar``)."
+msgstr ""
+"Seleccione la jurisdicción usando la barra de selección (si no está visible,"
+" actívela en ``Ver > Barras de herramientas > Barra de selección``)."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:45
+#: 0ea2544dc6654c76b00b46f71978daf5
+msgid ""
+"Save the feature in a new GPKG file called ``aoi_latlon.gpkg`` right "
+"clicking on the layer and selecting ``Export > Save Selected Feature As``. "
+"Tick ``Save only selected features`` and name the layer ``aoi`` (it is "
+"mandatory to use this layer name)."
+msgstr ""
+"Guarde la característica en un nuevo archivo GPKG llamado "
+"``aoi_latlon.gpkg`` haciendo clic derecho en la capa y seleccionando "
+"``Exportar > Guardar característica seleccionada como``. Marque ``Guardar "
+"solo características seleccionadas`` y llama la capa ``aoi`` (es obligatorio"
+" usar este nombre de capa)."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:52
+#: 6710ad923fb64eb1852d75027437f0f9
+msgid ""
+"Select the subjurisdictions (to save several features with the selection "
+"tool, maintain the ``Ctrl`` button pushed)."
+msgstr ""
+"Seleccione las subjurisdicciones (para guardar varias características con la"
+" herramienta de selección, mantenga presionado el botón ``Ctrl``)."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:59
+#: 65ab338f8e4f4684a3b33a2965175561
+msgid ""
+"Save the features in the same GPKG file as previously (``aoi_latlon.gpkg``) "
+"and name the layer ``subj`` (it is also mandatory to use this layer name)."
+msgstr ""
+"Guarde las características en el mismo archivo GPKG que anteriormente "
+"(``aoi_latlon.gpkg``) y llama la capa ``subj`` (también es obligatorio usar "
+"este nombre de capa)."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:66
+#: cea54ba7bf834d29a9d4cd250b56cf54
+msgid ""
+"We have just created a GPKG file named ``aoi_latlon.gpkg`` with two layers "
+"named ``aoi`` for the jurisdiction and ``subj`` for the subjurisdictions. "
+"Note that you can select jurisdiction and subjurisdictions at different "
+"administrative levels, selecting features at level 1, 2, or 3 in the GADM "
+"dataset."
+msgstr ""
+"Acabamos de crear un archivo GPKG llamado ``aoi_latlon.gpkg`` con dos capas "
+"llamadas ``aoi`` para la jurisdicción y ``subj`` para las subjurisdicciones."
+" Tenga en cuenta que puede seleccionar jurisdicción y subjurisdicciones en "
+"diferentes niveles administrativos, seleccionando características en el "
+"nivel 1, 2 o 3 en el conjunto de datos GADM."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:70
+#: e60a154cf8084c23b4446dfdf7d510e5
+msgid "Looking at the data in QGIS"
+msgstr "Mirando los datos en QGIS."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:72
+#: af31829b59b74cd0a9c505eb3a168509
+msgid ""
+"Open the file Browser. If not visible, activate it in ``View > Panels > "
+"Browser``."
+msgstr ""
+"Abra el archivo Navegador. Si no es visible, actívelo en ``Ver > Paneles > "
+"Navegador``."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:74
+#: 93e6b7ab92d94c368a0105051360507c
+msgid "Search for the ``aoi_latlon.gpkg`` file in your folders."
+msgstr "Busque el archivo ``aoi_latlon.gpkg`` en sus carpetas."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:76
+#: 91b339a7757b427b9a35a23a0858e75f
+msgid ""
+"Drag and drop the GPKG file to add the ``aoi`` and ``subj`` layers in the "
+"list of QGIS layers."
+msgstr ""
+"Arrastre y suelte el archivo GPKG para agregar las capas ``aoi`` y ``subj`` "
+"en la lista de capas de QGIS."
+
+#: ../../docsrc/articles/subnational_jurisd.rst:82
+#: 0d7291c7ba804245b30e15455943db57
+msgid "Use with the deforisk plugin"
+msgstr "Uso con el plugin deforisk"
+
+#: ../../docsrc/articles/subnational_jurisd.rst:84
+#: c9de0bbbd0e341449b46380d6cb6e73a
+msgid "Select the GPKG file when defining the area of interest (AOI)."
+msgstr "Seleccione el archivo GPKG al definir el área de interés (AOI)."
