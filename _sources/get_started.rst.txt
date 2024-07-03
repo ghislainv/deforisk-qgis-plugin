@@ -34,6 +34,14 @@ Once the plugin has been installed (see `Installation <installation.html>`_ inst
 
 To test the plugin and have a first look at its functionalities, try it on a small area of interest (AOI) such as the `Martinique <https://en.wikipedia.org/wiki/Martinique>`_ island (1128 km\ :sup:`2`\) which has the MTQ iso code. Testing the plugin on a small AOI has the advantage of making computations fast so that you can directly see the outputs, interpret the results, and understand the functioning of the plugin.
 
+To better understand the different steps, keep in mind that we are considering different periods and dates for model calibration and validation.
+
+.. figure:: _static/get_started/periods.png
+    :width: 700px
+
+
+    Dates and periods used to calibrate and validate models. Modified from `Verra’s VT0007 <https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/>`_. In our case, we renamed the period from t2 to t3 as the “validation” period in place of the “confirmation” period.
+
 Get variables
 -------------
 
@@ -368,3 +376,9 @@ The table only includes values for ``rate_mod``, the relative spatial deforestat
 Considering a total deforestation :math:`D` (in ha) for the next :math:`Y` years at the jurisdictional level, the adjustment factor is :math:`\rho = D / (A \sum_i n_{i} \theta_{m,i})`, with :math:`A` the pixel area in ha, the absolute rate is :math:`\theta_{a,i} = \rho \theta_{m,i}`, and the deforestation density is :math:`\delta_{i} = \theta_{a,i} \times A / Y`. The deforestation density :math:`\delta_{i}` is used to predict the amount of deforestation (in ha/yr) for each forest pixel belonging to a given class of deforestation risk for the next :math:`Y` years (for notations, see details `here <plugin_api.html#defrate-table>`_).
 
 The risk map together with the table of computed deforestation density can be used to `proportionally allocate fractions <https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/>`_ of either the jurisdictional unplanned deforestation activity data baseline (in the context of `VMD0055 <https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/>`_) or the jurisdictional FREL (in the context of the VCS `Jurisdictional and Nested REDD+ <https://verra.org/programs/jurisdictional-nested-redd-framework/>`_ Framework) to projects or programs to be implemented within the jurisdiction. To do so, a table with the number of pixels for each class of deforestation risk in the project area must be computed. This is easily done with QGIS tools ``Raster > Extraction > Clip Raster by Mask Layer`` to crop the risk map to the project border and ``Processing > Toolbox > Raster layer unique values report``.
+
+.. figure:: _static/get_started/allocation.png
+    :width: 600px
+
+
+    Allocating deforestation to projects within the jurisdiction.

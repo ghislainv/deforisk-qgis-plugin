@@ -521,6 +521,14 @@
 </pre></div>
 </div>
 <p>Para probar el plugin y echar un primer vistazo a sus funcionalidades, pruébelo en una pequeña área de interés (AOI) como la isla <a class="reference external" href="https://en.wikipedia.org/wiki/Martinique">Martinique</a> (1128 km<sup>2</sup>) que tiene el código iso MTQ. Probar el plugin en una pequeña AOI tiene la ventaja de que los cálculos son rápidos y puedes ver directamente las salidas, interpretar los resultados y entender el funcionamiento del plugin.</p>
+<p>Para entender mejor las distintas etapas, hay que tener en cuenta que estamos considerando distintos periodos y fechas para la calibración y validación del modelo.</p>
+<figure class="align-default" id="id8">
+<a class="reference internal image-reference" href="_images/periods.png"><img alt="_images/periods.png" src="_images/periods.png" style="width: 700px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Fechas y periodos utilizados para calibrar y validar los modelos. Modificado de <a class="reference external" href="https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/">Verra’s VT0007</a>. En nuestro caso, hemos renombrado el periodo de t2 a t3 como periodo de «validación» en lugar de periodo de «confirmación».</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="get-variables">
 <h2>Obtener variables<a class="headerlink" href="#get-variables" title="Link to this heading">#</a></h2>
@@ -558,11 +566,11 @@
 </a>
 <p><br/></p>
 <p>En el directorio <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/</span></code> se crean nuevas carpetas con los resultados de cada periodo. En concreto, las carpetas de resultados incluyen el archivo <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/perc_dist.png</span></code>. Este archivo muestra el gráfico de la deforestación acumulada en función de la distancia al borde del bosque e indica los limites de distancia (aquí 240  m para el periodo de calibración).</p>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id9">
 <span id="fig-perc-dist"></span><a class="reference internal image-reference" href="_images/perc_dist.png"><img alt="_images/perc_dist.png" src="_images/perc_dist.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Limite de distancia para el periodo de calibración.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-text">Limite de distancia para el periodo de calibración.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Las carpetas de salida también incluyen la tabla <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_bm_&lt;period&gt;.csv</span></code> que muestra las tasas de deforestación para cada clase de riesgo de deforestación (ver detalles <a class="reference external" href="plugin_api.html#defrate-table">aquí</a>).</p>
@@ -1075,6 +1083,13 @@
 </div>
 <p>Considerando una deforestación total <span class="math notranslate nohighlight">\(D\)</span> (en ha) para los próximos <span class="math notranslate nohighlight">\(Y\)</span> años a nivel jurisdiccional, el factor de ajuste es <span class="math notranslate nohighlight">\(\rho = D / (A \sum_i n_{i} \theta_{m,i})\)</span>, siendo <span class="math notranslate nohighlight">\(A\)</span> el área del píxel en ha, la tasa absoluta es <span class="math notranslate nohighlight">\(\theta_{a,i} = \rho \theta_{m,i}\)</span>, y la densidad de deforestación es <span class="math notranslate nohighlight">\(\delta_{i} = \theta_{a,i} \times A / Y\)</span>. La densidad de deforestación <span class="math notranslate nohighlight">\(\delta_{i}\)</span> se utiliza para predecir la cantidad de deforestación (en ha/año) para cada píxel forestal perteneciente a una clase determinada de riesgo de deforestación para los próximos <span class="math notranslate nohighlight">\(Y\)</span> años (para las notaciones, véanse los detalles <a class="reference external" href="plugin_api.html#defrate-table">aquí</a>).</p>
 <p>El mapa de riesgo, junto con la tabla de densidad de deforestación computada, puede ser utilizado para <a class="reference external" href="https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/">asignar proporcionalmente fracciones</a> de la línea de base de datos de la actividad de deforestación no planificada jurisdiccional (en el contexto de <a class="reference external" href="https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/">VMD0055</a>) o del FREL jurisdiccional (en el contexto del Marco VCS <a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">Jurisdiccional y Anidado de REDD+</a>) a proyectos o programas a ser implementados dentro de la jurisdicción. Para eso, se debe calcular una tabla con el número de píxeles para cada clase de riesgo de deforestación en el área del proyecto. Esto se hace fácilmente con las herramientas de QGIS <code class="docutils literal notranslate"><span class="pre">Raster</span> <span class="pre">&gt;</span> <span class="pre">Extracción</span> <span class="pre">&gt;</span> <span class="pre">Recortar</span> <span class="pre">raster</span> <span class="pre">por</span> <span class="pre">capa</span> <span class="pre">de</span> <span class="pre">máscara</span></code> para recortar el mapa de riesgo hasta el límite del proyecto y <code class="docutils literal notranslate"><span class="pre">Procesamiento</span> <span class="pre">&gt;</span> <span class="pre">Caja</span> <span class="pre">de</span> <span class="pre">herramientas</span> <span class="pre">&gt;</span> <span class="pre">Informe</span> <span class="pre">de</span> <span class="pre">valores</span> <span class="pre">únicos</span> <span class="pre">de</span> <span class="pre">capa</span> <span class="pre">raster</span></code>.</p>
+<figure class="align-default" id="id10">
+<a class="reference internal image-reference" href="_images/allocation.png"><img alt="_images/allocation.png" src="_images/allocation.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Asignación de la deforestación a proyectos dentro de la jurisdicción.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 

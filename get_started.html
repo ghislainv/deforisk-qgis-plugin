@@ -520,6 +520,14 @@
 </pre></div>
 </div>
 <p>To test the plugin and have a first look at its functionalities, try it on a small area of interest (AOI) such as the <a class="reference external" href="https://en.wikipedia.org/wiki/Martinique">Martinique</a> island (1128 km<sup>2</sup>) which has the MTQ iso code. Testing the plugin on a small AOI has the advantage of making computations fast so that you can directly see the outputs, interpret the results, and understand the functioning of the plugin.</p>
+<p>To better understand the different steps, keep in mind that we are considering different periods and dates for model calibration and validation.</p>
+<figure class="align-default" id="id8">
+<a class="reference internal image-reference" href="_images/periods.png"><img alt="_images/periods.png" src="_images/periods.png" style="width: 700px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Dates and periods used to calibrate and validate models. Modified from <a class="reference external" href="https://verra.org/methodologies/vt0007-unplanned-deforestation-allocation-udef-a-v1-0/">Verra’s VT0007</a>. In our case, we renamed the period from t2 to t3 as the “validation” period in place of the “confirmation” period.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="get-variables">
 <h2>Get variables<a class="headerlink" href="#get-variables" title="Link to this heading">#</a></h2>
@@ -557,11 +565,11 @@
 </a>
 <p><br/></p>
 <p>New folders with results are created in the <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/</span></code> directory for each period. In particular, the output folders include the <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/perc_dist.png</span></code> file. This file shows the plot of the cumulated deforestation as a function of the distance to forest edge and indicates the distance thresholds (here 240 m for the calibration period).</p>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id9">
 <span id="fig-perc-dist"></span><a class="reference internal image-reference" href="_images/perc_dist.png"><img alt="_images/perc_dist.png" src="_images/perc_dist.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Distance threshold for the calibration period.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-text">Distance threshold for the calibration period.</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The output folders also include the <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_bm_&lt;period&gt;.csv</span></code> table which shows the deforestation rates for each class of deforestation risk (see details <a class="reference external" href="plugin_api.html#defrate-table">here</a>).</p>
@@ -1074,6 +1082,13 @@
 </div>
 <p>Considering a total deforestation <span class="math notranslate nohighlight">\(D\)</span> (in ha) for the next <span class="math notranslate nohighlight">\(Y\)</span> years at the jurisdictional level, the adjustment factor is <span class="math notranslate nohighlight">\(\rho = D / (A \sum_i n_{i} \theta_{m,i})\)</span>, with <span class="math notranslate nohighlight">\(A\)</span> the pixel area in ha, the absolute rate is <span class="math notranslate nohighlight">\(\theta_{a,i} = \rho \theta_{m,i}\)</span>, and the deforestation density is <span class="math notranslate nohighlight">\(\delta_{i} = \theta_{a,i} \times A / Y\)</span>. The deforestation density <span class="math notranslate nohighlight">\(\delta_{i}\)</span> is used to predict the amount of deforestation (in ha/yr) for each forest pixel belonging to a given class of deforestation risk for the next <span class="math notranslate nohighlight">\(Y\)</span> years (for notations, see details <a class="reference external" href="plugin_api.html#defrate-table">here</a>).</p>
 <p>The risk map together with the table of computed deforestation density can be used to <a class="reference external" href="https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/">proportionally allocate fractions</a> of either the jurisdictional unplanned deforestation activity data baseline (in the context of <a class="reference external" href="https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/">VMD0055</a>) or the jurisdictional FREL (in the context of the VCS <a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">Jurisdictional and Nested REDD+</a> Framework) to projects or programs to be implemented within the jurisdiction. To do so, a table with the number of pixels for each class of deforestation risk in the project area must be computed. This is easily done with QGIS tools <code class="docutils literal notranslate"><span class="pre">Raster</span> <span class="pre">&gt;</span> <span class="pre">Extraction</span> <span class="pre">&gt;</span> <span class="pre">Clip</span> <span class="pre">Raster</span> <span class="pre">by</span> <span class="pre">Mask</span> <span class="pre">Layer</span></code> to crop the risk map to the project border and <code class="docutils literal notranslate"><span class="pre">Processing</span> <span class="pre">&gt;</span> <span class="pre">Toolbox</span> <span class="pre">&gt;</span> <span class="pre">Raster</span> <span class="pre">layer</span> <span class="pre">unique</span> <span class="pre">values</span> <span class="pre">report</span></code>.</p>
+<figure class="align-default" id="id10">
+<a class="reference internal image-reference" href="_images/allocation.png"><img alt="_images/allocation.png" src="_images/allocation.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Allocating deforestation to projects within the jurisdiction.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 
