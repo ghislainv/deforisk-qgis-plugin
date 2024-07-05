@@ -16,3 +16,4 @@ Articles
    plugin_api
    articles/subnational_jurisd
    articles/user_data
+   articles/references

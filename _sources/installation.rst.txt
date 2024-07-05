@@ -34,14 +34,13 @@ To install QGIS and GDAL on Windows, use the `OSGeo4W <https://trac.osgeo.org/os
 Install the ``forestatrisk`` and ``riskmapjnr`` Python packages on Windows
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To install the ``forestatrisk`` and ``riskmapjnr`` Python packages, open *OSGeo4W Shell*, upgrade ``pip`` and ``setuptools``, and install ``forestatrisk`` and ``riskmapjnr`` with ``pip``.
+To install the ``forestatrisk`` and ``riskmapjnr`` Python packages, open *OSGeo4W Shell*, and use ``pip``.
 
 .. code:: shell
 
-    python3.exe -m pip install --upgrade pip setuptools
     python3.exe -m pip install forestatrisk riskmapjnr
 
-Note: In case of problems, you can check the version of Python used by OSGeo4W using *OSGeo Shell* and that the package wheels for ``forestatrisk`` and ``riskmapjnr`` are available on `PyPI <https://pypi.org/project/forestatrisk/#files>`_ for your Windows and Python versions. Currently, PyPI provides wheels for Python 3.9 to 3.11 for Windows, Linux, and macOS 64-bit systems.
+Note: In case of problems, you can check the version of Python used by OSGeo4W using *OSGeo Shell* and that the package wheels for ``forestatrisk`` and ``riskmapjnr`` are available on `PyPI <https://pypi.org/project/forestatrisk/#files>`_ for your Windows and Python versions. Currently, PyPI provides wheels for Python >= 3.9 for Windows, Linux, and macOS 64-bit systems.
 
 .. code:: shell
 
