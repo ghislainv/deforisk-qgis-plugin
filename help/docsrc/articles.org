@@ -16,5 +16,6 @@
    plugin_api
    articles/subnational_jurisd
    articles/user_data
+   articles/references
    
 #+end_export

@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Cirad and FAO
+# This file is distributed under the same license as the deforisk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Ghislain Vieilledent, 2024
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: deforisk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-05 12:45-0400\n"
+"PO-Revision-Date: 2024-07-05 16:57+0000\n"
+"Last-Translator: Ghislain Vieilledent, 2024\n"
+"Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#: ../../docsrc/articles/references.rst:3 2b364d3d28cd41e181943bed5e83cabc
+msgid "References"
+msgstr "Références"
+
+#: ../../docsrc/articles/references.rst:12 e6b071d07c434e0b9858f2584b487d35
+msgid "Reports"
+msgstr "Rapports"
+
+#: ../../docsrc/articles/references.rst:14 3e06ef69bb274bac87d665c80e446a35
+msgid ""
+"**Clark labs, TerraCarbon, Carbon Decisions International**. 2024. `VT0007 "
+"Unplanned Deforestation Allocation (UDef-A), v1.0 <https://verra.org/wp-"
+"content/uploads/2024/02/VT0007-Unplanned-Deforestation-"
+"Allocation-v1.0.pdf>`_."
+msgstr ""
+"**Clark labs, TerraCarbon, Carbon Decisions International**. 2024. `VT0007 "
+"Allocation de déforestation non planifiée (UDef-A), v1.0 "
+"<https://verra.org/wp-content/uploads/2024/02/VT0007-Unplanned-"
+"Deforestation-Allocation-v1.0.pdf>`_."
+
+#: ../../docsrc/articles/references.rst:16 6580d46e239847cd9c386d2ba1b71583
+msgid ""
+"**Carbon Decisions International**. 2021. `VT0007 JNR risk mapping tool, "
+"v0.1 <https://verra.org/wp-"
+"content/uploads/2024/02/DRAFT_JNR_Risk_Mapping_Tool_15APR2021.pdf>`_."
+msgstr ""
+"**Carbon Decisions International**. 2021. `VT0007 Outil de cartographie des "
+"risques JNR, v0.1 <https://verra.org/wp-"
+"content/uploads/2024/02/DRAFT_JNR_Risk_Mapping_Tool_15APR2021.pdf>`_."
+
+#: ../../docsrc/articles/references.rst:19 eeaa0194f1924ded8aa44fa1004edf2c
+msgid "Presentations"
+msgstr "Présentations"
+
+#: ../../docsrc/articles/references.rst:21 6af10c7473794bdf8b75a261294f78fe
+msgid ""
+"**Cirad, FAO**. 2024. Risk maps for carbon credit certification. `en "
+"<../_static/references/Cirad2024-riskmap-verra.pdf>`_."
+msgstr ""
+"**Cirad, FAO**. 2024. Cartes de risques pour la certification des crédits "
+"carbone. `en <../_static/references/Cirad2024-riskmap-verra.pdf>`_."
+
+#: ../../docsrc/articles/references.rst:23 77756f7084214aa8bd4f8b89ac71b684
+msgid ""
+"**Cirad, FAO**. 2024. The ``deforisk`` QGIS plugin for deriving and "
+"comparing maps of deforestation risk. `en "
+"<../_static/references/Cirad2024-riskmap-verra.pdf>`_."
+msgstr ""
+"**Cirad, FAO**. 2024. Le plugin QGIS ``deforisk`` pour dériver et comparer "
+"les cartes de risque de déforestation. `en "
+"<../_static/references/Cirad2024-riskmap-verra.pdf>`_."
+
+#: ../../docsrc/articles/references.rst:26 c4f88600d4d94b7c9dab95f90830a725
+msgid "Articles"
+msgstr "Articles"
+
+#: ../../docsrc/articles/references.rst:28 612978b2633c46e9bd6a5886c3e7ed70
+msgid ""
+"**Hansen M. C. et al.** 2013. High-resolution global maps of 21st-century "
+"forest cover change. *Science*. **342** (6160), 850--853. doi: "
+"`10.1126/science.1244693 <https://doi.org/10.1126/science.1244693>`_."
+msgstr ""
+"**Hansen M. C. et al.** 2013. Cartes mondiales à haute résolution du "
+"changement de la couverture forestière au 21e siècle. *Science*. **342** "
+"(6160), 850--853. doi : `10.1126/science.1244693 "
+"<https://doi.org/10.1126/science.1244693>`_."
+
+#: ../../docsrc/articles/references.rst:30 f8996e643d084db881721b7dde3da978
+msgid ""
+"**Vancutsem C., F. Achard, J.-F. Pekel, G. Vieilledent, S. Carboni, D. "
+"Simonetti, J. Gallego, L. E. O. C. Aragão, and R. Nasi.** 2021. Long-term "
+"(1990--2019) monitoring of forest cover changes in the humid tropics. "
+"*Science Advances*. **7** (10): eabe1603. doi: `10.1126/sciadv.abe1603 "
+"<https://doi.org/10.1126/sciadv.abe1603>`_."
+msgstr ""
+"**Vancutsem C., F. Achard, J.-F. Pekel, G. Vieilledent, S. Carboni, D. "
+"Simonetti, J. Gallego, L. E. O. C. Aragão, et R. Nasi.** 2021. Surveillance "
+"à long terme (1990--2019) des changements de la couverture forestière dans "
+"les tropiques humides. *Science Advances*. **7** (10) : eabe1603. doi : "
+"`10.1126/sciadv.abe1603 <https://doi.org/10.1126/sciadv.abe1603>`_."
+
+#: ../../docsrc/articles/references.rst:32 50f0d959fb4a4a889b2c1d9e687fa321
+msgid ""
+"**Vieilledent G., C. Vancutsem, C. Bourgoin, P. Ploton, P. Verley, and F. "
+"Achard.** 2023. Spatial scenario of tropical deforestation and carbon "
+"emissions for the 21\\ :sup:`st`\\ century. *bioRxiv*. 485306. doi: "
+"`10.1101/2022.03.22.485306 <https://doi.org/10.1101/2022.03.22.485306>`_."
+msgstr ""
+"**Vieilledent G., C. Vancutsem, C. Bourgoin, P. Ploton, P. Verley, et F. "
+"Achard.** 2023. Scénario spatial de déforestation tropicale et d'émissions "
+"de carbone pour le 21e siècle. *bioRxiv*. 485306. doi : "
+"`10.1101/2022.03.22.485306 <https://doi.org/10.1101/2022.03.22.485306>`_."
+
+#: ../../docsrc/articles/references.rst:34 b39d6abf444d4636b406125cd1257cd7
+msgid ""
+"**Vieilledent G.** 2021. ``forestatrisk``: a Python package for modelling "
+"and forecasting deforestation in the tropics. *Journal of Open Source "
+"Software*. **6** (59): 2975. doi: `10.21105/joss.02975 "
+"<https://doi.org/10.21105/joss.02975>`_."
+msgstr ""
+"**Vieilledent G.** 2021. ``forestatrisk`` : un paquetage Python pour la "
+"modélisation et la prévision de la déforestation dans les tropiques. "
+"*Journal of Open Source Software*. **6** (59) : 2975. doi : "
+"`10.21105/joss.02975 <https://doi.org/10.21105/joss.02975>`_."
+
+#: ../../docsrc/articles/references.rst:37 4264a9d175304265b7cde25df6c30b1c
+msgid "Software"
+msgstr "Logiciel"
+
+#: ../../docsrc/articles/references.rst:39 bdb65ccc1b214527878668bfcd0a00b0
+msgid ""
+"**Clark Labs, TerraCarbon**. UDef-ARP software. "
+"`https://github.com/ClarkCGA/UDef-ARP <https://github.com/ClarkCGA/UDef-"
+"ARP>`_."
+msgstr ""
+"**Clark Labs, TerraCarbon**. Logiciel UDef-ARP. "
+"`https://github.com/ClarkCGA/UDef-ARP <https://github.com/ClarkCGA/UDef-"
+"ARP>`_."
+
+#: ../../docsrc/articles/references.rst:41 1672964b0ecc414aba9600d0512d5d59
+msgid ""
+"**Clark Labs, TerraCarbon**. UDef-ARP QGIS plugin. "
+"`https://github.com/ClarkCGA/UDef-ARP-Plugin "
+"<https://github.com/ClarkCGA/UDef-ARP-Plugin>`_."
+msgstr ""
+"**Clark Labs, TerraCarbon**. Plugin QGIS UDef-ARP. "
+"`https://github.com/ClarkCGA/UDef-ARP-Plugin "
+"<https://github.com/ClarkCGA/UDef-ARP-Plugin>`_."

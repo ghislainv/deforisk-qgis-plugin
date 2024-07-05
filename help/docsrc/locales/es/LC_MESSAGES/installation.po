@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 14:07-0400\n"
+"POT-Creation-Date: 2024-07-05 12:45-0400\n"
 "PO-Revision-Date: 2024-07-01 18:38+0000\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)\n"
@@ -127,38 +127,36 @@ msgstr ""
 #: ../../docsrc/installation.rst:37 1516ddf43e4344a5ac9f67955f333aaf
 msgid ""
 "To install the ``forestatrisk`` and ``riskmapjnr`` Python packages, open "
-"*OSGeo4W Shell*, upgrade ``pip`` and ``setuptools``, and install "
-"``forestatrisk`` and ``riskmapjnr`` with ``pip``."
+"*OSGeo4W Shell*, and use ``pip``."
 msgstr ""
-"Para instalar los paquetes Python ``forestatrisk`` y ``riskmapjnr``, abre "
-"*OSGeo4W Shell*, actualiza ``pip`` y ``setuptools``, e instala "
-"``forestatrisk`` y ``riskmapjnr`` con ``pip``."
+"Para instalar los paquetes Python ``forestatrisk`` y ``riskmapjnr``, abra "
+"*OSGeo4W Shell*, y utilice ``pip``."
 
-#: ../../docsrc/installation.rst:44 1b27207822044e42af696cf642037abe
+#: ../../docsrc/installation.rst:43 1b27207822044e42af696cf642037abe
 msgid ""
 "Note: In case of problems, you can check the version of Python used by "
 "OSGeo4W using *OSGeo Shell* and that the package wheels for ``forestatrisk``"
 " and ``riskmapjnr`` are available on `PyPI "
 "<https://pypi.org/project/forestatrisk/#files>`_ for your Windows and Python"
-" versions. Currently, PyPI provides wheels for Python 3.9 to 3.11 for "
-"Windows, Linux, and macOS 64-bit systems."
+" versions. Currently, PyPI provides wheels for Python >= 3.9 for Windows, "
+"Linux, and macOS 64-bit systems."
 msgstr ""
 "Nota: En caso de problemas, puedes comprobar la versión de Python usada por "
 "OSGeo4W usando *OSGeo Shell* y que las ruedas de paquetes para "
 "``forestatrisk`` y ``riskmapjnr`` están disponibles en `PyPI "
 "<https://pypi.org/project/forestatrisk/#files>`_ para tus versiones de "
-"Windows y Python. Actualmente, PyPI proporciona ruedas para Python 3.9 a "
-"3.11 para sistemas Windows, Linux y macOS de 64 bits."
+"Windows y Python. Actualmente, PyPI proporciona ruedas para Python >= 3.9 "
+"para sistemas Windows, Linux y macOS de 64 bits."
 
-#: ../../docsrc/installation.rst:51 2a5ee9297c684df5b98c93ade8ee7a80
+#: ../../docsrc/installation.rst:50 2a5ee9297c684df5b98c93ade8ee7a80
 msgid "On Unix-like systems (Linux and macOS)"
 msgstr "En sistemas tipo Unix (Linux y macOS)"
 
-#: ../../docsrc/installation.rst:54 110d8e60a9d840ca8f4361c876f1bcca
+#: ../../docsrc/installation.rst:53 110d8e60a9d840ca8f4361c876f1bcca
 msgid "Install QGIS and GDAL on Unix-like systems"
 msgstr "Instalar QGIS y GDAL en sistemas tipo Unix"
 
-#: ../../docsrc/installation.rst:56 6b2505774b6b457689005cca0765049a
+#: ../../docsrc/installation.rst:55 6b2505774b6b457689005cca0765049a
 msgid ""
 "Install QGIS and GDAL on your system, for example using ``apt-get`` for "
 "Debian/Ubuntu Linux distributions."
@@ -166,7 +164,7 @@ msgstr ""
 "Instala QGIS y GDAL en tu sistema, por ejemplo utilizando ``apt-get`` para "
 "distribuciones Linux Debian/Ubuntu."
 
-#: ../../docsrc/installation.rst:63 61520959e7924d3392ba5966dd6faa36
+#: ../../docsrc/installation.rst:62 61520959e7924d3392ba5966dd6faa36
 msgid ""
 "After installing GDAL, you can test the installation by running ``gdalinfo "
 "--version`` in the command prompt or terminal, which should display the "
@@ -176,11 +174,11 @@ msgstr ""
 "``gdalinfo --version`` en el símbolo del sistema o en el terminal, que "
 "debería mostrar la versión de GDAL instalada."
 
-#: ../../docsrc/installation.rst:66 3fe6dcfb06d745e781ad421cd7f56a52
+#: ../../docsrc/installation.rst:65 3fe6dcfb06d745e781ad421cd7f56a52
 msgid "Install ``osmconvert`` and ``osmfilter``"
 msgstr "Instalar ``osmconvert`` y ``osmfilter``"
 
-#: ../../docsrc/installation.rst:68 9e813410c804412b99cc50db90388c66
+#: ../../docsrc/installation.rst:67 9e813410c804412b99cc50db90388c66
 msgid ""
 "On Unix-like systems, you must also install osmconvert and osmfilter before "
 "using the ``deforisk`` plugin. osmconvert can be used to convert and process"
@@ -199,7 +197,7 @@ msgstr ""
 "<https://wiki.openstreetmap.org/wiki/Osmconvert>`_ y `osmfilter "
 "<https://wiki.openstreetmap.org/wiki/Osmfilter>`_."
 
-#: ../../docsrc/installation.rst:71 c11b7d0b82b74902a7e21598f7f2ba0e
+#: ../../docsrc/installation.rst:70 c11b7d0b82b74902a7e21598f7f2ba0e
 msgid ""
 "Install the ``forestatrisk`` and ``riskmapjnr`` Python packages on Unix-like"
 " systems"
@@ -207,7 +205,7 @@ msgstr ""
 "Instalar los paquetes Python ``forestatrisk`` y ``riskmapjnr`` en sistemas "
 "Unix-like"
 
-#: ../../docsrc/installation.rst:73 fb02c7182e71431d964a3996d3d3202c
+#: ../../docsrc/installation.rst:72 fb02c7182e71431d964a3996d3d3202c
 msgid ""
 "On recent systems, you cannot use pip to install Python packages system-"
 "wide. As a consequence, we need to create a virtual environment and install "
@@ -223,7 +221,7 @@ msgstr ""
 "``gdal==$(gdal-config --version)``. Una vez instalados el paquete y sus "
 "dependencias, se puede desactivar el entorno virtual."
 
-#: ../../docsrc/installation.rst:82 9b5a2ed8ed7648c5838c25a07b541f3f
+#: ../../docsrc/installation.rst:81 9b5a2ed8ed7648c5838c25a07b541f3f
 msgid ""
 "Then, in the ``startup.py`` `Python file "
 "<https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-"
@@ -239,11 +237,11 @@ msgstr ""
 "Python). Estas dos líneas se ejecutarán al arrancar QGIS y añadirán la ruta "
 "de los paquetes instalados en el entorno virtual a ``sys.path``."
 
-#: ../../docsrc/installation.rst:90 490c3eb956e04279b5bdd9dea693f23a
+#: ../../docsrc/installation.rst:89 490c3eb956e04279b5bdd9dea693f23a
 msgid "Access to GEE and WDPA"
 msgstr "Acceso a GEE y WDPA"
 
-#: ../../docsrc/installation.rst:92 ae774cb071364201994997fa5e7cbe21
+#: ../../docsrc/installation.rst:91 ae774cb071364201994997fa5e7cbe21
 msgid ""
 "The plugin download forest data from Google Earth Engine (GEE) using the "
 "``geefcc`` Python package and protected area data from the World Database on"
@@ -255,11 +253,11 @@ msgstr ""
 "Datos Mundial de Áreas Protegidas (WDPA) utilizando el paquete ``pywdpa`` de"
 " Python. Necesitarás acceso a GEE y WDPA para poder utilizar el plugin."
 
-#: ../../docsrc/installation.rst:95 32e5eb6b4c35474c9f5ff131fa425ea1
+#: ../../docsrc/installation.rst:94 32e5eb6b4c35474c9f5ff131fa425ea1
 msgid "Access to GEE"
 msgstr "Acceso a GEE"
 
-#: ../../docsrc/installation.rst:97 6cc5082c70e54bf18bc823bcc3954472
+#: ../../docsrc/installation.rst:96 6cc5082c70e54bf18bc823bcc3954472
 msgid ""
 "To be able to use GEE, you will need either (i) a Google account and a "
 "Google Cloud project that is `registered to use Earth Engine "
@@ -278,7 +276,7 @@ msgstr ""
 "`registrar un proyecto para utilizar Earth Engine "
 "<https://code.earthengine.google.com/register>`_."
 
-#: ../../docsrc/installation.rst:99 82113fa2a1ec4d218c9ecb916676095a
+#: ../../docsrc/installation.rst:98 82113fa2a1ec4d218c9ecb916676095a
 msgid ""
 "In the ``deforisk`` plugin, for the ``Earth Engine access`` argument "
 "available in the “Get variables” tab, you must indicate either the name of a"
@@ -297,11 +295,11 @@ msgstr ""
 msgid "Earth Engine access"
 msgstr "Acceso a Earth Engine"
 
-#: ../../docsrc/installation.rst:106 89076848a0964d29b69ba533ff85279a
+#: ../../docsrc/installation.rst:105 89076848a0964d29b69ba533ff85279a
 msgid "Access to WDPA"
 msgstr "Acceso a la base de datos WDPA"
 
-#: ../../docsrc/installation.rst:108 afa8af39017343c8b2840407f59cfb10
+#: ../../docsrc/installation.rst:107 afa8af39017343c8b2840407f59cfb10
 msgid ""
 "To uses the Protected Planet API to access data on world protected areas, "
 "you must first have obtained a Personal API Token by filling in the `form "
@@ -312,7 +310,7 @@ msgstr ""
 "rellenando el `formulario <https://api.protectedplanet.net/request>`_ "
 "disponible en Protected Planet."
 
-#: ../../docsrc/installation.rst:110 006f124a850547289d5a1b7beb24eff7
+#: ../../docsrc/installation.rst:109 006f124a850547289d5a1b7beb24eff7
 msgid ""
 "In the ``deforisk`` plugin, for the ``WDPA access`` argument available in "
 "the “Get variables” tab, you must indicate either your Personal API Token (a"
@@ -333,11 +331,11 @@ msgstr ""
 msgid "WDPA access"
 msgstr "Acceso WDPA"
 
-#: ../../docsrc/installation.rst:117 09e510accd3148cc81b744bdd2ed0cdd
+#: ../../docsrc/installation.rst:116 09e510accd3148cc81b744bdd2ed0cdd
 msgid "Installing the ``deforisk`` plugin in QGIS"
 msgstr "Instalación del plugin ``deforisk`` en QGIS"
 
-#: ../../docsrc/installation.rst:119 3afd73ac21e54e3a84412c769cbdb8e0
+#: ../../docsrc/installation.rst:118 3afd73ac21e54e3a84412c769cbdb8e0
 msgid ""
 "Download the ``deforisk`` `zip file <https://github.com/ghislainv/deforisk-"
 "qgis-plugin/archive/refs/tags/v0.5.zip>`_ from GitHub."
@@ -346,17 +344,17 @@ msgstr ""
 "<https://github.com/ghislainv/deforisk-qgis-"
 "plugin/archive/refs/tags/v0.5.zip>`_ de GitHub."
 
-#: ../../docsrc/installation.rst:121 9f3deaebd2a547e1ab42c7b1a966b36e
+#: ../../docsrc/installation.rst:120 9f3deaebd2a547e1ab42c7b1a966b36e
 msgid "Open QGIS."
 msgstr "Abra QGIS."
 
-#: ../../docsrc/installation.rst:123 f1d705f453004592a7e4d8b656637443
+#: ../../docsrc/installation.rst:122 f1d705f453004592a7e4d8b656637443
 msgid ""
 "In QGIS menu bar, go to ``Extensions/Install extensions/Install from ZIP``."
 msgstr ""
 "En la barra de menú de QGIS, vaya a ``Extensiones/Instalar "
 "extensiones/Instalar desde ZIP``."
 
-#: ../../docsrc/installation.rst:125 f4534de7efa44144ad339139771670e9
+#: ../../docsrc/installation.rst:124 f4534de7efa44144ad339139771670e9
 msgid "Select the zip file that has been downloaded."
 msgstr "Seleccione el archivo zip que se ha descargado."
