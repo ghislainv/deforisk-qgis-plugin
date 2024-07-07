@@ -18,9 +18,9 @@ Reports
 Presentations
 -------------
 
-**Cirad, FAO**. 2024. Jurisdictional risk maps for allocating deforestation. `en <../_static/references/Cirad2024-riskmap-verra.pdf>`_.
+**Cirad, FAO**. 2024. `Jurisdictional risk maps for allocating deforestation <../_static/references/Cirad2024-riskmap-verra.pdf>`_.
 
-**Cirad, FAO**. 2024. The ``deforisk`` QGIS plugin for deriving and comparing maps of deforestation risk. `en <../_static/references/Cirad2024-riskmap-verra.pdf>`_.
+**Cirad, FAO**. 2024. The ``deforisk`` QGIS plugin for deriving and comparing maps of deforestation risk. (to be done)
 
 Articles
 --------
