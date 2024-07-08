@@ -122,8 +122,8 @@
     
     
     
-    <img src="_static/logo-deforisk.svg" class="logo__image only-light" alt=""/>
-    <script>document.write(`<img src="_static/logo-deforisk.svg" class="logo__image only-dark" alt=""/>`);</script>
+    <img src="_static/logo-deforisk.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="_static/logo-deforisk.png" class="logo__image only-dark" alt=""/>`);</script>
   
   
     <p class="title logo__title">deforisk QGIS plugin</p>
@@ -268,17 +268,6 @@
           
           
           <a href="https://www.cirad.fr/en" title="Cirad" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_cirad.png" class="icon-link-image" alt="Cirad"/></a>
-        </li>
-        <li class="nav-item">
-          
-          
-          
-          
-          
-          
-          
-          
-          <a href="https://www.fao.org" title="FAO" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/logo_fao.png" class="icon-link-image" alt="FAO"/></a>
         </li>
 </ul></div>
       
@@ -441,17 +430,6 @@
           
           <a href="https://www.cirad.fr/en" title="Cirad" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_cirad.png" class="icon-link-image" alt="Cirad"/></a>
         </li>
-        <li class="nav-item">
-          
-          
-          
-          
-          
-          
-          
-          
-          <a href="https://www.fao.org" title="FAO" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/logo_fao.png" class="icon-link-image" alt="FAO"/></a>
-        </li>
 </ul></div>
         
       </div>
@@ -481,7 +459,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <a class="reference external image-reference" href="https://ecology.ghislainv.fr/deforisk-qgis-plugin"><img alt="Logo riskmapjnr" class="align-right" src="https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-deforisk.svg" width="140px" /></a>
+  <a class="reference external image-reference" href="https://ecology.ghislainv.fr/deforisk-qgis-plugin"><img alt="Logo riskmapjnr" class="align-right" src="https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-deforisk.png" style="width: 140px;" />
+</a>
 <section id="deforisk-qgis-plugin">
 <h1>Plugin QGIS deforisk<a class="headerlink" href="#deforisk-qgis-plugin" title="Link to this heading">#</a></h1>
 <a class="reference external image-reference" href="https://www.gnu.org/licenses/gpl-3.0.html"><img alt="https://img.shields.io/badge/licence-GPLv3-8f10cb.svg" src="https://img.shields.io/badge/licence-GPLv3-8f10cb.svg" /></a>
@@ -492,6 +471,10 @@
 <a class="reference external image-reference" href="https://ecology.ghislainv.fr/pywdpa"><img alt="https://img.shields.io/badge/python-pywdpa-90b478?logo=python&amp;logoColor=ffd43b&amp;.svg" src="https://img.shields.io/badge/python-pywdpa-90b478?logo=python&amp;logoColor=ffd43b&amp;.svg" /></a>
 <a class="reference external image-reference" href="https://ecology.ghislainv.fr/geefcc"><img alt="https://img.shields.io/badge/python-geefcc-3c8c3c?logo=python&amp;logoColor=ffd43b&amp;.svg" src="https://img.shields.io/badge/python-geefcc-3c8c3c?logo=python&amp;logoColor=ffd43b&amp;.svg" /></a>
 <a class="reference external image-reference" href="https://doi.org/10.5281/zenodo.12593893"><img alt="https://zenodo.org/badge/DOI/10.5281/zenodo.12593893.svg" src="https://zenodo.org/badge/DOI/10.5281/zenodo.12593893.svg" /></a>
+<section id="languages">
+<h2>Idiomas<a class="headerlink" href="#languages" title="Link to this heading">#</a></h2>
+<p>El sitio web del plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> para QGIS está disponible en inglés <a class="reference external" href="https://ecology.ghislainv.fr/deforisk-qgis-plugin/"><img alt="icon_en" src="https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_en.png" style="width: 20px;" /></a> o español <a class="reference external" href="https://ecology.ghislainv.fr/deforisk-qgis-plugin/es"><img alt="icon_es" src="https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_es.png" style="width: 20px;" /></a>.</p>
+</section>
 <section id="aim">
 <h2>Objetivo<a class="headerlink" href="#aim" title="Link to this heading">#</a></h2>
 <p>El plugin QGIS <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> puede utilizarse para cartografiar el riesgo de deforestación de un país o área de interés. Se pueden utilizar cuatro modelos para obtener los mapas de riesgo: los modelos iCAR, GLM, Random Forest y Moving Window. Estos cuatro modelos pueden ser comparados con un modelo de referencia que asume una simple disminución del riesgo de deforestación con la distancia al borde del bosque. Todos los modelos se calibran utilizando observaciones de deforestación pasadas para un periodo de tiempo determinado entre 2000 y 2022. Los mapas de cambio de la cubierta forestal pueden ser proporcionados por el usuario o ser derivadas de dos productos de cambio global de la cubierta arbórea/forestal: <a class="reference external" href="https://earthenginepartners.appspot.com/science-2013-global-forest">Global Forest Change</a> y <a class="reference external" href="https://forobs.jrc.ec.europa.eu/TMF">Tropical Moist Forests</a>.</p>
@@ -518,7 +501,7 @@
 <h2>Instalación del plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> en QGIS<a class="headerlink" href="#installing-the-deforisk-plugin-in-qgis" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Dependencias</strong>: <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> y <a class="reference external" href="https://gdal.org/index.html">GDAL</a> deben estar instaladas en su sistema antes de utilizar el plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>. <em>En sistemas Unix</em>, también debe instalar <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmconvert">osmconvert</a> y <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a>. <em>En sistemas Windows</em>, estas dependencias ya están incluidas en el plugin como archivos binarios <code class="docutils literal notranslate"><span class="pre">.exe</span></code>, por lo que no es necesario instalarlas. A continuación, los paquetes de Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> deben estar instalados en tu sistema. Siga las <a class="reference external" href="installation.html">instrucciones de instalación</a> para instalar estas dependencias.</p>
+<p><strong>Dependencias</strong>: <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> y <a class="reference external" href="https://gdal.org/index.html">GDAL</a> deben estar instaladas en su sistema antes de utilizar el plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>. <em>En sistemas Unix</em>, también debe instalar <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmconvert">osmconvert</a> y <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a>. <em>En sistemas Windows</em>, estas dependencias ya están incluidas en el complemento como archivos binarios <code class="docutils literal notranslate"><span class="pre">.exe</span></code>, por lo que no es necesario instalarlas. A continuación, los paquetes de Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> deben estar instalados en tu sistema. Siga las <a class="reference external" href="installation.html">instrucciones de instalación</a> para instalar estas dependencias.</p>
 </div>
 <ul class="simple">
 <li><p>Descarga el archivo <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> <a class="reference external" href="https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip">zip</a> de GitHub.</p></li>
@@ -580,6 +563,7 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#languages">Idiomas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Objetivo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specificities">Especificidades</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-deforisk-plugin-in-qgis">Instalación del plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> en QGIS</a></li>

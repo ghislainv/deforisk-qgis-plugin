@@ -4,7 +4,7 @@
     modify it. If you want to make changes to this file, modify the
     index.org source file directly.
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-deforisk.svg
+.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-deforisk.png
     :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin
     :align: right
     :width: 140px
@@ -30,6 +30,19 @@ deforisk QGIS plugin
     :target: https://ecology.ghislainv.fr/geefcc
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.12593893.svg
     :target: https://doi.org/10.5281/zenodo.12593893
+
+Languages
+---------
+
+.. |icon_en| image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_en.png
+   :width: 20px
+   :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin/
+
+.. |icon_es| image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_es.png
+   :width: 20px
+   :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin/es
+
+The ``deforisk`` QGIS plugin website is available in English |icon_en| or Spanish |icon_es|.
 
 Aim
 ---
