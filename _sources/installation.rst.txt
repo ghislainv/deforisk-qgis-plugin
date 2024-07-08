@@ -38,7 +38,7 @@ To install the ``forestatrisk`` and ``riskmapjnr`` Python packages, open *OSGeo4
 
 .. code:: shell
 
-    python3.exe -m pip install forestatrisk riskmapjnr
+    python3.exe -m pip install --upgrade forestatrisk riskmapjnr
 
 Note: In case of problems, you can check the version of Python used by OSGeo4W using *OSGeo Shell* and that the package wheels for ``forestatrisk`` and ``riskmapjnr`` are available on `PyPI <https://pypi.org/project/forestatrisk/#files>`_ for your Windows and Python versions. Currently, PyPI provides wheels for Python >= 3.9 for Windows, Linux, and macOS 64-bit systems.
 
@@ -75,7 +75,7 @@ On recent systems, you cannot use pip to install Python packages system-wide. As
 
     python3 -m venv /path/to/venv
     source  /path/to/venv/bin/activate
-    python3 -m pip install forestatrisk riskmapjnr gdal==$(gdal-config --version)
+    python3 -m pip install --upgrade forestatrisk riskmapjnr gdal==$(gdal-config --version)
     deactivate
 
 Then, in the ``startup.py`` `Python file <https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts>`_, add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to ``sys.path``.
@@ -115,7 +115,7 @@ In the ``deforisk`` plugin, for the ``WDPA access`` argument available in the â€
 Installing the ``deforisk`` plugin in QGIS
 ------------------------------------------
 
-- Download the ``deforisk`` `zip file <https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/tags/v0.5.zip>`_ from GitHub.
+- Download the ``deforisk`` `zip file <https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip>`_ from GitHub.
 
 - Open QGIS.
 

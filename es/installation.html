@@ -529,7 +529,7 @@
 <section id="install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows">
 <h3>Instalar los paquetes Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> en Windows<a class="headerlink" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows" title="Link to this heading">#</a></h3>
 <p>Para instalar los paquetes Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code>, abra <em>OSGeo4W Shell</em>, y utilice <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3.exe<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3.exe<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr
 </pre></div>
 </div>
 <p>Nota: En caso de problemas, puedes comprobar la versión de Python usada por OSGeo4W usando <em>OSGeo Shell</em> y que las ruedas de paquetes para <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> están disponibles en <a class="reference external" href="https://pypi.org/project/forestatrisk/#files">PyPI</a> para tus versiones de Windows y Python. Actualmente, PyPI proporciona ruedas para Python &gt;= 3.9 para sistemas Windows, Linux y macOS de 64 bits.</p>
@@ -558,7 +558,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <p>En sistemas recientes, no se puede utilizar pip para instalar paquetes Python en todo el sistema. Como consecuencia, necesitamos crear un entorno virtual e instalar los paquetes <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> en él. Asegúrate también de instalar los enlaces GDAL apropiados usando <code class="docutils literal notranslate"><span class="pre">gdal==$(gdal-config</span> <span class="pre">--version)</span></code>. Una vez instalados el paquete y sus dependencias, se puede desactivar el entorno virtual.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>/path/to/venv
 <span class="nb">source</span><span class="w">  </span>/path/to/venv/bin/activate
-python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr<span class="w"> </span><span class="nv">gdal</span><span class="o">==</span><span class="k">$(</span>gdal-config<span class="w"> </span>--version<span class="k">)</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr<span class="w"> </span><span class="nv">gdal</span><span class="o">==</span><span class="k">$(</span>gdal-config<span class="w"> </span>--version<span class="k">)</span>
 deactivate
 </pre></div>
 </div>
@@ -590,7 +590,7 @@ deactivate
 <section id="installing-the-deforisk-plugin-in-qgis">
 <h2>Instalación del plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> en QGIS<a class="headerlink" href="#installing-the-deforisk-plugin-in-qgis" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Descarga el archivo <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> <a class="reference external" href="https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/tags/v0.5.zip">zip</a> de GitHub.</p></li>
+<li><p>Descarga el <a class="reference external" href="https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip">archivo zip</a> que contiene el plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> desde GitHub.</p></li>
 <li><p>Abra QGIS.</p></li>
 <li><p>En la barra de menú de QGIS, vaya a <code class="docutils literal notranslate"><span class="pre">Extensiones/Instalar</span> <span class="pre">extensiones/Instalar</span> <span class="pre">desde</span> <span class="pre">ZIP</span></code>.</p></li>
 <li><p>Seleccione el archivo zip que se ha descargado.</p></li>
