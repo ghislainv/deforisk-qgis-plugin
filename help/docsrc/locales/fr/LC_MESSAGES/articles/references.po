@@ -60,12 +60,16 @@ msgid ""
 "**Cirad, FAO**. 2024. `Jurisdictional risk maps for allocating deforestation"
 " <../_static/references/Cirad2024-riskmap-verra.pdf>`_."
 msgstr ""
+"**Cirad, FAO**. 2024. Cartes de risque juridictionnelles pour l'allocation "
+"de la déforestation <../_static/references/Cirad2024-riskmap-verra.pdf>`_."
 
 #: ../../docsrc/articles/references.rst:23 77756f7084214aa8bd4f8b89ac71b684
 msgid ""
 "**Cirad, FAO**. 2024. The ``deforisk`` QGIS plugin for deriving and "
 "comparing maps of deforestation risk. (to be done)"
 msgstr ""
+"**Cirad, FAO**. 2024. Le plugin QGIS ``deforisk`` pour dériver et comparer "
+"les cartes de risque de déforestation. (à faire)"
 
 #: ../../docsrc/articles/references.rst:26 c4f88600d4d94b7c9dab95f90830a725
 msgid "Articles"
