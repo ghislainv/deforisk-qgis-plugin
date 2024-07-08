@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 14:07-0400\n"
+"POT-Creation-Date: 2024-07-08 15:04-0400\n"
 "PO-Revision-Date: 2024-07-01 18:38+0000\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
@@ -33,11 +33,31 @@ msgstr "Logo riskmapjnr"
 msgid "deforisk QGIS plugin"
 msgstr "déforcer le plugin QGIS"
 
-#: ../../docsrc/README.rst:35 c284466984b54b0293194e3773597821
+#: ../../docsrc/README.rst:35 b4932a1beb47485e8293ee5bbd2a8655
+msgid "Languages"
+msgstr "Langues"
+
+#: ../../docsrc/README.rst:45 5fbaf62244e449a6a2e001f6c38ff200
+msgid ""
+"The ``deforisk`` QGIS plugin website is available in English |icon_en| or "
+"Spanish |icon_es|."
+msgstr ""
+"Le site web du plugin QGIS ``deforisk`` est disponible en anglais |icon_en| "
+"ou en espagnol |icon_es|."
+
+#: ../../docsrc/README.rst:0 2b43bce80298493c804f0a1830991863
+msgid "icon_en"
+msgstr "icon_en"
+
+#: ../../docsrc/README.rst:0 2b43bce80298493c804f0a1830991863
+msgid "icon_es"
+msgstr "icon_es"
+
+#: ../../docsrc/README.rst:48 c284466984b54b0293194e3773597821
 msgid "Aim"
 msgstr "Objectif"
 
-#: ../../docsrc/README.rst:37 c0ba0464c01d45a19fcb01ef78e337af
+#: ../../docsrc/README.rst:50 c0ba0464c01d45a19fcb01ef78e337af
 msgid ""
 "The ``deforisk`` QGIS plugin can be used to map the deforestation risk for a"
 " country or area of interest. Four models can be used to derive the risk "
@@ -65,7 +85,7 @@ msgstr ""
 "forest>`_ et `Tropical Moist Forests "
 "<https://forobs.jrc.ec.europa.eu/TMF>`_."
 
-#: ../../docsrc/README.rst:39 5e7f1f6d817b4b8991d9f7814012db1f
+#: ../../docsrc/README.rst:52 5e7f1f6d817b4b8991d9f7814012db1f
 msgid ""
 "Deforestation risk maps obtained using this plugin can be used to estimate "
 "emission reduction impact of forest conservation projects within the `VCS "
@@ -82,11 +102,11 @@ msgstr ""
 msgid "Banner"
 msgstr "Bannière"
 
-#: ../../docsrc/README.rst:46 6585ef5ff8b44ace9ac97dc4af7e3118
+#: ../../docsrc/README.rst:59 6585ef5ff8b44ace9ac97dc4af7e3118
 msgid "Specificities"
 msgstr "Spécificités"
 
-#: ../../docsrc/README.rst:48 0ab12a6c7dd04429a4f54eb2e62b56e7
+#: ../../docsrc/README.rst:61 0ab12a6c7dd04429a4f54eb2e62b56e7
 msgid ""
 "**Python based.** The ``deforisk`` plugin relies on four Python packages "
 "developed specifically for modelling deforestation: ``geefcc``, ``pywdpa``, "
@@ -139,7 +159,7 @@ msgstr "forêt-risque"
 msgid "riskmapjnr"
 msgstr "riskmapjnr"
 
-#: ../../docsrc/README.rst:70 815f945be1544e4c893050a43b797567
+#: ../../docsrc/README.rst:83 815f945be1544e4c893050a43b797567
 msgid ""
 "**Processing raster by blocks.** Raster files of forest cover change and "
 "explanatory variables might occupy a space of several gigabytes on disk. "
@@ -165,7 +185,7 @@ msgstr ""
 "dont le noyau est principalement constitué de code C optimisé et compilé qui"
 " s'exécute rapidement."
 
-#: ../../docsrc/README.rst:72 d58d5c8592a4421c94bde6f23f16170e
+#: ../../docsrc/README.rst:85 d58d5c8592a4421c94bde6f23f16170e
 msgid ""
 "**Running tasks in parallel.** State-of-the-art approach to select the best "
 "deforestation risk map and forecast deforestation implies comparing various "
@@ -183,7 +203,7 @@ msgstr ""
 "gestionnaire de tâches de QGIS qui permet d'exécuter plusieurs analyses en "
 "parallèle."
 
-#: ../../docsrc/README.rst:74 e01261c7a73740fd9fdf1a1913705450
+#: ../../docsrc/README.rst:87 e01261c7a73740fd9fdf1a1913705450
 msgid ""
 "**OS independent.** Using both computation by block for large rasters and "
 "task parallelization, the ``deforisk`` plugin allows selecting the best "
@@ -202,11 +222,11 @@ msgstr ""
 "tous les systèmes d'exploitation capables d'exécuter QGIS, y compris Windows"
 " (:math:`\\geq10`), Linux, et Mac OS."
 
-#: ../../docsrc/README.rst:77 67b1143924544abf90884a3486b717b8
+#: ../../docsrc/README.rst:90 67b1143924544abf90884a3486b717b8
 msgid "Installing the ``deforisk`` plugin in QGIS"
 msgstr "Installation du plugin ``deforisk`` dans QGIS"
 
-#: ../../docsrc/README.rst:81 b2bfa13a419b4ce6be715af443c89739
+#: ../../docsrc/README.rst:94 b2bfa13a419b4ce6be715af443c89739
 msgid ""
 "**Dependencies**: `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL "
 "<https://gdal.org/index.html>`_ must be installed on your system before "
@@ -231,7 +251,7 @@ msgstr ""
 "installés sur votre système. Suivez les `instructions d'installation "
 "<installation.html>`_ pour installer ces dépendances."
 
-#: ../../docsrc/README.rst:83 937214a8e74047b987dc59de9e5249cf
+#: ../../docsrc/README.rst:96 937214a8e74047b987dc59de9e5249cf
 msgid ""
 "Download the ``deforisk`` `zip file <https://github.com/ghislainv/deforisk-"
 "qgis-plugin/archive/refs/heads/main.zip>`_ from GitHub."
@@ -240,26 +260,26 @@ msgstr ""
 "<https://github.com/ghislainv/deforisk-qgis-"
 "plugin/archive/refs/heads/main.zip>`_ depuis GitHub."
 
-#: ../../docsrc/README.rst:85 7974701c09774a36a125277e2c8dd3d7
+#: ../../docsrc/README.rst:98 7974701c09774a36a125277e2c8dd3d7
 msgid "Open QGIS."
 msgstr "Ouvrir QGIS."
 
-#: ../../docsrc/README.rst:87 141c7dbe567c4b89918ddab5c70194f3
+#: ../../docsrc/README.rst:100 141c7dbe567c4b89918ddab5c70194f3
 msgid ""
 "In QGIS menu bar, go to ``Extensions/Install extensions/Install from ZIP``."
 msgstr ""
 "Dans la barre de menu de QGIS, allez dans ``Extensions/Installer des "
 "extensions/Installer à partir du ZIP``."
 
-#: ../../docsrc/README.rst:89 c264f7a311eb47e9b311397e9246a2fc
+#: ../../docsrc/README.rst:102 c264f7a311eb47e9b311397e9246a2fc
 msgid "Select the zip file that has been downloaded."
 msgstr "Sélectionnez le fichier zip qui a été téléchargé."
 
-#: ../../docsrc/README.rst:92 2569c644735a4b3eb9fa5f8304f67dd4
+#: ../../docsrc/README.rst:105 2569c644735a4b3eb9fa5f8304f67dd4
 msgid "Funding"
 msgstr "Financement"
 
-#: ../../docsrc/README.rst:94 4eabe7b1c1954e3ca6a92f8ff945e242
+#: ../../docsrc/README.rst:107 4eabe7b1c1954e3ca6a92f8ff945e242
 msgid ""
 "The development of the plugin has been funded by `Cirad "
 "<https://www.cirad.fr/en/>`_ and `FAO <https://www.fao.org/>`_."
@@ -275,11 +295,11 @@ msgstr "Logo Cirad"
 msgid "Logo FAO"
 msgstr "Logo FAO"
 
-#: ../../docsrc/README.rst:108 2c750bb6e9bf46c397e8074f058fcadd
+#: ../../docsrc/README.rst:121 2c750bb6e9bf46c397e8074f058fcadd
 msgid "Contributing"
 msgstr "Contribuer"
 
-#: ../../docsrc/README.rst:110 e67ab878d3a942d588694d9e12b1a1f9
+#: ../../docsrc/README.rst:123 e67ab878d3a942d588694d9e12b1a1f9
 msgid ""
 "The ``deforisk`` QGIS plugin is Open Source and released under the `GNU GPL "
 "version 3 license <https://ecology.ghislainv.fr/deforisk-qgis-"

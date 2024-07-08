@@ -79,10 +79,10 @@ html_theme_options = {
          "url": "https://www.cirad.fr/en",
          "icon": "_static/icon_cirad.png",
          "type": "local"},
-        {"name": "FAO",
-         "url": "https://www.fao.org",
-         "icon": "_static/logo_fao.png",
-         "type": "local"}
+        # {"name": "FAO",
+        #  "url": "https://www.fao.org",
+        #  "icon": "_static/logo_fao.png",
+        #  "type": "local"},
     ],
     # alternative way to set github header icons
     # "github_url": "https://github.com/ghislainv/defor-qgis-plugin"
@@ -107,7 +107,7 @@ html_context = {
 
 html_show_sourcelink = False
 
-html_logo = "_static/logo-deforisk.svg"
+html_logo = "_static/logo-deforisk.png"
 html_favicon = "_static/favicon.ico"
 html_title = ("deforisk — Create and compare deforestation risk maps")
 html_short_title = "deforisk"

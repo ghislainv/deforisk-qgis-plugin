@@ -10,7 +10,7 @@
 #+end_export
 
 #+attr_rst: :align right :width 140px :alt Logo riskmapjnr
-[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-deforisk.svg]]
+[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-deforisk.png]]
 
 #+begin_export rst
 ====================
@@ -50,6 +50,20 @@ deforisk QGIS plugin
 # [[website_link][https://img.shields.io/badge/web-Deforisk_QGIS_plugin-blue.svg]]
 # [[far_pypkg_link][https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg]]
 # [[rmj_pypkg_link][https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg]]
+
+* Languages
+
+#+begin_export rst 
+.. |icon_en| image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_en.png
+   :width: 20px
+   :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin/
+
+.. |icon_es| image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_es.png
+   :width: 20px
+   :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin/es
+#+end_export
+
+ The ~deforisk~ QGIS plugin website is available in English @@rst:|icon_en|@@ or Spanish @@rst:|icon_es|@@.
 
 * Aim
 
