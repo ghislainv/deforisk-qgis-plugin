@@ -41,11 +41,11 @@ add_function_parentheses = True
 
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.viewcode',
-              'sphinx.ext.mathjax']
+              'sphinx.ext.mathjax',
+              'sphinx.ext.githubpages']
 
 templates_path = ['_templates']
 exclude_patterns = []
-
 
 StandaloneHTMLBuilder.supported_image_types = [
     "image/svg+xml",
@@ -111,7 +111,7 @@ html_logo = "_static/logo-deforisk.png"
 html_favicon = "_static/favicon.ico"
 html_title = ("deforisk — Create and compare deforestation risk maps")
 html_short_title = "deforisk"
-html_base_url = "https://ecology.ghislainv.fr/deforisk-qgis-plugin/"
+html_baseurl = "https://deforisk-qgis-plugin.org"
 
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
