@@ -10,7 +10,7 @@
 #+end_export
 
 #+attr_rst: :align right :width 140px :alt Logo riskmapjnr
-[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-deforisk.png]]
+[[https://deforisk-qgis-plugin.org][https://deforisk-qgis-plugin.org/_static/logo-deforisk.png]]
 
 #+begin_export rst
 ====================
@@ -20,7 +20,7 @@ deforisk QGIS plugin
 
 #+link: GPLv3_link https://www.gnu.org/licenses/gpl-3.0.html
 #+link: github_link https://github.com/ghislainv/deforisk-qgis-plugin
-#+link: website_link https://ecology.ghislainv.fr/deforisk-qgis-plugin
+#+link: website_link https://deforisk-qgis-plugin.org
 #+link: far_link https://ecology.ghislainv.fr/forestatrisk
 #+link: rmj_link https://ecology.ghislainv.fr/riskmapjnr
 #+link: pywdpa_link https://ecology.ghislainv.fr/pywdpa
@@ -54,13 +54,13 @@ deforisk QGIS plugin
 * Languages
 
 #+begin_export rst 
-.. |icon_en| image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_en.png
+.. |icon_en| image:: https://deforisk-qgis-plugin.org/_static/icon_en.png
    :width: 20px
-   :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin/
+   :target: https://deforisk-qgis-plugin.org/
 
-.. |icon_es| image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_es.png
+.. |icon_es| image:: https://deforisk-qgis-plugin.org/_static/icon_es.png
    :width: 20px
-   :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin/es
+   :target: https://deforisk-qgis-plugin.org/es
 #+end_export
 
  The ~deforisk~ QGIS plugin website is available in English @@rst:|icon_en|@@ or Spanish @@rst:|icon_es|@@.
@@ -72,20 +72,20 @@ The ~deforisk~ QGIS plugin can be used to map the deforestation risk for a count
 Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the [[https://verra.org/programs/jurisdictional-nested-redd-framework/][VCS Jurisdictional and Nested REDD+ Framework]].
 
 #+attr_rst: :alt Banner
-[[https://ecology.ghislainv.fr/deforisk-qgis-plugin][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/banner.png]]
+[[https://deforisk-qgis-plugin.org][https://deforisk-qgis-plugin.org/_static/banner.png]]
 
 * Specificities
 
 *Python based.* The ~deforisk~ plugin relies on four Python packages developed specifically for modelling deforestation: ~geefcc~, ~pywdpa~, ~forestatrisk~, and ~riskmapjnr~. The ~geefcc~ package can be used to make forest cover change maps from Google Earth Engine (GEE) and download them locally using two global tree/forest cover change products: Global Forest Change or Tropical Moist Forests. The ~pywdpa~ package allows downloading vector files of protected areas for any countries using the World Database on Protected Areas (WDPA). The ~forestatrisk~ package provides functions to model deforestation and predict the spatial deforestation risk using various explanatory variables (distance to forest edge, elevation, protected areas, etc.) and various statistical models including iCAR, GLM, and Random Forest models. The ~riskmapjnr~ package allows deriving deforestation risk maps following Verra JNR methodologies which include a moving window model and a benchmark model which assumes a decrease of the deforestation risk with the distance to forest edge.
 
 #+attr_rst: :alt geefc :width 100px
-[[https://ecology.ghislainv.fr/geefcc][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-geefcc.png]]
+[[https://ecology.ghislainv.fr/geefcc][https://deforisk-qgis-plugin.org/_static/logo-geefcc.png]]
 #+attr_rst: :alt pywdpa :width 100px
-[[https://ecology.ghislainv.fr/pywdpa][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-pywdpa.png]]
+[[https://ecology.ghislainv.fr/pywdpa][https://deforisk-qgis-plugin.org/_static/logo-pywdpa.png]]
 #+attr_rst: :alt forestatrisk :width 100px
-[[https://ecology.ghislainv.fr/forestatrisk][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-far.png]]
+[[https://ecology.ghislainv.fr/forestatrisk][https://deforisk-qgis-plugin.org/_static/logo-far.png]]
 #+attr_rst: :alt riskmapjnr :width 100px
-[[https://ecology.ghislainv.fr/riskmapjnr][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo-riskmapjnr.png]]
+[[https://ecology.ghislainv.fr/riskmapjnr][https://deforisk-qgis-plugin.org/_static/logo-riskmapjnr.png]]
 
 *Processing raster by blocks.* Raster files of forest cover change and explanatory variables might occupy a space of several gigabytes on disk. Processing such large rasters in memory can be prohibitively intensive on computers with limited RAM. Functions used in the ~deforisk~ plugin process large rasters by blocks of pixels representing subsets of the raster data. This makes computation efficient, with low memory usage. Reading and writing subsets of raster data is done by using functions from GDAL, a dependency of the plugin. Numerical computations on arrays are performed with the NumPy Python package, whose core is mostly made of optimized and compiled C code that runs quickly.
 
@@ -110,11 +110,11 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 The development of the plugin has been funded by [[https://www.cirad.fr/en/][Cirad]] and [[https://www.fao.org/][FAO]].
 
 #+attr_rst: :align left :height 70px :alt Logo Cirad
-[[https://www.cirad.fr/en][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo_cirad.png]]
+[[https://www.cirad.fr/en][https://deforisk-qgis-plugin.org/_static/logo_cirad.png]]
 #+attr_rst: :height 100px :alt Logo FAO
-[[https://www.fao.org][https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/logo_fao.png]]
+[[https://www.fao.org][https://deforisk-qgis-plugin.org/_static/logo_fao.png]]
 
 * Contributing
 
-The ~deforisk~ QGIS plugin is Open Source and released under the [[https://ecology.ghislainv.fr/deforisk-qgis-plugin/license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[https://ecology.ghislainv.fr/deforisk-qgis-plugin/contributing.html][Community guidelines]]. Every contributor must agree to follow the project's [[https://ecology.ghislainv.fr/deforisk-qgis-plugin/code_of_conduct.html][Code of conduct]].
+The ~deforisk~ QGIS plugin is Open Source and released under the [[https://deforisk-qgis-plugin.org/contributing/license.html][GNU GPL version 3 license]]. Anybody who is interested can contribute to the package development following our [[https://deforisk-qgis-plugin.org/contributing/community_guidelines.html][Community guidelines]]. Every contributor must agree to follow the project's [[https://deforisk-qgis-plugin.org/contributing/code_of_conduct.html][Code of conduct]].
 
