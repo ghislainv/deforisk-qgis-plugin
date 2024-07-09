@@ -4,8 +4,8 @@
     modify it. If you want to make changes to this file, modify the
     index.org source file directly.
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-deforisk.png
-    :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin
+.. image:: https://deforisk-qgis-plugin.org/\_static/logo-deforisk.png
+    :target: https://deforisk-qgis-plugin.org
     :align: right
     :width: 140px
     :alt: Logo riskmapjnr
@@ -19,7 +19,7 @@ deforisk QGIS plugin
 .. image:: https://img.shields.io/badge/GitHub-repo-green.svg
     :target: https://github.com/ghislainv/deforisk-qgis-plugin
 .. image:: https://img.shields.io/badge/web-FAR\_QGIS\_plugin-blue.svg
-    :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin
+    :target: https://deforisk-qgis-plugin.org
 .. image:: https://img.shields.io/badge/python-forestatrisk-orange?logo=python&logoColor=ffd43b&.svg
     :target: https://ecology.ghislainv.fr/forestatrisk
 .. image:: https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&logoColor=ffd43b&.svg
@@ -34,13 +34,13 @@ deforisk QGIS plugin
 Languages
 ---------
 
-.. |icon_en| image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_en.png
+.. |icon_en| image:: https://deforisk-qgis-plugin.org/_static/icon_en.png
    :width: 20px
-   :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin/
+   :target: https://deforisk-qgis-plugin.org/
 
-.. |icon_es| image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/_static/icon_es.png
+.. |icon_es| image:: https://deforisk-qgis-plugin.org/_static/icon_es.png
    :width: 20px
-   :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin/es
+   :target: https://deforisk-qgis-plugin.org/es
 
 The ``deforisk`` QGIS plugin website is available in English |icon_en| or Spanish |icon_es|.
 
@@ -51,8 +51,8 @@ The ``deforisk`` QGIS plugin can be used to map the deforestation risk for a cou
 
 Deforestation risk maps obtained using this plugin can be used to estimate emission reduction impact of forest conservation projects within the `VCS Jurisdictional and Nested REDD+ Framework <https://verra.org/programs/jurisdictional-nested-redd-framework/>`_.
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/banner.png
-    :target: https://ecology.ghislainv.fr/deforisk-qgis-plugin
+.. image:: https://deforisk-qgis-plugin.org/\_static/banner.png
+    :target: https://deforisk-qgis-plugin.org
     :alt: Banner
 
 Specificities
@@ -60,22 +60,22 @@ Specificities
 
 **Python based.** The ``deforisk`` plugin relies on four Python packages developed specifically for modelling deforestation: ``geefcc``, ``pywdpa``, ``forestatrisk``, and ``riskmapjnr``. The ``geefcc`` package can be used to make forest cover change maps from Google Earth Engine (GEE) and download them locally using two global tree/forest cover change products: Global Forest Change or Tropical Moist Forests. The ``pywdpa`` package allows downloading vector files of protected areas for any countries using the World Database on Protected Areas (WDPA). The ``forestatrisk`` package provides functions to model deforestation and predict the spatial deforestation risk using various explanatory variables (distance to forest edge, elevation, protected areas, etc.) and various statistical models including iCAR, GLM, and Random Forest models. The ``riskmapjnr`` package allows deriving deforestation risk maps following Verra JNR methodologies which include a moving window model and a benchmark model which assumes a decrease of the deforestation risk with the distance to forest edge.
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-geefcc.png
+.. image:: https://deforisk-qgis-plugin.org/\_static/logo-geefcc.png
     :target: https://ecology.ghislainv.fr/geefcc
     :alt: geefc
     :width: 100px
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-pywdpa.png
+.. image:: https://deforisk-qgis-plugin.org/\_static/logo-pywdpa.png
     :target: https://ecology.ghislainv.fr/pywdpa
     :alt: pywdpa
     :width: 100px
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-far.png
+.. image:: https://deforisk-qgis-plugin.org/\_static/logo-far.png
     :target: https://ecology.ghislainv.fr/forestatrisk
     :alt: forestatrisk
     :width: 100px
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo-riskmapjnr.png
+.. image:: https://deforisk-qgis-plugin.org/\_static/logo-riskmapjnr.png
     :target: https://ecology.ghislainv.fr/riskmapjnr
     :alt: riskmapjnr
     :width: 100px
@@ -106,13 +106,13 @@ Funding
 
 The development of the plugin has been funded by `Cirad <https://www.cirad.fr/en/>`_ and `FAO <https://www.fao.org/>`_.
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo\_cirad.png
+.. image:: https://deforisk-qgis-plugin.org/\_static/logo\_cirad.png
     :target: https://www.cirad.fr/en
     :align: left
     :height: 70px
     :alt: Logo Cirad
 
-.. image:: https://ecology.ghislainv.fr/deforisk-qgis-plugin/\_static/logo\_fao.png
+.. image:: https://deforisk-qgis-plugin.org/\_static/logo\_fao.png
     :target: https://www.fao.org
     :height: 100px
     :alt: Logo FAO
@@ -120,4 +120,4 @@ The development of the plugin has been funded by `Cirad <https://www.cirad.fr/en
 Contributing
 ------------
 
-The ``deforisk`` QGIS plugin is Open Source and released under the `GNU GPL version 3 license <https://ecology.ghislainv.fr/deforisk-qgis-plugin/license.html>`_. Anybody who is interested can contribute to the package development following our `Community guidelines <https://ecology.ghislainv.fr/deforisk-qgis-plugin/contributing.html>`_. Every contributor must agree to follow the project’s `Code of conduct <https://ecology.ghislainv.fr/deforisk-qgis-plugin/code_of_conduct.html>`_.
+The ``deforisk`` QGIS plugin is Open Source and released under the `GNU GPL version 3 license <https://deforisk-qgis-plugin.org/contributing/license.html>`_. Anybody who is interested can contribute to the package development following our `Community guidelines <https://deforisk-qgis-plugin.org/contributing/community_guidelines.html>`_. Every contributor must agree to follow the project’s `Code of conduct <https://deforisk-qgis-plugin.org/contributing/code_of_conduct.html>`_.
