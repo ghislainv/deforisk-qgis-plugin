@@ -110,7 +110,7 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 This tool has been jointly developed by the Food and Agriculture Organization of the United Nations ([[https://www.fao.org/][FAO]]) and the French agricultural research and cooperation organization working for the sustainable development of tropical and Mediterranean regions ([[https://www.cirad.fr/en/][CIRAD]]), under the [[https://www.fao.org/in-action/aim4forests][AIM4Forests]] program: Accelerating Innovative Monitoring for Forests, with financial support from the Department for Energy Security and Net Zero of the United Kingdom of Great Britain and Northern Ireland.
 
 #+attr_rst: :height 100px :alt Logo partners
-[[file:https:/deforisk-qgis-plugin/_static/logos_partners.png]]
+[[https:/deforisk-qgis-plugin/_static/logos_partners.png]]
 
 * Contributing
 
