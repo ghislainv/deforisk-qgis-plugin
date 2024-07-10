@@ -106,7 +106,7 @@ Acknowledgements
 
 This tool has been jointly developed by the Food and Agriculture Organization of the United Nations (`FAO <https://www.fao.org/>`_) and the French agricultural research and cooperation organization working for the sustainable development of tropical and Mediterranean regions (`CIRAD <https://www.cirad.fr/en/>`_), under the `AIM4Forests <https://www.fao.org/in-action/aim4forests>`_ program: Accelerating Innovative Monitoring for Forests, with financial support from the Department for Energy Security and Net Zero of the United Kingdom of Great Britain and Northern Ireland.
 
-.. image:: https:/deforisk-qgis-plugin/_static/logos_partners.png
+.. image:: /deforisk-qgis-plugin/_static/logos_partners.png
     :height: 100px
     :alt: Logo partners
 
