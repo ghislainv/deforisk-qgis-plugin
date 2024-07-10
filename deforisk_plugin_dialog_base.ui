@@ -58,7 +58,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For more details on arguments, see the plugin's documentation:&lt;a href=&quot;https://ecology.ghislainv.fr/deforisk-qgis-plugin&quot;&gt;&lt;br&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://ecology.ghislainv.fr/deforisk-qgis-plugin&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For more details on arguments, see the plugin's documentation:&lt;a href=&quot;https://deforisk-qgis-plugin.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;&lt;br/&gt;https://deforisk-qgis-plugin.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>

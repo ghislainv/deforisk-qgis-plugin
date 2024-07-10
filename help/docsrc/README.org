@@ -105,14 +105,12 @@ Deforestation risk maps obtained using this plugin can be used to estimate emiss
 - In QGIS menu bar, go to ~Extensions/Install extensions/Install from ZIP~.
 - Select the zip file that has been downloaded.
 
-* Funding
+* Acknowledgements
 
-The development of the plugin has been funded by [[https://www.cirad.fr/en/][Cirad]] and [[https://www.fao.org/][FAO]].
+This tool has been jointly developed by the Food and Agriculture Organization of the United Nations ([[https://www.fao.org/][FAO]]) and the French agricultural research and cooperation organization working for the sustainable development of tropical and Mediterranean regions ([[https://www.cirad.fr/en/][CIRAD]]), under the [[https://www.fao.org/in-action/aim4forests][AIM4Forests]] program: Accelerating Innovative Monitoring for Forests, with financial support from the Department for Energy Security and Net Zero of the United Kingdom of Great Britain and Northern Ireland.
 
-#+attr_rst: :align left :height 70px :alt Logo Cirad
-[[https://www.cirad.fr/en][https://deforisk-qgis-plugin.org/_static/logo_cirad.png]]
-#+attr_rst: :height 100px :alt Logo FAO
-[[https://www.fao.org][https://deforisk-qgis-plugin.org/_static/logo_fao.png]]
+#+attr_rst: :height 100px :alt Logo partners
+[[file:https:/deforisk-qgis-plugin/_static/logos_partners.png]]
 
 * Contributing
 
