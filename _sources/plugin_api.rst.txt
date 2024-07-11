@@ -132,7 +132,7 @@ Table ``defrate_cat_<model>_<period>.csv`` includes the following columns:
 
 - ``rate_abs``: Absolute deforestation probability with quantity adjustment (so that total predicted deforestation equals the observed deforestation on the period), computed from an adjustment factor :math:`\rho` as :math:`\theta_{a,i} = \rho \theta_{m,i}` with :math:`\rho = \sum_{i} d_{i} / \sum_i n_{i} \theta_{m,i}`. *For the benchmark model for the calibration and historical periods*, :math:`\rho=1` and :math:`\theta_{a,i}=\theta_{m,i}`.
 
-- ``defor_dens``: Deforestation density (in ha/pixel/yr) computed as :math:`D_{i} = \theta_{a,i} \times A / T`. The deforestation density is used to predict the amount of deforestation for each pixel belonging to a given class of deforestation risk.
+- ``defor_dens``: Deforestation density (in ha/pixel/yr) computed as :math:`\delta_{i} = \theta_{a,i} \times A / T`. The deforestation density is used to predict the amount of deforestation for each pixel belonging to a given class of deforestation risk.
 
 Predict the deforestation risk
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -163,7 +163,7 @@ Sample observations
 
 This box is for collecting the information needed to sample the deforestation observations. This is a necessary step as we cannot fit a model using all forest pixels which are usually too many. Nonetheless, sampled observations must be representative of the deforestation process in the study area.
 
-- ``N# samples``: Number of observations to be sampled.
+- ``N# samples``: Number of observations to be sampled. It is a stratified sampling (N# samples in each class, deforested/non-deforested).
 
 - ``Adapt sampling``: If checked, the number of observations is proportional to forest area.
 
@@ -184,7 +184,7 @@ Fit models to data
 
 This tab is for collecting the information needed to spatially model deforestation using three statistical models available in the ``forestatrisk`` (FAR) Python package: iCAR, GLM, and Random Forest models.
 
-- ``List of variables``: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without “.tif” extension) in folder ``data_calibration`` or ``data_historical``. Variable names must be separated by a comma. For categorical variables (such as protected areas) use the variable name with notation ``C()``, such as ``C(pa)``.
+- ``List of variables``: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without “.tif” extension) in folder ``data_calibration`` or ``data_historical``. Variable names must be separated by a comma. For categorical variables (such as protected areas) use the variable name with notation ``C()``, such as ``C(pa)``. It empty, it will use the default formula: ``C(pa) + altitude + slope + dist_edge + dist_road + dist_river + dist_town``.
 
 - ``Starting values for betas``: If -99 (recommended), starting values for betas correspond to estimates of a simple GLM with the same variables.
 
@@ -200,7 +200,7 @@ This tab is for collecting the information needed to spatially model deforestati
 
 Pushing the ``Run`` button in this box will fit the statistical model to the deforestation observations. Note that you cannot fit the model if you have not sampled the observations (see previous step).
 
-The following folders are created: ``outputs/far_models/calibration`` and ``outputs/far_models/historical``. The following files are added to the ``outputs/far_models/calibration`` and ``outputs/far_models/historical`` folders:
+The following files are added to the ``outputs/far_models/calibration`` and ``outputs/far_models/historical`` folders:
 
 - ``summary_icar.txt``: Summary of the iCAR model with mean, standard-deviation, and credible intervals for model parameters.
 
@@ -326,7 +326,7 @@ This step is used to validate deforestation models and maps and estimate their p
 
 - ``hist. period``: If checked, estimates model performances for the historical period (t1--t3).
 
-Pushing the ``Run`` button in this box will compute the predicted deforested area in each grid cell for each model and each period selected and compare this value to the observed deforested area for the same grid cell and period. Note that you cannot validate models if you have not fitted these models (see previous step).
+Pushing the ``Run`` button in this box will compute the predicted deforested area in each grid cell for each model and each period which have been selected and will compare this value to the observed deforested area for the same grid cell and period. Note that you cannot validate models if you have not fitted these models (see previous step).
 
 The following folders are created for each period: ``outputs/model_validation/<period>/figures`` and ``outputs/model_validation/<period>/tables``. The following files are added for each model, period, and grid cell size:
 
@@ -335,3 +335,31 @@ The following folders are created for each period: ``outputs/model_validation/<p
 - ``tables/indices_<model>_<period>_<cell_size>.csv``: Values of performance indices for a given model, period, and grid cell size. Performance indices include the :math:`R^{2}`, the median absolute error (MedAE, in ha), the root mean square error (RMSE, in ha), and the weighted root mean square error (wRMSE, in ha), fo which the weights are determined by the number of forest pixels in each coarse grid cell.
 
 - ``figures/pred_obs_<model>_<period>_<cell_size>.png``: Plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the :math:`R^{2}` and the MedAE.
+
+Allocating deforestation
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+This step is to allocate deforestation to a project within the jurisdiction.
+
+- ``Juris. risk map``: Path to the jurisdictional risk map at t3. Usually from the best deforestation model.
+
+- ``Table. with defor. rates``: Path to the table with the deforestation rates from the model at t3 for each class of deforestation risk.
+
+- ``Project borders``: Path to the vector file defining the project borders.
+
+- ``Juris. deforestation (ha)``: Expected deforestation at the jurisdictional level in hectares.
+
+- ``Length forecast period (yr)``: Length of the time-period for the forecast (also named “baseline validity period”), in years. Used to compute annual deforestation for the project.
+
+Pushing the ``Run`` button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level and the relative spatial deforestation rates from the model. Then, 
+the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. Finally, the expected deforestation at the project level is obtained summing the deforestation densities within the project.
+
+The following folder is created: ``outputs/allocating_deforestation``. This folder includes the following files:
+
+- ``project_riskmap.tif``: Risk map cropped to project borders.
+
+- ``project_riskmap.tif.aux.xml``: Histogram data with pixel counts for each class of risk in [1, 65535].
+
+- ``defrate_cat_forecast.csv``: Table with deforestation density (in ha/pixel/yr) for each class of deforestation risk.
+
+- ``defor_project.csv``: Table with the annual and total allocated deforestation for the project.

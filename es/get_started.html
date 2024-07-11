@@ -513,7 +513,7 @@
 <section id="fit-model-to-data">
 <h3>Ajustar el modelo a los datos<a class="headerlink" href="#fit-model-to-data" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 99,5%.</p></li>
+<li><p>Umbral de deforestación (%): 99,5</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: 2500</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Comprobado, el modelo se ajusta sobre el periodo de calibración (t1–t2).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Si se marca, el modelo se ajusta al periodo histórico (t1–t3).</p></li>
@@ -622,6 +622,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Marcado, las observaciones se muestrean para el periodo de calibración (t1–t2).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Marcado, las observaciones se muestrean para el periodo histórico (t1–t3).</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Para jurisdicciones grandes, para evitar calcular demasiados parámetros para los efectos aleatorios espaciales, fije el tamaño de la celda espacial en ~10km.</p>
+</div>
 <p>Al pulsar el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> en este cuadro se muestrearán las observaciones. Una vez finalizada la operación, las observaciones muestreadas aparecerán en la lista de capas de QGIS.</p>
 <a class="reference internal image-reference" href="_images/qgis-far-sample-results.png"><img alt="_images/qgis-far-sample-results.png" src="_images/qgis-far-sample-results.png" style="width: 650px;" />
 </a>
@@ -831,6 +835,7 @@
 <section id="id2">
 <h3>Predecir el riesgo de deforestación<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">interpolation</span> <span class="pre">(km)</span></code>: 0.1.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: Marcado, calcula predicciones con el modelo iCAR.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code>: Comprobado, calcula predicciones con GLM.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code>: Marcado, calcula predicciones con el modelo Random Forest.</p></li>
@@ -839,6 +844,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">historical</span></code>: Comprobado, calcula predicciones en t1 utilizando modelos ajustados en el periodo histórico.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code>: Marcado, calcula predicciones en t3 para previsión (usando modelos ajustados sobre el periodo histórico).</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Para jurisdicciones grandes, a fin de evitar la obtención de un archivo raster de gran tamaño (de tipo Float), establezca la interpolación de los efectos aleatorios espaciales en ~1km.</p>
+</div>
 <p>Al pulsar el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> en este cuadro se utilizarán los modelos estadísticos para las predicciones. Una vez finalizada la operación, los rásters que representan las clases de riesgo de deforestación aparecen en la lista de capas de QGIS. Se crean nuevas carpetas <code class="docutils literal notranslate"><span class="pre">outputs/far_models/validation</span></code> y <code class="docutils literal notranslate"><span class="pre">outputs/far_models/forecast</span></code>. Incluyen las tablas <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code> con las tasas de deforestación para cada clase de riesgo de deforestación (ver detalles <a class="reference external" href="plugin_api.html#defrate-table">aquí</a>).</p>
 <a class="reference internal image-reference" href="_images/qgis-far-results.png"><img alt="_images/qgis-far-results.png" src="_images/qgis-far-results.png" style="width: 650px;" />
 </a>
@@ -856,6 +865,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code>: Comprobado, el modelo se ajusta sobre el periodo de calibración (t1–t2).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Si se marca, el modelo se ajusta al periodo histórico (t1–t3).</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para jurisdicciones grandes, si desea reducir el tiempo de cálculo, utilice sólo un tamaño de ventana (por ejemplo, 21 píxeles).</p>
+</div>
 <p>Haga clic en el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> para estimar el riesgo de deforestación con el modelo de ventana móvil utilizando datos de los periodos de calibración e histórico. Se crean nuevas carpetas con los resultados en el directorio <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code> incluyendo el archivo raster <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/ldefrate_mw_&lt;window_size&gt;.tif</span></code> con las tasas locales de deforestación reescaladas en [2, 65535].</p>
 </section>
 <section id="id5">
@@ -871,6 +884,8 @@
 </section>
 <section id="validation">
 <h2>Validación<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
+<img alt="_images/interface-validation.png" src="_images/interface-validation.png" />
+<p><br/></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Coarse</span> <span class="pre">grid</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>: 50, 100</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: Marcado, estima el rendimiento del modelo iCAR.</p></li>
@@ -881,6 +896,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">valid.</span> <span class="pre">period</span></code>: Comprobado, estima el rendimiento del modelo para el periodo de validación (t2–t3).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code>: Comprobado, estima el rendimiento del modelo para el periodo histórico (t1–t3).</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para jurisdicciones grandes, si desea reducir el tiempo de cálculo, utilice sólo un tamaño de celda (por ejemplo, 100 píxeles) y compruebe únicamente el periodo de validación, el único con observaciones independientes.</p>
+</div>
 <p>Al pulsar el botón «Run» en este cuadro se calculará el área deforestada prevista en cada celda de la cuadrícula para cada modelo y cada período seleccionado y se comparará este valor con el área deforestada observada para la misma celda de la cuadrícula y el mismo período.</p>
 <p>Se crean nuevas carpetas para cada periodo: <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/figures</span></code> y <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/tables</span></code>. En cada carpeta se añaden varios archivos de salida.</p>
 <p>Archivos <code class="docutils literal notranslate"><span class="pre">figures/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.png</span></code> que muestran el gráfico del área deforestada predicha frente a la observada. El gráfico muestra los valores del área deforestada predicha y observada en cada celda de la cuadrícula como puntos y la línea de uno a uno. El gráfico muestra también el número de celdas de la cuadrícula (o puntos) y los valores de dos de los índices de rendimiento: el <span class="math notranslate nohighlight">\(R^{2}\)</span> y el MedAE.</p>
@@ -966,8 +985,10 @@
 </table>
 </div>
 </section>
-<section id="conclusion">
-<h2>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<section id="allocating-deforestation">
+<h2>Asignación de la deforestación<a class="headerlink" href="#allocating-deforestation" title="Link to this heading">#</a></h2>
+<img alt="_images/interface-allocation.png" src="_images/interface-allocation.png" />
+<p><br/></p>
 <p>El mapa de riesgo de deforestación obtenido con el modelo iCAR en t3 puede utilizarse para asignar la deforestación después del año 2020. Tanto el mapa de riesgo con las clases de deforestación de 1 a 65535 como la tabla <code class="docutils literal notranslate"><span class="pre">defrate_cat_icar_forecast.csv</span></code> con las tasas de deforestación para todas las clases de riesgo de deforestación son necesarios para asignar la deforestación en el futuro.</p>
 <p>La tabla sólo incluye valores para <code class="docutils literal notranslate"><span class="pre">rate_mod</span></code>, las tasas relativas de deforestación espacial del modelo iCAR estimadas en el periodo histórico. En cuanto al paso de validación, la deforestación debe ajustarse cuantitativamente en función de la cantidad de deforestación prevista en el futuro.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-defrate-icar-forecast">
@@ -1039,7 +1060,7 @@
 </table>
 </div>
 <p>Considerando una deforestación total <span class="math notranslate nohighlight">\(D\)</span> (en ha) para los próximos <span class="math notranslate nohighlight">\(Y\)</span> años a nivel jurisdiccional, el factor de ajuste es <span class="math notranslate nohighlight">\(\rho = D / (A \sum_i n_{i} \theta_{m,i})\)</span>, siendo <span class="math notranslate nohighlight">\(A\)</span> el área del píxel en ha, la tasa absoluta es <span class="math notranslate nohighlight">\(\theta_{a,i} = \rho \theta_{m,i}\)</span>, y la densidad de deforestación es <span class="math notranslate nohighlight">\(\delta_{i} = \theta_{a,i} \times A / Y\)</span>. La densidad de deforestación <span class="math notranslate nohighlight">\(\delta_{i}\)</span> se utiliza para predecir la cantidad de deforestación (en ha/año) para cada píxel forestal perteneciente a una clase determinada de riesgo de deforestación para los próximos <span class="math notranslate nohighlight">\(Y\)</span> años (para las notaciones, véanse los detalles <a class="reference external" href="plugin_api.html#defrate-table">aquí</a>).</p>
-<p>El mapa de riesgo, junto con la tabla de densidad de deforestación computada, puede ser utilizado para <a class="reference external" href="https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/">asignar proporcionalmente fracciones</a> de la línea de base de datos de la actividad de deforestación no planificada jurisdiccional (en el contexto de <a class="reference external" href="https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/">VMD0055</a>) o del FREL jurisdiccional (en el contexto del Marco VCS <a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">Jurisdiccional y Anidado de REDD+</a>) a proyectos o programas a ser implementados dentro de la jurisdicción. Para eso, se debe calcular una tabla con el número de píxeles para cada clase de riesgo de deforestación en el área del proyecto. Esto se hace fácilmente con las herramientas de QGIS <code class="docutils literal notranslate"><span class="pre">Raster</span> <span class="pre">&gt;</span> <span class="pre">Extracción</span> <span class="pre">&gt;</span> <span class="pre">Recortar</span> <span class="pre">raster</span> <span class="pre">por</span> <span class="pre">capa</span> <span class="pre">de</span> <span class="pre">máscara</span></code> para recortar el mapa de riesgo hasta el límite del proyecto y <code class="docutils literal notranslate"><span class="pre">Procesamiento</span> <span class="pre">&gt;</span> <span class="pre">Caja</span> <span class="pre">de</span> <span class="pre">herramientas</span> <span class="pre">&gt;</span> <span class="pre">Informe</span> <span class="pre">de</span> <span class="pre">valores</span> <span class="pre">únicos</span> <span class="pre">de</span> <span class="pre">capa</span> <span class="pre">raster</span></code>.</p>
+<p>El mapa de riesgo, junto con la tabla de densidad de deforestación computada, puede ser utilizado para <a class="reference external" href="https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/">asignar proporcionalmente fracciones</a> de la línea de base de datos de la actividad de deforestación no planificada jurisdiccional (en el contexto del <a class="reference external" href="https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/">VMD0055</a>) o del FREL jurisdiccional (en el contexto del Marco <a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">Jurisdiccional y Anidado de REDD+</a> del VCS) a proyectos o programas a ser implementados dentro de la jurisdicción. Para ello, se debe calcular una tabla con el número de píxeles para cada clase de riesgo de deforestación en el área del proyecto.</p>
 <figure class="align-default" id="id10">
 <a class="reference internal image-reference" href="_images/allocation.png"><img alt="_images/allocation.png" src="_images/allocation.png" style="width: 600px;" />
 </a>
@@ -1047,6 +1068,39 @@
 <p><span class="caption-text">Asignación de la deforestación a proyectos dentro de la jurisdicción.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>El plugin QGIS <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> incluye una utilidad para facilitar la asignación de la deforestación a los proyectos. Antes de utilizarla, puede descargar el archivo vectorial que define las fronteras de un proyecto falso en Martinica (<a class="reference external" href="_static/get_started/project_borders_MTQ_jurisdiction.gpkg">project_borders_MTQ_jurisdiction.gpkg</a>).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">risk</span> <span class="pre">map</span></code>: Archivo <code class="docutils literal notranslate"><span class="pre">prob_icar_t3.tif</span></code> para el mejor mapa de riesgo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Table.</span> <span class="pre">with</span> <span class="pre">defor.</span> <span class="pre">rates</span></code>: Archivo <code class="docutils literal notranslate"><span class="pre">defrate_cat_icar_forecast.csv</span></code> para la tabla con las tasas de deforestación del modelo icar en t3 para cada clase de riesgo de deforestación.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">borders</span></code>: Archivo <code class="docutils literal notranslate"><span class="pre">project_borders_MTQ_jurisdiction.gpkg</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">deforestation</span> <span class="pre">(ha)</span></code>: 4000. Alrededor de 400 ha han sido deforestadas cada año en 2010–2020 en MTQ.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Length</span> <span class="pre">forecast</span> <span class="pre">period</span> <span class="pre">(yr)</span></code>: 10.</p></li>
+</ul>
+<p>Al pulsar el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> en este cuadro, se calcula el factor de ajuste de cantidad y la densidad de deforestación para cada clase de riesgo utilizando la deforestación total esperada a nivel jurisdiccional (<span class="math notranslate nohighlight">\(D=4000\)</span>) y las tasas relativas de deforestación espacial del modelo. A continuación, el mapa de riesgo con las clases de riesgo de deforestación se recorta hasta los límites del proyecto y se calcula el número de píxeles de bosque en cada clase de riesgo a nivel de proyecto. Por último, la deforestación prevista a nivel de proyecto se obtiene sumando las densidades de deforestación dentro del proyecto.</p>
+<p>Se crea una carpeta <code class="docutils literal notranslate"><span class="pre">outputs/allocating_deforestation</span></code> con el fichero <code class="docutils literal notranslate"><span class="pre">defor_project.csv</span></code> que indica la deforestación prevista (106,7 ha) para el periodo 2020–2030 para el proyecto:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id11">
+<caption><span class="caption-text">Deforestación asignada al proyecto.</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>period</p></th>
+<th class="head"><p>length (yr)</p></th>
+<th class="head"><p>deforestation (ha)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>annual</p></td>
+<td><p>1.0</p></td>
+<td><p>10.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>entire</p></td>
+<td><p>10.0</p></td>
+<td><p>106.9</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1115,6 +1169,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allocating-deforestation">Asignación de la deforestación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusión</a></li>
 </ul>
   </nav></div>
