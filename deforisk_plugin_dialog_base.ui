@@ -212,7 +212,7 @@
             <string>tmf</string>
            </property>
            <property name="placeholderText">
-            <string>jrc</string>
+            <string>tmf</string>
            </property>
           </widget>
          </item>
@@ -1293,6 +1293,126 @@
          </property>
          <property name="tristate">
           <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_allocate">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>491</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Allocating deforestation</string>
+     </property>
+     <widget class="QPushButton" name="run_allocate">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>200</y>
+        <width>71</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>471</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_12">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_riskmap_juris">
+         <property name="text">
+          <string>Juris. risk map</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QgsFileWidget" name="riskmap_juris">
+         <property name="fileWidgetButtonVisible">
+          <bool>true</bool>
+         </property>
+         <property name="dialogTitle">
+          <string>Select a jurisdictional risk map</string>
+         </property>
+         <property name="storageMode">
+          <enum>QgsFileWidget::GetFile</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_defor_rate_tab">
+         <property name="text">
+          <string>Table with defor. rates</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QgsFileWidget" name="defor_rate_tab">
+         <property name="dialogTitle">
+          <string>Select the CSV file with deforestation rates per class</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_project_borders">
+         <property name="text">
+          <string>Project borders</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QgsFileWidget" name="project_borders">
+         <property name="dialogTitle">
+          <string>Select the vector file for country borders</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_defor_juris">
+         <property name="text">
+          <string>Juris. deforestation (ha)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="defor_juris">
+         <property name="text">
+          <string>4000</string>
+         </property>
+         <property name="placeholderText">
+          <string>4000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_years_forecast">
+         <property name="text">
+          <string>Length forecast period (yr)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="years_forecast">
+         <property name="text">
+          <string>10</string>
+         </property>
+         <property name="placeholderText">
+          <string>10</string>
          </property>
         </widget>
        </item>

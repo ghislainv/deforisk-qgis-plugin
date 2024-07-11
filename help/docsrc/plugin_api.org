@@ -229,3 +229,24 @@ The following folders are created for each period: ~outputs/model_validation/<pe
 - ~tables/pred_obs_<model>_<period>_<cell_size>.csv~: Values of observed and predicted deforested area in each grid cell. 
 - ~tables/indices_<model>_<period>_<cell_size>.csv~: Values of performance indices for a given model, period, and grid cell size. Performance indices include the $R^{2}$, the median absolute error (MedAE, in ha), the root mean square error (RMSE, in ha), and the weighted root mean square error (wRMSE, in ha), fo which the weights are determined by the number of forest pixels in each coarse grid cell.
 - ~figures/pred_obs_<model>_<period>_<cell_size>.png~: Plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the $R^{2}$ and the MedAE.
+ 
+** Allocating deforestation
+
+This step is to allocate deforestation to a project within the jurisdiction.
+
+- ~Juris. risk map~: Path to the jurisdictional risk map at t3. Usually from the best deforestation model.
+- ~Table. with defor. rates~: Path to the table with the deforestation rates from the model at t3 for each class of deforestation risk.
+- ~Project borders~: Path to the vector file defining the project borders.
+- ~Juris. deforestation (ha)~: Expected deforestation at the jurisdictional level in hectares.
+- ~Length forecast period (yr)~: Length of the time-period for the forecast (also named "baseline validity period"), in years. Used to compute annual deforestation for the project.
+
+Pushing the ~Run~ button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level and the relative spatial deforestation rates from the model. Then, 
+the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. Finally, the expected deforestation at the project level is obtained summing the deforestation densities within the project.
+
+The following folder is created: ~outputs/allocating_deforestation~. This folder includes the following files:
+- ~project_riskmap.tif~: Risk map cropped to project borders.
+- ~project_riskmap.tif.aux.xml~: Histogram data with pixel counts for each class of risk in [1, 65535].
+- ~defrate_cat_forecast.csv~: Table with deforestation density (in ha/pixel/yr) for each class of deforestation risk.
+- ~defor_project.csv~: Table with the annual and total allocated deforestation for the project.
+
+  

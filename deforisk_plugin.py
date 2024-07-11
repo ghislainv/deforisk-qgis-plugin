@@ -72,7 +72,8 @@ from .rmj_functions import (
 # Local val function
 from .val_functions import (
     EmptyTask,
-    ValidateTask
+    ValidateTask,
+    AllocateTask,
 )
 
 opj = os.path.join
@@ -574,6 +575,12 @@ class DeforiskPlugin:
         val_calib = self.dlg.val_calib.isChecked()
         val_valid = self.dlg.val_valid.isChecked()
         val_histo = self.dlg.val_histo.isChecked()
+        # Allocate
+        riskmap_juris = self.dlg.riskmap_juris.filePath()
+        defor_rate_tab = self.dlg.defor_rate_tab.filePath()
+        project_borders = self.dlg.project_borders.filePath()
+        defor_juris = int(self.dlg.defor_juris.text())
+        years_forecast = float(self.dlg.years_forecast.text())
         # Special variables
         if workdir == "":
             # seed = 1234  # Only for tests to get same dir
@@ -642,6 +649,12 @@ class DeforiskPlugin:
             "val_mw": val_mw,
             "val_calib": val_calib, "val_valid": val_valid,
             "val_histo": val_histo,
+            # Allocate
+            "riskmap_juris": riskmap_juris,
+            "defor_rate_tab": defor_rate_tab,
+            "project_borders": project_borders,
+            "defor_juris": defor_juris,
+            "years_forecast": years_forecast,
         }
 
     def far_get_fcc_grid_args(self):
@@ -897,6 +910,23 @@ class DeforiskPlugin:
         # Add first task to task manager
         self.tm.addTask(main_task)
 
+    def allocate(self):
+        """Allocating deforestation to project."""
+        # Catch arguments
+        self.catch_arguments()
+        description = self.task_description("Allocate")
+        task = AllocateTask(
+            description=description,
+            iface=self.iface,
+            workdir=self.args["workdir"],
+            riskmap_juris=self.args["riskmap_juris"],
+            defor_rate_tab=self.args["defor_rate_tab"],
+            project_borders=self.args["project_borders"],
+            defor_juris=self.args["defor_juris"],
+            years_forecast=self.args["years_forecast"])
+        # Add first task to task manager
+        self.tm.addTask(task)
+
     def run(self):
         """Run method that performs all the real work."""
 
@@ -939,6 +969,10 @@ class DeforiskPlugin:
         # Model validation
         self.dlg.run_validate.clicked.connect(
             self.validate)
+
+        # Allocating deforestation
+        self.dlg.run_allocate.clicked.connect(
+            self.allocate)
 
         # Show the dialog
         self.dlg.show()

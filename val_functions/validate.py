@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# ================================================================
-# author          :Ghislain Vieilledent
-# email           :ghislain.vieilledent@cirad.fr
-# web             :https://ecology.ghislainv.fr
-# python_version  :>=3.6
-# license         :GPLv3
-# ================================================================
-
 """
 Model validation.
 """

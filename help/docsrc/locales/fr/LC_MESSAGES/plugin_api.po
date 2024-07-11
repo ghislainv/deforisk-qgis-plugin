@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 14:07-0400\n"
+"POT-Creation-Date: 2024-07-11 17:30-0400\n"
 "PO-Revision-Date: 2024-07-01 18:38+0000\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
@@ -544,14 +544,10 @@ msgstr ""
 #: ../../docsrc/plugin_api.rst:135 34ab5e50958242a080f04f740fe92bf6
 msgid ""
 "``defor_dens``: Deforestation density (in ha/pixel/yr) computed as "
-":math:`D_{i} = \\theta_{a,i} \\times A / T`. The deforestation density is "
-"used to predict the amount of deforestation for each pixel belonging to a "
-"given class of deforestation risk."
+":math:`\\delta_{i} = \\theta_{a,i} \\times A / T`. The deforestation density"
+" is used to predict the amount of deforestation for each pixel belonging to "
+"a given class of deforestation risk."
 msgstr ""
-"``defor_dens`` : Densité de déforestation (en ha/pixel/an) calculée comme "
-":math:`D_{i} = \\theta_{a,i} \\Temps A / T`. La densité de déforestation est"
-" utilisée pour prédire la quantité de déforestation pour chaque pixel "
-"appartenant à une classe donnée de risque de déforestation."
 
 #: ../../docsrc/plugin_api.rst:138 ../../docsrc/plugin_api.rst:220
 #: ../../docsrc/plugin_api.rst:281 db8b0ed60eab4b729dfc93474ce78b93
@@ -666,9 +662,11 @@ msgstr ""
 "observations échantillonnées doivent être représentatives du processus de "
 "déforestation dans la zone d'étude."
 
-#: ../../docsrc/plugin_api.rst:166 da29ed7c08fc4dd08d62e052c6fcb01b
-msgid "``N# samples``: Number of observations to be sampled."
-msgstr "``N# samples`` : Nombre d'observations à échantillonner."
+#: ../../docsrc/plugin_api.rst:166 1732364bc3a44a0dbb84b36ee88e4658
+msgid ""
+"``N# samples``: Number of observations to be sampled. It is a stratified "
+"sampling (N# samples in each class, deforested/non-deforested)."
+msgstr ""
 
 #: ../../docsrc/plugin_api.rst:168 877190f2aa034ccfab1af2778c90e640
 msgid ""
@@ -774,15 +772,9 @@ msgid ""
 "extension) in folder ``data_calibration`` or ``data_historical``. Variable "
 "names must be separated by a comma. For categorical variables (such as "
 "protected areas) use the variable name with notation ``C()``, such as "
-"``C(pa)``."
+"``C(pa)``. It empty, it will use the default formula: ``C(pa) + altitude + "
+"slope + dist_edge + dist_road + dist_river + dist_town``."
 msgstr ""
-"``Liste de variables`` : Liste des variables explicatives utilisées pour la "
-"modélisation statistique. Les noms des variables doivent correspondre aux "
-"noms des fichiers (sans l'extension \".tif\") dans le dossier "
-"``data_calibration`` ou ``data_historical``. Les noms de variables doivent "
-"être séparés par une virgule. Pour les variables catégorielles (telles que "
-"les zones protégées), utilisez le nom de la variable avec la notation "
-"``C()``, comme ``C(pa)``."
 
 #: ../../docsrc/plugin_api.rst:189 b6dc69563ab0425bae7697364a2c3a63
 msgid ""
@@ -842,15 +834,9 @@ msgstr ""
 
 #: ../../docsrc/plugin_api.rst:203 c496bd6dddc84930ae704b81d26eb04e
 msgid ""
-"The following folders are created: ``outputs/far_models/calibration`` and "
-"``outputs/far_models/historical``. The following files are added to the "
-"``outputs/far_models/calibration`` and ``outputs/far_models/historical`` "
-"folders:"
+"The following files are added to the ``outputs/far_models/calibration`` and "
+"``outputs/far_models/historical`` folders:"
 msgstr ""
-"Les dossiers suivants sont créés : ``outputs/far_models/calibration`` et "
-"``outputs/far_models/historical``. Les fichiers suivants sont ajoutés aux "
-"dossiers ``outputs/far_models/calibration`` et "
-"``outputs/far_models/historical`` :"
 
 #: ../../docsrc/plugin_api.rst:205 cec7105420c74a968d620aae8a0bb6c2
 msgid ""
@@ -1307,17 +1293,11 @@ msgstr ""
 #: ../../docsrc/plugin_api.rst:329 1ef53d53c13d4c4bb868b998cb5851ff
 msgid ""
 "Pushing the ``Run`` button in this box will compute the predicted deforested"
-" area in each grid cell for each model and each period selected and compare "
-"this value to the observed deforested area for the same grid cell and "
-"period. Note that you cannot validate models if you have not fitted these "
-"models (see previous step)."
+" area in each grid cell for each model and each period which have been "
+"selected and will compare this value to the observed deforested area for the"
+" same grid cell and period. Note that you cannot validate models if you have"
+" not fitted these models (see previous step)."
 msgstr ""
-"En appuyant sur le bouton \"Exécuter\" dans cette boîte, vous calculerez la "
-"surface déboisée prédite dans chaque cellule de la grille pour chaque modèle"
-" et chaque période sélectionnés et vous comparerez cette valeur à la surface"
-" déboisée observée pour la même cellule de la grille et la même période. "
-"Notez que vous ne pouvez pas valider les modèles si vous ne les avez pas "
-"ajustés (voir l'étape précédente)."
 
 #: ../../docsrc/plugin_api.rst:331 1f17311f85f542cb91e0be136d2c488f
 msgid ""
@@ -1371,3 +1351,82 @@ msgstr ""
 "graphique indique également le nombre de cellules de la grille (ou de "
 "points) et les valeurs de deux des indices de performance : le :math:`R^{2}`"
 " et le MedAE."
+
+#: ../../docsrc/plugin_api.rst:340 48f7fd4664e74b6699f90c8bebb61da9
+msgid "Allocating deforestation"
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:342 dc1711fad8354a4d84b3efdfd26ff793
+msgid ""
+"This step is to allocate deforestation to a project within the jurisdiction."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:344 60e4bd6e8a274d9fa627aa8569e7f6c9
+msgid ""
+"``Juris. risk map``: Path to the jurisdictional risk map at t3. Usually from"
+" the best deforestation model."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:346 34ab5e50958242a080f04f740fe92bf6
+msgid ""
+"``Table. with defor. rates``: Path to the table with the deforestation rates"
+" from the model at t3 for each class of deforestation risk."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:348 9bcc3e95dd9049aa967bfb01a707b332
+msgid ""
+"``Project borders``: Path to the vector file defining the project borders."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:350 af194a51acb74ecabf86fb7b0ceb8ae6
+msgid ""
+"``Juris. deforestation (ha)``: Expected deforestation at the jurisdictional "
+"level in hectares."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:352 11487b873e3c48d790edde67fd0e4c7c
+msgid ""
+"``Length forecast period (yr)``: Length of the time-period for the forecast "
+"(also named “baseline validity period”), in years. Used to compute annual "
+"deforestation for the project."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:354 46af4d8f50a14821a4185d52e13a57a9
+msgid ""
+"Pushing the ``Run`` button in this box computes the quantity adjustment "
+"factor and the deforestation density for each class of risk using the total "
+"expected deforestation at the jurisdictional level and the relative spatial "
+"deforestation rates from the model. Then, the risk map with classes of "
+"deforestation risk is cropped to project borders and the number of forest "
+"pixels in each class of risk is computed at the project level. Finally, the "
+"expected deforestation at the project level is obtained summing the "
+"deforestation densities within the project."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:357 c496bd6dddc84930ae704b81d26eb04e
+msgid ""
+"The following folder is created: ``outputs/allocating_deforestation``. This "
+"folder includes the following files:"
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:359 b716904e3da74c7cb1457fac9922ffc8
+msgid "``project_riskmap.tif``: Risk map cropped to project borders."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:361 70a9e0021fee4085a000b42f4e985e9b
+msgid ""
+"``project_riskmap.tif.aux.xml``: Histogram data with pixel counts for each "
+"class of risk in [1, 65535]."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:363 34ab5e50958242a080f04f740fe92bf6
+msgid ""
+"``defrate_cat_forecast.csv``: Table with deforestation density (in "
+"ha/pixel/yr) for each class of deforestation risk."
+msgstr ""
+
+#: ../../docsrc/plugin_api.rst:365 b2a27f60fe34441390a4d53a74e77c5a
+msgid ""
+"``defor_project.csv``: Table with the annual and total allocated "
+"deforestation for the project."
+msgstr ""

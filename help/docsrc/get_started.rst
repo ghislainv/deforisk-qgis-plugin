@@ -82,7 +82,7 @@ Benchmark model
 Fit model to data
 ~~~~~~~~~~~~~~~~~
 
-- ``Deforestation threshold (%)``: 99.5%
+- ``Deforestation threshold (%)``: 99.5
 
 - ``Max. distance to forest edge (m)``: 2500
 
@@ -154,6 +154,9 @@ Sample observations
 - ``calib. period``: Checked, the observations are sampled for the calibration period (t1--t2).
 
 - ``hist. period``: Checked, the observations are sampled for the historical period (t1--t3).
+
+.. warning::
+    For large jurisdictions, to avoid computing to many parameters for spatial random effects, set the spatial cell size at ~10km.
 
 Pushing the ``Run`` button in this box will sample the observations. When the operation is finished, the sampled observations appear in the list of QGIS layers.
 
@@ -249,6 +252,8 @@ The ``model_deviances.csv`` file include a table for comparing percent of devian
 Predict the deforestation risk
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- ``Spatial cell size interpolation (km)``: 0.1.
+
 - ``iCAR model``: Checked, computes predictions with the iCAR model.
 
 - ``GLM``: Checked, computes predictions with GLM.
@@ -262,6 +267,9 @@ Predict the deforestation risk
 - ``t1 historical``: Checked, computes predictions at t1 using models fitted over the historical period.
 
 - ``t3 forecast``: Checked, computes predictions at t3 for forecasting (using models fitted over the historical period).
+
+.. warning::
+    For large jurisdictions, to avoid obtaining a large raster file (of type Float), set interpolation of spatial random effects at ~1km.
 
 Pushing the ``Run`` button in this box will use the statistical models for predictions. When the operation is finished, rasters representing the classes of deforestation risk appear in the list of QGIS layers. New folders are created ``outputs/far_models/validation`` and ``outputs/far_models/forecast``. They include the ``<period>/defrate_cat_<model>_<period>.csv`` tables with deforestation rates for each class of deforestation risk (see details `here <plugin_api.html#defrate-table>`_).
 
@@ -286,6 +294,9 @@ Fit model to data
 
 - ``hist. period``: Checked, the model is fitted over the historical period (t1--t3).
 
+.. note::
+    For large jurisdictions, if you want to reduce computation time, use only one window size (e.g. 21 pixels).
+
 Click the ``Run`` button to estimate the deforestation risk with the moving window model using data on both the calibration and historical periods. New folders with results are created in the ``outputs/rmj_moving_window/`` directory including the ``<period>/ldefrate_mw_<window_size>.tif`` raster file with local deforestation rates rescaled on [2, 65535].
 
 Predict the deforestation risk
@@ -303,6 +314,10 @@ Click the ``Run`` button to predict the deforestation risk at t2 and t3 using th
 Validation
 ----------
 
+.. image:: _static/get_started/interface-validation.png
+
+|br|
+
 - ``Coarse grid cell size (# pixels)``: 50, 100
 
 - ``iCAR model``: Checked, estimates the performance of the iCAR model.
@@ -318,6 +333,9 @@ Validation
 - ``valid. period``: Checked, estimates model performances for the validation period (t2--t3).
 
 - ``hist. period``: Checked, estimates model performances for the historical period (t1--t3).
+
+.. note::
+    For large jurisdictions, if you want to reduce computation time, use only one cell size (e.g. 100 pixels) and check only the validation period, the only one with independent observations.
 
 Pushing the ``Run`` button in this box will compute the predicted deforested area in each grid cell for each model and each period selected and compare this value to the observed deforested area for the same grid cell and period.
 
@@ -349,8 +367,12 @@ File ``outputs/model_validation/indices_all.csv`` includes a table with the perf
     |                  50 |                   225.0 |   604 | validation | mw\_21 |  2.51 | 0.56 | 7.54 |  6.66 |
     +---------------------+-------------------------+-------+------------+--------+-------+------+------+-------+
 
-Conclusion
-----------
+Allocating deforestation
+------------------------
+
+.. image:: _static/get_started/interface-allocation.png
+
+|br|
 
 The deforestation risk map obtained with the iCAR model at t3 can be used to allocate deforestation after year 2020. Both the risk map with classes of deforestation from 1 to 65535 and the ``defrate_cat_icar_forecast.csv`` table with deforestation rates for all classes of deforestation risk are necessary to allocate deforestation in the future.
 
@@ -375,10 +397,40 @@ The table only includes values for ``rate_mod``, the relative spatial deforestat
 
 Considering a total deforestation :math:`D` (in ha) for the next :math:`Y` years at the jurisdictional level, the adjustment factor is :math:`\rho = D / (A \sum_i n_{i} \theta_{m,i})`, with :math:`A` the pixel area in ha, the absolute rate is :math:`\theta_{a,i} = \rho \theta_{m,i}`, and the deforestation density is :math:`\delta_{i} = \theta_{a,i} \times A / Y`. The deforestation density :math:`\delta_{i}` is used to predict the amount of deforestation (in ha/yr) for each forest pixel belonging to a given class of deforestation risk for the next :math:`Y` years (for notations, see details `here <plugin_api.html#defrate-table>`_).
 
-The risk map together with the table of computed deforestation density can be used to `proportionally allocate fractions <https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/>`_ of either the jurisdictional unplanned deforestation activity data baseline (in the context of `VMD0055 <https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/>`_) or the jurisdictional FREL (in the context of the VCS `Jurisdictional and Nested REDD+ <https://verra.org/programs/jurisdictional-nested-redd-framework/>`_ Framework) to projects or programs to be implemented within the jurisdiction. To do so, a table with the number of pixels for each class of deforestation risk in the project area must be computed. This is easily done with QGIS tools ``Raster > Extraction > Clip Raster by Mask Layer`` to crop the risk map to the project border and ``Processing > Toolbox > Raster layer unique values report``.
+The risk map together with the table of computed deforestation density can be used to `proportionally allocate fractions <https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/>`_ of either the jurisdictional unplanned deforestation activity data baseline (in the context of `VMD0055 <https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/>`_) or the jurisdictional FREL (in the context of the VCS `Jurisdictional and Nested REDD+ <https://verra.org/programs/jurisdictional-nested-redd-framework/>`_ Framework) to projects or programs to be implemented within the jurisdiction. To do so, a table with the number of pixels for each class of deforestation risk in the project area must be computed.
 
 .. figure:: _static/get_started/allocation.png
     :width: 600px
 
 
     Allocating deforestation to projects within the jurisdiction.
+
+The ``deforisk`` QGIS plugin includes an utility to facilitate the allocation of the deforestation to projects. Before using it, you can download the vector file defining the borders of a fake project in Martinique (`project\_borders\_MTQ\_jurisdiction.gpkg <_static/get_started/project_borders_MTQ_jurisdiction.gpkg>`_).
+
+- ``Juris. risk map``: File ``prob_icar_t3.tif`` for the best risk map.
+
+- ``Table. with defor. rates``: File ``defrate_cat_icar_forecast.csv`` for the table with the deforestation rates from the icar model at t3 for each class of deforestation risk.
+
+- ``Project borders``: File ``project_borders_MTQ_jurisdiction.gpkg``.
+
+- ``Juris. deforestation (ha)``: 4000. About 400 ha have been deforested each year in 2010--2020 in MTQ.
+
+- ``Length forecast period (yr)``: 10.
+
+Pushing the ``Run`` button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level (:math:`D=4000`)and the relative spatial deforestation rates from the model. Then, 
+the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. Finally, the expected deforestation at the project level is obtained summing the deforestation densities within the project.
+
+A folder ``outputs/allocating_deforestation`` is created with the file ``defor_project.csv`` indicating the predicted deforestation (106.7 ha) for the period 2020--2030 for the project:
+
+.. table:: Allocated deforestation for the project.
+
+    +--------+-------------+--------------------+
+    | period | length (yr) | deforestation (ha) |
+    +========+=============+====================+
+    | annual |         1.0 |               10.7 |
+    +--------+-------------+--------------------+
+    | entire |        10.0 |              106.9 |
+    +--------+-------------+--------------------+
+
+Conclusion
+----------
