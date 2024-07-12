@@ -90,19 +90,29 @@ sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 This alternative method has the advantage of installing [[https://www.qgis.org/en/site/][QGIS]] and [[https://gdal.org/index.html][GDAL]] as well as the ~forestatrisk~ and ~riskmapjnr~ Python packages all in a isolated and dedicated environment, with a lightweight version of QGIS. However, caveats are that there are no QGIS desktop icons or file association, and this installation does not include GRASS and SAGA for example (although they can easily be installed with conda subsequently).
 
 ** Install miniconda
+
 ~Conda~ (or its minimal version ~miniconda~) is a package and environment manager. To install ~miniconda~, download the installer from the [[https://docs.conda.io/en/latest/miniconda.html][miniconda website]] and follow the instructions for your system.
 
 ** Install QGIS and dependencies in a new environment
+
 In a terminal, create a new environment (here named ~deforisk~) and install ~QGIS~ (via conda packages), ~forestatrisk~ and ~riskmapjnr~ in it. Be aware that ~osmconvert~ and ~osmfilter~ still need to be installed separately on Linux and macOS systems (cf. section above).
 
 #+begin_src shell
-conda create -n deforisk qgis  # create environment and install QGIS (and GDAL embedded)
+conda create -c conda-forge -n deforisk qgis  # create environment and install QGIS (and GDAL embedded)
 conda activate deforisk        # activate the newly created environment
 pip install --upgrade forestatrisk riskmapjnr # install additional Python packages
 #+end_src
 
 You can now launch ~QGIS~ from the terminal using the ~qgis~ command.
 
+** Deactivate and delete the environment
+
+I you want to deactivate an delete the environment:
+
+#+begin_src shell
+conda deactivate
+conda env remove --name deforisk
+#+end_src
 
 * Access to GEE and WDPA
 
@@ -132,3 +142,4 @@ In the ~deforisk~ plugin, for the ~WDPA access~ argument available in the "Get v
 - Open QGIS.
 - In QGIS menu bar, go to ~Extensions/Install extensions/Install from ZIP~.
 - Select the zip file that has been downloaded.
+
