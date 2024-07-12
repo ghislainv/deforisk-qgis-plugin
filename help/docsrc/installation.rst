@@ -12,12 +12,13 @@ Installation
 
     **Dependencies**: `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ must be installed on your system before using the ``deforisk`` plugin. *On Unix-like systems*, you must also install `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and `osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *On Windows systems*, these dependencies are already included in the plugin as binary ``.exe`` files so you don’t need to install them. Then, the ``forestatrisk`` and ``riskmapjnr`` Python packages must be installed on your system. Follow the instructions below to install these dependencies.
 
-#+begin\_quote
-**Installation**: We hereby describe two ways for installating the ``deforisk`` plugin:
+.. note::
 
-- first option is to install the QGIS client and GDAL on your system and then install the ``forestatrisk`` and ``riskmapjnr`` Python packages. This installation procedure is system-dependent.
+    **Installation**: We hereby describe two ways for installating the ``deforisk`` plugin:
 
-- alternate option is to use conda / miniconda / mamba to install QGIS, GDAL, ``forestatrisk`` and ``riskmapjnr`` in a dedicated environment. This installation procedure is system-independent.
+    - First option is to install the QGIS client and GDAL on your system and then install the ``forestatrisk`` and ``riskmapjnr`` Python packages. This installation procedure is system-dependent.
+
+    - Alternate option is to use conda/miniconda/mamba (one of those three) to install QGIS, GDAL, ``forestatrisk`` and ``riskmapjnr`` in a dedicated environment. This installation procedure is system-independent.
 
 On Windows
 ----------
@@ -94,8 +95,8 @@ Then, in the ``startup.py`` `Python file <https://docs.qgis.org/3.4/en/docs/pyqg
     import sys
     sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 
-Using miniconda / conda (all operating systems)
------------------------------------------------
+Using conda/miniconda (all operating systems)
+---------------------------------------------
 
 This alternative method has the advantage of installing `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ as well as the ``forestatrisk`` and ``riskmapjnr`` Python packages all in a isolated and dedicated environment, with a lightweight version of QGIS. However, caveats are that there are no QGIS desktop icons or file association, and this installation does not include GRASS and SAGA for example (although they can easily be installed with conda subsequently).
 

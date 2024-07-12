@@ -17,9 +17,9 @@
 #+attr_rst: :directive note
 #+begin_quote
 *Installation*: We hereby describe two ways for installating the ~deforisk~ plugin:
-- first option is to install the QGIS client and GDAL on your system and then install the ~forestatrisk~ and ~riskmapjnr~ Python packages. This installation procedure is system-dependent.
-- alternate option is to use conda / miniconda / mamba to install QGIS, GDAL, ~forestatrisk~ and ~riskmapjnr~ in a dedicated environment. This installation procedure is system-independent.
-
+- First option is to install the QGIS client and GDAL on your system and then install the ~forestatrisk~ and ~riskmapjnr~ Python packages. This installation procedure is system-dependent.
+- Alternate option is to use conda/miniconda/mamba (one of those three) to install QGIS, GDAL, ~forestatrisk~ and ~riskmapjnr~ in a dedicated environment. This installation procedure is system-independent.
+#+end_quote
 
 * On Windows
 
@@ -85,7 +85,7 @@ import sys
 sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 #+end_src
 
-* Using miniconda / conda (all operating systems)
+* Using conda/miniconda (all operating systems)
 
 This alternative method has the advantage of installing [[https://www.qgis.org/en/site/][QGIS]] and [[https://gdal.org/index.html][GDAL]] as well as the ~forestatrisk~ and ~riskmapjnr~ Python packages all in a isolated and dedicated environment, with a lightweight version of QGIS. However, caveats are that there are no QGIS desktop icons or file association, and this installation does not include GRASS and SAGA for example (although they can easily be installed with conda subsequently).
 
