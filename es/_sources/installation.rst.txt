@@ -12,6 +12,13 @@ Installation
 
     **Dependencies**: `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ must be installed on your system before using the ``deforisk`` plugin. *On Unix-like systems*, you must also install `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and `osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *On Windows systems*, these dependencies are already included in the plugin as binary ``.exe`` files so you don’t need to install them. Then, the ``forestatrisk`` and ``riskmapjnr`` Python packages must be installed on your system. Follow the instructions below to install these dependencies.
 
+#+begin\_quote
+**Installation**: We hereby describe two ways for installating the ``deforisk`` plugin:
+
+- first option is to install the QGIS client and GDAL on your system and then install the ``forestatrisk`` and ``riskmapjnr`` Python packages. This installation procedure is system-dependent.
+
+- alternate option is to use conda / miniconda / mamba to install QGIS, GDAL, ``forestatrisk`` and ``riskmapjnr`` in a dedicated environment. This installation procedure is system-independent.
+
 On Windows
 ----------
 
@@ -59,6 +66,8 @@ Install QGIS and GDAL on your system, for example using ``apt-get`` for Debian/U
     sudo apt-get update
     sudo apt-get install qgis gdal-bin libgdal-dev
 
+For macOS, you can use the installer available on the `QGIS website <https://www.qgis.org/en/site/forusers/download.html>`_ and install GDAL using `brew <https://formulae.brew.sh/formula/gdal>`_.
+
 After installing GDAL, you can test the installation by running ``gdalinfo --version`` in the command prompt or terminal, which should display the installed GDAL version.
 
 Install ``osmconvert`` and ``osmfilter``
@@ -85,10 +94,43 @@ Then, in the ``startup.py`` `Python file <https://docs.qgis.org/3.4/en/docs/pyqg
     import sys
     sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 
+Using miniconda / conda (all operating systems)
+-----------------------------------------------
+
+This alternative method has the advantage of installing `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ as well as the ``forestatrisk`` and ``riskmapjnr`` Python packages all in a isolated and dedicated environment, with a lightweight version of QGIS. However, caveats are that there are no QGIS desktop icons or file association, and this installation does not include GRASS and SAGA for example (although they can easily be installed with conda subsequently).
+
+Install miniconda
+~~~~~~~~~~~~~~~~~
+
+``Conda`` (or its minimal version ``miniconda``) is a package and environment manager. To install ``miniconda``, download the installer from the `miniconda website <https://docs.conda.io/en/latest/miniconda.html>`_ and follow the instructions for your system.
+
+Install QGIS and dependencies in a new environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In a terminal, create a new environment (here named ``deforisk``) and install ``QGIS`` (via conda packages), ``forestatrisk`` and ``riskmapjnr`` in it. Be aware that ``osmconvert`` and ``osmfilter`` still need to be installed separately on Linux and macOS systems (cf. section above).
+
+.. code:: shell
+
+    conda create -c conda-forge -n deforisk qgis  # create environment and install QGIS (and GDAL embedded)
+    conda activate deforisk        # activate the newly created environment
+    pip install --upgrade forestatrisk riskmapjnr # install additional Python packages
+
+You can now launch ``QGIS`` from the terminal using the ``qgis`` command.
+
+Deactivate and delete the environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I you want to deactivate an delete the environment:
+
+.. code:: shell
+
+    conda deactivate
+    conda env remove --name deforisk
+
 Access to GEE and WDPA
 ----------------------
 
-The plugin download forest data from Google Earth Engine (GEE) using the ``geefcc`` Python package and protected area data from the World Database on Protected Areas (WDPA) using the ``pywdpa`` Python package. You will need an access to GEE and WDPA to be able to use the plugin. 
+The plugin download forest data from Google Earth Engine (GEE) using the ``geefcc`` Python package and protected area data from the World Database on Protected Areas (WDPA) using the ``pywdpa`` Python package. You will need an access to GEE and WDPA to be able to use the plugin.
 
 Access to GEE
 ~~~~~~~~~~~~~

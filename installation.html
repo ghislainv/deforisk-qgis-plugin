@@ -467,6 +467,12 @@
 <p class="admonition-title">Note</p>
 <p><strong>Dependencies</strong>: <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> and <a class="reference external" href="https://gdal.org/index.html">GDAL</a> must be installed on your system before using the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin. <em>On Unix-like systems</em>, you must also install <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmconvert">osmconvert</a> and <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a>. <em>On Windows systems</em>, these dependencies are already included in the plugin as binary <code class="docutils literal notranslate"><span class="pre">.exe</span></code> files so you don’t need to install them. Then, the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages must be installed on your system. Follow the instructions below to install these dependencies.</p>
 </div>
+<p>#+begin_quote
+<strong>Installation</strong>: We hereby describe two ways for installating the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin:</p>
+<ul class="simple">
+<li><p>first option is to install the QGIS client and GDAL on your system and then install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages. This installation procedure is system-dependent.</p></li>
+<li><p>alternate option is to use conda / miniconda / mamba to install QGIS, GDAL, <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> in a dedicated environment. This installation procedure is system-independent.</p></li>
+</ul>
 <section id="on-windows">
 <h2>On Windows<a class="headerlink" href="#on-windows" title="Link to this heading">#</a></h2>
 <section id="turn-on-the-developer-mode">
@@ -503,6 +509,7 @@
 sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>qgis<span class="w"> </span>gdal-bin<span class="w"> </span>libgdal-dev
 </pre></div>
 </div>
+<p>For macOS, you can use the installer available on the <a class="reference external" href="https://www.qgis.org/en/site/forusers/download.html">QGIS website</a> and install GDAL using <a class="reference external" href="https://formulae.brew.sh/formula/gdal">brew</a>.</p>
 <p>After installing GDAL, you can test the installation by running <code class="docutils literal notranslate"><span class="pre">gdalinfo</span> <span class="pre">--version</span></code> in the command prompt or terminal, which should display the installed GDAL version.</p>
 </section>
 <section id="install-osmconvert-and-osmfilter">
@@ -521,6 +528,32 @@ deactivate
 <p>Then, in the <code class="docutils literal notranslate"><span class="pre">startup.py</span></code> <a class="reference external" href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts">Python file</a>, add the following two lines, adapting the path to your specific case (check the Python version). These two lines will be executed when QGIS starts and will add the path to the packages installed in the virtual environment to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/path/to/venv/lib/python3.11/site-packages/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-miniconda-conda-all-operating-systems">
+<h2>Using miniconda / conda (all operating systems)<a class="headerlink" href="#using-miniconda-conda-all-operating-systems" title="Link to this heading">#</a></h2>
+<p>This alternative method has the advantage of installing <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> and <a class="reference external" href="https://gdal.org/index.html">GDAL</a> as well as the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages all in a isolated and dedicated environment, with a lightweight version of QGIS. However, caveats are that there are no QGIS desktop icons or file association, and this installation does not include GRASS and SAGA for example (although they can easily be installed with conda subsequently).</p>
+<section id="install-miniconda">
+<h3>Install miniconda<a class="headerlink" href="#install-miniconda" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Conda</span></code> (or its minimal version <code class="docutils literal notranslate"><span class="pre">miniconda</span></code>) is a package and environment manager. To install <code class="docutils literal notranslate"><span class="pre">miniconda</span></code>, download the installer from the <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">miniconda website</a> and follow the instructions for your system.</p>
+</section>
+<section id="install-qgis-and-dependencies-in-a-new-environment">
+<h3>Install QGIS and dependencies in a new environment<a class="headerlink" href="#install-qgis-and-dependencies-in-a-new-environment" title="Link to this heading">#</a></h3>
+<p>In a terminal, create a new environment (here named <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>) and install <code class="docutils literal notranslate"><span class="pre">QGIS</span></code> (via conda packages), <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> in it. Be aware that <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code> still need to be installed separately on Linux and macOS systems (cf. section above).</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-n<span class="w"> </span>deforisk<span class="w"> </span>qgis<span class="w">  </span><span class="c1"># create environment and install QGIS (and GDAL embedded)</span>
+conda<span class="w"> </span>activate<span class="w"> </span>deforisk<span class="w">        </span><span class="c1"># activate the newly created environment</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr<span class="w"> </span><span class="c1"># install additional Python packages</span>
+</pre></div>
+</div>
+<p>You can now launch <code class="docutils literal notranslate"><span class="pre">QGIS</span></code> from the terminal using the <code class="docutils literal notranslate"><span class="pre">qgis</span></code> command.</p>
+</section>
+<section id="deactivate-and-delete-the-environment">
+<h3>Deactivate and delete the environment<a class="headerlink" href="#deactivate-and-delete-the-environment" title="Link to this heading">#</a></h3>
+<p>I you want to deactivate an delete the environment:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>deforisk
 </pre></div>
 </div>
 </section>
@@ -610,6 +643,12 @@ deactivate
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-unix-like-systems">Install QGIS and GDAL on Unix-like systems</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-osmconvert-and-osmfilter">Install <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-unix-like-systems">Install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages on Unix-like systems</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-miniconda-conda-all-operating-systems">Using miniconda / conda (all operating systems)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">Install miniconda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-dependencies-in-a-new-environment">Install QGIS and dependencies in a new environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deactivate-and-delete-the-environment">Deactivate and delete the environment</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-gee-and-wdpa">Access to GEE and WDPA</a><ul class="nav section-nav flex-column">
