@@ -32,7 +32,6 @@ import os
 import subprocess
 import platform
 import random
-import sys
 
 from qgis.core import Qgis, QgsApplication, QgsTask
 
