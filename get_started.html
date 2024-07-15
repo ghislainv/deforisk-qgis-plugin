@@ -502,6 +502,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code>: Personal WDPA API Token or path to text file with WDPA_KEY environmental variable.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>: EPSG:5490</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For Windows users, choose a working directory with a short path (e.g. <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\&lt;dirname&gt;</span></code>). Long file paths can cause problems to access files on Windows.</p>
+</div>
 <p>Click the run button. A forest cover change map appears in the list of QGIS layers (see image below and click to enlarge) and a plot of the forest cover change <code class="docutils literal notranslate"><span class="pre">fcc123.png</span></code> is created in folder <code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>. New folders are created in the working directory among which the <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> folder which includes raw data with intermediary files and the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder which includes processed data used for models and plots. You can visualize the road network for example adding the <code class="docutils literal notranslate"><span class="pre">roads_proj.shp</span></code> vector file, which is located in the <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> directory, in QGIS.</p>
 <a class="reference internal image-reference" href="_images/qgis-variables-results.png"><img alt="_images/qgis-variables-results.png" src="_images/qgis-variables-results.png" style="width: 650px;" />
 </a>

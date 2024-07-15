@@ -45,6 +45,9 @@ This box is for collecting the information needed to download the data and compu
 
 - ``Projection EPSG code``: EPSG code of the coordinate reference system used for projecting maps.
 
+.. warning::
+    For Windows users, choose a working directory with a short path (e.g. ``C:\Users\<username>\<dirname>``). Long file paths can cause problems to access files on Windows.
+
 Pushing the ``Run`` button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of QGIS layers and a plot of the forest cover change ``fcc123.png`` is created in folder ``outputs/variables``. New folders are created in the working directory:
 
 Six data folders are created:

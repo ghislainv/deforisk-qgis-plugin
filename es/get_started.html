@@ -503,6 +503,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code>: Token personal de la API de la WDPA o ruta a un archivo de texto con la variable de entorno WDPA_KEY.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>: EPSG:5490</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Para los usuarios de Windows, elija un directorio de trabajo con una ruta corta (por ejemplo, <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\&lt;dirname&gt;</span></code>). Las rutas largas pueden causar problemas para acceder a los archivos en Windows.</p>
+</div>
 <p>Haga clic en el botón Ejecutar. Aparecerá un mapa de cambios en la cubierta forestal en la lista de capas de QGIS (véase la imagen inferior y haga clic para ampliarla) y se creará un gráfico de los cambios en la cubierta forestal <code class="docutils literal notranslate"><span class="pre">fcc123.png</span></code> en la carpeta <code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>. Se crean nuevas carpetas en el directorio de trabajo, entre ellas la carpeta <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> que incluye los datos originales con archivos intermedios y la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code> que incluye los datos procesados utilizados para los modelos y los gráficos. Puede visualizar la red de carreteras, por ejemplo, añadiendo el archivo vectorial <code class="docutils literal notranslate"><span class="pre">roads_proj.shp</span></code>, que se encuentra en el directorio <code class="docutils literal notranslate"><span class="pre">data_raw</span></code>, en QGIS.</p>
 <a class="reference internal image-reference" href="_images/qgis-variables-results.png"><img alt="_images/qgis-variables-results.png" src="_images/qgis-variables-results.png" style="width: 650px;" />
 </a>

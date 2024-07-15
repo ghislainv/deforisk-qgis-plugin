@@ -69,6 +69,9 @@ Get variables
 
 - ``Projection EPSG code``: EPSG:5490
 
+.. warning::
+    For Windows users, choose a working directory with a short path (e.g. ``C:\Users\<username>\<dirname>``). Long file paths can cause problems to access files on Windows.
+
 Click the run button. A forest cover change map appears in the list of QGIS layers (see image below and click to enlarge) and a plot of the forest cover change ``fcc123.png`` is created in folder ``outputs/variables``. New folders are created in the working directory among which the ``data_raw`` folder which includes raw data with intermediary files and the ``data`` folder which includes processed data used for models and plots. You can visualize the road network for example adding the ``roads_proj.shp`` vector file, which is located in the ``data_raw`` directory, in QGIS.
 
 .. image:: _static/get_started/qgis-variables-results.png

@@ -491,6 +491,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code>: Acceso a WDPA. Token de API personal (una serie de letras y números como <code class="docutils literal notranslate"><span class="pre">ca4703ffba6b9a26b2db73f78e56e088</span></code>) o una ruta a un archivo de texto que especifique el valor de la variable ambiental «WDPA_KEY» (por ejemplo, un archivo de texto simple que incluya en una línea <code class="docutils literal notranslate"><span class="pre">WDPA_KEY=&quot;3e404871700e77c453c4e189d848f739&quot;</span></code> por ejemplo).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>. Código EPSG de proyección. Código EPSG del sistema de referencia de coordenadas utilizado para proyectar mapas.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>For Windows users, choose a working directory with a short path (e.g. <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\&lt;dirname&gt;</span></code>). Long file paths can cause problems to access files on Windows.</p>
+</div>
 <p>Presionar el botón <code class="docutils literal notranslate"><span class="pre">Run</span></code> en esta caja descargará los datos y calculará las variables en segundo plano. Cuando la operación haya finalizado, aparecerá un mapa de cambio de cobertura forestal en la lista de capas de QGIS y se creará un gráfico del cambio de cobertura forestal <code class="docutils literal notranslate"><span class="pre">fcc123.png</span></code> en la carpeta <code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>. Se crean nuevas carpetas en el directorio de trabajo:</p>
 <p>Se crean seis carpetas de datos:</p>
 <ul class="simple">

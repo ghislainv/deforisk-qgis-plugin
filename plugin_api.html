@@ -490,6 +490,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code>: Personal API Token (a series of letters and numbers such as <code class="docutils literal notranslate"><span class="pre">ca4703ffba6b9a26b2db73f78e56e088</span></code>) or a path to a text file specifying the value of the “WDPA_KEY” environmental variable (e.g. a simple text file including on one line <code class="docutils literal notranslate"><span class="pre">WDPA_KEY=&quot;3e404871700e77c453c4e189d848f739&quot;</span></code> for example).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>: EPSG code of the coordinate reference system used for projecting maps.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For Windows users, choose a working directory with a short path (e.g. <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\&lt;dirname&gt;</span></code>). Long file paths can cause problems to access files on Windows.</p>
+</div>
 <p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box will download the data and compute the variables in the background. When the operation is finished, a forest cover change map appears in the list of QGIS layers and a plot of the forest cover change <code class="docutils literal notranslate"><span class="pre">fcc123.png</span></code> is created in folder <code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>. New folders are created in the working directory:</p>
 <p>Six data folders are created:</p>
 <ul class="simple">
