@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>User’s data &#8212; deforisk — Create and compare deforestation risk maps</title>
+    <title>Advices for large jurisdictions &#8212; deforisk — Create and compare deforestation risk maps</title>
   
   
   
@@ -38,13 +38,13 @@
     <script src="../_static/documentation_options.js?v=ec806d2c"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'articles/user_data';</script>
-    <link rel="canonical" href="https://deforisk-qgis-plugin.org/articles/user_data.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'articles/large_jurisdictions';</script>
+    <link rel="canonical" href="https://deforisk-qgis-plugin.org/articles/large_jurisdictions.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="References" href="references.html" />
-    <link rel="prev" title="Advices for large jurisdictions" href="large_jurisdictions.html" />
+    <link rel="next" title="User’s data" href="user_data.html" />
+    <link rel="prev" title="Subnational jurisdictions" href="subnational_jurisd.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -447,7 +447,7 @@
     
     <li class="breadcrumb-item"><a href="../articles.html" class="nav-link">Articles</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">User’s data</li>
+    <li class="breadcrumb-item active" aria-current="page">Advices for...</li>
   </ul>
 </nav>
 </div>
@@ -464,13 +464,28 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="users-data">
-<h1>User’s data<a class="headerlink" href="#users-data" title="Link to this heading">#</a></h1>
-<section id="first-section">
-<h2>First section<a class="headerlink" href="#first-section" title="Link to this heading">#</a></h2>
-</section>
-<section id="second-section">
-<h2>Second section<a class="headerlink" href="#second-section" title="Link to this heading">#</a></h2>
+  <section id="advices-for-large-jurisdictions">
+<h1>Advices for large jurisdictions<a class="headerlink" href="#advices-for-large-jurisdictions" title="Link to this heading">#</a></h1>
+<section id="some-advices-for-large-jurisdictions">
+<h2>Some advices for large jurisdictions<a class="headerlink" href="#some-advices-for-large-jurisdictions" title="Link to this heading">#</a></h2>
+<p>It could be necessary to change the default parameters of the plugin for large jurisdictions (e.g. country scale).</p>
+<ol class="arabic simple">
+<li><p>Use a larger <code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">egde</span> <span class="pre">(m)</span></code>, e.g. <strong>6000 m</strong> in the <code class="docutils literal notranslate"><span class="pre">Benchmark</span></code> and <code class="docutils literal notranslate"><span class="pre">MW</span> <span class="pre">models</span></code>.</p></li>
+<li><p>If you want to save computation time and look at the most important results, only:</p>
+<ul class="simple">
+<li><p>Calibrate the models on the <strong>calibration period</strong>, checking <code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> in the box <code class="docutils literal notranslate"><span class="pre">Fit</span> <span class="pre">model</span> <span class="pre">to</span> <span class="pre">data</span></code>.</p></li>
+<li><p>Predict for the <strong>validation period</strong>, checking <code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> in the box <code class="docutils literal notranslate"><span class="pre">Predict</span> <span class="pre">the</span> <span class="pre">deforestation</span> <span class="pre">risk</span></code>.</p></li>
+</ul>
+</li>
+<li><p>For FAR models:</p>
+<ul class="simple">
+<li><p>Use a larger <code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(km)</span></code> for sampling, e.g. <strong>10 km</strong> to avoid estimating a too large number of parameters for spatial random effects.</p></li>
+<li><p>Use a larger <code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">interpolation</span> <span class="pre">(km)</span></code>, e.g. <strong>1 km</strong>.</p></li>
+</ul>
+</li>
+<li><p>For the MW models, use only one <code class="docutils literal notranslate"><span class="pre">Window</span> <span class="pre">sizes</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>, e.g. <strong>21</strong>. This should correspond to about 630 m for a resolution of 30 m.</p></li>
+<li><p>For the validation step, use only one <code class="docutils literal notranslate"><span class="pre">Coarse</span> <span class="pre">grid</span> <span class="pre">cell</span> <span class="pre">sizes</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code> and increase its size, using e.g. <strong>300</strong>. This should correspond to about 9 km for a resolution of 30 m.</p></li>
+</ol>
 </section>
 </section>
 
@@ -485,20 +500,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="large_jurisdictions.html"
+       href="subnational_jurisd.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Advices for large jurisdictions</p>
+        <p class="prev-next-title">Subnational jurisdictions</p>
       </div>
     </a>
     <a class="right-next"
-       href="references.html"
+       href="user_data.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">References</p>
+        <p class="prev-next-title">User’s data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -520,8 +535,7 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-section">First section</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-section">Second section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-advices-for-large-jurisdictions">Some advices for large jurisdictions</a></li>
 </ul>
   </nav></div>
 

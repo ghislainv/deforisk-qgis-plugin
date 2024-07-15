@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" data-theme="light">
+<html lang="es" data-content_root="../" data-theme="light">
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>User’s data &#8212; deforisk — Create and compare deforestation risk maps</title>
+    <title>Consejos para las grandes jurisdicciones &#8212; deforisk — Create and compare deforestation risk maps</title>
   
   
   
@@ -35,18 +35,19 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=ec806d2c"></script>
+    <script src="../_static/documentation_options.js?v=5712f160"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'articles/user_data';</script>
-    <link rel="canonical" href="https://deforisk-qgis-plugin.org/articles/user_data.html" />
+    <script src="../_static/translations.js?v=d190bf04"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'articles/large_jurisdictions';</script>
+    <link rel="canonical" href="https://deforisk-qgis-plugin.org/articles/large_jurisdictions.html" />
     <link rel="icon" href="../_static/favicon.ico"/>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="References" href="references.html" />
-    <link rel="prev" title="Advices for large jurisdictions" href="large_jurisdictions.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Datos del usuario" href="user_data.html" />
+    <link rel="prev" title="Jurisdicciones subnacionales" href="subnational_jurisd.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="es"/>
   </head>
   
   
@@ -54,12 +55,12 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
 
   
   <input type="checkbox"
@@ -94,13 +95,13 @@
   </div>
 
   <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
 </div>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navegación del sitio">
     <span class="fa-solid fa-bars"></span>
   </button>
   
@@ -142,28 +143,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../index.html">
-    Home
+    Inicio
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../installation.html">
-    Installation
+    Instalación
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../get_started.html">
-    Get started
+    Empezar
   </a>
 </li>
 
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../articles.html">
-    Articles
+    Artículos
   </a>
 </li>
 
@@ -182,28 +183,28 @@
                     
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../contributing/changelog.html">
-    Changelog
+    Registro de cambios
   </a>
 </li>
 
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../contributing/community_guidelines.html">
-    Community guidelines
+    Directrices comunitarias
   </a>
 </li>
 
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../contributing/code_of_conduct.html">
-    Code of Conduct
+    Código de conducta
   </a>
 </li>
 
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../contributing/license.html">
-    License
+    Licencia
   </a>
 </li>
 
@@ -223,9 +224,9 @@
 
  <script>
  document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
+    <span class="search-button__default-text">Búsqueda</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
    </button>
  `);
@@ -269,9 +270,9 @@
 
  <script>
  document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
+    <span class="search-button__default-text">Búsqueda</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
    </button>
  `);
@@ -280,7 +281,7 @@
   
 
   
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="En esta página">
       <span class="fa-solid fa-outdent"></span>
     </button>
   
@@ -311,28 +312,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../index.html">
-    Home
+    Inicio
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../installation.html">
-    Installation
+    Instalación
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../get_started.html">
-    Get started
+    Empezar
   </a>
 </li>
 
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../articles.html">
-    Articles
+    Artículos
   </a>
 </li>
 
@@ -346,28 +347,28 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contributing/changelog.html">
-    Changelog
+    Registro de cambios
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contributing/community_guidelines.html">
-    Community guidelines
+    Directrices comunitarias
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contributing/code_of_conduct.html">
-    Code of Conduct
+    Código de conducta
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contributing/license.html">
-    License
+    Licencia
   </a>
 </li>
 
@@ -436,18 +437,18 @@
 
 
 
-<nav aria-label="Breadcrumb" class="d-print-none">
+<nav aria-label="Miga de pan" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../index.html" class="nav-link" aria-label="Home">
+      <a href="../index.html" class="nav-link" aria-label="Inicio">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../articles.html" class="nav-link">Articles</a></li>
+    <li class="breadcrumb-item"><a href="../articles.html" class="nav-link">Artículos</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">User’s data</li>
+    <li class="breadcrumb-item active" aria-current="page">Consejos...</li>
   </ul>
 </nav>
 </div>
@@ -464,13 +465,28 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="users-data">
-<h1>User’s data<a class="headerlink" href="#users-data" title="Link to this heading">#</a></h1>
-<section id="first-section">
-<h2>First section<a class="headerlink" href="#first-section" title="Link to this heading">#</a></h2>
-</section>
-<section id="second-section">
-<h2>Second section<a class="headerlink" href="#second-section" title="Link to this heading">#</a></h2>
+  <section id="advices-for-large-jurisdictions">
+<h1>Consejos para las grandes jurisdicciones<a class="headerlink" href="#advices-for-large-jurisdictions" title="Link to this heading">#</a></h1>
+<section id="some-advices-for-large-jurisdictions">
+<h2>Algunos consejos para las grandes jurisdicciones<a class="headerlink" href="#some-advices-for-large-jurisdictions" title="Link to this heading">#</a></h2>
+<p>Podría ser necesario cambiar los parámetros por defecto del plugin para jurisdicciones grandes (por ejemplo, a escala nacional).</p>
+<ol class="arabic simple">
+<li><p>Utilice una mayor <code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">egde</span> <span class="pre">(m)</span></code>, por ejemplo <strong>6000  m</strong> en los modelos <code class="docutils literal notranslate"><span class="pre">Benchmark</span></code> y <code class="docutils literal notranslate"><span class="pre">MW</span></code>.</p></li>
+<li><p>Si desea ahorrar tiempo de cálculo y consultar sólo los resultados más importantes:</p>
+<ul class="simple">
+<li><p>Calibre los modelos en el <strong>periodo de calibración</strong>, marcando <code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> en la casilla <code class="docutils literal notranslate"><span class="pre">Fit</span> <span class="pre">model</span> <span class="pre">to</span> <span class="pre">data</span></code>.</p></li>
+<li><p>Predecir para el <strong>periodo de validación</strong>, marcando <code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> en la casilla <code class="docutils literal notranslate"><span class="pre">Predict</span> <span class="pre">the</span> <span class="pre">deforestation</span> <span class="pre">risk</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Para los modelos FAR:</p>
+<ul class="simple">
+<li><p>Utilice un tamaño de celda espacial (km) mayor para el muestreo, por ejemplo <strong>10  km</strong> para evitar estimar un número demasiado grande de parámetros para los efectos aleatorios espaciales.</p></li>
+<li><p>Utilice un tamaño de celda espacial de interpolación (km) mayor, por ejemplo <strong>1  km</strong>.</p></li>
+</ul>
+</li>
+<li><p>Para los modelos MW, utilice sólo un <code class="docutils literal notranslate"><span class="pre">Window</span> <span class="pre">sizes</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>, por ejemplo <strong>21</strong>. Esto debería corresponder a unos 630  m para una resolución de 30  m.</p></li>
+<li><p>Para el paso de validación, utilice sólo un <code class="docutils literal notranslate"><span class="pre">Coarse</span> <span class="pre">grid</span> <span class="pre">cell</span> <span class="pre">sizes</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code> y aumente su tamaño, utilizando por ejemplo <strong>300</strong>. Esto debería corresponder a unos 9  km para una resolución de 30  m.</p></li>
+</ol>
 </section>
 </section>
 
@@ -485,20 +501,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="large_jurisdictions.html"
-       title="previous page">
+       href="subnational_jurisd.html"
+       title="página anterior">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Advices for large jurisdictions</p>
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Jurisdicciones subnacionales</p>
       </div>
     </a>
     <a class="right-next"
-       href="references.html"
-       title="next page">
+       href="user_data.html"
+       title="siguiente página">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">References</p>
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Datos del usuario</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -516,12 +532,11 @@
 <div
     id="pst-page-navigation-heading-2"
     class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
+    <i class="fa-solid fa-list"></i> En esta página
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-section">First section</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-section">Second section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-advices-for-large-jurisdictions">Algunos consejos para las grandes jurisdicciones</a></li>
 </ul>
   </nav></div>
 
@@ -564,7 +579,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.3.
+    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.3.
     <br/>
   </p>
 </div>
@@ -576,7 +591,7 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+  Construido con el <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">Tema PyData Sphinx</a> 0.15.4.
 </p></div>
       
     </div>
