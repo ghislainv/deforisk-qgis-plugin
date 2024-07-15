@@ -19,6 +19,15 @@ resource_name          = articles
 replace_edited_strings = false
 keep_translations      = false
 
+[o:Cirad:p:deforisk-qgis-plugin:r:articles--large_jurisdictions]
+file_filter            = locales/<lang>/LC_MESSAGES/articles/large_jurisdictions.po
+source_file            = ../build/gettext/articles/large_jurisdictions.pot
+type                   = PO
+minimum_perc           = 0
+resource_name          = articles--large_jurisdictions
+replace_edited_strings = false
+keep_translations      = false
+
 [o:Cirad:p:deforisk-qgis-plugin:r:articles--references]
 file_filter            = locales/<lang>/LC_MESSAGES/articles/references.po
 source_file            = ../build/gettext/articles/references.pot

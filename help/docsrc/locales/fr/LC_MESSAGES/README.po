@@ -275,7 +275,7 @@ msgstr "Sélectionnez le fichier zip qui a été téléchargé."
 
 #: ../../docsrc/README.rst:105 ce64d669a4d14f2a86f586ab4444e50b
 msgid "Acknowledgements"
-msgstr ""
+msgstr "Remerciements"
 
 #: ../../docsrc/README.rst:107 c3269a0d8dec4ab1927f0f2b00ea540c
 msgid ""
@@ -289,10 +289,19 @@ msgid ""
 "Department for Energy Security and Net Zero of the United Kingdom of Great "
 "Britain and Northern Ireland."
 msgstr ""
+"Cet outil a été développé conjointement par l'Organisation des Nations Unies"
+" pour l'alimentation et l'agriculture (`FAO <https://www.fao.org/>`_) et "
+"l'organisme français de recherche et de coopération agricole pour le "
+"développement durable des régions tropicales et méditerranéennes (`CIRAD "
+"<https://www.cirad.fr/en/>`_), dans le cadre du programme `AIM4Forests "
+"<https://www.fao.org/in-action/aim4forests>`_ : Accelerating Innovative "
+"Monitoring for Forests, avec le soutien financier du Department for Energy "
+"Security and Net Zero du Royaume-Uni de Grande-Bretagne et d'Irlande du "
+"Nord."
 
 #: ../../docsrc/README.rst-1 f52afceb057143298382f631df30b701
 msgid "Logo partners"
-msgstr ""
+msgstr "Partenaires du logo"
 
 #: ../../docsrc/README.rst:115 25fe0f6a47524f308e6f61161725c229
 msgid "Contributing"

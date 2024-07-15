@@ -219,7 +219,7 @@ msgstr "Adapter le modèle aux données"
 
 #: ../../docsrc/get_started.rst:85 a935e4a2aa4640ce97e6fbdd38115c70
 msgid "``Deforestation threshold (%)``: 99.5"
-msgstr ""
+msgstr "Seuil de déforestation (%) : 99,5"
 
 #: ../../docsrc/get_started.rst:87 ../../docsrc/get_started.rst:289
 #: 43911b56d26d47bb851a293ff189c556 43911b56d26d47bb851a293ff189c556
@@ -561,6 +561,9 @@ msgid ""
 "For large jurisdictions, to avoid computing to many parameters for spatial "
 "random effects, set the spatial cell size at ~10km."
 msgstr ""
+"Pour les grandes juridictions, afin d'éviter de calculer trop de paramètres "
+"pour les effets aléatoires spatiaux, la taille de la cellule spatiale est "
+"fixée à ~10 km."
 
 #: ../../docsrc/get_started.rst:161 585c0ebd778d4e97a2787f8a91711310
 msgid ""
@@ -1122,7 +1125,7 @@ msgstr "100.0"
 
 #: ../../docsrc/get_started.rst:255 dfadbe2b0a024fe68c1a8af8187e5eb4
 msgid "``Spatial cell size interpolation (km)``: 0.1."
-msgstr ""
+msgstr "``Interpolation de la taille des cellules spatiales (km)`` : 0.1."
 
 #: ../../docsrc/get_started.rst:257 5aa226a9f2e6433fa49e6aecb2f6f7b0
 msgid "``iCAR model``: Checked, computes predictions with the iCAR model."
@@ -1175,6 +1178,9 @@ msgid ""
 "For large jurisdictions, to avoid obtaining a large raster file (of type "
 "Float), set interpolation of spatial random effects at ~1km."
 msgstr ""
+"Pour les grandes juridictions, afin d'éviter l'obtention d'un fichier raster"
+" volumineux (de type Float), fixer l'interpolation des effets aléatoires "
+"spatiaux à ~1km."
 
 #: ../../docsrc/get_started.rst:274 b0056ee4e1724ca4b03e8b822db71af9
 msgid ""
@@ -1213,6 +1219,8 @@ msgid ""
 "For large jurisdictions, if you want to reduce computation time, use only "
 "one window size (e.g. 21 pixels)."
 msgstr ""
+"Pour les grandes juridictions, si vous souhaitez réduire le temps de calcul,"
+" utilisez une seule taille de fenêtre (par exemple 21 pixels)."
 
 #: ../../docsrc/get_started.rst:300 8b090b537df246cb9081cb91e1d2fab7
 msgid ""
@@ -1324,6 +1332,10 @@ msgid ""
 "one cell size (e.g. 100 pixels) and check only the validation period, the "
 "only one with independent observations."
 msgstr ""
+"Pour les grandes juridictions, si vous souhaitez réduire le temps de calcul,"
+" n'utilisez qu'une seule taille de cellule (par exemple 100 pixels) et ne "
+"vérifiez que la période de validation, la seule qui comporte des "
+"observations indépendantes."
 
 #: ../../docsrc/get_started.rst:340 5556511065ff49d0a89f3f027ab4c5fa
 msgid ""
@@ -1569,7 +1581,7 @@ msgstr "6.66"
 
 #: ../../docsrc/get_started.rst:371 810114b43981435ab1c73825e12395be
 msgid "Allocating deforestation"
-msgstr ""
+msgstr "Attribution de la déforestation"
 
 #: ../../docsrc/get_started.rst:377 7f063d6ecfa14002bd7b78b77c878b33
 msgid ""
@@ -1705,6 +1717,19 @@ msgid ""
 "jurisdiction. To do so, a table with the number of pixels for each class of "
 "deforestation risk in the project area must be computed."
 msgstr ""
+"La carte des risques ainsi que le tableau des densités de déforestation "
+"calculées peuvent être utilisés pour \" allouer proportionnellement des "
+"fractions <https://verra.org/verra-launches-unplanned-deforestation-"
+"allocation-tool-vt0007-issues-call-for-supplementary-materials/>`_ de la "
+"base de données des activités de déforestation non planifiées de la "
+"juridiction (dans le contexte de `VMD0055 "
+"<https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-"
+"from-avoiding-unplanned-deforestation-v1-0/>`_) ou du FREL de la juridiction"
+" (dans le contexte du VCS `Jurisdictional and Nested REDD+ "
+"<https://verra.org/programs/jurisdictional-nested-redd-framework/>`_ "
+"Framework) aux projets ou programmes à mettre en œuvre au sein de la "
+"juridiction. Pour ce faire, un tableau avec le nombre de pixels pour chaque "
+"classe de risque de déforestation dans la zone de projet doit être calculé."
 
 #: ../../docsrc/get_started.rst:406 8e42ba144a494e81aed25c937b5655c8
 msgid "Allocating deforestation to projects within the jurisdiction."
@@ -1719,10 +1744,17 @@ msgid ""
 "Martinique (`project\\_borders\\_MTQ\\_jurisdiction.gpkg "
 "<_static/get_started/project_borders_MTQ_jurisdiction.gpkg>`_)."
 msgstr ""
+"Le plugin QGIS ``deforisk`` inclut un utilitaire pour faciliter l'allocation"
+" de la déforestation aux projets. Avant de l'utiliser, vous pouvez "
+"télécharger le fichier vectoriel définissant les frontières d'un faux projet"
+" en Martinique (`project_borders\\_MTQ\\_jurisdiction.gpkg "
+"<_static/get_started/project_borders_MTQ_jurisdiction.gpkg>`_)."
 
 #: ../../docsrc/get_started.rst:410 969aa3a1e85d4168984d1444fff9df4d
 msgid "``Juris. risk map``: File ``prob_icar_t3.tif`` for the best risk map."
 msgstr ""
+"``Juris. carte des risques`` : Fichier ``prob_icar_t3.tif`` pour la "
+"meilleure carte des risques."
 
 #: ../../docsrc/get_started.rst:412 d69508b34b594c2fb96c087e39d030f3
 msgid ""
@@ -1730,20 +1762,26 @@ msgid ""
 " table with the deforestation rates from the icar model at t3 for each class"
 " of deforestation risk."
 msgstr ""
+"``Table. with defor. rates`` : Fichier ``defrate_cat_icar_forecast.csv`` "
+"pour la table avec les taux de déforestation du modèle icar à t3 pour chaque"
+" classe de risque de déforestation."
 
 #: ../../docsrc/get_started.rst:414 b6ec5c5d1d434f37ba14c723a31c650d
 msgid "``Project borders``: File ``project_borders_MTQ_jurisdiction.gpkg``."
 msgstr ""
+"``Projet frontières`` : Fichier ``projet_borders_MTQ_jurisdiction.gpkg``."
 
 #: ../../docsrc/get_started.rst:416 0ef9eda9908b42b49ee8e33e9768b80b
 msgid ""
 "``Juris. deforestation (ha)``: 4000. About 400 ha have been deforested each "
 "year in 2010--2020 in MTQ."
 msgstr ""
+"``Juris. déforestation (ha)`` : 4000. Environ 400 ha ont été déboisés chaque"
+" année en 2010--2020 au MTQ."
 
 #: ../../docsrc/get_started.rst:418 43911b56d26d47bb851a293ff189c556
 msgid "``Length forecast period (yr)``: 10."
-msgstr ""
+msgstr "``Longueur de la période de prévision (an) `` : 10."
 
 #: ../../docsrc/get_started.rst:420 8b570d95980047efbafe7ef39c8f5508
 msgid ""
@@ -1756,6 +1794,15 @@ msgid ""
 "Finally, the expected deforestation at the project level is obtained summing"
 " the deforestation densities within the project."
 msgstr ""
+"En appuyant sur le bouton \"Exécuter\" dans cette boîte, on calcule le "
+"facteur d'ajustement de la quantité et la densité de déforestation pour "
+"chaque classe de risque en utilisant la déforestation totale prévue au "
+"niveau de la juridiction (:math:`D=4000`) et les taux de déforestation "
+"spatiaux relatifs du modèle. Ensuite, la carte des risques avec les classes "
+"de risque de déforestation est recadrée aux limites du projet et le nombre "
+"de pixels de forêt dans chaque classe de risque est calculé au niveau du "
+"projet. Enfin, la déforestation prévue au niveau du projet est obtenue en "
+"additionnant les densités de déforestation au sein du projet."
 
 #: ../../docsrc/get_started.rst:423 64f927177a6e44308565a4b90f19922e
 msgid ""
@@ -1763,42 +1810,45 @@ msgid ""
 "``defor_project.csv`` indicating the predicted deforestation (106.7 ha) for "
 "the period 2020--2030 for the project:"
 msgstr ""
+"Un dossier ``outputs/allocating_deforestation`` est créé avec le fichier "
+"``defor_project.csv`` indiquant la déforestation prévue (106,7 ha) pour la "
+"période 2020--2030 pour le projet :"
 
 #: ../../docsrc/get_started.rst:425 8e42ba144a494e81aed25c937b5655c8
 msgid "Allocated deforestation for the project."
-msgstr ""
+msgstr "Déforestation allouée au projet."
 
 #: ../../docsrc/get_started.rst:428 82ccece724774d32aa57acce7854cce3
 msgid "length (yr)"
-msgstr ""
+msgstr "durée (an)"
 
 #: ../../docsrc/get_started.rst:428 810114b43981435ab1c73825e12395be
 msgid "deforestation (ha)"
-msgstr ""
+msgstr "déforestation (ha)"
 
 #: ../../docsrc/get_started.rst:430 37db25388af44e69bb00e09d0d97cd85
 msgid "annual"
-msgstr ""
+msgstr "annuel"
 
 #: ../../docsrc/get_started.rst:430 ab6d5e245af044c8a0bcd1e92d649bd4
 msgid "1.0"
-msgstr ""
+msgstr "1.0"
 
 #: ../../docsrc/get_started.rst:430 0c138d099d514d32a2052fefb5786f1d
 msgid "10.7"
-msgstr ""
+msgstr "10.7"
 
 #: ../../docsrc/get_started.rst:432 9bfc901ff1604ac692a42aad40c23203
 msgid "entire"
-msgstr ""
+msgstr "entière"
 
 #: ../../docsrc/get_started.rst:432 fdb2b8710594419a977b0a87934909d6
 msgid "10.0"
-msgstr ""
+msgstr "10.0"
 
 #: ../../docsrc/get_started.rst:432 fdb2b8710594419a977b0a87934909d6
 msgid "106.9"
-msgstr ""
+msgstr "106.9"
 
 #: ../../docsrc/get_started.rst:436 24152df6598c445f82af74b782a0aa7b
 msgid "Conclusion"
