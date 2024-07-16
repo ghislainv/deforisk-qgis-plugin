@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 10:26-0500\n"
+"POT-Creation-Date: 2024-07-16 08:32-0500\n"
 "PO-Revision-Date: 2024-07-01 18:38+0000\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)\n"
@@ -116,9 +116,9 @@ msgstr ""
 msgid "Get variables"
 msgstr "Obtener variables"
 
-#: ../../docsrc/get_started.rst:50 ../../docsrc/get_started.rst:101
-#: ../../docsrc/get_started.rst:169 ../../docsrc/get_started.rst:322
-#: ../../docsrc/get_started.rst:378 9201cbf3a04a41b1a414a10c0b80e720
+#: ../../docsrc/get_started.rst:50 ../../docsrc/get_started.rst:103
+#: ../../docsrc/get_started.rst:171 ../../docsrc/get_started.rst:324
+#: ../../docsrc/get_started.rst:380 9201cbf3a04a41b1a414a10c0b80e720
 #: 9201cbf3a04a41b1a414a10c0b80e720 9201cbf3a04a41b1a414a10c0b80e720
 #: 9201cbf3a04a41b1a414a10c0b80e720 9201cbf3a04a41b1a414a10c0b80e720
 msgid "|br|"
@@ -215,26 +215,34 @@ msgstr ""
 "archivo vectorial ``roads_proj.shp``, que se encuentra en el directorio "
 "``data_raw``, en QGIS."
 
-#: ../../docsrc/get_started.rst:81 98f0a9e46b5d4625a6acf36ec2593689
+#: ../../docsrc/get_started.rst:80 481d8bf3f3fa4d4e8503583269524e0d
+msgid ""
+"If you want to skip this step, you can download a `zip file including all "
+"the data for the MTQ example <_static/tutos/MTQ-tuto.zip>`_."
+msgstr ""
+"Si desea saltarse este paso, puede descargar un `archivo zip que incluye "
+"todos los datos del ejemplo MTQ <_static/tutos/MTQ-tuto.zip>`_."
+
+#: ../../docsrc/get_started.rst:83 98f0a9e46b5d4625a6acf36ec2593689
 msgid "Benchmark model"
 msgstr "Modelo de referencia"
 
-#: ../../docsrc/get_started.rst:86 ../../docsrc/get_started.rst:191
-#: ../../docsrc/get_started.rst:288 2ad834f6340647d482e914c1a1f50997
+#: ../../docsrc/get_started.rst:88 ../../docsrc/get_started.rst:193
+#: ../../docsrc/get_started.rst:290 2ad834f6340647d482e914c1a1f50997
 #: 2ad834f6340647d482e914c1a1f50997 2ad834f6340647d482e914c1a1f50997
 msgid "Fit model to data"
 msgstr "Ajustar el modelo a los datos"
 
-#: ../../docsrc/get_started.rst:88 a935e4a2aa4640ce97e6fbdd38115c70
+#: ../../docsrc/get_started.rst:90 a935e4a2aa4640ce97e6fbdd38115c70
 msgid "``Deforestation threshold (%)``: 99.5"
 msgstr "Umbral de deforestación (%): 99,5"
 
-#: ../../docsrc/get_started.rst:90 ../../docsrc/get_started.rst:292
+#: ../../docsrc/get_started.rst:92 ../../docsrc/get_started.rst:294
 #: 43911b56d26d47bb851a293ff189c556 43911b56d26d47bb851a293ff189c556
 msgid "``Max. distance to forest edge (m)``: 2500"
 msgstr "``Max. distance to forest edge (m)``: 2500"
 
-#: ../../docsrc/get_started.rst:92 ../../docsrc/get_started.rst:296
+#: ../../docsrc/get_started.rst:94 ../../docsrc/get_started.rst:298
 #: f5c9839e769f45c88ca0a169b2984f11 f5c9839e769f45c88ca0a169b2984f11
 msgid ""
 "``calib. period``: Checked, the model is fitted over the calibration period "
@@ -243,7 +251,7 @@ msgstr ""
 "``calib. period``: Comprobado, el modelo se ajusta sobre el periodo de "
 "calibración (t1--t2)."
 
-#: ../../docsrc/get_started.rst:94 ../../docsrc/get_started.rst:298
+#: ../../docsrc/get_started.rst:96 ../../docsrc/get_started.rst:300
 #: 994fa1e39fb84eafbd14dabf8c9dcd0b 994fa1e39fb84eafbd14dabf8c9dcd0b
 msgid ""
 "``hist. period``: Checked, the model is fitted over the historical period "
@@ -252,7 +260,7 @@ msgstr ""
 "``hist. period``: Si se marca, el modelo se ajusta al periodo histórico (t1"
 "--t3)."
 
-#: ../../docsrc/get_started.rst:96 3143023f29a84816a7d421066af16ff6
+#: ../../docsrc/get_started.rst:98 3143023f29a84816a7d421066af16ff6
 msgid ""
 "Click the ``Run`` button to estimate the deforestation risk with the "
 "benchmark model and predict the deforestation risk at t1 using data on both "
@@ -265,7 +273,7 @@ msgstr ""
 "de riesgo de deforestación se añaden a la lista de capas de QGIS (véase la "
 "imagen siguiente)."
 
-#: ../../docsrc/get_started.rst:103 e8b137bfd5674669a1dce76cbd5f6938
+#: ../../docsrc/get_started.rst:105 e8b137bfd5674669a1dce76cbd5f6938
 msgid ""
 "New folders with results are created in the ``outputs/rmj_benchmark/`` "
 "directory for each period. In particular, the output folders include the "
@@ -280,11 +288,11 @@ msgstr ""
 "del bosque e indica los limites de distancia (aquí 240  m para el periodo de"
 " calibración)."
 
-#: ../../docsrc/get_started.rst:111 e65e278cef4148cd9d7ef3937e4a5a41
+#: ../../docsrc/get_started.rst:113 e65e278cef4148cd9d7ef3937e4a5a41
 msgid "Distance threshold for the calibration period."
 msgstr "Limite de distancia para el periodo de calibración."
 
-#: ../../docsrc/get_started.rst:113 b6401df727264c86b4c3d286a07602eb
+#: ../../docsrc/get_started.rst:115 b6401df727264c86b4c3d286a07602eb
 msgid ""
 "The output folders also include the ``<period>/defrate_cat_bm_<period>.csv``"
 " table which shows the deforestation rates for each class of deforestation "
@@ -295,7 +303,7 @@ msgstr ""
 "deforestación para cada clase de riesgo de deforestación (ver detalles `aquí"
 " <plugin_api.html#defrate-table>`_)."
 
-#: ../../docsrc/get_started.rst:115 2a6b9f6596d64a4c8926c7b9676ee546
+#: ../../docsrc/get_started.rst:117 2a6b9f6596d64a4c8926c7b9676ee546
 msgid ""
 "Deforestation rate for each class of deforestation risk (numbers truncated "
 "to three decimal digits)."
@@ -303,66 +311,66 @@ msgstr ""
 "Tasa de deforestación para cada clase de riesgo de deforestación (cifras "
 "truncadas a tres dígitos decimales)."
 
-#: ../../docsrc/get_started.rst:119 ../../docsrc/get_started.rst:388
+#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:390
 #: 0586861a4f254583afc7d59c71854f1d 0586861a4f254583afc7d59c71854f1d
 msgid "cat"
 msgstr "cat"
 
-#: ../../docsrc/get_started.rst:119 ../../docsrc/get_started.rst:388
+#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:390
 #: 0ce366ea14ee47d8bfe61a6b2eb11044 0ce366ea14ee47d8bfe61a6b2eb11044
 msgid "nfor"
 msgstr "nfor"
 
-#: ../../docsrc/get_started.rst:119 ../../docsrc/get_started.rst:388
+#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:390
 #: 8fabab95508348538f8c5adffe69bdf2 8fabab95508348538f8c5adffe69bdf2
 msgid "ndefor"
 msgstr "ndefor"
 
-#: ../../docsrc/get_started.rst:119 ../../docsrc/get_started.rst:388
+#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:390
 #: 35947158e4e54ea6a383493fa00f5e39 35947158e4e54ea6a383493fa00f5e39
 msgid "rate\\_obs"
 msgstr "rate\\_obs"
 
-#: ../../docsrc/get_started.rst:119 ../../docsrc/get_started.rst:388
+#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:390
 #: d052a59530884b6cadb259305b497915 d052a59530884b6cadb259305b497915
 msgid "rate\\_mod"
 msgstr "rate\\_mod"
 
-#: ../../docsrc/get_started.rst:119 ../../docsrc/get_started.rst:388
+#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:390
 #: c1ecfa935dee41a09bcd365fad52fb22 c1ecfa935dee41a09bcd365fad52fb22
 msgid "rate\\_abs"
 msgstr "rate\\_abs"
 
-#: ../../docsrc/get_started.rst:119 ../../docsrc/get_started.rst:388
+#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:390
 #: 91716e96cdd7424584d7bc685858c87b 91716e96cdd7424584d7bc685858c87b
 msgid "time\\_interval"
 msgstr "time\\_interval"
 
-#: ../../docsrc/get_started.rst:119 ../../docsrc/get_started.rst:388
+#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:390
 #: 9c2f929dece44253ba562cde4f35320f 9c2f929dece44253ba562cde4f35320f
 msgid "pixel\\_area"
 msgstr "pixel\\_area"
 
-#: ../../docsrc/get_started.rst:119 ../../docsrc/get_started.rst:388
+#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:390
 #: a399183b00124d74b2fa3856ce27efc1 a399183b00124d74b2fa3856ce27efc1
 msgid "defor\\_dens"
 msgstr "defor\\_dens"
 
-#: ../../docsrc/get_started.rst:121 a30872175cea4343abac6f4a5e0750d7
+#: ../../docsrc/get_started.rst:123 a30872175cea4343abac6f4a5e0750d7
 msgid "1001"
 msgstr "1001"
 
-#: ../../docsrc/get_started.rst:121 77b8c0d451194dd9bb5a2a2ab5b84368
+#: ../../docsrc/get_started.rst:123 77b8c0d451194dd9bb5a2a2ab5b84368
 msgid "33433"
 msgstr "33433"
 
-#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:123
-#: ../../docsrc/get_started.rst:129 ../../docsrc/get_started.rst:179
-#: ../../docsrc/get_started.rst:181 ../../docsrc/get_started.rst:183
-#: ../../docsrc/get_started.rst:185 ../../docsrc/get_started.rst:187
-#: ../../docsrc/get_started.rst:390 ../../docsrc/get_started.rst:392
-#: ../../docsrc/get_started.rst:394 ../../docsrc/get_started.rst:396
-#: ../../docsrc/get_started.rst:398 cfe3fb29b5d446c6b54d8cc91f81e406
+#: ../../docsrc/get_started.rst:123 ../../docsrc/get_started.rst:125
+#: ../../docsrc/get_started.rst:131 ../../docsrc/get_started.rst:181
+#: ../../docsrc/get_started.rst:183 ../../docsrc/get_started.rst:185
+#: ../../docsrc/get_started.rst:187 ../../docsrc/get_started.rst:189
+#: ../../docsrc/get_started.rst:392 ../../docsrc/get_started.rst:394
+#: ../../docsrc/get_started.rst:396 ../../docsrc/get_started.rst:398
+#: ../../docsrc/get_started.rst:400 cfe3fb29b5d446c6b54d8cc91f81e406
 #: cfe3fb29b5d446c6b54d8cc91f81e406 cfe3fb29b5d446c6b54d8cc91f81e406
 #: cfe3fb29b5d446c6b54d8cc91f81e406 cfe3fb29b5d446c6b54d8cc91f81e406
 #: cfe3fb29b5d446c6b54d8cc91f81e406 cfe3fb29b5d446c6b54d8cc91f81e406
@@ -375,42 +383,42 @@ msgstr "33433"
 msgid "0"
 msgstr "0"
 
-#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:123
-#: ../../docsrc/get_started.rst:129 ../../docsrc/get_started.rst:244
-#: ../../docsrc/get_started.rst:252 ../../docsrc/get_started.rst:390
-#: ../../docsrc/get_started.rst:392 ../../docsrc/get_started.rst:394
-#: ../../docsrc/get_started.rst:396 ../../docsrc/get_started.rst:398
+#: ../../docsrc/get_started.rst:123 ../../docsrc/get_started.rst:125
+#: ../../docsrc/get_started.rst:131 ../../docsrc/get_started.rst:246
+#: ../../docsrc/get_started.rst:254 ../../docsrc/get_started.rst:392
+#: ../../docsrc/get_started.rst:394 ../../docsrc/get_started.rst:396
+#: ../../docsrc/get_started.rst:398 ../../docsrc/get_started.rst:400
+#: 663c76a4f8a246b8996343603a009394 b8a3840a4e9c457cb1b559f95722bc7d
 #: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
+#: 663c76a4f8a246b8996343603a009394 b8a3840a4e9c457cb1b559f95722bc7d
 #: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
+#: 663c76a4f8a246b8996343603a009394 b8a3840a4e9c457cb1b559f95722bc7d
 #: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
-#: b8a3840a4e9c457cb1b559f95722bc7d b8a3840a4e9c457cb1b559f95722bc7d
-#: b8a3840a4e9c457cb1b559f95722bc7d
+#: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
+#: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
+#: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
+#: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
+#: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
+#: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
+#: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
+#: 663c76a4f8a246b8996343603a009394 663c76a4f8a246b8996343603a009394
+#: 663c76a4f8a246b8996343603a009394
 msgid "0.0"
 msgstr "0.0"
 
-#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:123
-#: ../../docsrc/get_started.rst:125 ../../docsrc/get_started.rst:127
-#: ../../docsrc/get_started.rst:129 1e358baff5aa48cbbf041f405f809773
+#: ../../docsrc/get_started.rst:123 ../../docsrc/get_started.rst:125
+#: ../../docsrc/get_started.rst:127 ../../docsrc/get_started.rst:129
+#: ../../docsrc/get_started.rst:131 1e358baff5aa48cbbf041f405f809773
 #: 1e358baff5aa48cbbf041f405f809773 1e358baff5aa48cbbf041f405f809773
 #: 1e358baff5aa48cbbf041f405f809773 1e358baff5aa48cbbf041f405f809773
 msgid "10"
 msgstr "10"
 
-#: ../../docsrc/get_started.rst:121 ../../docsrc/get_started.rst:123
-#: ../../docsrc/get_started.rst:125 ../../docsrc/get_started.rst:127
-#: ../../docsrc/get_started.rst:129 ../../docsrc/get_started.rst:390
-#: ../../docsrc/get_started.rst:392 ../../docsrc/get_started.rst:394
-#: ../../docsrc/get_started.rst:396 ../../docsrc/get_started.rst:398
+#: ../../docsrc/get_started.rst:123 ../../docsrc/get_started.rst:125
+#: ../../docsrc/get_started.rst:127 ../../docsrc/get_started.rst:129
+#: ../../docsrc/get_started.rst:131 ../../docsrc/get_started.rst:392
+#: ../../docsrc/get_started.rst:394 ../../docsrc/get_started.rst:396
+#: ../../docsrc/get_started.rst:398 ../../docsrc/get_started.rst:400
 #: db94565bcd4f440883d4c9d231ff2f1c db94565bcd4f440883d4c9d231ff2f1c
 #: db94565bcd4f440883d4c9d231ff2f1c db94565bcd4f440883d4c9d231ff2f1c
 #: db94565bcd4f440883d4c9d231ff2f1c db94565bcd4f440883d4c9d231ff2f1c
@@ -419,81 +427,81 @@ msgstr "10"
 msgid "0.09"
 msgstr "0.09"
 
-#: ../../docsrc/get_started.rst:123 ca37ccc5bc8745ce926244a2ec0a564a
+#: ../../docsrc/get_started.rst:125 ca37ccc5bc8745ce926244a2ec0a564a
 msgid "1002"
 msgstr "1002"
 
-#: ../../docsrc/get_started.rst:123 c24b12d0081a451d80f0d5bf4cde8ecd
+#: ../../docsrc/get_started.rst:125 c24b12d0081a451d80f0d5bf4cde8ecd
 msgid "12965"
 msgstr "12965"
 
-#: ../../docsrc/get_started.rst:125 46d20428319f49c1aff900f258492be3
+#: ../../docsrc/get_started.rst:127 46d20428319f49c1aff900f258492be3
 msgid "1003"
 msgstr "1003"
 
-#: ../../docsrc/get_started.rst:125 490958f196e04a0890a2b91fa6c80ede
+#: ../../docsrc/get_started.rst:127 490958f196e04a0890a2b91fa6c80ede
 msgid "91686"
 msgstr "91686"
 
-#: ../../docsrc/get_started.rst:125 335bc03000f84ca987f0589b16f2795d
+#: ../../docsrc/get_started.rst:127 335bc03000f84ca987f0589b16f2795d
 msgid "19"
 msgstr "19"
 
-#: ../../docsrc/get_started.rst:125 8a5dd942c18f4feb940ddfc77efd1439
+#: ../../docsrc/get_started.rst:127 8a5dd942c18f4feb940ddfc77efd1439
 msgid "2.072e-05"
 msgstr "2.072e-05"
 
-#: ../../docsrc/get_started.rst:125 618699a3065b4f4497b27dcedf3bab4a
+#: ../../docsrc/get_started.rst:127 618699a3065b4f4497b27dcedf3bab4a
 #: 618699a3065b4f4497b27dcedf3bab4a
 msgid "2.072e-04"
 msgstr "2.072e-04"
 
-#: ../../docsrc/get_started.rst:125 537badb58a564b1f9c3ea9d846c3f475
+#: ../../docsrc/get_started.rst:127 537badb58a564b1f9c3ea9d846c3f475
 msgid "1.865e-06"
 msgstr "1.865e-06"
 
-#: ../../docsrc/get_started.rst:127 1724ed52050a4e818d8043f4edfba197
+#: ../../docsrc/get_started.rst:129 1724ed52050a4e818d8043f4edfba197
 msgid "1004"
 msgstr "1004"
 
-#: ../../docsrc/get_started.rst:127 c6573a6cdc8645079bc39a52d6830e38
+#: ../../docsrc/get_started.rst:129 c6573a6cdc8645079bc39a52d6830e38
 msgid "82279"
 msgstr "82279"
 
-#: ../../docsrc/get_started.rst:127 ../../docsrc/get_started.rst:183
-#: ../../docsrc/get_started.rst:398 5d5c4a5c995a4b5885663ebc9d05f794
+#: ../../docsrc/get_started.rst:129 ../../docsrc/get_started.rst:185
+#: ../../docsrc/get_started.rst:400 5d5c4a5c995a4b5885663ebc9d05f794
 #: 5d5c4a5c995a4b5885663ebc9d05f794 5d5c4a5c995a4b5885663ebc9d05f794
 msgid "5"
 msgstr "5"
 
-#: ../../docsrc/get_started.rst:127 97c41c941efb4ed29df7f77641b6e3a7
+#: ../../docsrc/get_started.rst:129 97c41c941efb4ed29df7f77641b6e3a7
 msgid "6.077e-06"
 msgstr "6.077e-06"
 
-#: ../../docsrc/get_started.rst:127 3d88bbabacde47068b4cf6c4c54c5b51
+#: ../../docsrc/get_started.rst:129 3d88bbabacde47068b4cf6c4c54c5b51
 #: 3d88bbabacde47068b4cf6c4c54c5b51
 msgid "6.076e-05"
 msgstr "6.076e-05"
 
-#: ../../docsrc/get_started.rst:127 55c7255adab94a8086e23558e8af8796
+#: ../../docsrc/get_started.rst:129 55c7255adab94a8086e23558e8af8796
 msgid "5.469e-07"
 msgstr "5.469e-07"
 
-#: ../../docsrc/get_started.rst:129 ce12cc1ff23d4fd4b4d2866def149601
+#: ../../docsrc/get_started.rst:131 ce12cc1ff23d4fd4b4d2866def149601
 msgid "2001"
 msgstr "2001"
 
-#: ../../docsrc/get_started.rst:129 81c718aa2f1247b6977e441eef666f2f
+#: ../../docsrc/get_started.rst:131 81c718aa2f1247b6977e441eef666f2f
 msgid "1373"
 msgstr "1373"
 
-#: ../../docsrc/get_started.rst:133 ../../docsrc/get_started.rst:256
-#: ../../docsrc/get_started.rst:306 810114b43981435ab1c73825e12395be
+#: ../../docsrc/get_started.rst:135 ../../docsrc/get_started.rst:258
+#: ../../docsrc/get_started.rst:308 810114b43981435ab1c73825e12395be
 #: 810114b43981435ab1c73825e12395be 810114b43981435ab1c73825e12395be
 msgid "Predict the deforestation risk"
 msgstr "Predecir el riesgo de deforestación"
 
-#: ../../docsrc/get_started.rst:135 a5c5d65e9d7c49928db1584ef201968b
+#: ../../docsrc/get_started.rst:137 a5c5d65e9d7c49928db1584ef201968b
 msgid ""
 "``t2 validation``: Checked, computes predictions at t2 for validation (using"
 " the benchmark model fitted over the calibration period)."
@@ -502,7 +510,7 @@ msgstr ""
 "validación (utilizando el modelo de referencia ajustado durante el periodo "
 "de calibración)."
 
-#: ../../docsrc/get_started.rst:137 5080e50ae6ba40f1a2a23f8329acb3d5
+#: ../../docsrc/get_started.rst:139 5080e50ae6ba40f1a2a23f8329acb3d5
 msgid ""
 "``t3 forecast``: Checked, computes predictions at t3 for forecasting (using "
 "the benchmark model fitted over the historical period)."
@@ -510,7 +518,7 @@ msgstr ""
 "``t3 forecast``: Marcado, calcula predicciones en t3 para previsión "
 "(utilizando el modelo de referencia ajustado sobre el periodo histórico)."
 
-#: ../../docsrc/get_started.rst:139 2bbbc09ea17546a293d774b22d9e0e2d
+#: ../../docsrc/get_started.rst:141 2bbbc09ea17546a293d774b22d9e0e2d
 msgid ""
 "Click the ``Run`` button to predict the deforestation risk at t2 and t3 "
 "using the benchmark model. Maps with classes of deforestation risk are added"
@@ -521,19 +529,19 @@ msgstr ""
 "deforestación se añaden a la lista de capas de QGIS y se añaden nuevos "
 "archivos a las carpetas de salida."
 
-#: ../../docsrc/get_started.rst:142 368d17e328694ccf9d13c0bde7acd47e
+#: ../../docsrc/get_started.rst:144 368d17e328694ccf9d13c0bde7acd47e
 msgid "Forestatrisk models"
 msgstr "Modelos forestatrisk"
 
-#: ../../docsrc/get_started.rst:147 31d826268dd2421fb98dde5a115072d4
+#: ../../docsrc/get_started.rst:149 31d826268dd2421fb98dde5a115072d4
 msgid "Sample observations"
 msgstr "Observaciones por muestreo"
 
-#: ../../docsrc/get_started.rst:149 8d1da3568f6b4a4abc84f2b4ab51f00b
+#: ../../docsrc/get_started.rst:151 8d1da3568f6b4a4abc84f2b4ab51f00b
 msgid "``N# samples``: 10000"
 msgstr "``N# samples``: 10000"
 
-#: ../../docsrc/get_started.rst:151 69cc47999a2d44838f8041fe28a0ff68
+#: ../../docsrc/get_started.rst:153 69cc47999a2d44838f8041fe28a0ff68
 msgid ""
 "``Adapt sampling``: Checked, the number of observations is proportional to "
 "forest area."
@@ -541,15 +549,15 @@ msgstr ""
 "``Adapt sampling``: Marcado, el número de observaciones es proporcional a la"
 " superficie forestal."
 
-#: ../../docsrc/get_started.rst:153 6b06863a518d4b6bae8492edc856db5a
+#: ../../docsrc/get_started.rst:155 6b06863a518d4b6bae8492edc856db5a
 msgid "``Random seed``: 1234"
 msgstr "``Random seed``: 1234"
 
-#: ../../docsrc/get_started.rst:155 da57db5f547547b5b7684d5b1dde20b6
+#: ../../docsrc/get_started.rst:157 da57db5f547547b5b7684d5b1dde20b6
 msgid "``Spatial cell size (km)``: 2"
 msgstr "``Spatial cell size (km)``: 2"
 
-#: ../../docsrc/get_started.rst:157 ffb5980497704a1daf5653f8d225de32
+#: ../../docsrc/get_started.rst:159 ffb5980497704a1daf5653f8d225de32
 msgid ""
 "``calib. period``: Checked, the observations are sampled for the calibration"
 " period (t1--t2)."
@@ -557,7 +565,7 @@ msgstr ""
 "``calib. period``: Marcado, las observaciones se muestrean para el periodo "
 "de calibración (t1--t2)."
 
-#: ../../docsrc/get_started.rst:159 301ea2e3b791447aaa3858ce55fda22b
+#: ../../docsrc/get_started.rst:161 301ea2e3b791447aaa3858ce55fda22b
 msgid ""
 "``hist. period``: Checked, the observations are sampled for the historical "
 "period (t1--t3)."
@@ -565,7 +573,7 @@ msgstr ""
 "``hist. period``: Marcado, las observaciones se muestrean para el periodo "
 "histórico (t1--t3)."
 
-#: ../../docsrc/get_started.rst:162 8cdf38b037194f6e8152a1d2dade6979
+#: ../../docsrc/get_started.rst:164 8cdf38b037194f6e8152a1d2dade6979
 msgid ""
 "For large jurisdictions, to avoid computing to many parameters for spatial "
 "random effects, set the spatial cell size at ~10km."
@@ -574,7 +582,7 @@ msgstr ""
 " los efectos aleatorios espaciales, fije el tamaño de la celda espacial en "
 "~10km."
 
-#: ../../docsrc/get_started.rst:164 585c0ebd778d4e97a2787f8a91711310
+#: ../../docsrc/get_started.rst:166 585c0ebd778d4e97a2787f8a91711310
 msgid ""
 "Pushing the ``Run`` button in this box will sample the observations. When "
 "the operation is finished, the sampled observations appear in the list of "
@@ -584,7 +592,7 @@ msgstr ""
 "Una vez finalizada la operación, las observaciones muestreadas aparecerán en"
 " la lista de capas de QGIS."
 
-#: ../../docsrc/get_started.rst:171 b886a0636b0d462995159df35cf15ed6
+#: ../../docsrc/get_started.rst:173 b886a0636b0d462995159df35cf15ed6
 msgid ""
 "New folders with results are created in the ``outputs/far_models/`` "
 "directory including the ``<period>/sample.txt`` file which is the "
@@ -594,178 +602,178 @@ msgstr ""
 "``outputs/far_models/`` incluyendo el archivo ``<period>/sample.txt`` que es"
 " el conjunto de datos de observación con los valores de las variables."
 
-#: ../../docsrc/get_started.rst:173 2c14851a56b94fbfb9288c5f4dba5956
+#: ../../docsrc/get_started.rst:175 2c14851a56b94fbfb9288c5f4dba5956
 msgid "Five first observations for the calibration period."
 msgstr "Cinco primeras observaciones para el periodo de calibración."
 
-#: ../../docsrc/get_started.rst:177 f910ce96629042c8974da1dab4e2ed6e
+#: ../../docsrc/get_started.rst:179 f910ce96629042c8974da1dab4e2ed6e
 msgid "altitude"
 msgstr "altitude"
 
-#: ../../docsrc/get_started.rst:177 ca727a0b77aa43c39ca437e5ce7c65a7
+#: ../../docsrc/get_started.rst:179 ca727a0b77aa43c39ca437e5ce7c65a7
 msgid "dist\\_edge"
 msgstr "dist\\_edge"
 
-#: ../../docsrc/get_started.rst:177 3a282e33c0a541cf9ced433a9bd4f753
+#: ../../docsrc/get_started.rst:179 3a282e33c0a541cf9ced433a9bd4f753
 msgid "dist\\_river"
 msgstr "dist\\_river"
 
-#: ../../docsrc/get_started.rst:177 e703fbbf33e94fdeaf2efed22b314eef
+#: ../../docsrc/get_started.rst:179 e703fbbf33e94fdeaf2efed22b314eef
 msgid "dist\\_road"
 msgstr "dist\\_road"
 
-#: ../../docsrc/get_started.rst:177 1697484244674a9797cd4a85ffb711e0
+#: ../../docsrc/get_started.rst:179 1697484244674a9797cd4a85ffb711e0
 msgid "dist\\_town"
 msgstr "dist\\_town"
 
-#: ../../docsrc/get_started.rst:177 783a0dcc858a4f3b9081336ed6eacba9
+#: ../../docsrc/get_started.rst:179 783a0dcc858a4f3b9081336ed6eacba9
 msgid "fcc"
 msgstr "fcc"
 
-#: ../../docsrc/get_started.rst:177 0f61406dc0d546bb9e145c6cfa7913e5
+#: ../../docsrc/get_started.rst:179 0f61406dc0d546bb9e145c6cfa7913e5
 msgid "pa"
 msgstr "pa"
 
-#: ../../docsrc/get_started.rst:177 9014ecb9be4946baac24b194a46d7680
+#: ../../docsrc/get_started.rst:179 9014ecb9be4946baac24b194a46d7680
 msgid "slope"
 msgstr "slope"
 
-#: ../../docsrc/get_started.rst:177 75da52622797492f91c8742380f58b3f
+#: ../../docsrc/get_started.rst:179 75da52622797492f91c8742380f58b3f
 msgid "X"
 msgstr "X"
 
-#: ../../docsrc/get_started.rst:177 96baf78bce1d4cb399d3d7a04645d8f9
+#: ../../docsrc/get_started.rst:179 96baf78bce1d4cb399d3d7a04645d8f9
 msgid "Y"
 msgstr "Y"
 
-#: ../../docsrc/get_started.rst:177 e7d8847b91464fa19e3c1c7aa3b20447
+#: ../../docsrc/get_started.rst:179 e7d8847b91464fa19e3c1c7aa3b20447
 msgid "cell"
 msgstr "cell"
 
-#: ../../docsrc/get_started.rst:179 ../../docsrc/get_started.rst:181
+#: ../../docsrc/get_started.rst:181 ../../docsrc/get_started.rst:183
 #: 246c83296deb4398b3be5c9b76aeff34 246c83296deb4398b3be5c9b76aeff34
 msgid "56"
 msgstr "56"
 
-#: ../../docsrc/get_started.rst:179 ../../docsrc/get_started.rst:181
-#: ../../docsrc/get_started.rst:183 ../../docsrc/get_started.rst:185
-#: ../../docsrc/get_started.rst:187 8be2b98c0b814b64bb8edb7e84b7e175
+#: ../../docsrc/get_started.rst:181 ../../docsrc/get_started.rst:183
+#: ../../docsrc/get_started.rst:185 ../../docsrc/get_started.rst:187
+#: ../../docsrc/get_started.rst:189 8be2b98c0b814b64bb8edb7e84b7e175
 #: 8be2b98c0b814b64bb8edb7e84b7e175 8be2b98c0b814b64bb8edb7e84b7e175
 #: 8be2b98c0b814b64bb8edb7e84b7e175 8be2b98c0b814b64bb8edb7e84b7e175
 msgid "30"
 msgstr "30"
 
-#: ../../docsrc/get_started.rst:179 ../../docsrc/get_started.rst:181
+#: ../../docsrc/get_started.rst:181 ../../docsrc/get_started.rst:183
 #: 95ebeb861ef54262be8adbedff234d6d 95ebeb861ef54262be8adbedff234d6d
 msgid "750"
 msgstr "750"
 
-#: ../../docsrc/get_started.rst:179 ../../docsrc/get_started.rst:181
+#: ../../docsrc/get_started.rst:181 ../../docsrc/get_started.rst:183
 #: ab6d5e245af044c8a0bcd1e92d649bd4 ab6d5e245af044c8a0bcd1e92d649bd4
 msgid "150"
 msgstr "150"
 
-#: ../../docsrc/get_started.rst:179 ../../docsrc/get_started.rst:181
-#: ../../docsrc/get_started.rst:183 ../../docsrc/get_started.rst:185
-#: ../../docsrc/get_started.rst:187 ../../docsrc/get_started.rst:390
+#: ../../docsrc/get_started.rst:181 ../../docsrc/get_started.rst:183
+#: ../../docsrc/get_started.rst:185 ../../docsrc/get_started.rst:187
+#: ../../docsrc/get_started.rst:189 ../../docsrc/get_started.rst:392
 #: dde48760105b4f259425da3a7b9bb14a dde48760105b4f259425da3a7b9bb14a
 #: dde48760105b4f259425da3a7b9bb14a dde48760105b4f259425da3a7b9bb14a
 #: dde48760105b4f259425da3a7b9bb14a dde48760105b4f259425da3a7b9bb14a
 msgid "1"
 msgstr "1"
 
-#: ../../docsrc/get_started.rst:179 ../../docsrc/get_started.rst:181
+#: ../../docsrc/get_started.rst:181 ../../docsrc/get_started.rst:183
 #: 1f2c140ed8f2448c997e8d8244eb405c 1f2c140ed8f2448c997e8d8244eb405c
 msgid "6"
 msgstr "6"
 
-#: ../../docsrc/get_started.rst:179 008965d32f774662b0b2badf463cc161
+#: ../../docsrc/get_started.rst:181 008965d32f774662b0b2badf463cc161
 msgid "700155"
 msgstr "700155"
 
-#: ../../docsrc/get_started.rst:179 ../../docsrc/get_started.rst:181
+#: ../../docsrc/get_started.rst:181 ../../docsrc/get_started.rst:183
 #: d780924b9ebb411bb040a7700c0685cd d780924b9ebb411bb040a7700c0685cd
 msgid "1645545"
 msgstr "1645545"
 
-#: ../../docsrc/get_started.rst:179 ../../docsrc/get_started.rst:181
-#: ../../docsrc/get_started.rst:187 26881e13c4444e14b0a7d0b60b09388b
+#: ../../docsrc/get_started.rst:181 ../../docsrc/get_started.rst:183
+#: ../../docsrc/get_started.rst:189 26881e13c4444e14b0a7d0b60b09388b
 #: 26881e13c4444e14b0a7d0b60b09388b 26881e13c4444e14b0a7d0b60b09388b
 msgid "63"
 msgstr "63"
 
-#: ../../docsrc/get_started.rst:181 9d5bf48f9dcb47ca845107c854fa472f
+#: ../../docsrc/get_started.rst:183 9d5bf48f9dcb47ca845107c854fa472f
 msgid "700185"
 msgstr "700185"
 
-#: ../../docsrc/get_started.rst:183 b8024cbc2c4346e19498df5c3e6ae9db
+#: ../../docsrc/get_started.rst:185 b8024cbc2c4346e19498df5c3e6ae9db
 msgid "100"
 msgstr "100"
 
-#: ../../docsrc/get_started.rst:183 da9c6269ccbc4931a2013c208168e717
+#: ../../docsrc/get_started.rst:185 da9c6269ccbc4931a2013c208168e717
 msgid "875"
 msgstr "875"
 
-#: ../../docsrc/get_started.rst:183 54f1106e3f6f426f9ff3818484fddf0a
+#: ../../docsrc/get_started.rst:185 54f1106e3f6f426f9ff3818484fddf0a
 msgid "1657"
 msgstr "1657"
 
-#: ../../docsrc/get_started.rst:183 b533bce33e5e4081b61dd7c3d541a7ad
+#: ../../docsrc/get_started.rst:185 b533bce33e5e4081b61dd7c3d541a7ad
 msgid "698265"
 msgstr "698265"
 
-#: ../../docsrc/get_started.rst:183 ../../docsrc/get_started.rst:185
-#: ../../docsrc/get_started.rst:187 e5f3514c3f284d9e8ac8e808f13cc906
+#: ../../docsrc/get_started.rst:185 ../../docsrc/get_started.rst:187
+#: ../../docsrc/get_started.rst:189 e5f3514c3f284d9e8ac8e808f13cc906
 #: e5f3514c3f284d9e8ac8e808f13cc906 e5f3514c3f284d9e8ac8e808f13cc906
 msgid "1645425"
 msgstr "1645425"
 
-#: ../../docsrc/get_started.rst:183 ../../docsrc/get_started.rst:185
+#: ../../docsrc/get_started.rst:185 ../../docsrc/get_started.rst:187
 #: f0d3d94a2bdf4ea0b41f11d3bd33bdda f0d3d94a2bdf4ea0b41f11d3bd33bdda
 msgid "62"
 msgstr "62"
 
-#: ../../docsrc/get_started.rst:185 d738def138f4499ca55eda4be4055ff8
+#: ../../docsrc/get_started.rst:187 d738def138f4499ca55eda4be4055ff8
 msgid "93"
 msgstr "93"
 
-#: ../../docsrc/get_started.rst:185 e121fbec323a4df99799202e67dc851c
+#: ../../docsrc/get_started.rst:187 e121fbec323a4df99799202e67dc851c
 msgid "600"
 msgstr "600"
 
-#: ../../docsrc/get_started.rst:185 baefac038eef41d898ccc55f27102575
+#: ../../docsrc/get_started.rst:187 baefac038eef41d898ccc55f27102575
 msgid "1358"
 msgstr "1358"
 
-#: ../../docsrc/get_started.rst:185 e7d0c4dd5d684bcc8fbf26f21da6da04
+#: ../../docsrc/get_started.rst:187 e7d0c4dd5d684bcc8fbf26f21da6da04
 msgid "8"
 msgstr "8"
 
-#: ../../docsrc/get_started.rst:185 53c2620f3dc744859c25e2439b0f095f
+#: ../../docsrc/get_started.rst:187 53c2620f3dc744859c25e2439b0f095f
 msgid "698565"
 msgstr "698565"
 
-#: ../../docsrc/get_started.rst:187 060d4291c15e4f10b697d5c59dd6c3ae
+#: ../../docsrc/get_started.rst:189 060d4291c15e4f10b697d5c59dd6c3ae
 msgid "68"
 msgstr "68"
 
-#: ../../docsrc/get_started.rst:187 aef9994691c2425ca36d9a2c6dd73a50
+#: ../../docsrc/get_started.rst:189 aef9994691c2425ca36d9a2c6dd73a50
 msgid "300"
 msgstr "300"
 
-#: ../../docsrc/get_started.rst:187 247d5c6b475c45e18870b145bc912b2f
+#: ../../docsrc/get_started.rst:189 247d5c6b475c45e18870b145bc912b2f
 msgid "335"
 msgstr "335"
 
-#: ../../docsrc/get_started.rst:187 2dba2a85a0f84a69bd52f10e56cc32eb
+#: ../../docsrc/get_started.rst:189 2dba2a85a0f84a69bd52f10e56cc32eb
 msgid "7"
 msgstr "7"
 
-#: ../../docsrc/get_started.rst:187 d676773926fb4945b40cc253ecaeeeab
+#: ../../docsrc/get_started.rst:189 d676773926fb4945b40cc253ecaeeeab
 msgid "699615"
 msgstr "699615"
 
-#: ../../docsrc/get_started.rst:193 cba3a406950941dd9575eb28fb3015bd
+#: ../../docsrc/get_started.rst:195 cba3a406950941dd9575eb28fb3015bd
 msgid ""
 "``List of variables``: Leave empty, it will use the default formula: ``C(pa)"
 " + altitude + slope + dist_edge + dist_road + dist_river + dist_town``."
@@ -774,19 +782,19 @@ msgstr ""
 "``C(pa) + altitude + slope + dist_edge + dist_road + dist_river + "
 "dist_town``."
 
-#: ../../docsrc/get_started.rst:195 3d3f8dfc94e34ae8b9a5a12856502de7
+#: ../../docsrc/get_started.rst:197 3d3f8dfc94e34ae8b9a5a12856502de7
 msgid "``Starting values for betas``: -99"
 msgstr "``Starting values for betas``: -99"
 
-#: ../../docsrc/get_started.rst:197 209bfadf9d884a978b4a0fbb56e940de
+#: ../../docsrc/get_started.rst:199 209bfadf9d884a978b4a0fbb56e940de
 msgid "``Prior Vrho``: -1"
 msgstr "``Prior Vrho``: -1"
 
-#: ../../docsrc/get_started.rst:199 21d5a5589e4f4dcdbf635720b34c3a26
+#: ../../docsrc/get_started.rst:201 21d5a5589e4f4dcdbf635720b34c3a26
 msgid "``MCMC``: 100"
 msgstr "``MCMC``: 100"
 
-#: ../../docsrc/get_started.rst:201 938efcf9598f413d871525846f04bbdd
+#: ../../docsrc/get_started.rst:203 938efcf9598f413d871525846f04bbdd
 msgid ""
 "``Variable selection``: Leave unchecked, no variable selection (make "
 "computations faster for this example)."
@@ -794,7 +802,7 @@ msgstr ""
 "``Variable selection``: Dejar sin marcar, sin selección de variables (hace "
 "los cálculos más rápidos para este ejemplo)."
 
-#: ../../docsrc/get_started.rst:203 b82a0c17110841109c215858aa28f58b
+#: ../../docsrc/get_started.rst:205 b82a0c17110841109c215858aa28f58b
 msgid ""
 "``calib. period``: Checked, models are fitted over the calibration period "
 "(t1--t2)."
@@ -802,7 +810,7 @@ msgstr ""
 "``calib. period``: Comprobado, los modelos se ajustan durante el periodo de "
 "calibración (t1--t2)."
 
-#: ../../docsrc/get_started.rst:205 66a9aaf27a394c0f9ebed512470adb36
+#: ../../docsrc/get_started.rst:207 66a9aaf27a394c0f9ebed512470adb36
 msgid ""
 "``hist. period``: Checked, models are fitted over the historical period (t1"
 "--t3)."
@@ -810,7 +818,7 @@ msgstr ""
 "``hist. period``: Marcado, los modelos se ajustan sobre el periodo histórico"
 " (t1--t3)."
 
-#: ../../docsrc/get_started.rst:207 7af32eb28cfd45edb07332dfe32c7494
+#: ../../docsrc/get_started.rst:209 7af32eb28cfd45edb07332dfe32c7494
 msgid ""
 "Pushing the ``Run`` button in this box will fit the statistical model to the"
 " deforestation observations. Three statistical models are fitted (iCAR "
@@ -829,228 +837,228 @@ msgstr ""
 "desviación estándar y los intervalos de credibilidad de los parámetros del "
 "modelo."
 
-#: ../../docsrc/get_started.rst:209 e5a1097606b6456ea58fab3718e1461d
+#: ../../docsrc/get_started.rst:211 e5a1097606b6456ea58fab3718e1461d
 msgid "Summary of the iCAR model for the calibration period."
 msgstr "Resumen del modelo iCAR para el periodo de calibración."
 
-#: ../../docsrc/get_started.rst:213 c9ac0f56d49e4cb194dd39dbd72d54f6
+#: ../../docsrc/get_started.rst:215 c9ac0f56d49e4cb194dd39dbd72d54f6
 msgid "\\"
 msgstr "\\"
 
-#: ../../docsrc/get_started.rst:213 a684154fa5a24c81850247499fa0103a
+#: ../../docsrc/get_started.rst:215 a684154fa5a24c81850247499fa0103a
 msgid "Mean"
 msgstr "Mean"
 
-#: ../../docsrc/get_started.rst:213 446e461e25cd4223bf1c233d6c3af216
+#: ../../docsrc/get_started.rst:215 446e461e25cd4223bf1c233d6c3af216
 msgid "Std"
 msgstr "Std"
 
-#: ../../docsrc/get_started.rst:213 40cc9bab22f04753a79112bb6a19ae58
+#: ../../docsrc/get_started.rst:215 40cc9bab22f04753a79112bb6a19ae58
 msgid "CI\\_low"
 msgstr "CI\\_low"
 
-#: ../../docsrc/get_started.rst:213 2f519b9259c04d428bf0d8cfe5f7284a
+#: ../../docsrc/get_started.rst:215 2f519b9259c04d428bf0d8cfe5f7284a
 msgid "CI\\_high"
 msgstr "CI\\_high"
 
-#: ../../docsrc/get_started.rst:215 9bfc901ff1604ac692a42aad40c23203
+#: ../../docsrc/get_started.rst:217 9bfc901ff1604ac692a42aad40c23203
 msgid "Intercept"
 msgstr "Intercept"
 
-#: ../../docsrc/get_started.rst:215 d10a025da4a744f0ac1b98c6488b95bb
+#: ../../docsrc/get_started.rst:217 d10a025da4a744f0ac1b98c6488b95bb
 msgid "-3.39"
 msgstr "-3.39"
 
-#: ../../docsrc/get_started.rst:215 cd7ff97972b545268cb3d88011f52398
+#: ../../docsrc/get_started.rst:217 cd7ff97972b545268cb3d88011f52398
 msgid "0.158"
 msgstr "0.158"
 
-#: ../../docsrc/get_started.rst:215 25bfb7e8d00f467c997a6efcace4af2e
+#: ../../docsrc/get_started.rst:217 25bfb7e8d00f467c997a6efcace4af2e
 msgid "-3.7"
 msgstr "-3.7"
 
-#: ../../docsrc/get_started.rst:215 09e6aaa460484a049816e3b636d4a1bb
+#: ../../docsrc/get_started.rst:217 09e6aaa460484a049816e3b636d4a1bb
 msgid "-3.1"
 msgstr "-3.1"
 
-#: ../../docsrc/get_started.rst:217 7eeef5b1da454316a12507517911b821
+#: ../../docsrc/get_started.rst:219 7eeef5b1da454316a12507517911b821
 msgid "C(pa)[T.1.0]"
 msgstr "C(pa)[T.1.0]"
 
-#: ../../docsrc/get_started.rst:217 57ea8aca3f4f4b5f801d61c3258379ea
+#: ../../docsrc/get_started.rst:219 57ea8aca3f4f4b5f801d61c3258379ea
 msgid "-0.0915"
 msgstr "-0.0915"
 
-#: ../../docsrc/get_started.rst:217 3c38a1007a754438b64efc9680a32d80
+#: ../../docsrc/get_started.rst:219 3c38a1007a754438b64efc9680a32d80
 msgid "0.122"
 msgstr "0.122"
 
-#: ../../docsrc/get_started.rst:217 2bc9737d932646db868303d57e3d5e73
+#: ../../docsrc/get_started.rst:219 2bc9737d932646db868303d57e3d5e73
 msgid "-0.282"
 msgstr "-0.282"
 
-#: ../../docsrc/get_started.rst:217 c6e131b1d6104288987b49e1fbc350a3
+#: ../../docsrc/get_started.rst:219 c6e131b1d6104288987b49e1fbc350a3
 msgid "0.172"
 msgstr "0.172"
 
-#: ../../docsrc/get_started.rst:219 b599c089a09d461fba9d70f86e2af30a
+#: ../../docsrc/get_started.rst:221 b599c089a09d461fba9d70f86e2af30a
 msgid "scale(dist\\_edge)"
 msgstr "scale(dist\\_edge)"
 
-#: ../../docsrc/get_started.rst:219 0c138d099d514d32a2052fefb5786f1d
+#: ../../docsrc/get_started.rst:221 0c138d099d514d32a2052fefb5786f1d
 msgid "-10.3"
 msgstr "-10.3"
 
-#: ../../docsrc/get_started.rst:219 14e9eaa265a042b6912bc40a2ea68887
+#: ../../docsrc/get_started.rst:221 14e9eaa265a042b6912bc40a2ea68887
 msgid "0.417"
 msgstr "0.417"
 
-#: ../../docsrc/get_started.rst:219 1ceae0eb35924e5a91482c23d22cadb7
+#: ../../docsrc/get_started.rst:221 1ceae0eb35924e5a91482c23d22cadb7
 msgid "-11.1"
 msgstr "-11.1"
 
-#: ../../docsrc/get_started.rst:219 599a7810d112456491d625eaf1354dd7
+#: ../../docsrc/get_started.rst:221 599a7810d112456491d625eaf1354dd7
 msgid "-9.63"
 msgstr "-9.63"
 
-#: ../../docsrc/get_started.rst:221 d427375f94404c52aa7ed2bc6a7129d5
+#: ../../docsrc/get_started.rst:223 d427375f94404c52aa7ed2bc6a7129d5
 msgid "scale(dist\\_road)"
 msgstr "scale(dist\\_road)"
 
-#: ../../docsrc/get_started.rst:221 07e2d3b29b6a465797b46c7c55e6769f
+#: ../../docsrc/get_started.rst:223 07e2d3b29b6a465797b46c7c55e6769f
 msgid "-0.256"
 msgstr "-0.256"
 
-#: ../../docsrc/get_started.rst:221 867264f50fa444b0b91cf85022e1612a
+#: ../../docsrc/get_started.rst:223 867264f50fa444b0b91cf85022e1612a
 msgid "0.0537"
 msgstr "0.0537"
 
-#: ../../docsrc/get_started.rst:221 8988c4a843b6406893f803c7d318570a
+#: ../../docsrc/get_started.rst:223 8988c4a843b6406893f803c7d318570a
 msgid "-0.36"
 msgstr "-0.36"
 
-#: ../../docsrc/get_started.rst:221 2778420aa04a46c89260f6f45711e3b5
+#: ../../docsrc/get_started.rst:223 2778420aa04a46c89260f6f45711e3b5
 msgid "-0.144"
 msgstr "-0.144"
 
-#: ../../docsrc/get_started.rst:223 6e96276c0ae04138a87d27143d5abcd0
+#: ../../docsrc/get_started.rst:225 6e96276c0ae04138a87d27143d5abcd0
 msgid "scale(dist\\_town)"
 msgstr "scale(dist\\_town)"
 
-#: ../../docsrc/get_started.rst:223 7f7d98e170cd45549fb410b4999a2bb8
+#: ../../docsrc/get_started.rst:225 7f7d98e170cd45549fb410b4999a2bb8
 msgid "0.0342"
 msgstr "0.0342"
 
-#: ../../docsrc/get_started.rst:223 77ddbea2d6d241c0928777f9d209adec
+#: ../../docsrc/get_started.rst:225 77ddbea2d6d241c0928777f9d209adec
 msgid "0.0464"
 msgstr "0.0464"
 
-#: ../../docsrc/get_started.rst:223 f146e94d0c1d4ff597ca94e508bbd61e
+#: ../../docsrc/get_started.rst:225 f146e94d0c1d4ff597ca94e508bbd61e
 msgid "-0.0551"
 msgstr "-0.0551"
 
-#: ../../docsrc/get_started.rst:223 363b301c7a944c3dbceac2bbeee39f66
+#: ../../docsrc/get_started.rst:225 363b301c7a944c3dbceac2bbeee39f66
 msgid "0.123"
 msgstr "0.123"
 
-#: ../../docsrc/get_started.rst:225 ff84069dd0704b58b6de5bf88f30d0d0
+#: ../../docsrc/get_started.rst:227 ff84069dd0704b58b6de5bf88f30d0d0
 msgid "scale(dist\\_river)"
 msgstr "scale(dist\\_river)"
 
-#: ../../docsrc/get_started.rst:225 b3e1ce2f6a58468dab43fe07379ea937
+#: ../../docsrc/get_started.rst:227 b3e1ce2f6a58468dab43fe07379ea937
 msgid "-0.0817"
 msgstr "-0.0817"
 
-#: ../../docsrc/get_started.rst:225 cbaf426ffbf646c48f9217cf89963576
+#: ../../docsrc/get_started.rst:227 cbaf426ffbf646c48f9217cf89963576
 msgid "0.0544"
 msgstr "0.0544"
 
-#: ../../docsrc/get_started.rst:225 701a4348b40a4bf19ff208bcc7d498ad
+#: ../../docsrc/get_started.rst:227 701a4348b40a4bf19ff208bcc7d498ad
 msgid "-0.188"
 msgstr "-0.188"
 
-#: ../../docsrc/get_started.rst:225 52812e368aff4f7b8e6b9a5f11ca3afa
+#: ../../docsrc/get_started.rst:227 52812e368aff4f7b8e6b9a5f11ca3afa
 msgid "0.0199"
 msgstr "0.0199"
 
-#: ../../docsrc/get_started.rst:227 66ff62f2b1794711838a17c782509197
+#: ../../docsrc/get_started.rst:229 66ff62f2b1794711838a17c782509197
 msgid "scale(altitude)"
 msgstr "scale(altitude)"
 
-#: ../../docsrc/get_started.rst:227 af0f010f4b364a51b77ca627eb97247a
+#: ../../docsrc/get_started.rst:229 af0f010f4b364a51b77ca627eb97247a
 msgid "-0.554"
 msgstr "-0.554"
 
-#: ../../docsrc/get_started.rst:227 a134462f142a432ebe7b4ca0f164f9b8
+#: ../../docsrc/get_started.rst:229 a134462f142a432ebe7b4ca0f164f9b8
 msgid "0.0809"
 msgstr "0.0809"
 
-#: ../../docsrc/get_started.rst:227 ee15a9fd04f746d8955d87e5a09a9b0e
+#: ../../docsrc/get_started.rst:229 ee15a9fd04f746d8955d87e5a09a9b0e
 msgid "-0.728"
 msgstr "-0.728"
 
-#: ../../docsrc/get_started.rst:227 b8ebe1553a8a48ee81b792a0859cd49c
+#: ../../docsrc/get_started.rst:229 b8ebe1553a8a48ee81b792a0859cd49c
 msgid "-0.4"
 msgstr "-0.4"
 
-#: ../../docsrc/get_started.rst:229 3b3c70bd631e4a2d81001668ac790293
+#: ../../docsrc/get_started.rst:231 3b3c70bd631e4a2d81001668ac790293
 msgid "scale(slope)"
 msgstr "scale(slope)"
 
-#: ../../docsrc/get_started.rst:229 8e336308813e45b5822496eb8a598bde
+#: ../../docsrc/get_started.rst:231 8e336308813e45b5822496eb8a598bde
 msgid "-0.532"
 msgstr "-0.532"
 
-#: ../../docsrc/get_started.rst:229 9854fa12f38e40ed9a93ac78673b2d35
+#: ../../docsrc/get_started.rst:231 9854fa12f38e40ed9a93ac78673b2d35
 msgid "0.0392"
 msgstr "0.0392"
 
-#: ../../docsrc/get_started.rst:229 f6e42e12bee44d7989a7b48399bf67a8
+#: ../../docsrc/get_started.rst:231 f6e42e12bee44d7989a7b48399bf67a8
 msgid "-0.611"
 msgstr "-0.611"
 
-#: ../../docsrc/get_started.rst:229 96443bbe94b84d4096518c15b2b3c49c
+#: ../../docsrc/get_started.rst:231 96443bbe94b84d4096518c15b2b3c49c
 msgid "-0.457"
 msgstr "-0.457"
 
-#: ../../docsrc/get_started.rst:231 3f67b26f02af4f13a5d795ccebc79522
+#: ../../docsrc/get_started.rst:233 3f67b26f02af4f13a5d795ccebc79522
 msgid "Vrho"
 msgstr "Vrho"
 
-#: ../../docsrc/get_started.rst:231 6e63eeca4ae8470a897c64cea1e694c1
+#: ../../docsrc/get_started.rst:233 6e63eeca4ae8470a897c64cea1e694c1
 msgid "6.89"
 msgstr "6.89"
 
-#: ../../docsrc/get_started.rst:231 ee29557ead984f689cf823c880ba4a43
+#: ../../docsrc/get_started.rst:233 ee29557ead984f689cf823c880ba4a43
 msgid "0.756"
 msgstr "0.756"
 
-#: ../../docsrc/get_started.rst:231 4ef89bc6f6df49f7b4ff1ee01cfffb5f
+#: ../../docsrc/get_started.rst:233 4ef89bc6f6df49f7b4ff1ee01cfffb5f
 msgid "5.64"
 msgstr "5.64"
 
-#: ../../docsrc/get_started.rst:231 3610f17897334051897bbab67fe0b8c2
+#: ../../docsrc/get_started.rst:233 3610f17897334051897bbab67fe0b8c2
 msgid "8.49"
 msgstr "8.49"
 
-#: ../../docsrc/get_started.rst:233 a6c8129489474307bf68eba10c09ba4d
+#: ../../docsrc/get_started.rst:235 a6c8129489474307bf68eba10c09ba4d
 msgid "Deviance"
 msgstr "Deviance"
 
-#: ../../docsrc/get_started.rst:233 d9205a07d0eb4a3785b8dabc60a533a6
+#: ../../docsrc/get_started.rst:235 d9205a07d0eb4a3785b8dabc60a533a6
 #: d9205a07d0eb4a3785b8dabc60a533a6
 msgid "1.36e+04"
 msgstr "1.36e+04"
 
-#: ../../docsrc/get_started.rst:233 8a0c7c51d7de4ab5b666369f2a2af8fa
+#: ../../docsrc/get_started.rst:235 8a0c7c51d7de4ab5b666369f2a2af8fa
 msgid "24.9"
 msgstr "24.9"
 
-#: ../../docsrc/get_started.rst:233 ce8f464aac1d4d92bf27901eea7b753d
+#: ../../docsrc/get_started.rst:235 ce8f464aac1d4d92bf27901eea7b753d
 msgid "1.37e+04"
 msgstr "1.37e+04"
 
-#: ../../docsrc/get_started.rst:236 d2b88a7910ec4e6aa5aa23e20e442a43
+#: ../../docsrc/get_started.rst:238 d2b88a7910ec4e6aa5aa23e20e442a43
 msgid ""
 "The ``model_deviances.csv`` file include a table for comparing percent of "
 "deviance explained between models."
@@ -1058,99 +1066,99 @@ msgstr ""
 "El archivo ``model_deviances.csv`` incluye una tabla para comparar el "
 "porcentaje de desviación explicada entre modelos."
 
-#: ../../docsrc/get_started.rst:238 1a99040074bc4106ac38ec7001b81179
+#: ../../docsrc/get_started.rst:240 1a99040074bc4106ac38ec7001b81179
 msgid "Percent of deviance explained by models for the calibration period."
 msgstr ""
 "Porcentaje de desviación explicado por los modelos para el periodo de "
 "calibración."
 
-#: ../../docsrc/get_started.rst:242 ../../docsrc/get_started.rst:358
+#: ../../docsrc/get_started.rst:244 ../../docsrc/get_started.rst:360
 #: dbd95418e3d5460ca41c15b1b8485410 dbd95418e3d5460ca41c15b1b8485410
 msgid "model"
 msgstr "model"
 
-#: ../../docsrc/get_started.rst:242 6f7f8d34c84a4a8ca664e09ccfeb9464
+#: ../../docsrc/get_started.rst:244 6f7f8d34c84a4a8ca664e09ccfeb9464
 msgid "deviance"
 msgstr "deviance"
 
-#: ../../docsrc/get_started.rst:242 66d47291ff4043a49b90d3a0d344c27a
+#: ../../docsrc/get_started.rst:244 66d47291ff4043a49b90d3a0d344c27a
 msgid "perc"
 msgstr "perc"
 
-#: ../../docsrc/get_started.rst:244 d98aeb8e43b84a68b959a6e3852c3dbf
+#: ../../docsrc/get_started.rst:246 d98aeb8e43b84a68b959a6e3852c3dbf
 msgid "null"
 msgstr "null"
 
-#: ../../docsrc/get_started.rst:244 3f8da20080a24d2f820518c13e5c8ce5
+#: ../../docsrc/get_started.rst:246 3f8da20080a24d2f820518c13e5c8ce5
 msgid "26769.0"
 msgstr "26769.0"
 
-#: ../../docsrc/get_started.rst:246 ../../docsrc/get_started.rst:364
+#: ../../docsrc/get_started.rst:248 ../../docsrc/get_started.rst:366
 #: 5f372508719a45159ab6bc6f591ea7e1 5f372508719a45159ab6bc6f591ea7e1
 msgid "glm"
 msgstr "glm"
 
-#: ../../docsrc/get_started.rst:246 8fef31def0c3444099806d2e4e011b68
+#: ../../docsrc/get_started.rst:248 8fef31def0c3444099806d2e4e011b68
 msgid "16864.0"
 msgstr "16864.0"
 
-#: ../../docsrc/get_started.rst:246 1656df8be26745f792e6bec5ce5af9ad
+#: ../../docsrc/get_started.rst:248 1656df8be26745f792e6bec5ce5af9ad
 msgid "37.0"
 msgstr "37.0"
 
-#: ../../docsrc/get_started.rst:248 ../../docsrc/get_started.rst:366
+#: ../../docsrc/get_started.rst:250 ../../docsrc/get_started.rst:368
 #: 424b51f5168b4caf89fc95652dd2d397 424b51f5168b4caf89fc95652dd2d397
 msgid "rf"
 msgstr "rf"
 
-#: ../../docsrc/get_started.rst:248 91a2386c6d7842a8b9aa101ea65e899e
+#: ../../docsrc/get_started.rst:250 91a2386c6d7842a8b9aa101ea65e899e
 msgid "6668.0"
 msgstr "6668.0"
 
-#: ../../docsrc/get_started.rst:248 8a396c67a6314c21a33571596e431bf3
+#: ../../docsrc/get_started.rst:250 8a396c67a6314c21a33571596e431bf3
 msgid "75.0"
 msgstr "75.0"
 
-#: ../../docsrc/get_started.rst:250 ../../docsrc/get_started.rst:362
+#: ../../docsrc/get_started.rst:252 ../../docsrc/get_started.rst:364
 #: 8d66254cef684593be2df5857ac18f5a 8d66254cef684593be2df5857ac18f5a
 msgid "icar"
 msgstr "icar"
 
-#: ../../docsrc/get_started.rst:250 1418d5ae8f1940a188027888676f33ac
+#: ../../docsrc/get_started.rst:252 1418d5ae8f1940a188027888676f33ac
 msgid "13636.0"
 msgstr "13636.0"
 
-#: ../../docsrc/get_started.rst:250 688652929a394567af883888271f3bfd
+#: ../../docsrc/get_started.rst:252 688652929a394567af883888271f3bfd
 msgid "49.0"
 msgstr "49.0"
 
-#: ../../docsrc/get_started.rst:252 ec8c4cc930524381b46b8d42577924f1
+#: ../../docsrc/get_started.rst:254 ec8c4cc930524381b46b8d42577924f1
 msgid "full"
 msgstr "full"
 
-#: ../../docsrc/get_started.rst:252 fdb2b8710594419a977b0a87934909d6
+#: ../../docsrc/get_started.rst:254 fdb2b8710594419a977b0a87934909d6
 msgid "100.0"
 msgstr "100.0"
 
-#: ../../docsrc/get_started.rst:258 dfadbe2b0a024fe68c1a8af8187e5eb4
+#: ../../docsrc/get_started.rst:260 dfadbe2b0a024fe68c1a8af8187e5eb4
 msgid "``Spatial cell size interpolation (km)``: 0.1."
 msgstr "``Spatial cell size interpolation (km)``: 0.1."
 
-#: ../../docsrc/get_started.rst:260 5aa226a9f2e6433fa49e6aecb2f6f7b0
+#: ../../docsrc/get_started.rst:262 5aa226a9f2e6433fa49e6aecb2f6f7b0
 msgid "``iCAR model``: Checked, computes predictions with the iCAR model."
 msgstr "``iCAR model``: Marcado, calcula predicciones con el modelo iCAR."
 
-#: ../../docsrc/get_started.rst:262 7b4b0b7c3b174a8a948125368a8f3fa2
+#: ../../docsrc/get_started.rst:264 7b4b0b7c3b174a8a948125368a8f3fa2
 msgid "``GLM``: Checked, computes predictions with GLM."
 msgstr "``GLM``: Comprobado, calcula predicciones con GLM."
 
-#: ../../docsrc/get_started.rst:264 41b7eb925c1f48bc9f09b971db99c3db
+#: ../../docsrc/get_started.rst:266 41b7eb925c1f48bc9f09b971db99c3db
 msgid ""
 "``RF model``: Checked, computes predictions with the Random Forest model."
 msgstr ""
 "``RF model``: Marcado, calcula predicciones con el modelo Random Forest."
 
-#: ../../docsrc/get_started.rst:266 522873213d274d70a3f306b0b366f401
+#: ../../docsrc/get_started.rst:268 522873213d274d70a3f306b0b366f401
 msgid ""
 "``t1 calibration``: Checked, computes predictions at t1 using models fitted "
 "over the calibration period."
@@ -1158,7 +1166,7 @@ msgstr ""
 "``t1 calibration``: Comprobado, calcula predicciones en t1 utilizando "
 "modelos ajustados durante el periodo de calibración."
 
-#: ../../docsrc/get_started.rst:268 48448f2ff2584876ba9996c0fc55b81a
+#: ../../docsrc/get_started.rst:270 48448f2ff2584876ba9996c0fc55b81a
 msgid ""
 "``t2 validation``: Checked, computes predictions at t2 for validation (using"
 " models fitted over the calibration period)."
@@ -1166,7 +1174,7 @@ msgstr ""
 "``t2 validation``: Marcado, calcula predicciones en t2 para la validación "
 "(utilizando modelos ajustados durante el periodo de calibración)."
 
-#: ../../docsrc/get_started.rst:270 d42fff75181149e98fab03fd2528624c
+#: ../../docsrc/get_started.rst:272 d42fff75181149e98fab03fd2528624c
 msgid ""
 "``t1 historical``: Checked, computes predictions at t1 using models fitted "
 "over the historical period."
@@ -1174,7 +1182,7 @@ msgstr ""
 "``t1 historical``: Comprobado, calcula predicciones en t1 utilizando modelos"
 " ajustados en el periodo histórico."
 
-#: ../../docsrc/get_started.rst:272 b937e8e3b10d4e23a9ad380a0bcd617e
+#: ../../docsrc/get_started.rst:274 b937e8e3b10d4e23a9ad380a0bcd617e
 msgid ""
 "``t3 forecast``: Checked, computes predictions at t3 for forecasting (using "
 "models fitted over the historical period)."
@@ -1182,7 +1190,7 @@ msgstr ""
 "``t3 forecast``: Marcado, calcula predicciones en t3 para previsión (usando "
 "modelos ajustados sobre el periodo histórico)."
 
-#: ../../docsrc/get_started.rst:275 4b3749a350b04aa2aec6e26fc66c45ae
+#: ../../docsrc/get_started.rst:277 4b3749a350b04aa2aec6e26fc66c45ae
 msgid ""
 "For large jurisdictions, to avoid obtaining a large raster file (of type "
 "Float), set interpolation of spatial random effects at ~1km."
@@ -1191,7 +1199,7 @@ msgstr ""
 "raster de gran tamaño (de tipo Float), establezca la interpolación de los "
 "efectos aleatorios espaciales en ~1km."
 
-#: ../../docsrc/get_started.rst:277 b0056ee4e1724ca4b03e8b822db71af9
+#: ../../docsrc/get_started.rst:279 b0056ee4e1724ca4b03e8b822db71af9
 msgid ""
 "Pushing the ``Run`` button in this box will use the statistical models for "
 "predictions. When the operation is finished, rasters representing the "
@@ -1211,19 +1219,19 @@ msgstr ""
 "tasas de deforestación para cada clase de riesgo de deforestación (ver "
 "detalles `aquí <plugin_api.html#defrate-table>`_)."
 
-#: ../../docsrc/get_started.rst:283 79b1dca241a44f368d42e2bbfdd26ec0
+#: ../../docsrc/get_started.rst:285 79b1dca241a44f368d42e2bbfdd26ec0
 msgid "Moving window models"
 msgstr "Modelos de ventanas móviles"
 
-#: ../../docsrc/get_started.rst:290 a935e4a2aa4640ce97e6fbdd38115c70
+#: ../../docsrc/get_started.rst:292 a935e4a2aa4640ce97e6fbdd38115c70
 msgid "``Deforestation threshold (%)``: 99.5%"
 msgstr "``Deforestation threshold (%)``: 99,5%."
 
-#: ../../docsrc/get_started.rst:294 e2a6612e31ad47d4977a63b23786e972
+#: ../../docsrc/get_started.rst:296 e2a6612e31ad47d4977a63b23786e972
 msgid "``Window sizes (# pixels)``: 11, 21"
 msgstr "``Window sizes (# pixels)``: 11, 21"
 
-#: ../../docsrc/get_started.rst:301 42e452e550e74e3cb4886801558023b7
+#: ../../docsrc/get_started.rst:303 42e452e550e74e3cb4886801558023b7
 msgid ""
 "For large jurisdictions, if you want to reduce computation time, use only "
 "one window size (e.g. 21 pixels)."
@@ -1231,7 +1239,7 @@ msgstr ""
 "Para jurisdicciones grandes, si desea reducir el tiempo de cálculo, utilice "
 "sólo un tamaño de ventana (por ejemplo, 21 píxeles)."
 
-#: ../../docsrc/get_started.rst:303 8b090b537df246cb9081cb91e1d2fab7
+#: ../../docsrc/get_started.rst:305 8b090b537df246cb9081cb91e1d2fab7
 msgid ""
 "Click the ``Run`` button to estimate the deforestation risk with the moving "
 "window model using data on both the calibration and historical periods. New "
@@ -1246,7 +1254,7 @@ msgstr ""
 "``<period>/ldefrate_mw_<window_size>.tif`` con las tasas locales de "
 "deforestación reescaladas en [2, 65535]."
 
-#: ../../docsrc/get_started.rst:308 7e5b6cc068804b21aa3116813a46eb3a
+#: ../../docsrc/get_started.rst:310 7e5b6cc068804b21aa3116813a46eb3a
 msgid ""
 "``t2 validation``: Checked, computes predictions at t2 for validation (using"
 " the moving window model fitted over the calibration period)."
@@ -1255,7 +1263,7 @@ msgstr ""
 "(usando el modelo de ventana móvil ajustado sobre el periodo de "
 "calibración)."
 
-#: ../../docsrc/get_started.rst:310 9286c8cf4055410e94e24f74caaf3e3b
+#: ../../docsrc/get_started.rst:312 9286c8cf4055410e94e24f74caaf3e3b
 msgid ""
 "``t3 forecast``: Checked, computes predictions at t3 for forecasting (using "
 "the moving window model fitted over the historical period)."
@@ -1263,7 +1271,7 @@ msgstr ""
 "``t3 forecast``: Marcado, calcula predicciones en t3 para la previsión "
 "(utilizando el modelo de ventana móvil ajustado sobre el periodo histórico)."
 
-#: ../../docsrc/get_started.rst:312 28c3a880c76e49c1a874cb26c63f6115
+#: ../../docsrc/get_started.rst:314 28c3a880c76e49c1a874cb26c63f6115
 msgid ""
 "Click the ``Run`` button to predict the deforestation risk at t2 and t3 "
 "using the moving window model. Maps with classes of deforestation risk are "
@@ -1282,29 +1290,29 @@ msgstr ""
 "deforestación para cada clase de riesgo de deforestación (ver detalles `aquí"
 " <plugin_api.html#defrate-table>`_)."
 
-#: ../../docsrc/get_started.rst:318 8080ab5e1a594f98bef61e83c910d182
+#: ../../docsrc/get_started.rst:320 8080ab5e1a594f98bef61e83c910d182
 msgid "Validation"
 msgstr "Validación"
 
-#: ../../docsrc/get_started.rst:324 6fb308b313f04afc85645823832e4108
+#: ../../docsrc/get_started.rst:326 6fb308b313f04afc85645823832e4108
 msgid "``Coarse grid cell size (# pixels)``: 50, 100"
 msgstr "``Coarse grid cell size (# pixels)``: 50, 100"
 
-#: ../../docsrc/get_started.rst:326 9d8e545e5ec94e78b0f195beccb3071d
+#: ../../docsrc/get_started.rst:328 9d8e545e5ec94e78b0f195beccb3071d
 msgid "``iCAR model``: Checked, estimates the performance of the iCAR model."
 msgstr "``iCAR model``: Marcado, estima el rendimiento del modelo iCAR."
 
-#: ../../docsrc/get_started.rst:328 b1040bec47e64f7fb361f44bcc440171
+#: ../../docsrc/get_started.rst:330 b1040bec47e64f7fb361f44bcc440171
 msgid "``GLM``: Checked, estimates the performance of the GLM."
 msgstr "``GLM``: Marcado, estima el rendimiento del GLM."
 
-#: ../../docsrc/get_started.rst:330 4e0aab90002c44c1a7e10a1baa89ed40
+#: ../../docsrc/get_started.rst:332 4e0aab90002c44c1a7e10a1baa89ed40
 msgid ""
 "``RF model``: Checked, estimates the performance of the Random Forest model."
 msgstr ""
 "``RF model``: Marcado, estima el rendimiento del modelo Random Forest."
 
-#: ../../docsrc/get_started.rst:332 8fcbbf6c19f54f16b092db035d3e755c
+#: ../../docsrc/get_started.rst:334 8fcbbf6c19f54f16b092db035d3e755c
 msgid ""
 "``MW model``: Checked, estimates the performance of the Moving Window "
 "models."
@@ -1312,7 +1320,7 @@ msgstr ""
 "``MW model``: Comprobado, estima el rendimiento de los modelos de ventana "
 "móvil."
 
-#: ../../docsrc/get_started.rst:334 f490a2c846014501b7d33e0f3e609012
+#: ../../docsrc/get_started.rst:336 f490a2c846014501b7d33e0f3e609012
 msgid ""
 "``calib. period``: Checked, estimates model performances for the calibration"
 " period (t1--t2)."
@@ -1320,7 +1328,7 @@ msgstr ""
 "``calib. period``: Comprobado, estima el rendimiento del modelo para el "
 "periodo de calibración (t1--t2)."
 
-#: ../../docsrc/get_started.rst:336 06eb5bb8126540a4a7eca6eaea15ab08
+#: ../../docsrc/get_started.rst:338 06eb5bb8126540a4a7eca6eaea15ab08
 msgid ""
 "``valid. period``: Checked, estimates model performances for the validation "
 "period (t2--t3)."
@@ -1328,7 +1336,7 @@ msgstr ""
 "``valid. period``: Comprobado, estima el rendimiento del modelo para el "
 "periodo de validación (t2--t3)."
 
-#: ../../docsrc/get_started.rst:338 1ea1941b4e9140aabafffe42157cdbb6
+#: ../../docsrc/get_started.rst:340 1ea1941b4e9140aabafffe42157cdbb6
 msgid ""
 "``hist. period``: Checked, estimates model performances for the historical "
 "period (t1--t3)."
@@ -1336,7 +1344,7 @@ msgstr ""
 "``hist. period``: Comprobado, estima el rendimiento del modelo para el "
 "periodo histórico (t1--t3)."
 
-#: ../../docsrc/get_started.rst:341 4237adaa23ac43ef8c2b7864ec6f4a93
+#: ../../docsrc/get_started.rst:343 4237adaa23ac43ef8c2b7864ec6f4a93
 msgid ""
 "For large jurisdictions, if you want to reduce computation time, use only "
 "one cell size (e.g. 100 pixels) and check only the validation period, the "
@@ -1346,7 +1354,7 @@ msgstr ""
 "sólo un tamaño de celda (por ejemplo, 100 píxeles) y compruebe únicamente el"
 " periodo de validación, el único con observaciones independientes."
 
-#: ../../docsrc/get_started.rst:343 5556511065ff49d0a89f3f027ab4c5fa
+#: ../../docsrc/get_started.rst:345 5556511065ff49d0a89f3f027ab4c5fa
 msgid ""
 "Pushing the ``Run`` button in this box will compute the predicted deforested"
 " area in each grid cell for each model and each period selected and compare "
@@ -1358,7 +1366,7 @@ msgstr ""
 "seleccionado y se comparará este valor con el área deforestada observada "
 "para la misma celda de la cuadrícula y el mismo período."
 
-#: ../../docsrc/get_started.rst:345 3f838b6e64f54053b0272e1a4bb165f8
+#: ../../docsrc/get_started.rst:347 3f838b6e64f54053b0272e1a4bb165f8
 msgid ""
 "New folders are created for each period: "
 "``outputs/model_validation/<period>/figures`` and "
@@ -1370,7 +1378,7 @@ msgstr ""
 "``outputs/model_validation/<period>/tables``. En cada carpeta se añaden "
 "varios archivos de salida."
 
-#: ../../docsrc/get_started.rst:347 549ae05019bb4ebba15e9c5d18e96029
+#: ../../docsrc/get_started.rst:349 549ae05019bb4ebba15e9c5d18e96029
 msgid ""
 "Files ``figures/pred_obs_<model>_<period>_<cell_size>.png`` which show the "
 "plot of predicted vs. observed deforested area. The plot shows values of "
@@ -1386,7 +1394,7 @@ msgstr ""
 "también el número de celdas de la cuadrícula (o puntos) y los valores de dos"
 " de los índices de rendimiento: el :math:`R^{2}` y el MedAE."
 
-#: ../../docsrc/get_started.rst:352 eecd452f2ae240828bcd10833791bcf5
+#: ../../docsrc/get_started.rst:354 eecd452f2ae240828bcd10833791bcf5
 msgid ""
 "File ``outputs/model_validation/indices_all.csv`` includes a table with the "
 "performance indices for all validation cell sizes, all models, and all "
@@ -1409,189 +1417,189 @@ msgstr ""
 "calibrar los modelos). Esto es así sea cual sea el tamaño de celda de "
 "validación elegido."
 
-#: ../../docsrc/get_started.rst:354 a74041cf05ca4b3baa0efa4fbffea031
+#: ../../docsrc/get_started.rst:356 a74041cf05ca4b3baa0efa4fbffea031
 msgid "Performance indices."
 msgstr "Índices de rendimiento."
 
-#: ../../docsrc/get_started.rst:358 49475a560de8469fab534fd535792c32
+#: ../../docsrc/get_started.rst:360 49475a560de8469fab534fd535792c32
 msgid "csize\\_coarse\\_grid"
 msgstr "csize\\_coarse\\_grid"
 
-#: ../../docsrc/get_started.rst:358 02608763d96b4f79828f3cf8bd046f08
+#: ../../docsrc/get_started.rst:360 02608763d96b4f79828f3cf8bd046f08
 msgid "csize\\_coarse\\_grid\\_ha"
 msgstr "csize\\_coarse\\_grid\\_ha"
 
-#: ../../docsrc/get_started.rst:358 e81bf74790c047948c0b25ab37b0f2a7
+#: ../../docsrc/get_started.rst:360 e81bf74790c047948c0b25ab37b0f2a7
 msgid "ncell"
 msgstr "ncell"
 
-#: ../../docsrc/get_started.rst:358 ../../docsrc/get_started.rst:431
+#: ../../docsrc/get_started.rst:360 ../../docsrc/get_started.rst:433
 #: 0fe0d2f9d05f475c90f57c62dc7ff6ad 0fe0d2f9d05f475c90f57c62dc7ff6ad
 msgid "period"
 msgstr "period"
 
-#: ../../docsrc/get_started.rst:358 db84a670d6c74ca98fcd38adb5aeba80
+#: ../../docsrc/get_started.rst:360 db84a670d6c74ca98fcd38adb5aeba80
 msgid "MedAE"
 msgstr "MedAE"
 
-#: ../../docsrc/get_started.rst:358 597e1bcaba8143e0ae5d86478a0a5f14
+#: ../../docsrc/get_started.rst:360 597e1bcaba8143e0ae5d86478a0a5f14
 msgid "R2"
 msgstr "R2"
 
-#: ../../docsrc/get_started.rst:358 61fe3c83470648ed9ff60c53d754f758
+#: ../../docsrc/get_started.rst:360 61fe3c83470648ed9ff60c53d754f758
 msgid "RMSE"
 msgstr "RMSE"
 
-#: ../../docsrc/get_started.rst:358 4c603a352f4542389b0e2063e09a5a86
+#: ../../docsrc/get_started.rst:360 4c603a352f4542389b0e2063e09a5a86
 msgid "wRMSE"
 msgstr "wRMSE"
 
-#: ../../docsrc/get_started.rst:360 ../../docsrc/get_started.rst:362
-#: ../../docsrc/get_started.rst:364 ../../docsrc/get_started.rst:366
-#: ../../docsrc/get_started.rst:368 ../../docsrc/get_started.rst:370
+#: ../../docsrc/get_started.rst:362 ../../docsrc/get_started.rst:364
+#: ../../docsrc/get_started.rst:366 ../../docsrc/get_started.rst:368
+#: ../../docsrc/get_started.rst:370 ../../docsrc/get_started.rst:372
 #: ee33aac3d5e24ca18369d47b79b7f6c8 ee33aac3d5e24ca18369d47b79b7f6c8
 #: ee33aac3d5e24ca18369d47b79b7f6c8 ee33aac3d5e24ca18369d47b79b7f6c8
 #: ee33aac3d5e24ca18369d47b79b7f6c8 ee33aac3d5e24ca18369d47b79b7f6c8
 msgid "50"
 msgstr "50"
 
-#: ../../docsrc/get_started.rst:360 ../../docsrc/get_started.rst:362
-#: ../../docsrc/get_started.rst:364 ../../docsrc/get_started.rst:366
-#: ../../docsrc/get_started.rst:368 ../../docsrc/get_started.rst:370
+#: ../../docsrc/get_started.rst:362 ../../docsrc/get_started.rst:364
+#: ../../docsrc/get_started.rst:366 ../../docsrc/get_started.rst:368
+#: ../../docsrc/get_started.rst:370 ../../docsrc/get_started.rst:372
 #: 866332cd3f514dbbbaf56d2cfa3cb974 866332cd3f514dbbbaf56d2cfa3cb974
 #: 866332cd3f514dbbbaf56d2cfa3cb974 866332cd3f514dbbbaf56d2cfa3cb974
 #: 866332cd3f514dbbbaf56d2cfa3cb974 866332cd3f514dbbbaf56d2cfa3cb974
 msgid "225.0"
 msgstr "225.0"
 
-#: ../../docsrc/get_started.rst:360 ../../docsrc/get_started.rst:362
-#: ../../docsrc/get_started.rst:364 ../../docsrc/get_started.rst:366
-#: ../../docsrc/get_started.rst:368 ../../docsrc/get_started.rst:370
+#: ../../docsrc/get_started.rst:362 ../../docsrc/get_started.rst:364
+#: ../../docsrc/get_started.rst:366 ../../docsrc/get_started.rst:368
+#: ../../docsrc/get_started.rst:370 ../../docsrc/get_started.rst:372
 #: 7833fbdf86a6415982e288f8cbdb9d65 7833fbdf86a6415982e288f8cbdb9d65
 #: 7833fbdf86a6415982e288f8cbdb9d65 7833fbdf86a6415982e288f8cbdb9d65
 #: 7833fbdf86a6415982e288f8cbdb9d65 7833fbdf86a6415982e288f8cbdb9d65
 msgid "604"
 msgstr "604"
 
-#: ../../docsrc/get_started.rst:360 ../../docsrc/get_started.rst:362
-#: ../../docsrc/get_started.rst:364 ../../docsrc/get_started.rst:366
-#: ../../docsrc/get_started.rst:368 ../../docsrc/get_started.rst:370
+#: ../../docsrc/get_started.rst:362 ../../docsrc/get_started.rst:364
+#: ../../docsrc/get_started.rst:366 ../../docsrc/get_started.rst:368
+#: ../../docsrc/get_started.rst:370 ../../docsrc/get_started.rst:372
 #: d89c7e1ecfd84bbfba1d90f647a79e48 d89c7e1ecfd84bbfba1d90f647a79e48
 #: d89c7e1ecfd84bbfba1d90f647a79e48 d89c7e1ecfd84bbfba1d90f647a79e48
 #: d89c7e1ecfd84bbfba1d90f647a79e48 d89c7e1ecfd84bbfba1d90f647a79e48
 msgid "validation"
 msgstr "validation"
 
-#: ../../docsrc/get_started.rst:360 6397503294b74837bd0c9fd710f707fb
+#: ../../docsrc/get_started.rst:362 6397503294b74837bd0c9fd710f707fb
 msgid "bm"
 msgstr "bm"
 
-#: ../../docsrc/get_started.rst:360 b914a91b54004a7eb5b454a169130bf5
+#: ../../docsrc/get_started.rst:362 b914a91b54004a7eb5b454a169130bf5
 msgid "2.71"
 msgstr "2.71"
 
-#: ../../docsrc/get_started.rst:360 0b3262a8dc844fcd8f10f3888559f00a
+#: ../../docsrc/get_started.rst:362 0b3262a8dc844fcd8f10f3888559f00a
 msgid "0.43"
 msgstr "0.43"
 
-#: ../../docsrc/get_started.rst:360 3a13700e9b334bffafbefa33ec3fd34c
+#: ../../docsrc/get_started.rst:362 3a13700e9b334bffafbefa33ec3fd34c
 msgid "6.08"
 msgstr "6.08"
 
-#: ../../docsrc/get_started.rst:360 338fe6f0596841268eb09595b8ddbea2
+#: ../../docsrc/get_started.rst:362 338fe6f0596841268eb09595b8ddbea2
 msgid "6.22"
 msgstr "6.22"
 
-#: ../../docsrc/get_started.rst:362 551a27930b334d818fd3dbaeee1a9dbb
+#: ../../docsrc/get_started.rst:364 551a27930b334d818fd3dbaeee1a9dbb
 msgid "1.78"
 msgstr "1.78"
 
-#: ../../docsrc/get_started.rst:362 f29ae3e8280944a094b2b8b91d068dac
+#: ../../docsrc/get_started.rst:364 f29ae3e8280944a094b2b8b91d068dac
 msgid "0.65"
 msgstr "0.65"
 
-#: ../../docsrc/get_started.rst:362 b82cb9b7b0f041c48217f572bff31b3d
+#: ../../docsrc/get_started.rst:364 b82cb9b7b0f041c48217f572bff31b3d
 msgid "4.79"
 msgstr "4.79"
 
-#: ../../docsrc/get_started.rst:362 4beda760bf614c5b9f7f64b385ab699c
+#: ../../docsrc/get_started.rst:364 4beda760bf614c5b9f7f64b385ab699c
 msgid "4.59"
 msgstr "4.59"
 
-#: ../../docsrc/get_started.rst:364 891cce7690f84e958ae48b27a4d1e405
+#: ../../docsrc/get_started.rst:366 891cce7690f84e958ae48b27a4d1e405
 msgid "2.39"
 msgstr "2.39"
 
-#: ../../docsrc/get_started.rst:364 f41a7761a56149418c41cf34a1ffa565
+#: ../../docsrc/get_started.rst:366 f41a7761a56149418c41cf34a1ffa565
 msgid "0.38"
 msgstr "0.38"
 
-#: ../../docsrc/get_started.rst:364 2dd4fa86c22440a9907dbf75979e64bb
+#: ../../docsrc/get_started.rst:366 2dd4fa86c22440a9907dbf75979e64bb
 msgid "6.39"
 msgstr "6.39"
 
-#: ../../docsrc/get_started.rst:364 24bbbc7c69c44404957fa2062edf44a0
+#: ../../docsrc/get_started.rst:366 24bbbc7c69c44404957fa2062edf44a0
 msgid "6.52"
 msgstr "6.52"
 
-#: ../../docsrc/get_started.rst:366 e6e1b2d991614d9d8a5f0b4244944967
+#: ../../docsrc/get_started.rst:368 e6e1b2d991614d9d8a5f0b4244944967
 msgid "2.09"
 msgstr "2.09"
 
-#: ../../docsrc/get_started.rst:366 7e695c93febd4f68bcd81a71524fbbc1
+#: ../../docsrc/get_started.rst:368 7e695c93febd4f68bcd81a71524fbbc1
 msgid "0.50"
 msgstr "0.50"
 
-#: ../../docsrc/get_started.rst:366 e21b025bcb964cafa19b041010af0092
+#: ../../docsrc/get_started.rst:368 e21b025bcb964cafa19b041010af0092
 msgid "5.69"
 msgstr "5.69"
 
-#: ../../docsrc/get_started.rst:366 a726695163524eddbe1ffee5577dfa52
+#: ../../docsrc/get_started.rst:368 a726695163524eddbe1ffee5577dfa52
 msgid "5.74"
 msgstr "5.74"
 
-#: ../../docsrc/get_started.rst:368 21305feb3e394a11aaff7409f71c0e87
+#: ../../docsrc/get_started.rst:370 21305feb3e394a11aaff7409f71c0e87
 msgid "mw\\_11"
 msgstr "mw\\_11"
 
-#: ../../docsrc/get_started.rst:368 3c386160acdf422b8f6f55bf2d272a33
+#: ../../docsrc/get_started.rst:370 3c386160acdf422b8f6f55bf2d272a33
 msgid "2.34"
 msgstr "2.34"
 
-#: ../../docsrc/get_started.rst:368 ../../docsrc/get_started.rst:370
+#: ../../docsrc/get_started.rst:370 ../../docsrc/get_started.rst:372
 #: cd5392e880e24822af3f33e4128805b4 cd5392e880e24822af3f33e4128805b4
 msgid "0.56"
 msgstr "0.56"
 
-#: ../../docsrc/get_started.rst:368 2d906ea901254fbdb1740774f3e6ae22
+#: ../../docsrc/get_started.rst:370 2d906ea901254fbdb1740774f3e6ae22
 msgid "7.66"
 msgstr "7.66"
 
-#: ../../docsrc/get_started.rst:368 ab8f8a999d124b588f1a5ae52ee97b44
+#: ../../docsrc/get_started.rst:370 ab8f8a999d124b588f1a5ae52ee97b44
 msgid "6.83"
 msgstr "6.83"
 
-#: ../../docsrc/get_started.rst:370 78cfb302fb2b4a56a9c9d6481ac5596d
+#: ../../docsrc/get_started.rst:372 78cfb302fb2b4a56a9c9d6481ac5596d
 msgid "mw\\_21"
 msgstr "mw\\_21"
 
-#: ../../docsrc/get_started.rst:370 1271813365d64edc973080a82155c185
+#: ../../docsrc/get_started.rst:372 1271813365d64edc973080a82155c185
 msgid "2.51"
 msgstr "2.51"
 
-#: ../../docsrc/get_started.rst:370 1bc9796d532b44b9a8f1e8f72b7a3d9f
+#: ../../docsrc/get_started.rst:372 1bc9796d532b44b9a8f1e8f72b7a3d9f
 msgid "7.54"
 msgstr "7.54"
 
-#: ../../docsrc/get_started.rst:370 430764d2a49a479db0131c613a2b06b1
+#: ../../docsrc/get_started.rst:372 430764d2a49a479db0131c613a2b06b1
 msgid "6.66"
 msgstr "6.66"
 
-#: ../../docsrc/get_started.rst:374 810114b43981435ab1c73825e12395be
+#: ../../docsrc/get_started.rst:376 810114b43981435ab1c73825e12395be
 msgid "Allocating deforestation"
 msgstr "Asignación de la deforestación"
 
-#: ../../docsrc/get_started.rst:380 7f063d6ecfa14002bd7b78b77c878b33
+#: ../../docsrc/get_started.rst:382 7f063d6ecfa14002bd7b78b77c878b33
 msgid ""
 "The deforestation risk map obtained with the iCAR model at t3 can be used to"
 " allocate deforestation after year 2020. Both the risk map with classes of "
@@ -1606,7 +1614,7 @@ msgstr ""
 "las clases de riesgo de deforestación son necesarios para asignar la "
 "deforestación en el futuro."
 
-#: ../../docsrc/get_started.rst:382 943c8e8bb0c34a0e8a38cbbd0fba0b2d
+#: ../../docsrc/get_started.rst:384 943c8e8bb0c34a0e8a38cbbd0fba0b2d
 msgid ""
 "The table only includes values for ``rate_mod``, the relative spatial "
 "deforestation rates from the iCAR model estimated on the historical period. "
@@ -1619,7 +1627,7 @@ msgstr ""
 "cuantitativamente en función de la cantidad de deforestación prevista en el "
 "futuro."
 
-#: ../../docsrc/get_started.rst:384 93e6b97fc9a246a58317fa19c5a8129c
+#: ../../docsrc/get_started.rst:386 93e6b97fc9a246a58317fa19c5a8129c
 msgid ""
 "Deforestation rates for the iCAR model classes for forecasting "
 "deforestation."
@@ -1627,67 +1635,67 @@ msgstr ""
 "Tasas de deforestación de las clases del modelo iCAR para la previsión de la"
 " deforestación."
 
-#: ../../docsrc/get_started.rst:390 ba0d01049e5d4ca787ee2f504885418e
+#: ../../docsrc/get_started.rst:392 ba0d01049e5d4ca787ee2f504885418e
 msgid "137575"
 msgstr "137575"
 
-#: ../../docsrc/get_started.rst:390 f0d77924807142f58b4177577d674c5b
+#: ../../docsrc/get_started.rst:392 f0d77924807142f58b4177577d674c5b
 msgid "1e-06"
 msgstr "1e-06"
 
-#: ../../docsrc/get_started.rst:390 ../../docsrc/get_started.rst:392
-#: ../../docsrc/get_started.rst:394 ../../docsrc/get_started.rst:396
-#: ../../docsrc/get_started.rst:398 ca60c84342ba4c69acd3aee88b99ad38
+#: ../../docsrc/get_started.rst:392 ../../docsrc/get_started.rst:394
+#: ../../docsrc/get_started.rst:396 ../../docsrc/get_started.rst:398
+#: ../../docsrc/get_started.rst:400 ca60c84342ba4c69acd3aee88b99ad38
 #: ca60c84342ba4c69acd3aee88b99ad38 ca60c84342ba4c69acd3aee88b99ad38
 #: ca60c84342ba4c69acd3aee88b99ad38 ca60c84342ba4c69acd3aee88b99ad38
 msgid "20"
 msgstr "20"
 
-#: ../../docsrc/get_started.rst:392 aa1ed981f8054a23a60475040427a1fe
+#: ../../docsrc/get_started.rst:394 aa1ed981f8054a23a60475040427a1fe
 msgid "2"
 msgstr "2"
 
-#: ../../docsrc/get_started.rst:392 ea841ffd733d4f22a390b181090a5ab5
+#: ../../docsrc/get_started.rst:394 ea841ffd733d4f22a390b181090a5ab5
 msgid "5425"
 msgstr "5425"
 
-#: ../../docsrc/get_started.rst:392 38e73ad381334e52991513169d8e049f
+#: ../../docsrc/get_started.rst:394 38e73ad381334e52991513169d8e049f
 msgid "1.6259239478743857e-05"
 msgstr "1.6259239478743857e-05"
 
-#: ../../docsrc/get_started.rst:394 20e07f8f0e1f4988a0b9181e20165400
+#: ../../docsrc/get_started.rst:396 20e07f8f0e1f4988a0b9181e20165400
 msgid "3"
 msgstr "3"
 
-#: ../../docsrc/get_started.rst:394 d2d1c54389a945cf95503a486f76e1f5
+#: ../../docsrc/get_started.rst:396 d2d1c54389a945cf95503a486f76e1f5
 msgid "3523"
 msgstr "3523"
 
-#: ../../docsrc/get_started.rst:394 6f8d6a4d35a8475f8403717ba04e1f5e
+#: ../../docsrc/get_started.rst:396 6f8d6a4d35a8475f8403717ba04e1f5e
 msgid "3.151847895748772e-05"
 msgstr "3.151847895748772e-05"
 
-#: ../../docsrc/get_started.rst:396 55fd0886c97d4ff38d2ebb963247bc81
+#: ../../docsrc/get_started.rst:398 55fd0886c97d4ff38d2ebb963247bc81
 msgid "4"
 msgstr "4"
 
-#: ../../docsrc/get_started.rst:396 e20ebcc625ab4f52aab4bf85c800cf93
+#: ../../docsrc/get_started.rst:398 e20ebcc625ab4f52aab4bf85c800cf93
 msgid "2458"
 msgstr "2458"
 
-#: ../../docsrc/get_started.rst:396 56fff89401a54e28a07690cccdca5bde
+#: ../../docsrc/get_started.rst:398 56fff89401a54e28a07690cccdca5bde
 msgid "4.677771843623157e-05"
 msgstr "4.677771843623157e-05"
 
-#: ../../docsrc/get_started.rst:398 55c82238749a44a881cd4f05f908017a
+#: ../../docsrc/get_started.rst:400 55c82238749a44a881cd4f05f908017a
 msgid "2078"
 msgstr "2078"
 
-#: ../../docsrc/get_started.rst:398 75f7daf7dd3b4d568c95493fc282a88d
+#: ../../docsrc/get_started.rst:400 75f7daf7dd3b4d568c95493fc282a88d
 msgid "6.203695791497542e-05"
 msgstr "6.203695791497542e-05"
 
-#: ../../docsrc/get_started.rst:401 93414f3939fb4f129ab67138f1954dfb
+#: ../../docsrc/get_started.rst:403 93414f3939fb4f129ab67138f1954dfb
 msgid ""
 "Considering a total deforestation :math:`D` (in ha) for the next :math:`Y` "
 "years at the jurisdictional level, the adjustment factor is :math:`\\rho = D"
@@ -1710,7 +1718,7 @@ msgstr ""
 "próximos :math:`Y` años (para las notaciones, véanse los detalles `aquí "
 "<plugin_api.html#defrate-table>`_)."
 
-#: ../../docsrc/get_started.rst:403 f745995689e24c90a9706ae9903c6898
+#: ../../docsrc/get_started.rst:405 f745995689e24c90a9706ae9903c6898
 msgid ""
 "The risk map together with the table of computed deforestation density can "
 "be used to `proportionally allocate fractions <https://verra.org/verra-"
@@ -1738,11 +1746,11 @@ msgstr ""
 "jurisdicción. Para ello, se debe calcular una tabla con el número de píxeles"
 " para cada clase de riesgo de deforestación en el área del proyecto."
 
-#: ../../docsrc/get_started.rst:409 8e42ba144a494e81aed25c937b5655c8
+#: ../../docsrc/get_started.rst:411 8e42ba144a494e81aed25c937b5655c8
 msgid "Allocating deforestation to projects within the jurisdiction."
 msgstr "Asignación de la deforestación a proyectos dentro de la jurisdicción."
 
-#: ../../docsrc/get_started.rst:411 6aa333670877458383d24297d05e89b0
+#: ../../docsrc/get_started.rst:413 6aa333670877458383d24297d05e89b0
 msgid ""
 "The ``deforisk`` QGIS plugin includes an utility to facilitate the "
 "allocation of the deforestation to projects. Before using it, you can "
@@ -1756,13 +1764,13 @@ msgstr ""
 " en Martinica (`project_borders\\_MTQ\\_jurisdiction.gpkg "
 "<_static/get_started/project_borders_MTQ_jurisdiction.gpkg>`_)."
 
-#: ../../docsrc/get_started.rst:413 969aa3a1e85d4168984d1444fff9df4d
+#: ../../docsrc/get_started.rst:415 969aa3a1e85d4168984d1444fff9df4d
 msgid "``Juris. risk map``: File ``prob_icar_t3.tif`` for the best risk map."
 msgstr ""
 "``Juris. risk map``: Archivo ``prob_icar_t3.tif`` para el mejor mapa de "
 "riesgo."
 
-#: ../../docsrc/get_started.rst:415 d69508b34b594c2fb96c087e39d030f3
+#: ../../docsrc/get_started.rst:417 d69508b34b594c2fb96c087e39d030f3
 msgid ""
 "``Table. with defor. rates``: File ``defrate_cat_icar_forecast.csv`` for the"
 " table with the deforestation rates from the icar model at t3 for each class"
@@ -1772,12 +1780,12 @@ msgstr ""
 " la tabla con las tasas de deforestación del modelo icar en t3 para cada "
 "clase de riesgo de deforestación."
 
-#: ../../docsrc/get_started.rst:417 b6ec5c5d1d434f37ba14c723a31c650d
+#: ../../docsrc/get_started.rst:419 b6ec5c5d1d434f37ba14c723a31c650d
 msgid "``Project borders``: File ``project_borders_MTQ_jurisdiction.gpkg``."
 msgstr ""
 "``Project borders``: Archivo ``project_borders_MTQ_jurisdiction.gpkg``."
 
-#: ../../docsrc/get_started.rst:419 0ef9eda9908b42b49ee8e33e9768b80b
+#: ../../docsrc/get_started.rst:421 0ef9eda9908b42b49ee8e33e9768b80b
 msgid ""
 "``Juris. deforestation (ha)``: 4000. About 400 ha have been deforested each "
 "year in 2010--2020 in MTQ."
@@ -1785,11 +1793,11 @@ msgstr ""
 "``Juris. deforestation (ha)``: 4000. Alrededor de 400 ha han sido "
 "deforestadas cada año en 2010--2020 en MTQ."
 
-#: ../../docsrc/get_started.rst:421 43911b56d26d47bb851a293ff189c556
+#: ../../docsrc/get_started.rst:423 43911b56d26d47bb851a293ff189c556
 msgid "``Length forecast period (yr)``: 10."
 msgstr "``Length forecast period (yr)``: 10."
 
-#: ../../docsrc/get_started.rst:423 8b570d95980047efbafe7ef39c8f5508
+#: ../../docsrc/get_started.rst:425 8b570d95980047efbafe7ef39c8f5508
 msgid ""
 "Pushing the ``Run`` button in this box computes the quantity adjustment "
 "factor and the deforestation density for each class of risk using the total "
@@ -1810,7 +1818,7 @@ msgstr ""
 "deforestación prevista a nivel de proyecto se obtiene sumando las densidades"
 " de deforestación dentro del proyecto."
 
-#: ../../docsrc/get_started.rst:426 64f927177a6e44308565a4b90f19922e
+#: ../../docsrc/get_started.rst:428 64f927177a6e44308565a4b90f19922e
 msgid ""
 "A folder ``outputs/allocating_deforestation`` is created with the file "
 "``defor_project.csv`` indicating the predicted deforestation (106.7 ha) for "
@@ -1820,42 +1828,42 @@ msgstr ""
 "``defor_project.csv`` que indica la deforestación prevista (106,7 ha) para "
 "el periodo 2020--2030 para el proyecto:"
 
-#: ../../docsrc/get_started.rst:428 8e42ba144a494e81aed25c937b5655c8
+#: ../../docsrc/get_started.rst:430 8e42ba144a494e81aed25c937b5655c8
 msgid "Allocated deforestation for the project."
 msgstr "Deforestación asignada al proyecto."
 
-#: ../../docsrc/get_started.rst:431 82ccece724774d32aa57acce7854cce3
+#: ../../docsrc/get_started.rst:433 82ccece724774d32aa57acce7854cce3
 msgid "length (yr)"
 msgstr "length (yr)"
 
-#: ../../docsrc/get_started.rst:431 810114b43981435ab1c73825e12395be
+#: ../../docsrc/get_started.rst:433 810114b43981435ab1c73825e12395be
 msgid "deforestation (ha)"
 msgstr "deforestation (ha)"
 
-#: ../../docsrc/get_started.rst:433 37db25388af44e69bb00e09d0d97cd85
+#: ../../docsrc/get_started.rst:435 37db25388af44e69bb00e09d0d97cd85
 msgid "annual"
 msgstr "annual"
 
-#: ../../docsrc/get_started.rst:433 ab6d5e245af044c8a0bcd1e92d649bd4
+#: ../../docsrc/get_started.rst:435 ab6d5e245af044c8a0bcd1e92d649bd4
 msgid "1.0"
 msgstr "1.0"
 
-#: ../../docsrc/get_started.rst:433 0c138d099d514d32a2052fefb5786f1d
+#: ../../docsrc/get_started.rst:435 0c138d099d514d32a2052fefb5786f1d
 msgid "10.7"
 msgstr "10.7"
 
-#: ../../docsrc/get_started.rst:435 9bfc901ff1604ac692a42aad40c23203
+#: ../../docsrc/get_started.rst:437 9bfc901ff1604ac692a42aad40c23203
 msgid "entire"
 msgstr "entire"
 
-#: ../../docsrc/get_started.rst:435 fdb2b8710594419a977b0a87934909d6
+#: ../../docsrc/get_started.rst:437 fdb2b8710594419a977b0a87934909d6
 msgid "10.0"
 msgstr "10.0"
 
-#: ../../docsrc/get_started.rst:435 fdb2b8710594419a977b0a87934909d6
+#: ../../docsrc/get_started.rst:437 fdb2b8710594419a977b0a87934909d6
 msgid "106.9"
 msgstr "106.9"
 
-#: ../../docsrc/get_started.rst:439 24152df6598c445f82af74b782a0aa7b
+#: ../../docsrc/get_started.rst:441 24152df6598c445f82af74b782a0aa7b
 msgid "Conclusion"
 msgstr "Conclusión"
