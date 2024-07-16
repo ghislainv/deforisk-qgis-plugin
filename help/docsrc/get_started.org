@@ -71,6 +71,9 @@ Click the run button. A forest cover change map appears in the list of QGIS laye
 #+attr_rst: :width 650px
 [[file:_static/get_started/qgis-variables-results.png]]
 
+# Newline
+@@rst:|br|@@
+
 If you want to skip this step, you can download a [[file:_static/tutos/MTQ-tuto.zip][zip file including all the data for the MTQ example]].  
 
 * Benchmark model
