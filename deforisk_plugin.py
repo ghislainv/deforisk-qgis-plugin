@@ -672,6 +672,15 @@ class DeforiskPlugin:
         # Add task to task manager
         self.tm.addTask(self.task_grid)
 
+    def far_no_tiles_if_forest(self):
+        """No tiles if forest."""
+        self.catch_arguments()
+        forest_file = opj(self.args["workdir"], "data_raw", "forest_src.tif")
+        if os.path.isfile(forest_file):
+            self.far_get_variables()
+        else:
+            self.far_get_fcc_tiles()
+
     def far_get_fcc_tiles(self):
         """Get fcc."""
         self.catch_arguments()
@@ -689,7 +698,7 @@ class DeforiskPlugin:
                 grid_args=self.task_grid.grid_args,
             )
             main_task.addSubTask(task, [], QgsTask.ParentDependsOnSubTask)
-        # Execute far_predict after rho interpolation
+        # Execute far_get_variables after getting the tiles
         main_task.taskCompleted.connect(self.far_get_variables)
         # Add main task to task manager
         self.tm.addTask(main_task)
@@ -944,7 +953,7 @@ class DeforiskPlugin:
 
         # Data
         self.dlg.run_far_get_variable.clicked.connect(
-            self.far_get_fcc_grid_args)
+            self.far_no_tiles_if_forest)
 
         # Benchmark model
         self.dlg.run_bm_calibrate.clicked.connect(
