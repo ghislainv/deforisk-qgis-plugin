@@ -952,10 +952,10 @@ class DeforiskPlugin:
         # Action if buttons ares clicked
 
         # Data
-        # self.dlg.run_far_get_variable.clicked.connect(
-        #     self.far_no_tiles_if_forest)
         self.dlg.run_far_get_variable.clicked.connect(
-            self.far_get_fcc_grid_args)
+            self.far_no_tiles_if_forest)
+        # self.dlg.run_far_get_variable.clicked.connect(
+            # self.far_get_fcc_grid_args)
 
         # Benchmark model
         self.dlg.run_bm_calibrate.clicked.connect(
