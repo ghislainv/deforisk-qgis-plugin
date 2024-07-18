@@ -657,6 +657,15 @@ class DeforiskPlugin:
             "years_forecast": years_forecast,
         }
 
+    def far_no_tiles_if_forest(self):
+        """No tiles if forest."""
+        self.catch_arguments()
+        forest_file = opj(self.args["workdir"], "data_raw", "forest_src.tif")
+        if os.path.isfile(forest_file):
+            self.far_get_variables()
+        else:
+            self.far_get_fcc_grid_args()
+
     def far_get_fcc_grid_args(self):
         """Get fcc grid arguments."""
         self.catch_arguments()
@@ -671,15 +680,6 @@ class DeforiskPlugin:
         self.task_grid.taskCompleted.connect(self.far_get_fcc_tiles)
         # Add task to task manager
         self.tm.addTask(self.task_grid)
-
-    def far_no_tiles_if_forest(self):
-        """No tiles if forest."""
-        self.catch_arguments()
-        forest_file = opj(self.args["workdir"], "data_raw", "forest_src.tif")
-        if os.path.isfile(forest_file):
-            self.far_get_variables()
-        else:
-            self.far_get_fcc_tiles()
 
     def far_get_fcc_tiles(self):
         """Get fcc."""
@@ -952,8 +952,10 @@ class DeforiskPlugin:
         # Action if buttons ares clicked
 
         # Data
+        # self.dlg.run_far_get_variable.clicked.connect(
+        #     self.far_no_tiles_if_forest)
         self.dlg.run_far_get_variable.clicked.connect(
-            self.far_no_tiles_if_forest)
+            self.far_get_fcc_grid_args)
 
         # Benchmark model
         self.dlg.run_bm_calibrate.clicked.connect(

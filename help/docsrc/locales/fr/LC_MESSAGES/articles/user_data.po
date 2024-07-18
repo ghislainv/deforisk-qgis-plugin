@@ -1,34 +1,191 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2024, Cirad and FAO
 # This file is distributed under the same license as the deforisk package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
 # Translators:
 # Ghislain Vieilledent, 2024
-# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: deforisk\n"
+"Project-Id-Version:  deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 14:07-0400\n"
+"POT-Creation-Date: 2024-07-17 22:11-0500\n"
 "PO-Revision-Date: 2024-07-01 18:38+0000\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
-"Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
+"1000000 == 0 ? 1 : 2;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
 
 #: ../../docsrc/articles/user_data.rst:3 6b06741b61854dcda91aa6e218f9f8dc
 msgid "User’s data"
 msgstr "Données de l&#39;utilisateur"
 
-#: ../../docsrc/articles/user_data.rst:12 0143dda303a8413b84341497b6c63c8a
-msgid "First section"
-msgstr "Première section"
+#: ../../docsrc/articles/user_data.rst:12 1067b458d21a4c649a28a022feec63c6
+msgid "Forest cover change map"
+msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:15 2119cefabcbd421880b1f95561e5aab5
-msgid "Second section"
-msgstr "Deuxième partie"
+#: ../../docsrc/articles/user_data.rst:14 42daceeca1644d84aad835163f31a95c
+msgid ""
+"You can use your own forest cover change map with the plugin. To do so, "
+"prepare a ``forest_src.tif`` raster file and copy it to the ``data_raw`` "
+"folder in your working directory. This files should have the following "
+"characteristics:"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:16 8f61f178ba38494da8812df2ebfeebd6
+msgid ""
+"It must be a multiple band raster file with each band representing the "
+"forest cover at one date."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:18 767c955996034b99beadd81374f7ca0c
+msgid "Bands must be ordered (first band for t, second band for t+1, etc.)."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:20 0d56265aae1c4215bc78fa50c4bf11ae
+msgid ""
+"Raster values should be 1 for forest pixels and 0 for non-forest pixels "
+"(the raster can thus be of type Byte)."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:22 664e159b586d49f89a89cca0845a68e8
+msgid ""
+"The raster file should be projected in the coordinate reference system of"
+" the project."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:24 bcd5c833ae6347b1beaa5a489295a35f
+msgid "The raster must cover at least all the area of the jurisdiction."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:27 5c60d24378de4afea938941bce58fc48
+msgid ""
+"It is much better if the raster is bigger than the jurisdiction (e.g. "
+"buffer of 10 km) to reduce edge effects when computing distances to "
+"forest edge for example."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:29 9a74cd56375b4c7ea8aa994b28107fcc
+msgid ""
+"While executing the ``Get variables`` step, this raster will be used as "
+"the forest data source and all the forest variables (forest cover change "
+"and distance to forest edge at the different dates) will be computed from"
+" this data."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:31 a0ec431fd5cd4272a4c2664428d89543
+msgid ""
+"You can create this multiple band raster using the QGIS tool ``Merge`` "
+"available in **Raster > Miscellaneous**."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:34 d105594fe0554ea99db3cb5a9bb78055
+msgid "Additional explicative variables"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:37 3dddfa0c0fe2426d9926060799f9b80a
+msgid "Preparing the raster files"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:39 46195dace7a34d79a2198a38f2e5965b
+msgid ""
+"To use different or additional explicatives variables for the statistical"
+" models, prepare the corresponding raster files in the ``data`` folder of"
+" the working directory. These additional raster files should have the "
+"following characteristics:"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:41 9b0275bfc3b54b20a721e62d35334fca
+msgid "They should cover at least all the area of the jurisdiction."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:43 6d85d7c4b9814b77bf5010a7ff4fa3e9
+msgid "They should be in the projection of the project."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:45 6315dd5d339c445cbed41e7afb123904
+msgid ""
+"Resolution should be as close as possible to the forest cover raster "
+"resolution."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:47 582f2e1572f3418da4ad5dabf50ed019
+msgid ""
+"If some of these variables are changing with time, then create several "
+"rasters for t1, t2, and t3."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:50 cdf518f1282b4bcba7b03519e3e0507c
+msgid "Create symbolic links"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:52 837c73012f0d4457bd307dd7006f2b94
+msgid ""
+"To avoid copying the same data at several places on disk, create symbolic"
+" links in each of the folders ``data_calibration``, ``data_validation``, "
+"``data_historical``, and ``data_forecast``. Symbolic links should points "
+"to new rasters in the ``data`` folder."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:54 820b922f05ee468bb8e8cba5fe09a46e
+msgid ""
+"If using changing variables with time, then use the same file name (e.g. "
+"``variable.tif``) for symbolic links in the four ``data_*`` folders but "
+"pointing to different files ``variable_t*.tif`` in the ``data`` folder. "
+"For example:"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:56 268842fd9f094a78ac447a816d739f00
+msgid ""
+"In the ``data_calibration`` and ``data_historical`` folders (for which we"
+" use variables at t1), the file ``variable.tif`` should point to the file"
+" ``variable_t1.tif`` in the ``data`` folder."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:58 5dffda757a8b4fb08a66fcb7353b1e39
+msgid ""
+"In the ``data_validation`` folder (for which we use variables at t2), the"
+" file ``variable.tif`` should point to the file ``variable_t2.tif`` in "
+"the ``data`` folder."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:60 3d01fb356f174f199e347acf62542040
+msgid ""
+"In the ``data_forecast`` folder (for which we use variables at t3), the "
+"file ``variable.tif`` should point to the file ``variable_t3.tif`` in the"
+" ``data`` folder."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:62 01de43c5582f49eeba740e0d84b3b2e8
+msgid ""
+"To create symbolic links in Windows, use the command `mklink "
+"<https://learn.microsoft.com/en-us/windows-server/administration/windows-"
+"commands/mklink>`_. To be able to create symbolic links, the `Developer "
+"Mode <https://learn.microsoft.com/en-us/windows/apps/get-started/enable-"
+"your-device-for-development>`_ must be activated on your computer."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:70 3198c6c7e56c49cc9a391744daa1d5d4
+msgid "Use these variables in the formula for the statistical models"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:72 0600778b04694000b9e892440868c88a
+msgid ""
+"If raster ``variable.tif`` was added to the list of explicative "
+"variables, then add its name ``variable`` to the list of variables names "
+"for the FAR statistical models, see detail `here <../plugin_api.html#fit-"
+"models-to-data>`_."
+msgstr ""
+
+#~ msgid "First section"
+#~ msgstr "Première section"
+
+#~ msgid "Second section"
+#~ msgstr "Deuxième partie"
+
