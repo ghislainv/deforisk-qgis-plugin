@@ -187,7 +187,7 @@ Fit models to data
 
 This tab is for collecting the information needed to spatially model deforestation using three statistical models available in the ``forestatrisk`` (FAR) Python package: iCAR, GLM, and Random Forest models.
 
-- ``List of variables``: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without “.tif” extension) in folder ``data_calibration`` or ``data_historical``. Variable names must be separated by a comma. For categorical variables (such as protected areas) use the variable name with notation ``C()``, such as ``C(pa)``. It empty, it will use the default formula: ``C(pa) + altitude + slope + dist_edge + dist_road + dist_river + dist_town``.
+- ``List of variables``: List of explanatory variables used for statistical modelling. Variable names must correspond to file names (without “.tif” extension) in folder ``data_calibration`` or ``data_historical``. Variable names must be separated by a comma. For categorical variables (such as protected areas) use the variable name with notation ``C()``, such as ``C(pa)``. If empty, it will use the default formula: ``C(pa), altitude, slope, dist_edge, dist_road, dist_river, dist_town``.
 
 - ``Starting values for betas``: If -99 (recommended), starting values for betas correspond to estimates of a simple GLM with the same variables.
 

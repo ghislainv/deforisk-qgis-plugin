@@ -467,11 +467,55 @@
                   
   <section id="users-data">
 <h1>Datos del usuario<a class="headerlink" href="#users-data" title="Link to this heading">#</a></h1>
-<section id="first-section">
-<h2>Primera sección<a class="headerlink" href="#first-section" title="Link to this heading">#</a></h2>
+<section id="forest-cover-change-map">
+<h2>Mapa de cambio de la cobertura forestal<a class="headerlink" href="#forest-cover-change-map" title="Link to this heading">#</a></h2>
+<p>Puede utilizar su propio mapa de cambio de cobertura forestal con el complemento. Para eso, prepare un archivo raster <code class="docutils literal notranslate"><span class="pre">forest_src.tif</span></code> y cópielo en la carpeta <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> de su directorio de trabajo. Este archivo debe tener las siguientes características:</p>
+<ul class="simple">
+<li><p>Debe ser un archivo raster de bandas múltiples en el que cada banda represente la cobertura forestal en una fecha.</p></li>
+<li><p>Las bandas deben ordenarse (primera banda para t, segunda banda para t+1, etc.).</p></li>
+<li><p>Los valores del raster deben ser 1 para los píxeles forestales y 0 para los no forestales (el raster puede ser, por tanto, de tipo Byte).</p></li>
+<li><p>El archivo raster debe proyectarse en el sistema de referencia de coordenadas del proyecto.</p></li>
+<li><p>El raster debe cubrir al menos toda el área de la jurisdicción.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Es mucho mejor si el ráster es mayor que la jurisdicción (por ejemplo, un búfer de 10 km) para reducir los efectos de borde al calcular las distancias al borde del bosque, por ejemplo.</p>
+</div>
+<p>Mientras se ejecuta el paso <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code>, este raster se utilizará como fuente de datos forestales y todas las variables forestales (cambio en la cubierta forestal y distancia al borde del bosque en las diferentes fechas) se calcularán a partir de estos datos.</p>
+<p>Puede crear este raster de bandas múltiples utilizando la herramienta de QGIS <code class="docutils literal notranslate"><span class="pre">Merge</span></code> disponible en <strong>Raster &gt; Miscellaneous</strong>.</p>
 </section>
-<section id="second-section">
-<h2>Segunda sección<a class="headerlink" href="#second-section" title="Link to this heading">#</a></h2>
+<section id="additional-explicative-variables">
+<h2>Variables explicativas adicionales<a class="headerlink" href="#additional-explicative-variables" title="Link to this heading">#</a></h2>
+<section id="preparing-the-raster-files">
+<h3>Preparación de los archivos raster<a class="headerlink" href="#preparing-the-raster-files" title="Link to this heading">#</a></h3>
+<p>Para utilizar variables explicativas diferentes o adicionales para los modelos estadísticos, prepare los archivos raster correspondientes en la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code> del directorio de trabajo. Estos archivos raster adicionales deben tener las siguientes características:</p>
+<ul class="simple">
+<li><p>Deben abarcar al menos toda el área de la jurisdicción.</p></li>
+<li><p>Deben estar en la proyección del proyecto.</p></li>
+<li><p>La resolución debe ser lo más cercana posible a la resolución raster de la cubierta forestal.</p></li>
+</ul>
+<p>Si algunas de estas variables cambian con el tiempo, cree varios rásters para t1, t2 y t3.</p>
+</section>
+<section id="create-symbolic-links">
+<h3>Crear enlaces simbólicos<a class="headerlink" href="#create-symbolic-links" title="Link to this heading">#</a></h3>
+<p>Para evitar copiar los mismos datos en varios lugares del disco, cree enlaces simbólicos en cada una de las carpetas <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code> y <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code>. Los enlaces simbólicos deben apuntar a los nuevos gráficos de la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<p>Si utiliza variables cambiantes con el tiempo, utilice el mismo nombre de archivo (por ejemplo <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code>) para los enlaces simbólicos en las cuatro carpetas <code class="docutils literal notranslate"><span class="pre">data_*</span></code> pero apuntando a archivos diferentes <code class="docutils literal notranslate"><span class="pre">variable_t*.tif</span></code> en la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code>. Por ejemplo:</p>
+<ul>
+<li><p>En las carpetas <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code> y <code class="docutils literal notranslate"><span class="pre">data_historical</span></code> (para las que utilizamos variables en t1), el archivo <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> debe apuntar al archivo <code class="docutils literal notranslate"><span class="pre">variable_t1.tif</span></code> de la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p></li>
+<li><p>En la carpeta <code class="docutils literal notranslate"><span class="pre">data_validation</span></code> (para la que utilizamos variables en t2), el archivo <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> debe apuntar al archivo <code class="docutils literal notranslate"><span class="pre">variable_t2.tif</span></code> de la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p></li>
+<li><p>En la carpeta <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code> (para la que utilizamos variables en t3), el archivo <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> debe apuntar al archivo <code class="docutils literal notranslate"><span class="pre">variable_t3.tif</span></code> de la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<p>Para crear enlaces simbólicos en Windows, utilice el comando <a class="reference external" href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/mklink">mklink</a>. Para poder crear enlaces simbólicos, el <a class="reference external" href="https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development">Modo Desarrollador</a> debe estar activado en su ordenador.</p>
+</li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a symbolic link in Windows</span>
+mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\data_calibration\variable.tif&quot;</span><span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\data\variable_t1.tif&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="use-these-variables-in-the-formula-for-the-statistical-models">
+<h3>Utilice estas variables en la fórmula de los modelos estadísticos<a class="headerlink" href="#use-these-variables-in-the-formula-for-the-statistical-models" title="Link to this heading">#</a></h3>
+<p>Si el raster <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> fue añadido a la lista de variables explicativas, entonces añada su nombre <code class="docutils literal notranslate"><span class="pre">variable</span></code> a la lista de nombres de variables para los modelos estadísticos FAR, ver detalle <a class="reference external" href="../plugin_api.html#fit-models-to-data">aquí</a>.</p>
+</section>
 </section>
 </section>
 
@@ -521,8 +565,13 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-section">Primera sección</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-section">Segunda sección</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-cover-change-map">Mapa de cambio de la cobertura forestal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-explicative-variables">Variables explicativas adicionales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-raster-files">Preparación de los archivos raster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-symbolic-links">Crear enlaces simbólicos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-these-variables-in-the-formula-for-the-statistical-models">Utilice estas variables en la fórmula de los modelos estadísticos</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
