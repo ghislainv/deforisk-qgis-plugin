@@ -472,7 +472,8 @@
 <ul class="simple">
 <li><p>It must be a multiple band raster file with each band representing the forest cover at one date.</p></li>
 <li><p>Bands must be ordered (first band for t, second band for t+1, etc.).</p></li>
-<li><p>Raster values should be 1 for forest pixels and 0 for non-forest pixels (the raster can thus be of type Byte).</p></li>
+<li><p>Raster should only have two values: 1 for forest pixels and 0 for non-forest pixels (the raster can thus be of type Byte).</p></li>
+<li><p>No-data value is not important here. It can be set to 0 or 255 for example.</p></li>
 <li><p>The raster file should be projected in the coordinate reference system of the project.</p></li>
 <li><p>The raster must cover at least all the area of the jurisdiction.</p></li>
 </ul>

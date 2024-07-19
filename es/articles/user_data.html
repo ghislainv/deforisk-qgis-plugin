@@ -473,7 +473,8 @@
 <ul class="simple">
 <li><p>Debe ser un archivo raster de bandas múltiples en el que cada banda represente la cobertura forestal en una fecha.</p></li>
 <li><p>Las bandas deben ordenarse (primera banda para t, segunda banda para t+1, etc.).</p></li>
-<li><p>Los valores del raster deben ser 1 para los píxeles forestales y 0 para los no forestales (el raster puede ser, por tanto, de tipo Byte).</p></li>
+<li><p>El raster sólo debe tener dos valores: 1 para píxeles forestales y 0 para píxeles no forestales (el raster puede ser, por tanto, de tipo Byte).</p></li>
+<li><p>El valor de «no data» no es importante aquí. Se puede utilizar 0 o 255, por ejemplo.</p></li>
 <li><p>El archivo raster debe proyectarse en el sistema de referencia de coordenadas del proyecto.</p></li>
 <li><p>El raster debe cubrir al menos toda el área de la jurisdicción.</p></li>
 </ul>

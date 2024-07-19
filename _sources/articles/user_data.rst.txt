@@ -17,7 +17,9 @@ You can use your own forest cover change map with the plugin. To do so, prepare 
 
 - Bands must be ordered (first band for t, second band for t+1, etc.).
 
-- Raster values should be 1 for forest pixels and 0 for non-forest pixels (the raster can thus be of type Byte).
+- Raster should only have two values: 1 for forest pixels and 0 for non-forest pixels (the raster can thus be of type Byte).
+
+- No-data value is not important here. It can be set to 0 or 255 for example.
 
 - The raster file should be projected in the coordinate reference system of the project.
 
