@@ -17,9 +17,8 @@ jobs:
         with:
            python-version: '3.11'
 
-      - name: Install gdal
+      - name: Install pandoc
         run: |
-          sudo add-apt-repository --yes ppa:ubuntugis/ppa
           sudo apt-get --quiet update
           sudo apt-get install pandoc
 
@@ -41,3 +40,4 @@ jobs:
         with:
           branch: gh-pages
           folder: help/build/html
+
