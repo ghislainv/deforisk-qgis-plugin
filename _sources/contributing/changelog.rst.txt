@@ -5,6 +5,13 @@ Changelog
 
 
 
+deforisk v1.0
+-------------
+
+- Version used at the Santa Marta workshop in Colombia (July, 15th--19th of 2024).
+
+- Changes: `https://github.com/ghislainv/deforisk-qgis-plugin/compare/v0.5...v1.0 <https://github.com/ghislainv/deforisk-qgis-plugin/compare/v0.5...v1.0>`_.
+
 deforisk v0.5
 -------------
 
