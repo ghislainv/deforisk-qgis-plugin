@@ -37,7 +37,7 @@ msgid ""
 "It could be necessary to change the default parameters of the plugin for "
 "large jurisdictions (e.g. country scale)."
 msgstr ""
-"Podría ser necesario cambiar los parámetros por defecto del plugin para "
+"Podría ser necesario cambiar los parámetros por defecto del complemento para "
 "jurisdicciones grandes (por ejemplo, a escala nacional)."
 
 #: ../../docsrc/articles/large_jurisdictions.rst:16

@@ -41,7 +41,7 @@ msgid ""
 msgstr ""
 "El objetivo es obtener un archivo GPKG llamado ``aoi_latlon.gpkg`` con dos "
 "capas llamadas ``aoi`` para la jurisdicción y ``subj`` para las "
-"subjurisdicciones. Este archivo puede luego ser utilizado con el plugin "
+"subjurisdicciones. Este archivo puede luego ser utilizado con el complemento "
 "``deforisk`` para definir el área de interés (AOI)."
 
 #: ../../docsrc/articles/subnational_jurisd.rst:22
@@ -162,7 +162,7 @@ msgstr ""
 #: ../../docsrc/articles/subnational_jurisd.rst:82
 #: 0d7291c7ba804245b30e15455943db57
 msgid "Use with the deforisk plugin"
-msgstr "Uso con el plugin deforisk"
+msgstr "Uso con el complemento deforisk"
 
 #: ../../docsrc/articles/subnational_jurisd.rst:84
 #: c9de0bbbd0e341449b46380d6cb6e73a

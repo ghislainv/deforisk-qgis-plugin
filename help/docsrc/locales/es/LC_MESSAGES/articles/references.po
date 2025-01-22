@@ -69,7 +69,7 @@ msgid ""
 "**Cirad, FAO**. 2024. `The deforisk QGIS plugin for deriving and comparing "
 "maps of deforestation risk <../_static/references/Cirad2024-deforisk-qgis-"
 "plugin.pdf>`_."
-msgstr "**Cirad, FAO**. 2024. `El plugin QGIS deforisk para elaborar y comparar mapas de riesgo de deforestación <../_static/references/Cirad2024-deforisk-qgis-plugin.es.pdf>`_."
+msgstr "**Cirad, FAO**. 2024. `El complemento QGIS deforisk para elaborar y comparar mapas de riesgo de deforestación <../_static/references/Cirad2024-deforisk-qgis-plugin.es.pdf>`_."
 
 #: ../../docsrc/articles/references.rst:26 c4f88600d4d94b7c9dab95f90830a725
 msgid "Articles"

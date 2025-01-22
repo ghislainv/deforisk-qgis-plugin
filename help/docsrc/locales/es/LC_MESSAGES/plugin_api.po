@@ -29,7 +29,7 @@ msgstr "Plugin API"
 
 #: ../../docsrc/plugin_api.rst:12 1a6aa50a98de4a5489d5f12413b170c2
 msgid "Plugin interface"
-msgstr "Interfaz del plugin"
+msgstr "Interfaz del complemento"
 
 #: ../../docsrc/plugin_api.rst:16 e2a8a03f144b4701b99320828ade1bbd
 msgid ""
@@ -41,13 +41,13 @@ msgid ""
 "below. They usually correspond to function parameters from the Python "
 "packages used by the ``deforisk`` plugin."
 msgstr ""
-"La interfaz del plugin muestra cinco pestañas: ``Get variables``, "
+"La interfaz del complemento muestra cinco pestañas: ``Get variables``, "
 "``Benchmark``, ``FAR models``, ``MW models`` y ``Validation``. Cada "
 "pestaña incluye uno o varios cuadros. Por ejemplo, la pestaña ``FAR "
 "models`` incluye tres cuadros: ``Sample observations``, ``Fit models to "
 "data``, y ``Predict the deforestation risk``. Los argumentos de cada "
 "pestaña o cuadro se detallan a continuación. Suelen corresponder a "
-"parámetros de función de los paquetes de Python utilizados por el plugin "
+"parámetros de función de los paquetes de Python utilizados por el complemento "
 "``deforisk``."
 
 #: ../../docsrc/plugin_api.rst:19 0f26b7f77c86419696bbc8bc5a9b4804

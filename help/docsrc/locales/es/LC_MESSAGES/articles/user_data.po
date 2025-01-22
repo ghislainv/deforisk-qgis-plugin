@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Mientras se ejecuta el paso ``Get variables``, este raster se utilizará "
 "como fuente de datos forestales y todas las variables forestales (cambio "
-"en la cubierta forestal y distancia al borde del bosque en las diferentes"
+"en la cobertura forestal y distancia al borde del bosque en las diferentes"
 " fechas) se calcularán a partir de estos datos."
 
 #: ../../docsrc/articles/user_data.rst:33 a0ec431fd5cd4272a4c2664428d89543
@@ -142,7 +142,7 @@ msgid ""
 "resolution."
 msgstr ""
 "La resolución debe ser lo más cercana posible a la resolución raster de "
-"la cubierta forestal."
+"la cobertura forestal."
 
 #: ../../docsrc/articles/user_data.rst:49 582f2e1572f3418da4ad5dabf50ed019
 msgid ""
