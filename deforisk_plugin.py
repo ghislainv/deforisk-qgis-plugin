@@ -526,6 +526,7 @@ class DeforiskPlugin:
         gc_project = self.dlg.gc_project.filePath()
         wdpa_key = self.dlg.wdpa_key.filePath()
         proj = self.dlg.proj.text()
+        forest_var_only = self.dlg.forest_var_only.isChecked()
         # Sample observations
         nsamp = int(self.dlg.nsamp.text())
         adapt = self.dlg.adapt.isChecked()
@@ -600,6 +601,7 @@ class DeforiskPlugin:
             "gc_project": gc_project,
             "wdpa_key": wdpa_key,
             "proj": proj,
+            "forest_var_only": forest_var_only,
             # Benchmark
             "defor_thresh": defor_thresh, "max_dist": max_dist,
             "mod_bm_periods": {
@@ -715,7 +717,8 @@ class DeforiskPlugin:
             isocode=self.args["isocode"],
             gc_project=self.args["gc_project"],
             wdpa_key=self.args["wdpa_key"],
-            proj=self.args["proj"])
+            proj=self.args["proj"],
+            forest_var_only=self.args["forest_var_only"])
         # Add task to task manager
         self.tm.addTask(task)
 

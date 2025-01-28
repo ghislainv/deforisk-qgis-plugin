@@ -77,7 +77,7 @@ class FarGetVariablesTask(QgsTask):
     N_STEPS = 3
 
     def __init__(self, description, iface, workdir, get_fcc_args,
-                 isocode, gc_project, wdpa_key, proj):
+                 isocode, gc_project, wdpa_key, proj, forest_var_only):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
@@ -86,6 +86,7 @@ class FarGetVariablesTask(QgsTask):
         self.gc_project = gc_project
         self.wdpa_key = wdpa_key
         self.proj = proj
+        self.forest_var_only = forest_var_only
         self.exception = None
 
     def ee_initialize(self):
@@ -204,12 +205,13 @@ class FarGetVariablesTask(QgsTask):
                     shutil.copy(aoi, ofile)
 
                 # Download data
-                far.data.country_download(
-                    get_fcc_args=self.reformat_get_fcc_args(),
-                    iso3=self.isocode,
-                    output_dir=self.DATA_RAW,
-                    gadm=gadm,
-                    forest=False)  # See task with geefcc
+                if self.forest_var_only is False:
+                    far.data.country_download(
+                        get_fcc_args=self.reformat_get_fcc_args(),
+                        iso3=self.isocode,
+                        output_dir=self.DATA_RAW,
+                        gadm=gadm,
+                        forest=False)  # See task with geefcc
 
                 # Check isCanceled() to handle cancellation
                 if self.isCanceled():
@@ -220,12 +222,15 @@ class FarGetVariablesTask(QgsTask):
                 self.set_progress(progress, self.N_STEPS)
 
                 # Compute explanatory variables
+                # Compute data_country if "forest_var_only" is False.
+                # Always compute data_forest.
+                data_country = not self.forest_var_only
                 far.data.country_compute(
                     iso3=self.isocode,
                     temp_dir=self.DATA_RAW,
                     output_dir=self.DATA,
                     proj=self.proj,
-                    data_country=True,
+                    data_country=data_country,
                     data_forest=True,
                     keep_temp_dir=True)
 

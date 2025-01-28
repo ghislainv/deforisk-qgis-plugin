@@ -11,7 +11,7 @@
 
 * Forest cover change map
 
-You can use your own forest cover change map with the plugin. To do so, prepare a ~forest_src.tif~ raster file and copy it to the ~data_raw~ folder in your working directory. This files should have the following characteristics:
+You can use your own forest cover change map with the plugin. To do so, prepare a ~forest_src.tif~ raster file and copy it to the ~data_raw~ folder in your working directory. This file should have the following characteristics:
 
 - It must be a multiple band raster file with each band representing the forest cover at one date.
 - Bands must be ordered (first band for t, second band for t+1, etc.).
@@ -43,7 +43,7 @@ If some of these variables are changing with time, then create several rasters f
 
 *** Create symbolic links
 
-To avoid copying the same data at several places on disk, create symbolic links in each of the folders ~data_calibration~, ~data_validation~, ~data_historical~, and ~data_forecast~. Symbolic links should points to new rasters in the ~data~ folder.
+To avoid copying the same data at several places on disk, create symbolic links in each of the folders ~data_calibration~, ~data_validation~, ~data_historical~, and ~data_forecast~. Symbolic links should point to new rasters in the ~data~ folder.
 
 If using changing variables with time, then use the same file name (e.g. ~variable.tif~) for symbolic links in the four ~data_*~ folders but pointing to different files ~variable_t*.tif~ in the ~data~ folder. For example:
 
@@ -60,4 +60,4 @@ mklink "C:\Users\me\deforisk\MTQ\data_calibration\variable.tif" "C:\Users\me\def
 
 *** Use these variables in the formula for the statistical models
 
-If raster ~variable.tif~ was added to the list of explicative variables, then add its name ~variable~ to the list of variables names for the FAR statistical models, see detail [[../plugin_api.html#fit-models-to-data][here]].
+If raster ~variable.tif~ was added to the list of explanatory variables, then add its name ~variable~ to the list of variables names for the FAR statistical models, see detail [[../plugin_api.html#fit-models-to-data][here]].

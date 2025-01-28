@@ -35,19 +35,6 @@
        <property name="title">
         <string>Download and compute variables</string>
        </property>
-       <widget class="QPushButton" name="run_far_get_variable">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>360</y>
-          <width>71</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Run</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_doc">
         <property name="geometry">
          <rect>
@@ -267,6 +254,32 @@
         <property name="scaledContents">
          <bool>true</bool>
         </property>
+       </widget>
+       <widget class="QSplitter" name="splitter">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>360</y>
+          <width>471</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <widget class="QCheckBox" name="forest_var_only">
+         <property name="text">
+          <string>Only compute forest variables</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="run_far_get_variable">
+         <property name="text">
+          <string>Run</string>
+         </property>
+        </widget>
        </widget>
       </widget>
      </item>
