@@ -13,6 +13,7 @@ Sample observations.
 """
 
 import os
+from glob import glob
 
 from qgis.core import (
     Qgis, QgsTask, QgsProject,
@@ -36,7 +37,6 @@ class FarSampleObsTask(QgsTask):
 
     # Constants
     OUT = opj("outputs", "far_models")
-    DATA = "data"
     MESSAGE_CATEGORY = "Deforisk"
     N_STEPS = 2
 
@@ -143,25 +143,27 @@ class FarSampleObsTask(QgsTask):
         """Show messages and add layers."""
 
         if result:
-            # Correlation formula
-            formula_corr = (
-                "fcc ~ dist_road + dist_town + dist_river + "
-                "dist_edge + altitude + slope - 1"
-            )
+            # # Correlation formula
+            # file_list = glob(self.datadir + "/*.tif")
+            # file_names = [os.path.basename(x) for x in file_list]
+            # var_names = [os.path.splitext(x)[0] for x in file_names]
+            # var_names.remove("fcc")
+            # right_part = " + ".join(var_names)
+            # formula_corr = f"fcc ~ {right_part} - 1"
 
-            # Data
-            y, data = dmatrices(formula_corr, data=self.dataset,
-                                return_type="dataframe")
-            # Plots
-            ofile = opj(self.outdir, "correlation.pdf")
-            figs = far.plot.correlation(
-                y=y, data=data,
-                plots_per_page=3,
-                figsize=(7, 8),
-                dpi=80,
-                output_file=ofile)
-            for i in figs:
-                plt.close(i)
+            # # Data
+            # y, data = dmatrices(formula_corr, data=self.dataset,
+            #                     return_type="dataframe")
+            # # Plots
+            # ofile = opj(self.outdir, "correlation.pdf")
+            # figs = far.plot.correlation(
+            #     y=y, data=data,
+            #     plots_per_page=3,
+            #     figsize=(7, 8),
+            #     dpi=80,
+            #     output_file=ofile)
+            # for i in figs:
+            #     plt.close(i)
 
             # Qgis project and group
             far_project = QgsProject.instance()
