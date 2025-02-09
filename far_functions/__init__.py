@@ -2,6 +2,7 @@
 
 import matplotlib
 
+from .far_check_args import FarCheckArgsTask
 from .far_get_fcc_grid_args import FarGetFccGridArgsTask
 from .far_get_fcc_tile import FarGetFccTileTask
 from .far_get_variables import FarGetVariablesTask

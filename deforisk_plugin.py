@@ -32,6 +32,7 @@ import os
 import subprocess
 import platform
 import random
+import shutil
 
 from qgis.core import Qgis, QgsApplication, QgsTask
 
@@ -52,6 +53,7 @@ from .deforisk_plugin_dialog import DeforiskPluginDialog
 
 # Local far functions
 from .far_functions import (
+    FarCheckArgsTask,
     FarGetFccGridArgsTask,
     FarGetFccTileTask,
     FarGetVariablesTask,
@@ -279,14 +281,16 @@ class DeforiskPlugin:
         get_fcc_args = self.args["get_fcc_args"]
         years = get_fcc_args["years"]
         years = years.replace(" ", "").replace(",", "_")
-        fcc_source = get_fcc_args["fcc_source"]
+        fcc_abbrev = get_fcc_args["fcc_source"]
+        if os.path.isfile(fcc_abbrev):
+            fcc_abbrev = "own"
         mod_desc = f"_{model}" if model else ""
         period_desc = f"_{period}" if period else ""
         date_desc = f"_{date}" if date else ""
         csize_desc = f"_{csize_val}" if csize_val else ""
         # Description
         desc_base = (f"{task_name}_{isocode}_"
-                     f"{years}_{fcc_source}")
+                     f"{years}_{fcc_abbrev}")
         description = (desc_base + mod_desc
                        + period_desc + date_desc
                        + csize_desc)
@@ -297,7 +301,10 @@ class DeforiskPlugin:
         years = years.replace(" ", "").replace(",", "_")
         random.seed(seed)
         rand_int = random.randint(1, 9999)
-        folder_name = f"{iso}_{years}_{fcc_source}_{rand_int:04}"
+        fcc_abbrev = fcc_source
+        if os.path.isfile(fcc_abbrev):
+            fcc_abbrev = "own"
+        folder_name = f"{iso}_{years}_{fcc_abbrev}_{rand_int:04}"
         if platform.system() == "Windows":
             workdir = os.path.join(os.environ["HOMEDRIVE"],
                                    os.environ["HOMEPATH"],
@@ -519,7 +526,7 @@ class DeforiskPlugin:
         workdir = self.dlg.workdir.filePath()
         aoi = self.dlg.aoi.filePath()
         years = self.dlg.years.text()
-        fcc_source = self.dlg.fcc_source.text()
+        fcc_source = self.dlg.fcc_source.filePath()
         perc = int(self.dlg.perc.text())
         tile_size = float(self.dlg.tile_size.text())
         iso = self.dlg.isocode.text()
@@ -585,13 +592,14 @@ class DeforiskPlugin:
         # Special variables
         if workdir == "":
             # seed = 1234  # Only for tests to get same dir
-            workdir = self.set_workdir(iso, years, fcc_source, seed)
+            fcc_abbrev = fcc_source
+            if os.path.isfile(fcc_abbrev):
+                fcc_abbrev = "own"
+            workdir = self.set_workdir(iso, years, fcc_abbrev, seed)
         get_fcc_args = self.make_get_fcc_args(
             aoi, years, fcc_source, perc, tile_size)
-        var = ("C(pa), dist_edge, "
-               "dist_road, dist_town, dist_river, "
-               "altitude, slope")
-        variables = var if variables == "" else variables
+        if variables == "":
+            variables = "dist_edge"
         # Dictionary of arguments for far functions
         self.args = {
             # Data
@@ -659,11 +667,24 @@ class DeforiskPlugin:
             "years_forecast": years_forecast,
         }
 
+    def far_check_args(self):
+        """Check arguments."""
+        self.catch_arguments()
+        description = self.task_description("CheckArgs")
+        task_check_args = FarCheckArgsTask(
+            description=description,
+            iface=self.iface,
+            args=self.args)
+        task_check_args.taskCompleted.connect(self.far_no_tiles_if_forest)
+        # Add task to task manager
+        self.tm.addTask(task_check_args)
+
     def far_no_tiles_if_forest(self):
         """No tiles if forest."""
         self.catch_arguments()
-        forest_file = opj(self.args["workdir"], "data_raw", "forest_src.tif")
-        if os.path.isfile(forest_file):
+        get_fcc_args = self.args["get_fcc_args"]
+        fcc_source = get_fcc_args["fcc_source"]
+        if os.path.isfile(fcc_source):
             self.far_get_variables()
         else:
             self.far_get_fcc_grid_args()
@@ -956,9 +977,7 @@ class DeforiskPlugin:
 
         # Data
         self.dlg.run_far_get_variable.clicked.connect(
-            self.far_no_tiles_if_forest)
-        # self.dlg.run_far_get_variable.clicked.connect(
-            # self.far_get_fcc_grid_args)
+            self.far_check_args)
 
         # Benchmark model
         self.dlg.run_bm_calibrate.clicked.connect(
