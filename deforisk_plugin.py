@@ -32,7 +32,6 @@ import os
 import subprocess
 import platform
 import random
-import shutil
 
 from qgis.core import Qgis, QgsApplication, QgsTask
 
@@ -675,11 +674,11 @@ class DeforiskPlugin:
             description=description,
             iface=self.iface,
             args=self.args)
-        task_check_args.taskCompleted.connect(self.far_no_tiles_if_forest)
+        task_check_args.taskCompleted.connect(self.far_check_get_fcc)
         # Add task to task manager
         self.tm.addTask(task_check_args)
 
-    def far_no_tiles_if_forest(self):
+    def far_check_get_fcc(self):
         """No tiles if forest."""
         self.catch_arguments()
         get_fcc_args = self.args["get_fcc_args"]
