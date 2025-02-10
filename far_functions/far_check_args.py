@@ -28,19 +28,33 @@ def check_fcc_source(fcc_source):
         raise ValueError(msg)
 
 
+def check_aoi(aoi):
+    """Check aoi."""
+    cond_string = [isinstance(aoi, str),
+                   len(aoi) == 3]
+    cond_file = os.path.isfile(aoi)
+    if not (all(cond_string) or cond_file):
+        msg = ("Area of interest should be "
+               "either a path to a vector file "
+               "or a country iso code of three "
+               "letters (e.g. MTQ)")
+        raise ValueError(msg)
+
+
 class FarCheckArgsTask(QgsTask):
     """Check arguments."""
 
     # Constants
     DATA_RAW = "data_raw"
     MESSAGE_CATEGORY = "Deforisk"
-    N_STEPS = 1
+    N_STEPS = 2
 
     def __init__(self, description, iface, args):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.args = args
         self.exception = None
+        self.get_fcc_args = args["get_fcc_args"]
 
     def set_progress(self, progress, n_steps):
         """Set progress."""
@@ -65,14 +79,13 @@ class FarCheckArgsTask(QgsTask):
             self.set_progress(progress, self.N_STEPS)
 
             # Check fcc_source
-            get_fcc_args = self.args["get_fcc_args"]
-            fcc_source = get_fcc_args["fcc_source"]
+            fcc_source = self.get_fcc_args["fcc_source"]
             check_fcc_source(fcc_source)
             # If file, check file properties
             if os.path.isfile(fcc_source):
                 proj = self.args["proj"]
                 far.check_fcc(fcc_source, proj=proj, nbands_min=3,
-                              blk_rows=0, verbose=False)
+                              blk_rows=128, verbose=False)
                 # If no error, copy file to data_raw directory
                 workdir = self.args["workdir"]
                 ofile = opj(workdir, self.DATA_RAW, "forest_src.tif")
@@ -80,9 +93,17 @@ class FarCheckArgsTask(QgsTask):
                     far.make_dir(opj(workdir, self.DATA_RAW))
                     shutil.copy(fcc_source, ofile)
 
-            # # Progress
-            # progress += 1
-            # self.set_progress(progress, self.N_STEPS)
+            # Progress
+            progress += 1
+            self.set_progress(progress, self.N_STEPS)
+
+            # Check aoi
+            aoi = self.get_fcc_args["aoi"]
+            check_aoi(aoi)
+
+            # Progress
+            progress += 1
+            self.set_progress(progress, self.N_STEPS)
 
         except Exception as exc:
             self.exception = exc
