@@ -806,7 +806,16 @@ class DeforiskPlugin:
                 # Add task to task manager
                 self.tm.addTask(task)
 
-    def far_predict_after_rho_interp(self):
+    def far_check_interpolate_rho(self):
+        """Check if we need to interpolate rho for icar model."""
+        self.catch_arguments()
+        pred_icar = self.args["pred_far_models"]["pred_icar"]
+        if pred_icar:
+            self.far_interpolate_rho()
+        else:
+            self.far_predict()
+
+    def far_interpolate_rho(self):
         """Interpolate rho."""
         self.catch_arguments()
         periods = self.get_interp_far_periods()
@@ -990,7 +999,7 @@ class DeforiskPlugin:
         self.dlg.run_far_calibrate.clicked.connect(
             self.far_calibrate)
         self.dlg.run_far_predict.clicked.connect(
-            self.far_predict_after_rho_interp)
+            self.far_check_interpolate_rho)
 
         # Moving window model
         self.dlg.run_mw_calibrate.clicked.connect(
