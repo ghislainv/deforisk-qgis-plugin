@@ -74,7 +74,7 @@ class FarGetVariablesTask(QgsTask):
     DATA = "data"
     DATA_RAW = "data_raw"
     MESSAGE_CATEGORY = "Deforisk"
-    N_STEPS = 3
+    N_STEPS = 4
 
     def __init__(self, description, iface, workdir, get_fcc_args,
                  isocode, gc_project, wdpa_key, proj, forest_var_only):
@@ -188,29 +188,38 @@ class FarGetVariablesTask(QgsTask):
             fcc_file = opj(self.DATA, "fcc12.tif")
             if not os.path.isfile(fcc_file):
 
-                # Initialize EE
-                self.ee_initialize()
-
-                # Set WDPA_KEY
-                self.set_wdpa_key()
-
                 # Check if we need GADM
                 # If aoi is file, copy it to data_raw
-                # and set gadm to False
-                gadm = True
                 aoi = self.get_fcc_args["aoi"]
                 if os.path.isfile(aoi):
-                    gadm = False
                     ofile = opj(self.DATA_RAW, "aoi_latlon.gpkg")
-                    shutil.copy(aoi, ofile)
+                    # Copy if file does not exist yet
+                    if not os.path.isfile(ofile):
+                        shutil.copy(aoi, ofile)
+                # Else, download from GADM
+                else:
+                    ofile = opj(self.DATA_RAW,
+                                f"gadm41_{self.isocode}_0.gpkg")
+                    far.data.download.download_gadm(
+                        iso3=self.isocode,
+                        output_file=ofile,
+                    )
+
+                # Progress
+                progress += 1
+                self.set_progress(progress, self.N_STEPS)
 
                 # Download data
                 if self.forest_var_only is False:
+                    # Initialize ee and wdpa
+                    self.ee_initialize()
+                    self.set_wdpa_key()
+                    # Download
                     far.data.country_download(
                         get_fcc_args=self.reformat_get_fcc_args(),
                         iso3=self.isocode,
                         output_dir=self.DATA_RAW,
-                        gadm=gadm,
+                        gadm=False,
                         forest=False)  # See task with geefcc
 
                 # Check isCanceled() to handle cancellation
