@@ -16,7 +16,7 @@
 
 #+attr_rst: :directive note
 #+begin_quote
-*Installation*: We hereby describe two ways for installating the ~deforisk~ plugin:
+*Installation*: We hereby describe two ways for installing the ~deforisk~ plugin:
 - First option is to install the QGIS client and GDAL on your system and then install the ~forestatrisk~ and ~riskmapjnr~ Python packages. This installation procedure is system-dependent.
 - Alternate option is to use conda/miniconda/mamba (one of those three) to install QGIS, GDAL, ~forestatrisk~ and ~riskmapjnr~ in a dedicated environment. This installation procedure is system-independent.
 #+end_quote

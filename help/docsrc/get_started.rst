@@ -69,6 +69,8 @@ Get variables
 
 - ``Projection EPSG code``: EPSG:5490
 
+- ``Only compute forest variables``: **unchecked**, data will be downloaded from global data-sets (SRTM, WDPA, OSM) and explanatory variables other than forest related variables will be computed.
+
 .. warning::
     For Windows users, choose a working directory with a short path (e.g. ``C:\Users\<username>\<dirname>``). Long file paths can cause problems to access files on Windows.
 

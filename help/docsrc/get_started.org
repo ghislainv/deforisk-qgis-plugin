@@ -60,6 +60,7 @@ To better understand the different steps, keep in mind that we are considering d
 - ~Earth Engine access~: Google Cloud project name with Earth Engine access or path to a JSON private key file for service account.
 - ~WDPA access~: Personal WDPA API Token or path to text file with WDPA_KEY environmental variable.
 - ~Projection EPSG code~: EPSG:5490
+- ~Only compute forest variables~: *unchecked*, data will be downloaded from global data-sets (SRTM, WDPA, OSM) and explanatory variables other than forest related variables will be computed.
 
 #+begin_export rst
 .. warning::

@@ -14,7 +14,7 @@ Installation
 
 .. note::
 
-    **Installation**: We hereby describe two ways for installating the ``deforisk`` plugin:
+    **Installation**: We hereby describe two ways for installing the ``deforisk`` plugin:
 
     - First option is to install the QGIS client and GDAL on your system and then install the ``forestatrisk`` and ``riskmapjnr`` Python packages. This installation procedure is system-dependent.
 

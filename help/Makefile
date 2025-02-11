@@ -3,7 +3,7 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    ?= -E
-SPHINXBUILD   ?= ~/venvs/far/bin/sphinx-build
+SPHINXBUILD   ?= ~/venvs/deforisk/bin/sphinx-build
 PAPER         =
 SOURCEDIR     = docsrc
 BUILDDIR      = build
