@@ -81,7 +81,7 @@ Click the run button. A forest cover change map appears in the list of QGIS laye
 
 |br|
 
-If you want to skip this step, you can download a `zip file including all the data for the MTQ example <_static/tutos/MTQ-tuto.zip>`_.  
+If you want to skip this step, you can download a `zip file including all the data for the MTQ example <./_static/tutos/MTQ-tuto.zip>`_.  
 
 Benchmark model
 ---------------

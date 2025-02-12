@@ -458,14 +458,15 @@
 <h1>User’s data<a class="headerlink" href="#users-data" title="Link to this heading">#</a></h1>
 <section id="forest-cover-change-map">
 <h2>Forest cover change map<a class="headerlink" href="#forest-cover-change-map" title="Link to this heading">#</a></h2>
-<p>You can use your own forest cover change map with the plugin. To do so, prepare a <code class="docutils literal notranslate"><span class="pre">forest_src.tif</span></code> raster file and copy it to the <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> folder in your working directory. This files should have the following characteristics:</p>
+<p>You can use your own forest cover change map with the plugin. To do so, prepare a raster file and select it with the <code class="docutils literal notranslate"><span class="pre">Forest</span> <span class="pre">data</span> <span class="pre">source</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> tab of the plugin. The raster file will be automatically copied in the <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> folder of the working directory and renamed <code class="docutils literal notranslate"><span class="pre">forest_src.tif</span></code>. The raster file should have the following characteristics:</p>
 <ul class="simple">
 <li><p>It must be a multiple band raster file with each band representing the forest cover at one date.</p></li>
 <li><p>Bands must be ordered (first band for t, second band for t+1, etc.).</p></li>
 <li><p>Raster should only have two values: 1 for forest pixels and 0 for non-forest pixels (the raster can thus be of type Byte).</p></li>
 <li><p>No-data value is not important here. It can be set to 0 or 255 for example.</p></li>
-<li><p>The raster file should be projected in the coordinate reference system of the project.</p></li>
+<li><p>The raster file should be projected in the coordinate reference system of the project (see argument <code class="docutils literal notranslate"><span class="pre">projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>).</p></li>
 <li><p>The raster must cover at least all the area of the jurisdiction.</p></li>
+<li><p>Years specified in the <code class="docutils literal notranslate"><span class="pre">Years</span></code> argument should correspond to the years used for the forest cover change raster file.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -473,6 +474,9 @@
 </div>
 <p>While executing the <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> step, this raster will be used as the forest data source and all the forest variables (forest cover change and distance to forest edge at the different dates) will be computed from this data.</p>
 <p>You can create this multiple band raster using the QGIS tool <code class="docutils literal notranslate"><span class="pre">Merge</span></code> available in <strong>Raster &gt; Miscellaneous</strong>.</p>
+</section>
+<section id="area-of-interest">
+<h2>Area of interest<a class="headerlink" href="#area-of-interest" title="Link to this heading">#</a></h2>
 </section>
 <section id="additional-explicative-variables">
 <h2>Additional explicative variables<a class="headerlink" href="#additional-explicative-variables" title="Link to this heading">#</a></h2>
@@ -486,9 +490,19 @@
 </ul>
 <p>If some of these variables are changing with time, then create several rasters for t1, t2, and t3.</p>
 </section>
-<section id="create-symbolic-links">
-<h3>Create symbolic links<a class="headerlink" href="#create-symbolic-links" title="Link to this heading">#</a></h3>
-<p>To avoid copying the same data at several places on disk, create symbolic links in each of the folders <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code>. Symbolic links should points to new rasters in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder.</p>
+<section id="copy-files-in-the-right-folders">
+<h3>Copy files in the right folders<a class="headerlink" href="#copy-files-in-the-right-folders" title="Link to this heading">#</a></h3>
+<p>Raster files of explanatory variables must be copied in the folders <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code> of the working directory. These directories are used to access both the forest cover change and the explanatory variables for modelling and predicting the deforestation risk at the different periods.</p>
+<p>If using variables changing with time, prepare three rasters <code class="docutils literal notranslate"><span class="pre">variable_t1.tif</span></code>, <code class="docutils literal notranslate"><span class="pre">variable_t2.tif</span></code>, and <code class="docutils literal notranslate"><span class="pre">variable_t3.tif</span></code>. Copy these rasters in the corresponding folders and change the raster names to <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code>. It is important that the different rasters have the same name <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> in the different folders so that the algorithm understands it refers to the same variable:</p>
+<ul class="simple">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">data_historical</span></code> folders (for which we use variables at t1), the file <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> should be a copy of the file <code class="docutils literal notranslate"><span class="pre">variable_t1.tif</span></code>.</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">data_validation</span></code> folder (for which we use variables at t2), the file <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> should be a copy of the file <code class="docutils literal notranslate"><span class="pre">variable_t2.tif</span></code>.</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code> folder (for which we use variables at t3), the file <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> should be a copy of the file <code class="docutils literal notranslate"><span class="pre">variable_t3.tif</span></code>.</p></li>
+</ul>
+</section>
+<section id="create-symbolic-links-to-save-space-on-disk-optional">
+<h3>Create symbolic links to save space on disk (optional)<a class="headerlink" href="#create-symbolic-links-to-save-space-on-disk-optional" title="Link to this heading">#</a></h3>
+<p>To avoid copying the same data at several places on disk, you can create symbolic links in each of the folders <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code>. Symbolic links should point to rasters in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder.</p>
 <p>If using changing variables with time, then use the same file name (e.g. <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code>) for symbolic links in the four <code class="docutils literal notranslate"><span class="pre">data_*</span></code> folders but pointing to different files <code class="docutils literal notranslate"><span class="pre">variable_t*.tif</span></code> in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder. For example:</p>
 <ul>
 <li><p>In the <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">data_historical</span></code> folders (for which we use variables at t1), the file <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> should point to the file <code class="docutils literal notranslate"><span class="pre">variable_t1.tif</span></code> in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder.</p></li>
@@ -504,7 +518,49 @@ mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\da
 </section>
 <section id="use-these-variables-in-the-formula-for-the-statistical-models">
 <h3>Use these variables in the formula for the statistical models<a class="headerlink" href="#use-these-variables-in-the-formula-for-the-statistical-models" title="Link to this heading">#</a></h3>
-<p>If raster <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> was added to the list of explicative variables, then add its name <code class="docutils literal notranslate"><span class="pre">variable</span></code> to the list of variables names for the FAR statistical models, see detail <a class="reference external" href="../plugin_api.html#fit-models-to-data">here</a>.</p>
+<p>If raster <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> was added to the list of explanatory variables, then add its name <code class="docutils literal notranslate"><span class="pre">variable</span></code> to the list of variables names for the FAR statistical models, see detail <a class="reference external" href="../plugin_api.html#fit-models-to-data">here</a>.</p>
+</section>
+</section>
+<section id="no-internet-connexion-needed">
+<h2>No internet connexion needed<a class="headerlink" href="#no-internet-connexion-needed" title="Link to this heading">#</a></h2>
+<section id="provide-you-own-data">
+<h3>Provide you own data<a class="headerlink" href="#provide-you-own-data" title="Link to this heading">#</a></h3>
+<p>If you use your own data with the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin, there is no need for an internet connexion. You just have to provide:</p>
+<ul class="simple">
+<li><p>The forest cover change data as a multiband raster file (see <a class="reference external" href="./user_data.html#forest-cover-change-map">Forest cover change map</a> section).</p></li>
+<li><p>The area of interest as a vector file (see <a class="reference external" href="./user_data.html#area-of-interest">Area of interest</a> section).</p></li>
+<li><p>The raster files of explanatory variables in the folders <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code> of the working directory (see <a class="reference external" href="./user_data.html#copy-files-in-the-right-folders">Copy files</a> section).</p></li>
+</ul>
+<p>Also, you don’t need credentials to download data from Google Earth Engine or the World Database on Protected Area. Parameters <code class="docutils literal notranslate"><span class="pre">Earth</span> <span class="pre">Engine</span> <span class="pre">access</span></code> and <code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code> can be left empty. Button <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">compute</span> <span class="pre">forest</span> <span class="pre">variables</span></code> must be checked.</p>
+</section>
+<section id="a-simple-approach-with-only-forest-variables">
+<h3>A simple approach with only forest variables<a class="headerlink" href="#a-simple-approach-with-only-forest-variables" title="Link to this heading">#</a></h3>
+<p>Distance to forest edge is usually the most important variable in determining the spatial deforestation risk. It can be useful to compare and evaluate models using only this explanatory variable. To do so, you just have to:</p>
+<ul class="simple">
+<li><p>Check the button <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">compute</span> <span class="pre">forest</span> <span class="pre">variables</span></code>.</p></li>
+<li><p>Specify ’dist_forest’ in the <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> for FAR models.</p></li>
+</ul>
+<p>Distance to forest edge is directly computed from the forest cover change raster file and you don’t have to provide any other additional explanatory variables.</p>
+</section>
+<section id="a-simple-example-with-no-internet-connexion">
+<h3>A simple example with no internet connexion<a class="headerlink" href="#a-simple-example-with-no-internet-connexion" title="Link to this heading">#</a></h3>
+<p>As an example based on Martinique, you can avoid using an internet connexion and use simple deforestation models based only on distance to forest edge:</p>
+<ul class="simple">
+<li><p>Create a working directory called for example <code class="docutils literal notranslate"><span class="pre">MTQ-tuto-simple-model</span></code>.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">data</span></code> directory and copy files <a class="reference external" href="../_static/tutos/forest-MTQ-2000-2010-2020.tif">forest-MTQ-2000-2010-2020.tif</a> and <a class="reference external" href="../_static/tutos/aoi-MTQ-latlon.gpkg">aoi-MTQ-latlon.gpkg</a> in this directory.</p></li>
+<li><p>Use these two files for arguments <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> and <code class="docutils literal notranslate"><span class="pre">Forest</span> <span class="pre">data</span> <span class="pre">source</span></code> in the <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> tab.</p></li>
+<li><p>Specify ’2000, 2010, 2020’ for <code class="docutils literal notranslate"><span class="pre">Years</span></code>.</p></li>
+<li><p>Use ’EPSG:3490’ for <code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>.</p></li>
+<li><p>Ensure <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">compute</span> <span class="pre">forest</span> <span class="pre">variables</span></code> is checked.</p></li>
+<li><p>All other variables in the <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> tab can be left empty.</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Run</span></code> in the <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span> <span class="pre">tab</span></code> to compute forest variables.</p></li>
+</ul>
+<img alt="../_images/user-data-interface-variables.png" src="../_images/user-data-interface-variables.png" />
+<p><br/></p>
+<ul class="simple">
+<li><p>Specify only ’dist_edge’ in the <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> for FAR models and run the models and the validation with the default parameters.</p></li>
+</ul>
+<img alt="../_images/user-data-interface-far.png" src="../_images/user-data-interface-far.png" />
 </section>
 </section>
 </section>
@@ -557,10 +613,18 @@ mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\da
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-cover-change-map">Forest cover change map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#area-of-interest">Area of interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-explicative-variables">Additional explicative variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-raster-files">Preparing the raster files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-symbolic-links">Create symbolic links</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-files-in-the-right-folders">Copy files in the right folders</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-symbolic-links-to-save-space-on-disk-optional">Create symbolic links to save space on disk (optional)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-these-variables-in-the-formula-for-the-statistical-models">Use these variables in the formula for the statistical models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-internet-connexion-needed">No internet connexion needed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provide-you-own-data">Provide you own data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-approach-with-only-forest-variables">A simple approach with only forest variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example-with-no-internet-connexion">A simple example with no internet connexion</a></li>
 </ul>
 </li>
 </ul>
