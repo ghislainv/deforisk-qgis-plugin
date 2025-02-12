@@ -467,14 +467,15 @@
 </div>
 <section id="on-windows">
 <h2>On Windows<a class="headerlink" href="#on-windows" title="Link to this heading">#</a></h2>
-<section id="turn-on-the-developer-mode">
-<h3>Turn on the developer mode<a class="headerlink" href="#turn-on-the-developer-mode" title="Link to this heading">#</a></h3>
-<p>To be able to use the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> QGIS plugin, you need to activate the developer mode on Windows. The developer mode allows creating symbolic links (symlinks) which are used by the plugin and necessary to avoid copying large files on disk. To activate the developer mode, follow <a class="reference external" href="https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development">these instructions</a>. In summary:</p>
+<section id="turn-on-the-developer-mode-recommended">
+<h3>Turn on the developer mode (recommended)<a class="headerlink" href="#turn-on-the-developer-mode-recommended" title="Link to this heading">#</a></h3>
+<p>The developer mode on Windows allows creating symbolic links (symlinks) which are used by the plugin and useful to avoid copying large files on disk. To activate the developer mode, follow <a class="reference external" href="https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development">these instructions</a>. In summary:</p>
 <ul class="simple">
 <li><p>Enter “for developers” into the search box in the taskbar to go to the “For developers” settings page.</p></li>
 <li><p>Toggle the Developer Mode setting, at the top of the “For developers” page.</p></li>
 <li><p>Read the disclaimer for the setting you choose. Click “Yes” to accept the change.</p></li>
 </ul>
+<p>Enabling Developer mode requires administrator access. If your device is owned by an organization, this option may be disabled. If the developer mode is no activated on Windows, it does not prevent the use of the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin. But large files will be copied in several directories and will occupy a large space on disk.</p>
 </section>
 <section id="install-qgis-and-gdal-on-windows">
 <h3>Install QGIS and GDAL on Windows<a class="headerlink" href="#install-qgis-and-gdal-on-windows" title="Link to this heading">#</a></h3>
@@ -627,7 +628,7 @@ conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> <
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-windows">On Windows</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turn-on-the-developer-mode">Turn on the developer mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turn-on-the-developer-mode-recommended">Turn on the developer mode (recommended)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-windows">Install QGIS and GDAL on Windows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows">Install the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages on Windows</a></li>
 </ul>

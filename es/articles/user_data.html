@@ -478,12 +478,18 @@
 </section>
 <section id="area-of-interest">
 <h2>Area of interest<a class="headerlink" href="#area-of-interest" title="Link to this heading">#</a></h2>
+<p>You can specify your area of interest with the plugin. To do so, prepare a vector file and select it with the <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> tab of the plugin. The vector file will be automatically copied in the <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> folder of the working directory and renamed <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code>. The vector file should have the following characteristics:</p>
+<ul class="simple">
+<li><p>It must be in lat/lon (i.e. unprojected with EPSG code 4326).</p></li>
+<li><p>It must have two layers named <code class="docutils literal notranslate"><span class="pre">aoi</span></code> for the jurisdiction and <code class="docutils literal notranslate"><span class="pre">subj</span></code> for the subjurisdictions.</p></li>
+</ul>
+<p>More details on how to obtain such vector file in QGIS is available in the article untitled <a class="reference external" href="./subnational_jurisd.html">Subnational jurisdictions</a>.</p>
 </section>
 <section id="additional-explicative-variables">
 <h2>Variables explicativas adicionales<a class="headerlink" href="#additional-explicative-variables" title="Link to this heading">#</a></h2>
-<section id="preparing-the-raster-files">
-<h3>Preparación de los archivos raster<a class="headerlink" href="#preparing-the-raster-files" title="Link to this heading">#</a></h3>
-<p>Para utilizar variables explicativas diferentes o adicionales para los modelos estadísticos, prepare los archivos raster correspondientes en la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code> del directorio de trabajo. Estos archivos raster adicionales deben tener las siguientes características:</p>
+<section id="prepare-the-raster-files">
+<h3>Prepare the raster files<a class="headerlink" href="#prepare-the-raster-files" title="Link to this heading">#</a></h3>
+<p>To use different or additional explicative variables for the statistical models, prepare the corresponding raster files in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder of the working directory. These additional raster files should have the following characteristics:</p>
 <ul class="simple">
 <li><p>Deben abarcar al menos toda el área de la jurisdicción.</p></li>
 <li><p>Deben estar en la proyección del proyecto.</p></li>
@@ -493,7 +499,7 @@
 </section>
 <section id="copy-files-in-the-right-folders">
 <h3>Copy files in the right folders<a class="headerlink" href="#copy-files-in-the-right-folders" title="Link to this heading">#</a></h3>
-<p>Raster files of explanatory variables must be copied in the folders <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code> of the working directory. These directories are used to access both the forest cover change and the explanatory variables for modelling and predicting the deforestation risk at the different periods.</p>
+<p>Raster files of explanatory variables must be copied in the folders <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code> of the working directory. These directories are used to access both the forest cover change and the explanatory variables for modelling and predicting the deforestation risk for the different periods.</p>
 <p>If using variables changing with time, prepare three rasters <code class="docutils literal notranslate"><span class="pre">variable_t1.tif</span></code>, <code class="docutils literal notranslate"><span class="pre">variable_t2.tif</span></code>, and <code class="docutils literal notranslate"><span class="pre">variable_t3.tif</span></code>. Copy these rasters in the corresponding folders and change the raster names to <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code>. It is important that the different rasters have the same name <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> in the different folders so that the algorithm understands it refers to the same variable:</p>
 <ul class="simple">
 <li><p>In the <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code> and <code class="docutils literal notranslate"><span class="pre">data_historical</span></code> folders (for which we use variables at t1), the file <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> should be a copy of the file <code class="docutils literal notranslate"><span class="pre">variable_t1.tif</span></code>.</p></li>
@@ -503,7 +509,7 @@
 </section>
 <section id="create-symbolic-links-to-save-space-on-disk-optional">
 <h3>Create symbolic links to save space on disk (optional)<a class="headerlink" href="#create-symbolic-links-to-save-space-on-disk-optional" title="Link to this heading">#</a></h3>
-<p>To avoid copying the same data at several places on disk, you can create symbolic links in each of the folders <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code>. Symbolic links should point to rasters in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder.</p>
+<p>To avoid copying the same data at several places on disk, you can create symbolic links in each of the folders <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code>. Symbolic links could point to rasters in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder for example.</p>
 <p>Si utiliza variables cambiantes con el tiempo, utilice el mismo nombre de archivo (por ejemplo <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code>) para los enlaces simbólicos en las cuatro carpetas <code class="docutils literal notranslate"><span class="pre">data_*</span></code> pero apuntando a archivos diferentes <code class="docutils literal notranslate"><span class="pre">variable_t*.tif</span></code> en la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code>. Por ejemplo:</p>
 <ul>
 <li><p>En las carpetas <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code> y <code class="docutils literal notranslate"><span class="pre">data_historical</span></code> (para las que utilizamos variables en t1), el archivo <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> debe apuntar al archivo <code class="docutils literal notranslate"><span class="pre">variable_t1.tif</span></code> de la carpeta <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p></li>
@@ -616,7 +622,7 @@ mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\da
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-cover-change-map">Mapa de cambio de la cobertura forestal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#area-of-interest">Area of interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-explicative-variables">Variables explicativas adicionales</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-raster-files">Preparación de los archivos raster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-raster-files">Prepare the raster files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-files-in-the-right-folders">Copy files in the right folders</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-symbolic-links-to-save-space-on-disk-optional">Create symbolic links to save space on disk (optional)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-these-variables-in-the-formula-for-the-statistical-models">Utilice estas variables en la fórmula de los modelos estadísticos</a></li>

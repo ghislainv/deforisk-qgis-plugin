@@ -468,14 +468,15 @@
 </div>
 <section id="on-windows">
 <h2>En Windows<a class="headerlink" href="#on-windows" title="Link to this heading">#</a></h2>
-<section id="turn-on-the-developer-mode">
-<h3>Activar el modo desarrollador<a class="headerlink" href="#turn-on-the-developer-mode" title="Link to this heading">#</a></h3>
-<p>Para poder utilizar el complemento <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> de QGIS, es necesario activar el modo desarrollador en Windows. El modo desarrollador permite crear enlaces simbólicos (symlinks) que son utilizados por el complemento y necesarios para evitar copiar ficheros grandes en disco. Para activar el modo desarrollador, siga <a class="reference external" href="https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development">estas instrucciones</a>. En resumen:</p>
+<section id="turn-on-the-developer-mode-recommended">
+<h3>Turn on the developer mode (recommended)<a class="headerlink" href="#turn-on-the-developer-mode-recommended" title="Link to this heading">#</a></h3>
+<p>The developer mode on Windows allows creating symbolic links (symlinks) which are used by the plugin and useful to avoid copying large files on disk. To activate the developer mode, follow <a class="reference external" href="https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development">these instructions</a>. In summary:</p>
 <ul class="simple">
 <li><p>Introduzca «para desarrolladores» en el cuadro de búsqueda de la barra de tareas para ir a la página de configuración «Para desarrolladores».</p></li>
 <li><p>Active el modo para desarrolladores, en la parte superior de la página «Para desarrolladores».</p></li>
 <li><p>Lea la cláusula de exención de responsabilidad de la configuración que elija. Haz clic en «Sí» para aceptar el cambio.</p></li>
 </ul>
+<p>Enabling Developer mode requires administrator access. If your device is owned by an organization, this option may be disabled. If the developer mode is no activated on Windows, it does not prevent the use of the <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> plugin. But large files will be copied in several directories and will occupy a large space on disk.</p>
 </section>
 <section id="install-qgis-and-gdal-on-windows">
 <h3>Instalar QGIS y GDAL en Windows<a class="headerlink" href="#install-qgis-and-gdal-on-windows" title="Link to this heading">#</a></h3>
@@ -628,7 +629,7 @@ conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> <
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-windows">En Windows</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turn-on-the-developer-mode">Activar el modo desarrollador</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turn-on-the-developer-mode-recommended">Turn on the developer mode (recommended)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-windows">Instalar QGIS y GDAL en Windows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows">Instalar los paquetes Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> en Windows</a></li>
 </ul>
