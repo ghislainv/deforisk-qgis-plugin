@@ -23,12 +23,14 @@
 
 * On Windows
 
-** Turn on the developer mode
+** Turn on the developer mode (recommended)
 
-To be able to use the ~deforisk~ QGIS plugin, you need to activate the developer mode on Windows. The developer mode allows creating symbolic links (symlinks) which are used by the plugin and necessary to avoid copying large files on disk. To activate the developer mode, follow [[https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development][these instructions]]. In summary:
+The developer mode on Windows allows creating symbolic links (symlinks) which are used by the plugin and useful to avoid copying large files on disk. To activate the developer mode, follow [[https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development][these instructions]]. In summary:
 - Enter "for developers" into the search box in the taskbar to go to the "For developers" settings page.
 - Toggle the Developer Mode setting, at the top of the "For developers" page.
 - Read the disclaimer for the setting you choose. Click "Yes" to accept the change.
+
+Enabling Developer mode requires administrator access. If your device is owned by an organization, this option may be disabled. If the developer mode is no activated on Windows, it does not prevent the use of the ~deforisk~ plugin. But large files will be copied in several directories and will occupy a large space on disk. 
 
 ** Install QGIS and GDAL on Windows
 

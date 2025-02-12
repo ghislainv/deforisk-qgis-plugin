@@ -39,11 +39,18 @@ You can create this multiple band raster using the QGIS tool ~Merge~ available i
 
 * Area of interest
 
+You can specify your area of interest when using the plugin. To do so, prepare a vector file and select it with the ~Area Of Interest~ argument in the ~Get variables~ tab of the plugin. The vector file will be automatically copied in the ~data_raw~ folder of the working directory and renamed ~aoi_latlon.gpkg~. The vector file should have the following characteristics:
+
+- It must be in lat/lon (i.e. unprojected with EPSG code 4326).
+- It must have two layers named ~aoi~ for the jurisdiction and ~subj~ for the subjurisdictions.
+
+More details on how to obtain such vector file in QGIS are available in the article untitled [[./subnational_jurisd.html][Subnational jurisdictions]].
+
 * Additional explicative variables
 
-** Preparing the raster files
+** Prepare the raster files
 
-To use different or additional explicatives variables for the statistical models, prepare the corresponding raster files in the ~data~ folder of the working directory. These additional raster files should have the following characteristics:
+To use different or additional explicative variables for the statistical models, prepare the corresponding raster files in the ~data~ folder of the working directory. These additional raster files should have the following characteristics:
 
 - They should cover at least all the area of the jurisdiction.
 - They should be in the projection of the project.
@@ -53,7 +60,7 @@ If some of these variables are changing with time, then create several rasters f
 
 ** Copy files in the right folders
 
-Raster files of explanatory variables must be copied in the folders ~data_calibration~, ~data_validation~, ~data_historical~, and ~data_forecast~ of the working directory. These directories are used to access both the forest cover change and the explanatory variables for modelling and predicting the deforestation risk at the different periods. 
+Raster files of explanatory variables must be copied in the folders ~data_calibration~, ~data_validation~, ~data_historical~, and ~data_forecast~ of the working directory. These directories are used to access both the forest cover change and the explanatory variables for modelling and predicting the deforestation risk for the different periods. 
 
 If using variables changing with time, prepare three rasters ~variable_t1.tif~, ~variable_t2.tif~, and ~variable_t3.tif~. Copy these rasters in the corresponding folders and change the raster names to ~variable.tif~. It is important that the different rasters have the same name ~variable.tif~ in the different folders so that the algorithm understands it refers to the same variable:
 
@@ -63,7 +70,7 @@ If using variables changing with time, prepare three rasters ~variable_t1.tif~, 
 
 ** Create symbolic links to save space on disk (optional)
 
-To avoid copying the same data at several places on disk, you can create symbolic links in each of the folders ~data_calibration~, ~data_validation~, ~data_historical~, and ~data_forecast~. Symbolic links should point to rasters in the ~data~ folder.
+To avoid copying the same data at several places on disk, you can create symbolic links in each of the folders ~data_calibration~, ~data_validation~, ~data_historical~, and ~data_forecast~. Symbolic links could point to rasters in the ~data~ folder for example.
 
 If using changing variables with time, then use the same file name (e.g. ~variable.tif~) for symbolic links in the four ~data_*~ folders but pointing to different files ~variable_t*.tif~ in the ~data~ folder. For example:
 
@@ -124,3 +131,4 @@ As an example based on Martinique, you can avoid using an internet connexion and
 - Specify only 'dist_edge' in the ~List of variables~ for FAR models and run the models and the validation with the default parameters.
 
 [[../_static/user_data/user-data-interface-far.png]]
+

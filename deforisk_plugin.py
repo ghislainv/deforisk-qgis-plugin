@@ -526,9 +526,12 @@ class DeforiskPlugin:
         aoi = self.dlg.aoi.filePath()
         years = self.dlg.years.text()
         fcc_source = self.dlg.fcc_source.filePath()
-        perc = int(self.dlg.perc.text())
-        tile_size = float(self.dlg.tile_size.text())
+        perc = self.dlg.perc.text()
+        perc = int(perc) if perc != "" else 50
+        tile_size = self.dlg.tile_size.text()
+        tile_size = float(tile_size) if tile_size != "" else 1.0
         iso = self.dlg.isocode.text()
+        iso = "MTQ" if iso == "" else iso
         gc_project = self.dlg.gc_project.filePath()
         wdpa_key = self.dlg.wdpa_key.filePath()
         proj = self.dlg.proj.text()
