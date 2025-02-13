@@ -1,25 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2024, Cirad and FAO
 # This file is distributed under the same license as the deforisk package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
 # Translators:
 # Ghislain Vieilledent, 2024
-# 
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: deforisk\n"
+"Project-Id-Version:  deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-13 18:33-0500\n"
-"PO-Revision-Date: 2024-07-01 18:38+0000\n"
+"POT-Creation-Date: 2025-02-13 11:52+1100\n"
+"PO-Revision-Date: 2025-02-13 14:57+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
-"Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)"
+"\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 "
+"? 1 : 2;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
 
 #: ../../docsrc/installation.rst:3 3f090347dfab49ee930d4a234c290e64
 msgid "Installation"
@@ -29,38 +30,39 @@ msgstr "Instalación"
 msgid ""
 "**Dependencies**: `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL "
 "<https://gdal.org/index.html>`_ must be installed on your system before "
-"using the ``deforisk`` plugin. *On Unix-like systems*, you must also install"
-" `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and "
-"`osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *On Windows "
-"systems*, these dependencies are already included in the plugin as binary "
-"``.exe`` files so you don’t need to install them. Then, the ``forestatrisk``"
-" and ``riskmapjnr`` Python packages must be installed on your system. Follow"
-" the instructions below to install these dependencies."
+"using the ``deforisk`` plugin. *On Unix-like systems*, you must also "
+"install `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ "
+"and `osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *On "
+"Windows systems*, these dependencies are already included in the plugin "
+"as binary ``.exe`` files so you don’t need to install them. Then, the "
+"``forestatrisk`` and ``riskmapjnr`` Python packages must be installed on "
+"your system. Follow the instructions below to install these dependencies."
 msgstr ""
 "**Dependencias**: `QGIS <https://www.qgis.org/en/site/>`_ y `GDAL "
-"<https://gdal.org/index.html>`_ deben estar instaladas en su sistema antes "
-"de utilizar el complemento ``deforisk``. *En sistemas Unix*, también debe "
-"instalar `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ y "
-"`osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *En sistemas "
-"Windows*, estas dependencias ya están incluidas en el complemento como archivos "
-"binarios ``.exe``, por lo que no es necesario instalarlas. A continuación, "
-"los paquetes de Python ``forestatrisk`` y ``riskmapjnr`` deben estar "
-"instalados en tu sistema. Siga las siguientes instrucciones para instalar "
-"estas dependencias."
+"<https://gdal.org/index.html>`_ deben estar instaladas en su sistema "
+"antes de utilizar el complemento ``deforisk``. *En sistemas Unix*, "
+"también debe instalar `osmconvert "
+"<https://wiki.openstreetmap.org/wiki/Osmconvert>`_ y `osmfilter "
+"<https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *En sistemas Windows*,"
+" estas dependencias ya están incluidas en el complemento como archivos "
+"binarios ``.exe``, por lo que no es necesario instalarlas. A "
+"continuación, los paquetes de Python ``forestatrisk`` y ``riskmapjnr`` "
+"deben estar instalados en tu sistema. Siga las siguientes instrucciones "
+"para instalar estas dependencias."
 
 #: ../../docsrc/installation.rst:17 57f06afe46cb4d06ac6466fc4dd35708
 msgid ""
-"**Installation**: We hereby describe two ways for installating the "
+"**Installation**: We hereby describe two ways for installing the "
 "``deforisk`` plugin:"
 msgstr ""
-"**Instalación**: A continuación describimos dos formas de instalar el complemento"
-" ``deforisk``:"
+"**Instalación**: A continuación describimos dos formas de instalar el "
+"complemento ``deforisk``:"
 
 #: ../../docsrc/installation.rst:19 93bb531545114338852968da321a1beb
 msgid ""
-"First option is to install the QGIS client and GDAL on your system and then "
-"install the ``forestatrisk`` and ``riskmapjnr`` Python packages. This "
-"installation procedure is system-dependent."
+"First option is to install the QGIS client and GDAL on your system and "
+"then install the ``forestatrisk`` and ``riskmapjnr`` Python packages. "
+"This installation procedure is system-dependent."
 msgstr ""
 "La primera opción es instalar el cliente QGIS y GDAL en su sistema y, a "
 "continuación, instalar los paquetes Python ``forestatrisk`` y "
@@ -72,396 +74,410 @@ msgid ""
 "install QGIS, GDAL, ``forestatrisk`` and ``riskmapjnr`` in a dedicated "
 "environment. This installation procedure is system-independent."
 msgstr ""
-"La opción alternativa es usar conda/miniconda/mamba (uno de esos tres) para "
-"instalar QGIS, GDAL, ``forestatrisk`` y ``riskmapjnr`` en un entorno "
-"dedicado. Este procedimiento de instalación es independiente del sistema."
+"La opción alternativa es usar conda/miniconda/mamba (uno de esos tres) "
+"para instalar QGIS, GDAL, ``forestatrisk`` y ``riskmapjnr`` en un entorno"
+" dedicado. Este procedimiento de instalación es independiente del "
+"sistema."
 
 #: ../../docsrc/installation.rst:24 f845407dee1d46c48f3a99c45d0d6e61
 msgid "On Windows"
 msgstr "En Windows"
 
 #: ../../docsrc/installation.rst:27 a939d4bba16e42d98f3839fc181b7112
-msgid "Turn on the developer mode"
-msgstr "Activar el modo desarrollador"
+msgid "Turn on the developer mode (recommended)"
+msgstr "Activar el modo desarrollador (recomendado)"
 
 #: ../../docsrc/installation.rst:29 2571b91f650d43eab5e059ce89c893ec
 msgid ""
-"To be able to use the ``deforisk`` QGIS plugin, you need to activate the "
-"developer mode on Windows. The developer mode allows creating symbolic links"
-" (symlinks) which are used by the plugin and necessary to avoid copying "
-"large files on disk. To activate the developer mode, follow `these "
-"instructions <https://learn.microsoft.com/en-us/windows/apps/get-"
-"started/enable-your-device-for-development>`_. In summary:"
-msgstr ""
-"Para poder utilizar el complemento ``deforisk`` de QGIS, es necesario activar el "
-"modo desarrollador en Windows. El modo desarrollador permite crear enlaces "
-"simbólicos (symlinks) que son utilizados por el complemento y necesarios para "
-"evitar copiar ficheros grandes en disco. Para activar el modo desarrollador,"
-" siga `estas instrucciones <https://learn.microsoft.com/en-"
-"us/windows/apps/get-started/enable-your-device-for-development>`_. En "
-"resumen:"
+"The developer mode on Windows allows creating symbolic links (symlinks) "
+"which are used by the plugin and useful to avoid copying large files on "
+"disk. To activate the developer mode, follow `these instructions "
+"<https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-"
+"device-for-development>`_. In summary:"
+msgstr "El modo desarrollador en Windows permite crear enlaces simbólicos (symlinks) que son utilizados por el complemento y útiles para evitar copiar archivos grandes en disco. Para activar el modo desarrollador, siga `estas instrucciones <https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development>`_. En resumen:"
 
 #: ../../docsrc/installation.rst:31 67af2109655346f4818ec43c75d3ffa5
 msgid ""
-"Enter “for developers” into the search box in the taskbar to go to the “For "
-"developers” settings page."
+"Enter “for developers” into the search box in the taskbar to go to the "
+"“For developers” settings page."
 msgstr ""
-"Introduzca \"para desarrolladores\" en el cuadro de búsqueda de la barra de "
-"tareas para ir a la página de configuración \"Para desarrolladores\"."
+"Introduzca \"para desarrolladores\" en el cuadro de búsqueda de la barra "
+"de tareas para ir a la página de configuración \"Para desarrolladores\"."
 
 #: ../../docsrc/installation.rst:33 710359141ac8458a9d7135866275734c
 msgid ""
-"Toggle the Developer Mode setting, at the top of the “For developers” page."
+"Toggle the Developer Mode setting, at the top of the “For developers” "
+"page."
 msgstr ""
 "Active el modo para desarrolladores, en la parte superior de la página "
 "\"Para desarrolladores\"."
 
 #: ../../docsrc/installation.rst:35 55223d658d5a4c3e930fdfc3f69e8a1b
 msgid ""
-"Read the disclaimer for the setting you choose. Click “Yes” to accept the "
-"change."
+"Read the disclaimer for the setting you choose. Click “Yes” to accept the"
+" change."
 msgstr ""
 "Lea la cláusula de exención de responsabilidad de la configuración que "
 "elija. Haz clic en \"Sí\" para aceptar el cambio."
 
-#: ../../docsrc/installation.rst:38 a3640da6d2f740988d3b48c1d93fa548
+#: ../../docsrc/installation.rst:37 201b6a1abefe438dbef4f7704adbec95
+msgid ""
+"Enabling Developer mode requires administrator access. If your device is "
+"owned by an organization, this option may be disabled. If the developer "
+"mode is no activated on Windows, it does not prevent the use of the "
+"``deforisk`` plugin. But large files will be copied in several "
+"directories and will occupy a large space on disk."
+msgstr "La activación del modo Desarrollador requiere acceso de administrador. Si su dispositivo es propiedad de una organización, esta opción puede estar desactivada. Si el modo desarrollador no está activado en Windows, no impide el uso del plugin ``deforisk``. Pero los archivos grandes se copiarán en varios directorios y ocuparán un gran espacio en el disco."
+
+#: ../../docsrc/installation.rst:40 a3640da6d2f740988d3b48c1d93fa548
 msgid "Install QGIS and GDAL on Windows"
 msgstr "Instalar QGIS y GDAL en Windows"
 
-#: ../../docsrc/installation.rst:40 5f5e4f8c7b7e46cf8eaba69468f5809e
+#: ../../docsrc/installation.rst:42 5f5e4f8c7b7e46cf8eaba69468f5809e
 msgid ""
 "To install QGIS and GDAL on Windows, use the `OSGeo4W "
-"<https://trac.osgeo.org/osgeo4w/>`_ network installer. OSGeo4W is a binary "
-"distribution of a broad set of open source geospatial software for Windows "
-"environments (Windows 11 down to 7). Select *Express Install* and install "
-"both QGIS and GDAL. Several Gb of space will be needed on disk to install "
-"these programs. This will also install *OSGeo4W Shell* to execute command "
-"lines."
+"<https://trac.osgeo.org/osgeo4w/>`_ network installer. OSGeo4W is a "
+"binary distribution of a broad set of open source geospatial software for"
+" Windows environments (Windows 11 down to 7). Select *Express Install* "
+"and install both QGIS and GDAL. Several Gb of space will be needed on "
+"disk to install these programs. This will also install *OSGeo4W Shell* to"
+" execute command lines."
 msgstr ""
 "Para instalar QGIS y GDAL en Windows, utilice el instalador de `OSGeo4W "
-"<https://trac.osgeo.org/osgeo4w/>`_. OSGeo4W es una distribución binaria de "
-"un amplio conjunto de software geoespacial de código abierto para entornos "
-"Windows (Windows 11 hasta 7). Seleccione *Instalación Exprés* e instale "
-"tanto QGIS como GDAL. Se necesitarán varios Gb de espacio en disco para "
-"instalar estos programas. Esto también instalará *OSGeo4W Shell* para "
-"ejecutar líneas de comando."
+"<https://trac.osgeo.org/osgeo4w/>`_. OSGeo4W es una distribución binaria "
+"de un amplio conjunto de software geoespacial de código abierto para "
+"entornos Windows (Windows 11 hasta 7). Seleccione *Instalación Exprés* e "
+"instale tanto QGIS como GDAL. Se necesitarán varios Gb de espacio en "
+"disco para instalar estos programas. Esto también instalará *OSGeo4W "
+"Shell* para ejecutar líneas de comando."
 
-#: ../../docsrc/installation.rst:43 17b93f68d3d740e9adff75a340a61474
-msgid ""
-"Install the ``forestatrisk`` and ``riskmapjnr`` Python packages on Windows"
-msgstr ""
-"Instalar los paquetes Python ``forestatrisk`` y ``riskmapjnr`` en Windows"
+#: ../../docsrc/installation.rst:45 17b93f68d3d740e9adff75a340a61474
+msgid "Install the ``forestatrisk`` and ``riskmapjnr`` Python packages on Windows"
+msgstr "Instalar los paquetes Python ``forestatrisk`` y ``riskmapjnr`` en Windows"
 
-#: ../../docsrc/installation.rst:45 1516ddf43e4344a5ac9f67955f333aaf
+#: ../../docsrc/installation.rst:47 1516ddf43e4344a5ac9f67955f333aaf
 msgid ""
 "To install the ``forestatrisk`` and ``riskmapjnr`` Python packages, open "
 "*OSGeo4W Shell*, and use ``pip``."
 msgstr ""
-"Para instalar los paquetes Python ``forestatrisk`` y ``riskmapjnr``, abra "
-"*OSGeo4W Shell*, y utilice ``pip``."
+"Para instalar los paquetes Python ``forestatrisk`` y ``riskmapjnr``, abra"
+" *OSGeo4W Shell*, y utilice ``pip``."
 
-#: ../../docsrc/installation.rst:51 1b27207822044e42af696cf642037abe
+#: ../../docsrc/installation.rst:53 1b27207822044e42af696cf642037abe
 msgid ""
 "Note: In case of problems, you can check the version of Python used by "
-"OSGeo4W using *OSGeo Shell* and that the package wheels for ``forestatrisk``"
-" and ``riskmapjnr`` are available on `PyPI "
-"<https://pypi.org/project/forestatrisk/#files>`_ for your Windows and Python"
-" versions. Currently, PyPI provides wheels for Python >= 3.9 for Windows, "
-"Linux, and macOS 64-bit systems."
+"OSGeo4W using *OSGeo Shell* and that the package wheels for "
+"``forestatrisk`` and ``riskmapjnr`` are available on `PyPI "
+"<https://pypi.org/project/forestatrisk/#files>`_ for your Windows and "
+"Python versions. Currently, PyPI provides wheels for Python >= 3.9 for "
+"Windows, Linux, and macOS 64-bit systems."
 msgstr ""
-"Nota: En caso de problemas, puedes comprobar la versión de Python usada por "
-"OSGeo4W usando *OSGeo Shell* y que las ruedas de paquetes para "
+"Nota: En caso de problemas, puedes comprobar la versión de Python usada "
+"por OSGeo4W usando *OSGeo Shell* y que las ruedas de paquetes para "
 "``forestatrisk`` y ``riskmapjnr`` están disponibles en `PyPI "
 "<https://pypi.org/project/forestatrisk/#files>`_ para tus versiones de "
-"Windows y Python. Actualmente, PyPI proporciona ruedas para Python >= 3.9 "
-"para sistemas Windows, Linux y macOS de 64 bits."
+"Windows y Python. Actualmente, PyPI proporciona ruedas para Python >= 3.9"
+" para sistemas Windows, Linux y macOS de 64 bits."
 
-#: ../../docsrc/installation.rst:58 2a5ee9297c684df5b98c93ade8ee7a80
+#: ../../docsrc/installation.rst:60 2a5ee9297c684df5b98c93ade8ee7a80
 msgid "On Unix-like systems (Linux and macOS)"
 msgstr "En sistemas tipo Unix (Linux y macOS)"
 
-#: ../../docsrc/installation.rst:61 110d8e60a9d840ca8f4361c876f1bcca
+#: ../../docsrc/installation.rst:63 110d8e60a9d840ca8f4361c876f1bcca
 msgid "Install QGIS and GDAL on Unix-like systems"
 msgstr "Instalar QGIS y GDAL en sistemas tipo Unix"
 
-#: ../../docsrc/installation.rst:63 6b2505774b6b457689005cca0765049a
+#: ../../docsrc/installation.rst:65 6b2505774b6b457689005cca0765049a
 msgid ""
 "Install QGIS and GDAL on your system, for example using ``apt-get`` for "
 "Debian/Ubuntu Linux distributions."
 msgstr ""
-"Instala QGIS y GDAL en tu sistema, por ejemplo utilizando ``apt-get`` para "
-"distribuciones Linux Debian/Ubuntu."
+"Instala QGIS y GDAL en tu sistema, por ejemplo utilizando ``apt-get`` "
+"para distribuciones Linux Debian/Ubuntu."
 
-#: ../../docsrc/installation.rst:70 5f302470c23a48bdbdca0993c58bfe07
+#: ../../docsrc/installation.rst:72 5f302470c23a48bdbdca0993c58bfe07
 msgid ""
 "For macOS, you can use the installer available on the `QGIS website "
 "<https://www.qgis.org/en/site/forusers/download.html>`_ and install GDAL "
 "using `brew <https://formulae.brew.sh/formula/gdal>`_."
 msgstr ""
-"Para macOS, puede utilizar el instalador disponible en el `sitio web de QGIS"
-" <https://www.qgis.org/en/site/forusers/download.html>`_ e instalar GDAL "
-"utilizando `brew <https://formulae.brew.sh/formula/gdal>`_."
+"Para macOS, puede utilizar el instalador disponible en el `sitio web de "
+"QGIS <https://www.qgis.org/en/site/forusers/download.html>`_ e instalar "
+"GDAL utilizando `brew <https://formulae.brew.sh/formula/gdal>`_."
 
-#: ../../docsrc/installation.rst:72 61520959e7924d3392ba5966dd6faa36
+#: ../../docsrc/installation.rst:74 61520959e7924d3392ba5966dd6faa36
 msgid ""
-"After installing GDAL, you can test the installation by running ``gdalinfo "
-"--version`` in the command prompt or terminal, which should display the "
-"installed GDAL version."
+"After installing GDAL, you can test the installation by running "
+"``gdalinfo --version`` in the command prompt or terminal, which should "
+"display the installed GDAL version."
 msgstr ""
 "Después de instalar GDAL, puede comprobar la instalación ejecutando "
 "``gdalinfo --version`` en el símbolo del sistema o en el terminal, que "
 "debería mostrar la versión de GDAL instalada."
 
-#: ../../docsrc/installation.rst:75 3fe6dcfb06d745e781ad421cd7f56a52
+#: ../../docsrc/installation.rst:77 3fe6dcfb06d745e781ad421cd7f56a52
 msgid "Install ``osmconvert`` and ``osmfilter``"
 msgstr "Instalar ``osmconvert`` y ``osmfilter``"
 
-#: ../../docsrc/installation.rst:77 9e813410c804412b99cc50db90388c66
+#: ../../docsrc/installation.rst:79 9e813410c804412b99cc50db90388c66
 msgid ""
-"On Unix-like systems, you must also install osmconvert and osmfilter before "
-"using the ``deforisk`` plugin. osmconvert can be used to convert and process"
-" OpenStreetMap files while osmfilter is a command line tool used to filter "
-"OpenStreetMap data files for specific tags. To install them on your system, "
-"follow the instructions on the `osmconvert "
+"On Unix-like systems, you must also install osmconvert and osmfilter "
+"before using the ``deforisk`` plugin. osmconvert can be used to convert "
+"and process OpenStreetMap files while osmfilter is a command line tool "
+"used to filter OpenStreetMap data files for specific tags. To install "
+"them on your system, follow the instructions on the `osmconvert "
 "<https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and `osmfilter "
 "<https://wiki.openstreetmap.org/wiki/Osmfilter>`_ webpages."
 msgstr ""
-"En sistemas tipo Unix, también debes instalar osmconvert y osmfilter antes "
-"de utilizar el complemento ``deforisk``. osmconvert puede utilizarse para "
-"convertir y procesar archivos de OpenStreetMap, mientras que osmfilter es "
-"una herramienta de línea de comandos utilizada para filtrar archivos de "
-"datos de OpenStreetMap en busca de etiquetas específicas. Para instalarlos "
-"en su sistema, siga las instrucciones de las páginas web `osmconvert "
+"En sistemas tipo Unix, también debes instalar osmconvert y osmfilter "
+"antes de utilizar el complemento ``deforisk``. osmconvert puede "
+"utilizarse para convertir y procesar archivos de OpenStreetMap, mientras "
+"que osmfilter es una herramienta de línea de comandos utilizada para "
+"filtrar archivos de datos de OpenStreetMap en busca de etiquetas "
+"específicas. Para instalarlos en su sistema, siga las instrucciones de "
+"las páginas web `osmconvert "
 "<https://wiki.openstreetmap.org/wiki/Osmconvert>`_ y `osmfilter "
 "<https://wiki.openstreetmap.org/wiki/Osmfilter>`_."
 
-#: ../../docsrc/installation.rst:80 c11b7d0b82b74902a7e21598f7f2ba0e
+#: ../../docsrc/installation.rst:82 c11b7d0b82b74902a7e21598f7f2ba0e
 msgid ""
-"Install the ``forestatrisk`` and ``riskmapjnr`` Python packages on Unix-like"
-" systems"
+"Install the ``forestatrisk`` and ``riskmapjnr`` Python packages on Unix-"
+"like systems"
 msgstr ""
-"Instalar los paquetes Python ``forestatrisk`` y ``riskmapjnr`` en sistemas "
-"Unix-like"
+"Instalar los paquetes Python ``forestatrisk`` y ``riskmapjnr`` en "
+"sistemas Unix-like"
 
-#: ../../docsrc/installation.rst:82 fb02c7182e71431d964a3996d3d3202c
+#: ../../docsrc/installation.rst:84 fb02c7182e71431d964a3996d3d3202c
 msgid ""
 "On recent systems, you cannot use pip to install Python packages system-"
-"wide. As a consequence, we need to create a virtual environment and install "
-"the ``forestatrisk`` and ``riskmapjnr`` packages in it. Make sure to also "
-"install the appropriate GDAL bindings using ``gdal==$(gdal-config "
-"--version)``. Once the package and its dependencies have been installed, you"
-" can deactivate the virtual environment."
+"wide. As a consequence, we need to create a virtual environment and "
+"install the ``forestatrisk`` and ``riskmapjnr`` packages in it. Make sure"
+" to also install the appropriate GDAL bindings using ``gdal==$(gdal-"
+"config --version)``. Once the package and its dependencies have been "
+"installed, you can deactivate the virtual environment."
 msgstr ""
 "En sistemas recientes, no se puede utilizar pip para instalar paquetes "
-"Python en todo el sistema. Como consecuencia, necesitamos crear un entorno "
-"virtual e instalar los paquetes ``forestatrisk`` y ``riskmapjnr`` en él. "
-"Asegúrate también de instalar los enlaces GDAL apropiados usando "
+"Python en todo el sistema. Como consecuencia, necesitamos crear un "
+"entorno virtual e instalar los paquetes ``forestatrisk`` y ``riskmapjnr``"
+" en él. Asegúrate también de instalar los enlaces GDAL apropiados usando "
 "``gdal==$(gdal-config --version)``. Una vez instalados el paquete y sus "
 "dependencias, se puede desactivar el entorno virtual."
 
-#: ../../docsrc/installation.rst:91 9b5a2ed8ed7648c5838c25a07b541f3f
+#: ../../docsrc/installation.rst:93 9b5a2ed8ed7648c5838c25a07b541f3f
 msgid ""
 "Then, in the ``startup.py`` `Python file "
-"<https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-"
-"python-code-when-qgis-starts>`_, add the following two lines, adapting the "
-"path to your specific case (check the Python version). These two lines will "
-"be executed when QGIS starts and will add the path to the packages installed"
-" in the virtual environment to ``sys.path``."
+"<https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html"
+"#running-python-code-when-qgis-starts>`_, add the following two lines, "
+"adapting the path to your specific case (check the Python version). These"
+" two lines will be executed when QGIS starts and will add the path to the"
+" packages installed in the virtual environment to ``sys.path``."
 msgstr ""
 "A continuación, en el `archivo Python "
-"<https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-"
-"python-code-when-qgis-starts>`_ ``startup.py``, añade las dos líneas "
-"siguientes, adaptando la ruta a tu caso concreto (comprueba la versión de "
-"Python). Estas dos líneas se ejecutarán al arrancar QGIS y añadirán la ruta "
-"de los paquetes instalados en el entorno virtual a ``sys.path``."
+"<https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html"
+"#running-python-code-when-qgis-starts>`_ ``startup.py``, añade las dos "
+"líneas siguientes, adaptando la ruta a tu caso concreto (comprueba la "
+"versión de Python). Estas dos líneas se ejecutarán al arrancar QGIS y "
+"añadirán la ruta de los paquetes instalados en el entorno virtual a "
+"``sys.path``."
 
-#: ../../docsrc/installation.rst:99 57ec28d7a7b14fff8478350e463de3b3
+#: ../../docsrc/installation.rst:101 57ec28d7a7b14fff8478350e463de3b3
 msgid "Using conda/miniconda (all operating systems)"
 msgstr "Uso de conda/miniconda (todos los sistemas operativos)"
 
-#: ../../docsrc/installation.rst:101 2748ff7a13b94e62ad7eab2488e1a28b
+#: ../../docsrc/installation.rst:103 2748ff7a13b94e62ad7eab2488e1a28b
 msgid ""
 "This alternative method has the advantage of installing `QGIS "
-"<https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ "
-"as well as the ``forestatrisk`` and ``riskmapjnr`` Python packages all in a "
-"isolated and dedicated environment, with a lightweight version of QGIS. "
-"However, caveats are that there are no QGIS desktop icons or file "
-"association, and this installation does not include GRASS and SAGA for "
-"example (although they can easily be installed with conda subsequently)."
+"<https://www.qgis.org/en/site/>`_ and `GDAL "
+"<https://gdal.org/index.html>`_ as well as the ``forestatrisk`` and "
+"``riskmapjnr`` Python packages all in a isolated and dedicated "
+"environment, with a lightweight version of QGIS. However, caveats are "
+"that there are no QGIS desktop icons or file association, and this "
+"installation does not include GRASS and SAGA for example (although they "
+"can easily be installed with conda subsequently)."
 msgstr ""
 "Este método alternativo tiene la ventaja de instalar `QGIS "
-"<https://www.qgis.org/en/site/>`_ y `GDAL <https://gdal.org/index.html>`_ "
-"así como los paquetes Python ``forestatrisk`` y ``riskmapjnr`` todo en un "
-"entorno aislado y dedicado, con una versión ligera de QGIS. Sin embargo, las"
-" advertencias son que no hay iconos de escritorio QGIS o asociación de "
-"archivos, y esta instalación no incluye GRASS y SAGA por ejemplo (aunque "
-"pueden ser fácilmente instalados con conda posteriormente)."
+"<https://www.qgis.org/en/site/>`_ y `GDAL <https://gdal.org/index.html>`_"
+" así como los paquetes Python ``forestatrisk`` y ``riskmapjnr`` todo en "
+"un entorno aislado y dedicado, con una versión ligera de QGIS. Sin "
+"embargo, las advertencias son que no hay iconos de escritorio QGIS o "
+"asociación de archivos, y esta instalación no incluye GRASS y SAGA por "
+"ejemplo (aunque pueden ser fácilmente instalados con conda "
+"posteriormente)."
 
-#: ../../docsrc/installation.rst:104 a3640da6d2f740988d3b48c1d93fa548
+#: ../../docsrc/installation.rst:106 a3640da6d2f740988d3b48c1d93fa548
 msgid "Install miniconda"
 msgstr "Instalar miniconda"
 
-#: ../../docsrc/installation.rst:106 ae2e848c30fa49fea2fdc9edf452ef38
+#: ../../docsrc/installation.rst:108 ae2e848c30fa49fea2fdc9edf452ef38
 msgid ""
 "``Conda`` (or its minimal version ``miniconda``) is a package and "
-"environment manager. To install ``miniconda``, download the installer from "
-"the `miniconda website <https://docs.conda.io/en/latest/miniconda.html>`_ "
-"and follow the instructions for your system."
+"environment manager. To install ``miniconda``, download the installer "
+"from the `miniconda website "
+"<https://docs.conda.io/en/latest/miniconda.html>`_ and follow the "
+"instructions for your system."
 msgstr ""
 "``Conda`` (o su versión mínima ``miniconda``) es un gestor de paquetes y "
-"entornos. Para instalar ``miniconda``, descarga el instalador de la `página "
-"web de miniconda <https://docs.conda.io/en/latest/miniconda.html>`_ y sigue "
-"las instrucciones para tu sistema."
+"entornos. Para instalar ``miniconda``, descarga el instalador de la "
+"`página web de miniconda "
+"<https://docs.conda.io/en/latest/miniconda.html>`_ y sigue las "
+"instrucciones para tu sistema."
 
-#: ../../docsrc/installation.rst:109 00e92b4678ac448faa386b0f0b8edb70
+#: ../../docsrc/installation.rst:111 00e92b4678ac448faa386b0f0b8edb70
 msgid "Install QGIS and dependencies in a new environment"
 msgstr "Instalar QGIS y sus dependencias en un nuevo entorno"
 
-#: ../../docsrc/installation.rst:111 a3e61cfa768a4c5a9cc1b061fcbc5cd3
+#: ../../docsrc/installation.rst:113 a3e61cfa768a4c5a9cc1b061fcbc5cd3
 msgid ""
 "In a terminal, create a new environment (here named ``deforisk``) and "
-"install ``QGIS`` (via conda packages), ``forestatrisk`` and ``riskmapjnr`` "
-"in it. Be aware that ``osmconvert`` and ``osmfilter`` still need to be "
-"installed separately on Linux and macOS systems (cf. section above)."
+"install ``QGIS`` (via conda packages), ``forestatrisk`` and "
+"``riskmapjnr`` in it. Be aware that ``osmconvert`` and ``osmfilter`` "
+"still need to be installed separately on Linux and macOS systems (cf. "
+"section above)."
 msgstr ""
-"En un terminal, crea un nuevo entorno (aquí llamado ``deforisk``) e instala "
-"``QGIS`` (mediante paquetes conda), ``forestatrisk`` y ``riskmapjnr`` en él."
-" Ten en cuenta que ``osmconvert`` y ``osmfilter`` deben instalarse por "
-"separado en los sistemas Linux y macOS (véase la sección anterior)."
+"En un terminal, crea un nuevo entorno (aquí llamado ``deforisk``) e "
+"instala ``QGIS`` (mediante paquetes conda), ``forestatrisk`` y "
+"``riskmapjnr`` en él. Ten en cuenta que ``osmconvert`` y ``osmfilter`` "
+"deben instalarse por separado en los sistemas Linux y macOS (véase la "
+"sección anterior)."
 
-#: ../../docsrc/installation.rst:119 e68607c226654fffb734c0cbfbb0116e
-msgid ""
-"You can now launch ``QGIS`` from the terminal using the ``qgis`` command."
+#: ../../docsrc/installation.rst:121 e68607c226654fffb734c0cbfbb0116e
+msgid "You can now launch ``QGIS`` from the terminal using the ``qgis`` command."
 msgstr ""
 "Ahora puede iniciar ``QGIS`` desde el terminal utilizando el comando "
 "``qgis``."
 
-#: ../../docsrc/installation.rst:122 9886c6bca13f437aa37dd0bd6443f74f
+#: ../../docsrc/installation.rst:124 9886c6bca13f437aa37dd0bd6443f74f
 msgid "Deactivate and delete the environment"
 msgstr "Desactivar y eliminar el entorno"
 
-#: ../../docsrc/installation.rst:124 49843145cced44098f78d0eaddc78162
+#: ../../docsrc/installation.rst:126 49843145cced44098f78d0eaddc78162
 msgid "I you want to deactivate an delete the environment:"
 msgstr "Si quieres desactivar y borrar el entorno:"
 
-#: ../../docsrc/installation.rst:132 490c3eb956e04279b5bdd9dea693f23a
+#: ../../docsrc/installation.rst:134 490c3eb956e04279b5bdd9dea693f23a
 msgid "Access to GEE and WDPA"
 msgstr "Acceso a GEE y WDPA"
 
-#: ../../docsrc/installation.rst:134 ae774cb071364201994997fa5e7cbe21
+#: ../../docsrc/installation.rst:136 ae774cb071364201994997fa5e7cbe21
 msgid ""
 "The plugin download forest data from Google Earth Engine (GEE) using the "
-"``geefcc`` Python package and protected area data from the World Database on"
-" Protected Areas (WDPA) using the ``pywdpa`` Python package. You will need "
-"an access to GEE and WDPA to be able to use the plugin."
+"``geefcc`` Python package and protected area data from the World Database"
+" on Protected Areas (WDPA) using the ``pywdpa`` Python package. You will "
+"need an access to GEE and WDPA to be able to use the plugin."
 msgstr ""
-"el complemento descarga datos forestales de Google Earth Engine (GEE) utilizando "
-"el paquete ``geefcc`` de Python y datos de áreas protegidas de la Base de "
-"Datos Mundial de Áreas Protegidas (WDPA) utilizando el paquete ``pywdpa`` de"
-" Python. Necesitarás acceso a GEE y WDPA para poder utilizar el complemento."
+"el complemento descarga datos forestales de Google Earth Engine (GEE) "
+"utilizando el paquete ``geefcc`` de Python y datos de áreas protegidas de"
+" la Base de Datos Mundial de Áreas Protegidas (WDPA) utilizando el "
+"paquete ``pywdpa`` de Python. Necesitarás acceso a GEE y WDPA para poder "
+"utilizar el complemento."
 
-#: ../../docsrc/installation.rst:137 32e5eb6b4c35474c9f5ff131fa425ea1
+#: ../../docsrc/installation.rst:139 32e5eb6b4c35474c9f5ff131fa425ea1
 msgid "Access to GEE"
 msgstr "Acceso a GEE"
 
-#: ../../docsrc/installation.rst:139 6cc5082c70e54bf18bc823bcc3954472
+#: ../../docsrc/installation.rst:141 6cc5082c70e54bf18bc823bcc3954472
 msgid ""
 "To be able to use GEE, you will need either (i) a Google account and a "
 "Google Cloud project that is `registered to use Earth Engine "
-"<https://developers.google.com/earth-engine/guides/access#a-role-in-a-cloud-"
-"project>`_ or (ii) a service account allowing you to use Google Earth Engine"
-" through a registered Google Cloud project (in this case, you don’t need a "
-"Google account). Please follow this link if you want to `register a project "
-"for using Earth Engine <https://code.earthengine.google.com/register>`_."
+"<https://developers.google.com/earth-engine/guides/access#a-role-in-a"
+"-cloud-project>`_ or (ii) a service account allowing you to use Google "
+"Earth Engine through a registered Google Cloud project (in this case, you"
+" don’t need a Google account). Please follow this link if you want to "
+"`register a project for using Earth Engine "
+"<https://code.earthengine.google.com/register>`_."
 msgstr ""
-"Para poder utilizar GEE, necesitará (i) una cuenta de Google y un proyecto "
-"de Google Cloud que esté `registrado para utilizar Earth Engine "
-"<https://developers.google.com/earth-engine/guides/access#a-role-in-a-cloud-"
-"project>`_ o (ii) una cuenta de servicio que le permita utilizar Google "
-"Earth Engine a través de un proyecto registrado de Google Cloud (en este "
-"caso, no necesita una cuenta de Google). Siga este enlace si desea "
-"`registrar un proyecto para utilizar Earth Engine "
+"Para poder utilizar GEE, necesitará (i) una cuenta de Google y un "
+"proyecto de Google Cloud que esté `registrado para utilizar Earth Engine "
+"<https://developers.google.com/earth-engine/guides/access#a-role-in-a"
+"-cloud-project>`_ o (ii) una cuenta de servicio que le permita utilizar "
+"Google Earth Engine a través de un proyecto registrado de Google Cloud "
+"(en este caso, no necesita una cuenta de Google). Siga este enlace si "
+"desea `registrar un proyecto para utilizar Earth Engine "
 "<https://code.earthengine.google.com/register>`_."
 
-#: ../../docsrc/installation.rst:141 82113fa2a1ec4d218c9ecb916676095a
+#: ../../docsrc/installation.rst:143 82113fa2a1ec4d218c9ecb916676095a
 msgid ""
 "In the ``deforisk`` plugin, for the ``Earth Engine access`` argument "
-"available in the “Get variables” tab, you must indicate either the name of a"
-" Google Cloud project registered to use Earth Engine (and for which you are "
-"identified as a user) or a path to a JSON private key file authorizing you "
-"to access Earth Engine through a service account."
+"available in the “Get variables” tab, you must indicate either the name "
+"of a Google Cloud project registered to use Earth Engine (and for which "
+"you are identified as a user) or a path to a JSON private key file "
+"authorizing you to access Earth Engine through a service account."
 msgstr ""
-"En el complemento ``deforisk``, para el argumento ``Earth Engine access`` "
-"disponible en la pestaña \"Get variables\", debes indicar o bien el nombre "
-"de un proyecto de Google Cloud registrado para utilizar Earth Engine (y para"
-" el que estés identificado como usuario) o bien una ruta a un archivo de "
-"clave privada JSON que te autorice a acceder a Earth Engine a través de una "
-"cuenta de servicio."
+"En el complemento ``deforisk``, para el argumento ``Earth Engine access``"
+" disponible en la pestaña \"Get variables\", debes indicar o bien el "
+"nombre de un proyecto de Google Cloud registrado para utilizar Earth "
+"Engine (y para el que estés identificado como usuario) o bien una ruta a "
+"un archivo de clave privada JSON que te autorice a acceder a Earth Engine"
+" a través de una cuenta de servicio."
 
-#: ../../docsrc/installation.rst-1 0944122eecd344b2b30e44d8ec3e4218
+#: ../../docsrc/installation.rst:145 0944122eecd344b2b30e44d8ec3e4218
 msgid "Earth Engine access"
 msgstr "Acceso a Earth Engine"
 
-#: ../../docsrc/installation.rst:148 89076848a0964d29b69ba533ff85279a
+#: ../../docsrc/installation.rst:150 89076848a0964d29b69ba533ff85279a
 msgid "Access to WDPA"
 msgstr "Acceso a la base de datos WDPA"
 
-#: ../../docsrc/installation.rst:150 afa8af39017343c8b2840407f59cfb10
+#: ../../docsrc/installation.rst:152 afa8af39017343c8b2840407f59cfb10
 msgid ""
-"To uses the Protected Planet API to access data on world protected areas, "
-"you must first have obtained a Personal API Token by filling in the `form "
-"<https://api.protectedplanet.net/request>`_ available at Protected Planet."
+"To uses the Protected Planet API to access data on world protected areas,"
+" you must first have obtained a Personal API Token by filling in the "
+"`form <https://api.protectedplanet.net/request>`_ available at Protected "
+"Planet."
 msgstr ""
-"Para utilizar la API de Protected Planet para acceder a datos sobre áreas "
-"protegidas del mundo, primero debe haber obtenido un Token Personal de API "
-"rellenando el `formulario <https://api.protectedplanet.net/request>`_ "
-"disponible en Protected Planet."
+"Para utilizar la API de Protected Planet para acceder a datos sobre áreas"
+" protegidas del mundo, primero debe haber obtenido un Token Personal de "
+"API rellenando el `formulario <https://api.protectedplanet.net/request>`_"
+" disponible en Protected Planet."
 
-#: ../../docsrc/installation.rst:152 006f124a850547289d5a1b7beb24eff7
+#: ../../docsrc/installation.rst:154 006f124a850547289d5a1b7beb24eff7
 msgid ""
-"In the ``deforisk`` plugin, for the ``WDPA access`` argument available in "
-"the “Get variables” tab, you must indicate either your Personal API Token (a"
-" series of letters and numbers such as ``ca4703ffba6b9a26b2db73f78e56e088`` "
-"which is a fake token) or a path to a text file specifying the value of the "
-"“WDPA\\_KEY” environmental variable (eg. a simple text file including on one"
-" line ``WDPA_KEY=\"ca4703ffba6b9a26b2db73f78e56e088\"`` for example)."
+"In the ``deforisk`` plugin, for the ``WDPA access`` argument available in"
+" the “Get variables” tab, you must indicate either your Personal API "
+"Token (a series of letters and numbers such as "
+"``ca4703ffba6b9a26b2db73f78e56e088`` which is a fake token) or a path to "
+"a text file specifying the value of the “WDPA\\_KEY” environmental "
+"variable (eg. a simple text file including on one line "
+"``WDPA_KEY=\"ca4703ffba6b9a26b2db73f78e56e088\"`` for example)."
 msgstr ""
-"En el complemento ``deforisk``, para el argumento ``WDPA access`` disponible en "
-"la pestaña \"Get variables\", debes indicar o bien tu Personal API Token "
-"(una serie de letras y números como ``ca4703ffba6b9a26b2db73f78e56e088`` que"
-" es un token falso) o bien una ruta a un archivo de texto especificando el "
-"valor de la variable de entorno \"WDPA\\_KEY\" (eg. un simple fichero de "
-"texto que incluya en una línea "
-"``WDPA_KEY=\"ca4703ffba6b9a26b2db73f78e56e088\"`` por ejemplo)."
+"En el complemento ``deforisk``, para el argumento ``WDPA access`` "
+"disponible en la pestaña \"Get variables\", debes indicar o bien tu "
+"Personal API Token (una serie de letras y números como "
+"``ca4703ffba6b9a26b2db73f78e56e088`` que es un token falso) o bien una "
+"ruta a un archivo de texto especificando el valor de la variable de "
+"entorno \"WDPA\\_KEY\" (eg. un simple fichero de texto que incluya en una"
+" línea ``WDPA_KEY=\"ca4703ffba6b9a26b2db73f78e56e088\"`` por ejemplo)."
 
-#: ../../docsrc/installation.rst-1 fbfbd6b1119f434ab49882b64aee1df5
+#: ../../docsrc/installation.rst:156 fbfbd6b1119f434ab49882b64aee1df5
 msgid "WDPA access"
 msgstr "Acceso WDPA"
 
-#: ../../docsrc/installation.rst:159 09e510accd3148cc81b744bdd2ed0cdd
+#: ../../docsrc/installation.rst:161 09e510accd3148cc81b744bdd2ed0cdd
 msgid "Installing the ``deforisk`` plugin in QGIS"
 msgstr "Instalación del complemento ``deforisk`` en QGIS"
 
-#: ../../docsrc/installation.rst:161 3afd73ac21e54e3a84412c769cbdb8e0
+#: ../../docsrc/installation.rst:163 3afd73ac21e54e3a84412c769cbdb8e0
 msgid ""
-"Download the ``deforisk`` `zip file <https://github.com/ghislainv/deforisk-"
-"qgis-plugin/archive/refs/heads/main.zip>`_ from GitHub."
+"Download the ``deforisk`` `zip file <https://github.com/ghislainv"
+"/deforisk-qgis-plugin/archive/refs/heads/main.zip>`_ from GitHub."
 msgstr ""
 "Descarga el `archivo zip <https://github.com/ghislainv/deforisk-qgis-"
-"plugin/archive/refs/heads/main.zip>`_ que contiene el complemento ``deforisk`` "
-"desde GitHub."
+"plugin/archive/refs/heads/main.zip>`_ que contiene el complemento "
+"``deforisk`` desde GitHub."
 
-#: ../../docsrc/installation.rst:163 9f3deaebd2a547e1ab42c7b1a966b36e
+#: ../../docsrc/installation.rst:165 9f3deaebd2a547e1ab42c7b1a966b36e
 msgid "Open QGIS."
 msgstr "Abra QGIS."
 
-#: ../../docsrc/installation.rst:165 f1d705f453004592a7e4d8b656637443
+#: ../../docsrc/installation.rst:167 f1d705f453004592a7e4d8b656637443
 msgid ""
-"In QGIS menu bar, go to ``Extensions/Install extensions/Install from ZIP``."
+"In QGIS menu bar, go to ``Extensions/Install extensions/Install from "
+"ZIP``."
 msgstr ""
 "En la barra de menú de QGIS, vaya a ``Extensiones/Instalar "
 "extensiones/Instalar desde ZIP``."
 
-#: ../../docsrc/installation.rst:167 f4534de7efa44144ad339139771670e9
+#: ../../docsrc/installation.rst:169 f4534de7efa44144ad339139771670e9
 msgid "Select the zip file that has been downloaded."
 msgstr "Seleccione el archivo zip que se ha descargado."
+

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-19 08:38-0500\n"
+"POT-Creation-Date: 2025-02-13 11:52+1100\n"
 "PO-Revision-Date: 2024-07-01 18:38+0000\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language: fr\n"
@@ -20,64 +20,72 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #: ../../docsrc/articles/user_data.rst:3 6b06741b61854dcda91aa6e218f9f8dc
 msgid "User’s data"
 msgstr "Données de l&#39;utilisateur"
 
-#: ../../docsrc/articles/user_data.rst:12 1067b458d21a4c649a28a022feec63c6
+#: ../../docsrc/articles/user_data.rst:16 1067b458d21a4c649a28a022feec63c6
 msgid "Forest cover change map"
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:14 42daceeca1644d84aad835163f31a95c
+#: ../../docsrc/articles/user_data.rst:18 c40b9f2acd9147f39d1d4aa981f7db9c
 msgid ""
 "You can use your own forest cover change map with the plugin. To do so, "
-"prepare a ``forest_src.tif`` raster file and copy it to the ``data_raw`` "
-"folder in your working directory. This files should have the following "
-"characteristics:"
+"prepare a raster file and select it with the ``Forest data source`` "
+"argument in the ``Get variables`` tab of the plugin. The raster file will"
+" be automatically copied in the ``data_raw`` folder of the working "
+"directory and renamed ``forest_src.tif``. The raster file should have the"
+" following characteristics:"
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:16 8f61f178ba38494da8812df2ebfeebd6
+#: ../../docsrc/articles/user_data.rst:20 8f61f178ba38494da8812df2ebfeebd6
 msgid ""
 "It must be a multiple band raster file with each band representing the "
 "forest cover at one date."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:18 767c955996034b99beadd81374f7ca0c
+#: ../../docsrc/articles/user_data.rst:22 767c955996034b99beadd81374f7ca0c
 msgid "Bands must be ordered (first band for t, second band for t+1, etc.)."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:20 0d56265aae1c4215bc78fa50c4bf11ae
+#: ../../docsrc/articles/user_data.rst:24 0d56265aae1c4215bc78fa50c4bf11ae
 msgid ""
 "Raster should only have two values: 1 for forest pixels and 0 for non-"
 "forest pixels (the raster can thus be of type Byte)."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:22 25b7a86ae9a248d09cfb673332bd5db4
+#: ../../docsrc/articles/user_data.rst:26 25b7a86ae9a248d09cfb673332bd5db4
 msgid ""
 "No-data value is not important here. It can be set to 0 or 255 for "
 "example."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:24 664e159b586d49f89a89cca0845a68e8
+#: ../../docsrc/articles/user_data.rst:28 664e159b586d49f89a89cca0845a68e8
 msgid ""
 "The raster file should be projected in the coordinate reference system of"
-" the project."
+" the project (see argument ``projection EPSG code``)."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:26 bcd5c833ae6347b1beaa5a489295a35f
+#: ../../docsrc/articles/user_data.rst:30 bcd5c833ae6347b1beaa5a489295a35f
 msgid "The raster must cover at least all the area of the jurisdiction."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:29 5c60d24378de4afea938941bce58fc48
+#: ../../docsrc/articles/user_data.rst:32 b89c0a9061664aaf8b839ce4fa3ce3b5
+msgid ""
+"Years specified in the ``Years`` argument should correspond to the years "
+"used for the forest cover change raster file."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:35 5c60d24378de4afea938941bce58fc48
 msgid ""
 "It is much better if the raster is bigger than the jurisdiction (e.g. "
 "buffer of 10 km) to reduce edge effects when computing distances to "
 "forest edge for example."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:31 9a74cd56375b4c7ea8aa994b28107fcc
+#: ../../docsrc/articles/user_data.rst:37 9a74cd56375b4c7ea8aa994b28107fcc
 msgid ""
 "While executing the ``Get variables`` step, this raster will be used as "
 "the forest data source and all the forest variables (forest cover change "
@@ -85,61 +93,135 @@ msgid ""
 " this data."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:33 a0ec431fd5cd4272a4c2664428d89543
+#: ../../docsrc/articles/user_data.rst:39 a0ec431fd5cd4272a4c2664428d89543
 msgid ""
 "You can create this multiple band raster using the QGIS tool ``Merge`` "
 "available in **Raster > Miscellaneous**."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:36 d105594fe0554ea99db3cb5a9bb78055
-msgid "Additional explicative variables"
+#: ../../docsrc/articles/user_data.rst:42 de7b0dea13c341b4b94eb6a0c3587a2b
+msgid "Area of interest"
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:39 3dddfa0c0fe2426d9926060799f9b80a
-msgid "Preparing the raster files"
-msgstr ""
-
-#: ../../docsrc/articles/user_data.rst:41 46195dace7a34d79a2198a38f2e5965b
+#: ../../docsrc/articles/user_data.rst:44 108c0e39e664460ba371820992dab17a
 msgid ""
-"To use different or additional explicatives variables for the statistical"
-" models, prepare the corresponding raster files in the ``data`` folder of"
-" the working directory. These additional raster files should have the "
+"You can specify your area of interest with the plugin. To do so, prepare "
+"a vector file and select it with the ``Area Of Interest`` argument in the"
+" ``Get variables`` tab of the plugin. The vector file will be "
+"automatically copied in the ``data_raw`` folder of the working directory "
+"and renamed ``aoi_latlon.gpkg``. The vector file should have the "
 "following characteristics:"
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:43 9b0275bfc3b54b20a721e62d35334fca
+#: ../../docsrc/articles/user_data.rst:46 71882365d3284969811ca0b1ca0ce60d
+msgid "It must be in lat/lon (i.e. unprojected with EPSG code 4326)."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:48 7029f59cc4ae4b8ca08f32fa0d3e82d0
+msgid ""
+"It must have two layers named ``aoi`` for the jurisdiction and ``subj`` "
+"for the subjurisdictions."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:50 9f4a52708c6948d288ebdd4d76c4f667
+msgid ""
+"More details on how to obtain such vector file in QGIS is available in "
+"the article untitled `Subnational jurisdictions "
+"<./subnational_jurisd.html>`_."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:53 d105594fe0554ea99db3cb5a9bb78055
+msgid "Additional explicative variables"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:56 3dddfa0c0fe2426d9926060799f9b80a
+msgid "Prepare the raster files"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:58 46195dace7a34d79a2198a38f2e5965b
+msgid ""
+"To use different or additional explicative variables for the statistical "
+"models, prepare the corresponding raster files in the ``data`` folder of "
+"the working directory. These additional raster files should have the "
+"following characteristics:"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:60 9b0275bfc3b54b20a721e62d35334fca
 msgid "They should cover at least all the area of the jurisdiction."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:45 6d85d7c4b9814b77bf5010a7ff4fa3e9
+#: ../../docsrc/articles/user_data.rst:62 6d85d7c4b9814b77bf5010a7ff4fa3e9
 msgid "They should be in the projection of the project."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:47 6315dd5d339c445cbed41e7afb123904
+#: ../../docsrc/articles/user_data.rst:64 6315dd5d339c445cbed41e7afb123904
 msgid ""
 "Resolution should be as close as possible to the forest cover raster "
 "resolution."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:49 582f2e1572f3418da4ad5dabf50ed019
+#: ../../docsrc/articles/user_data.rst:66 582f2e1572f3418da4ad5dabf50ed019
 msgid ""
 "If some of these variables are changing with time, then create several "
 "rasters for t1, t2, and t3."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:52 cdf518f1282b4bcba7b03519e3e0507c
-msgid "Create symbolic links"
+#: ../../docsrc/articles/user_data.rst:69 6d85d7c4b9814b77bf5010a7ff4fa3e9
+msgid "Copy files in the right folders"
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:54 837c73012f0d4457bd307dd7006f2b94
+#: ../../docsrc/articles/user_data.rst:71 3cd2a6e5ea574f7a952d696230696ef9
 msgid ""
-"To avoid copying the same data at several places on disk, create symbolic"
-" links in each of the folders ``data_calibration``, ``data_validation``, "
-"``data_historical``, and ``data_forecast``. Symbolic links should points "
-"to new rasters in the ``data`` folder."
+"Raster files of explanatory variables must be copied in the folders "
+"``data_calibration``, ``data_validation``, ``data_historical``, and "
+"``data_forecast`` of the working directory. These directories are used to"
+" access both the forest cover change and the explanatory variables for "
+"modelling and predicting the deforestation risk for the different "
+"periods."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:56 820b922f05ee468bb8e8cba5fe09a46e
+#: ../../docsrc/articles/user_data.rst:73 4f0f8b138ae7410aa5c6bc5776208360
+msgid ""
+"If using variables changing with time, prepare three rasters "
+"``variable_t1.tif``, ``variable_t2.tif``, and ``variable_t3.tif``. Copy "
+"these rasters in the corresponding folders and change the raster names to"
+" ``variable.tif``. It is important that the different rasters have the "
+"same name ``variable.tif`` in the different folders so that the algorithm"
+" understands it refers to the same variable:"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:75 268842fd9f094a78ac447a816d739f00
+msgid ""
+"In the ``data_calibration`` and ``data_historical`` folders (for which we"
+" use variables at t1), the file ``variable.tif`` should be a copy of the "
+"file ``variable_t1.tif``."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:77 5dffda757a8b4fb08a66fcb7353b1e39
+msgid ""
+"In the ``data_validation`` folder (for which we use variables at t2), the"
+" file ``variable.tif`` should be a copy of the file ``variable_t2.tif``."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:79 3d01fb356f174f199e347acf62542040
+msgid ""
+"In the ``data_forecast`` folder (for which we use variables at t3), the "
+"file ``variable.tif`` should be a copy of the file ``variable_t3.tif``."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:82 7140cb538c59455da8b42e32f9ac2f37
+msgid "Create symbolic links to save space on disk (optional)"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:84 837c73012f0d4457bd307dd7006f2b94
+msgid ""
+"To avoid copying the same data at several places on disk, you can create "
+"symbolic links in each of the folders ``data_calibration``, "
+"``data_validation``, ``data_historical``, and ``data_forecast``. Symbolic"
+" links could point to rasters in the ``data`` folder for example."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:86 820b922f05ee468bb8e8cba5fe09a46e
 msgid ""
 "If using changing variables with time, then use the same file name (e.g. "
 "``variable.tif``) for symbolic links in the four ``data_*`` folders but "
@@ -147,28 +229,28 @@ msgid ""
 "For example:"
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:58 268842fd9f094a78ac447a816d739f00
+#: ../../docsrc/articles/user_data.rst:88 268842fd9f094a78ac447a816d739f00
 msgid ""
 "In the ``data_calibration`` and ``data_historical`` folders (for which we"
 " use variables at t1), the file ``variable.tif`` should point to the file"
 " ``variable_t1.tif`` in the ``data`` folder."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:60 5dffda757a8b4fb08a66fcb7353b1e39
+#: ../../docsrc/articles/user_data.rst:90 5dffda757a8b4fb08a66fcb7353b1e39
 msgid ""
 "In the ``data_validation`` folder (for which we use variables at t2), the"
 " file ``variable.tif`` should point to the file ``variable_t2.tif`` in "
 "the ``data`` folder."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:62 3d01fb356f174f199e347acf62542040
+#: ../../docsrc/articles/user_data.rst:92 3d01fb356f174f199e347acf62542040
 msgid ""
 "In the ``data_forecast`` folder (for which we use variables at t3), the "
 "file ``variable.tif`` should point to the file ``variable_t3.tif`` in the"
 " ``data`` folder."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:64 01de43c5582f49eeba740e0d84b3b2e8
+#: ../../docsrc/articles/user_data.rst:94 01de43c5582f49eeba740e0d84b3b2e8
 msgid ""
 "To create symbolic links in Windows, use the command `mklink "
 "<https://learn.microsoft.com/en-us/windows-server/administration/windows-"
@@ -177,16 +259,143 @@ msgid ""
 "your-device-for-development>`_ must be activated on your computer."
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:72 3198c6c7e56c49cc9a391744daa1d5d4
+#: ../../docsrc/articles/user_data.rst:102 3198c6c7e56c49cc9a391744daa1d5d4
 msgid "Use these variables in the formula for the statistical models"
 msgstr ""
 
-#: ../../docsrc/articles/user_data.rst:74 0600778b04694000b9e892440868c88a
+#: ../../docsrc/articles/user_data.rst:104 0600778b04694000b9e892440868c88a
 msgid ""
-"If raster ``variable.tif`` was added to the list of explicative "
+"If raster ``variable.tif`` was added to the list of explanatory "
 "variables, then add its name ``variable`` to the list of variables names "
 "for the FAR statistical models, see detail `here <../plugin_api.html#fit-"
 "models-to-data>`_."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:107 7aae7d64737c4cb2bcc28e64d7297683
+msgid "No internet connexion needed"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:110 aa962e933b4749a5938f2346d3af9a41
+msgid "Provide you own data"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:112 645cd176ab774af8b535bf6a8e68a359
+msgid ""
+"If you use your own data with the ``deforisk`` plugin, there is no need "
+"for an internet connexion. You just have to provide:"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:114 dde1f85140e94a148a7dcc7df118b737
+msgid ""
+"The forest cover change data as a multiband raster file (see `Forest "
+"cover change map <./user_data.html#forest-cover-change-map>`_ section)."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:116 37ef2f7cf3ca4d7cb3e9ca86b50a7bed
+msgid ""
+"The area of interest as a vector file (see `Area of interest "
+"<./user_data.html#area-of-interest>`_ section)."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:118 837c73012f0d4457bd307dd7006f2b94
+msgid ""
+"The raster files of explanatory variables in the folders "
+"``data_calibration``, ``data_validation``, ``data_historical``, and "
+"``data_forecast`` of the working directory (see `Copy files "
+"<./user_data.html#copy-files-in-the-right-folders>`_ section)."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:120 05947f71f62b476aa72107140a2b355e
+msgid ""
+"Also, you don’t need credentials to download data from Google Earth "
+"Engine or the World Database on Protected Area. Parameters ``Earth Engine"
+" access`` and ``WDPA access`` can be left empty. Button ``Only compute "
+"forest variables`` must be checked."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:123 fd825592707f49fcb21482fc7435ee7f
+msgid "A simple approach with only forest variables"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:125 5bec2881ee974b8dbba47e35ab768f69
+msgid ""
+"Distance to forest edge is usually the most important variable in "
+"determining the spatial deforestation risk. It can be useful to compare "
+"and evaluate models using only this explanatory variable. To do so, you "
+"just have to:"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:127 fb6bbb96c4e746a6859880274424e9ad
+msgid "Check the button ``Only compute forest variables``."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:129 f65f2f8e6df24c94a4012d3adbc71862
+msgid "Specify ’dist\\_forest’ in the ``List of variables`` for FAR models."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:131 dd8ffb6049474cdaa5e80632d204ba59
+msgid ""
+"Distance to forest edge is directly computed from the forest cover change"
+" raster file and you don’t have to provide any other additional "
+"explanatory variables."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:134 38d23072c95848f3a55eb97d8ca7d7de
+msgid "A simple example with no internet connexion"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:136 e85f395d461545f0a571ef1b0cd38b3b
+msgid ""
+"As an example based on Martinique, you can avoid using an internet "
+"connexion and use simple deforestation models based only on distance to "
+"forest edge:"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:138 c69ddb32dfda4ad6843fcc08dd357c4b
+msgid "Create a working directory called for example ``MTQ-tuto-simple-model``."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:140 b7b2eebda92a4d44aa88e979910f2145
+msgid ""
+"Create a ``data`` directory and copy files `forest-MTQ-2000-2010-2020.tif"
+" <../_static/tutos/forest-MTQ-2000-2010-2020.tif>`_ and `aoi-MTQ-"
+"latlon.gpkg <../_static/tutos/aoi-MTQ-latlon.gpkg>`_ in this directory."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:142 79fcaf02fe9340a5b02f8f0214e7a411
+msgid ""
+"Use these two files for arguments ``Area Of Interest`` and ``Forest data "
+"source`` in the ``Get variables`` tab."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:144 bea678a0e1834e3ba80d64f040c96184
+msgid "Specify ’2000, 2010, 2020’ for ``Years``."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:146 02a5b3f0e5c24c13b3898e3a754304c8
+msgid "Use ’EPSG:3490’ for ``Projection EPSG code``."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:148 018d84dcaccf425b84404a960d76f85f
+msgid "Ensure ``Only compute forest variables`` is checked."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:150 582f2e1572f3418da4ad5dabf50ed019
+msgid "All other variables in the ``Get variables`` tab can be left empty."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:152 0b0b427203504446a1fd00aa148bdfb4
+msgid "Click ``Run`` in the ``Get variables tab`` to compute forest variables."
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:156 f950b1b6f08d4c24983385e4aa2ed94a
+msgid "|br|"
+msgstr ""
+
+#: ../../docsrc/articles/user_data.rst:158 e697d2f3d24b4fa290b673ba74b54adc
+msgid ""
+"Specify only ’dist\\_edge’ in the ``List of variables`` for FAR models "
+"and run the models and the validation with the default parameters."
 msgstr ""
 
 #~ msgid "First section"
@@ -200,5 +409,57 @@ msgstr ""
 #~ "forest pixels and 0 for non-forest"
 #~ " pixels (the raster can thus be "
 #~ "of type Byte)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can use your own forest cover"
+#~ " change map with the plugin. To "
+#~ "do so, prepare a ``forest_src.tif`` "
+#~ "raster file and copy it to the "
+#~ "``data_raw`` folder in your working "
+#~ "directory. This files should have the"
+#~ " following characteristics:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The raster file should be projected "
+#~ "in the coordinate reference system of"
+#~ " the project."
+#~ msgstr ""
+
+#~ msgid "Preparing the raster files"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To use different or additional "
+#~ "explicatives variables for the statistical "
+#~ "models, prepare the corresponding raster "
+#~ "files in the ``data`` folder of "
+#~ "the working directory. These additional "
+#~ "raster files should have the following"
+#~ " characteristics:"
+#~ msgstr ""
+
+#~ msgid "Create symbolic links"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To avoid copying the same data at"
+#~ " several places on disk, create "
+#~ "symbolic links in each of the "
+#~ "folders ``data_calibration``, ``data_validation``, "
+#~ "``data_historical``, and ``data_forecast``. Symbolic"
+#~ " links should points to new rasters"
+#~ " in the ``data`` folder."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If raster ``variable.tif`` was added to"
+#~ " the list of explicative variables, "
+#~ "then add its name ``variable`` to "
+#~ "the list of variables names for "
+#~ "the FAR statistical models, see detail"
+#~ " `here <../plugin_api.html#fit-models-to-"
+#~ "data>`_."
 #~ msgstr ""
 
