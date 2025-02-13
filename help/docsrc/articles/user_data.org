@@ -106,7 +106,7 @@ Also, you don't need credentials to download data from Google Earth Engine or th
 Distance to forest edge is usually the most important variable in determining the spatial deforestation risk. It can be useful to compare and evaluate models using only this explanatory variable. To do so, you just have to:
 
 - Check the button ~Only compute forest variables~.
-- Specify 'dist_forest' in the ~List of variables~ for FAR models.
+- Specify 'dist_edge' in the ~List of variables~ for FAR models.
 
 Distance to forest edge is directly computed from the forest cover change raster file and you don't have to provide any other additional explanatory variables.
 

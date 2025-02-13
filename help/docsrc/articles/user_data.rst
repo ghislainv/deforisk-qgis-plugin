@@ -41,13 +41,13 @@ You can create this multiple band raster using the QGIS tool ``Merge`` available
 Area of interest
 ----------------
 
-You can specify your area of interest with the plugin. To do so, prepare a vector file and select it with the ``Area Of Interest`` argument in the ``Get variables`` tab of the plugin. The vector file will be automatically copied in the ``data_raw`` folder of the working directory and renamed ``aoi_latlon.gpkg``. The vector file should have the following characteristics:
+You can specify your area of interest when using the plugin. To do so, prepare a vector file and select it with the ``Area Of Interest`` argument in the ``Get variables`` tab of the plugin. The vector file will be automatically copied in the ``data_raw`` folder of the working directory and renamed ``aoi_latlon.gpkg``. The vector file should have the following characteristics:
 
 - It must be in lat/lon (i.e. unprojected with EPSG code 4326).
 
 - It must have two layers named ``aoi`` for the jurisdiction and ``subj`` for the subjurisdictions.
 
-More details on how to obtain such vector file in QGIS is available in the article untitled `Subnational jurisdictions <./subnational_jurisd.html>`_.
+More details on how to obtain such vector file in QGIS are available in the article untitled `Subnational jurisdictions <./subnational_jurisd.html>`_.
 
 Additional explicative variables
 --------------------------------
@@ -126,7 +126,7 @@ Distance to forest edge is usually the most important variable in determining th
 
 - Check the button ``Only compute forest variables``.
 
-- Specify ’dist\_forest’ in the ``List of variables`` for FAR models.
+- Specify ’dist\_edge’ in the ``List of variables`` for FAR models.
 
 Distance to forest edge is directly computed from the forest cover change raster file and you don’t have to provide any other additional explanatory variables.
 
