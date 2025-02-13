@@ -477,12 +477,12 @@
 </section>
 <section id="area-of-interest">
 <h2>Area of interest<a class="headerlink" href="#area-of-interest" title="Link to this heading">#</a></h2>
-<p>You can specify your area of interest with the plugin. To do so, prepare a vector file and select it with the <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> tab of the plugin. The vector file will be automatically copied in the <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> folder of the working directory and renamed <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code>. The vector file should have the following characteristics:</p>
+<p>You can specify your area of interest when using the plugin. To do so, prepare a vector file and select it with the <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> argument in the <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> tab of the plugin. The vector file will be automatically copied in the <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> folder of the working directory and renamed <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code>. The vector file should have the following characteristics:</p>
 <ul class="simple">
 <li><p>It must be in lat/lon (i.e. unprojected with EPSG code 4326).</p></li>
 <li><p>It must have two layers named <code class="docutils literal notranslate"><span class="pre">aoi</span></code> for the jurisdiction and <code class="docutils literal notranslate"><span class="pre">subj</span></code> for the subjurisdictions.</p></li>
 </ul>
-<p>More details on how to obtain such vector file in QGIS is available in the article untitled <a class="reference external" href="./subnational_jurisd.html">Subnational jurisdictions</a>.</p>
+<p>More details on how to obtain such vector file in QGIS are available in the article untitled <a class="reference external" href="./subnational_jurisd.html">Subnational jurisdictions</a>.</p>
 </section>
 <section id="additional-explicative-variables">
 <h2>Additional explicative variables<a class="headerlink" href="#additional-explicative-variables" title="Link to this heading">#</a></h2>
@@ -544,7 +544,7 @@ mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\da
 <p>Distance to forest edge is usually the most important variable in determining the spatial deforestation risk. It can be useful to compare and evaluate models using only this explanatory variable. To do so, you just have to:</p>
 <ul class="simple">
 <li><p>Check the button <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">compute</span> <span class="pre">forest</span> <span class="pre">variables</span></code>.</p></li>
-<li><p>Specify ’dist_forest’ in the <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> for FAR models.</p></li>
+<li><p>Specify ’dist_edge’ in the <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> for FAR models.</p></li>
 </ul>
 <p>Distance to forest edge is directly computed from the forest cover change raster file and you don’t have to provide any other additional explanatory variables.</p>
 </section>

@@ -478,7 +478,7 @@
 </section>
 <section id="area-of-interest">
 <h2>Área de interés<a class="headerlink" href="#area-of-interest" title="Link to this heading">#</a></h2>
-<p>Puede especificar su área de interés con el plugin. Para ello, prepara un archivo vectorial y selecciónalo con el argumento <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> en la pestaña <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> del plugin. El fichero vectorial se copiará automáticamente en la carpeta <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> del directorio de trabajo y se renombrará como <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code>. El archivo vectorial debe tener las siguientes características:</p>
+<p>Puede especificar su área de interés con el plugin. Para esto, prepara un archivo vectorial y selecciónalo con el argumento <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> en la pestaña <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> del plugin. El archivo vectorial se copiará automáticamente en la carpeta <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> del directorio de trabajo y se renombrará como <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code>. El archivo vectorial debe tener las siguientes características:</p>
 <ul class="simple">
 <li><p>Debe estar en lat/lon (es decir, sin proyectar con el código EPSG 4326).</p></li>
 <li><p>Debe tener dos capas denominadas <code class="docutils literal notranslate"><span class="pre">aoi</span></code> para la jurisdicción y <code class="docutils literal notranslate"><span class="pre">subj</span></code> para las subjurisdicciones.</p></li>
@@ -545,7 +545,7 @@ mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\da
 <p>La distancia al borde del bosque suele ser la variable más importante para determinar el riesgo espacial de deforestación. Puede ser útil comparar y evaluar modelos utilizando únicamente esta variable explicativa. Para esto, basta solo:</p>
 <ul class="simple">
 <li><p>Marque el botón <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">compute</span> <span class="pre">forest</span> <span class="pre">variables</span></code>.</p></li>
-<li><p>Especifique “dist_forest” en la lista <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> para los modelos FAR.</p></li>
+<li><p>Especifique “dist_edge” en la lista <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> para los modelos FAR.</p></li>
 </ul>
 <p>La distancia al borde del bosque se calcula directamente a partir del archivo raster de cambio de cobertura forestal y no es necesario proporcionar ninguna otra variable explicativa adicional.</p>
 </section>
@@ -565,7 +565,7 @@ mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\da
 <img alt="../_images/user-data-interface-variables.png" src="../_images/user-data-interface-variables.png" />
 <p><br/></p>
 <ul class="simple">
-<li><p>Especifica sólo “distedge” en la lista <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> para los modelos FAR y ejecuta los modelos y la validación con los parámetros por defecto.</p></li>
+<li><p>Especifica sólo “dist_edge” en la lista <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> para los modelos FAR y ejecuta los modelos y la validación con los parámetros por defecto.</p></li>
 </ul>
 <img alt="../_images/user-data-interface-far.png" src="../_images/user-data-interface-far.png" />
 </section>
