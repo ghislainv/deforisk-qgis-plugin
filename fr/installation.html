@@ -1,0 +1,719 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Installation &#8212; deforisk — Create and compare deforestation risk maps</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=640c812e"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'installation';</script>
+    <link rel="canonical" href="https://deforisk-qgis-plugin.org/installation.html" />
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Commencer" href="get_started.html" />
+    <link rel="prev" title="Le plugin QGIS deforisk" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navigation dans le site">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo-deforisk.png" class="logo__image only-light" alt=""/>
+    <img src="_static/logo-deforisk.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">deforisk QGIS plugin</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    Accueil
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="get_started.html">
+    Commencer
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="articles.html">
+    Articles
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    API de Plugin
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/changelog.html">
+    Journal des modifications
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/community_guidelines.html">
+    Charte communautaire
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/code_of_conduct.html">
+    Code de conduite
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/license.html">
+    Licence
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="Sur cette page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    Accueil
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="get_started.html">
+    Commencer
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="articles.html">
+    Articles
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    API de Plugin
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/changelog.html">
+    Journal des modifications
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/community_guidelines.html">
+    Charte communautaire
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/code_of_conduct.html">
+    Code de conduite
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/license.html">
+    Licence
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Fil d'Ariane" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Accueil">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Installation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Lien vers cette rubrique">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Dépendances</strong> : <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> et <a class="reference external" href="https://gdal.org/index.html">GDAL</a> doivent être installés sur votre système avant d’utiliser le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>. <em>Sur les systèmes Unix-like</em>, vous devez également installer <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmconvert">osmconvert</a> et <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a>. <em>Sur les systèmes Windows</em>, ces dépendances sont déjà incluses dans le plugin sous forme de fichiers binaires <code class="docutils literal notranslate"><span class="pre">.exe</span></code>, vous n’avez donc pas besoin de les installer. Ensuite, les paquets Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> doivent être installés sur votre système. Suivez les instructions ci-dessous pour installer ces dépendances.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Installation</strong> : Nous décrivons ici deux façons d’installer le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> :</p>
+<ul class="simple">
+<li><p>La première option consiste à installer QGIS et GDAL sur votre système, puis à installer les paquets Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code>. Cette procédure d’installation dépend du système.</p></li>
+<li><p>Une autre option consiste à utiliser conda/miniconda/mamba (l’un des trois) pour installer QGIS, GDAL, <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> dans un environnement dédié. Cette procédure d’installation est indépendante du système.</p></li>
+</ul>
+</div>
+<section id="on-windows">
+<h2>Sous Windows<a class="headerlink" href="#on-windows" title="Lien vers cette rubrique">#</a></h2>
+<section id="turn-on-the-developer-mode-recommended">
+<h3>Activer le mode développeur (recommandé)<a class="headerlink" href="#turn-on-the-developer-mode-recommended" title="Lien vers cette rubrique">#</a></h3>
+<p>Le mode développeur permet de créer des liens symboliques (symlinks) qui sont utilisés par le plugin et utiles pour éviter de copier de gros fichiers sur le disque. Pour activer le mode développeur, suivez <a class="reference external" href="https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development">ces instructions</a>. En résumé :</p>
+<ul class="simple">
+<li><p>Saisissez « pour les développeurs » dans le champ de recherche de la barre des tâches pour accéder à la page des paramètres « pour les développeurs ».</p></li>
+<li><p>Activer le mode développeur, en haut de la page « Pour les développeurs ».</p></li>
+<li><p>Lisez la clause de non-responsabilité relative au paramètre que vous avez choisi. Cliquez sur « Oui » pour accepter la modification.</p></li>
+</ul>
+<p>L’activation du mode développeur nécessite un accès administrateur. Si votre appareil appartient à une organisation, cette option peut être désactivée. Si le mode développeur n’est pas activé sous Windows, il n’empêche pas l’utilisation du plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>. Mais les fichiers volumineux seront copiés dans plusieurs répertoires et occuperont un espace important sur le disque.</p>
+</section>
+<section id="install-qgis-and-gdal-on-windows">
+<h3>Installer QGIS et GDAL sous Windows<a class="headerlink" href="#install-qgis-and-gdal-on-windows" title="Lien vers cette rubrique">#</a></h3>
+<p>Pour installer QGIS et GDAL sur Windows, utilisez l’installateur réseau <a class="reference external" href="https://trac.osgeo.org/osgeo4w/">OSGeo4W</a>. OSGeo4W est une distribution binaire d’un large ensemble de logiciels géomatiques libres pour les environnements Windows (Windows 11 à 7). Sélectionnez <em>Express Install</em> et installez QGIS et GDAL. Plusieurs Go d’espace disque seront nécessaires pour installer ces programmes. Ceci installera également <em>OSGeo4W Shell</em> pour exécuter les lignes de commande.</p>
+</section>
+<section id="install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows">
+<h3>Installer les paquets Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> sous Windows<a class="headerlink" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows" title="Lien vers cette rubrique">#</a></h3>
+<p>Pour installer les paquets Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code>, ouvrez <em>OSGeo4W Shell</em>, et utilisez <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3.exe<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr
+</pre></div>
+</div>
+<p>Note : En cas de problème, vous pouvez vérifier la version de Python utilisée par OSGeo4W en utilisant <em>OSGeo Shell</em> et que les roues des paquets pour <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> sont bien disponibles sur <a class="reference external" href="https://pypi.org/project/forestatrisk/#files">PyPI</a> pour vos versions de Windows et de Python. Actuellement, PyPI fournit des roues pour Python &gt;= 3.9 pour Windows, Linux, et macOS en 64-bit.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3.exe<span class="w"> </span>--version
+</pre></div>
+</div>
+</section>
+</section>
+<section id="on-unix-like-systems-linux-and-macos">
+<h2>Sur les systèmes de type Unix (Linux et macOS)<a class="headerlink" href="#on-unix-like-systems-linux-and-macos" title="Lien vers cette rubrique">#</a></h2>
+<section id="install-qgis-and-gdal-on-unix-like-systems">
+<h3>Installer QGIS et GDAL sur des systèmes de type Unix<a class="headerlink" href="#install-qgis-and-gdal-on-unix-like-systems" title="Lien vers cette rubrique">#</a></h3>
+<p>Installez QGIS et GDAL sur votre système, par exemple en utilisant <code class="docutils literal notranslate"><span class="pre">apt-get</span></code> pour les distributions Linux Debian/Ubuntu.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>qgis<span class="w"> </span>gdal-bin<span class="w"> </span>libgdal-dev
+</pre></div>
+</div>
+<p>Pour macOS, vous pouvez utiliser l’installateur disponible sur le <a class="reference external" href="https://www.qgis.org/en/site/forusers/download.html">site web de QGIS</a> et installer GDAL en utilisant <a class="reference external" href="https://formulae.brew.sh/formula/gdal">brew</a>.</p>
+<p>Après avoir installé GDAL, vous pouvez tester l’installation en lançant <code class="docutils literal notranslate"><span class="pre">gdalinfo</span> <span class="pre">--version</span></code> dans l’invite de commande ou le terminal, ce qui devrait afficher la version de GDAL installée.</p>
+</section>
+<section id="install-osmconvert-and-osmfilter">
+<h3>Installez <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> et <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code>.<a class="headerlink" href="#install-osmconvert-and-osmfilter" title="Lien vers cette rubrique">#</a></h3>
+<p>Sur les systèmes de type Unix, vous devez également installer osmconvert et osmfilter avant d’utiliser le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>. osmconvert peut être utilisé pour convertir et traiter les fichiers OpenStreetMap tandis que osmfilter est un outil en ligne de commande utilisé pour filtrer les fichiers de données OpenStreetMap pour des balises spécifiques. Pour les installer sur votre système, suivez les instructions des pages web <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmconvert">osmconvert</a> et <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a>.</p>
+</section>
+<section id="install-the-forestatrisk-and-riskmapjnr-python-packages-on-unix-like-systems">
+<h3>Installer les paquets Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> sur les systèmes de type Unix<a class="headerlink" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-unix-like-systems" title="Lien vers cette rubrique">#</a></h3>
+<p>Sur les systèmes récents, vous ne pouvez pas utiliser pip pour installer les paquets Python sur l’ensemble du système. En conséquence, nous devons créer un environnement virtuel et y installer les paquets <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code>. Assurez-vous également d’installer les liens GDAL appropriés en utilisant <code class="docutils literal notranslate"><span class="pre">gdal==$(gdal-config</span> <span class="pre">--version)</span></code>. Une fois que le paquet et ses dépendances ont été installés, vous pouvez désactiver l’environnement virtuel.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>/path/to/venv
+<span class="nb">source</span><span class="w">  </span>/path/to/venv/bin/activate
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr<span class="w"> </span><span class="nv">gdal</span><span class="o">==</span><span class="k">$(</span>gdal-config<span class="w"> </span>--version<span class="k">)</span>
+deactivate
+</pre></div>
+</div>
+<p>Ensuite, dans le <a class="reference external" href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/intro.html#running-python-code-when-qgis-starts">fichier Python</a> <code class="docutils literal notranslate"><span class="pre">startup.py</span></code>, ajoutez les deux lignes suivantes, en adaptant le chemin à votre cas spécifique (vérifiez la version de Python). Ces deux lignes seront exécutées au démarrage de QGIS et ajouteront le chemin des paquets installés dans l’environnement virtuel au <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/path/to/venv/lib/python3.11/site-packages/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-conda-miniconda-all-operating-systems">
+<h2>Utilisation de conda/miniconda (tous les systèmes d’exploitation)<a class="headerlink" href="#using-conda-miniconda-all-operating-systems" title="Lien vers cette rubrique">#</a></h2>
+<p>Cette méthode alternative présente l’avantage d’installer <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> et <a class="reference external" href="https://gdal.org/index.html">GDAL</a> ainsi que les paquets Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> dans un environnement isolé et dédié, avec une version allégée de QGIS. Cependant, les inconvénients sont qu’il n’y a pas d’icônes de bureau QGIS ou d’association de fichiers, et que cette installation n’inclut pas GRASS et SAGA par exemple (bien qu’ils puissent être facilement installés avec conda par la suite).</p>
+<section id="install-miniconda">
+<h3>Installer miniconda<a class="headerlink" href="#install-miniconda" title="Lien vers cette rubrique">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Conda</span></code> (ou sa version minimale <code class="docutils literal notranslate"><span class="pre">miniconda</span></code>) est un gestionnaire de paquets et d’environnements. Pour installer <code class="docutils literal notranslate"><span class="pre">miniconda</span></code>, téléchargez l’installateur depuis le site <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> et suivez les instructions pour votre système.</p>
+</section>
+<section id="install-qgis-and-dependencies-in-a-new-environment">
+<h3>Installer QGIS et ses dépendances dans un nouvel environnement<a class="headerlink" href="#install-qgis-and-dependencies-in-a-new-environment" title="Lien vers cette rubrique">#</a></h3>
+<p>Dans un terminal, créez un nouvel environnement (nommé ici <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>) et installez-y <code class="docutils literal notranslate"><span class="pre">QGIS</span></code> (via les paquets conda), <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code>. Attention, <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> et <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code> doivent toujours être installés séparément sur les systèmes Linux et macOS (cf. section ci-dessus).</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-n<span class="w"> </span>deforisk<span class="w"> </span>qgis<span class="w">  </span><span class="c1"># create environment and install QGIS (and GDAL embedded)</span>
+conda<span class="w"> </span>activate<span class="w"> </span>deforisk<span class="w">        </span><span class="c1"># activate the newly created environment</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr<span class="w"> </span><span class="c1"># install additional Python packages</span>
+</pre></div>
+</div>
+<p>Vous pouvez maintenant lancer <code class="docutils literal notranslate"><span class="pre">QGIS</span></code> depuis le terminal en utilisant la commande <code class="docutils literal notranslate"><span class="pre">qgis</span></code>.</p>
+</section>
+<section id="deactivate-and-delete-the-environment">
+<h3>Désactiver et supprimer l’environnement<a class="headerlink" href="#deactivate-and-delete-the-environment" title="Lien vers cette rubrique">#</a></h3>
+<p>Si vous souhaitez désactiver et supprimer l’environnement :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>deforisk
+</pre></div>
+</div>
+</section>
+</section>
+<section id="access-to-gee-and-wdpa">
+<h2>Accès à GEE et WDPA<a class="headerlink" href="#access-to-gee-and-wdpa" title="Lien vers cette rubrique">#</a></h2>
+<p>Le plugin télécharge les données forestières de Google Earth Engine (GEE) en utilisant le paquetage Python <code class="docutils literal notranslate"><span class="pre">geefcc</span></code> et les données sur les aires protégées de la World Database on Protected Areas (WDPA) en utilisant le paquet Python <code class="docutils literal notranslate"><span class="pre">pywdpa</span></code>. Vous aurez besoin d’un accès à GEE et WDPA pour pouvoir utiliser le plugin.</p>
+<section id="access-to-gee">
+<h3>Accès à GEE<a class="headerlink" href="#access-to-gee" title="Lien vers cette rubrique">#</a></h3>
+<p>Pour pouvoir utiliser GEE, vous aurez besoin soit (i) d’un compte Google et d’un projet Google Cloud <a class="reference external" href="https://developers.google.com/earth-engine/guides/access#a-role-in-a-cloud-project">enregistré pour utiliser Earth Engine</a>, soit (ii) d’un compte de service vous permettant d’utiliser Google Earth Engine par l’intermédiaire d’un projet Google Cloud enregistré (dans ce cas, vous n’avez pas besoin de compte Google). Veuillez suivre ce lien si vous souhaitez <a class="reference external" href="https://code.earthengine.google.com/register">enregistrer un projet pour utiliser Earth Engine</a>.</p>
+<p>Dans le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>, pour l’argument <code class="docutils literal notranslate"><span class="pre">Earth</span> <span class="pre">Engine</span> <span class="pre">access</span></code> disponible dans l’onglet « Get variables », vous devez indiquer soit le nom d’un projet Google Cloud enregistré pour utiliser Earth Engine (et pour lequel vous êtes identifié en tant qu’utilisateur), soit un chemin vers un fichier de clé privée JSON vous autorisant à accéder à Earth Engine via un compte de service.</p>
+<a class="reference internal image-reference" href="_images/ee_access.png"><img alt="Accès à Earth Engine" src="_images/ee_access.png" style="width: 500px;" />
+</a>
+</section>
+<section id="access-to-wdpa">
+<h3>Accès à WDPA<a class="headerlink" href="#access-to-wdpa" title="Lien vers cette rubrique">#</a></h3>
+<p>Pour utiliser l’API de Protected Planet afin d’accéder aux données sur les aires protégées dans le monde, vous devez d’abord avoir obtenu une clé d’API personnelle en remplissant le <a class="reference external" href="https://api.protectedplanet.net/request">formulaire</a> disponible sur Protected Planet.</p>
+<p>Dans le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>, pour l’argument <code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code> disponible dans l’onglet « Get variables », vous devez indiquer soit votre clé d’API personnelle (une série de lettres et de chiffres comme <code class="docutils literal notranslate"><span class="pre">ca4703ffba6b9a26b2db73f78e56e088</span></code> qui est une fausse clé) ou un chemin vers un fichier texte spécifiant la valeur de la variable d’environnement « WDPA_KEY » (par exemple, un simple fichier texte comprenant une ligne <code class="docutils literal notranslate"><span class="pre">WDPA_KEY=&quot;ca4703ffba6b9a26b2db73f78e56e088&quot;</span></code>).</p>
+<a class="reference internal image-reference" href="_images/wdpa_access.png"><img alt="Accès à WDPA" src="_images/wdpa_access.png" style="width: 500px;" />
+</a>
+</section>
+</section>
+<section id="installing-the-deforisk-plugin-in-qgis">
+<h2>Installation du plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> dans QGIS<a class="headerlink" href="#installing-the-deforisk-plugin-in-qgis" title="Lien vers cette rubrique">#</a></h2>
+<ul class="simple">
+<li><p>Téléchargez le fichier <a class="reference external" href="https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip">zip</a> <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> depuis GitHub.</p></li>
+<li><p>Ouvrir QGIS.</p></li>
+<li><p>Dans la barre de menu de QGIS, allez dans <code class="docutils literal notranslate"><span class="pre">Extensions</span> <span class="pre">&gt;</span> <span class="pre">Installer/Gérer</span> <span class="pre">des</span> <span class="pre">extensions</span> <span class="pre">&gt;</span> <span class="pre">Installer</span> <span class="pre">depuis</span> <span class="pre">un</span> <span class="pre">ZIP</span></code>.</p></li>
+<li><p>Sélectionnez le fichier zip qui a été téléchargé.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Le plugin QGIS deforisk</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="get_started.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Commencer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Sur cette page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-windows">Sous Windows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turn-on-the-developer-mode-recommended">Activer le mode développeur (recommandé)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-windows">Installer QGIS et GDAL sous Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-windows">Installer les paquets Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> sous Windows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-unix-like-systems-linux-and-macos">Sur les systèmes de type Unix (Linux et macOS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-gdal-on-unix-like-systems">Installer QGIS et GDAL sur des systèmes de type Unix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-osmconvert-and-osmfilter">Installez <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> et <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-unix-like-systems">Installer les paquets Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> sur les systèmes de type Unix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda-miniconda-all-operating-systems">Utilisation de conda/miniconda (tous les systèmes d’exploitation)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">Installer miniconda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-dependencies-in-a-new-environment">Installer QGIS et ses dépendances dans un nouvel environnement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deactivate-and-delete-the-environment">Désactiver et supprimer l’environnement</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-gee-and-wdpa">Accès à GEE et WDPA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-gee">Accès à GEE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-to-wdpa">Accès à WDPA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-deforisk-plugin-in-qgis">Installation du plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> dans QGIS</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Cirad and FAO.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Construit avec le <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">thème PyData Sphinx</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

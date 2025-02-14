@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Le plugin QGIS deforisk &#8212; deforisk — Create and compare deforestation risk maps</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=640c812e"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="canonical" href="https://deforisk-qgis-plugin.org/index.html" />
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navigation dans le site">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo-deforisk.png" class="logo__image only-light" alt=""/>
+    <img src="_static/logo-deforisk.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">deforisk QGIS plugin</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="#">
+    Accueil
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="get_started.html">
+    Commencer
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="articles.html">
+    Articles
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    API de Plugin
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/changelog.html">
+    Journal des modifications
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/community_guidelines.html">
+    Charte communautaire
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/code_of_conduct.html">
+    Code de conduite
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing/license.html">
+    Licence
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="Sur cette page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="#">
+    Accueil
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="get_started.html">
+    Commencer
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="articles.html">
+    Articles
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="plugin_api.html">
+    API de Plugin
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/changelog.html">
+    Journal des modifications
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/community_guidelines.html">
+    Charte communautaire
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/code_of_conduct.html">
+    Code de conduite
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing/license.html">
+    Licence
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <a class="reference external image-reference" href="https://deforisk-qgis-plugin.org"><img alt="Logo riskmapjnr" class="align-right" src="https://deforisk-qgis-plugin.org/_static/logo-deforisk.png" style="width: 140px;" />
+</a>
+<section id="deforisk-qgis-plugin">
+<h1>Le plugin QGIS deforisk<a class="headerlink" href="#deforisk-qgis-plugin" title="Lien vers cette rubrique">#</a></h1>
+<a class="reference external image-reference" href="https://www.gnu.org/licenses/gpl-3.0.html"><img alt="https://img.shields.io/badge/licence-GPLv3-8f10cb.svg" src="https://img.shields.io/badge/licence-GPLv3-8f10cb.svg" />
+</a>
+<a class="reference external image-reference" href="https://github.com/ghislainv/deforisk-qgis-plugin"><img alt="https://img.shields.io/badge/GitHub-repo-green.svg" src="https://img.shields.io/badge/GitHub-repo-green.svg" />
+</a>
+<a class="reference external image-reference" href="https://deforisk-qgis-plugin.org"><img alt="https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg" src="https://img.shields.io/badge/web-FAR_QGIS_plugin-blue.svg" />
+</a>
+<a class="reference external image-reference" href="https://ecology.ghislainv.fr/forestatrisk"><img alt="https://img.shields.io/badge/python-forestatrisk-orange?logo=python&amp;logoColor=ffd43b&amp;.svg" src="https://img.shields.io/badge/python-forestatrisk-orange?logo=python&amp;logoColor=ffd43b&amp;.svg" />
+</a>
+<a class="reference external image-reference" href="https://ecology.ghislainv.fr/riskmapjnr"><img alt="https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&amp;logoColor=ffd43b&amp;.svg" src="https://img.shields.io/badge/python-riskmapjnr-yellow?logo=python&amp;logoColor=ffd43b&amp;.svg" />
+</a>
+<a class="reference external image-reference" href="https://ecology.ghislainv.fr/pywdpa"><img alt="https://img.shields.io/badge/python-pywdpa-90b478?logo=python&amp;logoColor=ffd43b&amp;.svg" src="https://img.shields.io/badge/python-pywdpa-90b478?logo=python&amp;logoColor=ffd43b&amp;.svg" />
+</a>
+<a class="reference external image-reference" href="https://ecology.ghislainv.fr/geefcc"><img alt="https://img.shields.io/badge/python-geefcc-3c8c3c?logo=python&amp;logoColor=ffd43b&amp;.svg" src="https://img.shields.io/badge/python-geefcc-3c8c3c?logo=python&amp;logoColor=ffd43b&amp;.svg" />
+</a>
+<a class="reference external image-reference" href="https://doi.org/10.5281/zenodo.12593893"><img alt="https://zenodo.org/badge/DOI/10.5281/zenodo.12593893.svg" src="https://zenodo.org/badge/DOI/10.5281/zenodo.12593893.svg" />
+</a>
+<section id="languages">
+<h2>Langues<a class="headerlink" href="#languages" title="Lien vers cette rubrique">#</a></h2>
+<p>Le site web du plugin QGIS <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> est disponible en anglais <a class="reference external" href="https://deforisk-qgis-plugin.org/"><img alt="icon_en" src="https://deforisk-qgis-plugin.org/_static/icon_en.png" style="width: 20px;" /></a>, en espagnol <a class="reference external" href="https://deforisk-qgis-plugin.org/es"><img alt="icon_es" src="https://deforisk-qgis-plugin.org/_static/icon_es.png" style="width: 20px;" /></a> et en français <a class="reference external" href="https://deforisk-qgis-plugin.org/fr"><img alt="icon_fr" src="https://deforisk-qgis-plugin.org/_static/icon_fr.png" style="width: 20px;" /></a>.</p>
+</section>
+<section id="aim">
+<h2>Objectif<a class="headerlink" href="#aim" title="Lien vers cette rubrique">#</a></h2>
+<p>Le plugin QGIS <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> peut être utilisé pour cartographier le risque de déforestation pour un pays ou une zone d’intérêt. Quatre modèles peuvent être utilisés pour dériver les cartes de risque : les modèles iCAR, GLM, Random Forest et Moving Window. Ces quatre modèles peuvent être comparés à un modèle de référence qui suppose une simple diminution du risque de déforestation en fonction de la distance à la lisière de la forêt. Tous les modèles sont calibrés à l’aide d’observations de déforestation passées pour une période donnée entre 2000 et 2022. Les cartes de changement du couvert forestier peuvent être fournies par l’utilisateur ou dérivées de deux produits de changement du couvert forestier ou arboré mondial : <a class="reference external" href="https://earthenginepartners.appspot.com/science-2013-global-forest">Global Forest Change</a> et <a class="reference external" href="https://forobs.jrc.ec.europa.eu/TMF">Tropical Moist Forests</a>.</p>
+<p>Les cartes de risque de déforestation obtenues à l’aide de ce plugin peuvent être utilisées pour estimer l’impact de la réduction des émissions des projets de conservation des forêts dans le cadre de l”<a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">approche juridictionnelle et imbriquée promue par VCS</a>.</p>
+<a class="reference external image-reference" href="https://deforisk-qgis-plugin.org"><img alt="Bannière" src="https://deforisk-qgis-plugin.org/_static/banner.png" />
+</a>
+</section>
+<section id="specificities">
+<h2>Spécificités<a class="headerlink" href="#specificities" title="Lien vers cette rubrique">#</a></h2>
+<p><strong>Basé sur Python.</strong> Le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> s’appuie sur quatre paquets Python développés spécifiquement pour la modélisation de la déforestation : <code class="docutils literal notranslate"><span class="pre">geefcc</span></code>, <code class="docutils literal notranslate"><span class="pre">pywdpa</span></code>, <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code>, et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code>. Le paquet <code class="docutils literal notranslate"><span class="pre">geefcc</span></code> peut être utilisé pour créer des cartes de changement de couverture forestière à partir de Google Earth Engine (GEE) et les télécharger localement en utilisant deux produits globaux de changement de couverture forestière ou arborée : Global Forest Change ou Tropical Moist Forests. Le paquet <code class="docutils literal notranslate"><span class="pre">pywdpa</span></code> permet de télécharger des fichiers vectoriels de zones protégées pour n’importe quel pays en utilisant la base de données mondiale sur les zones protégées (WDPA). Le paquet <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> fournit des fonctions pour modéliser la déforestation et prédire le risque spatial de déforestation en utilisant diverses variables explicatives (distance à la lisière de la forêt, altitude, aires protégées, etc.) et divers modèles statistiques, notamment iCAR, GLM et Random Forest. Le paquet <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> permet de dériver des cartes de risque de déforestation suivant la méthodologie Verra JNR qui inclut un modèle de fenêtre mobile et un modèle de référence qui suppose une diminution du risque de déforestation avec la distance à la lisière de la forêt.</p>
+<a class="reference external image-reference" href="https://ecology.ghislainv.fr/geefcc"><img alt="geefc" src="https://deforisk-qgis-plugin.org/_static/logo-geefcc.png" style="width: 100px;" />
+</a>
+<a class="reference external image-reference" href="https://ecology.ghislainv.fr/pywdpa"><img alt="pywdpa" src="https://deforisk-qgis-plugin.org/_static/logo-pywdpa.png" style="width: 100px;" />
+</a>
+<a class="reference external image-reference" href="https://ecology.ghislainv.fr/forestatrisk"><img alt="forestarisk" src="https://deforisk-qgis-plugin.org/_static/logo-far.png" style="width: 100px;" />
+</a>
+<a class="reference external image-reference" href="https://ecology.ghislainv.fr/riskmapjnr"><img alt="riskmapjnr" src="https://deforisk-qgis-plugin.org/_static/logo-riskmapjnr.png" style="width: 100px;" />
+</a>
+<p><strong>Traitement des rasters par blocs.</strong> Les fichiers raster des changements du couvert forestier et des variables explicatives peuvent occuper un espace de plusieurs gigaoctets sur le disque. Le traitement en mémoire de rasters aussi volumineux peut s’avérer prohibitif sur les ordinateurs disposant d’une mémoire vive limitée. Les fonctions utilisées dans le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> traitent les grands rasters par blocs de pixels représentant des sous-ensembles de données raster. Cela rend le calcul efficace, avec une faible utilisation de la mémoire. La lecture et l’écriture de sous-ensembles de données matricielles se font en utilisant des fonctions de GDAL, une dépendance du plugin. Les calculs numériques sur les tableaux sont effectués avec le paquetage Python NumPy, dont le noyau est principalement constitué de code C optimisé et compilé qui s’exécute rapidement.</p>
+<p><strong>Execution des tâches en parallèle.</strong> L’approche recommandée pour sélectionner la meilleure carte de risque de déforestation et prédire la déforestation implique de comparer plusieurs modèles, d’ajuster les modèles en utilisant les changements du couvert forestier sur différentes périodes et de prédire le risque de déforestation à plusieurs dates. Cela implique la répétition d’un grand nombre de tâches. Pour économiser du temps de calcul, le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> utilise le gestionnaire de tâches de QGIS qui permet d’exécuter plusieurs analyses en parallèle.</p>
+<p><strong>Indépendant de l’OS.</strong> En utilisant à la fois le calcul par bloc pour les grands rasters et la parallélisation des tâches, le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> permet de sélectionner la meilleure carte de risque de déforestation et de prévoir la déforestation pour de grands pays ou des zones d’intérêt en un temps limité, même sur des ordinateurs personnels avec un matériel de performance moyenne. Comme <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> est un plugin QGIS écrit en Python, il fonctionne sur tous les systèmes d’exploitation capables d’exécuter QGIS, y compris Windows (<span class="math notranslate nohighlight">\(\geq10\)</span>), Linux, et Mac OS.</p>
+</section>
+<section id="installing-the-deforisk-plugin-in-qgis">
+<h2>Installation du plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> dans QGIS<a class="headerlink" href="#installing-the-deforisk-plugin-in-qgis" title="Lien vers cette rubrique">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Dépendances</strong> : <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> et <a class="reference external" href="https://gdal.org/index.html">GDAL</a> doivent être installés sur votre système avant d’utiliser le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>. <em>Sur les systèmes Unix-like</em>, vous devez également installer <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmconvert">osmconvert</a> et <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a>. <em>Sur les systèmes Windows</em>, ces dépendances sont déjà incluses dans le plugin sous forme de fichiers binaires <code class="docutils literal notranslate"><span class="pre">.exe</span></code>, vous n’avez donc pas besoin de les installer. Ensuite, les paquets Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> doivent être installés sur votre système. Suivez les <a class="reference external" href="installation.html">instructions d’installation</a> pour installer ces dépendances.</p>
+</div>
+<ul class="simple">
+<li><p>Téléchargez le fichier <a class="reference external" href="https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip">zip</a> <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> depuis GitHub.</p></li>
+<li><p>Ouvrir QGIS.</p></li>
+<li><p>Dans la barre de menu de QGIS, allez dans <code class="docutils literal notranslate"><span class="pre">Extensions</span> <span class="pre">&gt;</span> <span class="pre">Installer/Gérer</span> <span class="pre">les</span> <span class="pre">extensions</span> <span class="pre">&gt;</span> <span class="pre">Installer</span> <span class="pre">depuis</span> <span class="pre">un</span> <span class="pre">ZIP</span></code>.</p></li>
+<li><p>Sélectionnez le fichier zip qui a été téléchargé.</p></li>
+</ul>
+</section>
+<section id="acknowledgements">
+<h2>Remerciements<a class="headerlink" href="#acknowledgements" title="Lien vers cette rubrique">#</a></h2>
+<p>Cet outil a été développé conjointement par l’Organisation des Nations Unies pour l’alimentation et l’agriculture (<a class="reference external" href="https://www.fao.org/">FAO</a>) et l’organisme français de recherche et de coopération agricole pour le développement durable des régions tropicales et méditerranéennes (<a class="reference external" href="https://www.cirad.fr/en/">CIRAD</a>), dans le cadre du programme <a class="reference external" href="https://www.fao.org/in-action/aim4forests">AIM4Forests</a> : Accelerating Innovative Monitoring for Forests, avec le soutien financier du Department for Energy Security and Net Zero du Royaume-Uni de Grande-Bretagne et d’Irlande du Nord.</p>
+<a class="reference external image-reference" href="https://www.fao.org/in-action/aim4forests"><img alt="Logos des partenaires" src="https://deforisk-qgis-plugin.org/_static/logos_partners.png" style="height: 100px;" />
+</a>
+</section>
+<section id="contributing">
+<h2>Contribuer<a class="headerlink" href="#contributing" title="Lien vers cette rubrique">#</a></h2>
+<p>Le plugin QGIS <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> est Open Source et publié sous la licence <a class="reference external" href="https://deforisk-qgis-plugin.org/fr/contributing/license.html">GNU GPL version 3</a>. Toute personne intéressée peut contribuer au développement du paquet en suivant notre <a class="reference external" href="https://deforisk-qgis-plugin.org/fr/contributing/community_guidelines.html">Charte communautaire</a>. Chaque contributeur doit accepter de suivre le <a class="reference external" href="https://deforisk-qgis-plugin.org/fr/contributing/code_of_conduct.html">Code de conduite</a> du projet.</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="installation.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Installation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Sur cette page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#languages">Langues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Objectif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specificities">Spécificités</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-deforisk-plugin-in-qgis">Installation du plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> dans QGIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Remerciements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contribuer</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Cirad and FAO.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Construit avec le <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">thème PyData Sphinx</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

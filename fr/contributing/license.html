@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Licence &#8212; deforisk — Create and compare deforestation risk maps</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=640c812e"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=e6b791cb"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contributing/license';</script>
+    <link rel="canonical" href="https://deforisk-qgis-plugin.org/contributing/license.html" />
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="prev" title="Code de conduite" href="code_of_conduct.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Alerte de version"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Navigation dans le site">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/logo-deforisk.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo-deforisk.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">deforisk QGIS plugin</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Accueil
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../get_started.html">
+    Commencer
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../articles.html">
+    Articles
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../plugin_api.html">
+    API de Plugin
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="changelog.html">
+    Journal des modifications
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="community_guidelines.html">
+    Charte communautaire
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="code_of_conduct.html">
+    Code de conduite
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="#">
+    Licence
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Recherche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="Sur cette page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../index.html">
+    Accueil
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../get_started.html">
+    Commencer
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../articles.html">
+    Articles
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../plugin_api.html">
+    API de Plugin
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="changelog.html">
+    Journal des modifications
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="community_guidelines.html">
+    Charte communautaire
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="code_of_conduct.html">
+    Code de conduite
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Licence
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ghislainv/deforisk-qgis-plugin" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.qgis.org/" title="QGIS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/icon_qgis.png" class="icon-link-image" alt="QGIS"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Fil d'Ariane" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Accueil">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Licence</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="license">
+<h1>Licence<a class="headerlink" href="#license" title="Lien vers cette rubrique">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Il s'agit d'une copie locale de la <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0.en.html">Licence publique générale GNU version 3.0</a>.</p>
+</div>
+<section id="gnu-general-public-license">
+<h2>Licence publique générale GNU<a class="headerlink" href="#gnu-general-public-license" title="Lien vers cette rubrique">#</a></h2>
+<p>Version 3, 29 juin 2007</p>
+<p>Copyright (C) 2007 Free Software Foundation, Inc. <a class="reference external" href="https://fsf.org/">https://fsf.org/</a></p>
+<p>Tout le monde est autorisé à copier et à distribuer des copies textuelles de ce document de licence, mais il est interdit de le modifier.</p>
+</section>
+<section id="preamble">
+<span id="id1"></span><h2>Préambule<a class="headerlink" href="#preamble" title="Lien vers cette rubrique">#</a></h2>
+<p>La licence publique générale GNU est une licence libre et copyleft pour les logiciels et autres types d'œuvres.</p>
+<p>Les licences de la plupart des logiciels et autres travaux pratiques sont conçues pour vous priver de la liberté de partager et de modifier les travaux. En revanche, la licence publique générale GNU vise à garantir votre liberté de partager et de modifier toutes les versions d'un programme, afin de garantir qu'il reste un logiciel libre pour tous ses utilisateurs. Nous, la Free Software Foundation, utilisons la licence publique générale GNU pour la plupart de nos logiciels ; cela s'applique également à toute autre œuvre diffusée de cette manière par ses auteurs. Vous pouvez également l'appliquer à vos programmes.</p>
+<p>Lorsque nous parlons de logiciels libres, nous faisons référence à la liberté, et non au prix. Nos licences publiques générales sont conçues pour garantir que vous avez la liberté de distribuer des copies de logiciels libres (et de les faire payer si vous le souhaitez), que vous recevez le code source ou que vous pouvez l’obtenir si vous le souhaitez, que vous pouvez modifier le logiciel ou en utiliser des éléments dans de nouveaux programmes libres, et que vous savez que vous pouvez faire ces choses.</p>
+<p>Pour protéger vos droits, nous devons empêcher d’autres personnes de vous refuser ces droits ou de vous demander d’y renoncer. Par conséquent, vous avez certaines responsabilités si vous distribuez des copies du logiciel ou si vous le modifiez : vous devez respecter la liberté d’autrui.</p>
+<p>Par exemple, si vous distribuez des copies d’un tel programme, que ce soit à titre gracieux ou payant, vous devez transmettre aux destinataires les mêmes libertés que celles que vous avez reçues. Vous devez vous assurer qu’ils reçoivent ou peuvent obtenir le code source. Et vous devez leur montrer ces conditions afin qu’ils connaissent leurs droits.</p>
+<p>Les développeurs qui utilisent la GNU GPL protègent vos droits en deux étapes : (1) revendiquer le droit d’auteur sur le logiciel et (2) vous offrir cette licence qui vous autorise légalement à le copier, le distribuer et/ou le modifier.</p>
+<p>Pour la protection des développeurs et des auteurs, la GPL explique clairement qu’il n’y a pas de garantie pour ce logiciel libre. Pour la protection des utilisateurs et des auteurs, la GPL exige que les versions modifiées soient marquées comme modifiées, afin que leurs problèmes ne soient pas attribués à tort aux auteurs des versions précédentes.</p>
+<p>Certains appareils sont conçus pour empêcher les utilisateurs d’installer ou d’exécuter des versions modifiées du logiciel qu’ils contiennent, bien que le fabricant puisse le faire. Cela est fondamentalement incompatible avec l’objectif de protéger la liberté des utilisateurs de modifier le logiciel. Le modèle systématique de cet abus se produit dans le domaine des produits destinés à l’usage des particuliers, ce qui est précisément là où il est le plus inacceptable. C’est pourquoi nous avons conçu cette version de la GPL de manière à interdire cette pratique pour ces produits. Si de tels problèmes se posent dans d’autres domaines, nous sommes prêts à étendre cette disposition à ces domaines dans les versions futures de la GPL, si cela s’avère nécessaire pour protéger la liberté des utilisateurs.</p>
+<p>Enfin, chaque programme est constamment menacé par les brevets logiciels. Les États ne devraient pas autoriser les brevets à restreindre le développement et l’utilisation des logiciels sur les ordinateurs à usage général, mais dans ceux qui le font, nous souhaitons éviter le danger particulier que les brevets appliqués à un programme libre puissent le rendre effectivement propriétaire. Pour éviter cela, la GPL garantit que les brevets ne peuvent pas être utilisés pour rendre le programme non libre.</p>
+<p>Les conditions précises de copie, de distribution et de modification suivent.</p>
+</section>
+<section id="terms-and-conditions">
+<span id="id2"></span><h2>CONDITIONS GÉNÉRALES<a class="headerlink" href="#terms-and-conditions" title="Lien vers cette rubrique">#</a></h2>
+<section id="definitions">
+<span id="id3"></span><h3>0. Définitions.<a class="headerlink" href="#definitions" title="Lien vers cette rubrique">#</a></h3>
+<p>La « présente licence » fait référence à la version 3 de la licence publique générale GNU.</p>
+<p>Le terme « droit d’auteur » désigne également les lois similaires au droit d’auteur qui s’appliquent à d’autres types d’œuvres, telles que les masques de semi-conducteurs.</p>
+<p>Le terme « programme » désigne toute œuvre protégée par le droit d’auteur qui fait l’objet de la présente licence. Chaque titulaire de licence est désigné par le terme « vous ». Les « licenciés » et les « destinataires » peuvent être des individus ou des organisations.</p>
+<p>Modifier » une œuvre signifie copier ou adapter tout ou partie de l’œuvre d’une manière qui nécessite une autorisation de droit d’auteur, autre que la réalisation d’une copie exacte. L’œuvre qui en résulte est appelée une « version modifiée » de l’œuvre antérieure ou une œuvre « basée sur » l’œuvre antérieure.</p>
+<p>Par « œuvre couverte », on entend soit le programme non modifié, soit une œuvre basée sur le programme.</p>
+<p>Propager » une œuvre signifie en faire tout ce qui, sans autorisation, vous rendrait directement ou indirectement responsable d’une infraction à la législation applicable en matière de droits d’auteur, à l’exception de l’exécution sur un ordinateur ou de la modification d’une copie privée. La propagation comprend la copie, la distribution (avec ou sans modification), la mise à disposition du public et, dans certains pays, d’autres activités.</p>
+<p>Transmettre » une œuvre signifie toute forme de propagation qui permet à d’autres parties de faire ou de recevoir des copies. La simple interaction avec un utilisateur par l’intermédiaire d’un réseau informatique, sans transfert d’une copie, n’est pas une transmission.</p>
+<p>Une interface utilisateur interactive affiche des « mentions légales appropriées » dans la mesure où elle comprend un élément pratique et bien visible qui (1) affiche une mention de droit d’auteur appropriée et (2) indique à l’utilisateur qu’il n’y a pas de garantie pour le travail (sauf dans la mesure où des garanties sont fournies), que les détenteurs de licences peuvent transmettre le travail dans le cadre de la présente licence et comment consulter une copie de la présente licence. Si l’interface présente une liste de commandes ou d’options pour l’utilisateur, comme un menu, un élément bien visible de la liste répond à ce critère.</p>
+</section>
+<section id="source-code">
+<span id="id4"></span><h3>1. Code source.<a class="headerlink" href="#source-code" title="Lien vers cette rubrique">#</a></h3>
+<p>Le « code source » d’une œuvre désigne la forme préférée de l’œuvre pour y apporter des modifications. Le « code objet » désigne toute forme non source d’une œuvre.</p>
+<p>Une « interface standard » est une interface qui est soit une norme officielle définie par un organisme de normalisation reconnu, soit, dans le cas d’interfaces spécifiées pour un langage de programmation particulier, une interface largement utilisée par les développeurs travaillant dans ce langage.</p>
+<p>Les « bibliothèques système » d’un travail exécutable comprennent tout ce qui, autre que le travail dans son ensemble, (a) est inclus dans la forme normale d’emballage d’un composant majeur, mais qui ne fait pas partie de ce composant majeur, et (b) sert uniquement à permettre l’utilisation du travail avec ce composant majeur, ou à mettre en œuvre une interface standard pour laquelle une mise en œuvre est disponible au public sous la forme d’un code source. Dans ce contexte, on entend par « composant majeur » un composant essentiel majeur (noyau, système de fenêtres, etc.) du système d’exploitation spécifique (le cas échéant) sur lequel fonctionne l’œuvre exécutable, ou un compilateur utilisé pour produire l’œuvre, ou un interprète de code objet utilisé pour l’exécuter.</p>
+<p>La « source correspondante » d’une œuvre sous forme de code objet désigne tout le code source nécessaire pour générer, installer et (pour une œuvre exécutable) exécuter le code objet et pour modifier l’œuvre, y compris les scripts permettant de contrôler ces activités. Toutefois, il ne comprend pas les bibliothèques système de l’œuvre, ni les outils à usage général, ni les programmes gratuits généralement disponibles qui sont utilisés sans modification pour effectuer ces activités mais qui ne font pas partie de l’œuvre. Par exemple, la source correspondante comprend les fichiers de définition d’interface associés aux fichiers source de l’œuvre, ainsi que le code source des bibliothèques partagées et des sous-programmes liés dynamiquement que l’œuvre est spécifiquement conçue pour nécessiter, par exemple, une communication intime des données ou un flux de contrôle entre ces sous-programmes et d’autres parties de l’œuvre.</p>
+<p>La source correspondante ne doit rien contenir que les utilisateurs puissent régénérer automatiquement à partir d’autres parties de la source correspondante.</p>
+<p>La source correspondante d’une œuvre sous forme de code source est cette même œuvre.</p>
+</section>
+<section id="basic-permissions">
+<span id="id5"></span><h3>2. Permissions de base.<a class="headerlink" href="#basic-permissions" title="Lien vers cette rubrique">#</a></h3>
+<p>Tous les droits accordés en vertu de la présente licence le sont pour la durée des droits d’auteur sur le programme et sont irrévocables si les conditions énoncées sont remplies. La présente licence affirme explicitement votre autorisation illimitée d’exécuter le programme non modifié. Le résultat de l’exécution d’un travail couvert n’est couvert par la présente licence que si le résultat, compte tenu de son contenu, constitue un travail couvert. La présente licence reconnaît vos droits d’utilisation équitable ou d’autres droits équivalents, tels que prévus par la loi sur les droits d’auteur.</p>
+<p>Vous pouvez créer, exécuter et propager les travaux couverts que vous ne transmettez pas, sans conditions, tant que votre licence reste en vigueur. Vous pouvez transmettre les travaux couverts à d’autres personnes dans le seul but qu’elles effectuent des modifications exclusivement pour vous, ou qu’elles vous fournissent les moyens d’exécuter ces travaux, à condition que vous respectiez les termes de la présente licence en transmettant tous les éléments dont vous ne contrôlez pas les droits d’auteur. Les personnes qui réalisent ou exécutent les travaux couverts pour vous doivent le faire exclusivement en votre nom, sous votre direction et votre contrôle, dans des conditions qui leur interdisent de faire des copies de votre matériel protégé par le droit d’auteur en dehors de leur relation avec vous.</p>
+<p>La transmission dans d’autres circonstances n’est autorisée que dans les conditions énoncées ci-dessous. La sous-licence n’est pas autorisée ; l’article 10 la rend inutile.</p>
+</section>
+<section id="protecting-users-legal-rights-from-anti-circumvention-law">
+<span id="id6"></span><h3>3. Protéger les droits légaux des utilisateurs contre les lois anti-contournement.<a class="headerlink" href="#protecting-users-legal-rights-from-anti-circumvention-law" title="Lien vers cette rubrique">#</a></h3>
+<p>Aucune œuvre couverte n’est réputée faire partie d’une mesure technique efficace en vertu d’une loi applicable remplissant les obligations découlant de l’article 11 du traité de l’OMPI sur le droit d’auteur adopté le 20 décembre 1996, ou de lois similaires interdisant ou limitant le contournement de telles mesures.</p>
+<p>Lorsque vous transmettez une œuvre couverte, vous renoncez à tout pouvoir légal d’interdire le contournement des mesures technologiques dans la mesure où ce contournement est effectué par l’exercice des droits prévus par la présente licence en ce qui concerne l’œuvre couverte, et vous renoncez à toute intention de limiter l’exploitation ou la modification de l’œuvre comme moyen de faire respecter, à l’encontre des utilisateurs de l’œuvre, vos droits légaux ou ceux de tiers d’interdire le contournement des mesures technologiques.</p>
+</section>
+<section id="conveying-verbatim-copies">
+<span id="id7"></span><h3>4. Transmission de copies in extenso.<a class="headerlink" href="#conveying-verbatim-copies" title="Lien vers cette rubrique">#</a></h3>
+<p>Vous pouvez transmettre des copies exactes du code source du programme tel que vous le recevez, sur n’importe quel support, à condition de publier de manière visible et appropriée sur chaque copie un avis de droit d’auteur approprié ; de conserver intactes toutes les mentions indiquant que la présente licence et toutes les conditions non permissives ajoutées conformément à l’article 7 s’appliquent au code ; de conserver intactes toutes les mentions indiquant l’absence de garantie ; et de remettre à tous les destinataires une copie de la présente licence en même temps que le programme.</p>
+<p>Vous pouvez facturer n’importe quel prix ou aucun prix pour chaque copie que vous transmettez, et vous pouvez offrir une assistance ou une protection de garantie moyennant une redevance.</p>
+</section>
+<section id="conveying-modified-source-versions">
+<span id="id8"></span><h3>5. Transmission des versions modifiées des sources.<a class="headerlink" href="#conveying-modified-source-versions" title="Lien vers cette rubrique">#</a></h3>
+<p>Vous pouvez transmettre une œuvre basée sur le programme, ou les modifications apportées pour la produire à partir du programme, sous la forme d’un code source selon les termes de la section 4, à condition que vous remplissiez également toutes ces conditions :</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>L’œuvre doit porter des mentions bien visibles indiquant que vous l’avez modifiée et précisant la date à laquelle elle a été réalisée.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>L’œuvre doit porter des mentions bien visibles indiquant qu’elle est diffusée en vertu de la présente licence et de toute condition ajoutée en vertu de l’article 7. Cette exigence modifie l’exigence de l’article 4 selon laquelle il faut « conserver intactes toutes les mentions ».</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Vous devez concéder la licence sur l’ensemble de l’œuvre, dans son intégralité, à toute personne qui entre en possession d’une copie. La présente licence s’applique donc, avec les conditions supplémentaires de la section 7, à l’ensemble de l’œuvre et à toutes ses parties, quelle que soit la manière dont elles sont emballées. La présente licence n’autorise pas à concéder l’œuvre sous une autre forme, mais elle n’invalide pas une telle autorisation si vous l’avez reçue séparément.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Si l’œuvre comporte des interfaces utilisateur interactives, chacune d’entre elles doit afficher les mentions légales appropriées ; toutefois, si le programme comporte des interfaces interactives qui n’affichent pas les mentions légales appropriées, votre œuvre ne doit pas les obliger à le faire.</p></li>
+</ol>
+</li>
+</ul>
+<p>Une compilation d’une œuvre protégée avec d’autres œuvres séparées et indépendantes, qui ne sont pas par nature des extensions de l’œuvre protégée, et qui ne sont pas combinées avec elle de manière à former un programme plus important, dans ou sur un volume d’un support de stockage ou de distribution, est appelée un « agrégat » si la compilation et le droit d’auteur qui en résulte ne sont pas utilisés pour limiter l’accès ou les droits légaux des utilisateurs de la compilation au-delà de ce que les œuvres individuelles autorisent. L’inclusion d’une œuvre couverte dans un agrégat n’entraîne pas l’application de la présente licence aux autres parties de l’agrégat.</p>
+</section>
+<section id="conveying-non-source-forms">
+<span id="id9"></span><h3>6. Transmission des formulaires non sources.<a class="headerlink" href="#conveying-non-source-forms" title="Lien vers cette rubrique">#</a></h3>
+<p>Vous pouvez transmettre un travail couvert sous forme de code objet selon les termes des sections 4 et 5, à condition que vous transmettiez également la source correspondante lisible par machine selon les termes de la présente licence, de l’une des manières suivantes :</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Transmettre le code objet dans, ou incorporé dans, un produit physique (y compris un support de distribution physique), accompagné de la Source correspondante fixée sur un support physique durable habituellement utilisé pour l’échange de logiciels.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Transmettre le code objet dans, ou incorporé dans, un produit physique (y compris un support de distribution physique), accompagné d’une offre écrite, valable pour au moins trois ans et valable aussi longtemps que vous offrez des pièces détachées ou une assistance à la clientèle pour ce modèle de produit, de donner à quiconque possède le code objet soit (1) une copie de la Source correspondante pour tous les logiciels du produit couverts par la présente Licence, sur un support physique durable habituellement utilisé pour l’échange de logiciels, pour un prix ne dépassant pas le coût raisonnable de l’exécution physique de ce transfert de source, soit (2) l’accès à la copie de la Source correspondante à partir d’un serveur de réseau, sans frais.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Transmettre des copies individuelles du code objet avec une copie de l’offre écrite de fournir la source correspondante. Cette alternative n’est autorisée qu’occasionnellement et à des fins non commerciales, et seulement si vous avez reçu le code objet avec une telle offre, conformément à la sous-section 6b.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Transmettre le code objet en offrant un accès à partir d’un lieu désigné (gratuit ou payant), et offrir un accès équivalent à la Source correspondante de la même manière, à partir du même lieu, sans frais supplémentaires. Il n’est pas nécessaire d’exiger des destinataires qu’ils copient la Source correspondante en même temps que le code objet. Si l’endroit où copier le code objet est un serveur de réseau, la Source correspondante peut se trouver sur un autre serveur (exploité par vous ou par un tiers) qui offre des possibilités de copie équivalentes, à condition que vous indiquiez clairement à côté du code objet où trouver la Source correspondante. Quel que soit le serveur qui héberge la source correspondante, vous êtes tenu de veiller à ce qu’elle soit disponible aussi longtemps que nécessaire pour satisfaire à ces exigences.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="5">
+<li><p>Transmettre le code objet en utilisant la transmission peer-to-peer, à condition d’informer les autres peers de l’endroit où le code objet et la source correspondante de l’œuvre sont proposés gratuitement au grand public en vertu de la sous-section 6d.</p></li>
+</ol>
+</li>
+</ul>
+<p>Une partie séparable du code objet, dont le code source est exclu de la source correspondante en tant que bibliothèque de système, n’a pas besoin d’être incluse dans le transport de l’œuvre de code objet.</p>
+<p>Un « produit utilisateur » est soit (1) un « produit de consommation », c’est-à-dire tout bien meuble corporel qui est normalement utilisé à des fins personnelles, familiales ou domestiques, soit (2) tout ce qui est conçu ou vendu pour être incorporé dans une habitation. Pour déterminer si un produit est un produit de consommation, les cas douteux doivent être résolus en faveur de la couverture. Pour un produit particulier reçu par un utilisateur particulier, l’expression « normalement utilisé » se réfère à une utilisation typique ou courante de cette catégorie de produit, indépendamment du statut de l’utilisateur particulier ou de la manière dont il utilise effectivement le produit, ou dont il s’attend à ce qu’il l’utilise, ou dont on s’attend à ce qu’il l’utilise. Un produit est un produit de consommation, qu’il ait ou non des utilisations commerciales, industrielles ou non commerciales substantielles, à moins que ces utilisations ne représentent le seul mode d’utilisation significatif du produit.</p>
+<p>Par « informations d’installation » pour un produit utilisateur, on entend toutes les méthodes, procédures, clés d’autorisation ou autres informations requises pour installer et exécuter des versions modifiées d’une œuvre couverte dans ce produit utilisateur à partir d’une version modifiée de sa source correspondante. Les informations doivent être suffisantes pour garantir que le fonctionnement continu du code objet modifié n’est en aucun cas empêché ou perturbé du seul fait qu’une modification a été apportée.</p>
+<p>Si vous transmettez une œuvre à code objet en vertu de cette section dans, ou avec, ou spécifiquement pour une utilisation dans, un produit utilisateur, et que la transmission se produit dans le cadre d’une transaction dans laquelle le droit de possession et d’utilisation du produit utilisateur est transféré au destinataire à perpétuité ou pour une durée déterminée (quelle que soit la façon dont la transaction est caractérisée), la source correspondante transmise en vertu de cette section doit être accompagnée par les informations d’installation. Toutefois, cette exigence ne s’applique pas si ni vous ni aucun tiers ne conserve la possibilité d’installer le code objet modifié sur le produit utilisateur (par exemple, le travail a été installé en ROM).</p>
+<p>L’obligation de fournir des informations sur l’installation n’inclut pas l’obligation de continuer à fournir un service d’assistance, une garantie ou des mises à jour pour un travail qui a été modifié ou installé par le destinataire, ou pour le produit utilisateur dans lequel il a été modifié ou installé. L’accès à un réseau peut être refusé lorsque la modification elle-même affecte matériellement et négativement le fonctionnement du réseau ou viole les règles et protocoles de communication à travers le réseau.</p>
+<p>Les sources correspondantes transmises et les informations d’installation fournies conformément à la présente section doivent être dans un format documenté publiquement (et avec une mise en œuvre disponible au public sous forme de code source), et ne doivent pas nécessiter de mot de passe ou de clé spéciale pour le décompactage, la lecture ou la copie.</p>
+</section>
+<section id="additional-terms">
+<span id="id10"></span><h3>7. Conditions supplémentaires.<a class="headerlink" href="#additional-terms" title="Lien vers cette rubrique">#</a></h3>
+<p>Les « autorisations supplémentaires » sont des termes qui complètent les termes de la présente licence en faisant des exceptions à une ou plusieurs de ses conditions. Les autorisations supplémentaires applicables à l’ensemble du programme seront traitées comme si elles étaient incluses dans la présente licence, dans la mesure où elles sont valides en vertu de la loi applicable. Si des autorisations supplémentaires ne s’appliquent qu’à une partie du programme, cette partie peut être utilisée séparément en vertu de ces autorisations, mais le programme entier reste régi par la présente licence sans tenir compte des autorisations supplémentaires.</p>
+<p>Lorsque vous transmettez une copie d’une œuvre couverte, vous pouvez, à votre choix, supprimer toutes les autorisations supplémentaires de cette copie ou d’une partie de celle-ci. (Les autorisations supplémentaires peuvent être écrites de manière à exiger leur propre suppression dans certains cas lorsque vous modifiez l’œuvre). Vous pouvez placer des autorisations supplémentaires sur des éléments que vous avez ajoutés à une œuvre couverte et pour lesquels vous avez ou pouvez donner une autorisation de droit d’auteur appropriée.</p>
+<p>Nonobstant toute autre disposition de la présente licence, pour le matériel que vous ajoutez à une œuvre couverte, vous pouvez (avec l’autorisation des détenteurs des droits d’auteur de ce matériel) compléter les termes de la présente licence par des termes :</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>excluant toute garantie ou limitant la responsabilité d’une manière différente de celle prévue aux articles 15 et 16 de la présente licence ; ou</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>exiger la préservation des mentions légales raisonnables spécifiées ou des attributions d’auteur dans ce matériel ou dans les mentions légales appropriées affichées par les œuvres qui le contiennent ; ou</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Interdire toute fausse déclaration quant à l’origine de ce matériel ou exiger que les versions modifiées de ce matériel soient marquées de manière raisonnable comme étant différentes de la version originale ; ou</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>limiter l’utilisation à des fins publicitaires des noms des concédants de licence ou des auteurs du matériel ; ou</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="5">
+<li><p>refuser d’accorder des droits en vertu de la législation sur les marques pour l’utilisation de certains noms commerciaux, marques de commerce ou marques de service ; ou</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="6">
+<li><p>exiger l’indemnisation des donneurs de licence et des auteurs de ce matériel par toute personne qui transmet le matériel (ou des versions modifiées de celui-ci) avec des hypothèses contractuelles de responsabilité envers le destinataire, pour toute responsabilité que ces hypothèses contractuelles imposent directement à ces donneurs de licence et à ces auteurs.</p></li>
+</ol>
+</li>
+</ul>
+<p>Tous les autres termes additionnels non permissifs sont considérés comme des « restrictions supplémentaires » au sens de l’article 10. Si le programme tel que vous l’avez reçu, ou toute partie de celui-ci, contient un avis indiquant qu’il est régi par la présente licence ainsi qu’une clause qui constitue une restriction supplémentaire, vous pouvez supprimer cette clause. Si un document de licence contient une restriction supplémentaire mais autorise l’octroi d’une nouvelle licence ou la transmission dans le cadre de la présente licence, vous pouvez ajouter à une œuvre couverte des éléments régis par les termes de ce document de licence, à condition que la restriction supplémentaire ne survive pas à l’octroi d’une nouvelle licence ou à la transmission.</p>
+<p>Si vous ajoutez des conditions à une œuvre couverte conformément à la présente section, vous devez placer, dans les fichiers sources concernés, une déclaration des conditions supplémentaires qui s’appliquent à ces fichiers, ou un avis indiquant où trouver les conditions applicables.</p>
+<p>Des conditions supplémentaires, permissives ou non permissives, peuvent être énoncées sous la forme d’une licence écrite distincte ou sous la forme d’exceptions ; les exigences ci-dessus s’appliquent dans les deux cas.</p>
+</section>
+<section id="termination">
+<span id="id11"></span><h3>8. Résiliation.<a class="headerlink" href="#termination" title="Lien vers cette rubrique">#</a></h3>
+<p>Vous ne pouvez pas propager ou modifier une œuvre couverte, sauf dans les cas expressément prévus par la présente licence. Toute autre tentative de propagation ou de modification est nulle et non avenue, et met automatiquement fin à vos droits en vertu de la présente licence (y compris toute licence de brevet accordée en vertu du troisième paragraphe de l’article 11).</p>
+<p>Toutefois, si vous cessez toute violation de la présente licence, votre licence accordée par un détenteur de droits d’auteur particulier est rétablie (a) provisoirement, à moins que le détenteur des droits d’auteur ne mette explicitement et définitivement fin à votre licence, et (b) définitivement, si le détenteur des droits d’auteur ne vous notifie pas la violation par un moyen raisonnable dans les 60 jours suivant la cessation de la violation.</p>
+<p>En outre, votre licence auprès d’un détenteur de droits d’auteur particulier est rétablie de manière permanente si le détenteur des droits d’auteur vous notifie la violation par un moyen raisonnable, si c’est la première fois que vous recevez une notification de violation de la présente licence (pour toute œuvre) de la part de ce détenteur de droits d’auteur, et si vous remédiez à la violation dans les 30 jours suivant la réception de la notification.</p>
+<p>La résiliation de vos droits en vertu de la présente section ne met pas fin aux licences des parties qui ont reçu des copies ou des droits de votre part en vertu de la présente licence. Si vos droits ont été résiliés et n’ont pas été rétablis de façon permanente, vous ne pouvez pas bénéficier de nouvelles licences pour le même matériel en vertu de l’article 10.</p>
+</section>
+<section id="acceptance-not-required-for-having-copies">
+<span id="id12"></span><h3>9. L’acceptation n’est pas nécessaire pour avoir des copies.<a class="headerlink" href="#acceptance-not-required-for-having-copies" title="Lien vers cette rubrique">#</a></h3>
+<p>Vous n’êtes pas tenu d’accepter la présente licence pour recevoir ou exécuter une copie du programme. La propagation accessoire d’une œuvre couverte par la licence, qui résulte uniquement de l’utilisation de la transmission de poste à poste pour recevoir une copie, ne nécessite pas non plus d’acceptation. Cependant, rien d’autre que la présente licence ne vous autorise à propager ou à modifier une œuvre couverte. Ces actions enfreignent le droit d’auteur si vous n’acceptez pas la présente licence. Par conséquent, en modifiant ou en propageant une œuvre couverte, vous indiquez que vous acceptez la présente licence.</p>
+</section>
+<section id="automatic-licensing-of-downstream-recipients">
+<span id="id13"></span><h3>10. Octroi automatique de licences aux destinataires en aval.<a class="headerlink" href="#automatic-licensing-of-downstream-recipients" title="Lien vers cette rubrique">#</a></h3>
+<p>Chaque fois que vous transmettez une œuvre couverte, le destinataire reçoit automatiquement une licence des donneurs de licence d’origine, lui permettant d’exécuter, de modifier et de propager cette œuvre, sous réserve des dispositions de la présente licence. Vous n’êtes pas responsable du respect de la présente licence par les tiers.</p>
+<p>Une « transaction d’entité » est une transaction qui transfère le contrôle d’une organisation, ou la quasi-totalité des actifs d’une organisation, ou qui divise une organisation, ou qui fusionne des organisations. Si la propagation d’une œuvre couverte résulte d’une transaction d’entité, chaque partie à cette transaction qui reçoit une copie de l’œuvre reçoit également toutes les licences sur l’œuvre que le prédécesseur en droit de la partie avait ou pouvait donner en vertu du paragraphe précédent, plus un droit à la possession de la Source correspondante de l’œuvre du prédécesseur en droit, si le prédécesseur l’a ou peut l’obtenir avec des efforts raisonnables.</p>
+<p>Vous ne pouvez pas imposer d’autres restrictions à l’exercice des droits accordés ou confirmés dans le cadre de la présente licence. Par exemple, vous ne pouvez pas imposer de droits de licence, de redevances ou d’autres frais pour l’exercice des droits accordés en vertu de la présente licence, et vous ne pouvez pas engager de litige (y compris une demande reconventionnelle ou une demande reconventionnelle dans le cadre d’un procès) alléguant qu’une revendication de brevet est violée par la fabrication, l’utilisation, la vente, l’offre de vente ou l’importation du programme ou d’une partie de ce dernier.</p>
+</section>
+<section id="patents">
+<span id="id14"></span><h3>11. Brevets.<a class="headerlink" href="#patents" title="Lien vers cette rubrique">#</a></h3>
+<p>Un « contributeur » est un détenteur de droits d’auteur qui autorise l’utilisation, dans le cadre de la présente licence, du programme ou d’une œuvre sur laquelle le programme est basé. L’œuvre ainsi licenciée est appelée « version du contributeur ».</p>
+<p>Les « revendications de brevet essentielles » d’un contributeur sont toutes les revendications de brevet détenues ou contrôlées par le contributeur, qu’elles soient déjà acquises ou qu’elles le soient ultérieurement, qui seraient violées par une manière, autorisée par la présente licence, de fabriquer, d’utiliser ou de vendre sa version du contributeur, mais n’incluent pas les revendications qui seraient violées uniquement à la suite d’une modification ultérieure de la version du contributeur. Aux fins de la présente définition, le « contrôle » comprend le droit d’accorder des sous-licences de brevet d’une manière compatible avec les exigences de la présente licence.</p>
+<p>Chaque contributeur vous accorde une licence de brevet non exclusive, mondiale et libre de redevance en vertu des revendications de brevet essentielles du contributeur, pour fabriquer, utiliser, vendre, proposer à la vente, importer et autrement exécuter, modifier et propager le contenu de sa version du contributeur.</p>
+<p>Dans les trois paragraphes qui suivent, on entend par « licence de brevet » tout accord ou engagement exprès, quelle qu’en soit la dénomination, de ne pas faire respecter un brevet (tel qu’une autorisation expresse d’exercer un brevet ou un engagement de ne pas intenter d’action en contrefaçon de brevet). Accorder » une telle licence de brevet à une partie signifie conclure un tel accord ou engagement de ne pas faire valoir un brevet à l’encontre de la partie.</p>
+<p>Si vous transmettez un travail couvert, en vous appuyant sciemment sur une licence de brevet, et que la Source correspondante du travail n’est pas disponible pour que quiconque puisse la copier, gratuitement et selon les termes de la présente Licence, par le biais d’un serveur de réseau public ou d’autres moyens facilement accessibles, vous devez soit (1) faire en sorte que la Source correspondante soit ainsi disponible, soit (2) prendre des dispositions pour vous priver du bénéfice de la licence de brevet pour ce travail particulier, soit (3) prendre des dispositions, d’une manière compatible avec les exigences de la présente Licence, pour étendre la licence de brevet aux destinataires en aval. L’expression « en toute connaissance de cause » signifie que vous avez effectivement connaissance du fait que, sans la licence de brevet, votre transmission du travail couvert dans un pays, ou l’utilisation par votre destinataire du travail couvert dans un pays, violerait un ou plusieurs brevets identifiables dans ce pays dont vous avez des raisons de penser qu’ils sont valides.</p>
+<p>Si, dans le cadre d’une transaction ou d’un accord unique, vous transmettez, ou propagez en assurant la transmission, une œuvre couverte et accordez une licence de brevet à certaines des parties recevant l’œuvre couverte, les autorisant à utiliser, propager, modifier ou transmettre une copie spécifique de l’œuvre couverte, la licence de brevet que vous accordez est automatiquement étendue à tous les destinataires de l’œuvre couverte et des œuvres basées sur celle-ci.</p>
+<p>Une licence de brevet est « discriminatoire » si elle n’inclut pas dans son champ d’application, interdit l’exercice ou est conditionnée au non-exercice d’un ou de plusieurs des droits spécifiquement accordés par la présente licence. Vous ne pouvez pas transmettre une œuvre couverte si vous êtes partie à un accord avec un tiers qui s’occupe de la distribution de logiciels, en vertu duquel vous versez un paiement au tiers en fonction de l’étendue de votre activité de transmission de l’œuvre, et en vertu duquel le tiers accorde, à l’une quelconque des parties qui recevraient l’œuvre couverte de votre part, le droit d’utiliser l’œuvre couverte, une licence de brevet discriminatoire (a) en rapport avec les copies de l’œuvre couverte que vous avez transmises (ou les copies faites à partir de ces copies), ou (b) principalement pour et en rapport avec des produits ou compilations spécifiques qui contiennent l’œuvre couverte, à moins que vous n’ayez conclu cet accord, ou que cette licence de brevet n’ait été octroyée, avant le 28 mars 2007.</p>
+<p>Aucune disposition de la présente licence ne peut être interprétée comme excluant ou limitant une licence implicite ou d’autres moyens de défense contre la contrefaçon dont vous pourriez disposer en vertu de la législation applicable en matière de brevets.</p>
+</section>
+<section id="no-surrender-of-others-freedom">
+<span id="id15"></span><h3>12. Pas d’abandon de la liberté d’autrui.<a class="headerlink" href="#no-surrender-of-others-freedom" title="Lien vers cette rubrique">#</a></h3>
+<p>Si des conditions vous sont imposées (que ce soit par décision de justice, accord ou autre) qui contredisent les conditions de cette Licence, elles ne vous dispensent pas des conditions de cette Licence. Si vous ne pouvez pas transmettre une œuvre couverte de manière à satisfaire simultanément vos obligations au titre de la présente licence et toute autre obligation pertinente, vous pouvez en conséquence ne pas la transmettre du tout. Par exemple, si vous acceptez des conditions qui vous obligent à percevoir une redevance pour toute transmission ultérieure de la part de ceux à qui vous transmettez le programme, la seule façon de satisfaire à la fois à ces conditions et à la présente licence serait de vous abstenir complètement de transmettre le programme.</p>
+</section>
+<section id="use-with-the-gnu-affero-general-public-license">
+<span id="id16"></span><h3>13. Utilisation avec la licence publique générale GNU Affero.<a class="headerlink" href="#use-with-the-gnu-affero-general-public-license" title="Lien vers cette rubrique">#</a></h3>
+<p>Nonobstant toute autre disposition de la présente licence, vous avez la permission de lier ou de combiner toute œuvre couverte avec une œuvre sous licence de la version 3 de la GNU Affero General Public License en une seule œuvre combinée, et de transmettre l’œuvre résultante. Les termes de la présente licence continueront à s’appliquer à la partie qui est l’œuvre couverte, mais les exigences spéciales de la section 13 de la licence publique générale GNU Affero concernant l’interaction à travers un réseau s’appliqueront à la combinaison en tant que telle.</p>
+</section>
+<section id="revised-versions-of-this-license">
+<span id="id17"></span><h3>14. Versions révisées de la présente licence.<a class="headerlink" href="#revised-versions-of-this-license" title="Lien vers cette rubrique">#</a></h3>
+<p>La Free Software Foundation peut publier de temps à autre des versions révisées et/ou nouvelles de la licence publique générale GNU. Ces nouvelles versions seront similaires dans l’esprit à la présente version, mais pourront différer dans le détail pour répondre à de nouveaux problèmes ou préoccupations.</p>
+<p>Chaque version porte un numéro distinctif. Si le programme spécifie qu’une certaine version numérotée de la licence publique générale GNU « ou toute version ultérieure » s’applique à lui, vous avez la possibilité de suivre les termes et conditions de cette version numérotée ou de toute version ultérieure publiée par la Free Software Foundation. Si le programme ne précise pas de numéro de version de la licence publique générale GNU, vous pouvez choisir n’importe quelle version publiée par la Free Software Foundation.</p>
+<p>Si le programme précise qu’un mandataire peut décider quelles versions futures de la licence publique générale GNU peuvent être utilisées, la déclaration publique d’acceptation d’une version par ce mandataire vous autorise en permanence à choisir cette version pour le programme.</p>
+<p>Les versions ultérieures de la licence peuvent vous accorder des autorisations supplémentaires ou différentes. Toutefois, aucune obligation supplémentaire n’est imposée à un auteur ou à un détenteur de droits d’auteur du fait que vous avez choisi de suivre une version ultérieure.</p>
+</section>
+<section id="disclaimer-of-warranty">
+<span id="id18"></span><h3>15. Exclusion de garantie.<a class="headerlink" href="#disclaimer-of-warranty" title="Lien vers cette rubrique">#</a></h3>
+<p>IL N’Y A PAS DE GARANTIE POUR LE PROGRAMME, DANS LA MESURE PERMISE PAR LA LOI APPLICABLE. SAUF INDICATION CONTRAIRE ÉCRITE, LES DÉTENTEURS DES DROITS D’AUTEUR ET/OU LES AUTRES PARTIES FOURNISSENT LE PROGRAMME « EN L’ÉTAT » SANS GARANTIE D’AUCUNE SORTE, EXPRESSE OU IMPLICITE, Y COMPRIS, MAIS SANS S’Y LIMITER, LES GARANTIES IMPLICITES DE QUALITÉ MARCHANDE ET D’ADÉQUATION À UN USAGE PARTICULIER. VOUS ASSUMEZ L’INTÉGRALITÉ DU RISQUE LIÉ À LA QUALITÉ ET AUX PERFORMANCES DU PROGRAMME. SI LE PROGRAMME S’AVÈRE DÉFECTUEUX, VOUS ASSUMEZ LE COÛT DE TOUS LES TRAVAUX D’ENTRETIEN, DE RÉPARATION OU DE CORRECTION NÉCESSAIRES.</p>
+</section>
+<section id="limitation-of-liability">
+<span id="id19"></span><h3>16. Limitation de la responsabilité.<a class="headerlink" href="#limitation-of-liability" title="Lien vers cette rubrique">#</a></h3>
+<p>EN AUCUN CAS, SAUF SI LA LOI APPLICABLE L’EXIGE OU SI CELA A ÉTÉ CONVENU PAR ÉCRIT, LE DÉTENTEUR DES DROITS D’AUTEUR OU TOUTE AUTRE PARTIE QUI MODIFIE ET/OU TRANSMET LE PROGRAMME COMME AUTORISÉ CI-DESSUS, NE SERA RESPONSABLE ENVERS VOUS DES DOMMAGES, Y COMPRIS DES DOMMAGES GÉNÉRAUX, SPÉCIAUX, ACCESSOIRES OU INDIRECTS RÉSULTANT DE L’UTILISATION OU DE L’IMPOSSIBILITÉ D’UTILISER LE PROGRAMME (Y COMPRIS, MAIS SANS S’Y LIMITER, LA PERTE DE DONNÉES OU LE FAIT QUE DES DONNÉES SOIENT RENDUES INEXACTES OU LES PERTES SUBIES PAR VOUS OU PAR DES TIERS OU L’INCAPACITÉ DU PROGRAMME À FONCTIONNER AVEC D’AUTRES PROGRAMMES), MÊME SI CE DÉTENTEUR OU CETTE AUTRE PARTIE A ÉTÉ INFORMÉ(E) DE LA POSSIBILITÉ DE TELS DOMMAGES.</p>
+</section>
+<section id="interpretation-of-sections-15-and-16">
+<span id="id20"></span><h3>17. Interprétation des articles 15 et 16.<a class="headerlink" href="#interpretation-of-sections-15-and-16" title="Lien vers cette rubrique">#</a></h3>
+<p>Si l’exclusion de garantie et la limitation de responsabilité prévues ci-dessus ne peuvent être appliquées localement conformément à leurs termes, les juridictions de recours appliqueront la loi locale qui se rapproche le plus d’une renonciation absolue à toute responsabilité civile en rapport avec le programme, à moins qu’une garantie ou une acceptation de responsabilité n’accompagne une copie du programme en échange d’une redevance.</p>
+<p>FIN DES CONDITIONS GÉNÉRALES</p>
+</section>
+</section>
+<section id="how-to-apply-these-terms-to-your-new-programs">
+<span id="id21"></span><h2>Comment appliquer ces conditions à vos nouveaux programmes<a class="headerlink" href="#how-to-apply-these-terms-to-your-new-programs" title="Lien vers cette rubrique">#</a></h2>
+<p>Si vous développez un nouveau programme et que vous souhaitez qu’il soit le plus utile possible au public, la meilleure façon d’y parvenir est d’en faire un logiciel libre que tout le monde peut redistribuer et modifier selon ces conditions.</p>
+<p>Pour ce faire, joignez les avis suivants au programme. Il est plus sûr de les joindre au début de chaque fichier source afin d’indiquer le plus efficacement possible l’exclusion de garantie ; chaque fichier doit comporter au moins la ligne « copyright » et un pointeur vers l’endroit où se trouve l’avis complet.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">one</span> <span class="n">line</span> <span class="n">to</span> <span class="n">give</span> <span class="n">the</span> <span class="n">program</span><span class="s1">&#39;s name and a brief idea of what it does.&gt;</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">year</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="n">name</span> <span class="n">of</span> <span class="n">author</span><span class="o">&gt;</span>
+
+<span class="n">This</span> <span class="n">program</span> <span class="ow">is</span> <span class="n">free</span> <span class="n">software</span><span class="p">:</span> <span class="n">you</span> <span class="n">can</span> <span class="n">redistribute</span> <span class="n">it</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">modify</span>
+<span class="n">it</span> <span class="n">under</span> <span class="n">the</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="k">as</span> <span class="n">published</span> <span class="n">by</span>
+<span class="n">the</span> <span class="n">Free</span> <span class="n">Software</span> <span class="n">Foundation</span><span class="p">,</span> <span class="n">either</span> <span class="n">version</span> <span class="mi">3</span> <span class="n">of</span> <span class="n">the</span> <span class="n">License</span><span class="p">,</span> <span class="ow">or</span>
+<span class="p">(</span><span class="n">at</span> <span class="n">your</span> <span class="n">option</span><span class="p">)</span> <span class="nb">any</span> <span class="n">later</span> <span class="n">version</span><span class="o">.</span>
+
+<span class="n">This</span> <span class="n">program</span> <span class="ow">is</span> <span class="n">distributed</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">hope</span> <span class="n">that</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">useful</span><span class="p">,</span>
+<span class="n">but</span> <span class="n">WITHOUT</span> <span class="n">ANY</span> <span class="n">WARRANTY</span><span class="p">;</span> <span class="n">without</span> <span class="n">even</span> <span class="n">the</span> <span class="n">implied</span> <span class="n">warranty</span> <span class="n">of</span>
+<span class="n">MERCHANTABILITY</span> <span class="ow">or</span> <span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span><span class="o">.</span>  <span class="n">See</span> <span class="n">the</span>
+<span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="k">for</span> <span class="n">more</span> <span class="n">details</span><span class="o">.</span>
+
+<span class="n">You</span> <span class="n">should</span> <span class="n">have</span> <span class="n">received</span> <span class="n">a</span> <span class="n">copy</span> <span class="n">of</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span>
+<span class="n">along</span> <span class="k">with</span> <span class="n">this</span> <span class="n">program</span><span class="o">.</span>  <span class="n">If</span> <span class="ow">not</span><span class="p">,</span> <span class="n">see</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">gnu</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">licenses</span><span class="o">/&gt;.</span>
+</pre></div>
+</div>
+<p>Ajoutez également des informations sur la manière de vous contacter par courrier électronique et papier.</p>
+<p>Si le programme interagit avec le terminal, il doit afficher une courte note comme celle-ci lorsqu’il démarre en mode interactif :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;program&gt;  Copyright (C) &lt;year&gt;  &lt;name of author&gt;
+This program comes with ABSOLUTELY NO WARRANTY; for details type `show w&#39;.
+This is free software, and you are welcome to redistribute it
+under certain conditions; type `show c&#39; for details.
+</pre></div>
+</div>
+<p>Les commandes hypothétiques « montrer w » et « montrer c » devraient afficher les parties appropriées de la licence publique générale. Bien entendu, les commandes de votre programme peuvent être différentes ; pour une interface graphique, vous utiliseriez une « boîte à propos ».</p>
+<p>Vous devriez également demander à votre employeur (si vous travaillez comme programmeur) ou à votre école, le cas échéant, de signer une « clause de non-responsabilité concernant les droits d’auteur » pour le programme, si nécessaire. Pour plus d’informations à ce sujet, et sur la manière d’appliquer et de suivre la GNU GPL, voir <a class="reference external" href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
+<p>La licence publique générale GNU ne permet pas d’incorporer votre programme dans des programmes propriétaires. Si votre programme est une bibliothèque de sous-routines, vous pouvez considérer qu’il est plus utile d’autoriser la liaison d’applications propriétaires avec la bibliothèque. Si c’est ce que vous voulez faire, utilisez la Licence Publique Générale Amoindrie de GNU au lieu de cette Licence. Mais d’abord, veuillez lire <a class="reference external" href="https://www.gnu.org/licenses/why-not-lgpl.html">https://www.gnu.org/licenses/why-not-lgpl.html</a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="code_of_conduct.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Code de conduite</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Sur cette page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-general-public-license">Licence publique générale GNU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preamble">Préambule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terms-and-conditions">CONDITIONS GÉNÉRALES</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">0. Définitions.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">1. Code source.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-permissions">2. Permissions de base.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protecting-users-legal-rights-from-anti-circumvention-law">3. Protéger les droits légaux des utilisateurs contre les lois anti-contournement.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conveying-verbatim-copies">4. Transmission de copies in extenso.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conveying-modified-source-versions">5. Transmission des versions modifiées des sources.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conveying-non-source-forms">6. Transmission des formulaires non sources.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-terms">7. Conditions supplémentaires.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#termination">8. Résiliation.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-not-required-for-having-copies">9. L’acceptation n’est pas nécessaire pour avoir des copies.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-licensing-of-downstream-recipients">10. Octroi automatique de licences aux destinataires en aval.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#patents">11. Brevets.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-surrender-of-others-freedom">12. Pas d’abandon de la liberté d’autrui.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-with-the-gnu-affero-general-public-license">13. Utilisation avec la licence publique générale GNU Affero.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-versions-of-this-license">14. Versions révisées de la présente licence.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disclaimer-of-warranty">15. Exclusion de garantie.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitation-of-liability">16. Limitation de la responsabilité.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-sections-15-and-16">17. Interprétation des articles 15 et 16.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-apply-these-terms-to-your-new-programs">Comment appliquer ces conditions à vos nouveaux programmes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Cirad and FAO.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__center">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Construit avec le <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">thème PyData Sphinx</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
