@@ -31,6 +31,7 @@ jobs:
         run: |
           sphinx-build help/docsrc help/build/html -b html -d help/build/doctrees
           sphinx-build help/docsrc help/build/html/es -b html -D language=es
+          sphinx-build help/docsrc help/build/html/fr -b html -D language=fr
           
       - name: Adding nojekyll file
         run: touch help/build/html/.nojekyll

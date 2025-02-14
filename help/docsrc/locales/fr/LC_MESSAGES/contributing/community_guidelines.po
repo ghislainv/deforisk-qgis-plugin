@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-01 14:07-0400\n"
-"PO-Revision-Date: 2024-07-01 18:38+0000\n"
+"PO-Revision-Date: 2025-02-14 15:14+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: ../../docsrc/contributing/community_guidelines.rst:3
 #: 28169b08d2184000930e9e2c681ce045
 msgid "Community guidelines"
-msgstr "Lignes directrices communautaires"
+msgstr "Charte communautaire"
 
 #: ../../docsrc/contributing/community_guidelines.rst:6
 #: 2e6040831c9f4ab8a1835c43158cb09b
@@ -37,16 +37,7 @@ msgid ""
 "functionalities which can be incorporated into future versions of the "
 "package. Every contributor must agree to follow the project’s `Code Of "
 "Conduct <code_of_conduct.html>`_."
-msgstr ""
-"Le plugin QGIS ``deforisk`` est Open Source et publié sous la licence ``GNU "
-"GPL version 3 <license.html>`_. Toute personne intéressée peut contribuer au"
-" développement du paquet. Il y a de nombreuses façons de contribuer, comme "
-"l'écriture de tutoriels, d'exemples ou de tests, l'amélioration de la "
-"documentation, la soumission de rapports de bogues et de demandes de "
-"fonctionnalités, ou l'écriture de code pour fournir de nouvelles "
-"fonctionnalités qui peuvent être incorporées dans les futures versions du "
-"paquet. Chaque contributeur doit accepter de suivre le `Code de Conduite "
-"<code_of_conduct.html>`_ du projet."
+msgstr "Le plugin QGIS ``deforisk`` est Open Source et publié sous la licence `GNU GPL version 3 <license.html>`_. Toute personne intéressée peut contribuer au développement du paquet. Il y a de nombreuses façons de contribuer, comme l'écriture de tutoriels, d'exemples ou de tests, l'amélioration de la documentation, la soumission de rapports de bugs et de demandes de fonctionnalités, ou l'écriture de code pour fournir de nouvelles fonctionnalités qui peuvent être incorporées dans les futures versions du paquet. Chaque contributeur doit accepter de suivre le `Code de conduite <code_of_conduct.html>`_ du projet."
 
 #: ../../docsrc/contributing/community_guidelines.rst:18
 #: a604c92359404fe187159d33b092ef13
@@ -59,11 +50,7 @@ msgid ""
 "If you want to report a bug, request a feature, or discuss an issue, please "
 "open an `issue <https://github.com/ghislainv/deforisk-qgis-plugin/issues>`_ "
 "on the GitHub project page."
-msgstr ""
-"Si vous souhaitez signaler un bogue, demander une fonctionnalité ou discuter"
-" d'un problème, veuillez ouvrir un `issue "
-"<https://github.com/ghislainv/deforisk-qgis-plugin/issues>`_ sur la page du "
-"projet GitHub."
+msgstr "Si vous souhaitez signaler un bogue, demander une fonctionnalité ou discuter d'un problème, veuillez ouvrir une `issue <https://github.com/ghislainv/deforisk-qgis-plugin/issues>`_ sur la page du projet GitHub."
 
 #: ../../docsrc/contributing/community_guidelines.rst:26
 #: 673c5edb60fc4a8b946d29313aae8c17
@@ -75,9 +62,7 @@ msgstr "Contribuer au code"
 msgid ""
 "Changes to the source code and documentation should be made via GitHub pull "
 "requests (PR)."
-msgstr ""
-"Les modifications du code source et de la documentation doivent être "
-"effectuées par le biais de demandes d'extraction (PR) sur GitHub."
+msgstr "Les modifications du code source et de la documentation doivent être effectuées par le biais de pull requests (PR) sur GitHub."
 
 #: ../../docsrc/contributing/community_guidelines.rst:31
 #: d31fcfa9c45c4355ba931c84a0e5dad4
@@ -112,9 +97,7 @@ msgstr "Commencez par créer un fork du dépôt ``deforisk-qgis-plugin``."
 msgid ""
 "Make changes to the source code on a development branch, not the default "
 "*main* branch."
-msgstr ""
-"Apporter des modifications au code source sur une branche de développement, "
-"et non sur la branche *principale* par défaut."
+msgstr "Apporter des modifications au code source sur une branche de développement, et non sur la branche *main* par défaut."
 
 #: ../../docsrc/contributing/community_guidelines.rst:43
 #: 85d01f58ac5c4703b98b86e79642ad74
@@ -131,10 +114,7 @@ msgid ""
 "Commit the changes you made. Chris Beams has written a `guide "
 "<https://chris.beams.io/posts/git-commit/>`_ on how to write good commit "
 "messages."
-msgstr ""
-"Validez les changements que vous avez effectués. Chris Beams a écrit un "
-"`guide <https://chris.beams.io/posts/git-commit/>`_ sur la façon d'écrire de"
-" bons messages de validation."
+msgstr "Validez les changements que vous avez effectués. Chris Beams a écrit un `guide <https://chris.beams.io/posts/git-commit/>`_ sur la façon d'écrire de bons messages de commit."
 
 #: ../../docsrc/contributing/community_guidelines.rst:49
 #: 83b450874d6b473e85e2bdd578949257

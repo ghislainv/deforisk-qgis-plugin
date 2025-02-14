@@ -1,298 +1,338 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2024, Cirad and FAO
 # This file is distributed under the same license as the deforisk package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
 # Translators:
 # Ghislain Vieilledent, 2024
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: deforisk\n"
+"Project-Id-Version:  deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-10 16:49-0400\n"
-"PO-Revision-Date: 2025-02-13 14:51+1100\n"
+"POT-Creation-Date: 2025-02-14 15:47+1100\n"
+"PO-Revision-Date: 2025-02-14 15:52+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
-"Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)"
+"\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 "
+"? 1 : 2;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
 
 #: ../../docsrc/index.rst:3
 msgid "Home"
 msgstr "Inicio"
 
-#: ../../docsrc/README.rst-1 b50ac619c05349a5924a4ff6f624f5a5
+#: ../../docsrc/README.rst:7 b50ac619c05349a5924a4ff6f624f5a5
 msgid "Logo riskmapjnr"
 msgstr "Logo riskmapjnr"
 
 #: ../../docsrc/README.rst:15 f1903f86a6784729960eda0da87ceac4
 msgid "deforisk QGIS plugin"
-msgstr "Plugin QGIS deforisk"
+msgstr "El complemento QGIS deforisk"
 
 #: ../../docsrc/README.rst:35 b4932a1beb47485e8293ee5bbd2a8655
 msgid "Languages"
 msgstr "Idiomas"
 
-#: ../../docsrc/README.rst:45 5fbaf62244e449a6a2e001f6c38ff200
+#: ../../docsrc/README.rst:49 5fbaf62244e449a6a2e001f6c38ff200
 msgid ""
-"The ``deforisk`` QGIS plugin website is available in English |icon_en| or "
-"Spanish |icon_es|."
-msgstr ""
-"El sitio web del complemento ``deforisk`` para QGIS está disponible en inglés "
-"|icon_en| o español |icon_es|."
+"The ``deforisk`` QGIS plugin website is available in English |icon_en|, "
+"Spanish |icon_es|, and French |icon_fr|."
+msgstr "El sitio web del complemento ``deforisk`` para QGIS está disponible en inglés |icon_en|, español |icon_es| y francés |icon_fr|."
 
-#: ../../docsrc/README.rst:0 2b43bce80298493c804f0a1830991863
+#: ../../docsrc/README.rst:37 2b43bce80298493c804f0a1830991863
 msgid "icon_en"
 msgstr "icon_en"
 
-#: ../../docsrc/README.rst:0 2b43bce80298493c804f0a1830991863
+#: ../../docsrc/README.rst:41 2b43bce80298493c804f0a1830991863
 msgid "icon_es"
 msgstr "icon_es"
 
-#: ../../docsrc/README.rst:48 c284466984b54b0293194e3773597821
+#: ../../docsrc/README.rst:45 2b43bce80298493c804f0a1830991863
+msgid "icon_fr"
+msgstr "icon_fr"
+
+#: ../../docsrc/README.rst:52 c284466984b54b0293194e3773597821
 msgid "Aim"
 msgstr "Objetivo"
 
-#: ../../docsrc/README.rst:50 c0ba0464c01d45a19fcb01ef78e337af
+#: ../../docsrc/README.rst:54 c0ba0464c01d45a19fcb01ef78e337af
 msgid ""
-"The ``deforisk`` QGIS plugin can be used to map the deforestation risk for a"
-" country or area of interest. Four models can be used to derive the risk "
-"maps: the iCAR, GLM, Random Forest, and Moving Window models. These four "
-"models can be compared to a benchmark model which assumes a simple decrease "
-"of the deforestation risk with distance to forest edge. All models are "
-"calibrated using past deforestation observations for a given period of time "
-"between 2000 and 2022. Forest cover change maps can be provided by the user "
-"or derived from two global tree/forest cover change products: `Global Forest"
-" Change <https://earthenginepartners.appspot.com/science-2013-global-"
-"forest>`_ and `Tropical Moist Forests "
-"<https://forobs.jrc.ec.europa.eu/TMF>`_."
+"The ``deforisk`` QGIS plugin can be used to map the deforestation risk "
+"for a country or area of interest. Four models can be used to derive the "
+"risk maps: the iCAR, GLM, Random Forest, and Moving Window models. These "
+"four models can be compared to a benchmark model which assumes a simple "
+"decrease of the deforestation risk with distance to forest edge. All "
+"models are calibrated using past deforestation observations for a given "
+"period of time between 2000 and 2022. Forest cover change maps can be "
+"provided by the user or derived from two global tree/forest cover change "
+"products: `Global Forest Change "
+"<https://earthenginepartners.appspot.com/science-2013-global-forest>`_ "
+"and `Tropical Moist Forests <https://forobs.jrc.ec.europa.eu/TMF>`_."
 msgstr ""
-"El complemento QGIS ``deforisk`` puede utilizarse para cartografiar el riesgo de "
-"deforestación de un país o área de interés. Se pueden utilizar cuatro "
-"modelos para obtener los mapas de riesgo: los modelos iCAR, GLM, Random "
-"Forest y Moving Window. Estos cuatro modelos pueden ser comparados con un "
-"modelo de referencia que asume una simple disminución del riesgo de "
-"deforestación con la distancia al borde del bosque. Todos los modelos se "
-"calibran utilizando observaciones de deforestación pasadas para un periodo "
-"de tiempo determinado entre 2000 y 2022. Los mapas de cambio de la cobertura "
-"forestal pueden ser proporcionados por el usuario o ser derivadas de dos "
-"productos de cambio global de la cobertura arbórea/forestal: `Global Forest "
-"Change <https://earthenginepartners.appspot.com/science-2013-global-"
-"forest>`_ y `Tropical Moist Forests <https://forobs.jrc.ec.europa.eu/TMF>`_."
+"El complemento QGIS ``deforisk`` puede utilizarse para cartografiar el "
+"riesgo de deforestación de un país o área de interés. Se pueden utilizar "
+"cuatro modelos para obtener los mapas de riesgo: los modelos iCAR, GLM, "
+"Random Forest y Moving Window. Estos cuatro modelos pueden ser comparados"
+" con un modelo de referencia que asume una simple disminución del riesgo "
+"de deforestación con la distancia al borde del bosque. Todos los modelos "
+"se calibran utilizando observaciones de deforestación pasadas para un "
+"periodo de tiempo determinado entre 2000 y 2022. Los mapas de cambio de "
+"la cobertura forestal pueden ser proporcionados por el usuario o ser "
+"derivadas de dos productos de cambio global de la cobertura "
+"arbórea/forestal: `Global Forest Change "
+"<https://earthenginepartners.appspot.com/science-2013-global-forest>`_ y "
+"`Tropical Moist Forests <https://forobs.jrc.ec.europa.eu/TMF>`_."
 
-#: ../../docsrc/README.rst:52 5e7f1f6d817b4b8991d9f7814012db1f
+#: ../../docsrc/README.rst:56 5e7f1f6d817b4b8991d9f7814012db1f
 msgid ""
-"Deforestation risk maps obtained using this plugin can be used to estimate "
-"emission reduction impact of forest conservation projects within the `VCS "
-"Jurisdictional and Nested REDD+ Framework "
+"Deforestation risk maps obtained using this plugin can be used to "
+"estimate emission reduction impact of forest conservation projects within"
+" the `VCS Jurisdictional and Nested REDD+ Framework "
 "<https://verra.org/programs/jurisdictional-nested-redd-framework/>`_."
 msgstr ""
-"Los mapas de riesgo de deforestación obtenidos mediante este plugin pueden "
-"ser utilizados para estimar el impacto de la reducción de emisiones de los "
-"proyectos de conservación forestal dentro del `VCS Jurisdictional and Nested"
-" REDD+ Framework <https://verra.org/programs/jurisdictional-nested-redd-"
-"framework/>`_."
+"Los mapas de riesgo de deforestación obtenidos mediante este plugin "
+"pueden ser utilizados para estimar el impacto de la reducción de "
+"emisiones de los proyectos de conservación forestal dentro del `VCS "
+"Jurisdictional and Nested REDD+ Framework <https://verra.org/programs"
+"/jurisdictional-nested-redd-framework/>`_."
 
-#: ../../docsrc/README.rst-1 2b43bce80298493c804f0a1830991863
+#: ../../docsrc/README.rst:58 2b43bce80298493c804f0a1830991863
 msgid "Banner"
 msgstr "Banner"
 
-#: ../../docsrc/README.rst:59 6585ef5ff8b44ace9ac97dc4af7e3118
+#: ../../docsrc/README.rst:63 6585ef5ff8b44ace9ac97dc4af7e3118
 msgid "Specificities"
 msgstr "Especificidades"
 
-#: ../../docsrc/README.rst:61 0ab12a6c7dd04429a4f54eb2e62b56e7
+#: ../../docsrc/README.rst:65 0ab12a6c7dd04429a4f54eb2e62b56e7
 msgid ""
 "**Python based.** The ``deforisk`` plugin relies on four Python packages "
-"developed specifically for modelling deforestation: ``geefcc``, ``pywdpa``, "
-"``forestatrisk``, and ``riskmapjnr``. The ``geefcc`` package can be used to "
-"make forest cover change maps from Google Earth Engine (GEE) and download "
-"them locally using two global tree/forest cover change products: Global "
-"Forest Change or Tropical Moist Forests. The ``pywdpa`` package allows "
-"downloading vector files of protected areas for any countries using the "
-"World Database on Protected Areas (WDPA). The ``forestatrisk`` package "
-"provides functions to model deforestation and predict the spatial "
-"deforestation risk using various explanatory variables (distance to forest "
-"edge, elevation, protected areas, etc.) and various statistical models "
-"including iCAR, GLM, and Random Forest models. The ``riskmapjnr`` package "
-"allows deriving deforestation risk maps following Verra JNR methodologies "
-"which include a moving window model and a benchmark model which assumes a "
-"decrease of the deforestation risk with the distance to forest edge."
-msgstr "**Basado sobre Python.** El complemento ``deforisk`` se basa en cuatro paquetes de Python desarrollados específicamente para modelar la deforestación: ``geefcc``, ``pywdpa``, ``forestatrisk`` y ``riskmapjnr``. El paquete ``geefcc`` puede utilizarse para elaborar mapas de cambio de la cobertura forestal a partir de Google Earth Engine (GEE) y descargarlos localmente utilizando dos productos de cambio global de la cobertura arbórea/forestal: Global Forest Change o Tropical Moist Forests. El paquete ``pywdpa`` permite descargar archivos vectoriales de áreas protegidas de cualquier país utilizando la Base de Datos Mundial sobre Áreas Protegidas (WDPA). El paquete ``forestatrisk`` proporciona funciones para modelizar la deforestación y predecir el riesgo espacial de deforestación utilizando diversas variables explicativas (distancia al borde del bosque, elevación, áreas protegidas, etc.) y diversos modelos estadísticos, incluidos los modelos iCAR, GLM y Random Forest. El paquete ``riskmapjnr`` permite derivar mapas de riesgo de deforestación siguiendo las metodologías JNR de Verra, que incluyen un modelo de ventana móvil y un modelo de referencia que asume una disminución del riesgo de deforestación con la distancia al borde del bosque."
+"developed specifically for modelling deforestation: ``geefcc``, "
+"``pywdpa``, ``forestatrisk``, and ``riskmapjnr``. The ``geefcc`` package "
+"can be used to make forest cover change maps from Google Earth Engine "
+"(GEE) and download them locally using two global tree/forest cover change"
+" products: Global Forest Change or Tropical Moist Forests. The ``pywdpa``"
+" package allows downloading vector files of protected areas for any "
+"countries using the World Database on Protected Areas (WDPA). The "
+"``forestatrisk`` package provides functions to model deforestation and "
+"predict the spatial deforestation risk using various explanatory "
+"variables (distance to forest edge, elevation, protected areas, etc.) and"
+" various statistical models including iCAR, GLM, and Random Forest "
+"models. The ``riskmapjnr`` package allows deriving deforestation risk "
+"maps following Verra JNR methodologies which include a moving window "
+"model and a benchmark model which assumes a decrease of the deforestation"
+" risk with the distance to forest edge."
+msgstr ""
+"**Basado sobre Python.** El complemento ``deforisk`` se basa en cuatro "
+"paquetes de Python desarrollados específicamente para modelar la "
+"deforestación: ``geefcc``, ``pywdpa``, ``forestatrisk`` y ``riskmapjnr``."
+" El paquete ``geefcc`` puede utilizarse para elaborar mapas de cambio de "
+"la cobertura forestal a partir de Google Earth Engine (GEE) y "
+"descargarlos localmente utilizando dos productos de cambio global de la "
+"cobertura arbórea/forestal: Global Forest Change o Tropical Moist "
+"Forests. El paquete ``pywdpa`` permite descargar archivos vectoriales de "
+"áreas protegidas de cualquier país utilizando la Base de Datos Mundial "
+"sobre Áreas Protegidas (WDPA). El paquete ``forestatrisk`` proporciona "
+"funciones para modelizar la deforestación y predecir el riesgo espacial "
+"de deforestación utilizando diversas variables explicativas (distancia al"
+" borde del bosque, elevación, áreas protegidas, etc.) y diversos modelos "
+"estadísticos, incluidos los modelos iCAR, GLM y Random Forest. El paquete"
+" ``riskmapjnr`` permite derivar mapas de riesgo de deforestación "
+"siguiendo las metodologías JNR de Verra, que incluyen un modelo de "
+"ventana móvil y un modelo de referencia que asume una disminución del "
+"riesgo de deforestación con la distancia al borde del bosque."
 
-#: ../../docsrc/README.rst-1 6948fae5fd924646ad982acc09e7175c
+#: ../../docsrc/README.rst:67 6948fae5fd924646ad982acc09e7175c
 msgid "geefc"
 msgstr "geefc"
 
-#: ../../docsrc/README.rst-1 1b41688777764048a1f94dd9f718f1d4
+#: ../../docsrc/README.rst:72 1b41688777764048a1f94dd9f718f1d4
 msgid "pywdpa"
 msgstr "pywdpa"
 
-#: ../../docsrc/README.rst-1 929e7df4ea204cd290defbfa971aeb32
+#: ../../docsrc/README.rst:77 929e7df4ea204cd290defbfa971aeb32
 msgid "forestatrisk"
 msgstr "forestatrisk"
 
-#: ../../docsrc/README.rst-1 91060fd49add49278d66139becb7b428
+#: ../../docsrc/README.rst:82 91060fd49add49278d66139becb7b428
 msgid "riskmapjnr"
 msgstr "riskmapjnr"
 
-#: ../../docsrc/README.rst:83 815f945be1544e4c893050a43b797567
+#: ../../docsrc/README.rst:87 815f945be1544e4c893050a43b797567
 msgid ""
 "**Processing raster by blocks.** Raster files of forest cover change and "
 "explanatory variables might occupy a space of several gigabytes on disk. "
-"Processing such large rasters in memory can be prohibitively intensive on "
-"computers with limited RAM. Functions used in the ``deforisk`` plugin "
-"process large rasters by blocks of pixels representing subsets of the raster"
-" data. This makes computation efficient, with low memory usage. Reading and "
-"writing subsets of raster data is done by using functions from GDAL, a "
-"dependency of the plugin. Numerical computations on arrays are performed "
-"with the NumPy Python package, whose core is mostly made of optimized and "
-"compiled C code that runs quickly."
+"Processing such large rasters in memory can be prohibitively intensive on"
+" computers with limited RAM. Functions used in the ``deforisk`` plugin "
+"process large rasters by blocks of pixels representing subsets of the "
+"raster data. This makes computation efficient, with low memory usage. "
+"Reading and writing subsets of raster data is done by using functions "
+"from GDAL, a dependency of the plugin. Numerical computations on arrays "
+"are performed with the NumPy Python package, whose core is mostly made of"
+" optimized and compiled C code that runs quickly."
 msgstr ""
-"**Procesando rásters por bloques.** Los archivos raster de los cambios en la"
-" cobertura forestal y las variables explicativas pueden ocupar varios "
-"gigabytes en disco. El procesamiento en memoria de rásters tan grandes puede"
-" ser imposible en ordenadores con RAM limitada. Las funciones utilizadas en "
-"el complemento ``deforisk`` procesan grandes rásters por bloques de píxeles que "
-"representan subconjuntos de los datos ráster. Esto hace que el cálculo sea "
-"eficiente, con un bajo uso de memoria. La lectura y escritura de "
-"subconjuntos de datos ráster se realiza mediante funciones de GDAL, una "
-"dependencia del complemento. Los cálculos numéricos sobre matrices se realizan "
-"con el paquete NumPy de Python, cuyo núcleo está formado principalmente por "
-"código C optimizado y compilado que se ejecuta rápidamente."
+"**Procesando rásters por bloques.** Los archivos raster de los cambios en"
+" la cobertura forestal y las variables explicativas pueden ocupar varios "
+"gigabytes en disco. El procesamiento en memoria de rásters tan grandes "
+"puede ser imposible en ordenadores con RAM limitada. Las funciones "
+"utilizadas en el complemento ``deforisk`` procesan grandes rásters por "
+"bloques de píxeles que representan subconjuntos de los datos ráster. Esto"
+" hace que el cálculo sea eficiente, con un bajo uso de memoria. La "
+"lectura y escritura de subconjuntos de datos ráster se realiza mediante "
+"funciones de GDAL, una dependencia del complemento. Los cálculos "
+"numéricos sobre matrices se realizan con el paquete NumPy de Python, cuyo"
+" núcleo está formado principalmente por código C optimizado y compilado "
+"que se ejecuta rápidamente."
 
-#: ../../docsrc/README.rst:85 d58d5c8592a4421c94bde6f23f16170e
+#: ../../docsrc/README.rst:89 d58d5c8592a4421c94bde6f23f16170e
 msgid ""
-"**Running tasks in parallel.** State-of-the-art approach to select the best "
-"deforestation risk map and forecast deforestation implies comparing various "
-"models, fit the models using forest cover change over different time periods"
-" and predict the deforestation risk at several dates. This implies repeating"
-" a high number of tasks. To save computation time, the ``deforisk`` plugin "
-"use the QGIS task manager which allows running several analysis in parallel."
+"**Running tasks in parallel.** State-of-the-art approach to select the "
+"best deforestation risk map and forecast deforestation implies comparing "
+"various models, fit the models using forest cover change over different "
+"time periods and predict the deforestation risk at several dates. This "
+"implies repeating a high number of tasks. To save computation time, the "
+"``deforisk`` plugin use the QGIS task manager which allows running "
+"several analysis in parallel."
 msgstr ""
-"**Ejecutar tareas en paralelo.** El enfoque más avanzado para seleccionar el"
-" mejor mapa de riesgo de deforestación y predecir la deforestación implica "
-"comparar varios modelos, ajustar los modelos utilizando el cambio de la "
-"cobertura forestal en diferentes periodos de tiempo y predecir el riesgo de "
-"deforestación en varias fechas. Esto implica repetir un elevado número de "
-"tareas. Para ahorrar tiempo de cálculo, el complemento ``deforisk`` utiliza el "
-"gestor de tareas de QGIS que permite ejecutar varios análisis en paralelo."
+"**Ejecutar tareas en paralelo.** El enfoque más avanzado para seleccionar"
+" el mejor mapa de riesgo de deforestación y predecir la deforestación "
+"implica comparar varios modelos, ajustar los modelos utilizando el cambio"
+" de la cobertura forestal en diferentes periodos de tiempo y predecir el "
+"riesgo de deforestación en varias fechas. Esto implica repetir un elevado"
+" número de tareas. Para ahorrar tiempo de cálculo, el complemento "
+"``deforisk`` utiliza el gestor de tareas de QGIS que permite ejecutar "
+"varios análisis en paralelo."
 
-#: ../../docsrc/README.rst:87 e01261c7a73740fd9fdf1a1913705450
+#: ../../docsrc/README.rst:91 e01261c7a73740fd9fdf1a1913705450
 msgid ""
-"**OS independent.** Using both computation by block for large rasters and "
-"task parallelization, the ``deforisk`` plugin allows selecting the best "
+"**OS independent.** Using both computation by block for large rasters and"
+" task parallelization, the ``deforisk`` plugin allows selecting the best "
 "deforestation risk map and forecast deforestation for large countries or "
-"areas of interest in a limited amount of time, even on personal computers "
-"with average performance hardware. Because the ``deforisk`` is a QGIS plugin"
-" written in Python, it should run on all operating systems able to run QGIS,"
-" including Windows (:math:`\\geq10`), Linux, and Mac OS."
+"areas of interest in a limited amount of time, even on personal computers"
+" with average performance hardware. Because the ``deforisk`` is a QGIS "
+"plugin written in Python, it should run on all operating systems able to "
+"run QGIS, including Windows (:math:`\\geq10`), Linux, and Mac OS."
 msgstr ""
 "**Independiente del OS.** Utilizando tanto el cálculo por bloques para "
-"grandes rásters como la paralelización de tareas, el complemento ``deforisk`` "
-"permite seleccionar el mejor mapa de riesgo de deforestación y predecir la "
-"deforestación para grandes países o áreas de interés en un tiempo limitado, "
-"incluso en ordenadores personales con hardware de rendimiento medio. Dado "
-"que ``deforisk`` es un plugin de QGIS escrito en Python, debería funcionar "
-"en todos los sistemas operativos capaces de ejecutar QGIS, incluyendo "
-"Windows (:math:`\\geq10`), Linux y Mac OS."
+"grandes rásters como la paralelización de tareas, el complemento "
+"``deforisk`` permite seleccionar el mejor mapa de riesgo de deforestación"
+" y predecir la deforestación para grandes países o áreas de interés en un"
+" tiempo limitado, incluso en ordenadores personales con hardware de "
+"rendimiento medio. Dado que ``deforisk`` es un plugin de QGIS escrito en "
+"Python, debería funcionar en todos los sistemas operativos capaces de "
+"ejecutar QGIS, incluyendo Windows (:math:`\\geq10`), Linux y Mac OS."
 
-#: ../../docsrc/README.rst:90 67b1143924544abf90884a3486b717b8
+#: ../../docsrc/README.rst:94 67b1143924544abf90884a3486b717b8
 msgid "Installing the ``deforisk`` plugin in QGIS"
 msgstr "Instalación del complemento ``deforisk`` en QGIS"
 
-#: ../../docsrc/README.rst:94 b2bfa13a419b4ce6be715af443c89739
+#: ../../docsrc/README.rst:98 b2bfa13a419b4ce6be715af443c89739
 msgid ""
 "**Dependencies**: `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL "
 "<https://gdal.org/index.html>`_ must be installed on your system before "
-"using the ``deforisk`` plugin. *On Unix-like systems*, you must also install"
-" `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ and "
-"`osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *On Windows "
-"systems*, these dependencies are already included in the plugin as binary "
-"``.exe`` files so you don’t need to install them. Then, the ``forestatrisk``"
-" and ``riskmapjnr`` Python packages must be installed on your system. Follow"
-" the `installation instructions <installation.html>`_ to install these "
-"dependencies."
+"using the ``deforisk`` plugin. *On Unix-like systems*, you must also "
+"install `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ "
+"and `osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *On "
+"Windows systems*, these dependencies are already included in the plugin "
+"as binary ``.exe`` files so you don’t need to install them. Then, the "
+"``forestatrisk`` and ``riskmapjnr`` Python packages must be installed on "
+"your system. Follow the `installation instructions <installation.html>`_ "
+"to install these dependencies."
 msgstr ""
 "**Dependencias**: `QGIS <https://www.qgis.org/en/site/>`_ y `GDAL "
-"<https://gdal.org/index.html>`_ deben estar instaladas en su sistema antes "
-"de utilizar el complemento ``deforisk``. *En sistemas Unix*, también debe "
-"instalar `osmconvert <https://wiki.openstreetmap.org/wiki/Osmconvert>`_ y "
-"`osmfilter <https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *En sistemas "
-"Windows*, estas dependencias ya están incluidas en el complemento como "
-"archivos binarios ``.exe``, por lo que no es necesario instalarlas. A "
-"continuación, los paquetes de Python ``forestatrisk`` y ``riskmapjnr`` deben"
-" estar instalados en tu sistema. Siga las `instrucciones de instalación "
-"<installation.html>`_ para instalar estas dependencias."
+"<https://gdal.org/index.html>`_ deben estar instaladas en su sistema "
+"antes de utilizar el complemento ``deforisk``. *En sistemas Unix*, "
+"también debe instalar `osmconvert "
+"<https://wiki.openstreetmap.org/wiki/Osmconvert>`_ y `osmfilter "
+"<https://wiki.openstreetmap.org/wiki/Osmfilter>`_. *En sistemas Windows*,"
+" estas dependencias ya están incluidas en el complemento como archivos "
+"binarios ``.exe``, por lo que no es necesario instalarlas. A "
+"continuación, los paquetes de Python ``forestatrisk`` y ``riskmapjnr`` "
+"deben estar instalados en tu sistema. Siga las `instrucciones de "
+"instalación <installation.html>`_ para instalar estas dependencias."
 
-#: ../../docsrc/README.rst:96 937214a8e74047b987dc59de9e5249cf
+#: ../../docsrc/README.rst:100 937214a8e74047b987dc59de9e5249cf
 msgid ""
-"Download the ``deforisk`` `zip file <https://github.com/ghislainv/deforisk-"
-"qgis-plugin/archive/refs/heads/main.zip>`_ from GitHub."
+"Download the ``deforisk`` `zip file <https://github.com/ghislainv"
+"/deforisk-qgis-plugin/archive/refs/heads/main.zip>`_ from GitHub."
 msgstr ""
-"Descarga el archivo ``deforisk`` `zip "
-"<https://github.com/ghislainv/deforisk-qgis-"
-"plugin/archive/refs/heads/main.zip>`_ de GitHub."
+"Descarga el archivo ``deforisk`` `zip <https://github.com/ghislainv"
+"/deforisk-qgis-plugin/archive/refs/heads/main.zip>`_ de GitHub."
 
-#: ../../docsrc/README.rst:98 7974701c09774a36a125277e2c8dd3d7
+#: ../../docsrc/README.rst:102 7974701c09774a36a125277e2c8dd3d7
 msgid "Open QGIS."
 msgstr "Abra QGIS."
 
-#: ../../docsrc/README.rst:100 141c7dbe567c4b89918ddab5c70194f3
+#: ../../docsrc/README.rst:104 141c7dbe567c4b89918ddab5c70194f3
 msgid ""
-"In QGIS menu bar, go to ``Extensions/Install extensions/Install from ZIP``."
+"In QGIS menu bar, go to ``Extensions/Install extensions/Install from "
+"ZIP``."
 msgstr ""
 "En la barra de menú de QGIS, vaya a ``Extensiones/Instalar "
 "extensiones/Instalar desde ZIP``."
 
-#: ../../docsrc/README.rst:102 c264f7a311eb47e9b311397e9246a2fc
+#: ../../docsrc/README.rst:106 c264f7a311eb47e9b311397e9246a2fc
 msgid "Select the zip file that has been downloaded."
 msgstr "Seleccione el archivo zip que se ha descargado."
 
-#: ../../docsrc/README.rst:105 259b13cfcdc94815a8723f28b53701f9
+#: ../../docsrc/README.rst:109 259b13cfcdc94815a8723f28b53701f9
 msgid "Acknowledgements"
 msgstr "Agradecimientos"
 
-#: ../../docsrc/README.rst:107 4ce645e5085c46d3ae8e596ad7efae86
+#: ../../docsrc/README.rst:111 4ce645e5085c46d3ae8e596ad7efae86
 msgid ""
 "This tool has been jointly developed by the Food and Agriculture "
-"Organization of the United Nations (`FAO <https://www.fao.org/>`_) and the "
-"French agricultural research and cooperation organization working for the "
-"sustainable development of tropical and Mediterranean regions (`CIRAD "
-"<https://www.cirad.fr/en/>`_), under the `AIM4Forests "
+"Organization of the United Nations (`FAO <https://www.fao.org/>`_) and "
+"the French agricultural research and cooperation organization working for"
+" the sustainable development of tropical and Mediterranean regions "
+"(`CIRAD <https://www.cirad.fr/en/>`_), under the `AIM4Forests "
 "<https://www.fao.org/in-action/aim4forests>`_ program: Accelerating "
 "Innovative Monitoring for Forests, with financial support from the "
-"Department for Energy Security and Net Zero of the United Kingdom of Great "
-"Britain and Northern Ireland."
+"Department for Energy Security and Net Zero of the United Kingdom of "
+"Great Britain and Northern Ireland."
 msgstr ""
-"Esta herramienta ha sido desarrollada conjuntamente por la Organización de "
-"las Naciones Unidas para la Alimentación y la Agricultura (`FAO "
+"Esta herramienta ha sido desarrollada conjuntamente por la Organización "
+"de las Naciones Unidas para la Alimentación y la Agricultura (`FAO "
 "<https://www.fao.org/>`_) y la organización francesa de investigación y "
 "cooperación agrícola que trabaja para el desarrollo sostenible de las "
-"regiones tropicales y mediterráneas (`CIRAD <https://www.cirad.fr/en/>`_), "
-"bajo el programa `AIM4Forests <https://www.fao.org/in-"
-"action/aim4forests/es>`_: Acelerando el monitoreo innovador de los bosques, "
-"con el apoyo financiero del Departamento por la Seguridad Energética y Cero "
-"Neto del Reino Unido de Gran Bretaña e Irlanda del Norte."
+"regiones tropicales y mediterráneas (`CIRAD "
+"<https://www.cirad.fr/en/>`_), bajo el programa `AIM4Forests "
+"<https://www.fao.org/in-action/aim4forests/es>`_: Acelerando el monitoreo"
+" innovador de los bosques, con el apoyo financiero del Departamento por "
+"la Seguridad Energética y Cero Neto del Reino Unido de Gran Bretaña e "
+"Irlanda del Norte."
 
-#: ../../docsrc/README.rst-1 bc1c23b5ea0745fc82cc74f6e3dcdf52
+#: ../../docsrc/README.rst:113 bc1c23b5ea0745fc82cc74f6e3dcdf52
 msgid "Logo partners"
 msgstr "Logo partners"
 
-#: ../../docsrc/README.rst:115 2c750bb6e9bf46c397e8074f058fcadd
+#: ../../docsrc/README.rst:119 2c750bb6e9bf46c397e8074f058fcadd
 msgid "Contributing"
 msgstr "Contribución"
 
-#: ../../docsrc/README.rst:117 e67ab878d3a942d588694d9e12b1a1f9
+#: ../../docsrc/README.rst:121 e67ab878d3a942d588694d9e12b1a1f9
 msgid ""
-"The ``deforisk`` QGIS plugin is Open Source and released under the `GNU GPL "
-"version 3 license <https://deforisk-qgis-"
+"The ``deforisk`` QGIS plugin is Open Source and released under the `GNU "
+"GPL version 3 license <https://deforisk-qgis-"
 "plugin.org/contributing/license.html>`_. Anybody who is interested can "
-"contribute to the package development following our `Community guidelines "
-"<https://deforisk-qgis-plugin.org/contributing/community_guidelines.html>`_."
-" Every contributor must agree to follow the project’s `Code of conduct "
-"<https://deforisk-qgis-plugin.org/contributing/code_of_conduct.html>`_."
-msgstr "El complemento ``deforisk`` para QGIS es de código abierto y está publicado bajo la licencia `GNU GPL versión 3 <https://deforisk-qgis-plugin.org/contributing/license.html>`_. Cualquiera que esté interesado puede contribuir al desarrollo del paquete siguiendo nuestras `Directrices comunitarias <https://deforisk-qgis-plugin.org/contributing/community_guidelines.html>`_. Todos los colaboradores deben comprometerse a seguir el `Código de conducta <https://deforisk-qgis-plugin.org/contributing/code_of_conduct.html>`_ del proyecto."
+"contribute to the package development following our `Community guidelines"
+" <https://deforisk-qgis-"
+"plugin.org/contributing/community_guidelines.html>`_. Every contributor "
+"must agree to follow the project’s `Code of conduct <https://deforisk-"
+"qgis-plugin.org/contributing/code_of_conduct.html>`_."
+msgstr ""
+"El complemento ``deforisk`` para QGIS es de código abierto y está "
+"publicado bajo la licencia `GNU GPL versión 3 <https://deforisk-qgis-"
+"plugin.org/contributing/license.html>`_. Cualquiera que esté interesado "
+"puede contribuir al desarrollo del paquete siguiendo nuestras "
+"`Directrices comunitarias <https://deforisk-qgis-"
+"plugin.org/contributing/community_guidelines.html>`_. Todos los "
+"colaboradores deben comprometerse a seguir el `Código de conducta <https"
+"://deforisk-qgis-plugin.org/contributing/code_of_conduct.html>`_ del "
+"proyecto."
+

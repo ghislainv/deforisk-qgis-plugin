@@ -2,7 +2,7 @@
 # Copyright (C) 2024, Cirad and FAO
 # This file is distributed under the same license as the deforisk package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -11,21 +11,21 @@ msgstr ""
 "POT-Creation-Date: 2024-07-15 09:03-0500\n"
 "PO-Revision-Date: 2024-07-15 14:09+0000\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: ../../docsrc/articles/large_jurisdictions.rst:3
 #: aafa93258cbc4a6bb1066034177dfb10
 msgid "Advices for large jurisdictions"
-msgstr ""
+msgstr "Conseils pour les grandes juridictions"
 
 #: ../../docsrc/articles/large_jurisdictions.rst:12
 #: 07b48c063a1744708e588b84c0b76be7
 msgid "Some advices for large jurisdictions"
-msgstr ""
+msgstr "Quelques conseils pour les grandes juridictions"
 
 #: ../../docsrc/articles/large_jurisdictions.rst:14
 #: 0b288fbfb4534904817a59f7d535887c
@@ -33,6 +33,8 @@ msgid ""
 "It could be necessary to change the default parameters of the plugin for "
 "large jurisdictions (e.g. country scale)."
 msgstr ""
+"Il peut être nécessaire de modifier les paramètres par défaut du plugin pour"
+" les grandes juridictions (par exemple, à l'échelle d'un pays)."
 
 #: ../../docsrc/articles/large_jurisdictions.rst:16
 #: f1cb0124fb6147439709094d111ee641
@@ -40,6 +42,8 @@ msgid ""
 "Use a larger ``Max. distance to forest egde (m)``, e.g. **6000 m** in the "
 "``Benchmark`` and ``MW models``."
 msgstr ""
+"Utilisez une \"distance maximale à l'égide de la forêt (m)\" plus grande, "
+"par exemple **6000 m** dans les modèles ``Benchmark`` et ``MW``."
 
 #: ../../docsrc/articles/large_jurisdictions.rst:18
 #: e161c9a5baf443849466c0a26a9592b8
@@ -47,6 +51,8 @@ msgid ""
 "If you want to save computation time and look at the most important results,"
 " only:"
 msgstr ""
+"Si vous souhaitez économiser du temps de calcul et consulter les résultats "
+"les plus importants, vous n'avez qu'à le faire :"
 
 #: ../../docsrc/articles/large_jurisdictions.rst:20
 #: ec41d107abf74dd6bb094772a8fa3f02
@@ -54,6 +60,8 @@ msgid ""
 "Calibrate the models on the **calibration period**, checking ``calib. "
 "period`` in the box ``Fit model to data``."
 msgstr ""
+"Calibrez les modèles sur la **période de calibrage**, en cochant ``période "
+"de calibrage`` dans la case ``Adapter le modèle aux données``."
 
 #: ../../docsrc/articles/large_jurisdictions.rst:22
 #: 7b2df10262c6476b89548363afec68da
@@ -61,11 +69,13 @@ msgid ""
 "Predict for the **validation period**, checking ``t2 validation`` in the box"
 " ``Predict the deforestation risk``."
 msgstr ""
+"Prédire pour la **période de validation**, en cochant \"validation t2\" dans"
+" la case \"Prédire le risque de déforestation\"."
 
 #: ../../docsrc/articles/large_jurisdictions.rst:24
 #: 576c25f227ad47bcb92297cb6ffba76f
 msgid "For FAR models:"
-msgstr ""
+msgstr "Pour les modèles FAR :"
 
 #: ../../docsrc/articles/large_jurisdictions.rst:26
 #: 4a5fee54cf624ac092e114091123b877
@@ -74,11 +84,16 @@ msgid ""
 "avoid estimating a too large number of parameters for spatial random "
 "effects."
 msgstr ""
+"Utilisez une \"taille de cellule spatiale (km)\" plus grande pour "
+"l'échantillonnage, par exemple **10 km** pour éviter d'estimer un trop grand"
+" nombre de paramètres pour les effets aléatoires spatiaux."
 
 #: ../../docsrc/articles/large_jurisdictions.rst:28
 #: 03c7f3be57ba4d4b8ade17f4cdeef08f
 msgid "Use a larger ``Spatial cell size interpolation (km)``, e.g. **1 km**."
 msgstr ""
+"Utilisez une taille de cellule spatiale d'interpolation (km) plus grande, "
+"par exemple **1 km**."
 
 #: ../../docsrc/articles/large_jurisdictions.rst:30
 #: b82daa590a1e4d218d052b13d94eb53d
@@ -86,6 +101,9 @@ msgid ""
 "For the MW models, use only one ``Window sizes (# pixels)``, e.g. **21**. "
 "This should correspond to about 630 m for a resolution of 30 m."
 msgstr ""
+"Pour les modèles MW, n'utilisez qu'une seule ``taille de fenêtre (# "
+"pixels)``, par exemple **21**. Cela devrait correspondre à environ 630 m "
+"pour une résolution de 30 m."
 
 #: ../../docsrc/articles/large_jurisdictions.rst:32
 #: 296c8429719e4f7c9b120160ea466a6f
@@ -94,3 +112,7 @@ msgid ""
 "and increase its size, using e.g. **300**. This should correspond to about "
 "9 km for a resolution of 30 m."
 msgstr ""
+"Pour l'étape de validation, utilisez une seule ``Taille des cellules de la "
+"grille grossière (# pixels)`` et augmentez sa taille, en utilisant par "
+"exemple **300**. Cela devrait correspondre à environ 9 km pour une "
+"résolution de 30 m."

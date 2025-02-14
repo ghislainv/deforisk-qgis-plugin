@@ -42,7 +42,11 @@ Languages
    :width: 20px
    :target: https://deforisk-qgis-plugin.org/es
 
-The ``deforisk`` QGIS plugin website is available in English |icon_en| or Spanish |icon_es|.
+.. |icon_fr| image:: https://deforisk-qgis-plugin.org/_static/icon_fr.png
+   :width: 20px
+   :target: https://deforisk-qgis-plugin.org/fr
+
+The ``deforisk`` QGIS plugin website is available in English |icon_en|, Spanish |icon_es|, and French |icon_fr|.
 
 Aim
 ---

@@ -8,18 +8,17 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version:  deforisk\n"
+"Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-22 15:00+0100\n"
 "PO-Revision-Date: 2024-07-01 18:38+0000\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
-"Language: fr\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
-"1000000 == 0 ? 1 : 2;\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 "Generated-By: Babel 2.16.0\n"
 
 #: ../../docsrc/contributing/changelog.rst:3 843fc17104654c35b339a398353d13ae
@@ -27,15 +26,16 @@ msgid "Changelog"
 msgstr "Journal des modifications"
 
 #: ../../docsrc/contributing/changelog.rst:9 4323c00bb4f2422ea5bf660693dd89fd
-#, fuzzy
 msgid "deforisk v1.0"
 msgstr "déforisk v0.5"
 
 #: ../../docsrc/contributing/changelog.rst:11 98580531d6ba479dbb3be65d4ad900c3
 msgid ""
-"Version used at the Santa Marta workshop in Colombia (July, 15th--19th of"
-" 2024)."
+"Version used at the Santa Marta workshop in Colombia (July, 15th--19th of "
+"2024)."
 msgstr ""
+"Version utilisée lors de l'atelier de Santa Marta en Colombie (15-19 juillet"
+" 2024)."
 
 #: ../../docsrc/contributing/changelog.rst:13 8afaa2ab0bb942bdb87e6717ff6c96df
 msgid ""
@@ -43,6 +43,9 @@ msgid ""
 "plugin/compare/v0.5...v1.0 <https://github.com/ghislainv/deforisk-qgis-"
 "plugin/compare/v0.5...v1.0>`_."
 msgstr ""
+"Changements : `https://github.com/ghislainv/deforisk-qgis-"
+"plugin/compare/v0.5...v1.0 <https://github.com/ghislainv/deforisk-qgis-"
+"plugin/compare/v0.5...v1.0>`_."
 
 #: ../../docsrc/contributing/changelog.rst:16 4323c00bb4f2422ea5bf660693dd89fd
 msgid "deforisk v0.5"
@@ -63,4 +66,3 @@ msgstr "Pas de calcul parallèle pour geefcc."
 #: ../../docsrc/contributing/changelog.rst:22 6ad59df2318343989a12acce725d266c
 msgid "No function to estimate emissions."
 msgstr "Aucune fonction pour estimer les émissions."
-
