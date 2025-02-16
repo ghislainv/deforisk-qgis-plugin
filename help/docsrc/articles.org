@@ -8,15 +8,15 @@
     modify it. If you want to make changes to this file, modify the
     articles.org source file directly.
 
+This section contains pages with additional information on how to use the ``deforisk`` plugin. You can navigate within the pages of this section using the left sidebar. In particular, this section contains a number of articles on the use of the plugin in specific cases: when using user data, for sub-national jurisdictions, for large jurisdictions.  
+    
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
-   installation
-   get_started
-   plugin_api
-   articles/subnational_jurisd
-   articles/large_jurisdictions
    articles/user_data
+   articles/subnational_jurisd
+   Large jurisdictions <articles/large_jurisdictions>
    articles/references
    
 #+end_export

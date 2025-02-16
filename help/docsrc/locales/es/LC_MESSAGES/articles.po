@@ -1,25 +1,47 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2024, Cirad and FAO
 # This file is distributed under the same license as the deforisk package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
 # Translators:
 # Ghislain Vieilledent, 2024
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: deforisk\n"
+"Project-Id-Version:  deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-01 14:07-0400\n"
-"PO-Revision-Date: 2025-02-13 14:51+1100\n"
+"POT-Creation-Date: 2025-02-17 10:00+1100\n"
+"PO-Revision-Date: 2025-02-17 10:01+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
-"Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)"
+"\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 "
+"? 1 : 2;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../docsrc/articles.rst:13
+msgid "Large jurisdictions"
+msgstr "Grandes jurisdicciones"
 
 #: ../../docsrc/articles.rst:3 7a2bce3bc3544e1a89fa9b70dc9d595e
 msgid "Articles"
 msgstr "Artículos"
+
+#: ../../docsrc/articles.rst:11 a216663076314608b548030c8d9be51c
+msgid ""
+"This section contains pages with additional information on how to use the"
+" ``deforisk`` plugin. You can navigate within the pages of this section "
+"using the left sidebar. In particular, this section contains a number of "
+"articles on the use of the plugin in specific cases: when using user "
+"data, for sub-national jurisdictions, for large jurisdictions."
+msgstr ""
+"Esta sección contiene páginas con información adicional sobre cómo "
+"utilizar el plugin ``deforisk``. Puedes navegar por las páginas de esta "
+"sección utilizando la barra lateral izquierda. En particular, esta "
+"sección contiene una serie de artículos sobre el uso del plugin en casos "
+"específicos: cuando se utilizan datos del usuario, para jurisdicciones "
+"subnacionales, para grandes jurisdicciones."
+

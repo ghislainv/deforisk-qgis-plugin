@@ -88,10 +88,11 @@ html_theme_options = {
     # "github_url": "https://github.com/ghislainv/defor-qgis-plugin"
 }
 
+# Remove left sidebar from pages
 html_sidebars = {
     "installation": [],
     "get_started": [],
-    "articles": [],
+    "articles": ["sidebar-nav-bs"],
     "plugin_api": [],
     "contributing/*": []
 }
