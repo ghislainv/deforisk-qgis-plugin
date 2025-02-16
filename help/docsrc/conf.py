@@ -92,7 +92,6 @@ html_sidebars = {
     "installation": [],
     "get_started": [],
     "articles": [],
-    "articles/*": [],
     "plugin_api": [],
     "contributing/*": []
 }

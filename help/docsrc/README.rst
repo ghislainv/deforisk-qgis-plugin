@@ -35,15 +35,15 @@ Languages
 ---------
 
 .. |icon_en| image:: https://deforisk-qgis-plugin.org/_static/icon_en.png
-   :width: 20px
+   :width: 25px
    :target: https://deforisk-qgis-plugin.org/
 
 .. |icon_es| image:: https://deforisk-qgis-plugin.org/_static/icon_es.png
-   :width: 20px
+   :width: 25px
    :target: https://deforisk-qgis-plugin.org/es
 
 .. |icon_fr| image:: https://deforisk-qgis-plugin.org/_static/icon_fr.png
-   :width: 20px
+   :width: 25px
    :target: https://deforisk-qgis-plugin.org/fr
 
 The ``deforisk`` QGIS plugin website is available in English |icon_en|, Spanish |icon_es|, and French |icon_fr|.
