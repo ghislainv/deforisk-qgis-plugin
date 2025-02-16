@@ -112,7 +112,6 @@ This tool has been jointly developed by the Food and Agriculture Organization of
 
 .. image:: https://deforisk-qgis-plugin.org/\_static/logos\_partners.png
     :target: https://www.fao.org/in-action/aim4forests
-    :height: 100px
     :alt: Logo partners
 
 Contributing
