@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-13 17:00+1100\n"
-"PO-Revision-Date: 2025-02-16 11:21+1100\n"
+"PO-Revision-Date: 2025-02-16 14:36+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
 "Language: fr\n"
@@ -37,21 +37,13 @@ msgid ""
 "automatically copied in the ``data_raw`` folder of the working directory and"
 " renamed ``forest_src.tif``. The raster file should have the following "
 "characteristics:"
-msgstr ""
-"Vous pouvez utiliser votre propre carte de changement de couverture "
-"forestière avec le plugin. Pour ce faire, préparez un fichier raster et "
-"sélectionnez-le avec l'argument ``Forest data source`` dans l'onglet ``Get "
-"variables`` du plugin. Le fichier raster sera automatiquement copié dans le "
-"dossier `data_raw` du répertoire de travail et renommé `forest_src.tif`. Le "
-"fichier raster doit avoir les caractéristiques suivantes :"
+msgstr "Vous pouvez utiliser votre propre carte de changement de couverture forestière avec le plugin. Pour ce faire, préparez un fichier raster et sélectionnez-le avec l'argument ``Forest data source`` dans l'onglet ``Get variables`` du plugin. Le fichier raster sera automatiquement copié dans le dossier ``data_raw`` du répertoire de travail et renommé ``forest_src.tif``. Le fichier raster doit avoir les caractéristiques suivantes :"
 
 #: ../../docsrc/articles/user_data.rst:20 8f61f178ba38494da8812df2ebfeebd6
 msgid ""
 "It must be a multiple band raster file with each band representing the "
 "forest cover at one date."
-msgstr ""
-"Il doit s'agir d'un fichier matriciel à bandes multiples, chaque bande "
-"représentant la couverture forestière à une date donnée."
+msgstr "Il doit s'agir d'un fichier raster à bandes multiples, chaque bande représentant la couverture forestière à une date donnée."
 
 #: ../../docsrc/articles/user_data.rst:22 767c955996034b99beadd81374f7ca0c
 msgid "Bands must be ordered (first band for t, second band for t+1, etc.)."
@@ -63,47 +55,35 @@ msgstr ""
 msgid ""
 "Raster should only have two values: 1 for forest pixels and 0 for non-forest"
 " pixels (the raster can thus be of type Byte)."
-msgstr ""
-"La trame ne doit avoir que deux valeurs : 1 pour les pixels forestiers et 0 "
-"pour les pixels non forestiers (la trame peut donc être de type Byte)."
+msgstr "Le raster ne doit avoir que deux valeurs : 1 pour les pixels forestiers et 0 pour les pixels non forestiers (le raster peut donc être de type Byte)."
 
 #: ../../docsrc/articles/user_data.rst:26 25b7a86ae9a248d09cfb673332bd5db4
 msgid ""
 "No-data value is not important here. It can be set to 0 or 255 for example."
-msgstr ""
-"La valeur de l'absence de données n'est pas importante ici. Elle peut être "
-"fixée à 0 ou 255 par exemple."
+msgstr "La valeur du \"no-data\" n'est pas importante ici. Elle peut être fixée à 0 ou 255 par exemple."
 
 #: ../../docsrc/articles/user_data.rst:28 664e159b586d49f89a89cca0845a68e8
 msgid ""
 "The raster file should be projected in the coordinate reference system of "
 "the project (see argument ``projection EPSG code``)."
-msgstr ""
-"Le fichier raster doit être projeté dans le système de référence des "
-"coordonnées du projet (voir l'argument ``projection EPSG code``)."
+msgstr "Le fichier raster doit être projeté dans le système de référence des coordonnées du projet (voir l'argument ``projection EPSG code``)."
 
 #: ../../docsrc/articles/user_data.rst:30 bcd5c833ae6347b1beaa5a489295a35f
 msgid "The raster must cover at least all the area of the jurisdiction."
-msgstr "La trame doit couvrir au moins toute la zone de la juridiction."
+msgstr "Le raster doit couvrir au moins toute la zone de la juridiction."
 
 #: ../../docsrc/articles/user_data.rst:32 b89c0a9061664aaf8b839ce4fa3ce3b5
 msgid ""
 "Years specified in the ``Years`` argument should correspond to the years "
 "used for the forest cover change raster file."
-msgstr ""
-"Les années spécifiées dans l'argument ``Years`` doivent correspondre aux "
-"années utilisées pour le fichier matriciel des changements du couvert "
-"forestier."
+msgstr "Les années spécifiées dans l'argument ``Years`` doivent correspondre aux années utilisées pour le fichier raster de changement du couvert forestier."
 
 #: ../../docsrc/articles/user_data.rst:35 5c60d24378de4afea938941bce58fc48
 msgid ""
 "It is much better if the raster is bigger than the jurisdiction (e.g. buffer"
 " of 10 km) to reduce edge effects when computing distances to forest edge "
 "for example."
-msgstr ""
-"Il est préférable que le raster soit plus grand que la juridiction (par "
-"exemple, un tampon de 10 km) afin de réduire les effets de bord lors du "
-"calcul des distances à la lisière de la forêt, par exemple."
+msgstr "Il est préférable que le raster soit plus grand que la juridiction (par exemple, en utilisant une distance tampon de 10 km) afin de réduire les effets de bord lors du calcul des distances à la lisière de la forêt, par exemple."
 
 #: ../../docsrc/articles/user_data.rst:37 9a74cd56375b4c7ea8aa994b28107fcc
 msgid ""
@@ -127,7 +107,7 @@ msgstr ""
 
 #: ../../docsrc/articles/user_data.rst:42 de7b0dea13c341b4b94eb6a0c3587a2b
 msgid "Area of interest"
-msgstr "Domaine d'intérêt"
+msgstr "Zone d'étude cible (area of interest)"
 
 #: ../../docsrc/articles/user_data.rst:44 108c0e39e664460ba371820992dab17a
 msgid ""
@@ -137,19 +117,11 @@ msgid ""
 "automatically copied in the ``data_raw`` folder of the working directory and"
 " renamed ``aoi_latlon.gpkg``. The vector file should have the following "
 "characteristics:"
-msgstr ""
-"Vous pouvez spécifier votre zone d'intérêt lorsque vous utilisez le plugin. "
-"Pour ce faire, préparez un fichier vectoriel et sélectionnez-le avec "
-"l'argument ``Area Of Interest`` dans l'onglet ``Get variables`` du plugin. "
-"Le fichier vectoriel sera automatiquement copié dans le dossier `data_raw`` "
-"du répertoire de travail et renommé `aoi_latlon.gpkg``. Le fichier vectoriel"
-" doit avoir les caractéristiques suivantes :"
+msgstr "Vous pouvez spécifier votre zone d'étude lorsque vous utilisez le plugin. Pour ce faire, préparez un fichier vectoriel et sélectionnez-le avec l'argument ``Area Of Interest`` dans l'onglet ``Get variables`` du plugin. Le fichier vectoriel sera automatiquement copié dans le dossier ``data_raw`` du répertoire de travail et renommé ``aoi_latlon.gpkg``. Le fichier vectoriel doit avoir les caractéristiques suivantes :"
 
 #: ../../docsrc/articles/user_data.rst:46 71882365d3284969811ca0b1ca0ce60d
 msgid "It must be in lat/lon (i.e. unprojected with EPSG code 4326)."
-msgstr ""
-"Elle doit être en lat/lon (c'est-à-dire non projetée avec le code EPSG "
-"4326)."
+msgstr "Il doit être en lat/lon (c'est-à-dire non projeté avec le code EPSG 4326)."
 
 #: ../../docsrc/articles/user_data.rst:48 7029f59cc4ae4b8ca08f32fa0d3e82d0
 msgid ""
@@ -163,10 +135,7 @@ msgstr ""
 msgid ""
 "More details on how to obtain such vector file in QGIS are available in the "
 "article untitled `Subnational jurisdictions <./subnational_jurisd.html>`_."
-msgstr ""
-"Plus de détails sur la façon d'obtenir un tel fichier vectoriel dans QGIS "
-"sont disponibles dans l'article sans titre `Subnational jurisdictions "
-"<./subnational_jurisd.html>`_."
+msgstr "Plus de détails sur la façon d'obtenir un tel fichier vectoriel dans QGIS sont disponibles dans l'article intitulé `Juridictions infranationales <./subnational_jurisd.html>`_."
 
 #: ../../docsrc/articles/user_data.rst:53 d105594fe0554ea99db3cb5a9bb78055
 msgid "Additional explicative variables"
@@ -200,9 +169,7 @@ msgstr "Ils doivent être dans la projection du projet."
 msgid ""
 "Resolution should be as close as possible to the forest cover raster "
 "resolution."
-msgstr ""
-"La résolution doit être aussi proche que possible de la résolution de la "
-"trame du couvert forestier."
+msgstr "La résolution doit être aussi proche que possible de la résolution du raster du couvert forestier."
 
 #: ../../docsrc/articles/user_data.rst:66 582f2e1572f3418da4ad5dabf50ed019
 msgid ""
@@ -287,12 +254,7 @@ msgid ""
 "symbolic links in each of the folders ``data_calibration``, "
 "``data_validation``, ``data_historical``, and ``data_forecast``. Symbolic "
 "links could point to rasters in the ``data`` folder for example."
-msgstr ""
-"Pour éviter de copier les mêmes données à plusieurs endroits sur le disque, "
-"vous pouvez créer des liens symboliques dans chacun des dossiers "
-"``data_calibration``, ``data_validation``, ``data_historical``, et "
-"``data_forecast``. Les liens symboliques peuvent pointer vers les rasters du"
-" dossier `data`` par exemple."
+msgstr "Pour éviter de copier les mêmes données à plusieurs endroits sur le disque, vous pouvez créer des liens symboliques dans chacun des dossiers ``data_calibration``, ``data_validation``, ``data_historical``, et ``data_forecast``. Les liens symboliques peuvent pointer vers les rasters du dossier ``data`` par exemple."
 
 #: ../../docsrc/articles/user_data.rst:86 820b922f05ee468bb8e8cba5fe09a46e
 msgid ""
@@ -402,11 +364,7 @@ msgid ""
 "``data_calibration``, ``data_validation``, ``data_historical``, and "
 "``data_forecast`` of the working directory (see `Copy files "
 "<./user_data.html#copy-files-in-the-right-folders>`_ section)."
-msgstr ""
-"Les fichiers raster des variables explicatives dans les dossiers "
-"``data_calibration``, ``data_validation``, ``data_historical``, et "
-"``data_forecast`` du répertoire de travail (voir la section `Copy files "
-"<./user_data.html#copy-files-in-the-right-folders>`_)."
+msgstr "Les fichiers raster des variables explicatives dans les dossiers ``data_calibration``, ``data_validation``, ``data_historical``, et ``data_forecast`` du répertoire de travail (voir la section `Copier les fichiers <./user_data.html#copy-files-in-the-right-folders>`_)."
 
 #: ../../docsrc/articles/user_data.rst:120 05947f71f62b476aa72107140a2b355e
 msgid ""
@@ -414,16 +372,11 @@ msgid ""
 "or the World Database on Protected Area. Parameters ``Earth Engine access`` "
 "and ``WDPA access`` can be left empty. Button ``Only compute forest "
 "variables`` must be checked."
-msgstr ""
-"De même, vous n'avez pas besoin d'identifiants pour télécharger des données "
-"de Google Earth Engine ou de la World Database on Protected Area. Les "
-"paramètres ``Earth Engine access`` et ``WDPA access`` peuvent être laissés "
-"vides. Le bouton \"Calculer uniquement les variables forestières\" doit être"
-" coché."
+msgstr "De même, vous n'avez pas besoin d'identifiants pour télécharger des données de Google Earth Engine ou de la World Database on Protected Area. Les paramètres ``Earth Engine access`` et ``WDPA access`` peuvent être laissés vides. Le bouton ``Only compute forest variables`` doit être coché."
 
 #: ../../docsrc/articles/user_data.rst:123 fd825592707f49fcb21482fc7435ee7f
 msgid "A simple approach with only forest variables"
-msgstr "Une approche simple avec seulement des variables forestières"
+msgstr "Une approche simple avec les variables forestières uniquement"
 
 #: ../../docsrc/articles/user_data.rst:125 5bec2881ee974b8dbba47e35ab768f69
 msgid ""
@@ -439,23 +392,18 @@ msgstr ""
 
 #: ../../docsrc/articles/user_data.rst:127 fb6bbb96c4e746a6859880274424e9ad
 msgid "Check the button ``Only compute forest variables``."
-msgstr "Cochez le bouton ``Ne calculer que les variables forestières``."
+msgstr "Cochez le bouton ``Only compute forest variables``."
 
 #: ../../docsrc/articles/user_data.rst:129 f65f2f8e6df24c94a4012d3adbc71862
 msgid "Specify ’dist\\_edge’ in the ``List of variables`` for FAR models."
-msgstr ""
-"Spécifier 'dist\\_edge' dans la ``Liste des variables`` pour les modèles "
-"FAR."
+msgstr "Spécifier 'dist\\_edge' dans la liste ``List of variables`` pour les modèles FAR."
 
 #: ../../docsrc/articles/user_data.rst:131 dd8ffb6049474cdaa5e80632d204ba59
 msgid ""
 "Distance to forest edge is directly computed from the forest cover change "
 "raster file and you don’t have to provide any other additional explanatory "
 "variables."
-msgstr ""
-"La distance par rapport à la lisière de la forêt est directement calculée à "
-"partir du fichier matriciel des changements du couvert forestier et il n'est"
-" pas nécessaire de fournir d'autres variables explicatives."
+msgstr "La distance par rapport à la lisière de la forêt est directement calculée à partir du fichier raster de changement du couvert forestier et il n'est pas nécessaire de fournir d'autres variables explicatives."
 
 #: ../../docsrc/articles/user_data.rst:134 38d23072c95848f3a55eb97d8ca7d7de
 msgid "A simple example with no internet connexion"
@@ -465,10 +413,7 @@ msgstr "Un exemple simple sans connexion internet"
 msgid ""
 "As an example based on Martinique, you can avoid using an internet connexion"
 " and use simple deforestation models based only on distance to forest edge:"
-msgstr ""
-"A titre d'exemple basé sur la Martinique, vous pouvez éviter d'utiliser une "
-"connexion internet et utiliser des modèles de déforestation simples basés "
-"uniquement sur la distance à la lisière de la forêt :"
+msgstr "En se basant sur un exemple avec la Martinique, vous pouvez éviter d'utiliser une connexion internet et utiliser des modèles de déforestation simples basés uniquement sur la distance à la lisière de la forêt :"
 
 #: ../../docsrc/articles/user_data.rst:138 c69ddb32dfda4ad6843fcc08dd357c4b
 msgid ""
@@ -491,36 +436,28 @@ msgstr ""
 msgid ""
 "Use these two files for arguments ``Area Of Interest`` and ``Forest data "
 "source`` in the ``Get variables`` tab."
-msgstr ""
-"Utilisez ces deux fichiers pour les arguments \"Area Of Interest\" et "
-"\"Forest data source\" dans l'onglet \"Get variables\"."
+msgstr "Utilisez ces deux fichiers pour les arguments ``Area Of Interest`` et ``Forest data source`` dans l'onglet ``Get variables``."
 
 #: ../../docsrc/articles/user_data.rst:144 bea678a0e1834e3ba80d64f040c96184
 msgid "Specify ’2000, 2010, 2020’ for ``Years``."
-msgstr "Spécifiez '2000, 2010, 2020' pour ``Années``."
+msgstr "Spécifiez '2000, 2010, 2020' pour ``Years``."
 
 #: ../../docsrc/articles/user_data.rst:146 02a5b3f0e5c24c13b3898e3a754304c8
 msgid "Use ’EPSG:3490’ for ``Projection EPSG code``."
-msgstr "Utilisez 'EPSG:3490' pour le ``Code EPSG de projection``."
+msgstr "Utilisez 'EPSG:3490' pour le ``Projection EPSG code``."
 
 #: ../../docsrc/articles/user_data.rst:148 018d84dcaccf425b84404a960d76f85f
 msgid "Ensure ``Only compute forest variables`` is checked."
-msgstr ""
-"Assurez-vous que l'option \"Calculer uniquement les variables forestières\" "
-"est cochée."
+msgstr "Assurez-vous que l'option ``Only compute forest variables`` est cochée."
 
 #: ../../docsrc/articles/user_data.rst:150 582f2e1572f3418da4ad5dabf50ed019
 msgid "All other variables in the ``Get variables`` tab can be left empty."
-msgstr ""
-"Toutes les autres variables de l'onglet \"Get variables\" peuvent être "
-"laissées vides."
+msgstr "Toutes les autres variables de l'onglet ``Get variables`` peuvent être laissées vides."
 
 #: ../../docsrc/articles/user_data.rst:152 0b0b427203504446a1fd00aa148bdfb4
 msgid ""
 "Click ``Run`` in the ``Get variables tab`` to compute forest variables."
-msgstr ""
-"Cliquez sur \"Exécuter\" dans l'onglet \"Obtenir des variables\" pour "
-"calculer les variables forestières."
+msgstr "Cliquez sur ``Exécuter`` dans l'onglet ``Get variables`` pour calculer les variables forestières."
 
 #: ../../docsrc/articles/user_data.rst:156 f950b1b6f08d4c24983385e4aa2ed94a
 msgid "|br|"
@@ -530,7 +467,4 @@ msgstr "|br|"
 msgid ""
 "Specify only ’dist\\_edge’ in the ``List of variables`` for FAR models and "
 "run the models and the validation with the default parameters."
-msgstr ""
-"Spécifiez uniquement 'dist\\_edge' dans la ``Liste des variables`` pour les "
-"modèles FAR et exécutez les modèles et la validation avec les paramètres par"
-" défaut."
+msgstr "Spécifiez uniquement 'dist\\_edge' dans la list ``List of variables`` pour les modèles FAR et exécutez les modèles et la validation avec les paramètres par défaut."

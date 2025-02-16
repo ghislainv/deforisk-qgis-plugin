@@ -4,9 +4,9 @@
 
 #+begin_export rst
 ..
-    This index.rst file is automatically generated. Please do not
+    This README.rst file is automatically generated. Please do not
     modify it. If you want to make changes to this file, modify the
-    index.org source file directly.
+    README.org source file directly.
 #+end_export
 
 #+attr_rst: :align right :width 140px :alt Logo riskmapjnr
@@ -61,9 +61,13 @@ deforisk QGIS plugin
 .. |icon_es| image:: https://deforisk-qgis-plugin.org/_static/icon_es.png
    :width: 20px
    :target: https://deforisk-qgis-plugin.org/es
+
+.. |icon_fr| image:: https://deforisk-qgis-plugin.org/_static/icon_fr.png
+   :width: 20px
+   :target: https://deforisk-qgis-plugin.org/fr
 #+end_export
 
- The ~deforisk~ QGIS plugin website is available in English @@rst:|icon_en|@@ or Spanish @@rst:|icon_es|@@.
+ The ~deforisk~ QGIS plugin website is available in English @@rst:|icon_en|@@, Spanish @@rst:|icon_es|@@, and French @@rst:|icon_fr|@@.
 
 * Aim
 
