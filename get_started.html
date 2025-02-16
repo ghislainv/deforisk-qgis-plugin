@@ -518,7 +518,7 @@
 <a class="reference internal image-reference" href="_images/qgis-benchmark-results.png"><img alt="_images/qgis-benchmark-results.png" src="_images/qgis-benchmark-results.png" style="width: 650px;" />
 </a>
 <p><br/></p>
-<p>New folders with results are created in the <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/</span></code> directory for each period. In particular, the output folders include the <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/perc_dist.png</span></code> file. This file shows the plot of the cumulated deforestation as a function of the distance to forest edge and indicates the distance thresholds (here 240 m for the calibration period).</p>
+<p>New folders with results are created in the <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/</span></code> directory for each period. In particular, the output folders include the <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/perc_dist.png</span></code> file. This file shows the plot of the cumulated deforestation as a function of the distance to forest edge and indicates the distance threshold (here 240 m for the calibration period).</p>
 <figure class="align-default" id="id9">
 <span id="fig-perc-dist"></span><a class="reference internal image-reference" href="_images/perc_dist.png"><img alt="_images/perc_dist.png" src="_images/perc_dist.png" style="width: 600px;" />
 </a>
@@ -863,7 +863,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For large jurisdictions, if you want to reduce computation time, use only one window size (e.g. 21 pixels).</p>
+<p>For large jurisdictions, if you want to reduce computation time, use only one moving window size (e.g. 21 pixels).</p>
 </div>
 <p>Click the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button to estimate the deforestation risk with the moving window model using data on both the calibration and historical periods. New folders with results are created in the <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code> directory including the <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/ldefrate_mw_&lt;window_size&gt;.tif</span></code> raster file with local deforestation rates rescaled on [2, 65535].</p>
 </section>
@@ -901,7 +901,7 @@
 <p>Files <code class="docutils literal notranslate"><span class="pre">figures/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.png</span></code> which show the plot of predicted vs. observed deforested area. The plot shows values of predicted and observed deforested area in each grid cell as points and the one-one line. The plot reports also the number of grid cells (or points), and the values of two of the performance indices: the <span class="math notranslate nohighlight">\(R^{2}\)</span> and the MedAE.</p>
 <a class="reference internal image-reference" href="_images/pred_obs_icar_validation_50.png"><img alt="_images/pred_obs_icar_validation_50.png" src="_images/pred_obs_icar_validation_50.png" style="width: 600px;" />
 </a>
-<p>File <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/indices_all.csv</span></code> includes a table with the performance indices for all validation cell sizes, all models, and all periods. In this example, both the Random Forest model and the iCAR model are better than the benchmark model whatever the performance indices considered. The iCAR model is the best model has it has the lowest MedAE, the lowest RMSE, and the highest <span class="math notranslate nohighlight">\(R^{2}\)</span> for the validation period which is the only period with independent data (i.e. which have not be used to calibrate the models). This is true whatever the validation cell size chosen.</p>
+<p>File <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/indices_all.csv</span></code> includes a table with the performance indices for all validation cell sizes, all models, and all periods. In this example, both the Random Forest model and the iCAR model are better than the benchmark model whatever the performance indices considered. The iCAR model is the best model has it has the lowest MedAE, the lowest RMSE, and the highest <span class="math notranslate nohighlight">\(R^{2}\)</span> for the validation period which is the only period with independent data (i.e. which have not be used to calibrate the models). This is true whatever the validation cell size chosen.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-indices">
 <caption><span class="caption-text">Performance indices.</span><a class="headerlink" href="#tab-indices" title="Link to this table">#</a></caption>
 <thead>
@@ -1069,7 +1069,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">risk</span> <span class="pre">map</span></code>: File <code class="docutils literal notranslate"><span class="pre">prob_icar_t3.tif</span></code> for the best risk map.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Table.</span> <span class="pre">with</span> <span class="pre">defor.</span> <span class="pre">rates</span></code>: File <code class="docutils literal notranslate"><span class="pre">defrate_cat_icar_forecast.csv</span></code> for the table with the deforestation rates from the icar model at t3 for each class of deforestation risk.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">borders</span></code>: File <code class="docutils literal notranslate"><span class="pre">project_borders_MTQ_jurisdiction.gpkg</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">deforestation</span> <span class="pre">(ha)</span></code>: 4000. About 400 ha have been deforested each year in 2010–2020 in MTQ.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">deforestation</span> <span class="pre">(ha)</span></code>: 4000. About 400 ha have been deforested each year in 2010–2020 in Martinique.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Length</span> <span class="pre">forecast</span> <span class="pre">period</span> <span class="pre">(yr)</span></code>: 10.</p></li>
 </ul>
 <p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level (<span class="math notranslate nohighlight">\(D=4000\)</span>)and the relative spatial deforestation rates from the model. Then,

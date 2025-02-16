@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>API de Plugin &#8212; deforisk — Create and compare deforestation risk maps</title>
+    <title>API du plugin &#8212; deforisk — Create and compare deforestation risk maps</title>
   
   
   
@@ -164,7 +164,7 @@
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -328,7 +328,7 @@
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -439,7 +439,7 @@
     
     <li class="breadcrumb-item"><a href="articles.html" class="nav-link">Articles</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">API de Plugin</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">API du plugin</span></li>
   </ul>
 </nav>
 </div>
@@ -457,7 +457,7 @@
                 <article class="bd-article">
                   
   <section id="plugin-api">
-<h1>API de Plugin<a class="headerlink" href="#plugin-api" title="Lien vers cette rubrique">#</a></h1>
+<h1>API du plugin<a class="headerlink" href="#plugin-api" title="Lien vers cette rubrique">#</a></h1>
 <section id="plugin-interface">
 <h2>Interface du plugin<a class="headerlink" href="#plugin-interface" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface_plugin.gif" src="_images/interface_plugin.gif" />
@@ -697,7 +697,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Table.</span> <span class="pre">with</span> <span class="pre">defor.</span> <span class="pre">rates</span></code> : Chemin d’accès au tableau contenant les taux de déforestation du modèle à t3 pour chaque classe de risque de déforestation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Frontières</span> <span class="pre">du</span> <span class="pre">projet</span></code> : Chemin d’accès au fichier vectoriel définissant les limites du projet.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Déforestation</span> <span class="pre">Juris.</span> <span class="pre">(ha)</span></code> : Déforestation prévue au niveau juridictionnel en hectares.</p></li>
-<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>Longueur de la période de prévision (an) `` : Durée de la période de prévision (également appelée « période de validité de la ligne de base »), en années. Utilisée pour calculer la déforestation annuelle pour le projet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Length</span> <span class="pre">forecast</span> <span class="pre">periods</span> <span class="pre">(yr)</span></code> : Durée de la période de prévision (également appelée « période de validité de la ligne de base »), en années. Utilisée pour calculer la déforestation annuelle pour le projet.</p></li>
 </ul>
 <p>En appuyant sur le bouton « Exécuter » dans cette boîte, on calcule le facteur d’ajustement de la quantité et la densité de déforestation pour chaque classe de risque en utilisant la déforestation totale prévue au niveau de la juridiction et les taux de déforestation spatiaux relatifs du modèle. Ensuite, la carte des risques avec les classes de risque de déforestation est recadrée aux limites du projet et le nombre de pixels de forêt dans chaque classe de risque est calculé au niveau du projet. Enfin, la déforestation prévue au niveau du projet est obtenue en additionnant les densités de déforestation au sein du projet.</p>
 <p>Le dossier suivant est créé : <code class="docutils literal notranslate"><span class="pre">outputs/allocating_deforestation</span></code>. Ce dossier contient les fichiers suivants :</p>

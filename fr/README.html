@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Le plugin QGIS deforisk &#8212; deforisk — Create and compare deforestation risk maps</title>
+    <title>Plugin QGIS deforisk &#8212; deforisk — Create and compare deforestation risk maps</title>
   
   
   
@@ -162,7 +162,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="plugin_api.html">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -328,7 +328,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="plugin_api.html">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -436,7 +436,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Le plugin QGIS deforisk</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Plugin QGIS deforisk</span></li>
   </ul>
 </nav>
 </div>
@@ -456,7 +456,7 @@
   <a class="reference external image-reference" href="https://deforisk-qgis-plugin.org"><img alt="Logo Riskmapjnr" class="align-right" src="https://deforisk-qgis-plugin.org/_static/logo-deforisk.png" style="width: 140px;" />
 </a>
 <section id="deforisk-qgis-plugin">
-<h1>Le plugin QGIS deforisk<a class="headerlink" href="#deforisk-qgis-plugin" title="Lien vers cette rubrique">#</a></h1>
+<h1>Plugin QGIS deforisk<a class="headerlink" href="#deforisk-qgis-plugin" title="Lien vers cette rubrique">#</a></h1>
 <a class="reference external image-reference" href="https://www.gnu.org/licenses/gpl-3.0.html"><img alt="https://img.shields.io/badge/licence-GPLv3-8f10cb.svg" src="https://img.shields.io/badge/licence-GPLv3-8f10cb.svg" />
 </a>
 <a class="reference external image-reference" href="https://github.com/ghislainv/deforisk-qgis-plugin"><img alt="https://img.shields.io/badge/GitHub-repo-green.svg" src="https://img.shields.io/badge/GitHub-repo-green.svg" />
@@ -480,7 +480,7 @@
 <section id="aim">
 <h2>Objectif<a class="headerlink" href="#aim" title="Lien vers cette rubrique">#</a></h2>
 <p>Le plugin QGIS <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> peut être utilisé pour cartographier le risque de déforestation pour un pays ou une zone d'intérêt. Quatre modèles peuvent être utilisés pour dériver les cartes de risques : les modèles iCAR, GLM, Random Forest et Moving Window. Ces quatre modèles peuvent être comparés à un modèle de référence qui suppose une simple diminution du risque de déforestation avec la distance à la lisière de la forêt. Tous les modèles sont calibrés à l'aide d'observations de déforestation passées pour une période de temps donnée entre 2000 et 2022. Les cartes de changement du couvert forestier peuvent être fournies par l'utilisateur ou dérivées de deux produits mondiaux de changement du couvert forestier ou arboré : <a class="reference external" href="https://forobs.jrc.ec.europa.eu/TMF">Global Forest  Change &lt;https://earthenginepartners.appspot.com/science-2013-global-forest&gt; `_ et `Tropical Moist Forest</a>.</p>
-<p>Les cartes de risque de déforestation obtenues à l'aide de ce plugin peuvent être utilisées pour estimer l'impact sur la réduction des émissions de projets de conservation forestière dans le cadre de l”<a href="#id1"><span class="problematic" id="id2">`</span></a>approche REDD+ juridictionnelle et imbriquée développée par VCS &lt;<a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">https://verra.org/programs/jurisdictional-nested-redd-framework/</a>&gt; <a href="#id3"><span class="problematic" id="id4">`</span></a>_.</p>
+<p>Les cartes de risque de déforestation obtenues à l'aide de ce plugin peuvent être utilisées pour estimer l'impact sur la réduction des émissions de projets de conservation forestière dans le cadre de l”<a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">approche REDD+ juridictionnelle et imbriquée développée par VCS</a>.</p>
 <a class="reference external image-reference" href="https://deforisk-qgis-plugin.org"><img alt="Bannière" src="https://deforisk-qgis-plugin.org/_static/banner.png" />
 </a>
 </section>
@@ -503,7 +503,7 @@
 <h2>Installer le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> dans QGIS<a class="headerlink" href="#installing-the-deforisk-plugin-in-qgis" title="Lien vers cette rubrique">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Dépendances</strong> : <cite>QGIS&lt;https://www.qgis.org/en/site/&gt; `_ et `GDAL&lt;https://gdal.org/index.html&gt; `_ doivent être installés sur votre système avant d'utiliser le plugin ``deforisk`</cite>. <em>Sur les systèmes de type Unix</em>, vous devez également installer <cite>osmconvert&lt;https://wiki.openstreetmap.org/wiki/Osmconvert&gt; `_ et `osmfilter&lt;https://wiki.openstreetmap.org/wiki/Osmfilter&gt; `_. *Sur les systèmes Windows*, ces dépendances sont déjà incluses dans le plugin sous forme de fichiers binaires `</cite>.exe`` vous n'avez donc pas besoin de les installer. Ensuite, les packages Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> doivent être installés sur votre système. Suivez les instructions d'`installation&lt;installation.html&gt; <a href="#id1"><span class="problematic" id="id2">`</span></a>_ pour installer ces dépendances.</p>
+<p><strong>Dépendances</strong> : <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> et <a class="reference external" href="https://gdal.org/index.html">GDAL</a> doivent être installés sur votre système avant d'utiliser le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>. <em>Sur les systèmes de type Unix</em>, vous devez également installer <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmconvert">osmconvert</a> et <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Osmfilter">osmfilter</a>. <em>Sur les systèmes Windows</em>, ces dépendances sont déjà incluses dans le plugin sous forme de fichiers binaires <code class="docutils literal notranslate"><span class="pre">.exe</span></code> vous n'avez donc pas besoin de les installer. Ensuite, les packages Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> et <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> doivent être installés sur votre système. Suivez les instructions d'`installation &lt;installation.html&gt;`_ pour installer ces dépendances.</p>
 </div>
 <ul class="simple">
 <li><p>Téléchargez le <a class="reference external" href="https://github.com/ghislainv/deforisk-qgis-plugin/archive/refs/heads/main.zip">fichier zip</a> <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> de GitHub.</p></li>

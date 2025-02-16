@@ -163,7 +163,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../plugin_api.html">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -327,7 +327,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../plugin_api.html">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -461,21 +461,21 @@
 <h2>Quelques conseils pour les grandes juridictions<a class="headerlink" href="#some-advices-for-large-jurisdictions" title="Lien vers cette rubrique">#</a></h2>
 <p>Il peut être nécessaire de modifier les paramètres par défaut du plugin pour les grandes juridictions (par exemple, à l’échelle d’un pays).</p>
 <ol class="arabic simple">
-<li><p>Utilisez une « distance maximale à l’égide de la forêt (m) » plus grande, par exemple <strong>6000 m</strong> dans les modèles <code class="docutils literal notranslate"><span class="pre">Benchmark</span></code> et <code class="docutils literal notranslate"><span class="pre">MW</span></code>.</p></li>
-<li><p>Si vous souhaitez économiser du temps de calcul et consulter les résultats les plus importants, vous n’avez qu’à le faire :</p>
+<li><p>Utilisez une distance maximale à la lisière de la forêt (<code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>) plus grande, par exemple <strong>6000 m</strong> dans les modèles <code class="docutils literal notranslate"><span class="pre">Benchmark</span></code> et <code class="docutils literal notranslate"><span class="pre">MW</span> <span class="pre">models</span></code>.</p></li>
+<li><p>Si vous souhaitez économiser du temps de calcul et consulter les résultats les plus importants, vous n’avez qu’à :</p>
 <ul class="simple">
-<li><p>Calibrez les modèles sur la <strong>période de calibrage</strong>, en cochant <code class="docutils literal notranslate"><span class="pre">période</span> <span class="pre">de</span> <span class="pre">calibrage</span></code> dans la case <code class="docutils literal notranslate"><span class="pre">Adapter</span> <span class="pre">le</span> <span class="pre">modèle</span> <span class="pre">aux</span> <span class="pre">données</span></code>.</p></li>
-<li><p>Prédire pour la <strong>période de validation</strong>, en cochant « validation t2 » dans la case « Prédire le risque de déforestation ».</p></li>
+<li><p>Calibrez les modèles sur la <strong>période de calibration</strong>, en cochant <code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> dans la case <code class="docutils literal notranslate"><span class="pre">Fit</span> <span class="pre">model</span> <span class="pre">to</span> <span class="pre">data</span></code>.</p></li>
+<li><p>Prédire pour la <strong>période de validation</strong>, en cochant <code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> dans la case <code class="docutils literal notranslate"><span class="pre">Predict</span> <span class="pre">the</span> <span class="pre">deforestation</span> <span class="pre">risk</span></code>.</p></li>
 </ul>
 </li>
 <li><p>Pour les modèles FAR :</p>
 <ul class="simple">
-<li><p>Utilisez une « taille de cellule spatiale (km) » plus grande pour l’échantillonnage, par exemple <strong>10 km</strong> pour éviter d’estimer un trop grand nombre de paramètres pour les effets aléatoires spatiaux.</p></li>
-<li><p>Utilisez une taille de cellule spatiale d’interpolation (km) plus grande, par exemple <strong>1 km</strong>.</p></li>
+<li><p>Utilisez une taille de cellule spatiale <code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(km)</span></code> plus grande pour l’échantillonnage, par exemple <strong>10 km</strong> pour éviter d’estimer un trop grand nombre de paramètres pour les effets aléatoires spatiaux.</p></li>
+<li><p>Utilisez une taille de cellule spatiale pour l’interpolation <code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">interpolation</span> <span class="pre">(km)</span></code> plus grande, par exemple <strong>1 km</strong>.</p></li>
 </ul>
 </li>
-<li><p>Pour les modèles MW, n’utilisez qu’une seule <code class="docutils literal notranslate"><span class="pre">taille</span> <span class="pre">de</span> <span class="pre">fenêtre</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>, par exemple <strong>21</strong>. Cela devrait correspondre à environ 630 m pour une résolution de 30 m.</p></li>
-<li><p>Pour l’étape de validation, utilisez une seule <code class="docutils literal notranslate"><span class="pre">Taille</span> <span class="pre">des</span> <span class="pre">cellules</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">grille</span> <span class="pre">grossière</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code> et augmentez sa taille, en utilisant par exemple <strong>300</strong>. Cela devrait correspondre à environ 9 km pour une résolution de 30 m.</p></li>
+<li><p>Pour les modèles MW, n’utilisez qu’une seule taille de fenêtre <code class="docutils literal notranslate"><span class="pre">Window</span> <span class="pre">sizes</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>, par exemple <strong>21</strong>. Cela correspond à 630 m pour une résolution de 30 m.</p></li>
+<li><p>Pour l’étape de validation, utilisez une seule taille de cellule pour la grille grossière <code class="docutils literal notranslate"><span class="pre">Coarse</span> <span class="pre">grid</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code> et augmentez sa taille, en utilisant par exemple <strong>300</strong>. Cela correspond à 9 km pour une résolution de 30 m.</p></li>
 </ol>
 </section>
 </section>

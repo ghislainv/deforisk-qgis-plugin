@@ -48,7 +48,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
     <link rel="next" title="Conseils pour les grandes juridictions" href="large_jurisdictions.html" />
-    <link rel="prev" title="API de Plugin" href="../plugin_api.html" />
+    <link rel="prev" title="API du plugin" href="../plugin_api.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
   <meta name="docsearch:version" content="" />
@@ -163,7 +163,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../plugin_api.html">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -327,7 +327,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../plugin_api.html">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -462,8 +462,8 @@
 <p>Le but est d'obtenir un fichier GPKG nommé <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code> avec deux couches nommées <code class="docutils literal notranslate"><span class="pre">aoi</span></code> pour la juridiction et <code class="docutils literal notranslate"><span class="pre">subj</span></code> pour les sous-juridictions. Ce fichier peut ensuite être utilisé avec le plugin <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> pour définir la zone d'intérêt (AOI).</p>
 </section>
 <section id="file-creation-using-qgis-tools">
-<h2>Création de fichiers à l’aide des outils QGIS<a class="headerlink" href="#file-creation-using-qgis-tools" title="Lien vers cette rubrique">#</a></h2>
-<p>Téléchargez les données de <a class="reference external" href="https://gadm.org">GADM</a> avec un fichier GPKG.</p>
+<h2>Création du fichier à l’aide des outils QGIS<a class="headerlink" href="#file-creation-using-qgis-tools" title="Lien vers cette rubrique">#</a></h2>
+<p>Téléchargez les données de <a class="reference external" href="https://gadm.org">GADM</a> sous forme d’un fichier GPKG.</p>
 <a class="reference internal image-reference" href="../_images/gadm_peru.png"><img alt="../_images/gadm_peru.png" src="../_images/gadm_peru.png" style="width: 650px;" />
 </a>
 <p><br/></p>
@@ -471,15 +471,15 @@
 <a class="reference internal image-reference" href="../_images/all_layers.png"><img alt="../_images/all_layers.png" src="../_images/all_layers.png" style="width: 650px;" />
 </a>
 <p><br/></p>
-<p>Sélectionnez la juridiction avec la barre d’outils de sélection (si elle n’est pas visible, activez-la dans <code class="docutils literal notranslate"><span class="pre">Affichage</span> <span class="pre">&gt;</span> <span class="pre">Barres</span> <span class="pre">d'outils</span> <span class="pre">&gt;</span> <span class="pre">Barre</span> <span class="pre">de</span> <span class="pre">sélection</span></code>).</p>
+<p>Sélectionnez la juridiction avec la barre d’outils de sélection (si elle n’est pas visible, activez-la dans <code class="docutils literal notranslate"><span class="pre">Vue</span> <span class="pre">&gt;</span> <span class="pre">Barres</span> <span class="pre">d'outils</span> <span class="pre">&gt;</span> <span class="pre">Sélection</span></code>).</p>
 <a class="reference internal image-reference" href="../_images/select_jurisdiction.png"><img alt="../_images/select_jurisdiction.png" src="../_images/select_jurisdiction.png" style="width: 650px;" />
 </a>
 <p><br/></p>
-<p>Pour enregistrer la fonction dans un nouveau fichier GPKG nommé <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code>, cliquez avec le bouton droit sur la couche et sélectionnez <code class="docutils literal notranslate"><span class="pre">Exporter</span> <span class="pre">&gt;</span> <span class="pre">Enregistrer</span> <span class="pre">la</span> <span class="pre">fonction</span> <span class="pre">sélectionnée</span> <span class="pre">sous</span></code>. Cochez <code class="docutils literal notranslate"><span class="pre">Enregistrer</span> <span class="pre">uniquement</span> <span class="pre">les</span> <span class="pre">fonctions</span> <span class="pre">sélectionnées</span></code> et nommez la couche <code class="docutils literal notranslate"><span class="pre">aoi</span></code> (il est obligatoire d’utiliser ce nom de couche).</p>
+<p>Pour enregistrer l’entité dans un nouveau fichier GPKG nommé <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code>, cliquez avec le bouton droit sur la couche et sélectionnez <code class="docutils literal notranslate"><span class="pre">Exporter</span> <span class="pre">&gt;</span> <span class="pre">Enregistrer</span> <span class="pre">l'entité</span> <span class="pre">sélectionnée</span> <span class="pre">sous</span></code>. Cochez <code class="docutils literal notranslate"><span class="pre">Enregistrer</span> <span class="pre">uniquement</span> <span class="pre">les</span> <span class="pre">entités</span> <span class="pre">sélectionnées</span></code> et nommez la couche <code class="docutils literal notranslate"><span class="pre">aoi</span></code> (il est obligatoire d’utiliser ce nom de couche).</p>
 <a class="reference internal image-reference" href="../_images/save_jurisdiction.png"><img alt="../_images/save_jurisdiction.png" src="../_images/save_jurisdiction.png" style="width: 500px;" />
 </a>
 <p><br/></p>
-<p>Sélectionnez les sous-juridictions (pour enregistrer plusieurs fonctionnalités avec l’outil de sélection, maintenez le bouton <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> enfoncé).</p>
+<p>Sélectionnez les sous-juridictions (pour enregistrer plusieurs entités avec l’outil de sélection, maintenez le bouton <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> enfoncé).</p>
 <a class="reference internal image-reference" href="../_images/select_subjurisdictions.png"><img alt="../_images/select_subjurisdictions.png" src="../_images/select_subjurisdictions.png" style="width: 650px;" />
 </a>
 <p><br/></p>
@@ -490,9 +490,9 @@
 <p>Nous venons de créer un fichier GPKG nommé « aoi_latlon.gpkg » avec deux couches nommées « aoi » pour la juridiction et « subj » pour les sous-juridictions. Notez que vous pouvez sélectionner des juridictions et des sous-juridictions à différents niveaux administratifs, en sélectionnant des entités au niveau 1, 2 ou 3 dans l’ensemble de données GADM.</p>
 </section>
 <section id="looking-at-the-data-in-qgis">
-<h2>Regardant les données dans QGIS.<a class="headerlink" href="#looking-at-the-data-in-qgis" title="Lien vers cette rubrique">#</a></h2>
+<h2>Affichage des données dans QGIS.<a class="headerlink" href="#looking-at-the-data-in-qgis" title="Lien vers cette rubrique">#</a></h2>
 <ul class="simple">
-<li><p>Ouvrez le panneau Fichier. S’il n’est pas visible, activez-le dans <code class="docutils literal notranslate"><span class="pre">Affichage</span> <span class="pre">&gt;</span> <span class="pre">Panneaux</span> <span class="pre">&gt;</span> <span class="pre">Fichier</span></code>.</p></li>
+<li><p>Ouvrez l’explorateur de fichier. S’il n’est pas visible, activez-le dans <code class="docutils literal notranslate"><span class="pre">Vue</span> <span class="pre">&gt;</span> <span class="pre">Panneaux</span> <span class="pre">&gt;</span> <span class="pre">Explorateur</span></code>.</p></li>
 <li><p>Recherchez le fichier <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code> dans vos dossiers.</p></li>
 <li><p>Faites glisser et déposez le fichier GPKG pour ajouter les couches <code class="docutils literal notranslate"><span class="pre">aoi</span></code> et <code class="docutils literal notranslate"><span class="pre">subj</span></code> dans la liste des couches QGIS.</p></li>
 </ul>
@@ -500,7 +500,7 @@
 </a>
 </section>
 <section id="use-with-the-deforisk-plugin">
-<h2>Utiliser avec le plugin deforisk<a class="headerlink" href="#use-with-the-deforisk-plugin" title="Lien vers cette rubrique">#</a></h2>
+<h2>Utilisation avec le plugin deforisk<a class="headerlink" href="#use-with-the-deforisk-plugin" title="Lien vers cette rubrique">#</a></h2>
 <p>Sélectionnez le fichier GPKG lors de la définition de la zone d’intérêt (AOI).</p>
 <a class="reference internal image-reference" href="../_images/interface_aoi_madre_de_dios.png"><img alt="../_images/interface_aoi_madre_de_dios.png" src="../_images/interface_aoi_madre_de_dios.png" style="width: 500px;" />
 </a>
@@ -523,7 +523,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">précédent</p>
-        <p class="prev-next-title">API de Plugin</p>
+        <p class="prev-next-title">API du plugin</p>
       </div>
     </a>
     <a class="right-next"
@@ -555,9 +555,9 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objectif</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-creation-using-qgis-tools">Création de fichiers à l’aide des outils QGIS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-the-data-in-qgis">Regardant les données dans QGIS.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-with-the-deforisk-plugin">Utiliser avec le plugin deforisk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-creation-using-qgis-tools">Création du fichier à l’aide des outils QGIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-the-data-in-qgis">Affichage des données dans QGIS.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-with-the-deforisk-plugin">Utilisation avec le plugin deforisk</a></li>
 </ul>
   </nav></div>
 

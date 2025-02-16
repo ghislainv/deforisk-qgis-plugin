@@ -164,7 +164,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="plugin_api.html">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -328,7 +328,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="plugin_api.html">
-    API de Plugin
+    API du plugin
   </a>
 </li>
 
@@ -478,7 +478,7 @@
 </figure>
 </section>
 <section id="get-variables">
-<h2>Obtenir des variables<a class="headerlink" href="#get-variables" title="Lien vers cette rubrique">#</a></h2>
+<h2>Get variables<a class="headerlink" href="#get-variables" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface-variables.png" src="_images/interface-variables.png" />
 <p><br/></p>
 <ul class="simple">
@@ -498,7 +498,7 @@
 <p class="admonition-title">Avertissement</p>
 <p>Pour les utilisateurs de Windows, choisissez un répertoire de travail avec un chemin court (par exemple <code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;username&gt;\&lt;dirname&gt;</span></code>). Les longs chemins d’accès aux fichiers peuvent poser des problèmes d’accès aux fichiers sous Windows.</p>
 </div>
-<p>Cliquez sur le bouton Run. Une carte des changements du couvert forestier apparaît dans la liste des couches de QGIS (voir l’image ci-dessous et cliquer pour l’agrandir) et une figure représentant le changement du couvert forestier <code class="docutils literal notranslate"><span class="pre">fcc123.png</span></code> est créé dans le dossier <code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>. De nouveaux dossiers sont créés dans le répertoire de travail, dont le dossier <cite>data_raw</cite> qui contient les données brutes avec les fichiers intermédiaires et le dossier <cite>data</cite> qui contient les données traitées utilisées pour les modèles et les traces. Vous pouvez visualiser le réseau routier par exemple en ajoutant le fichier vectoriel <code class="docutils literal notranslate"><span class="pre">roads_proj.shp</span></code>, qui est situé dans le répertoire <code class="docutils literal notranslate"><span class="pre">data_raw</span></code>, dans QGIS.</p>
+<p>Cliquez sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code>. Une carte des changements du couvert forestier apparaît dans la liste des couches de QGIS (voir l’image ci-dessous et cliquer pour l’agrandir) et une figure représentant le changement du couvert forestier <code class="docutils literal notranslate"><span class="pre">fcc123.png</span></code> est créée dans le dossier <code class="docutils literal notranslate"><span class="pre">outputs/variables</span></code>. De nouveaux dossiers sont créés dans le répertoire de travail, dont le dossier <cite>data_raw</cite> qui contient les données brutes avec les fichiers intermédiaires et le dossier <cite>data</cite> qui contient les données traitées utilisées pour les modèles et les traces. Vous pouvez visualiser le réseau routier par exemple en ajoutant le fichier vectoriel <code class="docutils literal notranslate"><span class="pre">roads_proj.shp</span></code>, qui est situé dans le répertoire <code class="docutils literal notranslate"><span class="pre">data_raw</span></code>, dans QGIS.</p>
 <a class="reference internal image-reference" href="_images/qgis-variables-results.png"><img alt="_images/qgis-variables-results.png" src="_images/qgis-variables-results.png" style="width: 650px;" />
 </a>
 <p><br/></p>
@@ -510,35 +510,35 @@
 <section id="fit-model-to-data">
 <h3>Ajuster le modèle aux données<a class="headerlink" href="#fit-model-to-data" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
-<li><p>Seuil de déforestation (%) : 99,5</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Distance</span> <span class="pre">maximale</span> <span class="pre">à</span> <span class="pre">la</span> <span class="pre">lisière</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">forêt</span> <span class="pre">(m)</span></code> : 2500</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">période</span> <span class="pre">d'étalonnage</span></code> : Si cette case est cochée, le modèle est ajusté sur la période d’étalonnage (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 99.5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: 2500</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> : Si cette case est cochée, le modèle est ajusté sur la période d’étalonnage (t1–t2).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code> : Si cette case est cochée, le modèle est ajusté sur la période historique (t1–t3).</p></li>
 </ul>
-<p>Cliquez sur le bouton « Exécuter » pour estimer le risque de déforestation avec le modèle de référence et prédire le risque de déforestation à t1 en utilisant les données de la période de calibration et de la période historique. Les cartes comportant des classes de risque de déforestation sont ajoutées à la liste des couches QGIS (voir l’image ci-dessous).</p>
+<p>Cliquez sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> pour estimer le risque de déforestation avec le modèle de référence et prédire le risque de déforestation à t1 en utilisant les données de la période de calibration et de la période historique. Les cartes comportant des classes de risque de déforestation sont ajoutées à la liste des couches QGIS (voir l’image ci-dessous).</p>
 <a class="reference internal image-reference" href="_images/qgis-benchmark-results.png"><img alt="_images/qgis-benchmark-results.png" src="_images/qgis-benchmark-results.png" style="width: 650px;" />
 </a>
 <p><br/></p>
-<p>De nouveaux dossiers contenant les résultats sont créés dans le répertoire <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/</span></code> pour chaque période. En particulier, les dossiers de sortie comprennent le fichier <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/perc_dist.png</span></code>. Ce fichier montre le tracé de la déforestation cumulée en fonction de la distance à la lisière de la forêt et indique les seuils de distance (ici 240  m pour la période de calibration).</p>
+<p>De nouveaux dossiers contenant les résultats sont créés dans le répertoire <code class="docutils literal notranslate"><span class="pre">outputs/rmj_benchmark/</span></code> pour chaque période. En particulier, les dossiers de sortie comprennent le fichier <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/perc_dist.png</span></code>. Ce fichier montre la figure de la déforestation cumulée en fonction de la distance à la lisière de la forêt et indique le seuil de distance (ici 240 m pour la période de calibration).</p>
 <figure class="align-default" id="id9">
 <span id="fig-perc-dist"></span><a class="reference internal image-reference" href="_images/perc_dist.png"><img alt="_images/perc_dist.png" src="_images/perc_dist.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Seuil de distance pour la période d’étalonnage.</span><a class="headerlink" href="#id9" title="Lien vers cette image">#</a></p>
+<p><span class="caption-text">Seuil de distance pour la période de calibration.</span><a class="headerlink" href="#id9" title="Lien vers cette image">#</a></p>
 </figcaption>
 </figure>
-<p>Les dossiers de sortie comprennent également le tableau <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_bm_&lt;period&gt;.csv</span></code> qui montre les taux de déforestation pour chaque classe de risque de déforestation (voir les détails <a class="reference external" href="plugin_api.html#defrate-table">here</a>).</p>
+<p>Les dossiers de sortie comprennent également le tableau <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_bm_&lt;period&gt;.csv</span></code> qui montre les taux de déforestation pour chaque classe de risque de déforestation (voir les détails <a class="reference external" href="plugin_api.html#defrate-table">ici</a>).</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-defrate">
 <caption><span class="caption-text">Taux de déforestation pour chaque classe de risque de déforestation (nombres tronqués à trois chiffres après la virgule).</span><a class="headerlink" href="#tab-defrate" title="Lien vers ce tableau">#</a></caption>
 <thead>
-<tr class="row-odd"><th class="head"><p>chat</p></th>
+<tr class="row-odd"><th class="head"><p>cat</p></th>
 <th class="head"><p>nfor</p></th>
 <th class="head"><p>ndefor</p></th>
-<th class="head"><p>taux d’occupation</p></th>
+<th class="head"><p>rate_obs</p></th>
 <th class="head"><p>rate_mod</p></th>
-<th class="head"><p>taux_abs</p></th>
-<th class="head"><p>intervalle de temps</p></th>
-<th class="head"><p>Zone de pixels</p></th>
+<th class="head"><p>rate_abs</p></th>
+<th class="head"><p>time_interval</p></th>
+<th class="head"><p>pixel_area</p></th>
 <th class="head"><p>defor_dens</p></th>
 </tr>
 </thead>
@@ -598,50 +598,50 @@
 </div>
 </section>
 <section id="predict-the-deforestation-risk">
-<h3>Prévoir le risque de déforestation<a class="headerlink" href="#predict-the-deforestation-risk" title="Lien vers cette rubrique">#</a></h3>
+<h3>Prédire le risque de déforestation<a class="headerlink" href="#predict-the-deforestation-risk" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> : Coché, calcule les prédictions à t2 pour la validation (en utilisant le modèle de référence ajusté sur la période d’étalonnage).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code> : Coché, calcule les prévisions à t3 pour les prévisions (en utilisant le modèle de référence ajusté sur la période historique).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> : Coché, calcule les prédictions à t2 pour la validation (en utilisant le modèle de référence ajusté sur la période de calibration).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code> : Coché, calcule les prédictions à t3 pour les prévisions (en utilisant le modèle de référence ajusté sur la période historique).</p></li>
 </ul>
-<p>Cliquez sur le bouton « Exécuter » pour prédire le risque de déforestation à t2 et t3 en utilisant le modèle de référence. Les cartes avec les classes de risque de déforestation sont ajoutées à la liste des couches QGIS et de nouveaux fichiers sont ajoutés aux dossiers de sortie.</p>
+<p>Cliquez sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> pour prédire le risque de déforestation à t2 et t3 en utilisant le modèle de référence. Les cartes avec les classes de risque de déforestation sont ajoutées à la liste des couches QGIS et de nouveaux fichiers sont ajoutés aux dossiers de sortie.</p>
 </section>
 </section>
 <section id="forestatrisk-models">
-<h2>Modèles de risque forestier<a class="headerlink" href="#forestatrisk-models" title="Lien vers cette rubrique">#</a></h2>
+<h2>Modèles forestatrisk<a class="headerlink" href="#forestatrisk-models" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface-far.png" src="_images/interface-far.png" />
 <section id="sample-observations">
-<h3>Exemples d’observations<a class="headerlink" href="#sample-observations" title="Lien vers cette rubrique">#</a></h3>
+<h3>Sample observations<a class="headerlink" href="#sample-observations" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">N#</span> <span class="pre">échantillons</span></code> : 10000</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Échantillonnage</span> <span class="pre">adapté</span></code> : Coché, le nombre d’observations est proportionnel à la surface forestière.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Graine</span> <span class="pre">aléatoire</span></code> : 1234</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Taille</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">cellule</span> <span class="pre">spatiale</span> <span class="pre">(km)</span></code> : 2</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Période</span> <span class="pre">d'étalonnage</span></code> : Si cette case est cochée, les observations sont échantillonnées pour la période d’étalonnage (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">N#</span> <span class="pre">samples</span></code>: 10000</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Adapt</span> <span class="pre">sampling</span></code> : Coché, le nombre d’observations est proportionnel à la surface forestière.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Random</span> <span class="pre">seed</span></code>: 1234</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(km)</span></code>: 2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> : Si cette case est cochée, les observations sont échantillonnées pour la période d’étalonnage (t1–t2).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code> : Si cette case est cochée, les observations sont échantillonnées pour la période historique (t1–t3).</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p>Pour les grandes juridictions, afin d’éviter de calculer trop de paramètres pour les effets aléatoires spatiaux, la taille de la cellule spatiale est fixée à ~10 km.</p>
 </div>
-<p>En appuyant sur le bouton « Exécuter » dans cette boîte, vous échantillonnez les observations. Lorsque l’opération est terminée, les observations échantillonnées apparaissent dans la liste des couches QGIS.</p>
+<p>En appuyant sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> dans cette boîte, vous échantillonnez les observations. Lorsque l’opération est terminée, les observations échantillonnées apparaissent dans la liste des couches QGIS.</p>
 <a class="reference internal image-reference" href="_images/qgis-far-sample-results.png"><img alt="_images/qgis-far-sample-results.png" src="_images/qgis-far-sample-results.png" style="width: 650px;" />
 </a>
 <p><br/></p>
-<p>De nouveaux dossiers contenant les résultats sont créés dans le répertoire <code class="docutils literal notranslate"><span class="pre">outputs/far_models/</span></code>, y compris le fichier <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/sample.txt</span></code> qui est l’ensemble de données d’observation avec des valeurs variables.</p>
+<p>De nouveaux dossiers contenant les résultats sont créés dans le répertoire <code class="docutils literal notranslate"><span class="pre">outputs/far_models/</span></code>, y compris le fichier <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/sample.txt</span></code> qui est le jeu de données d’observations avec les valeurs des variables.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-observations">
 <caption><span class="caption-text">Cinq premières observations pour la période d’étalonnage.</span><a class="headerlink" href="#tab-observations" title="Lien vers ce tableau">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>altitude</p></th>
-<th class="head"><p>bord_de_distribution</p></th>
-<th class="head"><p>rivière distante</p></th>
-<th class="head"><p>Route de la distraction</p></th>
-<th class="head"><p>Ville distante</p></th>
+<th class="head"><p>dist_edge</p></th>
+<th class="head"><p>dist_river</p></th>
+<th class="head"><p>dist_road</p></th>
+<th class="head"><p>dist_town</p></th>
 <th class="head"><p>fcc</p></th>
 <th class="head"><p>pa</p></th>
-<th class="head"><p>pente</p></th>
+<th class="head"><p>slope</p></th>
 <th class="head"><p>X</p></th>
 <th class="head"><p>Y</p></th>
-<th class="head"><p>cellule</p></th>
+<th class="head"><p>cell</p></th>
 </tr>
 </thead>
 <tbody>
@@ -712,27 +712,27 @@
 <section id="id1">
 <h3>Ajuster le modèle aux données<a class="headerlink" href="#id1" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Liste</span> <span class="pre">des</span> <span class="pre">variables</span></code> : Laisser vide, il utilisera la formule par défaut : <code class="docutils literal notranslate"><span class="pre">C(pa)</span> <span class="pre">+</span> <span class="pre">altitude</span> <span class="pre">+</span> <span class="pre">pente</span> <span class="pre">+</span> <span class="pre">dist_edge</span> <span class="pre">+</span> <span class="pre">dist_road</span> <span class="pre">+</span> <span class="pre">dist_river</span> <span class="pre">+</span> <span class="pre">dist_town</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Valeurs</span> <span class="pre">de</span> <span class="pre">départ</span> <span class="pre">pour</span> <span class="pre">les</span> <span class="pre">bêtas</span></code> : -99</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> : Laisser vide, la formule par défaut sera utilisée: <code class="docutils literal notranslate"><span class="pre">C(pa)</span> <span class="pre">+</span> <span class="pre">altitude</span> <span class="pre">+</span> <span class="pre">pente</span> <span class="pre">+</span> <span class="pre">dist_edge</span> <span class="pre">+</span> <span class="pre">dist_road</span> <span class="pre">+</span> <span class="pre">dist_river</span> <span class="pre">+</span> <span class="pre">dist_town</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Starting</span> <span class="pre">values</span> <span class="pre">for</span> <span class="pre">betas</span></code>: -99</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Prior</span> <span class="pre">Vrho</span></code> : -1</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MCMC</span></code> : 100</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Sélection</span> <span class="pre">de</span> <span class="pre">variables</span></code> : Ne pas cocher, pas de sélection de variables (accélère les calculs pour cet exemple).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">période</span> <span class="pre">d'étalonnage</span></code> : Coché, les modèles sont ajustés sur la période d’étalonnage (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">selection</span></code> : Ne pas cocher, pas de sélection de variables (accélère les calculs pour cet exemple).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> : Coché, les modèles sont ajustés sur la période de calibration (t1–t2).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code> : Coché, les modèles sont ajustés sur la période historique (t1–t3).</p></li>
 </ul>
-<p>En appuyant sur le bouton « Exécuter » dans cette boîte, le modèle statistique sera ajusté aux observations de déforestation. Trois modèles statistiques sont ajustés (modèle iCAR, GLM, et modèle Random Forest). De nouveaux fichiers sont ajoutés aux dossiers <code class="docutils literal notranslate"><span class="pre">outputs/far_models/calibration</span></code> et <code class="docutils literal notranslate"><span class="pre">outputs/far_models/historical</span></code>. En particulier, le fichier <code class="docutils literal notranslate"><span class="pre">summary_icar.txt</span></code> est le résumé du modèle iCAR avec la moyenne, l’écart-type et les intervalles de crédibilité pour les paramètres du modèle.</p>
+<p>En appuyant sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> dans cette boîte, le modèle statistique sera ajusté aux observations de déforestation. Trois modèles statistiques sont ajustés (modèle iCAR, GLM, et modèle Random Forest). De nouveaux fichiers sont ajoutés aux dossiers <code class="docutils literal notranslate"><span class="pre">outputs/far_models/calibration</span></code> et <code class="docutils literal notranslate"><span class="pre">outputs/far_models/historical</span></code>. En particulier, le fichier <code class="docutils literal notranslate"><span class="pre">summary_icar.txt</span></code> est le résumé du modèle iCAR avec la moyenne, l’écart-type et les intervalles de crédibilité pour les paramètres du modèle.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-parameters">
-<caption><span class="caption-text">Résumé du modèle iCAR pour la période d’étalonnage.</span><a class="headerlink" href="#tab-parameters" title="Lien vers ce tableau">#</a></caption>
+<caption><span class="caption-text">Résumé du modèle iCAR pour la période de calibration.</span><a class="headerlink" href="#tab-parameters" title="Lien vers ce tableau">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p>Moyenne</p></th>
+<th class="head"><p>Mean</p></th>
 <th class="head"><p>Std</p></th>
 <th class="head"><p>CI_low</p></th>
 <th class="head"><p>CI_high</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Interception</p></td>
+<tr class="row-even"><td><p>Intercept</p></td>
 <td><p>-3.39</p></td>
 <td><p>0.158</p></td>
 <td><p>-3.7</p></td>
@@ -786,7 +786,7 @@
 <td><p>5.64</p></td>
 <td><p>8.49</p></td>
 </tr>
-<tr class="row-odd"><td><p>Déviance</p></td>
+<tr class="row-odd"><td><p>Deviance</p></td>
 <td><p>1.36e+04</p></td>
 <td><p>24.9</p></td>
 <td><p>1.36e+04</p></td>
@@ -797,9 +797,9 @@
 </div>
 <p>Le fichier <code class="docutils literal notranslate"><span class="pre">model_deviances.csv</span></code> comprend un tableau permettant de comparer le pourcentage de déviance expliquée entre les modèles.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-deviances">
-<caption><span class="caption-text">Pourcentage de déviance expliquée par les modèles pour la période d’étalonnage.</span><a class="headerlink" href="#tab-deviances" title="Lien vers ce tableau">#</a></caption>
+<caption><span class="caption-text">Pourcentage de déviance expliquée par les modèles pour la période de calibration.</span><a class="headerlink" href="#tab-deviances" title="Lien vers ce tableau">#</a></caption>
 <thead>
-<tr class="row-odd"><th class="head"><p>modèle</p></th>
+<tr class="row-odd"><th class="head"><p>model</p></th>
 <th class="head"><p>déviance</p></th>
 <th class="head"><p>perc</p></th>
 </tr>
@@ -821,7 +821,7 @@
 <td><p>13636.0</p></td>
 <td><p>49.0</p></td>
 </tr>
-<tr class="row-even"><td><p>complet</p></td>
+<tr class="row-even"><td><p>full</p></td>
 <td><p>0.0</p></td>
 <td><p>100.0</p></td>
 </tr>
@@ -830,51 +830,51 @@
 </div>
 </section>
 <section id="id2">
-<h3>Prévoir le risque de déforestation<a class="headerlink" href="#id2" title="Lien vers cette rubrique">#</a></h3>
+<h3>Prédire le risque de déforestation<a class="headerlink" href="#id2" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Interpolation</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">taille</span> <span class="pre">des</span> <span class="pre">cellules</span> <span class="pre">spatiales</span> <span class="pre">(km)</span></code> : 0.1.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Modèle</span> <span class="pre">iCAR</span></code> : Coché, calcule les prédictions avec le modèle iCAR.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">interpolation</span> <span class="pre">(km)</span></code>: 0.1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code> : Coché, calcule les prédictions avec le modèle iCAR.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code> : Coché, calcule les prédictions avec GLM.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code> : Coché, calcule les prédictions avec le modèle Random Forest.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">calibration</span></code> : Coché, calcule les prédictions à t1 en utilisant des modèles ajustés sur la période de calibration.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> : Coché, calcule les prédictions à t2 pour la validation (en utilisant les modèles ajustés sur la période d’étalonnage).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> : Coché, calcule les prédictions à t2 pour la validation (en utilisant les modèles ajustés sur la période de calibration).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t1</span> <span class="pre">historical</span></code> : Coché, calcule les prédictions à t1 en utilisant des modèles ajustés sur la période historique.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code> : Coché, calcule les prévisions à t3 pour les prévisions (en utilisant des modèles ajustés sur la période historique).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code> : Coché, calcule les prédictions à t3 pour les prévisions (en utilisant des modèles ajustés sur la période historique).</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
 <p>Pour les grandes juridictions, afin d’éviter l’obtention d’un fichier raster volumineux (de type Float), fixer l’interpolation des effets aléatoires spatiaux à ~1km.</p>
 </div>
-<p>En appuyant sur le bouton « Exécuter » dans cette boîte, les modèles statistiques seront utilisés pour les prédictions. Lorsque l’opération est terminée, des rasters représentant les classes de risque de déforestation apparaissent dans la liste des couches de QGIS. De nouveaux dossiers sont créés <code class="docutils literal notranslate"><span class="pre">outputs/far_models/validation</span></code> et <code class="docutils literal notranslate"><span class="pre">outputs/far_models/forecast</span></code>. Ils contiennent les tableaux <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code> avec les taux de déforestation pour chaque classe de risque de déforestation (voir les détails <a href="#id1"><span class="problematic" id="id2">``</span></a>ici &lt;plugin_api.html#defrate-table&gt;`_).</p>
+<p>En appuyant sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> dans cette boîte, les modèles statistiques seront utilisés pour les prédictions. Lorsque l’opération est terminée, des rasters représentant les classes de risque de déforestation apparaissent dans la liste des couches de QGIS. De nouveaux dossiers sont créés <code class="docutils literal notranslate"><span class="pre">outputs/far_models/validation</span></code> et <code class="docutils literal notranslate"><span class="pre">outputs/far_models/forecast</span></code>. Ils contiennent les tableaux <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_&lt;model&gt;_&lt;period&gt;.csv</span></code> avec les taux de déforestation pour chaque classe de risque de déforestation (voir les détails <a class="reference external" href="plugin_api.html#defrate-table">ici</a>).</p>
 <a class="reference internal image-reference" href="_images/qgis-far-results.png"><img alt="_images/qgis-far-results.png" src="_images/qgis-far-results.png" style="width: 650px;" />
 </a>
 </section>
 </section>
 <section id="moving-window-models">
-<h2>Modèles à fenêtre mobile<a class="headerlink" href="#moving-window-models" title="Lien vers cette rubrique">#</a></h2>
+<h2>Modèles à fenêtre mobile (MW models)<a class="headerlink" href="#moving-window-models" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface-mw.png" src="_images/interface-mw.png" />
 <section id="id4">
 <h3>Ajuster le modèle aux données<a class="headerlink" href="#id4" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
-<li><p>Seuil de déforestation (%) : 99,5%.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Distance</span> <span class="pre">maximale</span> <span class="pre">à</span> <span class="pre">la</span> <span class="pre">lisière</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">forêt</span> <span class="pre">(m)</span></code> : 2500</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Taille</span> <span class="pre">des</span> <span class="pre">fenêtres</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code> : 11, 21</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">période</span> <span class="pre">d'étalonnage</span></code> : Si cette case est cochée, le modèle est ajusté sur la période d’étalonnage (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 99.5%</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: 2500</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Window</span> <span class="pre">sizes</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>: 11, 21</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> : Si cette case est cochée, le modèle est ajusté sur la période d’étalonnage (t1–t2).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code> : Si cette case est cochée, le modèle est ajusté sur la période historique (t1–t3).</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Pour les grandes juridictions, si vous souhaitez réduire le temps de calcul, utilisez une seule taille de fenêtre (par exemple 21 pixels).</p>
+<p>Pour les grandes juridictions, si vous souhaitez réduire le temps de calcul, utilisez une seule taille de fenêtre mobile (par exemple 21 pixels).</p>
 </div>
-<p>Cliquez sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> pour estimer le risque de déforestation avec le modèle de la fenêtre mobile en utilisant les données de la période de calibration et de la période historique. De nouveaux dossiers contenant les résultats sont créés dans le répertoire <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code>, y compris le fichier raster <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/ldefrate_mw_&lt;window_size&gt;.tif</span></code> avec les taux de déforestation locaux remis à l’échelle sur [2, 65535].</p>
+<p>Cliquez sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> pour estimer le risque de déforestation avec le modèle de fenêtre mobile en utilisant les données de la période de calibration et de la période historique. De nouveaux dossiers contenant les résultats sont créés dans le répertoire <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code>, y compris le fichier raster <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/ldefrate_mw_&lt;window_size&gt;.tif</span></code> avec les taux de déforestation locaux remis à l’échelle sur l’intervalle [2, 65535].</p>
 </section>
 <section id="id5">
-<h3>Prévoir le risque de déforestation<a class="headerlink" href="#id5" title="Lien vers cette rubrique">#</a></h3>
+<h3>Prédire le risque de déforestation<a class="headerlink" href="#id5" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> : Coché, calcule les prédictions à t2 pour la validation (en utilisant le modèle de fenêtre mobile ajusté sur la période d’étalonnage).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code> : Coché, calcule les prévisions à t3 pour les prévisions (en utilisant le modèle de fenêtre mobile ajusté sur la période historique).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> : Coché, calcule les prédictions à t2 pour la validation (en utilisant le modèle de fenêtre mobile ajusté sur la période de calibration).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code> : Coché, calcule les prédictions à t3 pour les prévisions (en utilisant le modèle de fenêtre mobile ajusté sur la période historique).</p></li>
 </ul>
-<p>Cliquez sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> pour prédire le risque de déforestation à t2 et t3 en utilisant le modèle de la fenêtre mobile. Les cartes avec les classes de risque de déforestation sont ajoutées à la liste des couches QGIS (voir l’image ci-dessous) et de nouveaux dossiers avec les résultats sont créés dans le répertoire <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code>, y compris les tableaux <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_mv_&lt;window_size&gt;_&lt;period&gt;.csv</span></code> avec les taux de déforestation pour chaque classe de risque de déforestation (voir les détails <a href="#id1"><span class="problematic" id="id2">``</span></a>ici &lt;plugin_api.html#defrate-table&gt;`_).</p>
+<p>Cliquez sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> pour prédire le risque de déforestation à t2 et t3 en utilisant le modèle de fenêtre mobile. Les cartes avec les classes de risque de déforestation sont ajoutées à la liste des couches QGIS (voir l’image ci-dessous) et de nouveaux dossiers avec les résultats sont créés dans le répertoire <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code>, y compris les tableaux <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/defrate_cat_mv_&lt;window_size&gt;_&lt;period&gt;.csv</span></code> avec les taux de déforestation pour chaque classe de risque de déforestation (voir les détails <a class="reference external" href="plugin_api.html#defrate-table">ici</a>).</p>
 <a class="reference internal image-reference" href="_images/qgis-mw-results.png"><img alt="_images/qgis-mw-results.png" src="_images/qgis-mw-results.png" style="width: 650px;" />
 </a>
 </section>
@@ -884,33 +884,33 @@
 <img alt="_images/interface-validation.png" src="_images/interface-validation.png" />
 <p><br/></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Taille</span> <span class="pre">des</span> <span class="pre">cellules</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">grille</span> <span class="pre">grossière</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code> : 50, 100</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Modèle</span> <span class="pre">iCAR</span></code> : Coché, estime la performance du modèle iCAR.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code> : Coché, permet d’estimer la performance du GLM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Coarse</span> <span class="pre">grid</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">(#</span> <span class="pre">pixels)</span></code>: 50, 100</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code>: Coché, estime la performance du modèle iCAR.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GLM</span></code> : Coché, estime la performance du GLM.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RF</span> <span class="pre">model</span></code> : Coché, estime la performance du modèle Random Forest.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Modèle</span> <span class="pre">MW</span></code> : Coché, permet d’estimer la performance des modèles à fenêtre mobile.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> : Coché, estime les performances du modèle pour la période de calibration (t1–t2).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">valid.</span> <span class="pre">period</span></code> : Coché, estime les performances du modèle pour la période de validation (t2–t3).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code> : Coché, estime les performances du modèle pour la période historique (t1–t3).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MW</span> <span class="pre">model</span></code> : Coché, estime la performance des modèles à fenêtre mobile.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calib.</span> <span class="pre">period</span></code> : Coché, estime la performance des modèles pour la période de calibration (t1–t2).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">valid.</span> <span class="pre">period</span></code> : Coché, estime la performance des modèles pour la période de validation (t2–t3).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hist.</span> <span class="pre">period</span></code> : Coché, estime la performance des modèles pour la période historique (t1–t3).</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Pour les grandes juridictions, si vous souhaitez réduire le temps de calcul, n’utilisez qu’une seule taille de cellule (par exemple 100 pixels) et ne vérifiez que la période de validation, la seule qui comporte des observations indépendantes.</p>
+<p>Pour les grandes juridictions, si vous souhaitez réduire le temps de calcul, n’utilisez qu’une seule taille de cellule (par exemple 100 pixels) et ne cochez que la période de validation, la seule qui comporte des observations indépendantes.</p>
 </div>
-<p>En appuyant sur le bouton « Exécuter » dans cette boîte, on calcule la zone déboisée prédite dans chaque cellule de la grille pour chaque modèle et chaque période sélectionnés et on compare cette valeur à la zone déboisée observée pour la même cellule de la grille et la même période.</p>
+<p>En appuyant sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> dans cette boîte, on calcule la surface déforestée prédite dans chaque cellule de la grille pour chaque modèle et chaque période sélectionnés et on compare cette valeur à la surface déforestée observée pour la même cellule de la grille et la même période.</p>
 <p>De nouveaux dossiers sont créés pour chaque période : <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/figures</span></code> et <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/&lt;period&gt;/tables</span></code>. Plusieurs fichiers de sortie sont ajoutés à chaque dossier.</p>
-<p>Fichiers <code class="docutils literal notranslate"><span class="pre">figures/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.png</span></code> qui montrent le tracé de la surface déboisée prédite par rapport à la surface déboisée observée. Le graphique montre les valeurs de la zone déboisée prédite et observée dans chaque cellule de la grille sous forme de points et de ligne univoque. Le graphique indique également le nombre de cellules de la grille (ou de points) et les valeurs de deux des indices de performance : le <span class="math notranslate nohighlight">\(R^{2}\)</span> et le MedAE.</p>
+<p>Fichiers <code class="docutils literal notranslate"><span class="pre">figures/pred_obs_&lt;model&gt;_&lt;period&gt;_&lt;cell_size&gt;.png</span></code> qui contiennent une figure montrant la relation entre la surface déforestée prédite et la surface déforestée observée. La figure montre les valeurs de la surface déforestée prédite et observée dans chaque cellule de la grille sous forme de points et la première bissectrice (ligne 1-1). La figure indique également le nombre de cellules de la grille (équivalent au nombre de points) et les valeurs de deux des indices de performance : le <span class="math notranslate nohighlight">\(R^{2}\)</span> et le MedAE.</p>
 <a class="reference internal image-reference" href="_images/pred_obs_icar_validation_50.png"><img alt="_images/pred_obs_icar_validation_50.png" src="_images/pred_obs_icar_validation_50.png" style="width: 600px;" />
 </a>
-<p>Le fichier <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/indices_all.csv</span></code> comprend un tableau avec les indices de performance pour toutes les tailles de cellules de validation, tous les modèles et toutes les périodes. Dans cet exemple, le modèle Random Forest et le modèle iCAR  sont tous deux meilleurs que le modèle de référence, quels que soient les indices de performance considérés. Le modèle iCAR est le meilleur modèle car il a la MedAE la plus faible, la RMSE la plus faible et la <span class="math notranslate nohighlight">\(R^{2}\)</span> la plus élevée pour la période de validation qui est la seule période avec des données indépendantes (c’est-à-dire qui n’ont pas été utilisées pour calibrer les modèles). Ceci est vrai quelle que soit la taille de la cellule de validation choisie.</p>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">outputs/model_validation/indices_all.csv</span></code> comprend un tableau avec les indices de performance pour toutes les tailles de cellules de validation, tous les modèles et toutes les périodes. Dans cet exemple, le modèle Random Forest et le modèle iCAR sont tous deux meilleurs que le modèle de référence, quels que soient les indices de performance considérés. Le modèle iCAR est le meilleur modèle car il a l’indice MedAE le plus faible, le RMSE le plus faible et le <span class="math notranslate nohighlight">\(R^{2}\)</span> le plus élevé pour la période de validation qui est la seule période avec des données indépendantes (c’est-à-dire qui n’ont pas été utilisées pour calibrer les modèles). Ceci est vrai quelle que soit la taille de la cellule de validation choisie.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-indices">
 <caption><span class="caption-text">Indices de performance.</span><a class="headerlink" href="#tab-indices" title="Lien vers ce tableau">#</a></caption>
 <thead>
-<tr class="row-odd"><th class="head"><p>Grille d’évaluation de la taille</p></th>
+<tr class="row-odd"><th class="head"><p>csize_coarse_grid</p></th>
 <th class="head"><p>csize_coarse_grid_ha</p></th>
 <th class="head"><p>ncell</p></th>
-<th class="head"><p>période</p></th>
-<th class="head"><p>modèle</p></th>
+<th class="head"><p>period</p></th>
+<th class="head"><p>model</p></th>
 <th class="head"><p>MedAE</p></th>
 <th class="head"><p>R2</p></th>
 <th class="head"><p>RMSE</p></th>
@@ -986,19 +986,19 @@
 <h2>Attribution de la déforestation<a class="headerlink" href="#allocating-deforestation" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface-allocation.png" src="_images/interface-allocation.png" />
 <p><br/></p>
-<p>La carte des risques de déforestation obtenue avec le modèle iCAR à t3 peut être utilisée pour allouer la déforestation après l’année 2020. La carte des risques avec des classes de déforestation de 1 à 65535 et le tableau <code class="docutils literal notranslate"><span class="pre">defrate_cat_icar_forecast.csv</span></code> avec les taux de déforestation pour toutes les classes de risque de déforestation sont tous deux nécessaires pour allouer la déforestation dans le futur.</p>
-<p>Le tableau n’inclut que les valeurs de <code class="docutils literal notranslate"><span class="pre">rate_mod</span></code>, les taux relatifs de déforestation spatiale du modèle iCAR estimés sur la période historique. Comme pour l’étape de validation, la déforestation doit être ajustée pour la quantité en fonction de la quantité de déforestation attendue dans le futur.</p>
+<p>La carte du risque de déforestation obtenue avec le modèle iCAR à t3 peut être utilisée pour allouer la déforestation après l’année 2020. La carte de risque avec les classes de déforestation de 1 à 65535 et le tableau <code class="docutils literal notranslate"><span class="pre">defrate_cat_icar_forecast.csv</span></code> avec les taux de déforestation pour chaque classe de risque sont tous deux nécessaires pour allouer la déforestation dans le futur.</p>
+<p>Le tableau n’inclut que les valeurs de <code class="docutils literal notranslate"><span class="pre">rate_mod</span></code>, les taux relatifs de déforestation spatiale du modèle iCAR estimés sur la période historique. Comme pour l’étape de validation, la déforestation relative doit être ajustée en tenant compte de la déforestation absolue (en ha) attendue dans le futur.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="tab-defrate-icar-forecast">
 <caption><span class="caption-text">Taux de déforestation pour les classes du modèle iCAR pour la prévision de la déforestation.</span><a class="headerlink" href="#tab-defrate-icar-forecast" title="Lien vers ce tableau">#</a></caption>
 <thead>
-<tr class="row-odd"><th class="head"><p>chat</p></th>
+<tr class="row-odd"><th class="head"><p>cat</p></th>
 <th class="head"><p>nfor</p></th>
 <th class="head"><p>ndefor</p></th>
-<th class="head"><p>taux d’occupation</p></th>
+<th class="head"><p>rate_obs</p></th>
 <th class="head"><p>rate_mod</p></th>
-<th class="head"><p>taux_abs</p></th>
-<th class="head"><p>intervalle de temps</p></th>
-<th class="head"><p>Zone de pixels</p></th>
+<th class="head"><p>rate_abs</p></th>
+<th class="head"><p>time_interval</p></th>
+<th class="head"><p>pixel_area</p></th>
 <th class="head"><p>defor_dens</p></th>
 </tr>
 </thead>
@@ -1057,38 +1057,38 @@
 </table>
 </div>
 <p>En considérant une déforestation totale <span class="math notranslate nohighlight">\(D\)</span> (en ha) pour les <span class="math notranslate nohighlight">\(Y\)</span> prochaines années au niveau juridictionnel, le facteur d’ajustement est :math:rho = D / (A sum_i n_{i} theta_{m,i})`, avec <span class="math notranslate nohighlight">\(A\)</span> la surface du pixel en ha, le taux absolu est :math:theta_{a,i} = rho theta_{m,i}`, et la densité de déforestation est :math:delta_{i} = theta_{a,i} n- fois A / Y`. La densité de déforestation :math:delta_{i}` est utilisée pour prédire la quantité de déforestation (en ha/an) pour chaque pixel forestier appartenant à une classe donnée de risque de déforestation pour les prochaines <span class="math notranslate nohighlight">\(Y\)</span> années (pour les notations, voir les détails <a class="reference external" href="plugin_api.html#defrate-table">ici</a>).</p>
-<p>La carte des risques ainsi que le tableau des densités de déforestation calculées peuvent être utilisés pour «  allouer proportionnellement des fractions &lt;<a class="reference external" href="https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/">https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/</a>&gt;`_ de la base de données des activités de déforestation non planifiées de la juridiction (dans le contexte de <a class="reference external" href="https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/">VMD0055</a>) ou du FREL de la juridiction (dans le contexte du VCS <a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">Jurisdictional and Nested REDD+</a> Framework) aux projets ou programmes à mettre en œuvre au sein de la juridiction. Pour ce faire, un tableau avec le nombre de pixels pour chaque classe de risque de déforestation dans la zone de projet doit être calculé.</p>
+<p>La carte de risque ainsi que le tableau des densités de déforestation calculées peuvent être utilisés pour <a class="reference external" href="https://verra.org/verra-launches-unplanned-deforestation-allocation-tool-vt0007-issues-call-for-supplementary-materials/">allouer proportionnellement des fractions</a> de la déforestation attendues au sein de la juridiction (dans le contexte de <a class="reference external" href="https://verra.org/methodologies/vmd0055-estimation-of-emission-reductions-from-avoiding-unplanned-deforestation-v1-0/">VMD0055</a>) ou du FREL de la juridiction (dans le contexte du VCS <a class="reference external" href="https://verra.org/programs/jurisdictional-nested-redd-framework/">Jurisdictional and Nested REDD+</a> Framework) aux projets ou programmes mis en œuvre au sein de la juridiction. Pour ce faire, un tableau avec le nombre de pixels pour chaque classe de risque de déforestation dans la zone de projet doit être calculé.</p>
 <figure class="align-default" id="id10">
 <a class="reference internal image-reference" href="_images/allocation.png"><img alt="_images/allocation.png" src="_images/allocation.png" style="width: 600px;" />
 </a>
 <figcaption>
-<p><span class="caption-text">Attribution de la déforestation à des projets relevant de la juridiction.</span><a class="headerlink" href="#id10" title="Lien vers cette image">#</a></p>
+<p><span class="caption-text">Attribution de la déforestation à des projets au sein de la juridiction.</span><a class="headerlink" href="#id10" title="Lien vers cette image">#</a></p>
 </figcaption>
 </figure>
 <p>Le plugin QGIS <code class="docutils literal notranslate"><span class="pre">deforisk</span></code> inclut un utilitaire pour faciliter l’allocation de la déforestation aux projets. Avant de l’utiliser, vous pouvez télécharger le fichier vectoriel définissant les frontières d’un faux projet en Martinique (<a class="reference external" href="_static/get_started/project_borders_MTQ_jurisdiction.gpkg">project_borders_MTQ_jurisdiction.gpkg</a>).</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">carte</span> <span class="pre">des</span> <span class="pre">risques</span></code> : Fichier <code class="docutils literal notranslate"><span class="pre">prob_icar_t3.tif</span></code> pour la meilleure carte des risques.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">risk</span> <span class="pre">map</span></code> : Fichier <code class="docutils literal notranslate"><span class="pre">prob_icar_t3.tif</span></code> correspondant à la meilleure carte de risque.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Table.</span> <span class="pre">with</span> <span class="pre">defor.</span> <span class="pre">rates</span></code> : Fichier <code class="docutils literal notranslate"><span class="pre">defrate_cat_icar_forecast.csv</span></code> pour la table avec les taux de déforestation du modèle icar à t3 pour chaque classe de risque de déforestation.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Projet</span> <span class="pre">frontières</span></code> : Fichier <code class="docutils literal notranslate"><span class="pre">projet_borders_MTQ_jurisdiction.gpkg</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">déforestation</span> <span class="pre">(ha)</span></code> : 4000. Environ 400 ha ont été déboisés chaque année en 2010–2020 au MTQ.</p></li>
-<li><p><a href="#id1"><span class="problematic" id="id2">``</span></a>Longueur de la période de prévision (an) `` : 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Projet</span> <span class="pre">borders</span></code> : Fichier <code class="docutils literal notranslate"><span class="pre">projet_borders_MTQ_jurisdiction.gpkg</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">deforestation</span> <span class="pre">(ha)</span></code> : 4000. Environ 400 ha ont été déforestés chaque année en 2010–2020 en Martinique.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Length</span> <span class="pre">forecast</span> <span class="pre">period</span> <span class="pre">(yr)</span></code>: 10.</p></li>
 </ul>
-<p>En appuyant sur le bouton « Exécuter » dans cette boîte, on calcule le facteur d’ajustement de la quantité et la densité de déforestation pour chaque classe de risque en utilisant la déforestation totale prévue au niveau de la juridiction (<span class="math notranslate nohighlight">\(D=4000\)</span>) et les taux de déforestation spatiaux relatifs du modèle. Ensuite, la carte des risques avec les classes de risque de déforestation est recadrée aux limites du projet et le nombre de pixels de forêt dans chaque classe de risque est calculé au niveau du projet. Enfin, la déforestation prévue au niveau du projet est obtenue en additionnant les densités de déforestation au sein du projet.</p>
+<p>En appuyant sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> dans cette boîte, on calcule le facteur d’ajustement et la densité de déforestation pour chaque classe de risque en utilisant la déforestation totale prévue au niveau de la juridiction (<span class="math notranslate nohighlight">\(D=4000\)</span>) et les taux de déforestation spatiaux relatifs du modèle. Ensuite, la carte de risque avec les classes de risque de déforestation est découpée aux limites du projet et le nombre de pixels de forêt dans chaque classe de risque est calculé au niveau du projet. Enfin, la déforestation prévue au niveau du projet est obtenue en additionnant les densités de déforestation de chaque pixel au sein du projet.</p>
 <p>Un dossier <code class="docutils literal notranslate"><span class="pre">outputs/allocating_deforestation</span></code> est créé avec le fichier <code class="docutils literal notranslate"><span class="pre">defor_project.csv</span></code> indiquant la déforestation prévue (106,7 ha) pour la période 2020–2030 pour le projet :</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id11">
 <caption><span class="caption-text">Déforestation allouée au projet.</span><a class="headerlink" href="#id11" title="Lien vers ce tableau">#</a></caption>
 <thead>
-<tr class="row-odd"><th class="head"><p>période</p></th>
-<th class="head"><p>durée (an)</p></th>
-<th class="head"><p>déforestation (ha)</p></th>
+<tr class="row-odd"><th class="head"><p>period</p></th>
+<th class="head"><p>length (yr)</p></th>
+<th class="head"><p>deforestation (ha)</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>annuel</p></td>
+<tr class="row-even"><td><p>annual</p></td>
 <td><p>1.0</p></td>
 <td><p>10.7</p></td>
 </tr>
-<tr class="row-odd"><td><p>entière</p></td>
+<tr class="row-odd"><td><p>entire</p></td>
 <td><p>10.0</p></td>
 <td><p>106.9</p></td>
 </tr>
@@ -1149,21 +1149,21 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-variables">Obtenir des variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-variables">Get variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-model">Modèle de référence</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-model-to-data">Ajuster le modèle aux données</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-deforestation-risk">Prévoir le risque de déforestation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-deforestation-risk">Prédire le risque de déforestation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forestatrisk-models">Modèles de risque forestier</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-observations">Exemples d’observations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forestatrisk-models">Modèles forestatrisk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-observations">Sample observations</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ajuster le modèle aux données</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prévoir le risque de déforestation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prédire le risque de déforestation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-window-models">Modèles à fenêtre mobile</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-window-models">Modèles à fenêtre mobile (MW models)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Ajuster le modèle aux données</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Prévoir le risque de déforestation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Prédire le risque de déforestation</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
