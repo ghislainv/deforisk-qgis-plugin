@@ -478,7 +478,7 @@
 </figure>
 </section>
 <section id="get-variables">
-<h2>Get variables<a class="headerlink" href="#get-variables" title="Lien vers cette rubrique">#</a></h2>
+<h2>Obtention des variables (Get variables)<a class="headerlink" href="#get-variables" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface-variables.png" src="_images/interface-variables.png" />
 <p><br/></p>
 <ul class="simple">
@@ -505,10 +505,10 @@
 <p>Si vous souhaitez sauter cette étape, vous pouvez télécharger un fichier <a class="reference external" href="./_static/tutos/MTQ-tuto.zip">zip comprenant toutes les données de l’exemple MTQ</a>.</p>
 </section>
 <section id="benchmark-model">
-<h2>Modèle de référence<a class="headerlink" href="#benchmark-model" title="Lien vers cette rubrique">#</a></h2>
+<h2>Modèle de référence (Benchmark)<a class="headerlink" href="#benchmark-model" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface-benchmark.png" src="_images/interface-benchmark.png" />
 <section id="fit-model-to-data">
-<h3>Ajuster le modèle aux données<a class="headerlink" href="#fit-model-to-data" title="Lien vers cette rubrique">#</a></h3>
+<h3>Ajuster le modèle aux données (Fit model to data)<a class="headerlink" href="#fit-model-to-data" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 99.5</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: 2500</p></li>
@@ -598,7 +598,7 @@
 </div>
 </section>
 <section id="predict-the-deforestation-risk">
-<h3>Prédire le risque de déforestation<a class="headerlink" href="#predict-the-deforestation-risk" title="Lien vers cette rubrique">#</a></h3>
+<h3>Prédire le risque de déforestation (Predict the deforestation risk)<a class="headerlink" href="#predict-the-deforestation-risk" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> : Coché, calcule les prédictions à t2 pour la validation (en utilisant le modèle de référence ajusté sur la période de calibration).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code> : Coché, calcule les prédictions à t3 pour les prévisions (en utilisant le modèle de référence ajusté sur la période historique).</p></li>
@@ -607,10 +607,10 @@
 </section>
 </section>
 <section id="forestatrisk-models">
-<h2>Modèles forestatrisk<a class="headerlink" href="#forestatrisk-models" title="Lien vers cette rubrique">#</a></h2>
+<h2>Modèles forestatrisk (FAR models)<a class="headerlink" href="#forestatrisk-models" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface-far.png" src="_images/interface-far.png" />
 <section id="sample-observations">
-<h3>Sample observations<a class="headerlink" href="#sample-observations" title="Lien vers cette rubrique">#</a></h3>
+<h3>Échantillonnage des observations (Sample observations)<a class="headerlink" href="#sample-observations" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">N#</span> <span class="pre">samples</span></code>: 10000</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Adapt</span> <span class="pre">sampling</span></code> : Coché, le nombre d’observations est proportionnel à la surface forestière.</p></li>
@@ -710,7 +710,7 @@
 </div>
 </section>
 <section id="id1">
-<h3>Ajuster le modèle aux données<a class="headerlink" href="#id1" title="Lien vers cette rubrique">#</a></h3>
+<h3>Ajuster le modèle aux données (Fit model to data)<a class="headerlink" href="#id1" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> : Laisser vide, la formule par défaut sera utilisée: <code class="docutils literal notranslate"><span class="pre">C(pa)</span> <span class="pre">+</span> <span class="pre">altitude</span> <span class="pre">+</span> <span class="pre">pente</span> <span class="pre">+</span> <span class="pre">dist_edge</span> <span class="pre">+</span> <span class="pre">dist_road</span> <span class="pre">+</span> <span class="pre">dist_river</span> <span class="pre">+</span> <span class="pre">dist_town</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Starting</span> <span class="pre">values</span> <span class="pre">for</span> <span class="pre">betas</span></code>: -99</p></li>
@@ -830,7 +830,7 @@
 </div>
 </section>
 <section id="id2">
-<h3>Prédire le risque de déforestation<a class="headerlink" href="#id2" title="Lien vers cette rubrique">#</a></h3>
+<h3>Prédire le risque de déforestation (Predict the deforestation risk)<a class="headerlink" href="#id2" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">cell</span> <span class="pre">size</span> <span class="pre">interpolation</span> <span class="pre">(km)</span></code>: 0.1.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">iCAR</span> <span class="pre">model</span></code> : Coché, calcule les prédictions avec le modèle iCAR.</p></li>
@@ -854,7 +854,7 @@
 <h2>Modèles à fenêtre mobile (MW models)<a class="headerlink" href="#moving-window-models" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface-mw.png" src="_images/interface-mw.png" />
 <section id="id4">
-<h3>Ajuster le modèle aux données<a class="headerlink" href="#id4" title="Lien vers cette rubrique">#</a></h3>
+<h3>Ajuster le modèle aux données (Fit model to data)<a class="headerlink" href="#id4" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Deforestation</span> <span class="pre">threshold</span> <span class="pre">(%)</span></code>: 99.5%</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Max.</span> <span class="pre">distance</span> <span class="pre">to</span> <span class="pre">forest</span> <span class="pre">edge</span> <span class="pre">(m)</span></code>: 2500</p></li>
@@ -869,7 +869,7 @@
 <p>Cliquez sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> pour estimer le risque de déforestation avec le modèle de fenêtre mobile en utilisant les données de la période de calibration et de la période historique. De nouveaux dossiers contenant les résultats sont créés dans le répertoire <code class="docutils literal notranslate"><span class="pre">outputs/rmj_moving_window/</span></code>, y compris le fichier raster <code class="docutils literal notranslate"><span class="pre">&lt;period&gt;/ldefrate_mw_&lt;window_size&gt;.tif</span></code> avec les taux de déforestation locaux remis à l’échelle sur l’intervalle [2, 65535].</p>
 </section>
 <section id="id5">
-<h3>Prédire le risque de déforestation<a class="headerlink" href="#id5" title="Lien vers cette rubrique">#</a></h3>
+<h3>Prédire le risque de déforestation (Predict the deforestation risk)<a class="headerlink" href="#id5" title="Lien vers cette rubrique">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">t2</span> <span class="pre">validation</span></code> : Coché, calcule les prédictions à t2 pour la validation (en utilisant le modèle de fenêtre mobile ajusté sur la période de calibration).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t3</span> <span class="pre">forecast</span></code> : Coché, calcule les prédictions à t3 pour les prévisions (en utilisant le modèle de fenêtre mobile ajusté sur la période historique).</p></li>
@@ -983,7 +983,7 @@
 </div>
 </section>
 <section id="allocating-deforestation">
-<h2>Attribution de la déforestation<a class="headerlink" href="#allocating-deforestation" title="Lien vers cette rubrique">#</a></h2>
+<h2>Attribution de la déforestation (allocating deforestation)<a class="headerlink" href="#allocating-deforestation" title="Lien vers cette rubrique">#</a></h2>
 <img alt="_images/interface-allocation.png" src="_images/interface-allocation.png" />
 <p><br/></p>
 <p>La carte du risque de déforestation obtenue avec le modèle iCAR à t3 peut être utilisée pour allouer la déforestation après l’année 2020. La carte de risque avec les classes de déforestation de 1 à 65535 et le tableau <code class="docutils literal notranslate"><span class="pre">defrate_cat_icar_forecast.csv</span></code> avec les taux de déforestation pour chaque classe de risque sont tous deux nécessaires pour allouer la déforestation dans le futur.</p>
@@ -1149,25 +1149,25 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-variables">Get variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-model">Modèle de référence</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-model-to-data">Ajuster le modèle aux données</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-deforestation-risk">Prédire le risque de déforestation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-variables">Obtention des variables (Get variables)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-model">Modèle de référence (Benchmark)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-model-to-data">Ajuster le modèle aux données (Fit model to data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-deforestation-risk">Prédire le risque de déforestation (Predict the deforestation risk)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forestatrisk-models">Modèles forestatrisk</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-observations">Sample observations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ajuster le modèle aux données</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prédire le risque de déforestation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forestatrisk-models">Modèles forestatrisk (FAR models)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-observations">Échantillonnage des observations (Sample observations)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ajuster le modèle aux données (Fit model to data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prédire le risque de déforestation (Predict the deforestation risk)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-window-models">Modèles à fenêtre mobile (MW models)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Ajuster le modèle aux données</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Prédire le risque de déforestation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Ajuster le modèle aux données (Fit model to data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Prédire le risque de déforestation (Predict the deforestation risk)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allocating-deforestation">Attribution de la déforestation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allocating-deforestation">Attribution de la déforestation (allocating deforestation)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>

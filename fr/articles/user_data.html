@@ -459,31 +459,31 @@
 <h1>Données de l'utilisateur<a class="headerlink" href="#users-data" title="Lien vers cette rubrique">#</a></h1>
 <section id="forest-cover-change-map">
 <h2>Carte de l’évolution du couvert forestier<a class="headerlink" href="#forest-cover-change-map" title="Lien vers cette rubrique">#</a></h2>
-<p>Vous pouvez utiliser votre propre carte de changement de couverture forestière avec le plugin. Pour ce faire, préparez un fichier raster et sélectionnez-le avec l’argument <code class="docutils literal notranslate"><span class="pre">Forest</span> <span class="pre">data</span> <span class="pre">source</span></code> dans l’onglet <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> du plugin. Le fichier raster sera automatiquement copié dans le dossier <cite>data_raw</cite> du répertoire de travail et renommé <cite>forest_src.tif</cite>. Le fichier raster doit avoir les caractéristiques suivantes :</p>
+<p>Vous pouvez utiliser votre propre carte de changement de couverture forestière avec le plugin. Pour ce faire, préparez un fichier raster et sélectionnez-le avec l’argument <code class="docutils literal notranslate"><span class="pre">Forest</span> <span class="pre">data</span> <span class="pre">source</span></code> dans l’onglet <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> du plugin. Le fichier raster sera automatiquement copié dans le dossier <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> du répertoire de travail et renommé <code class="docutils literal notranslate"><span class="pre">forest_src.tif</span></code>. Le fichier raster doit avoir les caractéristiques suivantes :</p>
 <ul class="simple">
-<li><p>Il doit s’agir d’un fichier matriciel à bandes multiples, chaque bande représentant la couverture forestière à une date donnée.</p></li>
+<li><p>Il doit s’agir d’un fichier raster à bandes multiples, chaque bande représentant la couverture forestière à une date donnée.</p></li>
 <li><p>Les bandes doivent être ordonnées (première bande pour t, deuxième bande pour t+1, etc.)</p></li>
-<li><p>La trame ne doit avoir que deux valeurs : 1 pour les pixels forestiers et 0 pour les pixels non forestiers (la trame peut donc être de type Byte).</p></li>
-<li><p>La valeur de l’absence de données n’est pas importante ici. Elle peut être fixée à 0 ou 255 par exemple.</p></li>
+<li><p>Le raster ne doit avoir que deux valeurs : 1 pour les pixels forestiers et 0 pour les pixels non forestiers (le raster peut donc être de type Byte).</p></li>
+<li><p>La valeur du « no-data » n’est pas importante ici. Elle peut être fixée à 0 ou 255 par exemple.</p></li>
 <li><p>Le fichier raster doit être projeté dans le système de référence des coordonnées du projet (voir l’argument <code class="docutils literal notranslate"><span class="pre">projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>).</p></li>
-<li><p>La trame doit couvrir au moins toute la zone de la juridiction.</p></li>
-<li><p>Les années spécifiées dans l’argument <code class="docutils literal notranslate"><span class="pre">Years</span></code> doivent correspondre aux années utilisées pour le fichier matriciel des changements du couvert forestier.</p></li>
+<li><p>Le raster doit couvrir au moins toute la zone de la juridiction.</p></li>
+<li><p>Les années spécifiées dans l’argument <code class="docutils literal notranslate"><span class="pre">Years</span></code> doivent correspondre aux années utilisées pour le fichier raster de changement du couvert forestier.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Avertissement</p>
-<p>Il est préférable que le raster soit plus grand que la juridiction (par exemple, un tampon de 10 km) afin de réduire les effets de bord lors du calcul des distances à la lisière de la forêt, par exemple.</p>
+<p>Il est préférable que le raster soit plus grand que la juridiction (par exemple, en utilisant une distance tampon de 10 km) afin de réduire les effets de bord lors du calcul des distances à la lisière de la forêt, par exemple.</p>
 </div>
 <p>Lors de l’exécution de l’étape <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code>, ce raster sera utilisé comme source de données forestières et toutes les variables forestières (changement du couvert forestier et distance à la lisière de la forêt aux différentes dates) seront calculées à partir de ces données.</p>
 <p>Vous pouvez créer ce raster à bandes multiples en utilisant l’outil QGIS <code class="docutils literal notranslate"><span class="pre">Merge</span></code> disponible dans <strong>Raster &gt; Miscellaneous</strong>.</p>
 </section>
 <section id="area-of-interest">
-<h2>Domaine d’intérêt<a class="headerlink" href="#area-of-interest" title="Lien vers cette rubrique">#</a></h2>
-<p>Vous pouvez spécifier votre zone d’intérêt lorsque vous utilisez le plugin. Pour ce faire, préparez un fichier vectoriel et sélectionnez-le avec l’argument <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> dans l’onglet <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> du plugin. Le fichier vectoriel sera automatiquement copié dans le dossier <cite>data_raw`</cite> du répertoire de travail et renommé <cite>aoi_latlon.gpkg`</cite>. Le fichier vectoriel doit avoir les caractéristiques suivantes :</p>
+<h2>Zone d’étude cible (area of interest)<a class="headerlink" href="#area-of-interest" title="Lien vers cette rubrique">#</a></h2>
+<p>Vous pouvez spécifier votre zone d’étude lorsque vous utilisez le plugin. Pour ce faire, préparez un fichier vectoriel et sélectionnez-le avec l’argument <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> dans l’onglet <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> du plugin. Le fichier vectoriel sera automatiquement copié dans le dossier <code class="docutils literal notranslate"><span class="pre">data_raw</span></code> du répertoire de travail et renommé <code class="docutils literal notranslate"><span class="pre">aoi_latlon.gpkg</span></code>. Le fichier vectoriel doit avoir les caractéristiques suivantes :</p>
 <ul class="simple">
-<li><p>Elle doit être en lat/lon (c’est-à-dire non projetée avec le code EPSG 4326).</p></li>
+<li><p>Il doit être en lat/lon (c’est-à-dire non projeté avec le code EPSG 4326).</p></li>
 <li><p>Il doit comporter deux couches nommées « aoi » pour la juridiction et « subj » pour les sous juridictions.</p></li>
 </ul>
-<p>Plus de détails sur la façon d’obtenir un tel fichier vectoriel dans QGIS sont disponibles dans l’article sans titre <a class="reference external" href="./subnational_jurisd.html">Subnational jurisdictions</a>.</p>
+<p>Plus de détails sur la façon d’obtenir un tel fichier vectoriel dans QGIS sont disponibles dans l’article intitulé <a class="reference external" href="./subnational_jurisd.html">Juridictions infranationales</a>.</p>
 </section>
 <section id="additional-explicative-variables">
 <h2>Variables explicatives supplémentaires<a class="headerlink" href="#additional-explicative-variables" title="Lien vers cette rubrique">#</a></h2>
@@ -493,7 +493,7 @@
 <ul class="simple">
 <li><p>Ils doivent couvrir au moins toute la zone de la juridiction.</p></li>
 <li><p>Ils doivent être dans la projection du projet.</p></li>
-<li><p>La résolution doit être aussi proche que possible de la résolution de la trame du couvert forestier.</p></li>
+<li><p>La résolution doit être aussi proche que possible de la résolution du raster du couvert forestier.</p></li>
 </ul>
 <p>Si certaines de ces variables évoluent dans le temps, créez plusieurs rasters pour t1, t2 et t3.</p>
 </section>
@@ -509,7 +509,7 @@
 </section>
 <section id="create-symbolic-links-to-save-space-on-disk-optional">
 <h3>Créer des liens symboliques pour économiser de l’espace sur le disque (facultatif)<a class="headerlink" href="#create-symbolic-links-to-save-space-on-disk-optional" title="Lien vers cette rubrique">#</a></h3>
-<p>Pour éviter de copier les mêmes données à plusieurs endroits sur le disque, vous pouvez créer des liens symboliques dans chacun des dossiers <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, et <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code>. Les liens symboliques peuvent pointer vers les rasters du dossier <cite>data`</cite> par exemple.</p>
+<p>Pour éviter de copier les mêmes données à plusieurs endroits sur le disque, vous pouvez créer des liens symboliques dans chacun des dossiers <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, et <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code>. Les liens symboliques peuvent pointer vers les rasters du dossier <code class="docutils literal notranslate"><span class="pre">data</span></code> par exemple.</p>
 <p>Si vous utilisez des variables changeant avec le temps, utilisez le même nom de fichier (par exemple <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code>) pour les liens symboliques dans les quatre dossiers <code class="docutils literal notranslate"><span class="pre">data_*</span></code> mais pointant vers des fichiers différents <code class="docutils literal notranslate"><span class="pre">variable_t*.tif</span></code> dans le dossier <code class="docutils literal notranslate"><span class="pre">data</span></code>. Par exemple :</p>
 <ul>
 <li><p>Dans les dossiers <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code> et <code class="docutils literal notranslate"><span class="pre">data_historical</span></code> (pour lesquels nous utilisons des variables à t1), le fichier <code class="docutils literal notranslate"><span class="pre">variable.tif</span></code> doit pointer vers le fichier <code class="docutils literal notranslate"><span class="pre">variable_t1.tif</span></code> dans le dossier <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p></li>
@@ -536,36 +536,36 @@ mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\da
 <ul class="simple">
 <li><p>Les données sur les changements de la couverture forestière sous la forme d’un fichier raster multibande (voir la section <a class="reference external" href="./user_data.html#forest-cover-change-map">Carte des changements de la couverture forestière</a>).</p></li>
 <li><p>La zone d’intérêt sous forme de fichier vectoriel (voir la section <a class="reference external" href="./user_data.html#area-of-interest">Zone d’intérêt</a>).</p></li>
-<li><p>Les fichiers raster des variables explicatives dans les dossiers <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, et <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code> du répertoire de travail (voir la section <a class="reference external" href="./user_data.html#copy-files-in-the-right-folders">Copy files</a>).</p></li>
+<li><p>Les fichiers raster des variables explicatives dans les dossiers <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code>, <code class="docutils literal notranslate"><span class="pre">data_validation</span></code>, <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>, et <code class="docutils literal notranslate"><span class="pre">data_forecast</span></code> du répertoire de travail (voir la section <a class="reference external" href="./user_data.html#copy-files-in-the-right-folders">Copier les fichiers</a>).</p></li>
 </ul>
-<p>De même, vous n’avez pas besoin d’identifiants pour télécharger des données de Google Earth Engine ou de la World Database on Protected Area. Les paramètres <code class="docutils literal notranslate"><span class="pre">Earth</span> <span class="pre">Engine</span> <span class="pre">access</span></code> et <code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code> peuvent être laissés vides. Le bouton « Calculer uniquement les variables forestières » doit être coché.</p>
+<p>De même, vous n’avez pas besoin d’identifiants pour télécharger des données de Google Earth Engine ou de la World Database on Protected Area. Les paramètres <code class="docutils literal notranslate"><span class="pre">Earth</span> <span class="pre">Engine</span> <span class="pre">access</span></code> et <code class="docutils literal notranslate"><span class="pre">WDPA</span> <span class="pre">access</span></code> peuvent être laissés vides. Le bouton <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">compute</span> <span class="pre">forest</span> <span class="pre">variables</span></code> doit être coché.</p>
 </section>
 <section id="a-simple-approach-with-only-forest-variables">
-<h3>Une approche simple avec seulement des variables forestières<a class="headerlink" href="#a-simple-approach-with-only-forest-variables" title="Lien vers cette rubrique">#</a></h3>
+<h3>Une approche simple avec les variables forestières uniquement<a class="headerlink" href="#a-simple-approach-with-only-forest-variables" title="Lien vers cette rubrique">#</a></h3>
 <p>La distance par rapport à la lisière de la forêt est généralement la variable la plus importante pour déterminer le risque de déforestation dans l’espace. Il peut être utile de comparer et d’évaluer les modèles en utilisant uniquement cette variable explicative. Pour ce faire, il suffit de</p>
 <ul class="simple">
-<li><p>Cochez le bouton <code class="docutils literal notranslate"><span class="pre">Ne</span> <span class="pre">calculer</span> <span class="pre">que</span> <span class="pre">les</span> <span class="pre">variables</span> <span class="pre">forestières</span></code>.</p></li>
-<li><p>Spécifier “dist_edge” dans la <code class="docutils literal notranslate"><span class="pre">Liste</span> <span class="pre">des</span> <span class="pre">variables</span></code> pour les modèles FAR.</p></li>
+<li><p>Cochez le bouton <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">compute</span> <span class="pre">forest</span> <span class="pre">variables</span></code>.</p></li>
+<li><p>Spécifier “dist_edge” dans la liste <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> pour les modèles FAR.</p></li>
 </ul>
-<p>La distance par rapport à la lisière de la forêt est directement calculée à partir du fichier matriciel des changements du couvert forestier et il n’est pas nécessaire de fournir d’autres variables explicatives.</p>
+<p>La distance par rapport à la lisière de la forêt est directement calculée à partir du fichier raster de changement du couvert forestier et il n’est pas nécessaire de fournir d’autres variables explicatives.</p>
 </section>
 <section id="a-simple-example-with-no-internet-connexion">
 <h3>Un exemple simple sans connexion internet<a class="headerlink" href="#a-simple-example-with-no-internet-connexion" title="Lien vers cette rubrique">#</a></h3>
-<p>A titre d’exemple basé sur la Martinique, vous pouvez éviter d’utiliser une connexion internet et utiliser des modèles de déforestation simples basés uniquement sur la distance à la lisière de la forêt :</p>
+<p>En se basant sur un exemple avec la Martinique, vous pouvez éviter d’utiliser une connexion internet et utiliser des modèles de déforestation simples basés uniquement sur la distance à la lisière de la forêt :</p>
 <ul class="simple">
 <li><p>Créez un répertoire de travail appelé par exemple <code class="docutils literal notranslate"><span class="pre">MTQ-tuto-simple-model</span></code>.</p></li>
 <li><p>Créez un répertoire <code class="docutils literal notranslate"><span class="pre">data</span></code> et copiez les fichiers <a class="reference external" href="../_static/tutos/forest-MTQ-2000-2010-2020.tif">forest-MTQ-2000-2010-2020.tif</a> et <a class="reference external" href="../_static/tutos/aoi-MTQ-latlon.gpkg">aoi-MTQ-latlon.gpkg</a> dans ce répertoire.</p></li>
-<li><p>Utilisez ces deux fichiers pour les arguments « Area Of Interest » et « Forest data source » dans l’onglet « Get variables ».</p></li>
-<li><p>Spécifiez “2000, 2010, 2020” pour <code class="docutils literal notranslate"><span class="pre">Années</span></code>.</p></li>
-<li><p>Utilisez “EPSG:3490” pour le <code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">EPSG</span> <span class="pre">de</span> <span class="pre">projection</span></code>.</p></li>
-<li><p>Assurez-vous que l’option « Calculer uniquement les variables forestières » est cochée.</p></li>
-<li><p>Toutes les autres variables de l’onglet « Get variables » peuvent être laissées vides.</p></li>
-<li><p>Cliquez sur « Exécuter » dans l’onglet « Obtenir des variables » pour calculer les variables forestières.</p></li>
+<li><p>Utilisez ces deux fichiers pour les arguments <code class="docutils literal notranslate"><span class="pre">Area</span> <span class="pre">Of</span> <span class="pre">Interest</span></code> et <code class="docutils literal notranslate"><span class="pre">Forest</span> <span class="pre">data</span> <span class="pre">source</span></code> dans l’onglet <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code>.</p></li>
+<li><p>Spécifiez “2000, 2010, 2020” pour <code class="docutils literal notranslate"><span class="pre">Years</span></code>.</p></li>
+<li><p>Utilisez “EPSG:3490” pour le <code class="docutils literal notranslate"><span class="pre">Projection</span> <span class="pre">EPSG</span> <span class="pre">code</span></code>.</p></li>
+<li><p>Assurez-vous que l’option <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">compute</span> <span class="pre">forest</span> <span class="pre">variables</span></code> est cochée.</p></li>
+<li><p>Toutes les autres variables de l’onglet <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> peuvent être laissées vides.</p></li>
+<li><p>Cliquez sur <code class="docutils literal notranslate"><span class="pre">Exécuter</span></code> dans l’onglet <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code> pour calculer les variables forestières.</p></li>
 </ul>
 <img alt="../_images/user-data-interface-variables.png" src="../_images/user-data-interface-variables.png" />
 <p><br/></p>
 <ul class="simple">
-<li><p>Spécifiez uniquement “dist_edge” dans la <code class="docutils literal notranslate"><span class="pre">Liste</span> <span class="pre">des</span> <span class="pre">variables</span></code> pour les modèles FAR et exécutez les modèles et la validation avec les paramètres par défaut.</p></li>
+<li><p>Spécifiez uniquement “dist_edge” dans la list <code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code> pour les modèles FAR et exécutez les modèles et la validation avec les paramètres par défaut.</p></li>
 </ul>
 <img alt="../_images/user-data-interface-far.png" src="../_images/user-data-interface-far.png" />
 </section>
@@ -620,7 +620,7 @@ mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\da
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-cover-change-map">Carte de l’évolution du couvert forestier</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#area-of-interest">Domaine d’intérêt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#area-of-interest">Zone d’étude cible (area of interest)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-explicative-variables">Variables explicatives supplémentaires</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-raster-files">Préparer les fichiers raster</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-files-in-the-right-folders">Copier les fichiers dans les bons dossiers</a></li>
@@ -630,7 +630,7 @@ mklink<span class="w"> </span><span class="s2">&quot;C:\Users\me\deforisk\MTQ\da
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-internet-connexion-needed">Pas de connexion internet nécessaire</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provide-you-own-data">Fournissez vos propres données</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-approach-with-only-forest-variables">Une approche simple avec seulement des variables forestières</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-approach-with-only-forest-variables">Une approche simple avec les variables forestières uniquement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example-with-no-internet-connexion">Un exemple simple sans connexion internet</a></li>
 </ul>
 </li>

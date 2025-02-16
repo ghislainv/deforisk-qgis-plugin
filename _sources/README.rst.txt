@@ -1,8 +1,8 @@
 
 ..
-    This index.rst file is automatically generated. Please do not
+    This README.rst file is automatically generated. Please do not
     modify it. If you want to make changes to this file, modify the
-    index.org source file directly.
+    README.org source file directly.
 
 .. image:: https://deforisk-qgis-plugin.org/\_static/logo-deforisk.png
     :target: https://deforisk-qgis-plugin.org
