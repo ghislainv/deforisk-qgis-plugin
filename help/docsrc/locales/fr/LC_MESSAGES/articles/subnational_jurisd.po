@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-01 14:07-0400\n"
-"PO-Revision-Date: 2024-07-01 18:38+0000\n"
+"PO-Revision-Date: 2025-02-15 13:35+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -47,14 +47,13 @@ msgstr ""
 #: ../../docsrc/articles/subnational_jurisd.rst:22
 #: 4b64ec5d125e4fa7af5025c092b08803
 msgid "File creation using QGIS tools"
-msgstr "Création de fichiers à l'aide des outils QGIS"
+msgstr "Création du fichier à l'aide des outils QGIS"
 
 #: ../../docsrc/articles/subnational_jurisd.rst:24
 #: 9ba02e70423540c9a32400feaf15dc16
 msgid ""
 "Download country data from `GADM <https://gadm.org>`_ using a GPKG file."
-msgstr ""
-"Téléchargez les données de `GADM <https://gadm.org>`_ avec un fichier GPKG."
+msgstr "Téléchargez les données de `GADM <https://gadm.org>`_ sous forme d'un fichier GPKG."
 
 #: ../../docsrc/articles/subnational_jurisd.rst:29
 #: ../../docsrc/articles/subnational_jurisd.rst:36
@@ -78,10 +77,7 @@ msgstr "Ajoutez toutes les couches du fichier GPKG à QGIS."
 msgid ""
 "Select the jurisdiction, using the selection toolbar (if the toolbar is not "
 "visible, activate it in ``View > Toolbars > Selection Toolbar``)."
-msgstr ""
-"Sélectionnez la juridiction avec la barre d'outils de sélection (si elle "
-"n'est pas visible, activez-la dans ``Affichage > Barres d'outils > Barre de "
-"sélection``)."
+msgstr "Sélectionnez la juridiction avec la barre d'outils de sélection (si elle n'est pas visible, activez-la dans ``Vue > Barres d'outils > Sélection``)."
 
 #: ../../docsrc/articles/subnational_jurisd.rst:45
 #: 0ea2544dc6654c76b00b46f71978daf5
@@ -90,22 +86,14 @@ msgid ""
 "clicking on the layer and selecting ``Export > Save Selected Feature As``. "
 "Tick ``Save only selected features`` and name the layer ``aoi`` (it is "
 "mandatory to use this layer name)."
-msgstr ""
-"Pour enregistrer la fonction dans un nouveau fichier GPKG nommé "
-"``aoi_latlon.gpkg``, cliquez avec le bouton droit sur la couche et "
-"sélectionnez ``Exporter > Enregistrer la fonction sélectionnée sous``. "
-"Cochez ``Enregistrer uniquement les fonctions sélectionnées`` et nommez la "
-"couche ``aoi`` (il est obligatoire d'utiliser ce nom de couche)."
+msgstr "Pour enregistrer l'entité dans un nouveau fichier GPKG nommé ``aoi_latlon.gpkg``, cliquez avec le bouton droit sur la couche et sélectionnez ``Exporter > Enregistrer l'entité sélectionnée sous``. Cochez ``Enregistrer uniquement les entités sélectionnées`` et nommez la couche ``aoi`` (il est obligatoire d'utiliser ce nom de couche)."
 
 #: ../../docsrc/articles/subnational_jurisd.rst:52
 #: 6710ad923fb64eb1852d75027437f0f9
 msgid ""
 "Select the subjurisdictions (to save several features with the selection "
 "tool, maintain the ``Ctrl`` button pushed)."
-msgstr ""
-"Sélectionnez les sous-juridictions (pour enregistrer plusieurs "
-"fonctionnalités avec l'outil de sélection, maintenez le bouton ``Ctrl`` "
-"enfoncé)."
+msgstr "Sélectionnez les sous-juridictions (pour enregistrer plusieurs entités avec l'outil de sélection, maintenez le bouton ``Ctrl`` enfoncé)."
 
 #: ../../docsrc/articles/subnational_jurisd.rst:59
 #: 65ab338f8e4f4684a3b33a2965175561
@@ -135,16 +123,14 @@ msgstr ""
 #: ../../docsrc/articles/subnational_jurisd.rst:70
 #: e60a154cf8084c23b4446dfdf7d510e5
 msgid "Looking at the data in QGIS"
-msgstr "Regardant les données dans QGIS."
+msgstr "Affichage des données dans QGIS."
 
 #: ../../docsrc/articles/subnational_jurisd.rst:72
 #: af31829b59b74cd0a9c505eb3a168509
 msgid ""
 "Open the file Browser. If not visible, activate it in ``View > Panels > "
 "Browser``."
-msgstr ""
-"Ouvrez le panneau Fichier. S'il n'est pas visible, activez-le dans "
-"``Affichage > Panneaux > Fichier``."
+msgstr "Ouvrez l'explorateur de fichier. S'il n'est pas visible, activez-le dans ``Vue > Panneaux > Explorateur``."
 
 #: ../../docsrc/articles/subnational_jurisd.rst:74
 #: 93e6b7ab92d94c368a0105051360507c
@@ -163,7 +149,7 @@ msgstr ""
 #: ../../docsrc/articles/subnational_jurisd.rst:82
 #: 0d7291c7ba804245b30e15455943db57
 msgid "Use with the deforisk plugin"
-msgstr "Utiliser avec le plugin deforisk"
+msgstr "Utilisation avec le plugin deforisk"
 
 #: ../../docsrc/articles/subnational_jurisd.rst:84
 #: c9de0bbbd0e341449b46380d6cb6e73a

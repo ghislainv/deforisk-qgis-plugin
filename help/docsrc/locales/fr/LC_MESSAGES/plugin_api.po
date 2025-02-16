@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-13 16:05+1100\n"
-"PO-Revision-Date: 2024-07-01 18:38+0000\n"
+"PO-Revision-Date: 2025-02-16 12:42+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
 "Language: fr\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../../docsrc/plugin_api.rst:3 b4b53b8f43e14f50b7cca9992aa04a3f
 msgid "Plugin API"
-msgstr "API de Plugin"
+msgstr "API du plugin"
 
 #: ../../docsrc/plugin_api.rst:12 1a6aa50a98de4a5489d5f12413b170c2
 msgid "Plugin interface"
@@ -1474,10 +1474,7 @@ msgid ""
 "``Length forecast period (yr)``: Length of the time-period for the forecast "
 "(also named “baseline validity period”), in years. Used to compute annual "
 "deforestation for the project."
-msgstr ""
-"``Longueur de la période de prévision (an) `` : Durée de la période de "
-"prévision (également appelée \"période de validité de la ligne de base\"), "
-"en années. Utilisée pour calculer la déforestation annuelle pour le projet."
+msgstr "``Length forecast periods (yr)`` : Durée de la période de prévision (également appelée \"période de validité de la ligne de base\"), en années. Utilisée pour calculer la déforestation annuelle pour le projet."
 
 #: ../../docsrc/plugin_api.rst:359 46af4d8f50a14821a4185d52e13a57a9
 msgid ""

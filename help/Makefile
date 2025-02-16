@@ -43,6 +43,21 @@ html:
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
+html-es:
+	$(SPHINXBUILD) -b html -D language=es $(ALLSPHINXOPTS) $(BUILDDIR)/html/es
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/es."
+
+html-fr:
+	$(SPHINXBUILD) -b html -D language=fr $(ALLSPHINXOPTS) $(BUILDDIR)/html/fr
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/fr."
+
+trans-update:
+	$(SPHINXBUILD) -b gettext $(SOURCEDIR) $(BUILDDIR)/gettext
+	sphinx-intl -c $(SOURCEDIR)/conf.py update -p $(BUILDDIR)/gettext -l es -l fr
+	@echo "Update finished. Po files are in $(SOURCEDIR)/locales."
+
 github:
 	@make html
 	@cp -a build/html/. ../docs

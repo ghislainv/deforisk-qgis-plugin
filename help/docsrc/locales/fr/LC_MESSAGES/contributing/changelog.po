@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-22 15:00+0100\n"
-"PO-Revision-Date: 2024-07-01 18:38+0000\n"
+"PO-Revision-Date: 2025-02-15 11:57+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
 "Language: fr\n"
@@ -27,7 +27,7 @@ msgstr "Journal des modifications"
 
 #: ../../docsrc/contributing/changelog.rst:9 4323c00bb4f2422ea5bf660693dd89fd
 msgid "deforisk v1.0"
-msgstr "déforisk v0.5"
+msgstr "deforisk v1.0"
 
 #: ../../docsrc/contributing/changelog.rst:11 98580531d6ba479dbb3be65d4ad900c3
 msgid ""
@@ -49,7 +49,7 @@ msgstr ""
 
 #: ../../docsrc/contributing/changelog.rst:16 4323c00bb4f2422ea5bf660693dd89fd
 msgid "deforisk v0.5"
-msgstr "déforisk v0.5"
+msgstr "deforisk v0.5"
 
 #: ../../docsrc/contributing/changelog.rst:18 78899c30eb954f80aabdd9678fcee7d9
 msgid ""

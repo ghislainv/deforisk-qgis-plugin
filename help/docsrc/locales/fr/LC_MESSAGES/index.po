@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version:  deforisk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 15:47+1100\n"
-"PO-Revision-Date: 2025-02-14 15:52+1100\n"
+"PO-Revision-Date: 2025-02-16 11:28+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language: fr\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
@@ -32,7 +32,7 @@ msgstr "Logo riskmapjnr"
 
 #: ../../docsrc/README.rst:15 f1903f86a6784729960eda0da87ceac4
 msgid "deforisk QGIS plugin"
-msgstr "Le plugin QGIS deforisk"
+msgstr "Plugin QGIS deforisk"
 
 #: ../../docsrc/README.rst:35 b4932a1beb47485e8293ee5bbd2a8655
 msgid "Languages"
@@ -94,12 +94,7 @@ msgid ""
 "estimate emission reduction impact of forest conservation projects within"
 " the `VCS Jurisdictional and Nested REDD+ Framework "
 "<https://verra.org/programs/jurisdictional-nested-redd-framework/>`_."
-msgstr ""
-"Les cartes de risque de déforestation obtenues à l'aide de ce plugin "
-"peuvent être utilisées pour estimer l'impact de la réduction des "
-"émissions des projets de conservation des forêts dans le cadre de "
-"l'`approche juridictionnelle et imbriquée promue par VCS "
-"<https://verra.org/programs/jurisdictional-nested-redd-framework/>`_."
+msgstr "Les cartes de risque de déforestation obtenues à l'aide de ce plugin peuvent être utilisées pour estimer l'impact de la réduction des émissions des projets de conservation des forêts dans le cadre de `l\\'approche juridictionnelle et imbriquée promue par VCS <https://verra.org/programs/jurisdictional-nested-redd-framework/>`_."
 
 #: ../../docsrc/README.rst:58 2b43bce80298493c804f0a1830991863
 msgid "Banner"

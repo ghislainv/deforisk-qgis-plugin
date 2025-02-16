@@ -217,6 +217,27 @@ doc:
 	@echo "------------------------------------"
 	cd help; make html
 
+doc-es:
+	@echo
+	@echo "--------------------------------------------"
+	@echo "Building Spanish documentation using sphinx."
+	@echo "--------------------------------------------"
+	cd help; make html-es
+
+doc-fr:
+	@echo
+	@echo "-------------------------------------------"
+	@echo "Building French documentation using sphinx."
+	@echo "-------------------------------------------"
+	cd help; make html-fr
+
+trans-update:
+	@echo
+	@echo "-------------------------------------------"
+	@echo "Udpate translation using sphinx."
+	@echo "-------------------------------------------"
+	cd help; make trans-update
+
 pylint:
 	@echo
 	@echo "-----------------"

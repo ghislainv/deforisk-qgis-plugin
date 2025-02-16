@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-01 14:07-0400\n"
-"PO-Revision-Date: 2025-02-14 15:14+1100\n"
+"PO-Revision-Date: 2025-02-15 12:06+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgid ""
 "If you want to report a bug, request a feature, or discuss an issue, please "
 "open an `issue <https://github.com/ghislainv/deforisk-qgis-plugin/issues>`_ "
 "on the GitHub project page."
-msgstr "Si vous souhaitez signaler un bogue, demander une fonctionnalité ou discuter d'un problème, veuillez ouvrir une `issue <https://github.com/ghislainv/deforisk-qgis-plugin/issues>`_ sur la page du projet GitHub."
+msgstr "Si vous souhaitez signaler un bug, demander une fonctionnalité ou discuter d'un problème, veuillez ouvrir une `issue <https://github.com/ghislainv/deforisk-qgis-plugin/issues>`_ sur la page du projet GitHub."
 
 #: ../../docsrc/contributing/community_guidelines.rst:26
 #: 673c5edb60fc4a8b946d29313aae8c17
@@ -62,7 +62,7 @@ msgstr "Contribuer au code"
 msgid ""
 "Changes to the source code and documentation should be made via GitHub pull "
 "requests (PR)."
-msgstr "Les modifications du code source et de la documentation doivent être effectuées par le biais de pull requests (PR) sur GitHub."
+msgstr "Les modifications du code source et de la documentation doivent être effectuées par le biais de *pull requests* (PR) sur GitHub."
 
 #: ../../docsrc/contributing/community_guidelines.rst:31
 #: d31fcfa9c45c4355ba931c84a0e5dad4
@@ -90,7 +90,7 @@ msgstr "Les étapes importantes à suivre sont les suivantes :"
 #: ../../docsrc/contributing/community_guidelines.rst:38
 #: b8bdaf18ecaa4e0cb63fe5abb3a16cbd
 msgid "Start by creating a fork of the ``deforisk-qgis-plugin`` repository"
-msgstr "Commencez par créer un fork du dépôt ``deforisk-qgis-plugin``."
+msgstr "Commencez par créer un *fork* du dépôt ``deforisk-qgis-plugin``."
 
 #: ../../docsrc/contributing/community_guidelines.rst:40
 #: 99761257290e458eb88a3b2d01c6b891
@@ -104,9 +104,7 @@ msgstr "Apporter des modifications au code source sur une branche de développem
 msgid ""
 "Keep your fork’s main and development branches up to date with changes in "
 "the ``deforisk-qgis-plugin`` repository."
-msgstr ""
-"Gardez les branches principale et de développement de votre fork à jour avec"
-" les changements dans le dépôt ``deforisk-qgis-plugin``."
+msgstr "Gardez les branches principale et de développement de votre *fork* à jour avec les changements dans le dépôt ``deforisk-qgis-plugin``."
 
 #: ../../docsrc/contributing/community_guidelines.rst:46
 #: 02e1c02d3bf148bf928d12f9df9a1e50
@@ -114,9 +112,9 @@ msgid ""
 "Commit the changes you made. Chris Beams has written a `guide "
 "<https://chris.beams.io/posts/git-commit/>`_ on how to write good commit "
 "messages."
-msgstr "Validez les changements que vous avez effectués. Chris Beams a écrit un `guide <https://chris.beams.io/posts/git-commit/>`_ sur la façon d'écrire de bons messages de commit."
+msgstr "Validez les changements que vous avez effectués. Chris Beams a écrit un `guide <https://chris.beams.io/posts/git-commit/>`_ sur la façon d'écrire de bons messages de *commit*."
 
 #: ../../docsrc/contributing/community_guidelines.rst:49
 #: 83b450874d6b473e85e2bdd578949257
 msgid "Push to your fork and submit a pull request."
-msgstr "Poussez vers votre fork et soumettez une pull request."
+msgstr "Poussez vers votre *fork* et soumettez une *pull request*."

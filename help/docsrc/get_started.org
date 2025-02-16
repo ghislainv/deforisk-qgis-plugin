@@ -95,7 +95,7 @@ Click the ~Run~ button to estimate the deforestation risk with the benchmark mod
 
 @@rst:|br|@@
 
-New folders with results are created in the ~outputs/rmj_benchmark/~ directory for each period. In particular, the output folders include the ~<period>/perc_dist.png~ file. This file shows the plot of the cumulated deforestation as a function of the distance to forest edge and indicates the distance thresholds (here 240 m for the calibration period).
+New folders with results are created in the ~outputs/rmj_benchmark/~ directory for each period. In particular, the output folders include the ~<period>/perc_dist.png~ file. This file shows the plot of the cumulated deforestation as a function of the distance to forest edge and indicates the distance threshold (here 240 m for the calibration period).
 
 #+attr_rst: :width 600px
 #+name: fig-perc-dist
@@ -234,7 +234,7 @@ Pushing the ~Run~ button in this box will use the statistical models for predict
 
 #+begin_export rst
 .. note::
-    For large jurisdictions, if you want to reduce computation time, use only one window size (e.g. 21 pixels).
+    For large jurisdictions, if you want to reduce computation time, use only one moving window size (e.g. 21 pixels).
 #+end_export
 
 Click the ~Run~ button to estimate the deforestation risk with the moving window model using data on both the calibration and historical periods. New folders with results are created in the ~outputs/rmj_moving_window/~ directory including the ~<period>/ldefrate_mw_<window_size>.tif~ raster file with local deforestation rates rescaled on [2, 65535].
@@ -279,7 +279,7 @@ Files ~figures/pred_obs_<model>_<period>_<cell_size>.png~ which show the plot of
 #+attr_rst: :width 600px
 [[file:_static/get_started/pred_obs_icar_validation_50.png]]
 
-File ~outputs/model_validation/indices_all.csv~ includes a table with the performance indices for all validation cell sizes, all models, and all periods. In this example, both the Random Forest model and the iCAR model are better than the benchmark model whatever the performance indices considered. The iCAR model is the best model has it has the lowest MedAE, the lowest RMSE, and the highest $R^{2}$ for the validation period which is the only period with independent data (i.e. which have not be used to calibrate the models). This is true whatever the validation cell size chosen.
+File ~outputs/model_validation/indices_all.csv~ includes a table with the performance indices for all validation cell sizes, all models, and all periods. In this example, both the Random Forest model and the iCAR model are better than the benchmark model whatever the performance indices considered. The iCAR model is the best model has it has the lowest MedAE, the lowest RMSE, and the highest $R^{2}$ for the validation period which is the only period with independent data (i.e. which have not be used to calibrate the models). This is true whatever the validation cell size chosen.
 
 #+name: tab-indices
 #+caption: Performance indices.
@@ -326,7 +326,7 @@ The ~deforisk~ QGIS plugin includes an utility to facilitate the allocation of t
 - ~Juris. risk map~: File ~prob_icar_t3.tif~ for the best risk map.
 - ~Table. with defor. rates~: File ~defrate_cat_icar_forecast.csv~ for the table with the deforestation rates from the icar model at t3 for each class of deforestation risk.
 - ~Project borders~: File ~project_borders_MTQ_jurisdiction.gpkg~.
-- ~Juris. deforestation (ha)~: 4000. About 400 ha have been deforested each year in 2010--2020 in MTQ. 
+- ~Juris. deforestation (ha)~: 4000. About 400 ha have been deforested each year in 2010--2020 in Martinique. 
 - ~Length forecast period (yr)~: 10.
   
 Pushing the ~Run~ button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level ($D=4000$)and the relative spatial deforestation rates from the model. Then, 
