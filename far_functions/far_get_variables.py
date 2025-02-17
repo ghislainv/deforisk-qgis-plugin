@@ -199,9 +199,9 @@ class FarGetVariablesTask(QgsTask):
                 # Else, download from GADM
                 else:
                     ofile = opj(self.DATA_RAW,
-                                f"gadm41_{self.isocode}_0.gpkg")
+                                f"gadm41_{aoi}_0.gpkg")
                     far.data.download.download_gadm(
-                        iso3=self.isocode,
+                        iso3=aoi,
                         output_file=ofile,
                     )
 
@@ -235,7 +235,8 @@ class FarGetVariablesTask(QgsTask):
                 # Always compute data_forest.
                 data_country = not self.forest_var_only
                 far.data.country_compute(
-                    iso3=self.isocode,
+                    aoi_code=aoi,
+                    iso_code=self.isocode,
                     temp_dir=self.DATA_RAW,
                     output_dir=self.DATA,
                     proj=self.proj,
