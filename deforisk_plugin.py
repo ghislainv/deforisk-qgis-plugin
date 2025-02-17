@@ -276,19 +276,21 @@ class DeforiskPlugin:
     def task_description(self, task_name, model=None, period=None,
                          date=None, csize_val=None):
         """Write down task description."""
-        isocode = self.args["isocode"]
         get_fcc_args = self.args["get_fcc_args"]
+        aoi_abbrev = get_fcc_args["aoi"]
+        if os.path.isfile(aoi_abbrev):
+            aoi_abbrev = "ownaoi"
         years = get_fcc_args["years"]
         years = years.replace(" ", "").replace(",", "_")
         fcc_abbrev = get_fcc_args["fcc_source"]
         if os.path.isfile(fcc_abbrev):
-            fcc_abbrev = "own"
+            fcc_abbrev = "ownfcc"
         mod_desc = f"_{model}" if model else ""
         period_desc = f"_{period}" if period else ""
         date_desc = f"_{date}" if date else ""
         csize_desc = f"_{csize_val}" if csize_val else ""
         # Description
-        desc_base = (f"{task_name}_{isocode}_"
+        desc_base = (f"{task_name}_{aoi_abbrev}_"
                      f"{years}_{fcc_abbrev}")
         description = (desc_base + mod_desc
                        + period_desc + date_desc
@@ -531,7 +533,6 @@ class DeforiskPlugin:
         tile_size = self.dlg.tile_size.text()
         tile_size = float(tile_size) if tile_size != "" else 1.0
         iso = self.dlg.isocode.text()
-        iso = "MTQ" if iso == "" else iso
         gc_project = self.dlg.gc_project.filePath()
         wdpa_key = self.dlg.wdpa_key.filePath()
         proj = self.dlg.proj.text()
@@ -544,6 +545,8 @@ class DeforiskPlugin:
         samp_far_calib = self.dlg.samp_far_calib.isChecked()
         samp_far_hist = self.dlg.samp_far_hist.isChecked()
         # Benchmark model
+        defor_thresh = float(self.dlg.defor_thresh.text())
+        max_dist = int(self.dlg.max_dist.text())
         mod_bm_calib = self.dlg.mod_bm_calib.isChecked()
         mod_bm_hist = self.dlg.mod_bm_hist.isChecked()
         pred_bm_valid_t2 = self.dlg.pred_bm_valid_t2.isChecked()
@@ -565,13 +568,10 @@ class DeforiskPlugin:
         pred_far_valid_t2 = self.dlg.pred_far_valid_t2.isChecked()
         pred_far_hist_t1 = self.dlg.pred_far_hist_t1.isChecked()
         pred_far_forecast_t3 = self.dlg.pred_far_forecast_t3.isChecked()
-        # Rmj model
-        defor_thresh = float(self.dlg.defor_thresh.text())
-        max_dist = int(self.dlg.max_dist.text())
+        # MW model
         win_sizes = self.dlg.win_sizes.text()
         mod_mw_calib = self.dlg.mod_mw_calib.isChecked()
         mod_mw_hist = self.dlg.mod_mw_hist.isChecked()
-        # Rmj predict
         pred_mw_calib_t1 = self.dlg.pred_mw_calib_t1.isChecked()
         pred_mw_valid_t2 = self.dlg.pred_mw_valid_t2.isChecked()
         pred_mw_hist_t1 = self.dlg.pred_mw_hist_t1.isChecked()
@@ -613,7 +613,8 @@ class DeforiskPlugin:
             "proj": proj,
             "forest_var_only": forest_var_only,
             # Benchmark
-            "defor_thresh": defor_thresh, "max_dist": max_dist,
+            "defor_thresh": defor_thresh,
+            "max_dist": max_dist,
             "mod_bm_periods": {
                 "mod_bm_calib": mod_bm_calib,
                 "mod_bm_hist": mod_bm_hist},

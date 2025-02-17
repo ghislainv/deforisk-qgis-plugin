@@ -102,10 +102,10 @@
          <item row="6" column="1">
           <widget class="QLineEdit" name="isocode">
            <property name="text">
-            <string>MTQ</string>
+            <string/>
            </property>
            <property name="placeholderText">
-            <string>MTQ</string>
+            <string>XXX(-XX)</string>
            </property>
           </widget>
          </item>
@@ -170,7 +170,7 @@
          <item row="9" column="1">
           <widget class="QLineEdit" name="proj">
            <property name="text">
-            <string>EPSG:5490</string>
+            <string/>
            </property>
            <property name="placeholderText">
             <string>EPSG:5490</string>
@@ -194,7 +194,7 @@
          <item row="2" column="1">
           <widget class="QLineEdit" name="years">
            <property name="text">
-            <string>2000, 2010, 2020</string>
+            <string/>
            </property>
            <property name="placeholderText">
             <string>2000, 2010, 2020</string>
@@ -983,10 +983,13 @@
        <item row="0" column="1">
         <widget class="QLineEdit" name="defor_thresh_mw">
          <property name="text">
-          <string>99.5</string>
+          <string>not editable, same as benchmark</string>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
          <property name="placeholderText">
-          <string>99.5</string>
+          <string>same as benchmark model</string>
          </property>
         </widget>
        </item>
@@ -1000,10 +1003,13 @@
        <item row="1" column="1">
         <widget class="QLineEdit" name="max_dist_mw">
          <property name="text">
-          <string>2500</string>
+          <string>not editable, same as benchmark</string>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
          <property name="placeholderText">
-          <string>2500</string>
+          <string>same as benchmark model</string>
          </property>
         </widget>
        </item>
