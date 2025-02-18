@@ -23,7 +23,7 @@ def check_fcc_source(fcc_source):
     cond2 = not os.path.isfile(fcc_source)
     if cond1 and cond2:
         msg = ("Forest data source should be "
-               "either a raster file, 'tmf', "
+               "either a path to an existing file, 'tmf', "
                "or 'gfc'")
         raise ValueError(msg)
 
@@ -35,7 +35,7 @@ def check_aoi(aoi):
     cond_file = os.path.isfile(aoi)
     if not (all(cond_string) or cond_file):
         msg = ("Area of interest should be "
-               "either a path to a vector file "
+               "either a path to an existing file "
                "or a country iso code of three "
                "letters (e.g. MTQ)")
         raise ValueError(msg)
@@ -78,6 +78,10 @@ class FarCheckArgsTask(QgsTask):
             progress = 0
             self.set_progress(progress, self.N_STEPS)
 
+            # Directories
+            workdir = self.args["workdir"]
+            far.make_dir(opj(workdir, self.DATA_RAW))
+
             # Check fcc_source
             fcc_source = self.get_fcc_args["fcc_source"]
             check_fcc_source(fcc_source)
@@ -87,10 +91,8 @@ class FarCheckArgsTask(QgsTask):
                 far.check_fcc(fcc_source, proj=proj, nbands_min=3,
                               blk_rows=128, verbose=False)
                 # If no error, copy file to data_raw directory
-                workdir = self.args["workdir"]
                 ofile = opj(workdir, self.DATA_RAW, "forest_src.tif")
                 if not os.path.isfile(ofile):
-                    far.make_dir(opj(workdir, self.DATA_RAW))
                     shutil.copy(fcc_source, ofile)
 
             # Progress
@@ -100,6 +102,13 @@ class FarCheckArgsTask(QgsTask):
             # Check aoi
             aoi = self.get_fcc_args["aoi"]
             check_aoi(aoi)
+            # If file, check file properties
+            if os.path.isfile(aoi):
+                far.check_aoi(aoi)
+                # If no error, copy file to data_raw directory
+                ofile = opj(workdir, self.DATA_RAW, "aoi_latlon.gpkg")
+                if not os.path.isfile(ofile):
+                    shutil.copy(aoi, ofile)
 
             # Progress
             progress += 1

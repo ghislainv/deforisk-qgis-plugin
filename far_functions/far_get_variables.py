@@ -189,15 +189,9 @@ class FarGetVariablesTask(QgsTask):
             if not os.path.isfile(fcc_file):
 
                 # Check if we need GADM
-                # If aoi is file, copy it to data_raw
+                # If aoi is not a file, download from GADM
                 aoi = self.get_fcc_args["aoi"]
-                if os.path.isfile(aoi):
-                    ofile = opj(self.DATA_RAW, "aoi_latlon.gpkg")
-                    # Copy if file does not exist yet
-                    if not os.path.isfile(ofile):
-                        shutil.copy(aoi, ofile)
-                # Else, download from GADM
-                else:
+                if not os.path.isfile(aoi):
                     ofile = opj(self.DATA_RAW,
                                 f"gadm41_{aoi}_0.gpkg")
                     far.data.download.download_gadm(
