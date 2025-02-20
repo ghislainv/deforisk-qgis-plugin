@@ -283,8 +283,11 @@ class DeforiskPlugin:
         years = get_fcc_args["years"]
         years = years.replace(" ", "").replace(",", "_")
         fcc_abbrev = get_fcc_args["fcc_source"]
+        perc = get_fcc_args["perc"]
         if os.path.isfile(fcc_abbrev):
             fcc_abbrev = "ownfcc"
+        if fcc_abbrev == "gfc":
+            fcc_abbrev = f"gfc{perc}"
         mod_desc = f"_{model}" if model else ""
         period_desc = f"_{period}" if period else ""
         date_desc = f"_{date}" if date else ""
