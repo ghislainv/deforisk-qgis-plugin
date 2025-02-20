@@ -53,14 +53,14 @@ class EmptyTask(QgsTask):
 
         else:
             if self.exception is None:
-                msg = ('FarValidateTask "{name}" not successful but without '
+                msg = ('FarEmptyTask "{name}" not successful but without '
                        'exception (probably the task was manually '
                        'canceled by the user)')
                 msg = msg.format(name=self.description())
                 QgsMessageLog.logMessage(
                     msg, self.MESSAGE_CATEGORY, Qgis.Warning)
             else:
-                msg = 'FarValidateTask "{name}" Exception: {exception}'
+                msg = 'FarEmptyTask "{name}" Exception: {exception}'
                 msg = msg.format(
                         name=self.description(),
                         exception=self.exception)
@@ -70,7 +70,7 @@ class EmptyTask(QgsTask):
 
     def cancel(self):
         """Cancelation message."""
-        msg = 'FarValidateTask "{name}" was canceled'
+        msg = 'FarEmptyTask "{name}" was canceled'
         msg = msg.format(name=self.description())
         QgsMessageLog.logMessage(
             msg, self.MESSAGE_CATEGORY, Qgis.Info)
