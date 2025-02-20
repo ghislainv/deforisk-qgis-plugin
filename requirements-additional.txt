@@ -1,0 +1,7 @@
+sphinx
+nbsphinx
+pydata-sphinx-theme
+ipython
+pylint
+flake8
+twine
