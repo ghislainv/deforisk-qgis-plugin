@@ -84,7 +84,7 @@ class FarGetFccGridArgsTask(QgsTask):
         aoi = gfa["aoi"]
         if aoi.startswith("("):
             aoi = aoi.replace("(", "").replace(")", "").split(",")
-            aoi = tuple([float(i) for i in aoi])
+            aoi = tuple(float(i) for i in aoi)
         # years
         years = gfa["years"]
         years = years.replace(" ", "").split(",")
@@ -134,7 +134,7 @@ class FarGetFccGridArgsTask(QgsTask):
             aoi = get_fcc_args["aoi"]
             buff = get_fcc_args.get("buff", 0)
             years = get_fcc_args.get("years", [2000, 2010, 2020])
-            source = get_fcc_args.get("source", "tmf")
+            fcc_source = get_fcc_args.get("fcc_source", "tmf")
             perc = get_fcc_args.get("perc", 75)
             tile_size = get_fcc_args.get("tile_size", 1)
             output_file = get_fcc_args.get("output_file", "fcc.tif")
@@ -173,9 +173,10 @@ class FarGetFccGridArgsTask(QgsTask):
             self.ee_initialize()
 
             # Forest image collection
-            if source == "tmf":
+            forest = None
+            if fcc_source == "tmf":
                 forest = ee_tmf(years)
-            if source == "gfc":
+            if fcc_source == "gfc":
                 forest = ee_gfc(years, perc)
 
             # Create dir for forest tiles
@@ -208,16 +209,21 @@ class FarGetFccGridArgsTask(QgsTask):
         """Show messages and add layers."""
 
         if result:
-            # Message
-            msg = 'Successful task "{name}"'
+            # Message task successful
+            msg = 'Successful task "{name}".'
             msg = msg.format(name=self.description())
             QgsMessageLog.logMessage(msg, self.MESSAGE_CATEGORY, Qgis.Success)
 
+            # Message number of tiles
+            msg = "A total of {ntiles} tile(s) will be downloaded from GEE."
+            msg = msg.format(ntiles=self.grid_args["ntiles"])
+            QgsMessageLog.logMessage(msg, self.MESSAGE_CATEGORY, Qgis.Info)
+
         else:
             if self.exception is None:
-                msg = ('FarGetFccGridArgsTask "{name}" not successful but without '
-                       'exception (probably the task was manually '
-                       'canceled by the user)')
+                msg = ('FarGetFccGridArgsTask "{name}" not successful '
+                       'but without exception (probably the task was '
+                       'manually canceled by the user)')
                 msg = msg.format(name=self.description())
                 QgsMessageLog.logMessage(
                     msg, self.MESSAGE_CATEGORY, Qgis.Warning)
