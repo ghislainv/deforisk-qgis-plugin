@@ -32,6 +32,7 @@ class FarGetFccTileTask(QgsTask):
         self.scale = grid_args["scale"]
         self.out_dir_tiles = grid_args["out_dir_tiles"]
         self.exception = None
+        self.verbose = False
 
     def set_progress(self, progress, n_steps):
         """Set progress."""
@@ -59,7 +60,7 @@ class FarGetFccTileTask(QgsTask):
             geeic2geotiff(
                 self.index, self.ext, self.ntiles,
                 self.forest, self.proj, self.scale,
-                self.out_dir_tiles
+                self.out_dir_tiles, self.verbose
             )
 
             # Check isCanceled() to handle cancellation
