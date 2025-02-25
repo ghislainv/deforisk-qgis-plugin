@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=640c812e"></script>
+    <script src="_static/documentation_options.js?v=e8570148"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=e6b791cb"></script>
@@ -1072,8 +1072,9 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Projet</span> <span class="pre">borders</span></code> : Fichier <code class="docutils literal notranslate"><span class="pre">projet_borders_MTQ_jurisdiction.gpkg</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">deforestation</span> <span class="pre">(ha)</span></code> : 4000. Environ 400 ha ont été déforestés chaque année en 2010–2020 en Martinique.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Length</span> <span class="pre">forecast</span> <span class="pre">period</span> <span class="pre">(yr)</span></code>: 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">deforestation</span> <span class="pre">density</span> <span class="pre">map</span> <span class="pre">(ha/pixel/yr)</span></code>: coché.</p></li>
 </ul>
-<p>En appuyant sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> dans cette boîte, on calcule le facteur d’ajustement et la densité de déforestation pour chaque classe de risque en utilisant la déforestation totale prévue au niveau de la juridiction (<span class="math notranslate nohighlight">\(D=4000\)</span>) et les taux de déforestation spatiaux relatifs du modèle. Ensuite, la carte de risque avec les classes de risque de déforestation est découpée aux limites du projet et le nombre de pixels de forêt dans chaque classe de risque est calculé au niveau du projet. Enfin, la déforestation prévue au niveau du projet est obtenue en additionnant les densités de déforestation de chaque pixel au sein du projet.</p>
+<p>En appuyant sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> dans cette boîte, on calcule le facteur d’ajustement et la densité de déforestation pour chaque classe de risque en utilisant la déforestation totale prévue au niveau de la juridiction (<span class="math notranslate nohighlight">\(D=4000\)</span>) et les taux de déforestation spatiaux relatifs du modèle. Ensuite, la carte de risque avec les classes de risque de déforestation est découpée aux limites du projet et le nombre de pixels de forêt dans chaque classe de risque est calculé au niveau du projet. Enfin, la déforestation prévue au niveau du projet est obtenue en additionnant les densités de déforestation de chaque pixel au sein du projet. Un fichier raster avec la densité de déforestation pour chaque pixel de forêt est également produit.</p>
 <p>Un dossier <code class="docutils literal notranslate"><span class="pre">outputs/allocating_deforestation</span></code> est créé avec le fichier <code class="docutils literal notranslate"><span class="pre">defor_project.csv</span></code> indiquant la déforestation prévue (106,7 ha) pour la période 2020–2030 pour le projet :</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id11">
 <caption><span class="caption-text">Déforestation allouée au projet.</span><a class="headerlink" href="#id11" title="Lien vers ce tableau">#</a></caption>
@@ -1211,7 +1212,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.0.
+    Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.1.
     <br/>
   </p>
 </div>

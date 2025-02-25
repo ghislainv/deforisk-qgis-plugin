@@ -356,8 +356,9 @@ This step is to allocate deforestation to a project within the jurisdiction.
 
 - ``Length forecast period (yr)``: Length of the time-period for the forecast (also named “baseline validity period”), in years. Used to compute annual deforestation for the project.
 
-Pushing the ``Run`` button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level and the relative spatial deforestation rates from the model. Then, 
-the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. Finally, the expected deforestation at the project level is obtained summing the deforestation densities within the project.
+- ``Get deforestation density map (ha/pixel/yr)``: Compute the deforestation density map for the jurisdiction. Deforestation density is provided in ha/pixel/year (hectares of deforestation per pixel per year). Deforestation densities are floating-point numbers. For large jurisdictions (e.g. country scale) and high resolutions (e.g. 30 m), this will produce a large raster file which will occupy a large amount of space on disk (e.g. several gigabytes).
+
+Pushing the ``Run`` button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level and the relative spatial deforestation rates from the model. Then, the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. Finally, the expected deforestation at the project level is obtained summing the deforestation densities within the project. If the argument ``Get deforestation density map (ha/pixel/yr)`` is checked, a raster file with the deforestation density for each forest pixel is produced.
 
 The following folder is created: ``outputs/allocating_deforestation``. This folder includes the following files:
 
@@ -368,3 +369,5 @@ The following folder is created: ``outputs/allocating_deforestation``. This fold
 - ``defrate_cat_forecast.csv``: Table with deforestation density (in ha/pixel/yr) for each class of deforestation risk.
 
 - ``defor_project.csv``: Table with the annual and total allocated deforestation for the project.
+
+- ``deforestation_density_map.tif``: Deforestation density raster file.

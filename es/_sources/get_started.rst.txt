@@ -426,8 +426,9 @@ The ``deforisk`` QGIS plugin includes an utility to facilitate the allocation of
 
 - ``Length forecast period (yr)``: 10.
 
-Pushing the ``Run`` button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level (:math:`D=4000`)and the relative spatial deforestation rates from the model. Then, 
-the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. Finally, the expected deforestation at the project level is obtained summing the deforestation densities within the project.
+- ``Get deforestation density map (ha/pixel/yr)``: checked.
+
+Pushing the ``Run`` button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level (:math:`D=4000`)and the relative spatial deforestation rates from the model. Then, the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. The expected deforestation at the project level is obtained summing the deforestation densities within the project. A raster file with the deforestation density for each forest pixel is also produced.
 
 A folder ``outputs/allocating_deforestation`` is created with the file ``defor_project.csv`` indicating the predicted deforestation (106.7 ha) for the period 2020--2030 for the project:
 

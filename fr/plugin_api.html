@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=640c812e"></script>
+    <script src="_static/documentation_options.js?v=e8570148"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/translations.js?v=e6b791cb"></script>
@@ -695,14 +695,16 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">borders</span></code> : Chemin d’accès au fichier vectoriel définissant les limites du projet.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">deforestation</span> <span class="pre">(ha)</span></code> : Déforestation prévue au niveau juridictionnel en hectares.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Length</span> <span class="pre">forecast</span> <span class="pre">periods</span> <span class="pre">(yr)</span></code> : Durée de la période de prévision (également appelée « période de validité du niveau de référence »), en années. Utilisée pour calculer la déforestation annuelle pour le projet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">deforestation</span> <span class="pre">density</span> <span class="pre">map</span> <span class="pre">(ha/pixel/yr)</span></code>: Calcule la carte de densité de déforestation pour la juridiction. La densité de déforestation est fournie en ha/pixel/an (hectares de déforestation par pixel et par an). Les densités de déforestation sont des nombres à virgule flottante. Pour les juridictions de grande taille (par exemple à l’échelle d’un pays) et les résolutions élevées (par exemple 30 m), cela produira un fichier raster volumineux qui occupera une grande quantité d’espace sur le disque (par exemple plusieurs gigaoctets).</p></li>
 </ul>
-<p>En appuyant sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> dans cette case, on calcule le facteur d’ajustement de la quantité et la densité de déforestation pour chaque classe de risque en utilisant la déforestation totale prévue au niveau de la juridiction et les taux de déforestation spatiaux relatifs du modèle. Ensuite, la carte de risque avec les classes de risque de déforestation est découpée aux limites du projet et le nombre de pixels de forêt dans chaque classe de risque est calculé au niveau du projet. Enfin, la déforestation prévue au niveau du projet est obtenue en additionnant les densités de déforestation au sein du projet.</p>
+<p>En appuyant sur le bouton <code class="docutils literal notranslate"><span class="pre">Run</span></code> dans cette case, on calcule le facteur d’ajustement de la quantité et la densité de déforestation pour chaque classe de risque en utilisant la déforestation totale prévue au niveau de la juridiction et les taux de déforestation spatiaux relatifs du modèle. Ensuite, la carte de risque avec les classes de risque de déforestation est découpée aux limites du projet et le nombre de pixels de forêt dans chaque classe de risque est calculé au niveau du projet. Enfin, la déforestation prévue au niveau du projet est obtenue en additionnant les densités de déforestation au sein du projet. Si l’argument <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">deforestation</span> <span class="pre">density</span> <span class="pre">map</span> <span class="pre">(ha/pixel/yr)</span></code> est coché, un fichier raster avec la densité de déforestation pour chaque pixel de forêt est produit.</p>
 <p>Le dossier suivant est créé : <code class="docutils literal notranslate"><span class="pre">outputs/allocating_deforestation</span></code>. Ce dossier contient les fichiers suivants :</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">project_riskmap.tif</span></code> : Carte des risques redécoupée aux limites du projet.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">project_riskmap.tif.aux.xml</span></code> : Données d’histogramme avec le nombre de pixels pour chaque classe de risque dans [1, 65535].</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">defrate_cat_forecast.csv</span></code> : Tableau avec la densité de déforestation (en ha/pixel/an) pour chaque classe de risque de déforestation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">defor_project.csv</span></code> : Tableau avec la déforestation annuelle et totale allouée pour le projet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deforestation_density_map.tif</span></code>: Fichier raster avec la densité de déforestation.</p></li>
 </ul>
 </section>
 </section>
@@ -826,7 +828,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.0.
+    Créé en utilisant <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.1.
     <br/>
   </p>
 </div>

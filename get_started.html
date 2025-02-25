@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=ec806d2c"></script>
+    <script src="_static/documentation_options.js?v=60dbed4a"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -1071,9 +1071,9 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">borders</span></code>: File <code class="docutils literal notranslate"><span class="pre">project_borders_MTQ_jurisdiction.gpkg</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">deforestation</span> <span class="pre">(ha)</span></code>: 4000. About 400 ha have been deforested each year in 2010–2020 in Martinique.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Length</span> <span class="pre">forecast</span> <span class="pre">period</span> <span class="pre">(yr)</span></code>: 10.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">deforestation</span> <span class="pre">density</span> <span class="pre">map</span> <span class="pre">(ha/pixel/yr)</span></code>: checked.</p></li>
 </ul>
-<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level (<span class="math notranslate nohighlight">\(D=4000\)</span>)and the relative spatial deforestation rates from the model. Then,
-the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. Finally, the expected deforestation at the project level is obtained summing the deforestation densities within the project.</p>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level (<span class="math notranslate nohighlight">\(D=4000\)</span>)and the relative spatial deforestation rates from the model. Then, the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. The expected deforestation at the project level is obtained summing the deforestation densities within the project. A raster file with the deforestation density for each forest pixel is also produced.</p>
 <p>A folder <code class="docutils literal notranslate"><span class="pre">outputs/allocating_deforestation</span></code> is created with the file <code class="docutils literal notranslate"><span class="pre">defor_project.csv</span></code> indicating the predicted deforestation (106.7 ha) for the period 2020–2030 for the project:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id11">
 <caption><span class="caption-text">Allocated deforestation for the project.</span><a class="headerlink" href="#id11" title="Link to this table">#</a></caption>
@@ -1211,7 +1211,7 @@ the risk map with classes of deforestation risk is cropped to project borders an
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.1.
     <br/>
   </p>
 </div>

@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=ec806d2c"></script>
+    <script src="_static/documentation_options.js?v=60dbed4a"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -694,15 +694,16 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">borders</span></code>: Path to the vector file defining the project borders.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Juris.</span> <span class="pre">deforestation</span> <span class="pre">(ha)</span></code>: Expected deforestation at the jurisdictional level in hectares.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Length</span> <span class="pre">forecast</span> <span class="pre">period</span> <span class="pre">(yr)</span></code>: Length of the time-period for the forecast (also named “baseline validity period”), in years. Used to compute annual deforestation for the project.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">deforestation</span> <span class="pre">density</span> <span class="pre">map</span> <span class="pre">(ha/pixel/yr)</span></code>: Compute the deforestation density map for the jurisdiction. Deforestation density is provided in ha/pixel/year (hectares of deforestation per pixel per year). Deforestation densities are floating-point numbers. For large jurisdictions (e.g. country scale) and high resolutions (e.g. 30 m), this will produce a large raster file which will occupy a large amount of space on disk (e.g. several gigabytes).</p></li>
 </ul>
-<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level and the relative spatial deforestation rates from the model. Then,
-the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. Finally, the expected deforestation at the project level is obtained summing the deforestation densities within the project.</p>
+<p>Pushing the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in this box computes the quantity adjustment factor and the deforestation density for each class of risk using the total expected deforestation at the jurisdictional level and the relative spatial deforestation rates from the model. Then, the risk map with classes of deforestation risk is cropped to project borders and the number of forest pixels in each class of risk is computed at the project level. Finally, the expected deforestation at the project level is obtained summing the deforestation densities within the project. If the argument <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">deforestation</span> <span class="pre">density</span> <span class="pre">map</span> <span class="pre">(ha/pixel/yr)</span></code> is checked, a raster file with the deforestation density for each forest pixel is produced.</p>
 <p>The following folder is created: <code class="docutils literal notranslate"><span class="pre">outputs/allocating_deforestation</span></code>. This folder includes the following files:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">project_riskmap.tif</span></code>: Risk map cropped to project borders.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">project_riskmap.tif.aux.xml</span></code>: Histogram data with pixel counts for each class of risk in [1, 65535].</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">defrate_cat_forecast.csv</span></code>: Table with deforestation density (in ha/pixel/yr) for each class of deforestation risk.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">defor_project.csv</span></code>: Table with the annual and total allocated deforestation for the project.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deforestation_density_map.tif</span></code>: Deforestation density raster file.</p></li>
 </ul>
 </section>
 </section>
@@ -826,7 +827,7 @@ the risk map with classes of deforestation risk is cropped to project borders an
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.1.
     <br/>
   </p>
 </div>
