@@ -1,5 +1,6 @@
 sphinx
 nbsphinx
+sphinx-intl
 pydata-sphinx-theme
 ipython
 pylint

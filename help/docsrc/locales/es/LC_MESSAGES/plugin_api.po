@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-13 16:05+1100\n"
-"PO-Revision-Date: 2025-02-13 16:19+1100\n"
+"POT-Creation-Date: 2025-02-25 16:08+1100\n"
+"PO-Revision-Date: 2025-02-25 16:17+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language: es\n"
 "Language-Team: Spanish (https://app.transifex.com/cirad/teams/194739/es/)"
@@ -20,7 +20,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 #: ../../docsrc/plugin_api.rst:3 b4b53b8f43e14f50b7cca9992aa04a3f
 msgid "Plugin API"
@@ -88,7 +88,18 @@ msgid ""
 "<https://gadm.org/download_country.html>`_) website. An example is given "
 "in the following article on using `subnational jurisdictions "
 "<articles/subnational_jurisd.html>`_."
-msgstr "``Area Of Interest``: Área de interés. Código alfa-3 de país ISO 3166-1 (por ejemplo, MTQ) o ruta al archivo vectorial GPKG en **lat/lon** delimitando el área de interés (jurisdicción) y las sub-jurisdicciones. El archivo vectorial GPKG debe incluir dos capas, la primera debe llamarse \"aoi\" para la jurisdicción y la segunda debe llamarse \"subj\" para las sub-jurisdicciones. Este archivo vectorial GPKG se puede obtener manualmente utilizando herramientas de QGIS y datos del sitio web de Áreas Administrativas Globales (`GADM <https://gadm.org/download_country.html>`_). Se proporciona un ejemplo en el siguiente artículo sobre el uso de `jurisdicciones subnacionales <articles/subnational_jurisd.html>`_."
+msgstr ""
+"``Area Of Interest``: Área de interés. Código alfa-3 de país ISO 3166-1 "
+"(por ejemplo, MTQ) o ruta al archivo vectorial GPKG en **lat/lon** "
+"delimitando el área de interés (jurisdicción) y las sub-jurisdicciones. "
+"El archivo vectorial GPKG debe incluir dos capas, la primera debe "
+"llamarse \"aoi\" para la jurisdicción y la segunda debe llamarse \"subj\""
+" para las sub-jurisdicciones. Este archivo vectorial GPKG se puede "
+"obtener manualmente utilizando herramientas de QGIS y datos del sitio web"
+" de Áreas Administrativas Globales (`GADM "
+"<https://gadm.org/download_country.html>`_). Se proporciona un ejemplo en"
+" el siguiente artículo sobre el uso de `jurisdicciones subnacionales "
+"<articles/subnational_jurisd.html>`_."
 
 #: ../../docsrc/plugin_api.rst:32 090ded0306dc400f9e2fa709a77829a5
 msgid ""
@@ -98,14 +109,25 @@ msgid ""
 "provide tree cover loss for the year 2000) and 2000--2023 for TMF. Years "
 "must correspond to the forest cover change data if a raster file is "
 "provided in ``Forest data source``."
-msgstr "``Years``: Años. Años que delimitan los dos períodos (períodos de calibración y validación) para las observaciones de cambio de cobertura forestal. Se deben proporcionar tres años. Los años pueden estar en el intervalo 2001--2024 para GFC (GFC no proporciona pérdida de cobertura arbórea para el año 2000) y 2000--2023 para TMF. Los años deben corresponder a los datos de cambio de cobertura forestal si se proporciona un archivo raster en ``Forest data source``."
+msgstr ""
+"``Years``: Años. Años que delimitan los dos períodos (períodos de "
+"calibración y validación) para las observaciones de cambio de cobertura "
+"forestal. Se deben proporcionar tres años. Los años pueden estar en el "
+"intervalo 2001--2024 para GFC (GFC no proporciona pérdida de cobertura "
+"arbórea para el año 2000) y 2000--2023 para TMF. Los años deben "
+"corresponder a los datos de cambio de cobertura forestal si se "
+"proporciona un archivo raster en ``Forest data source``."
 
 #: ../../docsrc/plugin_api.rst:34 d7f5f45b9fa249ffbbb6779d3f6c6203
 msgid ""
 "``Forest data source``: Source of the forest data. Could be either “tmf”,"
 " “gfc”, or a path to a valid multiband forest cover change raster file "
 "(see `user’s data <./articles/user_data.html>`_)."
-msgstr "``Forest data source``: Fuente de los datos forestales. Puede ser \"tmf\", \"gfc\" o una ruta a un archivo raster válido de cambio de cobertura forestal multibanda (véase `datos del usario <./articles/user_data.html>`_)."
+msgstr ""
+"``Forest data source``: Fuente de los datos forestales. Puede ser "
+"\"tmf\", \"gfc\" o una ruta a un archivo raster válido de cambio de "
+"cobertura forestal multibanda (véase `datos del usario "
+"<./articles/user_data.html>`_)."
 
 #: ../../docsrc/plugin_api.rst:36 eab61406d6eb4da18c137dab559a7cf8
 msgid ""
@@ -152,7 +174,13 @@ msgid ""
 " JSON private key file authorizing you to access Earth Engine through a "
 "service account. If a raster file is provided in ``Forest data source``, "
 "no data will be downloaded from GEE and this argument can be left empty."
-msgstr "``Earth Engine access``. Acceso a Earth Engine. Nombre de un proyecto de Google Cloud registrado para usar Earth Engine (y para el cual estás identificado como usuario) o una ruta a un archivo de clave privada JSON que te autoriza a acceder a Earth Engine a través de una cuenta de servicio. Si se proporciona un archivo raster en ``Forest data source``, no se descargará ningún dato de GEE y este argumento puede dejarse vacío."
+msgstr ""
+"``Earth Engine access``. Acceso a Earth Engine. Nombre de un proyecto de "
+"Google Cloud registrado para usar Earth Engine (y para el cual estás "
+"identificado como usuario) o una ruta a un archivo de clave privada JSON "
+"que te autoriza a acceder a Earth Engine a través de una cuenta de "
+"servicio. Si se proporciona un archivo raster en ``Forest data source``, "
+"no se descargará ningún dato de GEE y este argumento puede dejarse vacío."
 
 #: ../../docsrc/plugin_api.rst:44 878370a68e07461daddcda34daf420d2
 msgid ""
@@ -163,7 +191,14 @@ msgid ""
 "``WDPA_KEY=\"3e404871700e77c453c4e189d848f739\"`` for example). If ``Only"
 " compute forest variables`` is checked, no data will be downloaded from "
 "WDPA and this argument can be left empty."
-msgstr "``WDPA access``: Acceso a WDPA. Token de API personal (una serie de letras y números como ``ca4703ffba6b9a26b2db73f78e56e088``) o una ruta a un archivo de texto que especifique el valor de la variable ambiental \"WDPA\\_KEY\" (por ejemplo, un archivo de texto simple que incluya en una línea ``WDPA_KEY=\"3e404871700e77c453c4e189d848f739\"``). Si se marca ``Only compute forest variables``, no se descargará ningún dato de la WDPA y este argumento puede dejarse vacío."
+msgstr ""
+"``WDPA access``: Acceso a WDPA. Token de API personal (una serie de "
+"letras y números como ``ca4703ffba6b9a26b2db73f78e56e088``) o una ruta a "
+"un archivo de texto que especifique el valor de la variable ambiental "
+"\"WDPA\\_KEY\" (por ejemplo, un archivo de texto simple que incluya en "
+"una línea ``WDPA_KEY=\"3e404871700e77c453c4e189d848f739\"``). Si se marca"
+" ``Only compute forest variables``, no se descargará ningún dato de la "
+"WDPA y este argumento puede dejarse vacío."
 
 #: ../../docsrc/plugin_api.rst:46 9f37a3dcb34a4aafbd14a7027b8bcea9
 msgid ""
@@ -186,7 +221,19 @@ msgid ""
 "with only the distance to forest edge as an explanatory variable, or (ii)"
 " if you want to use your own data and not the data available in global "
 "data-sets."
-msgstr "``Only compute forest variables``: Si está marcado (por defecto), sólo se calculan las variables forestales. Por variables forestales nos referimos a los rásters de cambio de cobertura forestal con las categorías 1, 2, 3 (1: deforestación durante el primer periodo, 2: deforestación durante el segundo periodo, y 3: bosque remanente al final de los dos periodos) y los rásters de distancia al borde del bosque en las diferentes fechas. No se descargarán de Internet ni se calcularán otras variables explicativas (es decir variables derivadas de SRTM, WDPA o OSM). Utilice esto (i) para las pruebas para evaluar un modelo con sólo la distancia al borde del bosque como una variable explicativa, o (ii) si desea utilizar sus propios datos y no los datos disponibles en los conjuntos de datos globales."
+msgstr ""
+"``Only compute forest variables``: Si está marcado (por defecto), sólo se"
+" calculan las variables forestales. Por variables forestales nos "
+"referimos a los rásters de cambio de cobertura forestal con las "
+"categorías 1, 2, 3 (1: deforestación durante el primer periodo, 2: "
+"deforestación durante el segundo periodo, y 3: bosque remanente al final "
+"de los dos periodos) y los rásters de distancia al borde del bosque en "
+"las diferentes fechas. No se descargarán de Internet ni se calcularán "
+"otras variables explicativas (es decir variables derivadas de SRTM, WDPA "
+"o OSM). Utilice esto (i) para las pruebas para evaluar un modelo con sólo"
+" la distancia al borde del bosque como una variable explicativa, o (ii) "
+"si desea utilizar sus propios datos y no los datos disponibles en los "
+"conjuntos de datos globales."
 
 #: ../../docsrc/plugin_api.rst:51 9cda90d6d8f44ff08a6c9563d038af03
 msgid ""
@@ -475,6 +522,7 @@ msgstr ""
 "columnas:"
 
 #: ../../docsrc/plugin_api.rst:124 8bc6140a6b8141249846c6d64975d40d
+#, python-brace-format
 msgid ""
 "``cat``: The class (or category) of deforestation risk (denoted "
 ":math:`i_{}`)."
@@ -483,6 +531,7 @@ msgstr ""
 ":math:`i_{}`)."
 
 #: ../../docsrc/plugin_api.rst:126 1c3318f5dc6b43eb8e6bcde8421f6aaa
+#, python-brace-format
 msgid ""
 "``nfor``: The number of forest pixels at the beginning of the period "
 "(denoted :math:`n_{i}`)."
@@ -491,6 +540,7 @@ msgstr ""
 " :math:`n_{i}`)."
 
 #: ../../docsrc/plugin_api.rst:128 b341d4973fb449a7ad5712e0ec4ac0e0
+#, python-brace-format
 msgid ""
 "``ndefor``: The number of deforested pixels during the period considered "
 "(denoted :math:`d_{i}`)."
@@ -515,6 +565,7 @@ msgstr ""
 "0.9 ha para píxeles de 30 × 30 m."
 
 #: ../../docsrc/plugin_api.rst:134 1aafb21a7c8545ba95b6860b1a94d8d6
+#, python-brace-format
 msgid ""
 "``rate_obs``: Observed annual deforestation rate per class computed as "
 ":math:`\\theta_{o,i} = 1 - (1 - d_{i} / n_{i})^{(1 / T)}`."
@@ -523,6 +574,7 @@ msgstr ""
 "como :math:`\\theta_{o,i} = 1 - (1 - d_{i} / n_{i})^{(1 / T)}`."
 
 #: ../../docsrc/plugin_api.rst:136 4b4ee965e95b49a0bbe2bc8e693e1935
+#, python-brace-format
 msgid ""
 "``rate_mod``: Relative spatial deforestation probability from model. *For"
 " the benchmark model*, it is computed as "
@@ -533,6 +585,7 @@ msgstr ""
 ":math:`\\theta_{m,i}=d_{i}/n_{i}`."
 
 #: ../../docsrc/plugin_api.rst:138 9d7f455000034153bff92190b6eae59d
+#, python-brace-format
 msgid ""
 "``rate_abs``: Absolute deforestation probability with quantity adjustment"
 " (so that total predicted deforestation equals the observed deforestation"
@@ -551,6 +604,7 @@ msgstr ""
 ":math:`\\rho=1` y :math:`\\theta_{a,i}=\\theta_{m,i}`."
 
 #: ../../docsrc/plugin_api.rst:140 34ab5e50958242a080f04f740fe92bf6
+#, python-brace-format
 msgid ""
 "``defor_dens``: Deforestation density (in ha/pixel/yr) computed as "
 ":math:`\\delta_{i} = \\theta_{a,i} \\times A / T`. The deforestation "
@@ -1032,6 +1086,7 @@ msgstr ""
 "deforestación."
 
 #: ../../docsrc/plugin_api.rst:251 ce17cf087e6d4f46808a8357a7b8957d
+#, python-brace-format
 msgid ""
 "``defrate_cat_<model>_<period>.csv``: Table with deforestation rates on "
 "the period for each class of deforestation risk. See details `above "
@@ -1211,6 +1266,7 @@ msgstr ""
 "deforestación."
 
 #: ../../docsrc/plugin_api.rst:306 ae744cf22b654793b4e37dddceae4801
+#, python-brace-format
 msgid ""
 "``defrate_cat_mw_<window_size>_<period>.csv``: Table with deforestation "
 "rates on the period for each class of deforestation risk. See details "
@@ -1350,6 +1406,7 @@ msgstr ""
 "deforestada observada y prevista en cada celda de la cuadrícula."
 
 #: ../../docsrc/plugin_api.rst:340 781e0eea26904fbe9b223ed0647a09fb
+#, python-brace-format
 msgid ""
 "``tables/indices_<model>_<period>_<cell_size>.csv``: Values of "
 "performance indices for a given model, period, and grid cell size. "
@@ -1367,6 +1424,7 @@ msgstr ""
 "celda de la cuadrícula gruesa."
 
 #: ../../docsrc/plugin_api.rst:342 fd6916027bc14b99b0977e5c43c22bd4
+#, python-brace-format
 msgid ""
 "``figures/pred_obs_<model>_<period>_<cell_size>.png``: Plot of predicted "
 "vs. observed deforested area. The plot shows values of predicted and "
@@ -1435,7 +1493,25 @@ msgstr ""
 "(también denominado \"período de validez de la línea de base\"), en años."
 " Se utiliza para calcular la deforestación anual del proyecto."
 
-#: ../../docsrc/plugin_api.rst:359 46af4d8f50a14821a4185d52e13a57a9
+#: ../../docsrc/plugin_api.rst:359 ff7ba730ffb64b3d9d23da8d7bee6869
+msgid ""
+"``Get deforestation density map (ha/pixel/yr)``: Compute the "
+"deforestation density map for the jurisdiction. Deforestation density is "
+"provided in ha/pixel/year (hectares of deforestation per pixel per year)."
+" Deforestation densities are floating-point numbers. For large "
+"jurisdictions (e.g. country scale) and high resolutions (e.g. 30 m), this"
+" will produce a large raster file which will occupy a large amount of "
+"space on disk (e.g. several gigabytes)."
+msgstr ""
+"``Get deforestation density map (ha/pixel/yr)``: Calcule el mapa de densidad de deforestación para la jurisdicción. La\n"
+"densidad de deforestación se proporciona en ha/píxel/año (hectáreas de\n"
+"deforestación por píxel y año). Las densidades de deforestación son\n"
+"números de coma flotante. Para jurisdicciones grandes (por ejemplo, a\n"
+"escala de país) y resoluciones altas (por ejemplo, 30 m), esto\n"
+"producirá un archivo raster grande que ocupará una gran cantidad de\n"
+"espacio en disco (por ejemplo, varios gigabytes)."
+
+#: ../../docsrc/plugin_api.rst:361 46af4d8f50a14821a4185d52e13a57a9
 msgid ""
 "Pushing the ``Run`` button in this box computes the quantity adjustment "
 "factor and the deforestation density for each class of risk using the "
@@ -1444,19 +1520,13 @@ msgid ""
 "classes of deforestation risk is cropped to project borders and the "
 "number of forest pixels in each class of risk is computed at the project "
 "level. Finally, the expected deforestation at the project level is "
-"obtained summing the deforestation densities within the project."
-msgstr ""
-"Al pulsar el botón ``Run``  en este cuadro, se calcula el factor de "
-"ajuste de cantidad y la densidad de deforestación para cada clase de "
-"riesgo utilizando la deforestación total esperada a nivel jurisdiccional "
-"y las tasas de deforestación espacial relativas del modelo. A "
-"continuación, el mapa de riesgo con las clases de riesgo de deforestación"
-" se recorta hasta los límites del proyecto y se calcula el número de "
-"píxeles de bosque en cada clase de riesgo a nivel de proyecto. Por "
-"último, la deforestación esperada a nivel de proyecto se obtiene sumando "
-"las densidades de deforestación dentro del proyecto."
+"obtained summing the deforestation densities within the project. If the "
+"argument ``Get deforestation density map (ha/pixel/yr)`` is checked, a "
+"raster file with the deforestation density for each forest pixel is "
+"produced."
+msgstr "Al pulsar el botón ``Run``  en este cuadro, se calcula el factor de ajuste de cantidad y la densidad de deforestación para cada clase de riesgo utilizando la deforestación total esperada a nivel jurisdiccional y las tasas de deforestación espacial relativas del modelo. A continuación, el mapa de riesgo con las clases de riesgo de deforestación se recorta hasta los límites del proyecto y se calcula el número de píxeles de bosque en cada clase de riesgo a nivel de proyecto. Por último, la deforestación esperada a nivel de proyecto se obtiene sumando las densidades de deforestación dentro del proyecto. Si el argumento ``Get deforestation density map (ha/pixel/yr)`` está marcado, se produce un archivo raster con la densidad de deforestación para cada píxel de bosque."
 
-#: ../../docsrc/plugin_api.rst:362 c496bd6dddc84930ae704b81d26eb04e
+#: ../../docsrc/plugin_api.rst:363 c496bd6dddc84930ae704b81d26eb04e
 msgid ""
 "The following folder is created: ``outputs/allocating_deforestation``. "
 "This folder includes the following files:"
@@ -1464,13 +1534,13 @@ msgstr ""
 "Se crea la siguiente carpeta: ``outputs/allocating_deforestation``. Esta "
 "carpeta incluye los siguientes archivos:"
 
-#: ../../docsrc/plugin_api.rst:364 b716904e3da74c7cb1457fac9922ffc8
+#: ../../docsrc/plugin_api.rst:365 b716904e3da74c7cb1457fac9922ffc8
 msgid "``project_riskmap.tif``: Risk map cropped to project borders."
 msgstr ""
 "``project_riskmap.tif``: Mapa de riesgos recortado a los bordes del "
 "proyecto."
 
-#: ../../docsrc/plugin_api.rst:366 70a9e0021fee4085a000b42f4e985e9b
+#: ../../docsrc/plugin_api.rst:367 70a9e0021fee4085a000b42f4e985e9b
 msgid ""
 "``project_riskmap.tif.aux.xml``: Histogram data with pixel counts for "
 "each class of risk in [1, 65535]."
@@ -1478,7 +1548,7 @@ msgstr ""
 "``project_riskmap.tif.aux.xml``: Datos de histograma con recuento de "
 "píxeles para cada clase de riesgo en [1, 65535]."
 
-#: ../../docsrc/plugin_api.rst:368 34ab5e50958242a080f04f740fe92bf6
+#: ../../docsrc/plugin_api.rst:369 34ab5e50958242a080f04f740fe92bf6
 msgid ""
 "``defrate_cat_forecast.csv``: Table with deforestation density (in "
 "ha/pixel/yr) for each class of deforestation risk."
@@ -1486,13 +1556,17 @@ msgstr ""
 "``defrate_cat_forecast.csv``: Tabla con la densidad de deforestación (en "
 "ha/pixel/año) para cada clase de riesgo de deforestación."
 
-#: ../../docsrc/plugin_api.rst:370 b2a27f60fe34441390a4d53a74e77c5a
+#: ../../docsrc/plugin_api.rst:371 b2a27f60fe34441390a4d53a74e77c5a
 msgid ""
 "``defor_project.csv``: Table with the annual and total allocated "
 "deforestation for the project."
 msgstr ""
 "``defor_project.csv``: Tabla con la deforestación anual y total asignada "
 "para el proyecto."
+
+#: ../../docsrc/plugin_api.rst:373 34ab5e50958242a080f04f740fe92bf6
+msgid "``deforestation_density_map.tif``: Deforestation density raster file."
+msgstr "``deforestation_density_map.tif``: Archivo raster de densidad de deforestación."
 
 #~ msgid ""
 #~ "``Forest data source``: Source of the"

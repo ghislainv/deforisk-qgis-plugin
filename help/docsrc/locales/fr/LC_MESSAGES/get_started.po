@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-16 11:53+1100\n"
-"PO-Revision-Date: 2025-02-16 14:18+1100\n"
+"POT-Creation-Date: 2025-02-25 16:08+1100\n"
+"PO-Revision-Date: 2025-02-25 16:20+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language: fr\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 #: ../../docsrc/get_started.rst:3 aeefb9f7ac8c467e81a8359a1f9e0c82
 msgid "Get started"
@@ -299,7 +299,14 @@ msgid ""
 "``<period>/perc_dist.png`` file. This file shows the plot of the "
 "cumulated deforestation as a function of the distance to forest edge and "
 "indicates the distance threshold (here 240 m for the calibration period)."
-msgstr "De nouveaux dossiers contenant les résultats sont créés dans le répertoire ``outputs/rmj_benchmark/`` pour chaque période. En particulier, les dossiers de sortie comprennent le fichier ``<period>/perc_dist.png``. Ce fichier montre la figure de la déforestation cumulée en fonction de la distance à la lisière de la forêt et indique le seuil de distance (ici 240 m pour la période de calibration)."
+msgstr ""
+"De nouveaux dossiers contenant les résultats sont créés dans le "
+"répertoire ``outputs/rmj_benchmark/`` pour chaque période. En "
+"particulier, les dossiers de sortie comprennent le fichier "
+"``<period>/perc_dist.png``. Ce fichier montre la figure de la "
+"déforestation cumulée en fonction de la distance à la lisière de la forêt"
+" et indique le seuil de distance (ici 240 m pour la période de "
+"calibration)."
 
 #: ../../docsrc/get_started.rst:117 e65e278cef4148cd9d7ef3937e4a5a41
 msgid "Distance threshold for the calibration period."
@@ -1361,6 +1368,7 @@ msgstr ""
 "sortie sont ajoutés à chaque dossier."
 
 #: ../../docsrc/get_started.rst:353 549ae05019bb4ebba15e9c5d18e96029
+#, python-brace-format
 msgid ""
 "Files ``figures/pred_obs_<model>_<period>_<cell_size>.png`` which show "
 "the plot of predicted vs. observed deforested area. The plot shows values"
@@ -1379,6 +1387,7 @@ msgstr ""
 "le :math:`R^{2}` et le MedAE."
 
 #: ../../docsrc/get_started.rst:358 eecd452f2ae240828bcd10833791bcf5
+#, python-brace-format
 msgid ""
 "File ``outputs/model_validation/indices_all.csv`` includes a table with "
 "the performance indices for all validation cell sizes, all models, and "
@@ -1389,7 +1398,18 @@ msgid ""
 "validation period which is the only period with independent data (i.e. "
 "which have not be used to calibrate the models). This is true whatever "
 "the validation cell size chosen."
-msgstr "Le fichier ``outputs/model_validation/indices_all.csv`` comprend un tableau avec les indices de performance pour toutes les tailles de cellules de validation, tous les modèles et toutes les périodes. Dans cet exemple, le modèle Random Forest et le modèle iCAR sont tous deux meilleurs que le modèle de référence, quels que soient les indices de performance considérés. Le modèle iCAR est le meilleur modèle car il a l'indice MedAE le plus faible, le RMSE le plus faible et le :math:`R^{2}` le plus élevé pour la période de validation qui est la seule période avec des données indépendantes (c'est-à-dire qui n'ont pas été utilisées pour calibrer les modèles). Ceci est vrai quelle que soit la taille de la cellule de validation choisie."
+msgstr ""
+"Le fichier ``outputs/model_validation/indices_all.csv`` comprend un "
+"tableau avec les indices de performance pour toutes les tailles de "
+"cellules de validation, tous les modèles et toutes les périodes. Dans cet"
+" exemple, le modèle Random Forest et le modèle iCAR sont tous deux "
+"meilleurs que le modèle de référence, quels que soient les indices de "
+"performance considérés. Le modèle iCAR est le meilleur modèle car il a "
+"l'indice MedAE le plus faible, le RMSE le plus faible et le :math:`R^{2}`"
+" le plus élevé pour la période de validation qui est la seule période "
+"avec des données indépendantes (c'est-à-dire qui n'ont pas été utilisées "
+"pour calibrer les modèles). Ceci est vrai quelle que soit la taille de la"
+" cellule de validation choisie."
 
 #: ../../docsrc/get_started.rst:360 a74041cf05ca4b3baa0efa4fbffea031
 msgid "Performance indices."
@@ -1407,7 +1427,7 @@ msgstr "csize\\_coarse\\_grid\\_ha"
 msgid "ncell"
 msgstr "ncell"
 
-#: ../../docsrc/get_started.rst:364 ../../docsrc/get_started.rst:437
+#: ../../docsrc/get_started.rst:364 ../../docsrc/get_started.rst:438
 #: 0fe0d2f9d05f475c90f57c62dc7ff6ad
 msgid "period"
 msgstr "period"
@@ -1662,6 +1682,7 @@ msgid "6.203695791497542e-05"
 msgstr "6.203695791497542e-05"
 
 #: ../../docsrc/get_started.rst:407 93414f3939fb4f129ab67138f1954dfb
+#, python-brace-format
 msgid ""
 "Considering a total deforestation :math:`D` (in ha) for the next "
 ":math:`Y` years at the jurisdictional level, the adjustment factor is "
@@ -1765,7 +1786,11 @@ msgstr ""
 msgid "``Length forecast period (yr)``: 10."
 msgstr "``Length forecast period (yr)``: 10."
 
-#: ../../docsrc/get_started.rst:429 8b570d95980047efbafe7ef39c8f5508
+#: ../../docsrc/get_started.rst:429 7fd3b46b69884c8f86b47b0e962a73f8
+msgid "``Get deforestation density map (ha/pixel/yr)``: checked."
+msgstr "``Get deforestation density map (ha/pixel/yr)``: coché."
+
+#: ../../docsrc/get_started.rst:431 8b570d95980047efbafe7ef39c8f5508
 msgid ""
 "Pushing the ``Run`` button in this box computes the quantity adjustment "
 "factor and the deforestation density for each class of risk using the "
@@ -1773,22 +1798,13 @@ msgid ""
 "(:math:`D=4000`)and the relative spatial deforestation rates from the "
 "model. Then, the risk map with classes of deforestation risk is cropped "
 "to project borders and the number of forest pixels in each class of risk "
-"is computed at the project level. Finally, the expected deforestation at "
-"the project level is obtained summing the deforestation densities within "
-"the project."
-msgstr ""
-"En appuyant sur le bouton ``Run`` dans cette boîte, on calcule le facteur"
-" d'ajustement et la densité de déforestation pour chaque classe de risque"
-" en utilisant la déforestation totale prévue au niveau de la juridiction "
-"(:math:`D=4000`) et les taux de déforestation spatiaux relatifs du "
-"modèle. Ensuite, la carte de risque avec les classes de risque de "
-"déforestation est découpée aux limites du projet et le nombre de pixels "
-"de forêt dans chaque classe de risque est calculé au niveau du projet. "
-"Enfin, la déforestation prévue au niveau du projet est obtenue en "
-"additionnant les densités de déforestation de chaque pixel au sein du "
-"projet."
+"is computed at the project level. The expected deforestation at the "
+"project level is obtained summing the deforestation densities within the "
+"project. A raster file with the deforestation density for each forest "
+"pixel is also produced."
+msgstr "En appuyant sur le bouton ``Run`` dans cette boîte, on calcule le facteur d'ajustement et la densité de déforestation pour chaque classe de risque en utilisant la déforestation totale prévue au niveau de la juridiction (:math:`D=4000`) et les taux de déforestation spatiaux relatifs du modèle. Ensuite, la carte de risque avec les classes de risque de déforestation est découpée aux limites du projet et le nombre de pixels de forêt dans chaque classe de risque est calculé au niveau du projet. Enfin, la déforestation prévue au niveau du projet est obtenue en additionnant les densités de déforestation de chaque pixel au sein du projet. Un fichier raster avec la densité de déforestation pour chaque pixel de forêt est également produit."
 
-#: ../../docsrc/get_started.rst:432 64f927177a6e44308565a4b90f19922e
+#: ../../docsrc/get_started.rst:433 64f927177a6e44308565a4b90f19922e
 msgid ""
 "A folder ``outputs/allocating_deforestation`` is created with the file "
 "``defor_project.csv`` indicating the predicted deforestation (106.7 ha) "
@@ -1798,43 +1814,43 @@ msgstr ""
 "``defor_project.csv`` indiquant la déforestation prévue (106,7 ha) pour "
 "la période 2020--2030 pour le projet :"
 
-#: ../../docsrc/get_started.rst:434 8e42ba144a494e81aed25c937b5655c8
+#: ../../docsrc/get_started.rst:435 8e42ba144a494e81aed25c937b5655c8
 msgid "Allocated deforestation for the project."
 msgstr "Déforestation allouée au projet."
 
-#: ../../docsrc/get_started.rst:437 82ccece724774d32aa57acce7854cce3
+#: ../../docsrc/get_started.rst:438 82ccece724774d32aa57acce7854cce3
 msgid "length (yr)"
 msgstr "length (yr)"
 
-#: ../../docsrc/get_started.rst:437 810114b43981435ab1c73825e12395be
+#: ../../docsrc/get_started.rst:438 810114b43981435ab1c73825e12395be
 msgid "deforestation (ha)"
 msgstr "deforestation (ha)"
 
-#: ../../docsrc/get_started.rst:439 37db25388af44e69bb00e09d0d97cd85
+#: ../../docsrc/get_started.rst:440 37db25388af44e69bb00e09d0d97cd85
 msgid "annual"
 msgstr "annual"
 
-#: ../../docsrc/get_started.rst:439 ab6d5e245af044c8a0bcd1e92d649bd4
+#: ../../docsrc/get_started.rst:440 ab6d5e245af044c8a0bcd1e92d649bd4
 msgid "1.0"
 msgstr "1.0"
 
-#: ../../docsrc/get_started.rst:439 0c138d099d514d32a2052fefb5786f1d
+#: ../../docsrc/get_started.rst:440 0c138d099d514d32a2052fefb5786f1d
 msgid "10.7"
 msgstr "10.7"
 
-#: ../../docsrc/get_started.rst:441 9bfc901ff1604ac692a42aad40c23203
+#: ../../docsrc/get_started.rst:442 9bfc901ff1604ac692a42aad40c23203
 msgid "entire"
 msgstr "entire"
 
-#: ../../docsrc/get_started.rst:441 fdb2b8710594419a977b0a87934909d6
+#: ../../docsrc/get_started.rst:442 fdb2b8710594419a977b0a87934909d6
 msgid "10.0"
 msgstr "10.0"
 
-#: ../../docsrc/get_started.rst:441 fdb2b8710594419a977b0a87934909d6
+#: ../../docsrc/get_started.rst:442 fdb2b8710594419a977b0a87934909d6
 msgid "106.9"
 msgstr "106.9"
 
-#: ../../docsrc/get_started.rst:445 24152df6598c445f82af74b782a0aa7b
+#: ../../docsrc/get_started.rst:446 24152df6598c445f82af74b782a0aa7b
 msgid "Conclusion"
 msgstr "Conclusion"
 

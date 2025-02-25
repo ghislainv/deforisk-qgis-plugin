@@ -26,14 +26,15 @@
 # https://peps.python.org/pep-0008/#module-level-dunder-names
 __author__ = "Ghislain Vieilledent and Thomas Arsouze"
 __email__ = "ghislain.vieilledent@cirad.fr, thomas.arsouze@cirad.fr"
-__version__ = "0.6"
+__version__ = "2.0"
 
 import os
 import subprocess
 import platform
 import random
+from importlib.metadata import version
 
-from qgis.core import Qgis, QgsApplication, QgsTask
+from qgis.core import Qgis, QgsApplication, QgsTask, QgsMessageLog
 
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
@@ -78,6 +79,12 @@ from .val_functions import (
 )
 
 opj = os.path.join
+
+# Dependencies versions
+GEEFCC_VERSION = "0.1.6"
+PYWDPA_VERSION = "0.1.6"
+FORESTATRISK_VERSION = "1.2.9"
+RISKMAPJNR_VERSION = "1.3.2"
 
 
 class DeforiskPlugin:
@@ -241,6 +248,13 @@ class DeforiskPlugin:
                 action)
             self.iface.removeToolBarIcon(action)
 
+    def check_dependence_version(self, pkg_name, v):
+        """Check package version."""
+        if version(pkg_name) != v:
+            msg = (f"Please install {pkg_name} v{v} "
+                   "and restart QGIS")
+            QgsMessageLog.logMessage(msg, "Deforisk", Qgis.Critical)
+
     def print_dependency_version(self):
         """Print package versions."""
         # osmconvert info
@@ -255,12 +269,24 @@ class DeforiskPlugin:
         print(result[1].decode())
         # geefcc
         print(f"geefcc {geefcc.__version__}")
+        self.check_dependence_version(
+            "geefcc",
+            GEEFCC_VERSION)
         # pywdpa
         print(f"pywdpa {pywdpa.__version__}")
+        self.check_dependence_version(
+            "pywdpa",
+            PYWDPA_VERSION)
         # forestatrisk
         print(f"forestatrisk {far.__version__}")
+        self.check_dependence_version(
+            "forestatrisk",
+            FORESTATRISK_VERSION)
         # riskmapjnr
         print(f"riskmapjnr {rmj.__version__}")
+        self.check_dependence_version(
+            "riskmapjnr",
+            RISKMAPJNR_VERSION)
 
     def set_exe_path(self):
         """Add folder with windows executables to PATH."""
@@ -594,6 +620,7 @@ class DeforiskPlugin:
         project_borders = self.dlg.project_borders.filePath()
         defor_juris = int(self.dlg.defor_juris.text())
         years_forecast = float(self.dlg.years_forecast.text())
+        defor_density_map = self.dlg.defor_density_map.isChecked()
         # Special variables
         if workdir == "":
             # seed = 1234  # Only for tests to get same dir
@@ -671,6 +698,7 @@ class DeforiskPlugin:
             "project_borders": project_borders,
             "defor_juris": defor_juris,
             "years_forecast": years_forecast,
+            "defor_density_map": defor_density_map,
         }
 
     def far_check_args(self):
@@ -971,7 +999,8 @@ class DeforiskPlugin:
             defor_rate_tab=self.args["defor_rate_tab"],
             project_borders=self.args["project_borders"],
             defor_juris=self.args["defor_juris"],
-            years_forecast=self.args["years_forecast"])
+            years_forecast=self.args["years_forecast"],
+            defor_density_map=self.args["defor_density_map"])
         # Add first task to task manager
         self.tm.addTask(task)
 

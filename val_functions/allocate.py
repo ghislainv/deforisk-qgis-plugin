@@ -3,10 +3,14 @@
 import os
 
 from qgis.core import (
-    Qgis, QgsTask, QgsMessageLog
+    Qgis, QgsTask, QgsProject,
+    QgsVectorLayer, QgsRasterLayer, QgsMessageLog
 )
 
 import forestatrisk as far
+
+# Local import
+from ..utilities import add_layer, add_layer_to_group
 
 # Alias
 opj = os.path.join
@@ -22,7 +26,8 @@ class AllocateTask(QgsTask):
     N_STEPS = 1
 
     def __init__(self, description, iface, workdir, riskmap_juris,
-                 defor_rate_tab, project_borders, defor_juris, years_forecast):
+                 defor_rate_tab, project_borders, defor_juris, years_forecast,
+                 defor_density_map):
         super().__init__(description, QgsTask.CanCancel)
         self.iface = iface
         self.workdir = workdir
@@ -31,6 +36,7 @@ class AllocateTask(QgsTask):
         self.project_borders = project_borders
         self.defor_juris = defor_juris
         self.years_forecast = years_forecast
+        self.defor_density_map = defor_density_map
         self.exception = None
         self.out_dir = opj(self.OUT, "allocating_deforestation")
 
@@ -70,6 +76,8 @@ class AllocateTask(QgsTask):
                 years_forecast=self.years_forecast,
                 project_borders=self.project_borders,
                 output_file=opj(self.out_dir, "defor_project.csv"),
+                defor_density_map=self.defor_density_map,
+                blk_rows=128,
                 verbose=False)
 
             # Check isCanceled() to handle cancellation
@@ -90,6 +98,35 @@ class AllocateTask(QgsTask):
         """Show messages and add layers."""
 
         if result:
+
+            if self.defor_density_map:
+
+                # Qgis project and group
+                far_project = QgsProject.instance()
+                root = far_project.layerTreeRoot()
+                group_names = [i.name() for i in root.children()]
+                if "Allocation" in group_names:
+                    var_group = root.findGroup("Allocation")
+                else:
+                    var_group = root.addGroup("Allocation")
+
+                # Add border layer to QGis project
+                border_file = opj(self.DATA, "aoi_proj.gpkg|layername=aoi")
+                border_layer = QgsVectorLayer(border_file, "aoi border", "ogr")
+                border_layer.loadNamedStyle(
+                    opj("qgis_layer_style", "border.qml"))
+                add_layer(far_project, border_layer)
+
+                # Add defor density map layer to QGis project
+                defor_density_file = opj(self.OUT, "allocating_deforestation",
+                                         "deforestation_density_map.tif")
+                defor_density_layer = QgsRasterLayer(defor_density_file,
+                                                     "defor_density")
+                add_layer_to_group(far_project, var_group, defor_density_layer)
+
+                # Progress
+                self.set_progress(self.N_STEPS, self.N_STEPS)
+
             msg = 'Successful task "{name}"'
             msg = msg.format(name=self.description())
             QgsMessageLog.logMessage(msg, self.MESSAGE_CATEGORY, Qgis.Success)

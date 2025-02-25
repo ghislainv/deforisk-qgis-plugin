@@ -252,31 +252,34 @@
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QSplitter" name="splitter">
+       <widget class="QPushButton" name="run_far_get_variable">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>360</y>
+          <width>80</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Run</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="forest_var_only">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>360</y>
-          <width>471</width>
-          <height>25</height>
+          <width>222</width>
+          <height>23</height>
          </rect>
         </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+        <property name="text">
+         <string>Only compute forest variables</string>
         </property>
-        <widget class="QCheckBox" name="forest_var_only">
-         <property name="text">
-          <string>Only compute forest variables</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="run_far_get_variable">
-         <property name="text">
-          <string>Run</string>
-         </property>
-        </widget>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </widget>
      </item>
@@ -301,14 +304,17 @@
      <widget class="QPushButton" name="run_bm_calibrate">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>400</x>
         <y>130</y>
-        <width>71</width>
+        <width>80</width>
         <height>25</height>
        </rect>
       </property>
       <property name="text">
        <string>Run</string>
+      </property>
+      <property name="default">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QWidget" name="layoutWidget">
@@ -433,9 +439,9 @@
      <widget class="QPushButton" name="run_bm_predict">
       <property name="geometry">
        <rect>
-        <x>411</x>
+        <x>400</x>
         <y>60</y>
-        <width>71</width>
+        <width>80</width>
         <height>25</height>
        </rect>
       </property>
@@ -668,9 +674,9 @@
      <widget class="QPushButton" name="run_far_predict">
       <property name="geometry">
        <rect>
-        <x>399</x>
+        <x>400</x>
         <y>120</y>
-        <width>81</width>
+        <width>80</width>
         <height>25</height>
        </rect>
       </property>
@@ -953,9 +959,9 @@
      <widget class="QPushButton" name="run_mw_calibrate">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>400</x>
         <y>130</y>
-        <width>71</width>
+        <width>80</width>
         <height>25</height>
        </rect>
       </property>
@@ -1048,9 +1054,9 @@
      <widget class="QPushButton" name="run_mw_predict">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>400</x>
         <y>60</y>
-        <width>71</width>
+        <width>80</width>
         <height>25</height>
        </rect>
       </property>
@@ -1184,9 +1190,9 @@
      <widget class="QPushButton" name="run_validate">
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>400</x>
         <y>130</y>
-        <width>71</width>
+        <width>81</width>
         <height>25</height>
        </rect>
       </property>
@@ -1330,9 +1336,9 @@
      <widget class="QPushButton" name="run_allocate">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>200</y>
-        <width>71</width>
+        <x>400</x>
+        <y>199</y>
+        <width>80</width>
         <height>25</height>
        </rect>
       </property>
@@ -1433,6 +1439,22 @@
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QCheckBox" name="defor_density_map">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>198</y>
+        <width>307</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Get deforestation density map (ha/pixel/yr)</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
      </widget>
     </widget>
    </widget>

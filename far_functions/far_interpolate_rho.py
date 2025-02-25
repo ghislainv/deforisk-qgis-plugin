@@ -16,8 +16,7 @@ import os
 import pickle
 
 from qgis.core import (
-    Qgis, QgsTask,
-    QgsMessageLog
+    Qgis, QgsTask, QgsMessageLog
 )
 
 import forestatrisk as far
