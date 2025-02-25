@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deforisk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-22 15:00+0100\n"
-"PO-Revision-Date: 2025-02-15 11:57+1100\n"
+"POT-Creation-Date: 2025-02-25 17:00+1100\n"
+"PO-Revision-Date: 2025-02-25 18:57+1100\n"
 "Last-Translator: Ghislain Vieilledent, 2024\n"
 "Language-Team: French (https://app.transifex.com/cirad/teams/194739/fr/)\n"
 "Language: fr\n"
@@ -19,17 +19,90 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.17.0\n"
 
 #: ../../docsrc/contributing/changelog.rst:3 843fc17104654c35b339a398353d13ae
 msgid "Changelog"
 msgstr "Journal des modifications"
 
 #: ../../docsrc/contributing/changelog.rst:9 4323c00bb4f2422ea5bf660693dd89fd
+msgid "deforisk v2.0"
+msgstr "deforisk v2.0"
+
+#: ../../docsrc/contributing/changelog.rst:11 98580531d6ba479dbb3be65d4ad900c3
+msgid ""
+"This version has been prepared for the Bangkok workshop in Thailand (March, "
+"17th--21th of 2025)."
+msgstr ""
+"Cette version a été préparée pour l'atelier de Bangkok en Thaïlande (17-21 "
+"mars 2025)."
+
+#: ../../docsrc/contributing/changelog.rst:13 1546e00a1b504939b1f50895cd758c8f
+msgid ""
+"We simplified the use of the plugin when the user wants to use its own data."
+msgstr ""
+"Nous avons simplifié l'utilisation du plugin lorsque l'utilisateur souhaite "
+"utiliser ses propres données."
+
+#: ../../docsrc/contributing/changelog.rst:15 5fc60ab394ac4fa7804c3902ce587262
+msgid ""
+"There is now the possibility to prepare the data and run the plugin without "
+"an internet connexion if the user provides the forest cover change data and "
+"the area of interest."
+msgstr "Il est désormais possible de préparer les données et d'exécuter le plugin sans connexion internet si l'utilisateur fournit les données de changement de couvert forestier et la zone d'étude."
+
+#: ../../docsrc/contributing/changelog.rst:17 c777e42d682d4b3cb9df7f1f0ca8818e
+msgid ""
+"There is now a possibility to test a simple model with only the distance to "
+"forest edge as an explanatory variable in FAR models."
+msgstr ""
+"Il est maintenant possible de tester un modèle simple avec seulement la "
+"distance à la lisière de la forêt comme variable explicative dans les "
+"modèles FAR."
+
+#: ../../docsrc/contributing/changelog.rst:19 61c8ea5c9f8748ce97e55fed7fc519e8
+msgid ""
+"An option to get the deforestation density map (in ha/pixel/year) has been "
+"added."
+msgstr ""
+"Une option permettant d'obtenir la carte de la densité de déforestation (en "
+"ha/pixel/an) a été ajoutée."
+
+#: ../../docsrc/contributing/changelog.rst:21 ffd7ea28c44342e8ab7d23184d9fd590
+msgid ""
+"Activating the developer mode is now recommended and not mandatory (files "
+"are copied if symlinks connot be created). As a consequence, the user does "
+"not need administrator rights to use the plugin on Windows."
+msgstr "L'activation du mode développeur est désormais recommandée et non obligatoire (les fichiers sont copiés si les liens symboliques ne sont pas créés). En conséquence, l'utilisateur n'a pas besoin des droits administrateur pour utiliser le plugin sous Windows."
+
+#: ../../docsrc/contributing/changelog.rst:23 5b097ef72d244930b25a55c2c4b1a250
+msgid "We have updated the website and documentation."
+msgstr "Nous avons mis à jour le site web et la documentation."
+
+#: ../../docsrc/contributing/changelog.rst:25 ba9047c0ade745489b61cade5f31cf5f
+msgid ""
+"The website and documentation are now available in three languages: English,"
+" Spanish and French."
+msgstr ""
+"Le site web et la documentation sont désormais disponibles en trois langues "
+": anglais, espagnol et français."
+
+#: ../../docsrc/contributing/changelog.rst:27 661b43f8023f481bbb508f68fa799097
+msgid "Some bugs have been corrected."
+msgstr "Certains bugs ont été corrigés."
+
+#: ../../docsrc/contributing/changelog.rst:29 8afaa2ab0bb942bdb87e6717ff6c96df
+msgid ""
+"Changes: `https://github.com/ghislainv/deforisk-qgis-"
+"plugin/compare/v1.0...v2.0 <https://github.com/ghislainv/deforisk-qgis-"
+"plugin/compare/v1.0...v2.0>`_."
+msgstr "Changements : `https://github.com/ghislainv/deforisk-qgis-plugin/compare/v1.0...v2.0 <https://github.com/ghislainv/deforisk-qgis-plugin/compare/v1.0...v2.0>`_."
+
+#: ../../docsrc/contributing/changelog.rst:32 4323c00bb4f2422ea5bf660693dd89fd
 msgid "deforisk v1.0"
 msgstr "deforisk v1.0"
 
-#: ../../docsrc/contributing/changelog.rst:11 98580531d6ba479dbb3be65d4ad900c3
+#: ../../docsrc/contributing/changelog.rst:34 98580531d6ba479dbb3be65d4ad900c3
 msgid ""
 "Version used at the Santa Marta workshop in Colombia (July, 15th--19th of "
 "2024)."
@@ -37,7 +110,7 @@ msgstr ""
 "Version utilisée lors de l'atelier de Santa Marta en Colombie (15-19 juillet"
 " 2024)."
 
-#: ../../docsrc/contributing/changelog.rst:13 8afaa2ab0bb942bdb87e6717ff6c96df
+#: ../../docsrc/contributing/changelog.rst:36 8afaa2ab0bb942bdb87e6717ff6c96df
 msgid ""
 "Changes: `https://github.com/ghislainv/deforisk-qgis-"
 "plugin/compare/v0.5...v1.0 <https://github.com/ghislainv/deforisk-qgis-"
@@ -47,11 +120,11 @@ msgstr ""
 "plugin/compare/v0.5...v1.0 <https://github.com/ghislainv/deforisk-qgis-"
 "plugin/compare/v0.5...v1.0>`_."
 
-#: ../../docsrc/contributing/changelog.rst:16 4323c00bb4f2422ea5bf660693dd89fd
+#: ../../docsrc/contributing/changelog.rst:39 4323c00bb4f2422ea5bf660693dd89fd
 msgid "deforisk v0.5"
 msgstr "deforisk v0.5"
 
-#: ../../docsrc/contributing/changelog.rst:18 78899c30eb954f80aabdd9678fcee7d9
+#: ../../docsrc/contributing/changelog.rst:41 78899c30eb954f80aabdd9678fcee7d9
 msgid ""
 "Stable version tested on Windows and Linux with QGIS 3.34 and 3.38 with "
 "almost all functionalities, but:"
@@ -59,10 +132,10 @@ msgstr ""
 "Version stable testée sous Windows et Linux avec QGIS 3.34 et 3.38 avec "
 "presque toutes les fonctionnalités, mais :"
 
-#: ../../docsrc/contributing/changelog.rst:20 2086050dba0d450f884e216850348e2b
+#: ../../docsrc/contributing/changelog.rst:43 2086050dba0d450f884e216850348e2b
 msgid "No parallel computing for geefcc."
 msgstr "Pas de calcul parallèle pour geefcc."
 
-#: ../../docsrc/contributing/changelog.rst:22 6ad59df2318343989a12acce725d266c
+#: ../../docsrc/contributing/changelog.rst:45 6ad59df2318343989a12acce725d266c
 msgid "No function to estimate emissions."
 msgstr "Aucune fonction pour estimer les émissions."

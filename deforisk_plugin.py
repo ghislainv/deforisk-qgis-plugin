@@ -83,7 +83,7 @@ opj = os.path.join
 # Dependencies versions
 GEEFCC_VERSION = "0.1.6"
 PYWDPA_VERSION = "0.1.6"
-FORESTATRISK_VERSION = "1.2.9"
+FORESTATRISK_VERSION = "1.3"
 RISKMAPJNR_VERSION = "1.3.2"
 
 
