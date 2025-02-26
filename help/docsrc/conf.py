@@ -59,9 +59,9 @@ StandaloneHTMLBuilder.supported_image_types = [
 
 html_theme_options = {
     "navigation_with_keys": "false",
-    "logo": {
-        "text": "deforisk QGIS plugin"
-    },
+    # "logo": {
+    #     "text": "deforisk QGIS plugin"
+    # },
     "footer_start": ["copyright"],
     "footer_center": ["sphinx-version"],
     "footer_end": ["theme-version"],
@@ -107,7 +107,7 @@ html_context = {
 
 html_show_sourcelink = False
 
-html_logo = "_static/logo-deforisk.png"
+html_logo = "_static/logo-deforisk-large.png"
 html_favicon = "_static/favicon.ico"
 html_title = ("deforisk — Create and compare deforestation risk maps")
 html_short_title = "deforisk"
