@@ -10,8 +10,9 @@
 - There is now a possibility to test a simple model with only the distance to forest edge as an explanatory variable in FAR models.
 - An option to get the deforestation density map (in ha/pixel/year) has been added.
 - Activating the developer mode is now recommended and not mandatory (files are copied if symlinks connot be created). As a consequence, the user does not need administrator rights to use the plugin on Windows.
-- We have updated the website and documentation.
+- We have updated the website and documentation. In particular, the section on [[../articles/user_data.html][User's data]] has been extended.
 - The website and documentation are now available in three languages: English, Spanish and French.
+- We have changed the =deforisk= logo (credit to FAO communication team).
 - Some bugs have been corrected.
 - Changes: [[https://github.com/ghislainv/deforisk-qgis-plugin/compare/v1.0...v2.0]].
 

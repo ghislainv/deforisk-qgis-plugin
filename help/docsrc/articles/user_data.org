@@ -115,7 +115,7 @@ Distance to forest edge is directly computed from the forest cover change raster
 As an example based on Martinique, you can avoid using an internet connexion and use simple deforestation models based only on distance to forest edge:
 
 - Create a working directory called for example ~MTQ-tuto-simple-model~.
-- Create a ~data~ directory and copy files [[../_static/tutos/forest-MTQ-2000-2010-2020.tif][forest-MTQ-2000-2010-2020.tif]] and [[../_static/tutos/aoi-MTQ-latlon.gpkg][aoi-MTQ-latlon.gpkg]] in this directory.
+- Create a ~data_user~ directory and copy files [[../_static/tutos/forest-MTQ-2000-2010-2020.tif][forest-MTQ-2000-2010-2020.tif]] and [[../_static/tutos/aoi-MTQ-latlon.gpkg][aoi-MTQ-latlon.gpkg]] in this directory.
 - Use these two files for arguments ~Area Of Interest~ and ~Forest data source~ in the ~Get variables~ tab.
 - Specify '2000, 2010, 2020' for ~Years~.
 - Use 'EPSG:3490' for ~Projection EPSG code~.
