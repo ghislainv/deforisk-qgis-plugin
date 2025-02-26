@@ -20,9 +20,11 @@ deforisk v2.0
 
 - Activating the developer mode is now recommended and not mandatory (files are copied if symlinks connot be created). As a consequence, the user does not need administrator rights to use the plugin on Windows.
 
-- We have updated the website and documentation.
+- We have updated the website and documentation. In particular, the section on `User’s data <../articles/user_data.html>`_ has been extended.
 
 - The website and documentation are now available in three languages: English, Spanish and French.
+
+- We have changed the ``deforisk`` logo (credit to FAO communication team).
 
 - Some bugs have been corrected.
 

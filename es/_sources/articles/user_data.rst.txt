@@ -137,7 +137,7 @@ As an example based on Martinique, you can avoid using an internet connexion and
 
 - Create a working directory called for example ``MTQ-tuto-simple-model``.
 
-- Create a ``data`` directory and copy files `forest-MTQ-2000-2010-2020.tif <../_static/tutos/forest-MTQ-2000-2010-2020.tif>`_ and `aoi-MTQ-latlon.gpkg <../_static/tutos/aoi-MTQ-latlon.gpkg>`_ in this directory.
+- Create a ``data_user`` directory and copy files `forest-MTQ-2000-2010-2020.tif <../_static/tutos/forest-MTQ-2000-2010-2020.tif>`_ and `aoi-MTQ-latlon.gpkg <../_static/tutos/aoi-MTQ-latlon.gpkg>`_ in this directory.
 
 - Use these two files for arguments ``Area Of Interest`` and ``Forest data source`` in the ``Get variables`` tab.
 
