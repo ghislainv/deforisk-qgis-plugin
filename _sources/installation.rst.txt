@@ -18,7 +18,7 @@ Installation
 
     - First option is to install the QGIS client and GDAL on your system and then install the ``forestatrisk`` and ``riskmapjnr`` Python packages. This installation procedure is system-dependent.
 
-    - Alternate option is to use conda/miniconda/mamba (one of those three) to install QGIS, GDAL, ``forestatrisk`` and ``riskmapjnr`` in a dedicated environment. This installation procedure is system-independent.
+    - Alternative option is to use conda/mamba (one of those two) to install QGIS, GDAL, ``forestatrisk`` and ``riskmapjnr`` in a dedicated environment. This installation procedure is system-independent.
 
 On Windows
 ----------
@@ -97,26 +97,26 @@ Then, in the ``startup.py`` `Python file <https://docs.qgis.org/3.4/en/docs/pyqg
     import sys
     sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 
-Using conda/miniconda (all operating systems)
----------------------------------------------
+Using miniforge and conda/mamba (all operating systems)
+-------------------------------------------------------
 
-This alternative method has the advantage of installing `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ as well as the ``forestatrisk`` and ``riskmapjnr`` Python packages all in a isolated and dedicated environment, with a lightweight version of QGIS. However, caveats are that there are no QGIS desktop icons or file association, and this installation does not include GRASS and SAGA for example (although they can easily be installed with conda subsequently).
+This alternative method has the advantage of installing `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ as well as the ``forestatrisk`` and ``riskmapjnr`` Python packages all in a isolated and dedicated environment, with a lightweight version of QGIS. However, caveats are that there are no QGIS desktop icons or file association, and this installation does not include GRASS and SAGA for example (although they can easily be installed with conda/mamba afterwards).
 
-Install miniconda
+Install miniforge
 ~~~~~~~~~~~~~~~~~
 
-``Conda`` (or its minimal version ``miniconda``) is a package and environment manager. To install ``miniconda``, download the installer from the `miniconda website <https://docs.conda.io/en/latest/miniconda.html>`_ and follow the instructions for your system.
+``Miniforge`` provides access to ``conda`` and ``mamba`` which are two package and environment managers. ``Miniforge`` is preconfigured to use the ``conda-forge`` channel to download packages. To install ``miniforge``, download the installer from the `miniforge webpage <https://conda-forge.org/download/>`_ and follow the instructions for your operating system.
 
 Install QGIS and dependencies in a new environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In a terminal, create a new environment (here named ``deforisk``) and install ``QGIS`` (via conda packages), ``forestatrisk`` and ``riskmapjnr`` in it. Be aware that ``osmconvert`` and ``osmfilter`` still need to be installed separately on Linux and macOS systems (cf. section above).
+In a terminal, create a new environment (here named ``deforisk``) and install ``QGIS`` (using ``conda-forge`` packages), ``forestatrisk`` and ``riskmapjnr`` in this environment. Be aware that ``osmconvert`` and ``osmfilter`` still need to be installed separately on Linux and macOS systems (cf. section above).
 
 .. code:: shell
 
-    conda create -c conda-forge -n deforisk qgis  # create environment and install QGIS (and GDAL embedded)
-    conda activate deforisk        # activate the newly created environment
-    pip install --upgrade forestatrisk riskmapjnr # install additional Python packages
+    mamba create -n deforisk qgis=3.38.2           # create environment and install QGIS (and GDAL embedded)
+    mamba activate deforisk                        # activate the newly created environment
+    pip install --upgrade forestatrisk riskmapjnr  # install additional Python packages
 
 You can now launch ``QGIS`` from the terminal using the ``qgis`` command.
 
@@ -127,8 +127,8 @@ I you want to deactivate an delete the environment:
 
 .. code:: shell
 
-    conda deactivate
-    conda env remove --name deforisk
+    mamba deactivate
+    mamba env remove --name deforisk
 
 Access to GEE and WDPA
 ----------------------

@@ -461,7 +461,7 @@
 <p><strong>Instalación</strong>: A continuación describimos dos formas de instalar el complemento <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>:</p>
 <ul class="simple">
 <li><p>La primera opción es instalar el cliente QGIS y GDAL en su sistema y, a continuación, instalar los paquetes Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code>. Este procedimiento de instalación depende del sistema.</p></li>
-<li><p>La opción alternativa es usar conda/miniconda/mamba (uno de esos tres) para instalar QGIS, GDAL, <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> en un entorno dedicado. Este procedimiento de instalación es independiente del sistema.</p></li>
+<li><p>Alternative option is to use conda/mamba (one of those two) to install QGIS, GDAL, <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> in a dedicated environment. This installation procedure is system-independent.</p></li>
 </ul>
 </div>
 <section id="on-windows">
@@ -524,19 +524,19 @@ deactivate
 </div>
 </section>
 </section>
-<section id="using-conda-miniconda-all-operating-systems">
-<h2>Uso de conda/miniconda (todos los sistemas operativos)<a class="headerlink" href="#using-conda-miniconda-all-operating-systems" title="Link to this heading">#</a></h2>
-<p>Este método alternativo tiene la ventaja de instalar <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> y <a class="reference external" href="https://gdal.org/index.html">GDAL</a> así como los paquetes Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> todo en un entorno aislado y dedicado, con una versión ligera de QGIS. Sin embargo, las advertencias son que no hay iconos de escritorio QGIS o asociación de archivos, y esta instalación no incluye GRASS y SAGA por ejemplo (aunque pueden ser fácilmente instalados con conda posteriormente).</p>
-<section id="install-miniconda">
-<h3>Instalar miniconda<a class="headerlink" href="#install-miniconda" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Conda</span></code> (o su versión mínima <code class="docutils literal notranslate"><span class="pre">miniconda</span></code>) es un gestor de paquetes y entornos. Para instalar <code class="docutils literal notranslate"><span class="pre">miniconda</span></code>, descarga el instalador de la <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">página web de miniconda</a> y sigue las instrucciones para tu sistema.</p>
+<section id="using-miniforge-and-conda-mamba-all-operating-systems">
+<h2>Using miniforge and conda/mamba (all operating systems)<a class="headerlink" href="#using-miniforge-and-conda-mamba-all-operating-systems" title="Link to this heading">#</a></h2>
+<p>This alternative method has the advantage of installing <a class="reference external" href="https://www.qgis.org/en/site/">QGIS</a> and <a class="reference external" href="https://gdal.org/index.html">GDAL</a> as well as the <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> Python packages all in a isolated and dedicated environment, with a lightweight version of QGIS. However, caveats are that there are no QGIS desktop icons or file association, and this installation does not include GRASS and SAGA for example (although they can easily be installed with conda/mamba afterwards).</p>
+<section id="install-miniforge">
+<h3>Install miniforge<a class="headerlink" href="#install-miniforge" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Miniforge</span></code> provides access to <code class="docutils literal notranslate"><span class="pre">conda</span></code> and <code class="docutils literal notranslate"><span class="pre">mamba</span></code> which are two package and environment managers. <code class="docutils literal notranslate"><span class="pre">Miniforge</span></code> is preconfigured to use the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel to download packages. To install <code class="docutils literal notranslate"><span class="pre">miniforge</span></code>, download the installer from the <a class="reference external" href="https://conda-forge.org/download/">miniforge webpage</a> and follow the instructions for your operating system.</p>
 </section>
 <section id="install-qgis-and-dependencies-in-a-new-environment">
 <h3>Instalar QGIS y sus dependencias en un nuevo entorno<a class="headerlink" href="#install-qgis-and-dependencies-in-a-new-environment" title="Link to this heading">#</a></h3>
-<p>En un terminal, crea un nuevo entorno (aquí llamado <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>) e instala <code class="docutils literal notranslate"><span class="pre">QGIS</span></code> (mediante paquetes conda), <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> en él. Ten en cuenta que <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> y <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code> deben instalarse por separado en los sistemas Linux y macOS (véase la sección anterior).</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-n<span class="w"> </span>deforisk<span class="w"> </span>qgis<span class="w">  </span><span class="c1"># create environment and install QGIS (and GDAL embedded)</span>
-conda<span class="w"> </span>activate<span class="w"> </span>deforisk<span class="w">        </span><span class="c1"># activate the newly created environment</span>
-pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr<span class="w"> </span><span class="c1"># install additional Python packages</span>
+<p>In a terminal, create a new environment (here named <code class="docutils literal notranslate"><span class="pre">deforisk</span></code>) and install <code class="docutils literal notranslate"><span class="pre">QGIS</span></code> (using <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> packages), <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> and <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> in this environment. Be aware that <code class="docutils literal notranslate"><span class="pre">osmconvert</span></code> and <code class="docutils literal notranslate"><span class="pre">osmfilter</span></code> still need to be installed separately on Linux and macOS systems (cf. section above).</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>deforisk<span class="w"> </span><span class="nv">qgis</span><span class="o">=</span><span class="m">3</span>.38.2<span class="w">           </span><span class="c1"># create environment and install QGIS (and GDAL embedded)</span>
+mamba<span class="w"> </span>activate<span class="w"> </span>deforisk<span class="w">                        </span><span class="c1"># activate the newly created environment</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>forestatrisk<span class="w"> </span>riskmapjnr<span class="w">  </span><span class="c1"># install additional Python packages</span>
 </pre></div>
 </div>
 <p>Ahora puede iniciar <code class="docutils literal notranslate"><span class="pre">QGIS</span></code> desde el terminal utilizando el comando <code class="docutils literal notranslate"><span class="pre">qgis</span></code>.</p>
@@ -544,8 +544,8 @@ pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="
 <section id="deactivate-and-delete-the-environment">
 <h3>Desactivar y eliminar el entorno<a class="headerlink" href="#deactivate-and-delete-the-environment" title="Link to this heading">#</a></h3>
 <p>Si quieres desactivar y borrar el entorno:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
-conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>deforisk
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>deactivate
+mamba<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> </span>--name<span class="w"> </span>deforisk
 </pre></div>
 </div>
 </section>
@@ -638,8 +638,8 @@ conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> <
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-forestatrisk-and-riskmapjnr-python-packages-on-unix-like-systems">Instalar los paquetes Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> y <code class="docutils literal notranslate"><span class="pre">riskmapjnr</span></code> en sistemas Unix-like</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda-miniconda-all-operating-systems">Uso de conda/miniconda (todos los sistemas operativos)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">Instalar miniconda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-miniforge-and-conda-mamba-all-operating-systems">Using miniforge and conda/mamba (all operating systems)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniforge">Install miniforge</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-qgis-and-dependencies-in-a-new-environment">Instalar QGIS y sus dependencias en un nuevo entorno</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deactivate-and-delete-the-environment">Desactivar y eliminar el entorno</a></li>
 </ul>
@@ -692,7 +692,7 @@ conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> <
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.1.
+    Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     <br/>
   </p>
 </div>
