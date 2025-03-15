@@ -97,8 +97,8 @@ Then, in the ``startup.py`` `Python file <https://docs.qgis.org/3.4/en/docs/pyqg
     import sys
     sys.path.append("/path/to/venv/lib/python3.11/site-packages/")
 
-Using miniforge and conda/mamba (all operating systems)
--------------------------------------------------------
+Using miniforge (all operating systems)
+---------------------------------------
 
 This alternative method has the advantage of installing `QGIS <https://www.qgis.org/en/site/>`_ and `GDAL <https://gdal.org/index.html>`_ as well as the ``forestatrisk`` and ``riskmapjnr`` Python packages all in a isolated and dedicated environment, with a lightweight version of QGIS. However, caveats are that there are no QGIS desktop icons or file association, and this installation does not include GRASS and SAGA for example (although they can easily be installed with conda/mamba afterwards).
 
