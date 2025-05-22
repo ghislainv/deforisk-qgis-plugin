@@ -579,7 +579,20 @@
 <h3>Fit models to data<a class="headerlink" href="#fit-models-to-data" title="Link to this heading">#</a></h3>
 <p>Esta pestaña es para recopilar la información necesaria para modelar espacialmente la deforestación utilizando tres modelos estadísticos disponibles en el paquete Python <code class="docutils literal notranslate"><span class="pre">forestatrisk</span></code> (FAR): modelos iCAR, GLM y Random Forest.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">List</span> <span class="pre">of</span> <span class="pre">variables</span></code>: Lista de variables explicativas utilizadas para la modelización estadística. Los nombres de las variables deben corresponder a los nombres de los archivos (sin extensión «.tif») de la carpeta <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code> o <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>. Los nombres de las variables deben ir separados por una coma. Para variables categóricas (como áreas protegidas) utilice el nombre de la variable con la notación <code class="docutils literal notranslate"><span class="pre">C()</span></code>, como <code class="docutils literal notranslate"><span class="pre">C(pa)</span></code>. Si está vacía, se utilizará la fórmula por defecto: <code class="docutils literal notranslate"><span class="pre">C(pa),</span> <span class="pre">altitude,</span> <span class="pre">slope,</span> <span class="pre">dist_edge,</span> <span class="pre">dist_road,</span> <span class="pre">dist_river,</span> <span class="pre">dist_town</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Lista</span> <span class="pre">de</span> <span class="pre">variables</span></code>: Lista de variables explicativas utilizadas
+para la modelización estadística. Los nombres de las variables deben
+corresponder a los nombres de los archivos (sin extensión «.tif») de
+la carpeta <code class="docutils literal notranslate"><span class="pre">data_calibration</span></code> o <code class="docutils literal notranslate"><span class="pre">data_historical</span></code>. Los nombres de
+las variables deben ir separados por una coma. Para variables
+categóricas (como áreas protegidas) utilice el nombre de la variable
+con la notación <code class="docutils literal notranslate"><span class="pre">C()</span></code>, como <code class="docutils literal notranslate"><span class="pre">C(pa)</span></code>. Si la lista está vacía, se utilizará sólo
+la distancia al borde del bosque como variable explicativa por defecto
+(lo mismo que indicar solamente <code class="docutils literal notranslate"><span class="pre">dist_edge</span></code> para este parámetro). Si
+desea utilizar todas las variables explicativas que se calculan cuando
+el argumento <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">compute</span> <span class="pre">forest</span> <span class="pre">variables</span></code> está desmarcado en la
+pestaña <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">variables</span></code>, entonces se necesita escribir la siguiente
+lista de variables manualmente: <code class="docutils literal notranslate"><span class="pre">C(pa),</span> <span class="pre">altitude,</span> <span class="pre">slope,</span>
+<span class="pre">dist_edge,</span> <span class="pre">dist_road,</span> <span class="pre">dist_river,</span> <span class="pre">dist_town</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Starting</span> <span class="pre">values</span> <span class="pre">for</span> <span class="pre">betas</span></code>: Si -99 (recomendado), los valores iniciales para betas corresponden a estimaciones de un GLM simple con las mismas variables.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Prior</span> <span class="pre">Vrho</span></code>: Si -1 (recomendado), el anterior para Vrho es una Gamma inversa.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">MCMC</span></code>: Longitud del MCMC para el modelo final.</p></li>
